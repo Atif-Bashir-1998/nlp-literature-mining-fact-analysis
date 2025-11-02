@@ -1,0 +1,660 @@
+{
+  "paper_10": {
+    "explanation_types": [
+      "counterfactual"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "precision"
+    ]
+  },
+  "paper_11": {
+    "domains": [
+      "food",
+      "news"
+    ]
+  },
+  "paper_12": {
+    "domains": [
+      "music"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual"
+    ]
+  },
+  "paper_14": {
+    "domains": [
+      "movie"
+    ],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_15": {
+    "methods": [
+      "llm"
+    ],
+    "domains": [
+      "game",
+      "movie",
+      "music"
+    ],
+    "datasets": [
+      "amazon",
+      "movielens",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1",
+      "precision",
+      "recall",
+      "rouge"
+    ],
+    "explanation_types": [
+      "attention"
+    ]
+  },
+  "paper_16": {
+    "domains": [
+      "social"
+    ],
+    "methods": [
+      "attention"
+    ],
+    "explanation_types": [
+      "attention",
+      "kg"
+    ],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_17": {
+    "domains": [
+      "business",
+      "movie"
+    ],
+    "methods": [
+      "attention"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "feature",
+      "rationale",
+      "saliency"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "f1",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_18": {
+    "explanation_types": [
+      "feature"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc"
+    ]
+  },
+  "paper_19": {
+    "explanation_types": [
+      "attention",
+      "feature",
+      "saliency"
+    ]
+  },
+  "paper_1": {
+    "methods": [
+      "autoencoder"
+    ],
+    "domains": [
+      "movie"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "datasets": [
+      "movielens",
+      "yelp"
+    ]
+  },
+  "paper_20": {
+    "metrics": [
+      "precision"
+    ]
+  },
+  "paper_21": {
+    "methods": [
+      "prompt"
+    ],
+    "domains": [
+      "medical"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "feature"
+    ],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_22": {
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "feature",
+      "kg"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "gnn",
+      "prompt",
+      "transformer"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision"
+    ],
+    "domains": [
+      "medical",
+      "social"
+    ]
+  },
+  "paper_23": {
+    "domains": [
+      "medical"
+    ],
+    "metrics": [
+      "precision",
+      "recall"
+    ],
+    "explanation_types": [
+      "feature"
+    ]
+  },
+  "paper_24": {
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_25": {
+    "methods": [
+      "gpt",
+      "llm",
+      "prompt"
+    ],
+    "domains": [
+      "movie"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "explanation_types": [
+      "feature"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1",
+      "mae",
+      "rouge"
+    ]
+  },
+  "paper_26": {
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "auc"
+    ]
+  },
+  "paper_27": {
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_28": {
+    "domains": [
+      "movie"
+    ],
+    "explanation_types": [
+      "attention",
+      "feature"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall"
+    ],
+    "baselines": [
+      "neural",
+      "random"
+    ],
+    "datasets": [
+      "movielens"
+    ]
+  },
+  "paper_29": {
+    "domains": [
+      "game"
+    ],
+    "methods": [
+      "cnn",
+      "transformer"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "baselines": [
+      "neural"
+    ],
+    "metrics": [
+      "f1",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_2": {
+    "metrics": [
+      "accuracy"
+    ],
+    "domains": [
+      "movie"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "movielens"
+    ]
+  },
+  "paper_30": {
+    "methods": [
+      "attention"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ]
+  },
+  "paper_31": {
+    "methods": [
+      "cnn"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc"
+    ]
+  },
+  "paper_32": {
+    "methods": [
+      "attention",
+      "finetune",
+      "llm",
+      "prompt",
+      "transformer"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc",
+      "recall"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "explanation_types": [
+      "attention"
+    ]
+  },
+  "paper_33": {
+    "explanation_types": [
+      "attention"
+    ],
+    "metrics": [
+      "recall"
+    ]
+  },
+  "paper_34": {
+    "domains": [
+      "education",
+      "game",
+      "medical",
+      "movie",
+      "music",
+      "news",
+      "social",
+      "travel"
+    ],
+    "explanation_types": [
+      "attention",
+      "feature"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "mae",
+      "precision",
+      "recall",
+      "rouge"
+    ]
+  },
+  "paper_35": {
+    "domains": [
+      "social"
+    ],
+    "metrics": [
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_36": {
+    "domains": [
+      "food"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "f1",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_37": {
+    "domains": [
+      "medical"
+    ],
+    "metrics": [
+      "auc",
+      "mae",
+      "precision",
+      "recall"
+    ],
+    "explanation_types": [
+      "attention"
+    ]
+  },
+  "paper_38": {
+    "domains": [
+      "business",
+      "music"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "yelp"
+    ]
+  },
+  "paper_39": {
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "domains": [
+      "music"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "baselines": [
+      "random"
+    ]
+  },
+  "paper_3": {
+    "explanation_types": [
+      "attention"
+    ]
+  },
+  "paper_40": {
+    "metrics": [
+      "accuracy"
+    ],
+    "domains": [
+      "music"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "movielens"
+    ]
+  },
+  "paper_41": {
+    "explanation_types": [
+      "attention",
+      "feature"
+    ],
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "datasets": [
+      "amazon"
+    ]
+  },
+  "paper_42": {
+    "explanation_types": [
+      "attention"
+    ],
+    "domains": [
+      "movie"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc"
+    ]
+  },
+  "paper_43": {
+    "domains": [
+      "music",
+      "travel"
+    ],
+    "methods": [
+      "autoencoder"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision"
+    ]
+  },
+  "paper_44": {
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall"
+    ],
+    "domains": [
+      "news"
+    ]
+  },
+  "paper_45": {
+    "methods": [
+      "gnn",
+      "llm",
+      "prompt"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "recall",
+      "rouge"
+    ]
+  },
+  "paper_46": {
+    "domains": [
+      "music"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision"
+    ]
+  },
+  "paper_47": {
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_49": {
+    "domains": [
+      "social"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "twitter"
+    ],
+    "metrics": [
+      "accuracy",
+      "precision"
+    ]
+  },
+  "paper_4": {
+    "methods": [
+      "prompt"
+    ],
+    "datasets": [
+      "e-redial",
+      "redial"
+    ],
+    "domains": [
+      "movie"
+    ],
+    "baselines": [
+      "t5"
+    ],
+    "explanation_types": [
+      "counterfactual"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1"
+    ]
+  },
+  "paper_5": {
+    "domains": [
+      "health"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "precision",
+      "recall",
+      "rouge"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual"
+    ],
+    "datasets": [
+      "yelp"
+    ]
+  },
+  "paper_6": {
+    "methods": [
+      "gpt",
+      "llm"
+    ],
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "explanation_types": [
+      "feature"
+    ]
+  },
+  "paper_7": {
+    "domains": [
+      "movie"
+    ],
+    "methods": [
+      "gpt",
+      "prompt"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "mae",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_8": {
+    "explanation_types": [
+      "attention"
+    ],
+    "methods": [
+      "vae"
+    ],
+    "metrics": [
+      "accuracy",
+      "mae",
+      "mse",
+      "precision",
+      "recall"
+    ],
+    "datasets": [
+      "amazon"
+    ]
+  },
+  "paper_9": {
+    "methods": [
+      "llm"
+    ]
+  }
+}

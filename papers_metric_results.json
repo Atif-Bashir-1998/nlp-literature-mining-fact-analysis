@@ -1,0 +1,22 @@
+{
+  "paper_28": {
+    "metric": "accuracy",
+    "baseline": "neural",
+    "best_value": 1.204
+  },
+  "paper_29": {
+    "metric": "recall",
+    "baseline": "neural",
+    "best_value": 20.09
+  },
+  "paper_39": {
+    "metric": "recall",
+    "baseline": "random",
+    "best_value": 26.15
+  },
+  "paper_4": {
+    "metric": "f1",
+    "baseline": "t5",
+    "best_value": 27.63
+  }
+}
