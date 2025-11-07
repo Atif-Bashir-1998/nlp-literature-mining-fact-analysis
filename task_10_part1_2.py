@@ -66,3 +66,4 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=4)
 plt.title("Knowledge Graph Demo: Papers, Authors, Methods, Domains, Explanation Types")
 plt.axis('off')
 plt.show()
+
