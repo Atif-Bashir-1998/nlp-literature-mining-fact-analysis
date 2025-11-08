@@ -1,0 +1,73 @@
+{
+  "explanation_types": [
+    "Specifically, we first train a logicalreasoning-based surrogate model on training data derived from counterfactual explanations.",
+    "This section describes H-CARS (Horn-Clause Attacks to Recommender Systems), our poisoning method for recommender systems, via counterfactual explanations, depicted in Fig.",
+    "Despite that, they suffer from a lack of transparency and explainability.",
+    "Logically, the counterfactual expression below tends to be false: For the generated counterfactual interaction, its expression vector 𝒄 𝐶𝐹 𝑢,𝑥 is expected to be very distinct from 𝒄 + 𝑢,𝑥 , to weaken the spurious correlations by contrasting the difference.",
+    "In each iteration, we find the optimal direction of item perturbation by jointly considering the target items 𝑡 ∈ T .",
+    "Overall, the main contributions of our work are as follows: • We unveil security issues of applying counterfactual explanations in recommender systems and provide the first study of poisoning attacks for recommendation via CFs.",
+    "We presented a novel approach, H-CARS, that exploits the vulnerabilities induced by counterfactual explanations to launch a poisoning attack on recommender systems.",
+    "While much prior research shows how counterfactual explanations can enhance recommender systems' transparency, few studies investigate their potential security and privacy threats.",
+    "Counterfactual Explanation Method.",
+    "Recently, counterfactual explanation (CF) has emerged as a key tool to attach motivation behind items recommended to users.",
+    "One such method is counterfactual explanation (CF).",
+    "Our experiments demonstrate that H-CARS is effective, highlighting the importance of considering the security implications of using explainability methods in recommender systems."
+  ],
+  "methods": [
+    "Then, a limited number of controlled users with fake crafted interactions are designed by matching the optimal representation of a target recommended item via an optimization framework.",
+    "NCR encapsulates logical reasoning into a dynamic neural architecture in Horn clause form (hence the name of our method).",
+    "We adopt the pair-wise learning algorithm for the factual interaction for model training.",
+    "We refer to our attack strategy as H-CARS (Horn-Clause Attacks to Recommender Systems).",
+    "To this end, we adopt the Neural Collaborative Reasoning (NCR) framework as the surrogate recommendation model in this study.",
+    "In this work, we propose H-CARS, a novel strategy to poison recommender systems via CFs.",
+    "Future research should explore the potential impact of such attacks on the integrity of the recommender system, as well as develop stronger defenses to mitigate risks in explainable recommender systems.",
+    "By reversing the learning process of the recommendation model, we thus develop a proficient greedy algorithm to generate fabricated user profiles and their associated interaction records for the aforementioned surrogate model.",
+    "In Section 3, we present the attack model and describe our proposed method H-CARS, in Section 4.",
+    "We observe that our method achieves good performance in the scenario with a limited number of training data.",
+    "Overall, our method achieves the best performance compared to other baselines.",
+    "To build a surrogate model that effectively utilizes the API of CF reasoning, it is crucial to capture the inherent logic of the targeted black-box recommender system.",
+    "We presented a novel approach, H-CARS, that exploits the vulnerabilities induced by counterfactual explanations to launch a poisoning attack on recommender systems.",
+    "A common practice in black-box scenarios is first training a surrogate model f ≈ 𝑓 to generate fake user-item interactions that can be used to poison the target system 𝑓 .",
+    "While CFs can be highly beneficial for users and system designers, malicious actors may also exploit these explanations to undermine the system's security.",
+    "• We propose a novel poisoning attack for neural logical-based recommender systems.",
+    "Our strategy involves poisoning attacks that aim to promote target items to legitimate users by manipulating interactions of controlled users.",
+    "In our study, we evaluate the performance of our model extraction method using the MovieLens dataset and NCF as the original recommender.",
+    "For instance, using the Movie-Lens dataset, our method improves over RAPU-R and DL-Attack by 5% and 8%, respectively.",
+    "In particular, with only 30% MovieLens training data, our method outperforms RAPU-R by 0.6%.",
+    "Notably, our method performs well with limited training data, outperforming RAPU-R by 0.6% with only 30% of the MovieLens training data."
+  ],
+  "datasets": [
+    "Specifically, we first train a logicalreasoning-based surrogate model on training data derived from counterfactual explanations.",
+    "In particular, with only 30% MovieLens training data, our method outperforms RAPU-R by 0.6%.",
+    "In our study, we evaluate the performance of our model extraction method using the MovieLens dataset and NCF as the original recommender.",
+    "For instance, using the Movie-Lens dataset, our method improves over RAPU-R and DL-Attack by 5% and 8%, respectively.",
+    "• We conduct experiments on two real datasets to analyze the attacking performance.",
+    "Our H-CARS attack consistently outperforms or performs similarly to other methods in all target recommendation model and dataset combinations, as shown in Table 1.",
+    "Our experiments, which employ a well-known CF generation method and are conducted on two distinct datasets, show that H-CARS yields significant and successful attack performance.",
+    "For instance, compared with RAPU-R, our H-CARS attack achieves 0.1% and 0.6% performance increases on the H-CARS dataset when the percentage of controlled users rises from 0.5% to 5%.",
+    "Datasets.",
+    "We observe that our method achieves good performance in the scenario with a limited number of training data.",
+    "Notably, our method performs well with limited training data, outperforming RAPU-R by 0.6% with only 30% of the MovieLens training data."
+  ],
+  "domains": [
+    "This work investigates possible risks induced by CFs for the recommendation task.",
+    "Our H-CARS attack consistently outperforms or performs similarly to other methods in all target recommendation model and dataset combinations, as shown in Table 1.",
+    "Overall, the main contributions of our work are as follows: • We unveil security issues of applying counterfactual explanations in recommender systems and provide the first study of poisoning attacks for recommendation via CFs.",
+    "By reversing the learning process of the recommendation model, we thus develop a proficient greedy algorithm to generate fabricated user profiles and their associated interaction records for the aforementioned surrogate model.",
+    "Based on the definition of material implication, the above statement is equivalent to the following logic expression vector: The recommendation score of 𝑥 is calculated based on the similarity between the logic expression vector 𝒄 + 𝑢,𝑥 and the constant true vector denoted by 1.",
+    "Additionally, an explanation API for the recommendation model can be exploited to produce CFs for any user and target item pair (𝑢, 𝑡).",
+    "Here, we utilize the training loss of the surrogate to emulate the optimization process of the original recommendation model.",
+    "To this end, we adopt the Neural Collaborative Reasoning (NCR) framework as the surrogate recommendation model in this study.",
+    "Target Recommendation Models."
+  ],
+  "baselines": [
+    "We apply the 𝑃@10 precision metric and compare",
+    "Baseline Attack Methods.",
+    "To achieve this, we want the result of the following logic chain to be true: Since the attacker cannot modify observed interactions of legitimate users in the training set, we focus on leveraging the controlled users to manipulate the embedding of 𝑡.",
+    "Indeed, DL-based recommender systems overcome the obstacles of conventional models and achieve state-of-the-art performance [15,27].",
+    "Overall, our method achieves the best performance compared to other baselines."
+  ],
+  "metrics": [
+    "We apply the 𝑃@10 precision metric and compare"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "domains": [
+    "In this paper we seek to build visually-aware representations on top of interpretable visual features based on ne-grained parsing of product images, for the problem of clothing recommendation.",
+    "In this section we demonstrate how our prediction model can be extended to build a personalized, interactive, fashion-aware recommendation system.",
+    "Our approach achieves state-ofthe-art performance on personalized ranking tasks, and the incorporation of interpretable visual features allows for powerful model introspection, which we demonstrate by using an interactive recommendation algorithm and visualizing the rise and fall of fashion trends over time.",
+    "Recently, there has been an interest in developing recommender systems that are 'visually aware,' in the sense that the visual features (extracted from product images) are incorporated directly into the recommendation objective.",
+    "Cold start performance is particularly important in the clothing recommendation se ing, where most datasets will have long-tailed distributions due to the constant ow of new items with no prior feedback.",
+    "Such systems can substantially improve recommendation accuracy, especially in se ings (such as clothing recommendation) where visual factors strongly guide users' decisions.",
+    "In this paper we propose a novel approach to personalized clothing recommendation that models the dynamics of individual users' visual preferences.",
+    "Our goal is to not only generate highly-personalized item recommendations based on visual signals, but also to allow the user to tailor their own recommendation results dynamically.",
+    "In this paper we introduced a novel approach to fashion-aware product recommendation that utilizes interpretable visual features.",
+    "Future work will focus on extended applications enabled by the feature generation process, including iterative clustering and querying of recommendation results.",
+    "In the domain of clothing recommendation, incorporating items' visual information (e.g., product images) is particularly important since clothing item appearance is o en a critical factor in in uencing the user's purchasing decisions."
+  ],
+  "baselines": [
+    "Critically, we can describe an items' visual factors at time (epoch) t in terms of a time-speci c weighting vector w(t) (users weigh visual dimensions, or 'styles', di erently over time) and temporal dri (items gain and lose a ractiveness in di erent dimensions over time): where indicates the Hadamard product.",
+    "Previous work has focused on visualizing the temporal shi of the latent visual dimensions, by plo ing the weighting vector w(t) (eq.",
+    "Incorporating visual signals clearly signi cantly increases performance, and all visuallyaware methods improve at least 10% compared to BPR-MF, the nextbest baseline.",
+    "As part of preprocessing, we lter out users who have less than 5 wri en reviews to increase the density of the dataset.",
+    "Such systems can substantially improve recommendation accuracy, especially in se ings (such as clothing recommendation) where visual factors strongly guide users' decisions.",
+    "e core of our prediction model is built on Matrix Factorization (MF), a state-of-the-art method for rating prediction.",
+    "We show that such features can lead to superior performance compared to 'black box' image representations, while substantially reducing their dimensionality, and also that such features can be used to develop more usable and interactive systems.",
+    "Despite the large discrepancy in parameter count, models using the interpretable features achieve comparable prediction accuracy: in the overall dataset and in Women's Clothing, the black box methods maintained a 1-2% performance boost in the 'All Items' se ing, while the interpretable methods maintained a similar lead in most of Men's Clothing and several cold start scenarios.",
+    "Ultimately, our results demonstrate that by using a relatively low number of interpretable image features, our model can produce comparable and in several cases superior results to the black box approach while substantially reducing model complexity and allowing for more usable and interactive systems.",
+    "MM-MF is a pairwise MF model optimized for hinge ranking loss, while BPR-MF is the state-of-the-art (non-visual method) for personalized ranking on implicit feedback datasets.",
+    "Current state-of-the-art visually-aware recommender systems utilize image features extracted from pre-trained deep convolutional neural networks, however these extremely high-dimensional representations are di cult to interpret, especially in relation to the relatively low number of visual properties that may guide users' decisions.",
+    "We also compare our method to several Matrix Factorization approaches for reference (both Matrix Factorization-based baselines (MM MF and BPR MF) were implemented using MyMediaLite 1 ).",
+    "A user can dynamically update the model's generated recommendations by scaling their own a nity vector in the direction of a chosen item (see gure 1): Additionally, a user can choose to boost a speci c visual feature (e.g., color) within their a nity vector: In each case, the scaling constants ϕ and ϕ are xed prior to runtime and determined experimentally.",
+    "several thousand image features), the interpretable models use a small fraction of the total model parameters compared to the black box models (¡5%)."
+  ],
+  "methods": [
+    "e same training procedure is used for the temporally-aware model, adjusted to incorporate review timestamps as additional feedback (used to learn the optimal epoch segmentation).",
+    "CNN-based methods).",
+    "Unlike the typical features extracted from pre-trained CNNs, interpretable visual features allows the recommender system to generate sets of recommendations due to a speci c feature, or similarly, to narrow down a set of items based on explicit visual criteria.",
+    "By using interpretable image representations generated with a unique feature learning process, our model learns to explain users' prior feedback in terms of their a nity towards speci c visual a ributes and styles.",
+    "In this section we demonstrate how our prediction model can be extended to build a personalized, interactive, fashion-aware recommendation system.",
+    "Our approach achieves state-ofthe-art performance on personalized ranking tasks, and the incorporation of interpretable visual features allows for powerful model introspection, which we demonstrate by using an interactive recommendation algorithm and visualizing the rise and fall of fashion trends over time.",
+    "Ultimately, our results demonstrate that by using a relatively low number of interpretable image features, our model can produce comparable and in several cases superior results to the black box approach while substantially reducing model complexity and allowing for more usable and interactive systems.",
+    "We initialize the recommender system for user u by constructing an a nity vector p u , which represents the sensitivity of user u towards each visual dimension.",
+    "In this paper we propose a novel approach to personalized clothing recommendation that models the dynamics of individual users' visual preferences.",
+    "Since our model utilizes interpretable visual features (instead of extracted CNN features), we are able to visualize the temporaldynamics of our dataset at the feature-level.",
+    "In this paper we introduced a novel approach to fashion-aware product recommendation that utilizes interpretable visual features.",
+    "We also compare our method to several Matrix Factorization approaches for reference (both Matrix Factorization-based baselines (MM MF and BPR MF) were implemented using MyMediaLite 1 ).",
+    "To t our model, we use Bayesian Personalized Ranking (BPR), a pairwise ranking optimization framework."
+  ],
+  "metrics": [
+    "Despite the large discrepancy in parameter count, models using the interpretable features achieve comparable prediction accuracy: in the overall dataset and in Women's Clothing, the black box methods maintained a 1-2% performance boost in the 'All Items' se ing, while the interpretable methods maintained a similar lead in most of Men's Clothing and several cold start scenarios.",
+    "Such systems can substantially improve recommendation accuracy, especially in se ings (such as clothing recommendation) where visual factors strongly guide users' decisions.",
+    "Table 2 shows the average AUC for each method on the Women's, Men's, and overall Clothing + test datasets.",
+    "Incorporating temporal information information on top of visual information increased accuracy in all cases, though with smaller margins.",
+    "'All Items' evaluates the average AUC across the entire test set, whereas 'Cold Start' evaluates the average AUC for items with less than ve recorded feedback instances in the training set."
+  ],
+  "explanation_types": [
+    "BPR adopts stochastic gradient descent to e ciently learn the parameters of the model, using the desired preference predictor and implicit feedback from the training data.",
+    "Furthermore, high-dimensional 'black box' image models o er li le by way of interpretability, which can impede usability when building interfaces that interact with these representations."
+  ],
+  "datasets": [
+    "Care was put into making sure that each a ribute is represented to a su cient extent in the ne-tunning dataset, to guarantee a consistent degree of generalization to new types of images for all classes.",
+    "e original dataset is a content-rich dataset containing millions of items, metadata, images, and implicit-feedback (e.g., review data), which we use for our ground truth 'preference' statistic.",
+    "Additionally, we report results on the largest two subcategories within our dataset, Women and Men (643,195 and 278,762 items, respectively).",
+    "BPR adopts stochastic gradient descent to e ciently learn the parameters of the model, using the desired preference predictor and implicit feedback from the training data.",
+    "1 by parameterizing the visual factors bias by a set of learned epochs (a xed number of exible time-based dataset partitions).",
+    "In our testing, we use a subset of the original dataset (Clothing + ) containing 1.4 million items ltered from categories that encode fashion dynamics (clothing, jewelry, bags, etc).",
+    "As part of preprocessing, we lter out users who have less than 5 wri en reviews to increase the density of the dataset.",
+    "Cold start performance is particularly important in the clothing recommendation se ing, where most datasets will have long-tailed distributions due to the constant ow of new items with no prior feedback.",
+    "Table 2 shows the average AUC for each method on the Women's, Men's, and overall Clothing + test datasets.",
+    "Despite the large discrepancy in parameter count, models using the interpretable features achieve comparable prediction accuracy: in the overall dataset and in Women's Clothing, the black box methods maintained a 1-2% performance boost in the 'All Items' se ing, while the interpretable methods maintained a similar lead in most of Men's Clothing and several cold start scenarios.",
+    "MM-MF is a pairwise MF model optimized for hinge ranking loss, while BPR-MF is the state-of-the-art (non-visual method) for personalized ranking on implicit feedback datasets.",
+    "Since our model utilizes interpretable visual features (instead of extracted CNN features), we are able to visualize the temporaldynamics of our dataset at the feature-level."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "baselines": [
+    "For the state of the art Matrix Factorization (MF) recommender systems, recent explanation methods, require an additional data source, such as item content data, in addition to rating data.",
+    "The results in Figure 2, bottom row, indicate that EMF results in significantly better MEP and MER metrics compared to other baselines.",
+    "We compare our results with five baseline methods: Non-Negative Matrix Factorization (NMF), Probabilistic Matrix Factorization (PMF), classical user-based and item-based top-n techniques, and non-personalized top-n most popular items.",
+    "This is one main distinction of our approach compared to existing explanation approaches in the literature, which are, for this reason, not comparable on a fair basis.",
+    "Explanations have been shown to increase the user's trust in recommendations in addition to providing other benefits such as scrutability, which is the ability to verify the validity of recommendations."
+  ],
+  "datasets": [
+    "We tested our approach on the MovieLens benchmark data 1 which has 100,000 ratings from 943 users on 1682 items, on a scale of 1 to 5.",
+    "For the state of the art Matrix Factorization (MF) recommender systems, recent explanation methods, require an additional data source, such as item content data, in addition to rating data."
+  ],
+  "methods": [
+    "We tested our approach on the MovieLens benchmark data 1 which has 100,000 ratings from 943 users on 1682 items, on a scale of 1 to 5.",
+    "In this paper, we address the case where no such additional data is available and propose a new Explainable Matrix Factorization (EMF) technique that computes an accurate topn recommendation list of items that are explainable.",
+    "This is one main distinction of our approach compared to existing explanation approaches in the literature, which are, for this reason, not comparable on a fair basis.",
+    "In this approach, we learn a recommendation model that tries to optimize the items' explainability at the same time as the accuracy of the recommendations."
+  ],
+  "domains": [
+    "In this paper, we address the case where no such additional data is available and propose a new Explainable Matrix Factorization (EMF) technique that computes an accurate topn recommendation list of items that are explainable.",
+    "The drawback of this method is that the way the neighborhood style explanation is generated may not convey the reasoning behind the recommendation.",
+    "In this approach, we learn a recommendation model that tries to optimize the items' explainability at the same time as the accuracy of the recommendations."
+  ],
+  "metrics": [
+    "In this approach, we learn a recommendation model that tries to optimize the items' explainability at the same time as the accuracy of the recommendations.",
+    "With this rationale, the new objective function, to be minimized over the set of known ratings, can be formulated as: (2) R is the set of user-item pairs for which the ratings are available, 1 2 (||pi|| 2 +||qj|| 2 ) is an L2 regularization term weighted by the coefficient β, and λ is an explainability regularization coefficient that controls the smoothness of the new representation and tradeoff between explainability and accuracy.",
+    "We also introduce new explanation quality metrics, that we call Mean Explainability Precision (MEP) and Mean Explainability Recall (MER).",
+    "Explainability Precision (EP) is defined as the ratio of number of explainable recommended items to the number of recommended items for each user; Mean EP (MEP) is the average value of explainability precision over all users.",
+    "Note that RMSE can be obtained for methods that predict ratings but not for top-n algorithms.",
+    "Similarly, Explainability Recall (ER) is the ratio of number of explainable recommended items to the number of explainable items for each user; Mean ER (MER) is the mean explainability recall calculated over all users.",
+    "Increased regularization improves the explainability metrics (MER and MEP) while RMSE and nDCG@10 remain almost unchanged."
+  ],
+  "explanation_types": [
+    "In order to to do this, we first need to quantify explainability.",
+    "Thus explainability can be directly formulated based on the rating distribution within the active user's neighborhood.",
+    "In this approach, we learn a recommendation model that tries to optimize the items' explainability at the same time as the accuracy of the recommendations.",
+    "We also introduce new explanation quality metrics, that we call Mean Explainability Precision (MEP) and Mean Explainability Recall (MER).",
+    "We thus propose a novel MF-based CF that leverages an explainability bipartite graph with arcs from the set of users onto the set of items.",
+    "With this rationale, the new objective function, to be minimized over the set of known ratings, can be formulated as: (2) R is the set of user-item pairs for which the ratings are available, 1 2 (||pi|| 2 +||qj|| 2 ) is an L2 regularization term weighted by the coefficient β, and λ is an explainability regularization coefficient that controls the smoothness of the new representation and tradeoff between explainability and accuracy.",
+    "Explainability Precision (EP) is defined as the ratio of number of explainable recommended items to the number of recommended items for each user; Mean EP (MEP) is the average value of explainability precision over all users.",
+    "Increased regularization improves the explainability metrics (MER and MEP) while RMSE and nDCG@10 remain almost unchanged.",
+    "Similarly, Explainability Recall (ER) is the ratio of number of explainable recommended items to the number of explainable items for each user; Mean ER (MER) is the mean explainability recall calculated over all users.",
+    "We measure explainability using the MEP and MER metrics.",
+    "To minimize the objective function, we use stochastic gradient descent and derive the following updates for pi and qj: pi",
+    "To study the effect of the explainability regularization coefficient, we varied λ, while fixing all the other parameters (α = 0.001, β = 0.01, k = 10, and f = 30).",
+    "One way to formulate explainability is based on the rating distribution within the active user's neighborhood."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "explanation_types": [
+    "In this study, we consider three different explanation types (see Section 3.4): (i) graph-based explanations; (ii) Textual explanations; and (iii) Feature attribution explanations.",
+    "Considering the difficulty of conveying relative importance levels within a text, the feature attribution map can be linked (i.e., through matching color coding) to clarify the text.",
+    "While such information can assist developers in understanding their model (e.g., by allowing the detection of bugs and biases, understanding feature importance), it is often complicated and requires considerable a priori knowledge of AI to interpret.",
+    "Considering their difficulty in parsing both the graph and feature attribution explanation, the textual explanation should always be central, with the other two merely functioning as further support.",
+    "Thus, the feature attribution chart should stick only to the personal, actionable features of the candidates.",
+    "However, as an actual method of explaining the prediction, they indicated that the text, sometimes combined with the graph, would already be sufficient, causing the feature attribution chart to be largely irrelevant.",
+    "3: An example of a feature attribution map used as an explanation for a recommendation.",
+    "One could argue that reciprocal, easy-to-understand explainability should be at the core of the models' design in a high-risk, high-impact domain such as recruitment.",
+    "Even when explainability has been included, authors usually fail to consider all stakeholders, tailoring the explanations to developers only.",
+    "With some tweaks, such as changing vacancy IDs into actual titles, the bar chart would allow company representatives to make sure the model did not pay attention to something that the company determined to be irrelevant to the position.",
+    "Furthermore, an aggregated version of the feature attribution chart, which displays which types of features were considered most by the model, could help the company representatives parse the textual explanation more easily, allowing them to direct most of their attention to the more important information (\"This is what I was looking for while reading the text.",
+    "The feature attribution map could easily be converted into a 'hub' for them, where they can get an overview of alternative candidates for a vacancy.",
+    "While some previous work has incorporated some degree of explainability within their JRSs, the explanations are often limited and seem to have been included as an afterthought [14,32,37].",
+    "In job recommender systems (JRSs) specifically, explainability has largely gone unexplored.",
+    "Explainability within multi-stakeholder environments has largely gone unexplored.",
+    "However, the company representatives did consider the feature attribution chart to be useful in a different scenario -to verify the model paid no attention to irrelevant details.",
+    "However, they did indicate how feature attribution could be made useful: for the bar chart to relate to their individual skills, so the candidates could understand which of their own skills were considered most important for the recommendation at a glance (\"That it shows what is important for the match, for example, that your experience with Excel matters, but that your ability to be a truck driver wasn't important\", P1, Q1.1).",
+    "Additionally, a bar chart indicating how important different feature types were, could be used to complement the text, in order to help them focus their attention on the paragraphs touching on those feature types.",
+    "The feature attribution map was again received poorly.",
+    "The current implementation of the feature attribution chart turned out to be close to useless for providing an explanation to the candidates.",
+    "Future work could therefore use the provided interview guide to evaluate and compare explanations generated using a number of different techniques (e.g., attention mechanisms, saliency, post hoc methods).",
+    "Similarly to the candidates, the feature attribution chart in its current form did not assist the recruiters in correctly understanding the explanation."
+  ],
+  "methods": [
+    "Although this leads to the most fine-tuned explanations, it introduces an additional layer of complexity to the system as a whole.",
+    "Regarding the preferred types of explanations, candidates preferred brief written explanations, as their main interest is to be able to quickly judge the potential matches proposed by the system.",
+    "' Even when some of the participants could see that an explanation was sensible, or could be helpful in making a decision, they mentioned that they would personally stick to using another approach (e.g., a different type of explanation, or doing things manually).",
+    "This paper attempts to determine the explanation preferences of the stakeholders of a job recommender system: job seekers, companies, and recruiters.",
+    "4 Considering performance was not the goal of this research, we opted for a straightforward architecture consisting of a single GATv2Conv-layer, followed by two separate GATv2Conv-layers -one for the company-side prediction and explanation, and one for the candidateside prediction and explanation."
+  ],
+  "baselines": [
+    "On the other hand, having a shorter text that only focuses on the main arguments provided by the model would make it quicker for recruiters to compare different recommendations, after which they could come up with further arguments for the best one themselves.",
+    "Furthermore, we acknowledge room to improve the model we used to generate explanations, and that it may therefore not have generated the most sensible explanations.",
+    "While they indicated that it could be useful in some specific scenarios, such as texts with a high level of complexity, or when having to support their final decision to a supervisor, they generally did not consider it to add any benefit compared to the textual explanation.",
+    "Recruiters also preferred the textual explanations, due to their simplicity compared to the graph-and feature-based explanations.",
+    "Since our aim was not to get state-of-the-art performance, the number of different configurations tested was fairly limited.",
+    "In previous work, we found that, when dealing with users with limited AI knowledge, such as recruiters, job seekers, and most company representatives, having clear, straightforward explanations is crucial [28,30].",
+    "Lastly, we changed one of the questions in the section on transparency: \"can you think of anything that would further improve your understanding?\" has been changed to \"what information is missing that could allow you to get a better understanding of the model's recommendation?\".",
+    "Furthermore, the co-design study allowed us to validate and improve the used interview guide.",
+    "The higher-level categories, as well as the theories, were then used to improve the prototypical explanation.",
+    "Future work could therefore use the provided interview guide to evaluate and compare explanations generated using a number of different techniques (e.g., attention mechanisms, saliency, post hoc methods).",
+    "While some previous work has incorporated some degree of explainability within their JRSs, the explanations are often limited and seem to have been included as an afterthought [14,32,37].",
+    "The company representatives indicated that it did not help them get a better understanding of the model's reasoning compared to the graph (\"It's usable, but it doesn't clarify why we ended up with the recommended candidate\", P5, Q2.1)."
+  ],
+  "domains": [
+    "The recruiters explicitly stated that they would not blindly trust the model, even when accompanied by a sensible explanation -they would always want to be able to manually verify its recommendation by reading the CV and vacancy text (\"Very little is told about the candidate, and the vacancy, but I just have to trust that ...",
+    "2: An example of a textual explanation used as an explanation for a recommendation The XAI model has analyzed various connections between jobs and users to determine if a particular user (user 4119) would be a good fit for a specific job (job 147542).",
+    "In our case, this consists of (a sub-set of) the paths within the candidate-vacancy sub-graph, weighted by the importance ascribed to them by the model (Figure 1); Textual: a short text that explains which features contributed to the recommendation in what way.",
+    "The sample consisted of 4 women and 2 men, of various ages (µ = 39.2, SD = 11.3, l = 23, h = 53), with various backgrounds (tech, finance, healthcare, marketing, etc.).",
+    "The explanations used for the interviews were generated using a job recommendation dataset provided by Zhaopin.",
+    "Additionally, we aimed to establish guidelines for creating XAI-generated explanations for different stakeholders within the field of job recommendation.",
+    "However, they did indicate how feature attribution could be made useful: for the bar chart to relate to their individual skills, so the candidates could understand which of their own skills were considered most important for the recommendation at a glance (\"That it shows what is important for the match, for example, that your experience with Excel matters, but that your ability to be a truck driver wasn't important\", P1, Q1.1).",
+    "Therefore, this paper aims to lay the foundation for future research on explainable multi-stakeholder recommendation.",
+    "Lastly, we changed one of the questions in the section on transparency: \"can you think of anything that would further improve your understanding?\" has been changed to \"what information is missing that could allow you to get a better understanding of the model's recommendation?\".",
+    "1: An example of knowledge graph paths being used as an explanation for a recommendation.",
+    "While the graph was indicated to give them a better understanding of the model's actual rationale, it also made them question the adequacy of the recommendation to an extent.",
+    "However, the candidates still managed to correctly identify the main arguments on which the recommendation was based.",
+    "3: An example of a feature attribution map used as an explanation for a recommendation.",
+    "Furthermore, the explanation contained the full ID of candidates and vacancies relevant to the recommendation."
+  ],
+  "datasets": [
+    "Considering the data in the dataset was exclusively in Mandarin Chinese, all unstructured data was automatically translated to English using deep-translator.",
+    "The explanations used for the interviews were generated using a job recommendation dataset provided by Zhaopin.",
+    "For candidates, the dataset stores information such as their degree(s), location, current and desired industry, skill set, and experience.",
+    "2 This dataset contains information on 4.78 million vacancies, 4.5 thousand candidates, and 700 thousand recorded interactions between the two."
+  ],
+  "metrics": [
+    "Considering the difficulty of conveying relative importance levels within a text, the feature attribution map can be linked (i.e., through matching color coding) to clarify the text.",
+    "Even so, the optimal configuration led to an nDCG@10 of 0.2638 (Appendix A).",
+    "The feature attribution map was again received poorly.",
+    "The feature attribution map could easily be converted into a 'hub' for them, where they can get an overview of alternative candidates for a vacancy.",
+    "3: An example of a feature attribution map used as an explanation for a recommendation."
+  ]
+}

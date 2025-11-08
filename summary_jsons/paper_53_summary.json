@@ -1,0 +1,35 @@
+{
+  "methods": [
+    "The evaluation results indicate that the visual controllable recommender had a positive effect on the user experience with the recommender system.",
+    "The complete survey is available at http://www.sis.pitt.edu/~dparra/VennRecSurvey.pdf The survey indicates that people are more likely to think that a talk recommender system is necessary when using the visual controllable interface, what might be a result of being aware of why certain talks are recommended.",
+    "We present the results of a preliminary user study on talk recommendations in the context of a conference with n=37 people that used our system under one of two conditions: a static list of recommendations, or the enhanced visual controllable interface.",
+    "Procedure.",
+    "The only engagement strategy used was the advertising of one or another recommender interface on the system home page.",
+    "To evaluate our system we run a user study with people attending the CSCW 2013 conference in San Antonio, TX.",
+    "We explain this behavior by the system failure in leveraging people's feedback: we did not consider the users' rating to re-generate recommendations, something that could have affected the user trust in the system since their feedback was not considered immediately to generate new recommendations.",
+    "User control has shown an important effect on user satisfaction with a recommender system, so building from the ideas presented in [1,2] we decided to incorporate sliders that allow the user to set the importance of each recommendation method.",
+    "The main research question we address is to which extent providing users interactive control [1,2] and a novel visualization that supports inspectability as different depths of field in the form of a Venn diagram affects the user experience with the recommender system.",
+    "In this paper, we contribute to the study of recommender systems from a HCI perspective by investigating the effects upon the user experience of a novel interface which uses a Venn diagram to represent the outputs of an interactive talk recommender system.",
+    "Unfortunately we had too few users to run a statistical significance test, so both observations provide merely a hint, not reliable evidence in favor of the visual system.",
+    "A difference in the average rank of good talks is evidence that one system can better \"push\" good talks to the top of the ranked lists (lower ranks) where the talks have more chances to be noticed.",
+    "In this paper we describe and present the results of a field study over users of a conference talk recommender system during a recently held academic conference, ACM CSCW 2013.",
+    "The user behavioral analysis and the results of a survey that n=17 users answered provide interesting insights for designers and developers of interfaces for recommender systems, especially when the items can have one or more contexts of relevancy as in a hybrid recommender system."
+  ],
+  "explanation_types": [
+    "In Section 2 we present recent related work in presentation, interaction and explainability on recommender systems."
+  ],
+  "domains": [
+    "From this group of 37 people, 17 answered a survey to obtain feedback regarding their experience using the talk recommendation.",
+    "User control has shown an important effect on user satisfaction with a recommender system, so building from the ideas presented in [1,2] we decided to incorporate sliders that allow the user to set the importance of each recommendation method.",
+    "The colors are intended to tell the different recommendation methods: A.",
+    "Out of the total number, 161 users were exposed to one or another recommendation condition (84 to visual and 77 to regular interface).",
+    "In addition, all users who tried the recommendation functionality received an invitation to answer a brief survey.",
+    "It indicates three big ellipses that represent three different recommendation methods (A-blue, B-yellow and C-red), the small circles represent recommended items, and the areas where ellipses intersect are aimed to help the user at telling which items have been recommended by more than one method.",
+    "An email was sent to users that utilized the recommender feature in Conference Navigator after the conference had finished inviting them to answer the survey about their experience using the talk recommendation feature."
+  ],
+  "baselines": [
+    "While the number of users exposed to both conditions was about the same, 22 were sufficiently interested in the visual option to go through the three steps needed until they could actually see the recommendations, compared to only 15 that used the interface with a static list of recommendations.",
+    "Further log analysis shows that for method A 22% of the times the weight was set to more than 0.5, compared to 80% of slider B and 50% of slider C.",
+    "In terms of which method did they prefer by moving the sliders, in average, the users changed the slider of the method C (articles of co-authors) 6 times, compared to 5.5 times of method A (papers of famous authors) and only 2.5 times of method b (content-based recommender)."
+  ]
+}
