@@ -32,7 +32,7 @@ It focuses on research related to **Explainable and Interpretable Recommender Sy
 | Component | Tool / Library | Version / Notes |
 |------------|----------------|----------------|
 | **Language** | Python | 3.9+ |
-| **PDF to XML** | [GROBID](https://github.com/kermitt2/grobid) | via Docker |
+| **PDF to XML** | [GROBID](https://github.com/kermitt2/grobid) | via Docker container |
 | **Graph Database** | [Neo4j](https://neo4j.com/) | 5.x |
 | **IDE** | Visual Studio Code | Windows 10/11 |
 | **Data Handling** | `json`, `os`, `glob`, `pandas` | Built-in / Latest |
@@ -51,6 +51,11 @@ It focuses on research related to **Explainable and Interpretable Recommender Sy
    ```bash
    docker pull lfoppiano/grobid:0.8.0
    docker run --rm -it -p 8070:8070 lfoppiano/grobid:0.8.0
+
+---
+
+
+
 
 
 
