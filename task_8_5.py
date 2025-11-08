@@ -1,74 +1,85 @@
-import os
 import json
-import re
-from collections import defaultdict
+import os
 
-# --- Define folder containing paper summaries ---
-summary_folder = r"C:\Users\hp830\Desktop\OULU\University\Projects\NLP_Project\summary_jsons"  # ✅ change to your folder
+# ------------------------------
+# CONFIGURATION
+# ------------------------------
+BASE_DIR = os.path.dirname(__file__)
+KEYWORDS_PATH = os.path.join(BASE_DIR, "all_papers_keywords.json")
+METRICS_PATH = os.path.join(BASE_DIR, "papers_metric_results.json")
+OUTPUT_REL_PATH = os.path.join(BASE_DIR, "papers_relationships.json")
+OUTPUT_JSONL_PATH = os.path.join(BASE_DIR, "facts.jsonl")
 
-# --- Define patterns for known research keywords ---
-CATEGORY_KEYWORDS = {
-    "methods": [
-        "bert", "gpt", "t5", "transformer", "vae", "cnn", "rnn", "gnn", "llm",
-        "attention", "autoencoder", "davinci", "flan", "prompt", "finetune"
-    ],
-    "domains": [
-        "movie", "music", "news", "book", "business", "medical", "social", "education", "health",
-        "travel", "game", "food", "transport"
-    ],
-    "explanation_types": [
-        "counterfactual", "attention", "feature", "rationale", "rule", "saliency",
-        "knowledge-grounded", "kg"
-    ],
-    "metrics": [
-        "f1", "precision", "recall", "accuracy", "bleu", "rouge", "auc",
-        "mae", "mse", "perplexity"
-    ],
-    "baselines": [
-        "bert", "t5", "gpt", "tf-idf", "svm", "logistic", "random", "neural"
-    ],
-    "datasets": [
-        "imdb", "yelp", "amazon", "movielens", "redial", "e-redial", "coco",
-        "squad", "flickr", "twitter"
-    ]
-}
+# ------------------------------
+# LOAD FILES
+# ------------------------------
+with open(KEYWORDS_PATH, "r", encoding="utf-8") as f:
+    all_keywords = json.load(f)
 
-# --- Prepare container for all results ---
-all_papers_keywords = {}
+with open(METRICS_PATH, "r", encoding="utf-8") as f:
+    metric_results = json.load(f)
 
-# --- Loop through all paper_X_summary.json files ---
-for filename in sorted(os.listdir(summary_folder)):
-    if filename.lower().startswith("paper_") and filename.lower().endswith("_summary.json"):
-        file_path = os.path.join(summary_folder, filename)
-        print(f"🔍 Processing: {filename}")
+# ------------------------------
+# BUILD RELATIONSHIPS
+# ------------------------------
+relationships = []
 
-        # Load the summary JSON
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+for paper_id, data in all_keywords.items():
+    # --- Methods ---
+    if "methods" in data:
+        for method in data["methods"]:
+            relationships.append(f"{paper_id} -> usesMethod -> ({method})")
 
-        # Extract keywords per category
-        keywords_summary = {}
-        for category, sentences in data.items():
-            if category not in CATEGORY_KEYWORDS:
-                continue
+    # --- Domains ---
+    if "domains" in data:
+        for domain in data["domains"]:
+            relationships.append(f"{paper_id} -> applicationDomain -> ({domain})")
 
-            extracted = set()
-            for sentence in sentences:
-                sentence_lower = sentence.lower()
-                for kw in CATEGORY_KEYWORDS[category]:
-                    if re.search(rf"\b{re.escape(kw)}\b", sentence_lower):
-                        extracted.add(kw)
+    # --- Datasets ---
+    if "datasets" in data:
+        ds_list = ", ".join(data["datasets"])
+        relationships.append(f"{paper_id} -> evaluatesOn -> ({ds_list})")
 
-            if extracted:
-                keywords_summary[category] = sorted(extracted)
+    # --- Explanation types ---
+    if "explanation_types" in data:
+        for exp_type in data["explanation_types"]:
+            relationships.append(f"{paper_id} -> explanationType -> ({exp_type})")
 
-        # Add this paper’s results to the combined output
-        paper_key = filename.replace("_summary.json", "")
-        all_papers_keywords[paper_key] = keywords_summary
+    # --- Metrics ---
+    if "metrics" in data:
+        metrics_list = ", ".join(data["metrics"])
+        relationships.append(f"{paper_id} -> evaluationMetric -> ({metrics_list})")
 
-# --- Save merged results ---
-output_path = os.path.join(r"C:\Users\hp830\Desktop\OULU\University\Projects\NLP_Project", "all_papers_keywords.json")
-with open(output_path, "w", encoding="utf-8") as f:
-    json.dump(all_papers_keywords, f, indent=2, ensure_ascii=False)
+    # --- Metric Results (performance) ---
+    if paper_id in metric_results:
+        res = metric_results[paper_id]
+        metric = res.get("metric")
+        baseline = res.get("baseline")
+        best_val = res.get("best_value")
 
-print(f"✅ Saved all keyword summaries to: {output_path}")
+        relationships.append(
+            f"{paper_id} -> achievesImprovementOver -> ({baseline}, {metric.upper()}={best_val})"
+        )
+
+# ------------------------------
+# SAVE RELATIONSHIPS OUTPUT
+# ------------------------------
+with open(OUTPUT_REL_PATH, "w", encoding="utf-8") as f:
+    json.dump(relationships, f, indent=2, ensure_ascii=False)
+
+print(f" Relationships saved to: {OUTPUT_REL_PATH}")
+
+# ------------------------------
+# CREATE JSONL FILE
+# ------------------------------
+with open(OUTPUT_JSONL_PATH, "w", encoding="utf-8") as f_out:
+    for paper_id, paper_info in all_keywords.items():
+        combined = {"id": paper_id}
+        combined.update(paper_info)  # add explanation_types, datasets, domains, methods, baselines, metrics
+
+        if paper_id in metric_results:
+            combined["metric_info"] = metric_results[paper_id]
+
+        f_out.write(json.dumps(combined, ensure_ascii=False) + "\n")
+
+print(f" JSONL file created: {OUTPUT_JSONL_PATH}")
