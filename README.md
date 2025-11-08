@@ -12,7 +12,6 @@ This project implements an automated literature mining and fact extraction pipel
 7. Focus is on visual/text explanations; metric extraction.
 
 ---
-
 ## System Workflow
 
 ### Steps:
@@ -22,7 +21,6 @@ This project implements an automated literature mining and fact extraction pipel
 4. **Visualization:** Graphs visualized via NetworkX for analysis.
 
 ---
-
 ## Tools and Technologies
 
 | Component | Tool / Library | Version / Notes |
@@ -37,7 +35,6 @@ This project implements an automated literature mining and fact extraction pipel
 | **Others** | `re`, `itertools`, `collections` | |
 
 ---
-
 ##  Running GROBID in Docker
 
 1. **Install Docker Desktop:**  
