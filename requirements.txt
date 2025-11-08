@@ -1,0 +1,14 @@
+requests
+pandas
+matplotlib
+seaborn
+networkx
+numpy
+nltk
+sklearn
+gensim
+wordcloud
+rapidfuzz
+lxml
+bs4
+sentence_transformers
