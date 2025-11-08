@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">User Latent Preference Model for Better Downside Management in Recommender Systems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Jian</forename><surname>Wang</surname></persName>
+							<email>jianwang@linkedin.com</email>
+							<affiliation key="aff0">
+								<orgName type="institution">LinkedIn Corp Mountain View</orgName>
+								<address>
+									<postCode>94043</postCode>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">David</forename><surname>Hardtke</surname></persName>
+							<email>dhardtke@linkedin.com</email>
+							<affiliation key="aff1">
+								<orgName type="institution">LinkedIn Corp Mountain View</orgName>
+								<address>
+									<postCode>94043</postCode>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">User Latent Preference Model for Better Downside Management in Recommender Systems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">9C9221C09F0867719C07C34772ADA47B</idno>
+					<idno type="DOI">10.1145/2736277.2741126</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>H.3.3 [Information Storage and Retrieval]: Information Search and Retrieval Algorithms, Design, Experimentation Recommender System</term>
+					<term>Downside Management</term>
+					<term>User Latent Preference Model</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Downside management is an important topic in the field of recommender systems. User satisfaction increases when good items are recommended, but satisfaction drops significantly when bad recommendations are pushed to them. For example, a parent would be disappointed if violent movies are recommended to their kids and may stop using the recommendation system entirely. A vegetarian would feel steakhouse recommendations useless. A CEO in a mid-sized company would feel offended by receiving intern-level job recommendations. Under circumstances where there is penalty for a bad recommendation, a bad recommendation is worse than no recommendation at all. While most existing work focuses on upside management (recommending the best items to users), this paper emphasizes on achieving better downside management (reducing the recommendation of irrelevant or offensive items to users). The approach we propose is general and can be applied to any scenario or domain where downside management is key to the system.</p><p>To tackle the problem, we design a user latent preference model to predict the user preference in a specific dimension, say, the dietary restrictions of the user, the acceptable level of adult content in a movie, or the geographical preference of a job seeker. We propose to use multinomial regression as the core model and extend it with a hierarchical Bayesian framework to address the problem of data sparsity. After the user latent preference is predicted, we leverage it to filter out downside items. We validate the soundness of our approach by evaluating it with an anonymous job application dataset on LinkedIn. The effectiveness of the latent preference model was demonstrated in both offline experiments and online A/B testings. The user latent preference model helps to improve the VPI (views per impression) and API (applications per impression) significantly which in turn achieves a higher user satisfaction.</p><p>Copyright is held by the International World Wide Web Conference Committee (IW3C2). IW3C2 reserves the right to provide a hyperlink to the author's site if the Material is used in electronic media.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>Recommender systems are popular research topics in the information retrieval community. A host of academic and industrial incarnations of recommender systems exist in domains such as movies (Netflix), music (Pandora), and ecommerce product recommendations (eBay, Amazon). Most existing work focuses on upside management by finding the best items to recommend to a user. Better upside management can be achieved by leveraging state-of-art models such as collaborative filtering, matrix factorization, deep learning neural networks and so on. While it is essential to discover good items, it is equally important to avoid recommending irrelevant or offensive items to a user. User satisfaction is affected by both upside items and downside items. For example, a CEO in a mid-sized company would be interested in other executive positions while he would feel offended by receiving intern-level job recommendations. An item could be irrelevant or offensive for various reasons in different domains. It might be caused by wrong dining preference, wrong job location, wrong movie category and so on. In some cases, a single bad recommendation could cause a user to abandon the recommendation system completely.</p><p>One simple strategy for downside management is not to show an item when the predicted probability from recommender systems is too low: you just need to find an appropriate threshold. Such strategy is based on the assumption that an "ideal" recommender system could assign an appropriate probability for an item. In particular, the probability should indicate the user's willingness of accepting the item in different dimensions. Yet it is not the case in the real world. Most existing hybrid recommender systems (such as logistic regression, gradient boosting tree, etc.) consider all features together to predict a single probability for an item. The item might be recommended to a user according to its high probability if the content match is high even though the other contextual match is low. Users might not complain about a slight content mismatch. Yet they are less tolerant to be pushed with recommendations in the wrong location, wrong category or for other contextual reasons. Thus it would be hard to find the right threshold on a single probability from the existing recommender system if a downside item is about some specific dimension.</p><p>Downside management has been studied by some recent work <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b0">1,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b24">25]</ref>. Researchers studied context-aware recommender systems <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b24">25]</ref> to find items that match with the user's contexts. Contextual information could be leveraged in the pre-filtering stage, post-filtering stage, or in the contextual modeling. The concept of "context" is different from the "latent preference" in our model. The "context" is an explicit condition (for example, the current location of the user) that could be observed for each user while the "latent preference" is an implicit yet explainable factor that the model infers for each user (for example, the location of an item that the user would prefer). We study how the user's implicit preferences or interests would affect recommendations. This latent preference could be dietary restrictions of the user, the acceptable level of adult content in a movie, the geographical preference of a job seeker and so on.</p><p>In this work, we propose a general framework that predicts a user's latent preference and leverage it to filter out downside items. The core of the framework is multinomial regression that models a user's latent preference in a specific dimension. The user's preference could either be binary (for example, work at a nearby job, or take a job that requires relocation) or multi-class (for example, work as the intern level, senior level, staff level, or executive level). We assume that users in different groups tend to have different priors of preference choice. For example, job seekers around 22 years of old are more likely to relocate compared to older job seekers. To accommodate such differences in user segments, we propose to divide users in different segments and learn a multinomial regression for each segment. The segment could be based on the user's age, gender, seniority, region and so on. We further extend it with a hierarchical Bayesian framework to address the problem of data sparsity for those small segments. With this framework, different segments learn from each other by sharing the prior of the regression model. Detailed mathematical parameter inference steps are derived with the variational Bayesian algorithm. Items that would hurt the user satisfaction are filtered out in the recommendation stage.</p><p>While the framework we propose is general to any downside dimension in any domain, we apply it to the location dimension in the job domain in this paper. In other words, the model aims to avoid recommending jobs in locations where the job seeker would not want to work. In the experiments, we first evaluate the performance of the user latent preference model itself with traditional classification IR metrics. We then demonstrate the effectiveness of leveraging the user latent preference in recommender systems. The model was evaluated with both an offline anonymous job application dataset and real-world job seekers on LinkedIn. Experiments show that the user latent preference model helps to improve the VPI (views per impression) and API (applications per impression) metrics significantly. At the same time, the absolute number of applications and views remain stable in spite of fewer impressions. Such performance follows our in-tuition that the user latent preference model achieves better downside management which in turn results in higher user satisfaction. The major contributions of this paper include the following:</p><p>• Propose and study the problem of downside management in the field of recommender systems.</p><p>• Design the User Latent Preference Model to tackle the problem and leverage it in recommender systems. Propose to use the multinomial regression as the core model and extend it with a hierarchical Bayesian framework. Derive detailed parameter inference steps based on the variational Bayesian algorithm.</p><p>• Evaluate the model with both offline framework and online A/B testing on LinkedIn. Demonstrate its effect in achieving better downside management of recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RELATED WORK</head><p>A major task of the recommender system is to present recommendations to the user. The task is usually conducted by first predicting a user's ratings for each item and then ranking all items in the descending order. There are two major recommendation approaches: content-based filtering and collaborative filtering. Content-based filtering <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b21">22]</ref> assumes that descriptive features of an item indicate a user's preferences. Thus, a recommender system makes a decision for a user based on the descriptive features of other items the user likes or dislikes. Usually, the system recommends items that are similar to what the user liked before. Collaborative filtering <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b9">10]</ref> on the other hand assumes that users with similar tastes on some items may also have similar preferences on other items. Thus, the main idea is to use the behavior history from other like-minded users to provide the current user with good recommendations. Research on collaborative filtering algorithms reached a peak due to the 1 million dollar Netflix movie recommendation competition <ref type="bibr" target="#b3">[4]</ref>. Factorization-based collaborative filtering approaches <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b22">23]</ref>, such as regularized Singular Value Decomposition, performed well on this competition, possibly better than Netflix's own well-tuned Pearson correlation coefficient algorithm. A common characteristic of these models is the introduction of user latent factors or/and item latent factors to solve the data sparsity issue.</p><p>Context-aware recommender systems <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b1">2,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b14">15]</ref> has become a hot topic in the research field recently. Most work focuses on using user contextual information or latent tastes to improve the upside management. For example, Weston et.al <ref type="bibr" target="#b29">[30]</ref> proposed an advanced matrix factorization model to incorporate user's latent tastes. Hariri et. al <ref type="bibr" target="#b10">[11]</ref> proposed a unified probabilistic model to integrate the user profile, item representations, and contextual information. They demonstrated the effectiveness of their model in the domain of article and music recommendation where tags were considered as contextual information. Zhang et. al <ref type="bibr" target="#b30">[31]</ref> proposed the Explicit Factor Model (EFM) to generate explainable recommendations, meanwhile keeping a high prediction accuracy. Nguyen et.al <ref type="bibr" target="#b17">[18]</ref> studied Gaussian Process Factorization Machines (GPFM) for context-aware recommendations using Gaussian processes. Different from this work, we leverage the user latent preference information to achieve better downside management. Downside management has been studied in recent work of recommender systems. In <ref type="bibr" target="#b28">[29]</ref>, Wang et. al studied the influence of recommending jobs to users at the right time. They proposed to use a hierarchical proportional hazards model to push recommendations to a user only if the probability of a user applying to a job at the current time is higher than a threshold. In <ref type="bibr" target="#b26">[27]</ref>, Wang and Zhang proposed the concept of utility in the field of recommender system and explored to optimize the user's utility in the e-commerce domain. In <ref type="bibr" target="#b27">[28]</ref>, Wang and Zhang further studied the effect of finding the right time to push recommendations in the ecommerce domain. They proposed an opportunity model to discover the best opportunity to push recommendations to optimize for the user satisfaction. In this paper, we propose a more general framework for downside management and show the effectiveness of the model in finding the right location to recommend jobs. The framework is general which could be applied to any existing state-of-art recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">USER LATENT PREFERENCE MODEL</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Problem Definition</head><p>In this paper, we aim to answer the following questions: 1) How do we discover the user's latent preference(s) 2) How do we leverage it for better downside management? The following notations are used in the paper.</p><p>• u = 1, 2, ..., U : the index of the user.</p><p>• j = 1, 2, ..., J: the index of the item.</p><p>• m = 1, 2, ..., M : the index of the segment for a user.</p><p>A segment for a user could be determined by his age, gender, region, so on and so forth.</p><p>• D = {D1, ..., Dm, ..., DM }: The observed data of all segments from all users.</p><p>• Dm = {ym,i, x m,i }: A set of observed data associated with segment m. Each segment m has Nm data observations from all users in that segment. Each observation i = 1, ..., Nm in segment m is associated with two parts: the preference label ym,i and the feature vector x m,i .</p><p>• ym,i: the preference label with the i th observation in segment m. It could be a binary choice (staying at the current location or not) or a multi-class choice (work in IT industry, financing industry, education industry, etc.). The index of the candidate choice is k = 1, 2, ..., K.</p><p>• x m,i : the d-dimensional vector of features associated with the i th observation in segment m. Features include both static demographic features and dynamic behavior features.</p><p>The goal of the model is to predict the probability that user u has the latent preference ym,i = k, given that the user belongs to segment m and his feature vector is x m,i .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Review of Multinomial Regression</head><p>Before describing the hierarchical framework that we propose, we first briefly review the basics of multinomial regression.</p><p>Multinomial regression is widely used to solve multi-class classification problems with decent performance, e.g. predicting the probability of a user having the latent preference ym,i = k given the user feature vector x m,i . We consider a user's latent preference as a process to choose exactly one candidate at a time. The probability could be estimated based on all available features as follows:</p><formula xml:id="formula_0">p(ym,i = k|θ) = exp{θ T k x m,i } k exp{θ T k x m,i</formula><p>} where θ = θ1, ..., θK is the model parameter to be learned from the training data. In a basic multinomial regression, all users share the same parameter θ.</p><p>Assuming that the prior distribution of each model parameter is a Gaussian centered on zero, the optimal parameters θ can be learned from the training data using the maximum a posteriori probability (MAP) estimation. The multinomial regression model reduces to logistic regression when the number of classes is 2 (positive and negative).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Model Extension with Bayesian Framework</head><p>In this paper we adopt multinomial regression as the core model for user latent preference model and use it to estimate p(ym,i = k). Users in different segments may have different priors for latent preferences. For example, young people tend to relocate more than old people. People in big cities tend to relocate less than those in small cities. Thus we propose to learn one regression model per user segment. Without loss of generality, we do not specify how to segment users in this paper. It could be determined by domain experts or offline experiments.</p><p>In the real world, a small number of user segments often have more users while most segments have few users.</p><p>To address the problem of data sparsity, we follow a common practice and extend the multinomial regression with a hierarchical Bayesian framework as illustrated in Figure <ref type="figure" target="#fig_0">1</ref>. This framework helps segments with few observations by borrowing information from other segments through a common prior for parameters of multinomial regression.</p><p>For each segment m, θm is sampled from a Gaussian distribution: θm ∼ N (µ θ , Σ θ ). We denote φ = (µ θ , Σ θ ). For each i th observation in segment m with its observed features x m,i , its latent preference model ym,i is sampled from the multinomial regression model,</p><formula xml:id="formula_1">p(ym,i = k|θm) = exp{θ T m,k x m,i } k exp{θ T m,k x m,i } .</formula><p>Consider that data D consists of a series of observations from all segments. The latent preferences in the observations are generated by using a set of hidden variables θ = {θ1, θ2..., θM }. Note that the core model does not need to be multinomial regression. Other suitable models such as the proportional hazards model <ref type="bibr" target="#b28">[29]</ref> could be leveraged here as well. θm contains all parameters in the core model. The data likelihood can be written as a function of φ = (µ θ , Σ θ ). We use ym to represent {ym,1, ..., ym,i, ..., ym,N m }, i.e., preference observations in segment m. Assuming that the data is independent identically distributed, we can present the #,"%-)$#.$#,,"/-)0/1#()! ,)"3,)/4-)$#.$#,,"/-) data segment </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Parameter Inference with the Variational Bayesian Method</head><p>There is no closed-form solution for the estimation of model parameters. We follow the variational Bayesian method <ref type="bibr" target="#b2">[3]</ref> for constrained (approximate) optimization to derive an iterative process to find an approximate solution. Maximizing the likelihood in Equation 1 is equivalent to maximizing the log likelihood L(φ),</p><formula xml:id="formula_3">L(φ) = ln p(D|φ) = M m=1 ln p(ym|φ) = M m=1 ln p(θm, ym|φ)dθm.</formula><p>We can simplify the problem by introducing an auxiliary distribution q(θm) for each hidden variable θm <ref type="bibr" target="#b2">[3]</ref>. In the variational approach, we constrain q(θm) to be a particular tractable form for computational efficiency. In particular, we assume that q(θm) = N (µ θm , Σ θm ).</p><formula xml:id="formula_4">L(φ) = M m=1 ln p(ym|φ) = M m=1 ln q(θm) p(θm, ym|φ) q(θm) dθm ≥ M m=1</formula><p>q(θm) ln p(θm, ym|φ) q(θm) dθm ≡F (q(θ1), ..., q(θM ), φ).</p><p>(2)</p><p>Note that F (q(θ1), ..., q(θM ), φ) is the lower bound of L(φ). The process to infer parameters is to iterate between the E-step and M-step until convergence. In particular, the E step maximizes F (q(θ1), ..., q(θM ), φ) with respect to q(θm) given the current parameter setting φ. The M step maximizes F (q(θ1), ..., q(θM ), φ) with respect to φ given q(θm) learnt from the E step. Here are the detailed mathematical representation:</p><p>E step:</p><formula xml:id="formula_5">q(θm) ← arg max q(θm)</formula><p>F (q(θ1), ..., q(θM ), φ), ∀m ∈ {1, ..., M }</p><p>M step:</p><formula xml:id="formula_7">φ ← arg max φ F (q(θ1), ..., q(θM ), φ)<label>(4)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.1">E-Step</head><p>In the E-step, maximizing F (q(θ1), ..., q(θM ), φ) is equivalent to minimizing the following quantity to find each distribution q(θm). q(θm) ← arg min q(θm) q(θm) ln q(θm) p(θm, ym|φ) dθm = arg min q(θm) q(θm) ln q(θm) p(θm|φ) dθm − q(θm) ln p(ym|θm)dθm</p><formula xml:id="formula_8">= arg min q(θm)</formula><p>KL[q(θm)||p(θm|φ)] − q(θm) ln p(ym|θm)dθm.</p><p>(</p><p>The first part in Equation 5 is the KL-divergence between the posterior distribution q(θm) and the prior distribution p(θm|φ). The KL-divergence between two Gaussian distributions is</p><formula xml:id="formula_10">KL[q(θm)||p(θm|φ)] = 1 2 [tr(Σ −1 θ Σ θm ) + (µ θ − µ θm ) T Σ −1 θ (µ θ − µ θm ) − ln( det Σ θm det Σ θ ) − d].</formula><p>The second part in Equation 5 is to maximize the likelihood of ym = {ym,1, ..., ym,i, ..., ym,N m } with the current θm,</p><formula xml:id="formula_11">Nm i=1 q(θm) ln p(ym,i = k|θm)dθm (6) = Nm i=1 [E(θ m,k ) T x m,i − E(ln k exp(θ T m,k x m,i ))].</formula><p>The expectation E(θ m,k ) in the above equation is µ θ m,k .</p><p>There is no closed form solution for the expectation δ = E(ln k exp(θ T m,k x m,i )). The moment generating function for the multivariate normal distribution is</p><formula xml:id="formula_12">E[exp(θ T m,k x m,i )] = exp(µ T θ m,k x m,i + 1 2 x m,i T Σ θ m,k x m,i ).<label>(7)</label></formula><p>By using this function, we get the upper bound of δ with the Taylor expansion as in the following equation,</p><formula xml:id="formula_13">E(ln k exp(θ T m,k x m,i )) (8) γ k exp(µ T θ m,k x m,i + 1 2 x m,i T Σ θ m,k x m,i ) − log(γ) − 1,</formula><p>for every γ ∈ R K . Such approximation is widely used in literature <ref type="bibr" target="#b4">[5]</ref> for other inference problems.</p><p>We can combine the above derivations with Equation <ref type="formula" target="#formula_9">5</ref>, then find q(θm) with the conjugate gradient descent method.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.2">M-Step</head><p>In the M-step, the goal is to maximize F (q(θ1), ..., q(θM ), φ) in Equation <ref type="formula">2</ref>with respect to φ given all q(θm). It is same as to maximize the following quantity:</p><formula xml:id="formula_14">φ ← arg max φ M m=1 q(θm) ln p(θm, ym|φ)dθm.<label>(9)</label></formula><p>We derive the closed-form solution for µ θ and Σ θ :</p><formula xml:id="formula_15">(µ θ , Σ θ ) ← arg max µ θ ,Σ θ M m=1 q(θm) ln p(θm|µ θ , Σ θ )dθm = arg max µ θ ,Σ θ M m=1 ln 1 (2π) k |Σ θ | − 1 2 E[(θm − µ θ ) T Σ −1 θ (θm − µ θ )].<label>(10)</label></formula><p>By setting the first derivative to zero, we have the following closed form:</p><formula xml:id="formula_16">µ θ = M m µ θm M Σ θ = M m [Σ θm + (µ θm − µ θ )(µ θm − µ θ ) T ] M .</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">USAGE OF THE USER LATENT PREF-ERENCE MODEL</head><p>Let us denote p(i, j) as the joint probability of user i accepting item j. It considers both the match from an existing recommender system and the prediction of the user's latent preference. p(i, j) could be estimated by the following equation:</p><formula xml:id="formula_17">p(i, j) = prec(i, j) k [p(ym,i = k)I j∈S(i,k) ]. (<label>11</label></formula><formula xml:id="formula_18">)</formula><p>prec is the matching probability between user i and item j, which could be predicted by any state-of-art recommender systems. p(ym,i = k) is the probability of user i having a specific latent preference k. It is predicted by the user latent preference model, as shown in Equation <ref type="formula">12</ref>. S(i, k) contains all items that match with the user's preference. For example, if user i is predicted to seek jobs in his local area, S(i, k = local) contains all local jobs. Note that the candidates of a user's preference k = 1, 2, ..., K are all exclusive and item j can only belong to one set S(i, k). I * is a indicator function which equals to 1 if * is true. </p><formula xml:id="formula_19">p(ym,i = k) = E[ exp{θ T k x m,i } k exp{θ T k x m,i } ] (12) E[exp{θ T k x m,i }] = exp{µ T θ k x m,i + 1 2 x m,i T Σ θ k x m,i }.</formula><p>The recommender systems aim to send recommendations to a user to increase user satisfaction. While a good recommendation (upside item) would increase the user satisfaction, a bad recommendation (downside item) would decrease the user satisfaction. Let us consider the utility for each type of recommendation as shown in Table <ref type="table" target="#tab_0">1</ref>. uT P is the utility for a good recommendation that the user accepts. uF P is the utility for a bad recommendation that the user doesn't accept. uF N is the utility for missing a recommendation that the user would accept. uT N is the utility of avoiding a bad recommendation. The utility for each type of recommendations (uT P , uF P , uF N , and uT N ) could be set by domain experts in real-world applications. The user i's satisfaction of a recommendation set utilityi is calculated by Equation <ref type="formula">13</ref>. To achieve a better user satisfaction/utility, the system with a filtering component should send recommendations only if the expected utility of an item is higher than zero. In other words, the system should send recommendations if the joint probability of a user accepting the item p(i, j) is higher than the threshold α. The filtering threshold α is automatically determined by the utility set, which is a common practice as in <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b8">9]</ref>:</p><formula xml:id="formula_20">α = uF P − uT N uF P − uT N + uF N − uT P .<label>(14)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">EVALUATION OF THE USER LATENT PREFERENCE MODEL</head><p>As described before, the user latent preference model could be applied to a single dimension in any domain. Without loss of generality, we evaluate it in the location dimension in the job domain in the experiment. We observe that some users have a strong preference of being a local user and would complain about receiving non-local job recommendations, and vice versa. Local jobs are defined as jobs within 50 miles of the user's current location (determined by his postal code). We treat local users as positive labels and non-local users as negative labels.</p><p>We first list all research questions, followed by the experimental setup, data analysis and performance analysis. Our major research questions for evaluating the user latent preference model include:</p><p>• How accurate is the prediction of the user latent preference model? What's the percentage of local users that the model could cover?</p><p>• How is the performance comparison for different user segments? Does the hierarchical Bayesian regression model have a better prediction power than the basic regression model?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Evaluation Metrics</head><p>As mentioned before, we label a user as the positive data if the user intends to stay at the current location and otherwise negative. It naturally reduces to a binary classification task. Traditional classification metrics are used to evaluate the prediction power of the user latent preference model: precision, recall and F1 measure. In the following equation, T P , F P and F N correspond to true positive, false positive and false negative respectively.</p><formula xml:id="formula_21">precision = T P T P + F P recall = T P T P + F N F 1 = 2 1 precision + 1 recall</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Models to Compare</head><p>In our experiments, we compare the basic regression model, as well as the hierarchical regression model with different segments. As shown in Table <ref type="table" target="#tab_1">2</ref>, M-one is the basic multinomial regression model with no segments. Other models segment users based on different features.</p><p>All models use the same set of features for the core regression model. Features include both the user static information (age, gender, region, current job, current industry, etc.) and the dynamic behavior information (# of local job applications in last month, # of non-local job applications in last month, last profile modification time, etc.). Extensive feature engineering could be explored to improve the model performance, which is beyond the scope of this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Dataset</head><p>As mentioned earlier in the paper, we apply our model in the context of a job recommender system and use a realworld dataset from LinkedIn to evaluate our models. In order to build the user latent preference model, we random sampled from the job application data of United States users for three months from Jan 2014 to March 2014. The sample data contains around 530k users that applied to a reasonable number of jobs in that period 1 . If all jobs that a user applied to are local jobs, we label the user as a local user, and otherwise as a non-local user. In the dataset, 57.22% of users are labeled as local users (positive data) while 42.78% users are labeled as users that are willing to relocate (negative data). 10-cross validation is performed in the experiments. A significance level of 0.05 with the paired two-tailed t-test is used to compare two models.</p><p>We further analyze the data by dividing users into different segments (age, gender, region). In Figure <ref type="figure" target="#fig_2">2</ref>, the bar plots the percentage of users in each segments. It shows that the 1 Exact number is omitted for business concern data sparsity issue exists (in both age and region dimension). In addition, the line plots the percentage of local users, who only applied to local jobs. It indicates that users in different segments have different priors in relocating. This justifies our motivation for building a hierarchical Bayesian regression model that can 1) let different segments learn from each other to address the problem of data sparsity. 2) let each segment learn its own regression model based on users in the segment.</p><p>Some interesting observations include 1) Users around 22 years old are more likely to relocate. It follows the intuition that college graduates would like to change location when they apply for their first jobs. 2) The probability of staying in the same local area doesn't increase for older applicants.</p><p>3) Females are slightly more likely to stay in the same local area. 4) Applicants from the big cities/regions tend to stay in the same local area. Top 5 regions that users tend to be local users include San Francisco Bay Area, Greater New York City Area, Houston, Texas Area, Greater Denver Area, and Greater Seattle Area. 5) Applicants from small towns tend to relocate. Top regions that users tend to relocate usually associate with a university or college, including University of South Carolina, University of Wisconsin Madison, Syracuse university, Michigan State University and so on.</p><p>The findings from the LinkedIn job application data are consistent with results from demographic surveys <ref type="bibr" target="#b5">[6]</ref>. 37% of American adults have never left their hometown, and 57% of American adults have never lived outside their home state. More educated individuals are more likely to have relocated during their lifetimes (77% of college graduates have changed communities at least once). People are most likely to move when they are young, and people from the midwest are less likely to move than those from the Western United States. People who have moved before are much more likely to relocate than those who have never moved. People with higher incomes are more likely to move for job opportunities, while lower income individuals cite different reasons for moving. The demographic data motivates our basic hypothesis that some people will not move under any circumstances, and these users should not be shown non-local job recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Performance Analysis</head><p>We evaluate the classification performance of different user latent preference models by treating the task as a classification task. We assume that the model predicts a user as a local user if the probability is higher than the classification threshold. We show the performance for different classification thresholds from 0.1 to 0.9. The left plot in Figure <ref type="figure">3</ref> shows the performance of the basic regression model M-one. It has decent performance in all metrics including precision, recall and F1. High precision ensures that we only filter out non-local jobs for local users. High recall ensures that we can discover most local users and achieve better downside management for these users. F1 metric balances the trade-off between the precision and recall metrics. As demonstrated in the right plot in Figure <ref type="figure">3</ref>, it is clear that all hierarchical Bayesian regression models help to improve the precision performance significantly. As shown in Table <ref type="table" target="#tab_1">2</ref>, there are different ways of segmenting users. Among all models, Mage has the highest lift (5.82% for classification threshold 0.3) with 7 user segments. It is essential to choose the right user segments in the model. Models with too few segments  (M-gender ) or too many segments (M-region, M-ageRegion, M-genderRegion, M-ageGender ) do not work as well as the M-age model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">EVALUATION OF THE RECOMMENDER SYSTEM</head><p>In this section, we incorporate the user latent preference model into the recommender system and evaluate its contribution in downside management. We first list all research questions that we intend to answer, followed by the experimental setup, and performance analysis. Major research questions include:</p><p>• Does it achieve higher user satisfaction by adding a filtering component to the basic recommender system?</p><p>• Could the user latent preference help to improve the downside management of recommender systems? Does it achieve even higher user satisfaction?</p><p>• How about using an extreme filter that filters out all non-local jobs for all users? Does it work as well? What's the contribution of using the prediction from the user latent preference model?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1">Models to Compare</head><p>In our offline and online experiments, we compare the following models. All models are trained with millions of job applications that were randomly sampled over months and tested with 17K users in the testing period. The threshold of the filtering component is determined by the utility set, as shown in Equation <ref type="formula" target="#formula_20">14</ref>.</p><p>Baseline is the baseline recommender systems that select a set of items for the user, without considering the user latent preference. It could be any state-of-art recommendation model. We choose logistic regression here as an example. It is a common practice with decent performance and low time complexity <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b27">28]</ref>. The baseline recommender system does not have a filtering component. It always sends a set of top K items to each user (K is set to be 5). When we build the baseline logistic regression model, we leverage basic features including similarity-related features between the user profile (including the user's working experience, education information, etc) and the job information (including the job's title, description, etc), the user behavior features, and so on. Features include location-related features as well, such as the transition probability from the user's location to the job's location and so on.</p><p>Baseline.F applies a filter on the recommendation set from Baseline based on the recommendation probability prec(i, j) without considering the user's latent preference.</p><p>Baseline+Latent.F applies a filter on the recommendation set based on the joint probability p(i, j) which considers the user latent relocation preference. As a result, the model recommends local jobs to users that prefer to stay in the local area and non-local jobs to other users.</p><p>Baseline+AllLocal.F applies a filter on the recommendation set based on the joint probability p(i, j). It assumes that all users are local users. In other words, it estimates p(ym,i = local) = 1 for all users. As a result, the model recommends local jobs to all users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Offline Testing Setup</head><p>As we discussed in Section 4, the user satisfaction is affected by both good recommendations and bad recommendations. The corresponding evaluation metric is the average utility which truly reflects the user satisfaction. Assume that there are U users to send recommendations in the testing period. The average utility/user satisfaction utility can be calculated as following: utility = U i=1 utility i U . Unlike traditional metrics such as the number of applications/views, the utility metric considers both the positive effect of good recommendations and the negative effect of bad recommendations. The higher the utility, the better the model.</p><p>Table <ref type="table">3</ref>: Average utility of recommendations in the offline scenario. There are 17K users in the test dataset who applied to 2.12 jobs on average. Rec coverage is the percentage of users that are recommended at least one item. Rec count is the average number of unique recommendations that are pushed to each user.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.3">Online A/B Testing Setup</head><p>In the online A/B testing, we evaluate the performance of recommender systems with real-world users on LinkedIn. We randomly select 5% United States users 2 that visit 2 By the end of 2014, there are more than 111 million members in United States in LinkedIn.</p><p>LinkedIn for each model and present the corresponding recommendations to each user group. The difference of the performance between two user buckets are reported in the performance analysis. A significance level of 0.05 with the paired two-tailed t-test is used to compare two models. We let each model to run for one week to burn in the novelty effect (active job seekers tend to apply to any new jobs they see due to a change in the recommendation model) and start the comparison after that.</p><p>In the LinkedIn product, summaries of job vacancy postings are shown to the user. We call this an impression (each job vacancy summary shown to the user is considered to be impressed). Job seekers can open a new page to view the entire job description, which we call as a view action. In addition, users will apply to the job if they wish to be considered for the position, which we call as an apply action. We report metrics that measure the model's performance in both upside management and downside management: the number of impressions, the number of views and applications, API ( # of applications # of impressions ), and VPI ( # of views # of impressions ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4">Performance Analysis</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4.1">Offline Experiments</head><p>We first evaluate all models in the offline scenario. The testing data include 17K users who applied to 2.12 jobs on average. Three different sets of utilities are tested, as shown in Table <ref type="table">3</ref>. Each set reflects different scenarios (depending on a user's tolerance to bad recommendations) and it could be tuned by domain experts in real-world applications.</p><p>In the first utility set, the utility uT P for a good recommendation that the user applies to is set to 2. When the system shows a job and the user does not apply to it, the utility uF P is −1. The penalty uF N for missing a good recommendation is set as −1. The resulting filtering threshold is 0.25. Model that applies a filter all perform better than the Baseline model without filtering. Among all three models that have a filtering component, both Baseline + Latent.F and Baseline + AllLocal.F perform better than the Baseline.F model by filtering out many downside items (i.e., jobs that are not in the user's preferred area). It follows our intuition that the probability p(i, j) with latent preference is a stronger signal than the pure recommendation probability prec(i, j). In addition, Baseline + Latent.F model still keeps potentially good jobs that a non-local user wants to apply to, which leads to a higher utility than Baseline + AllLocal.F model. Note that the average number of recommendations of Baseline + Latent.F is significantly higher than the Baseline + AllLocal.F model.</p><p>In the second utility set, the utility uF P is set to −2, indicating that the user is less tolerant to downside items. Thus the threshold of recommending an item is higher, being 0.4. Not surprisingly, the Rec coverage of Baseline + Latent.F decreases than that in the first set of utility. It still performs the best among all four models.</p><p>In the third utility set, uF N is set to −2. It is the penalty for not recommending a good job that would be applied by the user. Baseline + Latent.F model still achieves the highest utility among all models. Baseline + AllLocal.F has a lower utility since it misses some potentially good recommendations for non-local users.</p><p>demonstrate that our proposed model has a better downside management, which leads to higher user satisfaction. This is just the first step to tackle the downside management in recommender systems. In this paper, we propose to use multinomial regression as the core model in the user latent preference model. Other distributions or models could be explored for other dimensions. In addition, the current model predicts a user's latent preference in one dimension, such as time, location and so on. It would be interesting to explore how to integrate a user's latent preferences in multiple dimensions to provide better recommendations. Last but not least, the model could be evaluated in other domains to show its effectiveness in downside management.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Illustration of dependencies of variables in the hierarchical Bayesian regression model. It shows the i th observation of segment m. ym,i is the label which is dependent on the regression model θm of segment m, as well as the observed features x m,i of this user. Each segment m has its own parameters of multinomial regression θm. Models of each segment share information through the prior, φ = (µ θ , Σ θ ).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>utilityi = (uT P I show,accept + uF P I show, āccept + uF N I show,accept + uT N I show, āccept ). (13)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Data analysis of different user segments in the job domain. The bar plots the percentage of users in each segment with the left axis. The line plots the percentage of local users in each segment with the right axis. The three plots correspond to age segments, gender segments, and region segments respectively. Major observations include that 1) the data sparsity issue exists in some user segments 2) users in different segments have different priors in relocating.</figDesc><graphic coords="7,60.37,457.33,225.94,123.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>utility set 1</head><label>1</label><figDesc>uT P = 2, uF N = -1 uF P = -1, uT N = 0 Threshold = 0.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>The utility set of the recommender system. There are four types of utilities, depending on whether the system recommends the item to the user and whether the user accepts the item.</figDesc><table><row><cell></cell><cell cols="2">show:Y show:N</cell></row><row><cell>accept:Y</cell><cell>uT P</cell><cell>uF N</cell></row><row><cell>accept:N</cell><cell>uF P</cell><cell>uT N</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Different segmentation methods of the user latent preference model. &lt;20 years old, 20-25 years old, 25-30 years old, ...</figDesc><table><row><cell>Model</cell><cell>User segment</cell><cell># of segments</cell><cell>Sample segments</cell></row><row><cell>M-one</cell><cell>none</cell><cell>1</cell><cell>N/A</cell></row><row><cell>M-age</cell><cell>age</cell><cell>7</cell><cell></cell></row><row><cell>M-gender</cell><cell>gender</cell><cell>2</cell><cell>female, male</cell></row><row><cell>M-region</cell><cell>region</cell><cell>282</cell><cell>San Francisco bay area, Great New York area, ...</cell></row><row><cell>M-ageGender</cell><cell>(age, gender)</cell><cell>14</cell><cell>(&lt;20 years old, female), ...</cell></row><row><cell>M-ageRegion</cell><cell>(age, region)</cell><cell>1974</cell><cell>(&lt;20 years old, San Francisco bay area), ...</cell></row><row><cell cols="2">M-regionGender (region, gender)</cell><cell>564</cell><cell>(San Francisco bay area, female), ...</cell></row></table></figure>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4.2">Online Experiments</head><p>In the online A/B testing, the performance follows our intuition as shown in Table <ref type="table">4</ref>. Baseline + Latent.F model has a significantly better downside management than the Baseline model. In details, Baseline + Latent.F model shows less impressions to users. The corresponding API and VPI metrics increase significantly while the number of applications and views remain stable. It shows that downside items that are not interesting to users are removed from the recommendation set. The performance is consistent with that in offline experiments.</p><p>If we filter out non-local recommendations for all users, the performance of such model Baseline+AllLocal.F is shown in Table <ref type="table">4</ref>. As expected, it shows much fewer impressions. Although VPI and API increase significantly, the absolute number of applications and views drop. Such a model might filter out some good non-local recommendations for users who are willing to relocate. For example, recent college graduates would prefer to relocate to other cities for their first job. In this case, Baseline+AllLocal.F still recommends local jobs to these users. Yet the user latent preference model Baseline + Latent.F would treat these users as non-local users and recommend jobs in non-local areas.</p><p>For a real-world recommender system, one goal is to improve the upside management, which is reflected by the # of applications and # of views metrics. A good upside management helps users to discover items that they like, which saves users' time and effort. While good upside management lets users engage themselves with the system, it is equally important for a recommender system to have a good downside management. It aims to avoid showing those obviously terrible items to users. For example, if a user would like to stay in the San Francisco Bay Area, a good recommender system shouldn't recommend a job in the New York city even if the job is a perfect match. Good downside management is reflected in the high API and VPI. It makes recommendations more explainable and transparent to users, which in turn helps to increase the user satisfaction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">CONCLUSION AND FUTURE WORK</head><p>In this paper, we propose to develop the user latent preference model to predict the probability of a user having a specific preference. It is a general framework that could be applied to any existing recommender system in any domain (including job search, e-commerce, movie recommendations, etc.). The model uses multinomial regression to predict the user's preference among all candidates. We build a regression model for each user segment. In order to tackle the data sparsity issue, we further extend the model with the hierarchical Bayesian framework. The variational Bayesian inference algorithm helps to make the parameter estimation more computationally efficient. In the recommendation stage, we leverage the prediction of the user's latent preference to estimate the joint probability for a user accepting an item. We show the effectiveness of the user latent preference model in the context of recommending the right job at the right location. Both offline experiments and online A/B testing</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Context-aware recommender systems</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Adomavicius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tuzhilin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="217" to="253" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Towards time-dependant recommendation based on implicit feedback</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Baltrunas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Amatriain</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Context-aware Recommender Systems Workshop at RecSys09</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Variational algorithms for approximate Bayesian inference</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Beal</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+		</imprint>
+		<respStmt>
+			<orgName>University of London</orgName>
+		</respStmt>
+	</monogr>
+	<note type="report_type">PhD thesis</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">The netflix prize</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lanning</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A correlated topic model of science</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Lafferty</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Annals of Applied Statistics</title>
+		<imprint>
+			<biblScope unit="page" from="17" to="35" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">Who Moves? Who Stays Put? Where&apos;s Home?</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cohn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Morin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008-12">Dec 2008</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Technical report</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Performance of recommender algorithms on top-n recommendation tasks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cremonesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fourth ACM RecSys</title>
+				<meeting>the fourth ACM RecSys</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2010">2010. 2010</date>
+			<biblScope unit="page" from="39" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Modeling contextual agreement in preferences</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Do</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">W</forename><surname>Lauw</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd International Conference on World Wide Web, WWW &apos;14</title>
+				<meeting>the 23rd International Conference on World Wide Web, WWW &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="315" to="326" />
+		</imprint>
+	</monogr>
+	<note>International World Wide Web Conferences Steering Committee</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The foundations of cost-sensitive learning</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Elkan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th IJCAI&apos;01, IJCAI&apos;01</title>
+				<meeting>the 17th IJCAI&apos;01, IJCAI&apos;01</meeting>
+		<imprint>
+			<publisher>Morgan Kaufmann Publishers Inc</publisher>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="973" to="978" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Adaptive bootstrapping of recommender systems using decision trees</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Golbandi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Lempel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fourth ACM WSDM, WSDM &apos;11</title>
+				<meeting>the fourth ACM WSDM, WSDM &apos;11</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="595" to="604" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Query-driven context aware recommendation</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hariri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Mobasher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Burke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM Conference on RecSys, RecSys &apos;13</title>
+				<meeting>the 7th ACM Conference on RecSys, RecSys &apos;13<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="9" to="16" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">An algorithmic framework for performing collaborative filtering</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Borchers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd annual international ACM SIGIR</title>
+				<meeting>the 22nd annual international ACM SIGIR</meeting>
+		<imprint>
+			<biblScope unit="page" from="230" to="237" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering with decoupled models for preferences and ratings</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Si</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Callan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the twelfth CIKM</title>
+				<meeting>the twelfth CIKM</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="309" to="316" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Factorization meets the neighborhood: a multifaceted collaborative filtering model</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceeding of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining, KDD &apos;08</title>
+				<meeting>eeding of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining, KDD &apos;08</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="426" to="434" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Soco: A social network aided context-aware recommender system</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Aberer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd International Conference on World Wide Web, WWW &apos;13</title>
+				<meeting>the 22nd International Conference on World Wide Web, WWW &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="781" to="802" />
+		</imprint>
+	</monogr>
+	<note>International World Wide Web Conferences Steering Committee</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">The multiple multiplicative factor model for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Marlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Zemel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 21st ICML &apos;04</title>
+				<meeting>the 21st ICML &apos;04</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page">73</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Content-based book recommending using learning for text categorization</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">DL &apos;00</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="195" to="204" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Gaussian process factorization machines for context-aware recommendations</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">V</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Baltrunas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th International ACM SIGIR Conference, SIGIR &apos;14</title>
+				<meeting>the 37th International ACM SIGIR Conference, SIGIR &apos;14</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="63" to="72" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Experimental comparison of pre-vs. post-filtering approaches in context-aware recommender systems</title>
+		<author>
+			<persName><forename type="first">U</forename><surname>Panniello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tuzhilin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gorgoglione</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Palmisano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pedone</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Third ACM Conference on RecSys, RecSys &apos;09</title>
+				<meeting>the Third ACM Conference on RecSys, RecSys &apos;09</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="265" to="268" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Implicit feedback recommendation via implicit-to-explicit ordinal logistic regression mapping</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Amatriain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Yavuz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the CARS-2011</title>
+				<meeting>the CARS-2011</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Improving collaborative filtering in social tagging systems for the recommendation of scientific articles</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra-Santander</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Brusilovsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Web Intelligence and Intelligent Agent Technology</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="136" to="142" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Learning and revising user profiles: The identification of interesting web sites</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pazzani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Billsus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Michalski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wnek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Machine Learning</title>
+				<imprint>
+			<date type="published" when="1997">1997</date>
+			<biblScope unit="page" from="313" to="331" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Care to comment?: recommendations for commenting on news stories</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Shmueli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kagian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Lempel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 21st WWW, WWW &apos;12</title>
+				<meeting>the 21st WWW, WWW &apos;12</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="429" to="438" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Flexible mixture model for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Si</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Jin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of ICML</title>
+				<meeting>ICML</meeting>
+		<imprint>
+			<publisher>AAAI Press</publisher>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="704" to="711" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Context-aware recommender systems for learning: a survey and future challenges. Learning Technologies</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Manouselis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ochoa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolpers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Drachsler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Bosnic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Duval</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="318" to="335" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Utilizing related products for post-purchase recommendation in e-commerce</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sundaresan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fifth ACM conference on Recommender systems, RecSys &apos;11</title>
+				<meeting>the fifth ACM conference on Recommender systems, RecSys &apos;11</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="329" to="332" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Utilizing marginal net utility for recommendation in e-commerce</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 34th international ACM SIGIR&apos;11</title>
+				<meeting>the 34th international ACM SIGIR&apos;11</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="1003" to="1012" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Opportunity model for e-commerce recommendation: right product, right time</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th international ACM SIGIR Conference, SIGIR &apos;13</title>
+				<meeting>the 36th international ACM SIGIR Conference, SIGIR &apos;13</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Is it time for a career switch</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Posse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bhasin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceeding of the 22nd International Conference on World Wide Web, WWW &apos;13</title>
+				<meeting>eeding of the 22nd International Conference on World Wide Web, WWW &apos;13</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Nonlinear latent factorization by embedding multiple user interests</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Weiss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM Conference on RecSys, RecSys &apos;13</title>
+				<meeting>the 7th ACM Conference on RecSys, RecSys &apos;13</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="65" to="68" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th International ACM SIGIR Conference, SIGIR &apos;14</title>
+				<meeting>the 37th International ACM SIGIR Conference, SIGIR &apos;14</meeting>
+		<imprint>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

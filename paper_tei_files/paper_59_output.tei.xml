@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Social Collaborative Viewpoint Regression with Explainable Recommendations</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+							<email>zhaochun.ren@ucl.ac.uk</email>
+							<affiliation key="aff1">
+								<orgName type="institution">University College London</orgName>
+								<address>
+									<settlement>London</settlement>
+									<country key="GB">United Kingdom</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shangsong</forename><surname>Liang</surname></persName>
+							<email>shangsong.liang@ucl.ac.uk</email>
+							<affiliation key="aff1">
+								<orgName type="institution">University College London</orgName>
+								<address>
+									<settlement>London</settlement>
+									<country key="GB">United Kingdom</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Piji</forename><surname>Li</surname></persName>
+							<email>pjli@se.cuhk.edu.hk</email>
+							<affiliation key="aff2">
+								<orgName type="institution">The Chinese University of Hong Kong</orgName>
+								<address>
+									<settlement>Hong Kong</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shuaiqiang</forename><surname>Wang</surname></persName>
+							<email>shuaiqiang.wang@jyu.fi</email>
+							<affiliation key="aff3">
+								<orgName type="institution">University of Jyväskylä</orgName>
+								<address>
+									<settlement>Jyväskylä</settlement>
+									<country key="FI">Finland</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<orgName type="institution">University of Amsterdam</orgName>
+								<address>
+									<settlement>Amsterdam</settlement>
+									<country key="NL">The Netherlands</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<address>
+									<settlement>Maarten de Rijke</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Social Collaborative Viewpoint Regression with Explainable Recommendations</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">BE921926C6058BBFFBE328A705058D98</idno>
+					<idno type="DOI">10.1145/3018661.3018686</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Recommender systems</term>
+					<term>User comment analysis</term>
+					<term>Topic modeling</term>
+					<term>Trusted social relations</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>A recommendation is called explainable if it not only predicts a numerical rating for an item, but also generates explanations for users' preferences. Most existing methods for explainable recommendation apply topic models to analyze user reviews to provide descriptions along with the recommendations they produce. So far, such methods have neglected user opinions and influences from social relations as a source of information for recommendations, even though these are known to improve the rating prediction.</p><p>In this paper, we propose a latent variable model, called social collaborative viewpoint regression (sCVR), for predicting item ratings based on user opinions and social relations. To this end, we use so-called viewpoints, represented as tuples of a concept, topic, and a sentiment label from both user reviews and trusted social relations. In addition, such viewpoints can be used as explanations. We apply a Gibbs EM sampler to infer posterior distributions of sCVR. Experiments conducted on three large benchmark datasets show the effectiveness of our proposed method for predicting item ratings and for generating explanations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>Recommender systems are playing an increasingly important role in e-commerce portals. With the development of social networks, many e-commerce sites have become popular social platforms that help users discuss and select items. Traditionally, a major strategy Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.</p><p>WSDM 2017, February 06 -10, 2017, Cambridge, United Kingdom c 2017 Copyright held by the owner/author(s). Publication rights licensed to ACM. ISBN 978-1-4503-4675-7/17/02. . . $15.00 DOI: http://dx.doi.org/10.1145/3018661.3018686 to predicting ratings in recommender systems is based on collaborative filtering (CF), which infers a user's preference using their previous interactions. Since CF-based methods only use numerical ratings as input, they suffer from a "cold-start" problem and unexplainable prediction results <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b21">22]</ref>.</p><p>Explainable recommendations have been proposed to address the "cold-start" problem and the poor interpretability of recommended results by not only predicting better rating results, but also generating explainable and understandable item aspects that attract a user's attention <ref type="bibr" target="#b53">[54]</ref>. Most current solutions for explainable recommendations are based on content-based analysis methods <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b47">48]</ref>. Recent work on explainable recommender systems applies topic models to predict ratings and topical explanations <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b21">22]</ref>, where latent topics are inferred from user reviews. Each latent topic in a topic model is represented as a set of words, whereas each item is represented as a set of latent topics. These approaches face two important challenges: <ref type="bibr" target="#b0">(1)</ref> Most existing methods neglect to explicitly analyze opinions for recommendation, thereby missing important opportunities to explain users' preferences. <ref type="bibr" target="#b1">(2)</ref> Trusted social relations are known to improve the quality of CF recommendation <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b49">50]</ref>, however, current methods for explainable recommendations rarely use this information.</p><p>To improve the rating prediction for explainable recommendations, our focus is on developing methods to generate so-called viewpoints by jointly analyzing user reviews and trusted social relations. Centered around a concept, a viewpoint in the setting of recommender systems refers to a topic with a specific sentiment label. As an example, consider the concept "Chinese cuisine" and the topic "#kung pao chicken" with a positive sentiment. Compared to "topics" in previous explainable recommendation strategies <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b48">49]</ref>, viewpoints contain richer information that can be used to understand and predict user ratings in recommendation tasks. We assume that each item and user in a recommender system can be represented as a finite mixture of viewpoints, and each user's viewpoints can be influenced by their trusted social relations. In Fig. <ref type="figure">1</ref> we show an example with multiple viewpoints, user reviews, trusted social relations, and ratings in a recommender system.</p><p>Three technical issues need to be addressed before viewpoints can successfully be used for explainable recommendations that make use of social relations: <ref type="bibr" target="#b0">(1)</ref> the shortness and sparseness of re- views make viewpoint extraction difficult; (2) because of the "bag of words" assumption, traditional topic models do not necessarily work very well in opinion analysis; (3) inferring explicit viewpoint statistics given trusted social relations among users and user reviews is not a solved problem.</p><p>In this paper, we address the above issues. According to our previous work on viewpoint modeling <ref type="bibr" target="#b30">[31]</ref>, we propose a latent variable model, called the social collaborative viewpoint regression model (abbreviated as sCVR), to predict user ratings by discovering viewpoints. Unlike previous collaborative topic regression methods <ref type="bibr" target="#b47">[48]</ref>, sCVR predicts ratings by detecting viewpoints from user reviews and social relations. sCVR discovers concepts, topics and sentiment priors from user reviews. It employs Markov chains to capture the sentiment dependency between two adjacent words; given trusted social relations, in sCVR we assign a viewpoint-bias to each user by considering the social influence of their trusted social relations. That is, given a user and an item, sCVR detects viewpoints and predicts ratings by jointly generating concepts, topics and sentiment labels in user reviews. Gibbs EM sampling is applied to approximate the posterior probability distributions.</p><p>We use three real-world benchmark datasets in our experiments: Yelp 2013, Yelp 2014, and Epinions. Extensive experiments on these datasets show that sCVR outperforms state-of-the-art baselines in terms of MAE and RMSE metrics.</p><p>To sum up, our contributions in this paper are: (1) To improve rating prediction for explainable recommendations, we generate viewpoints from user reviews and trusted social relations. <ref type="bibr" target="#b1">(2)</ref> We propose a latent variable model, the social collaborative viewpoint regression model, to predict user ratings by jointly modeling concepts, topics, sentiment labels and social relations. <ref type="bibr" target="#b2">(3)</ref> We prove the effectiveness of our proposed model on three benchmark datasets through extensive experiments, in which our proposed method outperforms state-of-the-art baselines.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RELATED WORK</head><p>We detail relevant related work on collaborative filtering, sentiment analysis, and solutions for explainable recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Collaborative filtering</head><p>In recent years, collaborative filtering (CF) based techniques have received considerable attention. Unlike content-based filtering strategies <ref type="bibr" target="#b22">[23]</ref> that predict ratings using the analysis of user profiles, collaborative filtering <ref type="bibr" target="#b38">[39]</ref> methods, either memory-based CF or model-based CF, predict ratings using user-item ratings matrices.</p><p>Early CF-based methods apply memory-based techniques. The most widely used memory-based CF methods include the nearest neighbor approach <ref type="bibr" target="#b0">[1]</ref>, user-based methods <ref type="bibr" target="#b31">[32]</ref> and item-based methods <ref type="bibr" target="#b33">[34]</ref>. Among the model-based CF methods, latent factor models <ref type="bibr" target="#b18">[19]</ref> have become very popular as they show state-of-theart performance on multiple datasets. Aimed at factorizing a rating matrix into products of a user-specific matrix and an item-specific matrix, matrix factorization based methods <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b27">28]</ref> are widely used. Zhang et al. <ref type="bibr" target="#b52">[53]</ref> propose a localized matrix factorization approach to address data sparsity and scalability by factorizing block diagonal form matrices. Recently, ranking-oriented collaborative filtering algorithms have achieved good results: Shi et al. <ref type="bibr" target="#b36">[37]</ref> use a list-wise learning to rank method, called CliMF. Following the memory-based CF framework, ListCF directly predicts a total order of items for each user based on similar users' probability distributions over permutations of commonly rated items <ref type="bibr" target="#b13">[14]</ref>.</p><p>Trusted social relations have been applied to enhance the performance of collaborative filtering <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b34">35]</ref>. Sharma and Cosley <ref type="bibr" target="#b34">[35]</ref> analyze the influence of varying levels of social information on users' decisions. In social media recommendation tasks <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b49">50]</ref>, social relations have been considered. Konstas et al. <ref type="bibr" target="#b17">[18]</ref> adapt a random walk framework to take into account both the social annotation and friendships inherent in the social graph. Yang et al. <ref type="bibr" target="#b50">[51]</ref> address recommendation and link prediction tasks based on a joint-propagation model between social relations and interests. Ye et al. <ref type="bibr" target="#b51">[52]</ref> propose a generative model to describe users' behavior, given influences from social communities. Chen et al. <ref type="bibr" target="#b7">[8]</ref> propose a collaborative filtering method to generate personalized recommendations on Twitter through a collaborative ranking procedure.</p><p>Unlike our proposed method, most previous work on collaborative filtering neglects the combination of content analysis for user reviews and social trust relationships. Furthermore, most previous work avoids mining the content of user reviews, i.e., viewpoint detection and analysis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Sentiment analysis</head><p>In recent years, sentiment analysis has received a lot of attention. As a fundamental task in sentiment analysis, sentiment classification <ref type="bibr" target="#b44">[45]</ref> is crucial to understand user generated content in product reviews. Lexicon-based methods <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b42">43,</ref><ref type="bibr" target="#b44">45]</ref> utilize a lexicon of sentiment words to predict sentiment labels, whereas corpus-based methods <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b54">55]</ref> classify sentences to sentiment polarities using corpora that are labeled with sentiment labels. With the recent success of deep neural networks <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b12">13]</ref>, more and more approaches to the sentiment classification task learn low-dimensional feature vectors, e.g., Tang et al. <ref type="bibr" target="#b39">[40]</ref> propose a sentiment-specific word embedding method for short text sentiment classification in social media. For encoding relations between sentences in documents, a recurrent neural network has been proposed to learn representations of documents for sentiment classification <ref type="bibr" target="#b40">[41]</ref>. By taking user information into account, Tang et al. <ref type="bibr" target="#b41">[42]</ref> present a user-vector composition model to predict user ratings. Given a set of opinionated documents, Ren and de Rijke <ref type="bibr" target="#b29">[30]</ref> address the task of summarizing contrastive themes by selecting meaningful sentences to represent contrastive themes.</p><p>In this paper, we focus on a combination of content-based recommendation and collaborative filtering, in which we not only predict sentiment labels in each review, but also consider topic aspects, user ratings and social trust communities in recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Explainable recommendations</head><p>The "cold-start" problem and poor interpretability are two serious issues for traditional collaborative filtering methods. To ad-dress these two issues, in recent years, more and more researchers have started to consider explainable recommendation. Explanations of recommendations often take the form of (labels derived from) a topic model <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b43">44,</ref><ref type="bibr" target="#b53">54]</ref>. We follow this tradition but propose a richer notion of explanation: represented by tuples of a conceptual feature, a topic and a sentiment label, viewpoints are used to explain our results. Explainable recommendations are known to improve transparency, user trust, effectiveness and scrutability <ref type="bibr" target="#b43">[44]</ref>. Vig et al. <ref type="bibr" target="#b45">[46]</ref> propose an explainable recommendation method that uses community tags to generate explanations. Based on sentiment lexicon construction, the explicit factor models <ref type="bibr" target="#b53">[54]</ref> and Tri-Rank <ref type="bibr" target="#b11">[12]</ref> algorithms improve the ranking of items for reviewaware recommendation. By combing content-based recommendation and collaborative filtering, Wang and Blei <ref type="bibr" target="#b47">[48]</ref> apply topic models <ref type="bibr" target="#b5">[6]</ref> to explainable recommendation problem to discover explainable latent factors in probabilistic matrix factorization. Chen et al. <ref type="bibr" target="#b6">[7]</ref> take advantage of the social trust relations by proposing a hierarchical Bayesian model that considers social relationship by putting different priors on users.</p><p>Recent work on explainable recommendations focuses on user reviews. Diao et al. <ref type="bibr" target="#b9">[10]</ref> propose a hybrid latent factor model integrating user reviews, topic aspects and user ratings for collaborative filtering. By using a multi-dimension tensor factorization strategy, Bhargava et al. <ref type="bibr" target="#b3">[4]</ref> propose a recommendation approach by combining users, activities, timestamps and locations. The Hidden Factors as Topic model learns a topic model for items using the review text and a matrix factorization model to fit the ratings <ref type="bibr" target="#b24">[25]</ref>. To tackle the sparsity in collaborative topic filtering, the Ratings Meet Reviews model has been proposed by adopting a mixture of Gaussians, which is assumed to have the same distribution as the topic distribution, to model ratings <ref type="bibr" target="#b21">[22]</ref>. Ribeiro et al. <ref type="bibr" target="#b32">[33]</ref> explain the predictions of classifiers in an interpretable manner and select representative predictions to users.</p><p>To the best of our knowledge, there is little previous work on explainable recommendation that jointly considers using user reviews and trusted social relations to improve the rating prediction: Represented by tuples of a conceptual feature, a topic and a sentiment label, viewpoints are used to explain our results.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">PRELIMINARIES</head><p>Before introducing our social collaborative viewpoint regression model for explainable recommendations, we introduce our notation and key concepts. Table <ref type="table" target="#tab_0">1</ref> lists the main notation we use.</p><p>Similar to the Ratings Meet Reviews model (RMR) <ref type="bibr" target="#b21">[22]</ref>, we assume that there are U users U = {u1, u2, . . . , uU };</p><formula xml:id="formula_0">I items I = {i1, i2, . . . , iI }; a set of observed indices Q = {(u, i)},</formula><p>where each pair (u, i) ∈ U × I indicates an observed rating ru,i with a user review du,i from user u of item i. For user reviews D = {d1, d2, . . . , d |Q| }, we assume that each observed rating ru,i is associated with a user review du,i. Given an item i's reviews Di, each review d ∈ Di is represented as a set of words, i.e., d = {w1, w2, . . . , w |d| }. If two users ui and uj trust each other, as evidenced in a user community, we define them to be a trusted social relation or simply social relation with trust value Tu i ,u j .</p><p>Next, we define the notions of topic, concept and sentiment. Following the standard definition <ref type="bibr" target="#b5">[6]</ref>, we define a topic, denoted as z, as a probabilistic distribution over words. Assuming K topics exist in the user reviews on which we focus, we set z ∈ {1, 2, . . . , K}. We define a concept, denoted as e, as a rigid designator of a feature surrounded by a topic, e.g., the concept "French cuisine" with a topic about "tartare boeuf." Each user review is assumed to contain a concept e d ∈ E. Sentiment is defined as a probability distribution over the sentiment labels positive and negative. A sentiment label distribution of words over v, z and l lj is attached to each word wj. Following <ref type="bibr" target="#b20">[21]</ref>, we assume that the sentiment label lj for a word wj depends on the topic zj. Specifically, we set lj = −1 when the word wj is "negative," while lj = 1 when wj is "positive." Given a concept e, a topic z and sentiment label l, we define a viewpoint to be a finite mixture over triples v = e, z, l consisting of a concept, topic and sentiment.</p><p>Because user reviews are short, we assume that only one viewpoint v d , represented as a combination of a concept e, a topic z and a sentiment label l, exists in each user review d ∈ D. We assume that each item i ∈ I can be represented as a mixture over viewpoints, thus we set πi to be a probability distribution of viewpoints in item i, µ to be a probability distribution of topics over viewpoints and λ to be a probability distribution of conceptual features over viewpoints. For words in user reviews, we set φ to be a probability distribution over viewpoints, topics and sentiment labels, which is derived from a Dirichlet distribution over hyper-parameter β.</p><p>It is common that rating scores are discrete <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b48">49]</ref>. Importantly, unlike much previous work that predicts a decimal rating score given a user and an item, we apply a probabilistic rating distribution within the exponential family to provide more information to reflect users' rating habits, inspired by <ref type="bibr" target="#b2">[3]</ref>. For each user u ∈ U, we assume that u's ratings in a recommender system can be predicted by their viewpoint distribution over rating values, i.e.,</p><formula xml:id="formula_1">θ u = {θ u v 1 , θ u v 2 , . . . , θ u v V }. Given a viewpoint v ∈ V, θ u</formula><p>v ∈ θ u refers to a probabilistic distribution over each rating value r ∈ [1, R], thus θ u can be represented as an R-by-V matrix:</p><formula xml:id="formula_2">θ u =    θ u 1,v 1 . . . θ u 1,v V . . . . . . . . . θ u R,v 1 • • • θ u R,v V   <label>(1)</label></formula><p>where each item θ u r,v denotes the probability of rating value r given user u and viewpoint v.</p><p>We assume that the viewpoint distribution θ u v is derived by a finite mixture over a personalized base distribution θ 0 u,v and viewpoint distributions of u's trusted relations. Given a user u and an item i, we set a multinomial distribution fu,i, which derives from the viewpoints distribution πi for item i, to reflect the viewpoint chosen by u for their rating to item i. If a user u writes a user review du,i for item i, there is a corresponding rating ru,i ∈ [1, R] derived from a multinomial distribution over θ u f u,i . Given observed indices Q, observed data R, D and E, our target is to infer the user's viewpoint distribution θ and the item's viewpoint distribution π, which are then used to predict unknown ratings.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">METHOD</head><p>In this section, we propose our social collaborative viewpoint regression model, abbreviated as sCVR. We start by detailing the model. We then describe our inference approach and explain our method to predict ratings using posterior distributions from sCVR.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Feature detection and sentiment analysis</head><p>We use descriptive keywords in an e-commerce platforms as concepts for items. Here we assume that Ei features exist in an item i's reviews. To discover the concept in a user review d ∈ Di, we employ word2vec <ref type="bibr" target="#b25">[26]</ref> to calculate the similarity between a given concept e ∈ Ei and a user review d. Since the quality of the word vectors increases significantly with the amount of training data, we train a word2vec model using the latest Wikipedia data. Thereafter, we employ our trained model to predict the cosine similarity between a given concept e and each word w in a user review d. Given the cosine similarity sim(e, w) between e and word w, w ∈ d, we calculate the similarity between e and review d according to Eq. 2:</p><formula xml:id="formula_3">sim(e, d) = 1 N d w∈d sim(e, w)<label>(2)</label></formula><p>where N d indicates the number of words in d. Given candidate concepts Ei, the concept that is most similar to d will be considered as d's relevant concept. By ranking documents according to the similarity between candidate concepts and user reviews, we find the relevant concept for each user review. We employ a state-of-the-art sentiment analysis method <ref type="bibr" target="#b37">[38]</ref> to classify user reviews into positive and negative categories. The probability of a sentiment label is set as a prior value in our social collaborative viewpoint regression, which is detailed in §4.2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Social collaborative viewpoint regression</head><p>Given observed indices Q, users U = {u1, u2, . . . , uU }, items I = {i1, i2, . . . , iI }, ratings R = {r1, r2, . . . , rQ} and user reviews D = {d1, d2, . . . , dQ}, our target is to infer distributions of viewpoints to predict unknown user ratings Q = {(u , i )} from users to items, where (u , i ) / ∈ Q. To this end we propose social collaborative viewpoint regression (sCVR), a latent factor model. Unlike previous work, sCVR jointly models viewpoints, topics, concepts and sentiment labels in D. In addition, sCVR explicitly models influences from a user's social relations on their own viewpoint distribution.</p><p>After preprocessing, for each user review d ∈ D we assume that there is a concept e d ∈ E, and for each word w in d there is a corresponding sentiment label lw. We assume that there are, in total, V viewpoints and K topics in user reviews. Given an item i ∈ I, we assume there is a probabilistic distribution π over viewpoints. Given a user review d ∈ D, for each word wj ∈ d, there is a topic zj and a sentiment label lj. We assume that a viewpoint v in d is derived via a multinomial distribution over a random variable π that indicates a probability distribution over viewpoints in each item; given viewpoint v, a concept e, a topic z and a sentiment label l are derived from probabilistic distributions over v. The probability distribution π is derived from a dirichlet mixture over a hyper parameter α.</p><p>Each user u ∈ U in sCVR is supposed to have Fu trusted social relations; each trusted relation u shares a trust value T u,u with user u. For each user u ∈ U , a probabilistic distribution over viewpoint v, θ u v is derived over viewpoint distributions of u's social relations and a base distribution of u, i.e., {θ u 1 v , θ u 2 v , . . . , θ</p><formula xml:id="formula_4">u Fu v</formula><p>} and θ 0 u,v . In sCVR we assume that u's rating ru,i for an item i ∈ I is derived from a multinomial distribution over θ u f , where f is a sampling viewpoint index derived from u's reviews, i.e., f ∈ [1, V ].</p><p>In sCVR, we consider the sentiment dependency between two adjacent words. A Markov chain is formed to represent the dependency relation between sentiment labels of two adjacent words. Given the j-th word wj (j &gt; 0) in d, the sentiment label lj is selected depending on the previous word. The transition probability distribution is derived from the sentiment label of lj−1 and a transition variable xj. The transition variable xj determines where the corresponding sentiment label comes from. If xj = 1, then the sentiment label lj of wj is identical to the sentiment label lj−1 of word wj−1; whereas if xj = −1, the sentiment label lj is opposite to lj−1, which shows that the sentiment labels changes form one polarity to the other. Thus, we set the transition variable xj = 1 when wj and wj−1 are connected by a correlative conjunction, such as "and" and "both"; we set xj = −1 when wj and wj−1 are connected by an adversative conjunction, such as "but" and "whereas"; we set xj = 0 for other kinds of conjunctions. The generative process of sCVR is shown in Fig. <ref type="figure" target="#fig_2">2</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Inference</head><p>Because of the unknown relation among random variables, exact posterior inference for the sCVR model is intractable. We apply a Gibbs EM sampler <ref type="bibr" target="#b46">[47]</ref> to conditionally approximate the posterior distribution of random variables in sCVR. Algorithm 1 summarizes the Gibbs EM sampling inference procedure that we will derive.</p><p>Specifically, Algorithm 1 is divided into two parts: an E-step and an M-step. Given item i and user u, for each user review d the target of our sampling in the E-step is to approximate the posterior distribution p(V, Z, L | W, E, R, T , F). Conceptually, in this step we divide our sampling procedure into three parts.</p><p>• Firstly, given a user u and an item i, during the E-step, we sample the conditional probability of viewpoint fu,i given current state of viewpoints, i.e., P (f</p><formula xml:id="formula_5">(u,i) | f −(u,i) , W, V, R).</formula><p>• Secondly, given the values of inferred topics and sentiment labels, we sample the conditional probability of viewpoint v in each d ∈ D, i.e., P</p><formula xml:id="formula_6">(v d = v | V −d , E, W, Z, R).</formula><p>• Lastly, given the current state of viewpoints, for word wj we sample the conditional probability of topic zj with sentiment label lj transition label xj, i.e., P</p><formula xml:id="formula_7">(zj = k, lj = l, xj = x | Z−j, W, E, R, T , F, v).</formula><p>During the M-step, given conditional probabilities derived during the E-step, we maximize each user u's viewpoint distribution θu, each viewpoint distribution π and the joint probability of viewpoints, concepts, topics, and sentiments over words, i.e., φ.</p><p>We now detail our sampling procedures. Given user u and item i, we first sample fu,i over f −(u,i) without pair (u, i). So for user u's viewpoint over item i, we obtain</p><formula xml:id="formula_8">P (f (u,i) | f −(u,i) , W, V, R) • For each viewpoint v ∈ V:</formula><p>-Draw µv ∼ Dir(χ); λv ∼ Dir(δ); -For each topic z: * Draw ρv,z ∼ Beta(η); * For each sentiment l:</p><p>• Draw φ z,l,v ∼ Dir(β);</p><p>• For each user u ∈ U :</p><formula xml:id="formula_9">-Draw θ u v ∼ Dir(θ 0 u,v + 1 Fu u ∈Fu T u,u θ u v );</formula><p>• For each item i ∈ I:</p><p>- • Draw a topic zj ∼ M ulti(µv);</p><formula xml:id="formula_10">• Draw xj ∼ M ulti(σ); • If xj = 1, draw lj ∼ lj−1 • If xj = −1, draw lj ∼ (−1) • lj−1; • If xj = 0, draw lj ∼ Bern(ρv,z j ); • Draw word wj ∼ M ulti(φ v,z j ,l j ):</formula><p>-For each ratings assigned by user u to i: * Draw viewpoint fu,i ∼ M ulti(π); * Draw rating ru,i ∼ M ulti(θ u f u,i ); as:</p><formula xml:id="formula_11">P (f (u,i) = y | f −(u,i) , W, V, R) ∝ n r (u,i) ,y u,−i + θ u r (u,i) ,y n y u + Ru • θ u r (u,i) ,y • n i,y f,−(u,i) + n i,y v + α n i f,−(u,i) + n i v + V α ,<label>(3)</label></formula><p>where Ru indicates how many times user u rates items, and n i,y f,−(u,i)</p><p>indicates the number of times that variable f has been assigned to y given item i, excluding user u; furthermore, n i,y v indicates the number of times that viewpoint v in item i has been assigned to y; and n r (u,i) ,y u,−i indicates the number of times that user u gives rating r (u,i) under f = y for all items, excluding i. We calculate θ u r (u,i) ,y according to Eq. 4:</p><formula xml:id="formula_12">θ u r (u,i) ,y = θ 0 u,y,r (u,i) + 1 Fu u ∈Fu T u,u • θ u r (u,i) ,y ,<label>(4)</label></formula><p>where T u,u indicates the trust value between user u and u , and Fu indicates the trusted social relations of user u. For review d written by user u for item i, we infer the conditional probability of viewpoint v d = v given all other random variables, i.e., P</p><formula xml:id="formula_13">(v d = v | V −d , E, W, Z, R</formula><p>). So we have:</p><formula xml:id="formula_14">P (v d = v | V −d , E, W, Z, R) ∝<label>(5)</label></formula><p>Algorithm 1: Gibbs EM sampling for sCVR's inference Input: α, β, η, τ , U, I, R, W Output: θ, φ, µ, λ and π 1 ite = 0; 2 if ite&lt;T then 3 E-Step: Update n i,v , nv,e, nv,z and n w z,l,v for w ∈ d Re-estimate θu, π, φ, µ and λ from Eq. 8;</p><p>23 Maximize θ0 u,v from Eq. 9;</p><p>24 ite = ite + 1 and go to E-Step; 25 end</p><formula xml:id="formula_15">n i,v −d + n i,v f + α n i −d + n i f + V α • e∈E n −d v,e + δ n −d v + Eδ • z∈Z n −d v,z + χ n −d v + Kχ • l∈L w∈N d n w,−d z,l,v + β n −d z,l,v + N β ,</formula><p>where n i,v −d indicates the number of times that viewpoint v has been assigned to user reviews, excluding d; n −d v,e indicates the number of times that concept e has been assigned to viewpoint v in reviews, excluding d; n −d v,z indicates the number of times that topic z has been assigned to viewpoint v excluding d; furthermore, n w,−d z,l,v indicates how many words are assigned to topic z, viewpoint v and sentiment l, except for d. Given detected viewpoint v d = v, for each word wj ∈ N d we sample the conditional probability of topic zj with sentiment label lj for word wj, i.e., P (zj = k, lj = l, xj = x | v, X−j, L−j, Z−j, W, R, F). Given the viewpoint v sampled at the document level, when xj = 0 and xj+1 = 0 we can directly sample word wj's topic zj and sentiment label lj using the probability in Eq. 6:</p><formula xml:id="formula_16">P (zj = k, lj = l, xj = x | v, X−j, L−j, Z−j, W, R, F) ∝ n −j v,k + χ n −j v + Kχ • n w j ,−j k,l,v + β n −j k,l,v + N β • n w j −j,x + τx n w j −j + x∈X τx • n w j+1 −(j+1),x j+1 + I(xj+1 = xj) + τx j+1 n w j+1 −(j+1) + 1 + x∈X τx ,<label>(6)</label></formula><p>where n −j v,k indicates the number of times that topic k has been assigned to viewpoint v, excluding the j-th word in d; n −j v indicates how many topics have been assigned to v, not including wj; n</p><formula xml:id="formula_17">w j ,−j k,l,v</formula><p>indicates the number of times that word wj has been assigned to topic z and sentiment l synchronously, excluding current one; n w j −j,x indicates the number of times that wj assigned to x, excluding current word; and I(xi+1 = xi) gets value 1 if xi+1 = xi, otherwise it gets 0. When xj = 0, wj's sentiment label lj is derived from a Bernoulli distribution ρv,z j ; then the conditional probability P (zj = k, lj = l, xj = 0 | v, X−j, L−j, Z−j, W, R, F) becomes:</p><formula xml:id="formula_18">P (zj = k, lj = l, xj = 0 | v, X−j, L−j, Z−j, W, R, F) ∝ n −j v,k + χ n −j v + Kχ • n w j ,−j ,k,l,v + β n −j k,l,v + N β • n w j −j,x + τx n w j −j + x∈X τx • n −j z,l,v + η l n −j z,v + l∈L η l ,<label>(7)</label></formula><p>where n −j z,l,v indicates how many words are assigned to viewpoint v, topic z and sentiment label l, excluding current wj; whereas n −j v,z indicates how many words are assigned to viewpoint v and topic z, excluding current wj.</p><p>In the M-step, given conditional probabilities derived in the Estep, we estimate the parameters of user u's viewpoint distribution θu for each rating r, the viewpoint distribution πi for each item i, the probability of topics, viewpoints and sentiment over words φ, viewpoint distributions over concepts λ and viewpoint distributions over topics µ, respectively, as follows:</p><formula xml:id="formula_19">θ u r,v = n r,v u + θ 0 u,v,r + 1 Fu u ∈Fu T u,u θ u r,v nu,v + Ru • θ 0 u,v,r + 1 Fu u ∈Fu T u,u θ u r,v πi,v = ni,v + α ni + V α ; φ w v,z,l = n w v,z,l + β n v,z,l + N β<label>(8)</label></formula><p>µv,e = nv,z + χ nv + Kχ ; λv,e = nv,e + δ nv + Eδ .</p><p>Given posterior viewpoint distributions, we optimize the value of random variables θ 0 u for each user u. Using two bounds defined in <ref type="bibr" target="#b26">[27]</ref>, we derive the following update rule for obtaining each user u's optimized viewpoint distribution in Eq. 8 via fixed-point iterations:</p><formula xml:id="formula_20">θ0 u,v ← θ 0 u,v • v∈V Ψ(n u r,v + θ u r,v ) − Ψ(θ u r,v ) v∈V Ψ(n u v + Ru • θ u r,v ) − Ψ(Ru • θ u r,v ) ,<label>(9)</label></formula><p>where Ψ(x) is a digamma function defined by</p><formula xml:id="formula_21">Ψ(x) = ∂ log Γ(x)</formula><p>∂x , and θ u r,v is defined in Eq. 4. This concludes our derivations for Algorithm 1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Prediction</head><p>After Gibbs EM sampling, for each user u ∈ U, we have a matrix θu to describe the conditional probability of ratings given u's viewpoints, i.e., P (r | v, u) = θ u r,v over ratings. For each item i ∈ I, we have a viewpoint distribution πi, i.e., P (v | i) = πv,i. Therefore, given user u ∈ U and item i ∈ I, in order to predict an unknown rating between u and i, we calculate the probability of the rating ru,i = r by Eq. 10:</p><formula xml:id="formula_22">P (ru,i = r | u, i) = v∈V θ u r,v • πi,v.<label>(10)</label></formula><p>By ranking P (ru,i = r | u, i) for each candidate rating r, we choose the rating r with the highest probability as the predicted rating for u and i.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">EXPERIMENTAL SETUP</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Research questions</head><p>We list the research questions that guide the remainder of the paper: (RQ1) What is the performance of sCVR in rating prediction and top-k item recommendation tasks? Does it outperform state-of-the-art baselines? (RQ2) Can sCVR generate explainable recommendation results? (RQ3) What is the effect of the number of viewpoints and the number of topics on the performance of sCVR? (RQ4) What is the effect of trusted social relations in collaborative filtering? Do they help to enhance the recommendation performance?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Datasets</head><p>We use three benchmark datasets in our experiments: the Yelp dataset challenge 2013, Yelp dataset challenge 2014 1 and Epinions.com dataset. 2 Each dataset has previously been used in research on recommendation algorithms <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b39">40]</ref>. In total, there are over 400,000 users, 80,000 items, 4,000,000 trusted social relations and 2,000,000 user reviews in our datasets. We show the statistics about our datasets in Table <ref type="table" target="#tab_1">2</ref>. Epinions.com is a consumer opinion website on which people can share their reviews of products. Members of Epinions can review items, e.g., food, books, and electronics, and assign numeric ratings from 1 to 5. Epinions members can identify their own Web of Trust, a group of "reviewers whose reviews and ratings they have consistently found to be valuable." Released by <ref type="bibr" target="#b6">[7]</ref>, this dataset includes 3, 474 users with 77, 267 reviews for 26, 850 items; there are 37, 587 social edges in this dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Evaluation metrics</head><p>We employ two offline evaluation metrics in our experiments: Mean Absolute Error (MAE) and Root Mean Square Error (RMSE). Both of them are widely used evaluation metrics for rating prediction in recommender systems. Given a predicted rating ru,i and a ground-truth rating ru,i from user u to item i, the RMSE is calcu- Social-aware collaborative topic regression <ref type="bibr" target="#b6">[7]</ref> lated as:</p><formula xml:id="formula_23">RMSE = 1 R u,i (ru,i − ru,i) 2 ,<label>(11)</label></formula><p>where R indicates the number of ratings between users and items. Similarly, MAE is calculated as follows:</p><formula xml:id="formula_24">MAE = 1 R u,i |ru,i − ru,i|.<label>(12)</label></formula><p>These two criteria measure the error between the true ratings and the predicted ratings. Statistical significance of observed differences between the performance of two runs is tested using a two-tailed paired t-test and is denoted using (or ) for strong significance for α = 0.01; or (or ) for weak significance for α = 0.05.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Baselines and comparisons</head><p>We list the methods and baselines that we consider in Table <ref type="table" target="#tab_2">3</ref>. In this paper, we propose the social collaborative viewpoint regression model (sCVR); we write sCVR for the overall process as described in Section 4, which includes both viewpoint modeling and social relation modeling. We write CVR for the model that only considers viewpoint modeling in Section 4.</p><p>Our baselines include recent work on both collaborative filtering and explainable recommendation methods. To evaluate the performance of our viewpoint modeling methods in explainable recommendation, we contrast them against previous work on explainable recommendation: the hidden factors topic model (HFT) <ref type="bibr" target="#b24">[25]</ref>, the collaborative topic regression (CTR) <ref type="bibr" target="#b47">[48]</ref>, and the ratings meet reviews model (RMR) <ref type="bibr" target="#b21">[22]</ref>. Using a sentiment lexicon analysis tool <ref type="bibr" target="#b53">[54]</ref>, we use EFM <ref type="bibr" target="#b53">[54]</ref> as a baseline in our experiments for explainable recommendation. To evaluate the effect of social communities in explainable recommendation, we use social-aware collaborative topic regression (SCTR) <ref type="bibr" target="#b6">[7]</ref> as another baseline. We also compare sCVR with recent collaborative filtering methods: probabilistic matrix factorization (PMF) <ref type="bibr" target="#b27">[28]</ref>, non-negative matrix factorization (NMF) <ref type="bibr" target="#b19">[20]</ref>, list-rank matrix factorization (LRMF) <ref type="bibr" target="#b35">[36]</ref> and collaborative less-is-more filtering (CliMF) <ref type="bibr" target="#b36">[37]</ref>. To compare sCVR with collaborative filtering using trusted social relations, we use trust matrix factorization (TrMF) <ref type="bibr" target="#b49">[50]</ref> and social matrix factorization (SoMF) <ref type="bibr" target="#b14">[15]</ref> as another two baselines. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">RESULTS AND DISCUSSION</head><p>In Section 6.1, we compare sCVR to other baselines for rating prediction; we discuss the explainability of rating predictions in Section 6.2; in Section 6.3 we examine the performance of sCVR for varying numbers of viewpoints and topics; Section 6.4 examines the effect of social relations in sCVR.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1">Overall performance</head><p>To start, for research question RQ1, to evaluate the effectiveness of sCVR in personalized recommendation, we examine the performance of sCVR on the rating prediction task. Table <ref type="table" target="#tab_3">4</ref> lists the performance of all methods in terms of MAE and RMSE. Because our baselines predict decimal rating values based on a Gaussian noise distribution, following Beutel et al. <ref type="bibr" target="#b2">[3]</ref>, we calculate the predictive probability, i.e., P (r | r), for each predicted rating r, and we use the discrete rating with highest predictive probability in our experiments. For all three datasets, sCVR outperforms other baselines, and significantly outperforms SCTR on the Yelp 2013 and 2014 datasets. The list-wise learning to rank methods (LRMF and CliMF) do not perform well in rating prediction, whereas methods considering social relations outperform other methods. To understand the benefits of viewpoint modeling (and in particular, the addition of concepts and sentiment), we compare sCVR with SCTR, which ignores concepts and sentiment during topic modeling. On the Yelp 2013 dataset, sCVR achieves a 16.7% and 8.2% decrease over SCTR in terms of MAE and RMSE, respectively, whereas on the Yelp 2014 dataset, it achieves decreases of 11.1% and 5.2%, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Explainability</head><p>Next, we turn to RQ2. Apart from being more accurate at rating prediction, another advantage of sCVR over collaborative filtering methods is that it provides explainable recommendation results. Explainability of recommendations is often assessed using examples <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b47">48]</ref>; we follow a similar method. To illustrate the explainability of outcomes of sCVR, Table <ref type="table" target="#tab_4">5</ref> shows 3 examples of detected viewpoints. In the example viewpoints in Table <ref type="table" target="#tab_4">5</ref>, we see concepts with relevant topics and corresponding sentiment labels. For each viewpoint, we find that relevant topics in the second col- umn help to interpret the concept in the first column, and sentiment labels inform users on opinions in the viewpoint; we also find that the predicted ratings are consistent with the polarity of sentiment for each viewpoint.</p><p>In addition, to explicitly assess the quality of our explanations, we take a random sample of 100 recommendations and manually evaluate the corresponding explanations for accuracy of topic and sentiment label, and for agreement between sentiment label and actual rating. 3 Due to space limitations we only include sCVR, RMR (the best performing explainable baseline), and EFM (the only baseline that utilizes sentiment analysis during rating prediction); see Table <ref type="table" target="#tab_5">6</ref>. We find that sCVR outperforms RMR, for topic detection in terms of accuracy. sCVR outperforms EFM in terms of accuracy for sentiment label. As to the agreement between sentiment labels and predicted ratings, compared with EFM, sCVR offers an increase of up to 18.7%. This evaluation indicates that viewpoints make good sense; based on this outcome and the anecdotal evidence mentioned above, we believe that they are more informative explanations than mere topic labels, which were used in prior work; checking this through a user study is left as future work. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.3">Number of viewpoints and topics</head><p>Turning to RQ3, under the default value of the number of topics K = 20 in sCVR, in Fig. <ref type="figure" target="#fig_6">3</ref>(a) we examine the RMSE performance of sCVR with varying numbers of viewpoints. We find that the performance of sCVR in terms of RMSE hits a minimum when the number of viewpoints equals 70 for the Yelp 2013 dataset; with fewer than 70, performance decreases but when the number exceeds 70, due to the redundancy of viewpoints in rating prediction, performance increases. Similar phenomena can be found for the Yelp 2014 and Epinions datasets. For Yelp 2014, sCVR achieves its best RMSE performance when the number of viewpoints equals 80, whereas for the Epinions dataset, it achieves its best RMSE performance when we set V to 40.</p><p>Under the default value of the number of viewpoints V = 30, we evaluate the RMSE performance of sCVR with varying numbers of topics in Fig. <ref type="figure" target="#fig_6">3(b)</ref>. We find that for the Yelp 2013 dataset, sCVR achieves its best RMSE performance when K = 80, whereas for 3 We say that there is agreement if the rating s ≥ 3 (&lt; 3) and the sentiment label of the corresponding review is positive (negative).  the Yelp 2014 dataset this value is 40. For the Epinions dataset, sCVR performs best when K = 30.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4">Effect of social relations</head><p>Finally, we address RQ4. To determine the contribution of social relations in the rating prediction task, we turn to Table <ref type="table" target="#tab_6">7</ref>, where columns 2-3 and 4-5 show the performance of CVR and sCVR, respectively, in terms of MAE and RMSE. Recall that CVR only detects viewpoints without considering social relations. We find that sCVR, which does consider social relations, outperforms CVR significantly on all three datasets. From Table <ref type="table" target="#tab_3">4</ref>, we also see that methods considering social relations perform quite well in terms of MAE and RMSE. For the Yelp 2013 dataset, sCVR achieves a 6.7% decrease over CVR in terms of RMSE. For the Yelp 2014 dataset, sCVR achieves a 7.4% decrease over CVR in terms of RMSE. In terms of RMSE, on the Epinions dataset, sCVR achieves a significant decrease over CVR of 18.7%. Thus, we conclude that social communities can successfully be applied to enhance the performance of rating prediction. To evaluate the effect of the number of social relations, Fig. <ref type="figure" target="#fig_8">4</ref> shows the average RMSE performance for users with different numbers of social relations on the Yelp 2013 and Yelp 2014 datasets. From Fig. <ref type="figure" target="#fig_8">4</ref> we find that for both Yelp 2013 and Yelp 2014 datasets, RMSE performance shows a "wave-like" decrease as the number of social relations increases. Thus, users with more social relations, in most cases, will achieve better prediction results using sCVR.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">CONCLUSION AND FUTURE WORK</head><p>We have considered the task of rating-based recommendations with explanations. To improve the rating prediction, we have identified two main problems: opinions in users' short comments, and complex trusted social relations. We have tackled these problems by proposing a novel latent variable model, the social collaborative viewpoint regression model, which detects viewpoints and uses social relations. The model has two key parts: viewpoint detection and rating prediction. Based on the probabilistic distribution of viewpoints, we predict users' ratings of items.</p><p>In our experiments, we have demonstrated the effectiveness of our proposed method and have found significant improvements over state-of-the-art baselines when tested with three benchmark datasets. Viewpoint modeling is helpful for rating prediction and item recommendation. We have also shown that the use of social relations can enhance the accuracy of rating predictions. The viewpoints used can be used as more informative explanations of items and of users' preferences than simple topic-based ones used previously.</p><p>Limitations of our work include the fact that it ignores topic drift over time <ref type="bibr" target="#b16">[17]</ref>. Furthermore, as it is based on topic models, the conditional independence among topics may in principle lead to redundant viewpoints and topics. As to future work, we plan to explore whether ranking-based strategies that integrate our sCVR model can enhance the performance of item recommendation and whether a combination with interaction data <ref type="bibr" target="#b8">[9]</ref> can help to improve performance even further. Also, the transfer of our approach to streaming corpora should give new insights. Finally, we would like to conduct user studies to verify the interpretability of the explanations that sCVR generates and to examine their usefulness across recommendation scenarios.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>3 V 2 i 1 Figure 1 :</head><label>3211</label><figDesc>Figure 1: An example of trusted social relations, user reviews and ratings in a recommender system. Black arrows connect users with trusted social relations. "ThumpUp" symbols reflect the ratings of items. Concepts and topics have been highlighted in red and blue, respectively. Three viewpoints are represented in three different colors. A viewpoint is a mixture over a concept, a topic, and a sentiment (explained in Section 3).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>-</head><label></label><figDesc>Draw πv ∼ Dir(α); For each user review d ∈ Du,i from user u: * Draw a viewpoint v ∼ M ulti(π); * Draw a concept e d ∼ M ulti(λv); * Draw σ ∼ Dir(τ ); * For each word wj in document d:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Generative process of sCVR.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>4 for u = 1 to U do 5 for i = 1 to I do 6 3 7 8</head><label>45638</label><figDesc>Draw fu,i = y from Eq. Update n i,y f , n i,y v and n r (u,i) ,y uDraw v d = v from Eq. 6 9</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>10 for j = 1 to N d do 11 Draw 12 if xj = 0 then 13 Update nv,z j , n w j z j ,l j ,v and n w j x j 14 end 15 if xj = 0 then 16 Update</head><label>10111213141516</label><figDesc>zj, lj, xj from Eq. 6 nv,z j , n w j k j ,l j ,v , n w jx j and n z j ,l j ,v</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head></head><label></label><figDesc>Different numbers of topics.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: RQ3: RMSE of sCVR with different numbers of viewpoints and topics.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: RQ4: RMSE of sCVR with different numbers of social relations on the Yelp datasets.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Glossary.    </figDesc><table><row><cell cols="2">Symbol Description</cell></row><row><cell>I</cell><cell>candidate items</cell></row><row><cell>U</cell><cell>candidate users</cell></row><row><cell>D</cell><cell>user reviews</cell></row><row><cell>N</cell><cell>vocabulary in review corpus D</cell></row><row><cell>T</cell><cell>trust values among users</cell></row><row><cell>R</cell><cell>user ratings</cell></row><row><cell>V</cell><cell>viewpoints set</cell></row><row><cell>E</cell><cell>concepts set</cell></row><row><cell>Z</cell><cell>topics set in Z</cell></row><row><cell>Q</cell><cell>observed indices</cell></row><row><cell>u</cell><cell>a user, u ∈ U</cell></row><row><cell>i</cell><cell>an item, i ∈ I</cell></row><row><cell>d</cell><cell>a review, d ∈ D</cell></row><row><cell>v d</cell><cell>a viewpoint in review d, v d ∈ V</cell></row><row><cell>e d</cell><cell>a concept in review d, e d ∈ E</cell></row><row><cell>wj</cell><cell>the j-th word present in a review, wj ∈ N</cell></row><row><cell>zj</cell><cell>a topic present in word wj, zj ∈ Z</cell></row><row><cell>lj</cell><cell>a sentiment label present in word wj</cell></row><row><cell>fu</cell><cell>a viewpoint selected by user u</cell></row><row><cell>ru,i</cell><cell>the rating value from user u to item i</cell></row><row><cell>π</cell><cell>distribution of viewpoints</cell></row><row><cell>θ u v</cell><cell>distribution of viewpoint v for user u</cell></row><row><cell>λ</cell><cell>distribution of concepts over viewpoints</cell></row><row><cell>µ</cell><cell>distribution of topics over viewpoints</cell></row><row><cell>φ v,z,l</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Overview of the three datasets used in the paper.Yelp provides a business reviewing platform. Users are able to create a profile that they can use to rate and comment on services provided by local businesses. This service also provides users with the ability to incorporate a social aspect to their profiles by adding people as friends. Our first two datasets ("Yelp challenge 2013" and "Yelp challenge 2014" in Table2) consist of data from the Yelp dataset challenge 2013 and 2014, respectively. The Yelp dataset challenge 2013 contains 15, 584 items, 70, 816 users and 335, 021 user reviews. Between the users, there are 622, 873 social relations. For the Yelp dataset challenge 2014, we find 366, 715 users, 61, 184 items, 1, 569, 264 reviews and 2, 949, 285 edges in the dataset. The two datasets are quite sparse, which may negatively most collaborative filtering methods based on ratings.</figDesc><table><row><cell></cell><cell cols="3">Yelp 2013 Yelp 2014 Epinions</cell></row><row><cell>items</cell><cell>15,584</cell><cell>61,184</cell><cell>26,850</cell></row><row><cell>reviews</cell><cell cols="2">335,021 1,569,264</cell><cell>77,267</cell></row><row><cell>users</cell><cell>70,816</cell><cell>366,715</cell><cell>3,474</cell></row><row><cell>relations</cell><cell cols="2">622,873 2,949,285</cell><cell>37,587</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Baselines and methods used for comparison.</figDesc><table><row><cell cols="2">Acronym Gloss</cell><cell cols="2">Reference</cell></row><row><cell>CVR</cell><cell>Collaborative viewpoint regression</cell><cell cols="2">Section 4</cell></row><row><cell>sCVR</cell><cell>Social collaborative viewpoint regression</cell><cell cols="2">Section 4</cell></row><row><cell cols="2">Collaborative filtering methods</cell><cell></cell></row><row><cell cols="4">CliMF Maximize reciprocal rank method for item ranking [37]</cell></row><row><cell cols="4">LRMF List-wise learning to rank method for item ranking [36]</cell></row><row><cell>NMF</cell><cell>Non-negative matrix factorization</cell><cell></cell><cell>[20]</cell></row><row><cell>PMF</cell><cell>Probabilistic matrix factorization</cell><cell></cell><cell>[28]</cell></row><row><cell>SoMF</cell><cell>Trust propagation matrix factorization</cell><cell></cell><cell>[15]</cell></row><row><cell>TrMF</cell><cell>Trust social matrix factorization</cell><cell></cell><cell>[50]</cell></row><row><cell cols="2">Explainable recommendation methods</cell><cell></cell></row><row><cell>CTR</cell><cell>Collaborative topic regression model</cell><cell></cell><cell>[48]</cell></row><row><cell>EFM</cell><cell cols="2">Explicit factor model for item recommendation</cell><cell>[54]</cell></row><row><cell>HFT</cell><cell>Hidden factors as topics model</cell><cell></cell><cell>[25]</cell></row><row><cell>RMR</cell><cell>Ratings meet reviews model</cell><cell></cell><cell>[22]</cell></row><row><cell>SCTR</cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 :</head><label>4</label><figDesc>RQ1: MAE and RMSE values for rating prediction. Significant differences are with respect to SCTR (row with shaded background).</figDesc><table><row><cell></cell><cell cols="2">Yelp 2013</cell><cell cols="2">Yelp 2014</cell><cell cols="2">Epinions</cell></row><row><cell></cell><cell>MAE</cell><cell>RMSE</cell><cell>MAE</cell><cell>RMSE</cell><cell cols="2">MAE RMSE</cell></row><row><cell cols="3">Collaborative filtering</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">CliMF 1.109</cell><cell>1.524</cell><cell>1.591</cell><cell>1.912</cell><cell>0.493</cell><cell>0.582</cell></row><row><cell cols="2">LRMF 1.653</cell><cell>1.944</cell><cell>1.897</cell><cell>2.042</cell><cell>0.517</cell><cell>0.626</cell></row><row><cell>NMF</cell><cell>1.130</cell><cell>1.591</cell><cell>1.284</cell><cell>1.763</cell><cell>0.595</cell><cell>0.691</cell></row><row><cell>PMF</cell><cell>1.427</cell><cell>1.853</cell><cell>1.424</cell><cell>1.902</cell><cell>0.526</cell><cell>0.688</cell></row><row><cell cols="2">SoMF 0.912</cell><cell>1.375</cell><cell>0.924</cell><cell>1.402</cell><cell>0.554</cell><cell>0.673</cell></row><row><cell>TrMF</cell><cell>1.109</cell><cell>1.524</cell><cell>1.134</cell><cell>1.564</cell><cell>0.542</cell><cell>0.667</cell></row><row><cell cols="4">Explainable recommendations</cell><cell></cell><cell></cell><cell></cell></row><row><cell>CTR</cell><cell>0.915</cell><cell>1.169</cell><cell>0.971</cell><cell>1.294</cell><cell>0.525</cell><cell>0.612</cell></row><row><cell>EFM</cell><cell>0.912</cell><cell>1.182</cell><cell>1.124</cell><cell>1.452</cell><cell cols="2">0.5320 0.6440</cell></row><row><cell>HFT</cell><cell>0.844</cell><cell>1.072</cell><cell>1.094</cell><cell>1.336</cell><cell cols="2">0.5170 0.6040</cell></row><row><cell>LDA</cell><cell>1.232</cell><cell>1.622</cell><cell>1.294</cell><cell>1.677</cell><cell cols="2">0.5260 0.6120</cell></row><row><cell>RMR</cell><cell>0.812</cell><cell>1.013</cell><cell>0.937</cell><cell>1.283</cell><cell cols="2">0.5140 0.6020</cell></row><row><cell cols="2">SCTR 0.894</cell><cell>1.065</cell><cell>0.907</cell><cell>1.262</cell><cell>0.472</cell><cell>0.584</cell></row><row><cell cols="2">sCVR 0.744</cell><cell>0.977</cell><cell>0.806</cell><cell>1.196</cell><cell>0.482</cell><cell>0.579</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 5 :</head><label>5</label><figDesc>RQ2: Example viewpoints produced by sCVR on the Yelp 2013 dataset. Column 1 lists the concepts corresponding to the viewpoints; Column 2 list the topics in the viewpoints, Columns 3 and 4 list the probabilities of positive and negative labels for each topic, respectively, Column 5 lists the predicted rating scores with their probabilities for each viewpoint.</figDesc><table><row><cell>Concept</cell><cell>Topic</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 6 :</head><label>6</label><figDesc>RQ2: Explainability. Column 1 and 2 list the accuracy of topic detection and sentiment detection, respectively. Column 4 lists the agreement between sentiment labels and predicted ratings.</figDesc><table><row><cell cols="4">Method Topics Sentiment labels Agreement</cell></row><row><cell>EFM</cell><cell>N/A</cell><cell>0.715</cell><cell>0.644</cell></row><row><cell>RMR</cell><cell>0.542</cell><cell>N/A</cell><cell>N/A</cell></row><row><cell>sCVR</cell><cell>0.569</cell><cell>0.893</cell><cell>0.792</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 7 :</head><label>7</label><figDesc>RQ4: Effect of social communities on rating prediction in our three datasets.</figDesc><table><row><cell></cell><cell>CVR</cell><cell cols="2">sCVR</cell></row><row><cell>Dataset</cell><cell>MAE RMSE</cell><cell>MAE</cell><cell>RMSE</cell></row><row><cell cols="3">Yelp 2013 0.8620 1.0490 0.744</cell><cell>0.977</cell></row><row><cell cols="3">Yelp 2014 0.9530 1.2910 0.806</cell><cell>1.196</cell></row><row><cell>Epinions</cell><cell cols="2">0.6410 0.7120 0.482</cell><cell>0.579</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">Datasets are available at http://www.yelp.com/dataset_challenge.<ref type="bibr" target="#b1">2</ref> This dataset is available at http://epinions.com.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0" />
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Improved neighborhood-based collaborative filtering</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD Cup and Workshop at the KDD</title>
+				<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Representation learning: A review and new perspectives. Pattern Analysis and Machine Intelligence</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Courville</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Vincent</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1798" to="1828" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Cobafi: collaborative bayesian filtering</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Beutel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Murray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Faloutsos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Smola</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Who, what, when, and where: Multi-dimensional collaborative recommendations using tensor factorization on sparse user-generated data</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhargava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Phan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lee</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Explaining recommendations: Satisfaction vs. promotion</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bilgic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Beyond Personalization Workshop, IUI</title>
+				<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Latent dirichlet allocation</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jordan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine Learning research</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="993" to="1022" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Context-aware collaborative topic regression with social matrix factorization for recommender systems</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Collaborative personalized tweet recommendation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Click Models for Web Search</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chuklin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Markov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Synthesis Lectures on Information Concepts, Retrieval, and Services</title>
+		<imprint>
+			<date type="published" when="2015-08">August 2015</date>
+			<publisher>Morgan &amp; Claypool Publishers</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Jointly modeling aspects, ratings and sentiments for movie recommendation (jmars)</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Diao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<editor>KDD</editor>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">A holistic lexicon-based approach to opinion mining</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Trirank: Review-aware explainable recommendation by modeling aspects</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Reducing the dimensionality of data with neural networks</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">E</forename><surname>Hinton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">313</biblScope>
+			<biblScope unit="issue">5786</biblScope>
+			<biblScope unit="page" from="504" to="507" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Listwise collaborative filtering</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Veijalainen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">A matrix factorization technique with trust propagation for recommendation in social networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jamali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ester</surname></persName>
+		</author>
+		<editor>RecSys</editor>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">A sentence model based on convolutional neural networks</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kalchbrenner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Grefenstette</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Blunsom</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Ad hoc monitoring of vocabulary shifts over time</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kenter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Huijnen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wevers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM 2015: 24th ACM Conference on Information and Knowledge Management</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015-10">October 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">On social networks and collaborative recommendation</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Konstas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Stathopoulos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Jose</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Algorithms for non-negative matrix factorization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">S</forename><surname>Seung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Structure-aware review mining and summarization</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-J</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Coling</title>
+				<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Ratings meet reviews, a combined approach to recommend</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM RecSys</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Content-based recommender systems: State of the art and trends</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lops</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">De</forename><surname>Gemmis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Semeraro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="73" to="105" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Learning to recommend with social trust ensemble</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lyu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="203" to="210" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Efficient estimation of word representations in vector space</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dean</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1301.3781</idno>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Estimating a dirichlet distribution</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Minka</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Probabilistic matrix factorization</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Thumbs up?: sentiment classification using machine learning techniques</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vaithyanathan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Summarizing contrastive themes via hierarchical non-parametric processes</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Time-aware multi-viewpoint summarization of multilingual social text streams</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Inel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Aroyo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Grouplens: an open architecture for collaborative filtering of netnews</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Resnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Iacovou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Suchak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bergstrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1994">1994</date>
+			<publisher>CSCW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Explaining the predictions of any classifier</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Ribeiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Guestrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note>Why should I trust you?</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<title level="m" type="main">Do social explanations work?: studying and modeling the effects of social explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cosley</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<title level="m" type="main">List-wise learning to rank with matrix factorization for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Larson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hanjalic</surname></persName>
+		</author>
+		<editor>RecSys</editor>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">Climf: learning to maximize reciprocal rank with collaborative less-is-more filtering</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Baltrunas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Larson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Oliver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hanjalic</surname></persName>
+		</author>
+		<editor>RecSys</editor>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Recursive deep models for semantic compositionality over a sentiment treebank</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Socher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">A survey of collaborative filtering techniques</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Khoshgoftaar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in artificial intelligence</title>
+		<imprint>
+			<date type="published" when="2009">2009: 4, 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Learning sentiment-specific word embedding for twitter sentiment classification</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Qin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Document modeling with gated recurrent neural network for sentiment classification</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">User modeling with neural network for review rating prediction</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Sentiment strength detection for the social web</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Thelwall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Buckley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Paltoglou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Soc. Inf. Sci. Technol</title>
+		<imprint>
+			<biblScope unit="volume">63</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="163" to="173" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Designing and evaluating explanations for recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Thumbs up or thumbs down?: semantic orientation applied to unsupervised classification of reviews</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">D</forename><surname>Turney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: explaining recommendations using tags</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IUI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Topic modeling: beyond bag-of-words</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wallach</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML 2006</title>
+				<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="977" to="984" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Collaborative topic modeling for recommending scientific articles</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering incorporating review text and co-clusters of hidden user communities and item groups</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Social collaborative filtering by trust</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Like like alike: joint friendship and interest propagation in social networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sadagopan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zha</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW 2011</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="537" to="546" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Exploring social influence for recommendation: a generative model approach</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">Localized matrix factorization for recommendation based on matrix block diagonal forms</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Feng</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Moodlens: an emoticon-based sentiment analysis system for chinese tweets</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

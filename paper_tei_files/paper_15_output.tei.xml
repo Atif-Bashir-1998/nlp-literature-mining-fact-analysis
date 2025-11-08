@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A Survey on LLM-powered Agents for Recommender Systems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Qiyao</forename><surname>Peng</surname></persName>
+							<email>qypeng@tju.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of New Media and Communication</orgName>
+								<orgName type="institution">Tianjin University</orgName>
+								<address>
+									<settlement>Tianjin</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hongtao</forename><surname>Liu</surname></persName>
+							<email>liuhongtao01@duxiaoman.com</email>
+							<affiliation key="aff1">
+								<orgName type="department">Du Xiaoman Financial Technology</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hua</forename><surname>Huang</surname></persName>
+							<email>huanghua18@tju.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of New Media and Communication</orgName>
+								<orgName type="institution">Tianjin University</orgName>
+								<address>
+									<settlement>Tianjin</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Qing</forename><surname>Yang</surname></persName>
+							<email>yangqing@duxiaoman.com</email>
+							<affiliation key="aff1">
+								<orgName type="department">Du Xiaoman Financial Technology</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Minglai</forename><surname>Shao</surname></persName>
+							<email>shaoml@tju.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of New Media and Communication</orgName>
+								<orgName type="institution">Tianjin University</orgName>
+								<address>
+									<settlement>Tianjin</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">A Survey on LLM-powered Agents for Recommender Systems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">3D88C1EA54CE8F7645236050FCA19C48</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:55+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recommender systems are essential components of many online platforms, yet traditional approaches still struggle with understanding complex user preferences and providing explainable recommendations. The emergence of Large Language Model (LLM)-powered agents offers a promising approach by enabling natural language interactions and interpretable reasoning, potentially transforming research in recommender systems. This survey provides a systematic review of the emerging applications of LLM-powered agents in recommender systems. We identify and analyze three key paradigms in current research: (1) Recommender-oriented approaches, which leverage intelligent agents to enhance the fundamental recommendation mechanisms; (2) Interaction-oriented approaches, which facilitate dynamic user engagement through natural dialogue and interpretable suggestions; and</p><p>(3) Simulation-oriented approaches, which employ multi-agent frameworks to model complex useritem interactions and system dynamics. Beyond paradigm categorization, we analyze the architectural foundations of LLM-powered recommendation agents, examining their essential components: profile construction, memory management, strategic planning, and action execution. Our investigation extends to a comprehensive analysis of benchmark datasets and evaluation frameworks in this domain. This systematic examination not only illuminates the current state of LLM-powered agent recommender systems but also charts critical challenges and promising research directions in this transformative field.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>In the era of information explosion, recommender systems <ref type="bibr" target="#b19">[Wu et al., 2022]</ref> have become an indispensable component of digital platforms, helping users navigate through massive amounts of content across e-commerce, social media, and entertainment domains. While traditional recommendation approaches <ref type="bibr" target="#b1">[He et al., 2017]</ref> have achieved considerable success in providing personalized suggestions through analyzing user preferences and historical behaviors, they still face significant challenges in real-world applications, such as limited understanding of complex user intents, insufficient interaction capabilities, and the inability to provide interpretable recommendations <ref type="bibr">[Zhu et al., 2024b]</ref>.</p><p>Recent advancements in Large Language Models (LLMs) <ref type="bibr" target="#b0">[Achiam et al., 2023]</ref> have sparked increasing interest in leveraging LLM-powered agents <ref type="bibr">[Wang et al., 2024a]</ref> to address the aforementioned challenges in recommender systems. The integration of LLM-powered agents into recommender systems offers several compelling advantages over traditional approaches <ref type="bibr">[Zhu et al., 2024b]</ref>. First, LLM agents can understand complex user preferences and generate contextual recommendations through their sophisticated reasoning capabilities, enabling more nuanced decision-making beyond simple feature-based matching. Second, their natural language interaction abilities facilitate multi-turn conversations that proactively explore user interests and provide interpretable explanations, enhancing both recommendation accuracy and user experience. Third, these agents revolutionize user behavior simulation by generating more realistic user profiles that incorporate emotional states and temporal dynamics, enabling more effective system evaluation. Furthermore, the pre-trained knowledge and strong generalization capabilities of LLMs facilitate better knowledge transfer across domains, addressing persistent challenges such as cold-start <ref type="bibr" target="#b13">[Shu et al., 2024]</ref> with minimal additional training.</p><p>In this survey, we present a comprehensive review of LLMpowered agents for recommender systems. First, we introduce the background of traditional recommender systems and discuss their limitations in understanding complex user intents, interaction capabilities, and interpretability. We then systematically examine how LLM-powered agents address these challenges through three main paradigms: recommenderoriented (e.g., <ref type="bibr">[Wang et al., 2024b;</ref><ref type="bibr" target="#b22">Wang et al., 2024c]</ref>), interaction-oriented (e.g., <ref type="bibr" target="#b21">[Zeng et al., 2024;</ref><ref type="bibr">Friedman et al., 2023]</ref>), and simulation-oriented (e.g., <ref type="bibr" target="#b20">[Yoon et al., 2024;</ref><ref type="bibr" target="#b0">Guo et al., 2024]</ref>) approaches. Following that, we propose a unified agent architecture consisting of four core modules <ref type="bibr">(Profile [Cai et al., 2024;</ref><ref type="bibr" target="#b22">Zhang et al., 2024c]</ref>, Memory <ref type="bibr">[Shi et al., 2024;</ref><ref type="bibr" target="#b0">Fang et al., 2024]</ref>, Planning <ref type="bibr" target="#b16">[Wang et al., 2023b;</ref><ref type="bibr">Shi et al., 2024]</ref>, and Action <ref type="bibr" target="#b23">[Zhu et al., 2024a;</ref><ref type="bibr">Zhao et al., 2024]</ref>) and analyze how existing methods implement these arXiv:2502.10050v1 [cs.IR] 14 Feb 2025 components. Furthermore, we compile comprehensive comparisons of datasets (including Amazon series, MovieLens, Steam, etc.) and evaluation methodologies, encompassing both standard recommendation metrics and novel evaluation approaches. Finally, we explore several promising future directions in this field.</p><p>• We propose a systematic categorization of LLM-powered recommender agents, identifying three fundamental paradigms: recommender-oriented, interaction-oriented, and simulation-oriented approaches. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Background</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Traditional Recommendation</head><p>In conventional recommendation systems, the problem is typically formulated over a user space U = [u 1 , u 2 , ..., u m ], an item space I = [i 1 , i 2 , ..., i n ], and their interaction matrix D ∈ R m×n . The fundamental goal is to learn a preference function p : U × I → R that predicts user preferences:</p><formula xml:id="formula_0">min θ (u,i)∈D L(p θ (u, i), y u,i ) ,<label>(1)</label></formula><p>where p θ (u, i) represents the predicted preference and y u,i denotes the ground truth interaction. While various approaches have been proposed, from matrix factorization <ref type="bibr" target="#b1">[Hu et al., 2008]</ref> to deep learning <ref type="bibr" target="#b1">[He et al., 2017]</ref>, these traditional methods face several inherent limitations. First, they struggle to understand complex user intents beyond numerical interactions. Second, they lack the ability to engage in meaningful interactions to explore user preferences. Third, their recommendations often appear as a "black box" without clear explanations for users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">LLM as Agent</head><p>Large Language Model (LLM) as an agent is an emerging research direction that has garnered significant attention <ref type="bibr">[Park et al., 2023]</ref>. By transcending the traditional static promptresponse paradigm, it establishes a dynamic decision-making framework <ref type="bibr" target="#b8">[Patil et al., 2023]</ref> capable of systematically decomposing complex tasks into manageable components. A typical LLM-powered agent architecture integrates four fundamental modules <ref type="bibr">[Wang et al., 2024a]</ref>: (1) the Profile module, which constructs and maintains comprehensive user feature representations;</p><p>(2) the Memory module, which orchestrates historical interactions and preserves contextual information for systematic experience accumulation; (3) the Planning module, which formulates strategic policies through sophisticated task decomposition and multi-objective optimization; and (4) the Action module, which executes decisions and facilitates environment interaction. The emergence of pioneering works such as ReAct <ref type="bibr">[Yao et al., 2023]</ref>, Toolformer <ref type="bibr" target="#b9">[Schick et al., 2023]</ref>, and HuggingGPT <ref type="bibr" target="#b11">[Shen et al., 2024]</ref> has significantly advanced this field.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">LLM Agents for Recommendation</head><p>In LLM-powered agent for recommender systems, we formulate the recommendation process through an agent-centric framework. Let a ∈ A denote an agent equipped with a set of functional modules F = F 1 , F 2 , ..., F K , where each module F k represents a specific capability. The recommendation process for a user u can be formally expressed as:</p><formula xml:id="formula_1">ŷu = f (F k (X u )), k = 1 • • • K ,<label>(2)</label></formula><p>where X u ∈ X represents the input space containing userspecific information (e.g., interaction history, contextual features), and ŷu ∈ R N denotes the predicted preference distribution over the item space. The integration function f : </p><formula xml:id="formula_2">F k (X u ) → R N synthesizes</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methods</head><p>In this section, we sort out existing LLM-powered agent recommendation works based on the overall objective of the method and the agent components of different methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Method Objective</head><p>In Table <ref type="table">1</ref>, we classify method objectives of existing methods into three categories: recommender-oriented approaches, interaction-oriented methods, and simulation-oriented methods. The illustrations of categories are shown in Figure <ref type="figure">1</ref>.</p><p>(1) Recommender-oriented approaches focus on developing intelligent recommendation equipped with enhanced planning, reasoning, memory, and tool-using capabilities. In these approaches, LLMs leverage users' historical behaviors to generate direct recommendation decisions. For instance, as shown in Figure <ref type="figure">1</ref>, when a user demonstrates recent engagement with technology news and AI-related content, the system might strategically recommend: "Here are 5 articles about latest large language model breakthroughs, 3 introductory articles about machine learning basics, and 2 popular science pieces about AI's impact on society." This paradigm demonstrates how agents can effectively combine their core capabilities to deliver direct item recommendations.  Representative works in this direction include Rec-Mind <ref type="bibr">[Wang et al., 2024b]</ref>, which develops a unified LLM agent with comprehensive capabilities to generate recommendations directly through LLM outputs. MACRec, which introduces an agent-collaboration mechanism that orchestrates different types of agents to provide personalized recommendations <ref type="bibr" target="#b22">[Wang et al., 2024c]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Recommender-oriented</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Interaction</head><p>(2) Interaction-oriented methods focus on enabling natural language interaction and enhancing recommendation interpretability through conversational engagement. These approaches utilize LLMs to conduct human-like dialogues or explanation while making recommendations. For example, as shown in Figure <ref type="figure">1</ref>, an LLM might respond to a user query with: "I noticed that you like science fiction movies, especially after watching The Descent and Star Trek recently. Considering this preference, I would like to recommend Space Odyssey 2001, a classic film that also explores profound themes about human and alien civilizations. What do you think?" Such interactive recommendations showcase the agent's ability to not only track user preferences but also articulate recommendations in a conversational manner, explaining the reasoning behind suggestions.</p><p>AutoConcierge <ref type="bibr" target="#b21">[Zeng et al., 2024]</ref> uses natural language conversations to understand user needs and collect user preferences, and uses LLM to understand and generate language, ultimately providing explainable personalized restaurant recommendations. RAH <ref type="bibr" target="#b13">[Shu et al., 2024]</ref> is a human-computer interaction recommendation framework based on LLM agents. It realizes personalized recommendations and user intent understanding through the ResSys-Assistant-Human tripartite interaction and the Learn-Act-Critic loop mechanism.</p><p>(3) Simulation-oriented methods aim to authentically replicate user behaviors and preferences through sophisticated simulation techniques. These approaches leverage LLMs to generate realistic user responses to recommendations. For instance, when simulating user feedback, an LLM might generate: "As a user who is keen to explore new music, I will click on this new song that combines jazz and electronic elements because it matches my interest in experimental music while maintaining the rhythmic style that I like." These methods focus on using agents to simulate user behaviors and item characteristics in RSs.</p><p>Agent4Rec <ref type="bibr">[Zhang et al., 2024a]</ref> utilizes LLM-empowered generative agents as user simulators to model authentic interactions between users and recommender systems, aiming to replicate and evaluate realistic user behaviors in recommendation environments. AgentCF <ref type="bibr" target="#b22">[Zhang et al., 2024c]</ref> models both users and items as LLM-powered agents that autonomously interact and collaboratively learn from each other to simulate authentic user-item interactions in recommender systems. UserSimulator proposes <ref type="bibr" target="#b20">[Yoon et al., 2024]</ref> an evaluation protocol to assess LLMs as generative user simulators in conversational recommendation through five tasks to measure how closely these simulators can emulate authentic user behaviors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Agent Components</head><p>The LLM-based agent recommendation architecture consists of four main modules: Profile Module, Memory Module, Planning Module, and Action Module. Figure <ref type="figure">2</ref> illustrates the core components of the architecture and corresponding functions.</p><p>(1) Profile Module is a fundamental component that constructs and maintains dynamic representations of users and items in recommender systems. Through continuous analysis of historical interactions, it captures temporal and contextual patterns in user behavior. For example, when the system observes that a user often browses technology news on weekday </p><formula xml:id="formula_3">✓ ✓ ✓ ✓ H-MACRS [Nie et al., 2024] ✓ ✓ × ✓ Rec4Agentverse [Zhang et al., 2024b] ✓ × ✓ × Simulation- oriented Method KGLA [Guo et al., 2024] ✓ ✓ × ✓ CSHI [Zhu et al., 2024a] ✓ ✓ ✓ SUBER [Corecco et al., 2024] ✓ ✓ × × LUSIM [Zhang et al., 2024d] ✓ ✓ × × FLOW [Cai et al., 2024] ✓ ✓ × ✓ Agent4Rec [Zhang et al., 2024a] ✓ ✓ × ✓ AgentCF [Zhang et al., 2024c] ✓ ✓ × ✓ UserSimulator [Yoon et al., 2024] ✓ × × ✓ RecAgent [Wang et al., 2023a] ✓ ✓ × ✓ Table 1: Comparison of Different LLM-powered Agent Recommendation Methods.</formula><p>mornings and likes to watch travel content on weekends, the Profile Module will build a user profile of "focusing on technology news on weekdays and preferring leisure content on weekends". This adaptive profiling approach integrates behavioral patterns, user preferences, and external knowledge to enable highly personalized recommendations.</p><p>The profile module in Agent4Rec <ref type="bibr">[Zhang et al., 2024a]</ref> incorporates dual components: quantifiable social traits (activity, conformity, and diversity) and personalized preferences extracted via LLM, enabling a comprehensive simulation of user characteristics. MACRec <ref type="bibr" target="#b22">[Wang et al., 2024c]</ref> incorporates a user and item analyst, which play a crucial role in understanding user preferences and item characteristics. AgentCF <ref type="bibr" target="#b22">[Zhang et al., 2024c</ref>] constructs natural language-based user profiles to capture dynamic user preferences and item profiles to represent item characteristics and potential adopters' preferences, enabling personalized agent-based collaborative filtering.</p><p>(2) Memory Module serves as a contextual brain that manages and leverages historical interactions and experiences to enhance recommendation quality. It maintains a structured repository of past interactions, emotional responses, and conversational context to enable more informed decisions. For example, in a restaurant recommendation scenario, when a user comments "that Sichuan restaurant was too spicy last time", the Memory Module retrieves the specific restaurant reference from historical interactions and incorporates this preference signal into future recommendations, helping avoid overly spicy options. Through this continuous accumulation and utilization of experiential knowledge, the module enables more personalized and context-aware recommendations that reflect users' past experiences and preferences.</p><p>RecAgent <ref type="bibr" target="#b15">[Wang et al., 2023a]</ref> comprises three hierarchical levels: sensory memory, short-term memory, and long-term memory. The sensory memory processes environmental inputs, while short-term memory serves as an intermediate layer that can be transformed into long-term memory through repetitive reinforcement. Long-term memory stores crucial reusable information and facilitates self-reflection and knowledge generalization. Agent4Rec <ref type="bibr">[Zhang et al., 2024a]</ref> consists of factual memory (recording interactive behaviors) and emotional memory (capturing psychological states), stored in both natural language and vector representations, and managed through three mechanisms: retrieval, writing, and reflection.</p><p>(3) Planning Module outputs intelligent recommendation strategies by designing multi-step action plans that balance immediate user satisfaction with long-term engagement goals. It dynamically formulates recommendation trajectories through careful strategy generation and task sequencing. For example, in video recommendation, the system might construct a strategic plan: "first recommend a popular video to establish user interest, and then gradually introduce niche but high-quality related content, while maintaining the diversity of genres, and ultimately achieve the goal of both satisfying user interest and expanding horizons". Through this planning approach, the module optimizes resource allocation and adapts recommendation sequences to achieve both user engagement and item discovery.</p><p>BiLLP <ref type="bibr">[Shi et al., 2024]</ref> planning mechanism employs a hierarchical structure with two levels: macro-learning (Planner and Reflector LLMs) generates high-level strategic plans and guidelines from experience, while micro-learning (Actor-Critic) translates these plans into specific recommendations. MACRS <ref type="bibr" target="#b0">[Fang et al., 2024]</ref> uses a multi-agent planning system where a Planner Agent coordinates three Responder Agents (Ask, Recommend, Chat) through multi-step reasoning. The system adjusts its dialogue strategy through a feedback mechanism, enabling reflective planning based on user interactions.</p><p>(4) Action Module serves as the execution engine that transforms decisions into concrete recommendations through systematic interaction with various system components. For example, in an e-commerce scenario, when receiving the directive "recommend entry-level camera for new user" from the Planning Module, the Action Module executes a coordinated sequence: analyzing purchase patterns of similar users, querying the product database with specific price and feature constraints, generating targeted recommendations, and capturing user feedback. This execution enables the system to deliver contextually appropriate recommendations while continuously learning from interaction outcomes.</p><p>RecAgent <ref type="bibr" target="#b15">[Wang et al., 2023a]</ref> orchestrates naturalistic agent interactions within recommender systems and social environments through a unified prompting framework, incorporating six action modalities (encompassing search, browse, click, pagination, chat, and broadcast functionalities). In-teRecAgent <ref type="bibr" target="#b1">[Huang et al., 2023]</ref> action module integrates three core tools (information querying, item retrieval, and item ranking) while leveraging a Candidate Bus for sequential tool communication, enabling an end-to-end interactive process from user queries to final recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Datasets and Evaluations</head><p>In this section, we report the datasets and evaluation metrics used by various methods. The dataset information comes from the original source or paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Datasets</head><p>Traditional Recommendation Dataset In Table <ref type="table" target="#tab_4">2</ref>, we list several traditional recommendation datasets for evaluating model performance. These datasets provide comprehensive interaction data from various platform, including user-item interactions, timestamps, and review text, enabling the assessment of recommendation models. Several state-of-the-art methods have demonstrated their effectiveness using these datasets.</p><p>For instance, the "Books" dataset (10.3M users, 4.4M items) from Amazon Review data <ref type="bibr">[McAuley et al., 2015]</ref> has been used to evaluate Agent4Rec <ref type="bibr">[Zhang et al., 2024a]</ref> and BiLLP <ref type="bibr">[Shi et al., 2024]</ref> performance on large-scale tasks, while the "Video Games" dataset (2.8M users, 137.2K items) has validated DRDT <ref type="bibr" target="#b16">[Wang et al., 2023b]</ref> and RAH <ref type="bibr" target="#b13">[Shu et al., 2024]</ref> capabilities. The "Beauty" dataset (632K users, 112.6K items) has been utilized by <ref type="bibr">IntcRecAgent [Huang et al., 2023]</ref> and DRDT <ref type="bibr" target="#b16">[Wang et al., 2023b]</ref> to demonstrate their proficiency in recommendation. These diverse applications underscore the datasets' crucial role in advancing LLM-powered agent recommender systems and providing a foundation for evaluating various of algorithms.</p><p>The MovieLens datasets, introduced by <ref type="bibr" target="#b1">[Harper and Konstan, 2015]</ref>, represent another crucial benchmark for evaluating LLM-powered agents recommenders, offering different scales of movie rating data from the MovieLens platform. These datasets range from MovieLens-100K (0.9K users, 1.6K items) to MovieLens-20M (138.5K users, 27.3K items), providing researchers with flexibility in testing their methods across different data scales. Various state-of-the-art approaches have utilized these datasets: FLOW <ref type="bibr">[Cai et al., 2024]</ref> and <ref type="bibr">MACRS [Fang et al., 2024]</ref> have been validated on the smaller MovieLens-100K dataset, while Agent4Rec <ref type="bibr" target="#b17">[Zhang et al., 2024a]</ref>, DRDT <ref type="bibr" target="#b16">[Wang et al., 2023b], and</ref><ref type="bibr">MACRS [Fang et al., 2024]</ref> have demonstrated their capabilities on MovieLens-1M. The larger variants like MovieLens-10M and MovieLens-20M have been employed by <ref type="bibr">InteRecAgent [Huang et al., 2023]</ref> and <ref type="bibr">RecAgent [Yoon et al., 2024]</ref> respectively, showcasing the scalability of their approaches. This hierarchical structure of MovieLens datasets makes them particularly valuable for systematically evaluating recommendation algorithms at different scales.</p><p>The Steam, Lastfm, Anime, and Yelp datasets provide diverse domain-specific evaluation scenarios for LLM-powered agent recommender systems. The Steam dataset, introduced by <ref type="bibr" target="#b2">[Kang and McAuley, 2018]</ref>, contains 3.7M interactions between 334.7K users and 13K gaming items, and has been extensively used by methods such as Agent4Rec <ref type="bibr">[Zhang et al., 2024a]</ref>, BiLLP <ref type="bibr">[Shi et al., 2024]</ref>, FLOW <ref type="bibr">[Cai et al., 2024]</ref>, and InteRecAgent <ref type="bibr" target="#b1">[Huang et al., 2023]</ref> to validate their effectiveness in game recommendation. The Lastfm dataset <ref type="bibr" target="#b0">[Cantador et al., 2011]</ref>, focusing on music recommendation, comprises 73.5K interactions from 1.2K users on 4.6K music items, and has been specifically utilized by <ref type="bibr">FLOW [Cai et al., 2024]</ref> to demonstrate its capabilities in the music domain. Additionally, the Yelp dataset, containing 316.3K interactions between 30.4K users and 20.4K items, has been employed by Rec-Mind <ref type="bibr">[Wang et al., 2024b]</ref> to evaluate its performance in recommendations. These domain-specific datasets offer unique evaluation opportunities in specialized recommendation contexts.</p><p>Conversational Recommendation Dataset In addition to the above traditional recommendation datasets, some works <ref type="bibr" target="#b23">[Zhu et al., 2024a]</ref>   with movie suggestions, often accompanied by explanatory rationales. This extensive dataset encompasses 634392 conversations, 1669720 dialogue turns, 36247 users, and 51203 movies. CSHI <ref type="bibr" target="#b23">[Zhu et al., 2024a]</ref> employs ReDial (movie domain, including 10006 dialogues) and OpenDialKG (multiple domains, including 13802 dialogues) for performance evaluation. <ref type="bibr">UserSimulator [Yoon et al., 2024]</ref> evaluates on the Redial and Reddit datasets in a variety of ways, including behavior simulation and memory module believability, etc. These authentic human-human conversations serve as crucial benchmarks for assessing the model capabilities of LLM-powered agents recommender systems.</p><p>It is worth mentioning that considering the agent recommender system based on LLMs, it is necessary to frequently call LLMs or APIs when the model is running. In order to save resources and time, some methods sample data from the original dataset for performance evaluation. For instance, AgentCF <ref type="bibr" target="#b22">[Zhang et al., 2024c]</ref> randomly samples two subsets (one dense and one sparse), with each subset containing 100 users. DRDT <ref type="bibr" target="#b16">[Wang et al., 2023b]</ref> randomly samples 200 users from each dataset and uses the target items along with 19 randomly sampled items as the candidate item set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Evaluation</head><p>In Table <ref type="table" target="#tab_5">3</ref>, we summary the evaluation metrics used by recent representative methods.</p><p>Standard Recommendation Metrics Most existing methods employ standard recommendation evaluation metrics to assess model performance. The commonly utilized metrics including Normalized Discounted Cumulative Gain (NDCG@K), Recall@K and Hit Ratio@K (HR@K), etc. For instance, AgentCF <ref type="bibr" target="#b22">[Zhang et al., 2024c]</ref> evaluates its performance using NDCG@K and Recall@K on the MovieLens-1M dataset. Similarly, DRDT <ref type="bibr" target="#b16">[Wang et al., 2023b]</ref> con-ducts comprehensive evaluations using Recall@10,20 and NDCG@10,20 across multiple datasets including ML-1M, Games, and Luxury datasets. Hit Ratio@K (HR@K) is another crucial metric for evaluating recommendation performance. RecMind <ref type="bibr">[Wang et al., 2024b]</ref> employ that for evaluating the recommendation tasks on Amazon Reviews (Beauty) and Yelp datasets. Language Generation Quality Some methods <ref type="bibr">[Wang et al., 2024b]</ref> consider the evaluation of language generation quality (e.g., recommendation explanation generation, review summarization), which primarily rely on BLEU and ROUGE metrics. BLEU measures the precision of generated text against references, while ROUGE evaluates recall-based similarity, enabling comprehensive assessment of language generation capabilities in recommendation scenarios. PMS <ref type="bibr">[Thakkar and Yadav, 2024a]</ref> utilizes the ROUGE to evaluate the quality of its generated textual recommendations. Reinforcement Learning Metrics In evaluating LLMpowered agent recommender systems for long-term engagement, BiLLP <ref type="bibr">[Shi et al., 2024]</ref> employs three key metrics adopted from reinforcement learning: trajectory length, average single-round reward, and cumulative trajectory reward. Similarly, LUSIM <ref type="bibr" target="#b22">[Zhang et al., 2024d]</ref> uses the total reward to reflect the overall user engagement during the entire interaction process, and the average reward to represent the average quality of a single recommendation. These metrics are to evaluate both immediate recommendation quality and long-term engagement effectiveness. Conversational Efficiency Metrics Recent research has introduced more comprehensive metrics to evaluate the efficiency of conversational interactions in recommender systems. For instance, MACRS <ref type="bibr" target="#b0">[Fang et al., 2024]</ref> employs key interaction-focused metrics such as Success Rate (proportion of successful recommendations) and Average Turn (AT) (num-</p><note type="other">Category Metrics Methods Standard Recommendation</note><p>NDCG@K, Recall@K, HR@K, Hit@K, MRR, Acc, F1-Score, MAP ber of interaction rounds needed to reach a recommendation) per session. These metrics assess how effectively the system can understand user preferences and deliver accurate recommendations while minimizing the number of interaction turns.</p><p>Custom Indicators Beyond conventional metrics, some methods <ref type="bibr" target="#b20">[Yoon et al., 2024]</ref> propose customized evaluation frameworks. AutoConcierge <ref type="bibr" target="#b21">[Zeng et al., 2024]</ref> presents six evaluation metrics for task-driven conversational agents: proactivity, economy, explainability, correctness, consistency, and efficiency. RecAgent <ref type="bibr" target="#b15">[Wang et al., 2023a]</ref> proposes simulated user behaviors believability and Agent memory believability, to assess the credibility of LLM-simulated user interactions and memory mechanism effectiveness. These metrics assess system engagement, dialogue efficiency, answer interpretability, response accuracy, requirement fulfillment, and response time, respectively. In all, these metrics prioritize a holistic understanding of conversational performance, emphasizing balance between efficient recommendation delivery, and maintaining high-quality dialogue throughout the recommendation process.</p><p>5 Related Research Fields LLM-powered Recommender Systems In recent years, recommender systems based on Large Language Models (LLMs) have attracted widespread attention. Such systems make full use of the powerful language understanding and generation capabilities of LLMs, bringing a new paradigm to traditional recommender systems. Most existing methods are primarily designed for rating prediction <ref type="bibr">[Bao et al., 2023]</ref> and sequential recommendation <ref type="bibr">[Hou et al., 2024;</ref><ref type="bibr" target="#b10">Shao et al., 2024;</ref><ref type="bibr">Zheng et al., 2024]</ref>. CoLLM <ref type="bibr">[Zhang et al., 2023]</ref> captures and maps the collaborative information through external traditional models, forming collaborative embeddings used by LLMs. <ref type="bibr">LlamaRec [Yue et al., 2023]</ref> fine-tunes Llama-2-7b for list-wise ranking of the pre-selected items. However, these methods would face significant limitations: the inability to simulate authentic user behaviors for enhanced personalization, the lack of effective memory mechanisms for long-term context awareness, and the rigid pipeline structure that prevents flexible task decomposition and seamless integration with external tools.</p><p>Conversational Recommender Systems Conversational recommender systems (CRS) have emerged as a significant research direction in recent years <ref type="bibr">[Jannach et al., 2021]</ref>, which are similar to the LLM-powered agent recommender systems. However, traditional methods <ref type="bibr" target="#b3">[Lei et al., 2020]</ref> have two main drawbacks: attribute-based approaches are limited by rigid dialogue patterns, while generation-based methods suffer from restricted knowledge and poor generalization capabilities of small language models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Future Directions</head><p>Optimization of System Architecture The integration between traditional recommendation methods and LLMs remains insufficient, with challenges in multi-agent collaboration and system interpretability. Future developments should explore flexible architectural designs, enhance agent cooperation efficiency, while ensuring transparency in recommendation. Refinement of Evaluation Framework There is a notable absence of unified and comprehensive evaluation standards for accurately measuring dialogue quality and recommendation effectiveness. Future research necessitates the establishment of robust evaluation frameworks, development of novel performance metrics, and consideration of privacy and security concerns in practical applications. Security Recommender System <ref type="bibr">[Ning et al., 2024]</ref> reveals the vulnerability of LLM-empowered recommender systems to adversarial attacks. In future, the researchers could develop robust adversarial detection methods, investigate multi-agent defensive architectures, and integrating domain-specific security knowledge into defense mechanisms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Conclusion</head><p>The integration of LLM-powered agents into recommender systems has emerged as a significant advancement in recent years. In this survey, we systematically categorize existing approaches into three paradigms: recommender-oriented, interaction-oriented, and simulation-oriented. We comprehensively analyze these methods through a unified four-module architecture and review current datasets and evaluation methodologies. Finally, we identify three promising directions for future research.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>Considering this preference, I would like to recommend Space Odyssey 2001, a classic film that also explores profound themes about human and alien civilizations. What do you think?</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :Figure 2 :</head><label>12</label><figDesc>Figure 1: Illustration of Different Method Objectives. We classify existing methods into the following three categories: (1) Recommender-oriented method; (2) Interaction-oriented method; (3) Simulation-oriented method.</figDesc><graphic coords="3,60.43,54.41,161.32,108.18" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>evaluate the model performance on conversational datasets. InTable 2, we list three widelyadopted datasets: ReDial [Li et al., 2018], Reddit [He et al., 2023], and OpenDialKG [Moon et al., 2019]. The ReDial dataset comprises 11348 multi-turn dialogues involving 6925 movies, where participants engage in seeker-recommender interactions. The Reddit dataset is derived from movie recommendation discussions within Reddit communities, where users post recommendation requests and receive responses</figDesc><table><row><cell>Category</cell><cell>Datasets</cell><cell>Reference</cell><cell>Users</cell><cell cols="5">Items Interactions Conversations Turns Methods</cell></row><row><cell></cell><cell>Books</cell><cell></cell><cell>10.3M</cell><cell>4.4M</cell><cell>29.5M</cell><cell>-</cell><cell>-</cell><cell>Agent4Rec, BiLLP, RAH,</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>SUBER</cell></row><row><cell></cell><cell>CDs and Vinyl</cell><cell></cell><cell>1.8M</cell><cell>701.7K</cell><cell>4.8M</cell><cell>-</cell><cell>-</cell><cell>AgentCF, KGLA, ToolRec</cell></row><row><cell></cell><cell>Video Games Beauty</cell><cell>[McAuley et al., 2015]</cell><cell cols="2">2.8M 632.0K 112.6K 137.2K</cell><cell>4.6M 701.5K</cell><cell>--</cell><cell>--</cell><cell>DRDT, RAH, LUSIM InteRecAgent, DRDT, Rec-</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Mind</cell></row><row><cell></cell><cell>Clothing</cell><cell></cell><cell>22.6M</cell><cell>7.2M</cell><cell>66.0M</cell><cell>-</cell><cell>-</cell><cell>DRDT</cell></row><row><cell></cell><cell>Movies</cell><cell></cell><cell>6.5M</cell><cell>747.8K</cell><cell>17.3M</cell><cell>-</cell><cell>-</cell><cell>RAH, LUSIM</cell></row><row><cell></cell><cell>Office Products</cell><cell></cell><cell>7.6M</cell><cell>710.4K</cell><cell>12.8M</cell><cell>-</cell><cell>-</cell><cell>AgentCF</cell></row><row><cell></cell><cell>Music</cell><cell></cell><cell cols="2">101.0K 70.5K</cell><cell>130.4K</cell><cell>-</cell><cell>-</cell><cell>LUSIM</cell></row><row><cell>Traditional Recommendation Dataset</cell><cell>Movielens-100K Movielens-1M Movielens-10M</cell><cell>[Harper and Konstan, 2015]</cell><cell>0.9K 6K 69.9K</cell><cell>1.6K 3.7K 10.6K</cell><cell>100K 1.0M 10M</cell><cell>---</cell><cell>---</cell><cell>FLOW, MACRS, SUBER Agent4Rec, RecAgent, DRDT, MACRS, ToolRec InteRecAgent</cell></row><row><cell></cell><cell>Movielens-20M</cell><cell></cell><cell cols="2">138.5K 27.3K</cell><cell>20M</cell><cell>-</cell><cell>-</cell><cell>MACRS, UserSimulator</cell></row><row><cell></cell><cell>Steam</cell><cell>[Kang and McAuley, 2018]</cell><cell>334.7K</cell><cell>13K</cell><cell>3.7M</cell><cell>-</cell><cell>-</cell><cell>Agent4Rec, BiLLP, FLOW,</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>InteRecAgent</cell></row><row><cell></cell><cell>Lastfm</cell><cell>[Cantador et al., 2011]</cell><cell>1.2K</cell><cell>4.6K</cell><cell>73.5K</cell><cell>-</cell><cell>-</cell><cell>FLOW</cell></row><row><cell></cell><cell>Yelp</cell><cell>https://www.yelp.com/</cell><cell>30.4K</cell><cell>20.4K</cell><cell>316.3K</cell><cell>-</cell><cell>-</cell><cell>RecMind, ToolRec, LUSIM</cell></row><row><cell></cell><cell></cell><cell>dataset</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>Anime</cell><cell>https://www.kaggle.com/</cell><cell>73.5K</cell><cell>12.2K</cell><cell>1.05M</cell><cell>-</cell><cell>-</cell><cell>LUSIM</cell></row><row><cell></cell><cell></cell><cell>datasets</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Conversational Recommendation Dataset</cell><cell>ReDial Reddit OpenDialKG</cell><cell>[Li et al., 2018] [He et al., 2023] [Moon et al., 2019]</cell><cell>0.9K 36.2K -</cell><cell>51.6K 51.2K -</cell><cell>---</cell><cell>10K 634.4K 15.6K</cell><cell cols="2">-1.6M UserSimulator UserSimulator, CSHI 91.2K CSHI</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 2 :</head><label>2</label><figDesc>Summary of Used Experimental Datasets.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 3 :</head><label>3</label><figDesc>Summary of Used Evaluation Metrics.</figDesc><table><row><cell>DRDT, RecMind, InteRecAgent, RAH,</cell></row><row><cell>MACRS, PMS, Agent4Rec, AgentCF,</cell></row><row><cell>KGLA, FLOW, CSHI, ToolRec, SUBER</cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Tallrec: An effective and efficient tuning framework to align large language model with recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>References</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Achiam</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2303.08774</idno>
+		<idno>arXiv:2410.19627</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Flint Xiaofeng Fan, and Roger Wattenhofer. An llm-based recommender system environment</title>
+				<editor>
+			<persName><surname>Friedman</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Shen Gao, Pengjie Ren</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2011">2023. 2023. 2023. 2023. 2024. 2011. 2011. 2024. 2024. 2023. 2024</date>
+			<biblScope unit="page" from="387" to="388" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>Leveraging large language models in conversational recommender systems. Guo et al., 2024. Knowledge graph enhanced language agents for recommendation. arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Yehuda Koren, and Chris Volinsky. Collaborative filtering for implicit feedback datasets</title>
+		<author>
+			<persName><forename type="first">; F Maxwell</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Joseph A Konstan ; Xiangnan He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhouhang</forename><surname>Chua ; Zhankui He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rahul</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Harald</forename><surname>Jha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawen</forename><surname>Steck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yesu</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Prasad</forename><surname>Bodhisattwa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nathan</forename><surname>Majumder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Kallus</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mcauley ; Yupeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjie</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongyu</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruobing</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne Xin Zhao ; Xu</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianxun</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuxuan</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Defu</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xie</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2308.16505</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender ai agent: Integrating large language models for interactive recommendations</title>
+				<editor>
+			<persName><forename type="first">Ahtsham</forename><surname>Manzoor</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Wanling</forename><surname>Cai</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2008">2015. 2015. 2017. 2017. 2023. 2024. 2008. 2023. 2021</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="1" to="36" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>The movielens datasets: History and context. ACM TIIS. Jannach et al., 2021] Dietmar Jannach. A survey on conversational recommender systems. CSUR</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Self-attentive sequential recommendation</title>
+		<author>
+			<persName><forename type="first">Mcauley ; Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICDM</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018. 2018</date>
+			<biblScope unit="page" from="197" to="206" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Interactive path reasoning on graph for conversational recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Lei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<editor>
+			<persName><forename type="first">Raymond</forename><surname>Li</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Samira</forename><forename type="middle">Ebrahimi</forename><surname>Kahou</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Hannes</forename><surname>Schulz</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Vincent</forename><surname>Michalski</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Laurent</forename><surname>Charlin</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2018">2020. 2020. 2018. 2018</date>
+			<biblScope unit="page">31</biblScope>
+		</imprint>
+	</monogr>
+	<note>and Chris Pal. Towards deep conversational recommendations. NuerIPS</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Qinfeng Shi, and Anton Van Den Hengel. Image-based recommendations on styles and substitutes</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+			<biblScope unit="page" from="43" to="52" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Opendialkg: Explainable conversational reasoning with attention-based walks over knowledge graphs</title>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="page" from="845" to="854" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A hybrid multi-agent conversational recommender system with llm and search engine in e-commerce</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Nie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recsys</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+			<biblScope unit="page" from="745" to="747" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Cheatagent: Attacking llm-empowered recommender systems via llm agent</title>
+		<author>
+			<persName><surname>Ning</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<editor>
+			<persName><forename type="first">Jun</forename><surname>Rie</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Meredith</forename><forename type="middle">Ringel</forename><surname>Cai</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Percy</forename><surname>Morris</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Liang</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Joseph O&apos;Brien, Car</addrLine></address></meeting>
+		<imprint>
+			<publisher>Joon Sung Park</publisher>
+			<date type="published" when="2024">2024. 2024</date>
+			<biblScope unit="page" from="2284" to="2295" />
+		</imprint>
+	</monogr>
+	<note>Park et al., 2023</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Generative agents: Interactive simulacra of human behavior</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Michael S Bernstein ; Shishir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianjun</forename><surname>Patil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">E</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Gonzalez</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2305.15334</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Gorilla: Large language model connected with massive apis</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+			<biblScope unit="page" from="1" to="22" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>AASUIST</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Toolformer: Language models can teach themselves to use tools</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Schick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NuerIPS</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+			<biblScope unit="volume">36</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Ulmrec: User-centric large language model for sequential recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Shao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2412.05543</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Hugginggpt: Solving ai tasks with chatgpt and its friends in hugging face</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Shen</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+			<biblScope unit="volume">36</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Large language models are learnable planners for long-term recommendation</title>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+			<biblScope unit="page" from="1893" to="1903" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Thakkar and Yadav, 2024a] Param Thakkar and Anushka Yadav. Personalized recommendation systems using multimodal, autonomous, multi agent systems</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Shu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.19855</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TCSS</title>
+		<imprint>
+			<date type="published" when="2024">2024. 2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>Rah! recsys-assistant-human: A human-centered recommendation framework with llm agents</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Personalized recommendation systems using multimodal, autonomous, multi agent systems</title>
+		<author>
+			<persName><forename type="first">Yadav</forename><surname>Thakkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Param</forename><surname>Thakkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anushka</forename><surname>Yadav</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.19855</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">[</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.02552</idno>
+		<title level="m">User behavior simulation with large language model based agents</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Drdt: Dynamic reflection with divergent thinking for llmbased sequential recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2312.11336</idno>
+		<imprint>
+			<date type="published" when="2023">2023b. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">A survey on large language model based autonomous agents</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Frontiers of Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page">186345</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Macrec: A multiagent collaboration framework for recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Findings of NAACL</title>
+				<imprint>
+			<date type="published" when="2024">2024b. 2024. 2024</date>
+			<biblScope unit="page" from="2760" to="2764" />
+		</imprint>
+	</monogr>
+	<note>SIGIR</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">A survey on accuracyoriented neural recommendation: From collaborative filtering to information-rich recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TKDE</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="4425" to="4445" />
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Evaluating large language models as generative user simulators for conversational recommendation</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Yao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2403.09738</idno>
+		<idno>arXiv:2311.02089</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Llamarec: Two-stage recommendation using large language models for ranking</title>
+				<editor>
+			<persName><surname>Yue</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2023">2023. 2023. 2024. 2024. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>ICLR</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Automated interactive domain-specific conversational agents that understand human dialogs</title>
+	</analytic>
+	<monogr>
+		<title level="m">ISPADL</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+			<biblScope unit="page" from="204" to="222" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Agentcf: Collaborative learning with autonomous language agents for recommender systems</title>
+		<idno type="arXiv">arXiv:2310.19488</idno>
+		<idno>arXiv:2412.16984</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Integrating collaborative embeddings into large language models for recommendation</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2023">2023. 2023. 2024a. 2024. 2024b. 2024. 2024c. 2024. 2024d. 2024. 2024. 2024</date>
+			<biblScope unit="page" from="1435" to="1448" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>ICDE</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">A llm-based controllable, scalable, human-involved user simulator framework for conversational recommender systems</title>
+		<idno type="arXiv">arXiv:2405.08035</idno>
+		<imprint>
+			<date type="published" when="2024">2024a. 2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>Zhu et al., 2024b. Recommender systems meet large language model agents: A survey. SSRN 5062105</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A Field Study of a Visual Controllable Talk Recommender</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+							<email>dparra@ing.puc.cl</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Information Sciences</orgName>
+								<orgName type="institution">University of Pittsburgh</orgName>
+								<address>
+									<addrLine>135 N Bellefield Avenue</addrLine>
+									<postCode>15213</postCode>
+									<settlement>Pittsburgh</settlement>
+									<region>PA</region>
+									<country>PUC Chile</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Peter</forename><surname>Brusilovsky</surname></persName>
+							<email>peterb@pitt.edu</email>
+							<affiliation key="aff1">
+								<orgName type="department">School of Information Sciences</orgName>
+								<orgName type="institution">University of Pittsburgh</orgName>
+								<address>
+									<addrLine>135 N Bellefield Avenue</addrLine>
+									<postCode>15213</postCode>
+									<settlement>Pittsburgh</settlement>
+									<region>PA</region>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">A Field Study of a Visual Controllable Talk Recommender</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">E16DCCDB5DF89E6A0BB990CE17D10021</idno>
+					<idno type="DOI">10.1145/2535597.2535621</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>H.5.2. Information interfaces and presentation (e.g., HCI): User interfaces. H.5.m. Information interfaces and presentation (e.g., HCI): Miscellaneous Human Factors</term>
+					<term>Design</term>
+					<term>Experimentation User interfaces for recommender systems, information visualization, user studies</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>In this paper, we contribute to the study of recommender systems from a HCI perspective by investigating the effects upon the user experience of a novel interface which uses a Venn diagram to represent the outputs of an interactive talk recommender system. We present the results of a preliminary user study on talk recommendations in the context of a conference with n=37 people that used our system under one of two conditions: a static list of recommendations, or the enhanced visual controllable interface. The user behavioral analysis and the results of a survey that n=17 users answered provide interesting insights for designers and developers of interfaces for recommender systems, especially when the items can have one or more contexts of relevancy as in a hybrid recommender system.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>Recommender systems' research in aspects related to Human Computer Interaction (HCI) is scarce, such as studying the effects of showing the recommendations in a different representation than a ranked list, or investigating richer forms of user interaction than rating items or scrolling a list of them. In this paper we describe and present the results of a field study over users of a conference talk recommender system during a recently held academic conference, ACM CSCW 2013. The main research question we address is to which extent providing users interactive control <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2]</ref> and a novel visualization that supports inspectability as different depths of field in the form of a Venn diagram affects the user experience with the recommender system.</p><p>The rest of the paper is structured as follows. In Section 2 we present recent related work in presentation, interaction and explainability on recommender systems. Then, in Section 3 we describe our visual and interaction design, we continue in Section 4 presenting our evaluation where we report behavioral analysis and also results of a survey. In Section 5 we discuss the results and limitations of our work. Finally, we present our conclusions and ideas for future work in the Section 6.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RELATED WORK</head><p>The development of interfaces that present recommended items in a model different that a ranked list is rather scarce. Some examples include SFViz <ref type="bibr" target="#b2">[3]</ref>, a sunburst visualization to allow users finding interest-based in last.fm, and Pharos <ref type="bibr" target="#b3">[4]</ref> a social map visualization of latent communities. Other examples that also include a richer user interaction are PeerChooser <ref type="bibr" target="#b4">[5]</ref>, SmallWorlds <ref type="bibr" target="#b5">[6]</ref> -that focus in representing collaborative filtering-and TasteWeights <ref type="bibr" target="#b0">[1]</ref>, an interactive system that represents a hybrid music recommender. In our previous work, in <ref type="bibr" target="#b6">[7]</ref> we proposed the prototype of two different visualizations to present a personalized conference's program schedule -including recommendations of papers-, a concentric-circle layout and a graph model. In <ref type="bibr" target="#b7">[8]</ref> we adapt the existent Aduna visualization to let users explore and find relevant conference talks by analyzing the connections of different entities such as user bookmarks, recommender algorithms and user tags. Through a user study, we found that the effectiveness and probability of item selection both increase when users are able to explore and interrelate multiple entities. We argue that this interface helped users to increase their perception of explainability of the recommendations, a concept that has been already shown to have a positive effect on user satisfaction <ref type="bibr" target="#b8">[9]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">An Interactive Visual Interface for Talk Recommendation</head><p>Motivated by our previous results in <ref type="bibr" target="#b7">[8]</ref> showing that the intersection of several sources of relevance increases users likelihood to accept a recommendation, and also inspired by the work of <ref type="bibr" target="#b0">[1]</ref> indicating the positive effect of user control using sliders, we integrated these elements in the design of our system. Figure <ref type="figure" target="#fig_0">1 (a)</ref> shows the whole interface of the hybrid talk recommender, with the Venn diagram presented in more detail in Figure <ref type="figure" target="#fig_0">1 (b)</ref>. It indicates three big ellipses that represent three different recommendation methods (A-blue, B-yellow and C-red), the small circles represent recommended items, and the areas where ellipses intersect are aimed to help the user at telling which items have been recommended by more than one method. The colors are intended to tell the different recommendation methods:</p><p>A. Blue (Author Impact): Talks identified relevant because one or more of their authors have been frequently cited in the ACM Digital Library B. Yellow (Similar Content): Talks which content is similar to the articles previously identified as relevant</p><p>Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from Permissions@acm.org. C. Red (Articles of Co-authors): Articles written by the coauthors of selected authors from previous CSCW and CHI conferences (explained in more detail in the Evaluation section).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Explainability and User control</head><p>Explainability has shown a significant effect on user satisfaction in previous studies, though with certain nuances such as the domain expertise <ref type="bibr" target="#b9">[10]</ref>. However, based on our previous work <ref type="bibr" target="#b7">[8]</ref> we introduced a Venn diagram to let users easily see intersections of relevancy from different methods, as seen in the Figure <ref type="figure" target="#fig_0">1 (b)</ref>.</p><p>User control has shown an important effect on user satisfaction with a recommender system, so building from the ideas presented in <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2]</ref> we decided to incorporate sliders that allow the user to set the importance of each recommendation method. In Figure <ref type="figure" target="#fig_0">1</ref>, <ref type="bibr" target="#b1">(2)</ref> shows the sliders that allow the users to change the weight of each method in a range from 0 to 1 with steps of 0.1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">EVALUATION</head><p>To evaluate our system we run a user study with people attending the CSCW 2013 conference in San Antonio, TX. Using the online conference support system Conference Navigator <ref type="bibr" target="#b10">[11]</ref> -that allows users to access the conference program, proceedings, paper's details, and also to schedule the favorite talks-we provided the visual controllable recommender as a new feature.</p><p>Participants. 168 people used Conference Navigator during the CSCW conference (this period spans from February 17 th of 2013 to March 3 rd of 2013), and 37 of those people used the talk recommender.</p><p>Procedure. Each user that authenticated into Conference Navigator was randomly assigned to one of two conditions: the non-controllable recommender (a static list of recommendations) and the visual controllable recommender (the interface shown in Figure <ref type="figure" target="#fig_0">1</ref>). Each condition had a different promotion message in the home page of the CSCW 2013 conference in Conference Navigator. The users that clicked in the link to use the Talk Recommendations had to complete 2 steps in order to obtain recommendations: 1) Select their favorite authors of papers from previous CSCW and CHI from a list of the 100 most cited authors of the CSCW and CHI conferences, and, 2) choose the articles authored by these authors in CSCW and CHI conferences, which will be used to generate recommendations. After the second step was completed, users saw the list of recommended talks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Results</head><p>To assess the impact of our visual controllable interface we tracked a specific set of users' actions under both interfaces. In addition, all users who tried the recommendation functionality received an invitation to answer a brief survey.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.1">Usage and Engagement</head><p>In total, 168 people created their accounts and used Conference Navigator during the CSCW conference (this period spans from February 17 th of 2013 to March 3 rd of 2013). Out of the total number, 161 users were exposed to one or another recommendation condition (84 to visual and 77 to regular interface). Working with a recommender component was an option, not a requirement. The only engagement strategy used was the advertising of one or another recommender interface on the system home page. Out of 161 exposed users, 37 used the talk recommender. 22 people used the visual controllable interface and 15 the non-controllable interface. From this group of 37 people, 17 answered a survey to obtain feedback regarding their experience using the talk recommendation.</p><p>The engagement data provide some evidence that the visual interface was more attractive for the users. While the number of users exposed to both conditions was about the same, 22 were sufficiently interested in the visual option to go through the three steps needed until they could actually see the recommendations, compared to only 15 that used the interface with a static list of recommendations. The average number of rated or bookmarked talks per active users was also comparable. Further insights are provided by the analysis of user interaction with talks within the interfaces. As the data shows (Table <ref type="table" target="#tab_0">1</ref>), the visual interface engaged more users into the active work with the papers (vs. passive browsing) -10 users (40%) were rating talks in the visual interface vs. only 3 (25%) in the regular one. The number of users bookmarking the talks was comparable. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.2">Action Analysis</head><p>To understand the value of the interactive functionality to the users, we analyzed mouse clicks and hovers over different elements of the interface. A good overview of interactive feature usage is provided by Figure <ref type="figure" target="#fig_1">2</ref> that shows the average numbers of actions per user of each type of action Sliders. In average, users clicked 2.3 times the button "click Update list", meaning that they tried to update the recommended list. In terms of which method did they prefer by moving the sliders, in average, the users changed the slider of the method C (articles of co-authors) 6 times, compared to 5.5 times of method A (papers of famous authors) and only 2.5 times of method b (content-based recommender). Further log analysis shows that for method A 22% of the times the weight was set to more than 0.5, compared to 80% of slider B and 50% of slider C. Venn Diagram. Users could click over the large ellipses (Venn diagram area) or hover over the circles representing papers of each method or intersection of methods. Users explored in average 6.9 papers in the area B of content-based recommended papers, 4.7 papers of the method C "articles by co-authors" and only 3.1 papers in the area A of papers with high "author impact". This is only slightly higher than the average number of papers explored in the intersection area of methods BC, which was 2, supporting the larger relevancy of methods B and C, and also the help of the Venn diagram to help identifying the papers recommended by both methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.3">Impact</head><p>The usage data indicates that the visual interface was more engaging to the users in some aspects and that the users were actively using the offered interactive functionality. However, does it offered any advantage to its users? We analyzed two impact factors -the average talk ratings and the average rank of relevant talks. A difference in average user rating might provide some evidence that one interface helps the users to find better talks. As the data shows, the average rating of ranked talks is, indeed, a bit higher in visual controllable interface is larger (mean average rating of 3.73) than in the non-controllable interface (mean average rating 3.34). A difference in the average rank of good talks is evidence that one system can better "push" good talks to the top of the ranked lists (lower ranks) where the talks have more chances to be noticed. In our case, indeed, the average rank of papers rated 4 or 5 was 9.26 for the visual controllable condition and 11.78 for the static list of papers. Unfortunately we had too few users to run a statistical significance test, so both observations provide merely a hint, not reliable evidence in favor of the visual system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.4">Survey Analysis</head><p>A survey was conducted among participants of the study. An email was sent to users that utilized the recommender feature in Conference Navigator after the conference had finished inviting them to answer the survey about their experience using the talk recommendation feature. 11 people answered the survey under the controllable condition and 6 under the non-controllable condition.</p><p>Table <ref type="table" target="#tab_1">2</ref> shows the questions to which users had to answer how much do they agreed with the statement present.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">DISCUSSION</head><p>The evaluation results indicate that the visual controllable recommender had a positive effect on the user experience with the recommender system. Among the different user actions described in the behavioral analysis, users' hovering the mouse over the circles in the Venn diagram indicates that users have a real interest for exploring recommendations, what is supported by the positive answers to the questions C.4, C.5, and C.6 in the survey.</p><p>One result that looks strange is the fact that people were more likely to rate papers than bookmarking them. We explain this behavior by the system failure in leveraging people's feedback: we did not consider the users' rating to re-generate recommendations, something that could have affected the user trust in the system since their feedback was not considered immediately to generate new recommendations. 3.72±0.25 - 1 The table shows subset of all the questions. The complete survey is available at http://www.sis.pitt.edu/~dparra/VennRecSurvey.pdf</p><p>The survey indicates that people are more likely to think that a talk recommender system is necessary when using the visual controllable interface, what might be a result of being aware of why certain talks are recommended. The average rating of question C.4 "When looking at the list of recommended talks I am interested to …" (3.9) supports the idea that the interface triggers a need for understanding how the talks were recommended, and the average rating of C.5 "I think the Venn diagram visualization helped me to understand why a talk was recommended" (3.82) suggests that the Venn diagram helps to support that need.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">CONCLUSIONS</head><p>In this paper we introduced a novel controllable interface to visualize recommended conference talks -beyond the classic model of a ranked list-with enriched user interaction. The results of our field study that include a behavioral analysis and a user survey indicate that the visual controllable recommender interface had a positive effect over the static list representation. Though we cannot make conclusive claims due to the small number of subjects, these results support our hypothesis in a positive direction with respect to larger user laboratory study that we are currently conducting. We expect that our contributions on this area help to fulfill the lack of research at user interface level in recommender systems.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. (a) Talk recommender interface. In addition to browsing the list of articles (3), the user can control the importance of each method using sliders (2) and inspect the items using a Venn diagram (1). A detailed view of the Venn diagram is shown in (b).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Average number of actions per user. The horizontal axis indicates the type of actions. The dark grey bars indicates actions in the static list interface, and the light grey ones in the visual controllable interface.</figDesc><graphic coords="3,124.32,54.00,362.88,128.40" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="2,54.00,53.76,282.96,188.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 . Usage metrics of each recommender interface: Condition A (visual controllable) and Condition B (static list)</head><label>1</label><figDesc></figDesc><table><row><cell>Metric</cell><cell cols="2">Condition A Condition B</cell></row><row><cell># Exposed to recommendations</cell><cell>84</cell><cell>77</cell></row><row><cell># Used recommendations</cell><cell>22</cell><cell>15</cell></row><row><cell># Answered survey</cell><cell>11</cell><cell>6</cell></row><row><cell># Total Bookmarks / avg per user</cell><cell>28 / 4.67</cell><cell>32/ 4</cell></row><row><cell># Users who bookmarked</cell><cell>6</cell><cell>8</cell></row><row><cell># Total Papers rated / avg per user</cell><cell>130 / 13</cell><cell>45 / 15</cell></row><row><cell># Users who rated</cell><cell>10</cell><cell>3</cell></row><row><cell>Average user rating</cell><cell>3.73</cell><cell>3.34</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 . 1 Results of the post-study survey (*=significant at p&lt;0.05 using Mann-Whitney Test) Question in both conditions Visual recommender Static recommender</head><label>2</label><figDesc></figDesc><table><row><cell>1. The talks recommended matched my interests.</cell><cell>3.64±0.12</cell><cell>3±0.36</cell></row><row><cell>2. The talks recommended were diverse.</cell><cell>3.73±0.18</cell><cell>3.33±0.33</cell></row><row><cell>8. I would use this recommender system again for another conference in the future.</cell><cell>3.64±0.23</cell><cell>3.33±0.33</cell></row><row><cell>10. I do not think that a social conference support system -like Conference Navigator-needs Talk Recommendation functionality</cell><cell>2.36±0.23*</cell><cell>3.5±0.42</cell></row><row><cell>11. I understood why the talks were recommended to me.</cell><cell>3.45±0.24</cell><cell>2.83±0.47</cell></row><row><cell cols="2">Additional questions in the visual controllable recommender condition</cell><cell></cell></row><row><cell>C.1. I felt in control of combining different recommendation methods using the sliders.</cell><cell>3.64±0.16</cell><cell>-</cell></row><row><cell>C.3. The ability to control the recommendation methods increases my trust in the list of recommended talks</cell><cell>3.18±0.2</cell><cell>-</cell></row><row><cell>C.4. When looking at the list of recommended talks I am interested to examine which recommendation method has been used.</cell><cell>3.9±0.29</cell><cell>-</cell></row><row><cell>C.5. I think the Venn diagram visualization helped me to understand why a talk was recommended.</cell><cell>3.82±0.28</cell><cell>-</cell></row><row><cell>C.6. I think the Venn diagram visualization was useful to identify talks recommended</cell><cell></cell><cell></cell></row><row><cell>by a specific recommendation method or by a combination of methods.</cell><cell></cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">TasteWeights: a visual interactive hybrid recommender system</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bostandjiev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'donovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Höllerer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings the sixth ACM conference on Recommender systems</title>
+				<meeting>the sixth ACM conference on Recommender systems<address><addrLine>Dublin, Ireland</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Inspectability and control in social recommenders</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Knijnenburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bostandjiev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'donovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kobsa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings the sixth ACM conference on Recommender systems</title>
+				<meeting>the sixth ACM conference on Recommender systems<address><addrLine>Dublin, Ireland</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">SFViz: interest-based friends exploration and recommendation in social networks</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2011 Visual Information Communication -International Symposium (VINCI &apos;11)</title>
+				<meeting>the 2011 Visual Information Communication -International Symposium (VINCI &apos;11)</meeting>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Who is Doing What and When: Social Map-Based Recommendation for Content-Centric Social Web Sites</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">X</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Fu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Intell. Syst. Technol</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="1" to="23" />
+			<date type="published" when="2011">1 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'donovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Smyth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gretarsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bostandjiev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tobias</forename><surname>Höllerer</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Peerchooser</surname></persName>
+		</author>
+		<title level="m">visual interactive recommendation</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Smallworlds: visualizing social recommendations</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gretarsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'donovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bostandjiev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Höllerer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE -VGTC conference on Visualization</title>
+				<meeting><address><addrLine>Bordeaux, France</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+	<note>Proceedings of the 12th Eurographics</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Beyond lists: studying the effect of different recommendation visualizations</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the sixth ACM conference on Recommender systems</title>
+				<meeting>the sixth ACM conference on Recommender systems<address><addrLine>Dublin, Ireland</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Visualizing recommendations to support exploration, transparency and controllability</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Brusilovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Duval</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2013 international conference on Intelligent user interfaces</title>
+				<meeting>the 2013 international conference on Intelligent user interfaces<address><addrLine>Santa Monica, California, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A visual interface for critiquing-based recommender systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 9th ACM conference on Electronic commerce</title>
+				<meeting>the 9th ACM conference on Electronic commerce<address><addrLine>Chicago, Il, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Each to his own: how different users call for different interaction methods in recommender systems</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Knijnenburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J M</forename><surname>Reijmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Willemsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings the fifth ACM conference on Recommender systems</title>
+				<meeting>the fifth ACM conference on Recommender systems<address><addrLine>Chicago, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Conference Navigator 3: An Online Social Conference Support System. Poster at UMAP</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Jeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Brusilovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>López</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sahebi</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<pubPlace>Montreal, Canada</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

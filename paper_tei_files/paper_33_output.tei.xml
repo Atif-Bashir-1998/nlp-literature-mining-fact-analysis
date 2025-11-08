@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Intent-aware Recommendation via Disentangled Graph Contrastive Learning</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-03-06">6 Mar 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yuling</forename><surname>Wang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Beijing University of Posts and Telecommunications</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiao</forename><surname>Wang</surname></persName>
+							<email>xiaowang@buaa.edu.cn</email>
+							<affiliation key="aff1">
+								<orgName type="institution">Beihang University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiangzhou</forename><surname>Huang</surname></persName>
+							<email>huangxiangzhou@meituan.com</email>
+							<affiliation key="aff2">
+								<address>
+									<settlement>Meituan</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yanhua</forename><surname>Yu</surname></persName>
+							<email>yuyanhua@bupt.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Beijing University of Posts and Telecommunications</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Haoyang</forename><surname>Li</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">Tsinghua University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mengdi</forename><surname>Zhang</surname></persName>
+							<email>zhangmengdi02@meituan.com</email>
+							<affiliation key="aff2">
+								<address>
+									<settlement>Meituan</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zirui</forename><surname>Guo</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Beijing University of Posts and Telecommunications</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Wei</forename><surname>Wu</surname></persName>
+							<affiliation key="aff2">
+								<address>
+									<settlement>Meituan</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Intent-aware Recommendation via Disentangled Graph Contrastive Learning</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-03-06">6 Mar 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">190B178493E26ACEBEE86F88B1C4066B</idno>
+					<idno type="arXiv">arXiv:2403.03714v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:01+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Graph neural network (GNN) based recommender systems have become one of the mainstream trends due to the powerful learning ability from user behavior data. Understanding the user intents from behavior data is the key to recommender systems, which poses two basic requirements for GNNbased recommender systems. One is how to learn complex and diverse intents especially when the user behavior is usually inadequate in reality. The other is different behaviors have different intent distributions, so how to establish their relations for a more explainable recommender system. In this paper, we present the Intent-aware Recommendation via Disentangled Graph Contrastive Learning (IDCL), which simultaneously learns interpretable intents and behavior distributions over those intents. Specifically, we first model the user behavior data as a user-item-concept graph, and design a GNN based behavior disentangling module to learn the different intents. Then we propose the intentwise contrastive learning to enhance the intent disentangling and meanwhile infer the behavior distributions. Finally, the coding rate reduction regularization is introduced to make the behaviors of different intents orthogonal. Extensive experiments demonstrate the effectiveness of IDCL in terms of substantial improvement and the interpretability.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Recommender system provides an effective way to discover user interests and alleviates the information overload problem. Recently, recommender systems based on graph neural network (GNN) have attracted much attention, which are able to explore multi-hop relationships of the structural behavior data for better representation <ref type="bibr">[Wang et al., 2019;</ref><ref type="bibr">Lin et al., 2022]</ref> . Benefiting from the message passing mechanism of GNN, these graph-based recommender systems are able to iteratively aggregate the information from neighbors and update user/item nodes, then the high-quality embeddings for user/item can be obtained <ref type="bibr">[Wang et al., 2017;</ref><ref type="bibr" target="#b5">Li et al., 2024]</ref>.</p><p>Despite that traditional GNN based recommender systems are able to fully take advantage of high-order relationships and learn effective user/item representations, most of them are not specifically designed to understand the underlying user intents from behavior data. It is well established that characterizing the complex relationships between observed behaviors and the underlying user intents is the key to recommender systems, which consequently poses two basic requirements for GNN based recommendations.</p><p>One is how to effectively learn the complex and diverse intents, especially when the observed behavior data is very sparse in reality? As shown in Figure <ref type="figure" target="#fig_0">1</ref>, despite that the useritem behavior can be uniformly represented by an edge in this graph, the underlying user intents actually are very different. For example, user 1 purchases item 1 due to its popularity and good taste, but the reason she interacts with item 2 is that the environment and style meet her preferences. Meanwhile, user 2 exhibits the intents of price and taste towards item 2. Therefore, discovering the user intents plays an important role on understanding user behavior, and holds great potential on improving and explaining the recommender systems. Most of previous GNN based methods ignore user intents and directly learn the user/item representations <ref type="bibr">[He et al., 2020;</ref><ref type="bibr" target="#b10">Wu et al., 2021]</ref>, while few works attempt to obtain the user intents using disentangled learning <ref type="bibr">[Wang et al., 2020a]</ref>, however, it is well known that a well-disentangled model usually requires rich inductive biases and supervision <ref type="bibr" target="#b5">[Locatello et al., 2018]</ref>. As the observed interactions are extremely sparse in reality, it is highly desirable to characterize more supervision signals from data for a better disentanglement.</p><p>The other is once the user intents are discovered, how to establish the behavior distribution over user intents? As shown in Figure <ref type="figure" target="#fig_0">1</ref>, user 1 pays more attention to popularity than taste towards item 1. Thus, modeling behavior distribution can describe the strength of different user intentions, which understands user preference more accurately, i.e., we can better learn the behavior representation based on the most closely related user intents. Moreover, the behaviors originating from different intents should be distributed in different subspaces as much as possible, which enables the learned behavior representation more discriminative across different intents. Few GNN based methods learn behavior distribution by calculating the similarity between user and item in each intent subspace <ref type="bibr">[Wang et al., 2020a]</ref>, which ignores the semantic characteristics of intent, causing the learned distribution may deviate from the specific intent. Besides, the current GNN based methods still cannot guarantee that behavior representations are correctly distributed across different intent subspaces.</p><p>In this paper, we propose the Intent-aware Recommendation via Disentangled Graph Contrastive Learning (IDCL) to simultaneously learn interpretable user intents and behavior distributions over them. Firstly, we model the user behavior data as a user-item-concept graph, where the concept represents the multi-aspect semantics of item (e.g., movie genre). Then an augmented graph can be obtained by perturbing the original graph, and we design a behavior disentangling module to learn the disentangled behavior representations from the two graphs. Meanwhile, a set of concept-aware semantic bases is obtained by soft clustering from concept embeddings, each of which can be used as explicit guidance to facilitate disentangling meaningful intent. We then propose an intentwise contrastive learning to further enforce disentangling and infer the behavior distribution. To promote the behaviors of different intents more independent, so that the learned behavior representations are more discriminative across different intents, we introduce the coding rate reduction regularization. Our key contributions can be summarized as follows:</p><p>• We study the problem that how to effectively learn complex and diverse user intents for better and interpretable GNN based recommender systems, especially when the user behaviors are sparse.</p><p>• We propose an Intent-aware Recommendation via Disentangled Graph Contrastive Learning (IDCL) model, which is able to fully utilize the concepts and contrastive learning to learn better disentangled user intents, as well as the behavior distributions.</p><p>• Extensive experiments are conducted on three datasets, which demonstrates the effectiveness of our proposed IDCL. Futher analysis shows that the learned intent representations and behavior distributions are interpretable.</p><p>2 Related Work</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">GNN based Recommender System</head><p>Traditional shallow recommender systems approach recommendation as a representation learning problem <ref type="bibr" target="#b4">[Koren et al., 2009;</ref><ref type="bibr">Rendle, 2010]</ref>, then some neural models are proposed to incorporate the powerful expressive power of MLP <ref type="bibr">[Guo et al., 2017;</ref><ref type="bibr">He et al., 2017]</ref>. Recently, GNN based recommender systems are proposed to capture the higher-order connectivity by organizing interaction data into a graph and applying the powerful message passing mechanism of GNN <ref type="bibr">[Wang et al., 2019]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Disentangled Representation Learning</head><p>Disentangled learning is well researched in the field of computer vision, including supervised learning based methods <ref type="bibr">[Zhu et al., 2014;</ref><ref type="bibr">Hsieh et al., 2018]</ref> and some unsupervised methods <ref type="bibr" target="#b0">[Chen et al., 2016;</ref><ref type="bibr" target="#b3">Higgins et al., 2017]</ref>. Recently, DisenGCN introduces disentangled learning to graphstructured data to learn disentangled node representation <ref type="bibr" target="#b6">[Ma et al., 2019a]</ref>. DGCL uses contrastive learning to identify the latent factors in graph and derives the disentangled graph representation <ref type="bibr">[Li et al., 2021]</ref>. Moreover, disentangled learning also brings new opportunities for recommendations, which learns fine-grained user interests from observed behaviors to boost both the performance and interpretability <ref type="bibr" target="#b6">[Ma et al., 2019b;</ref><ref type="bibr" target="#b9">Wang et al., 2020b;</ref><ref type="bibr" target="#b13">Zhang et al., 2022]</ref>. For instance, <ref type="bibr" target="#b6">[Ma et al., 2019b]</ref> achieves both macro disentanglement and micro disentanglement based on a generative model. <ref type="bibr" target="#b13">[Zhang et al., 2022]</ref> achieves disentangling across multiple geometric spaces. Additionally, <ref type="bibr">[Wang et al., 2022;</ref><ref type="bibr" target="#b2">Guo et al., 2022]</ref> introduce additional knowledge to variational autoencoder to guide the meaningful disentangling.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methodology</head><p>In this section, we introduce the proposed IDCL model (Figure <ref type="figure" target="#fig_1">2</ref>), which mainly contains four modules: Behavior Disentangling (BA), Intent-wise Contrastive Learning (ICL), Coding Rate Reduction Regularization (CR) and Prediction. The workflow of IDCL is as follows. We first model user historical behavior data as a user-item-concept graph, and the augmented graph is constructed via edge dropout, then BA module takes as input the two graphs to discover diverse user intents and infer a set of concept-aware semantic bases. Then, the ICL module is proposed to enhance the intent disentangling and provide fine-grained self-supervised information, while the behavior distributions are inferred via a semantic basis based method. Besides, as an information theory based criterion, the CR module acts as a regularization constrain to promote the orthogonality between behaviors of different intents. Finally, the model makes the prediction based on the learned representations of user and item.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Problem Definiton</head><p>Multi-intent based prediction. Usually, the user behavior data can be typically represented by a graph G = (V, E),</p><p>where the node set V = U ∪ I ∪ C involves all users, items and item-related concepts, and the edge set E = O + ∪ P + represents the observed user behaviors and item affiliations. Specifically,</p><formula xml:id="formula_0">U = {u 1 , u 2 , • • • , u N } is the set of N users, I = {i 1 , i 2 , • • • , i M } is the set of M items, C = {c 1 , c 2 , • • • , c R }</formula><p>is the the set of R item-related concepts which express the item characteristics, such as category, genre, popularity, etc. O + = {e ui |u ∈ U, i ∈ I} represents the F historical behaviors between users and items, where e ui indicates that user u has adopted item i before. P + = {b ic |i ∈ I, c ∈ C} indicates that item i belongs to concept c. Given a candidate pair (u, i) consisting of a target user u and a potential item i, our goal is to learn users' disentangled intents as well as the behavior distributions over intents and then predict y ui ∈ {0, 1} , which indicates how likely this item should be recommended to the target user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Behavior Disentangling</head><p>A user's adoption of an item could be driven by multiple complex intents, which are usually closely related to user's personality and item characteristics, ignoring any side of information may result in the insufficient and inaccurate intent modeling. Thus, it is desired to disentangle the underlying intents from behavior using the combination of user and item. Given a user behavior graph G = (V, E), the widely used <ref type="bibr">LightGCN [He et al., 2020]</ref> acts as a graph encoder to learn the d-dimensional representations with high-order collaborative signals of user, item, and concept. To be specific, the representation z (l) ui ∈ R d of user u i at l-th layer can be obtained by aggregating the information of neighborhoods based on message passing mechanism of GNN as follows:</p><formula xml:id="formula_1">z (l) ui = f c z (l−1) ui , f a z (l−1) ij |i j ∈ N ui ,<label>(1)</label></formula><p>where f a (•) and f c (•) are aggregate and combine functions respectively, and they have multiple choices in different GNNs <ref type="bibr" target="#b11">[Xu et al., 2018;</ref><ref type="bibr">Kipf and Welling, 2016]</ref>. We then employ a readout function f r (•) that integrates the representations from different layers to obtain the final representation:</p><formula xml:id="formula_2">z ui = f r z (l) ui |l = [0, • • • , L] .<label>(2)</label></formula><p>Similarly, we can obtain the representation z ij of item i j and the representation z cr of concept c r . Then the representation z e of behavior that user u i interacts with item i j is:</p><formula xml:id="formula_3">z e = z ui ⊙ z ij .<label>(3)</label></formula><p>Unlike previous works that perform disentangling on user z ui or item z ij individually <ref type="bibr" target="#b6">[Ma et al., 2019a;</ref><ref type="bibr">Wang et al., 2020a]</ref>, we operate directly on behavior z e , which combines both of user and item representations. Assuming that there are K latent intents causing the behaviors, which associated with item-related concepts to some extent. Since each concept aggregates the semantics from all items with the same aspect attribute in the graph. We extract K high-level semantic bases from item-related concepts Z c = {z cr } R r=1 via soft clustering <ref type="bibr" target="#b12">[Ying et al., 2018]</ref>. Firstly, a probabilistic concept assignment matrix is learned as:</p><formula xml:id="formula_4">S = softmax (Z c W 1 ) ∈ R R×K ,<label>(4)</label></formula><p>where W 1 ∈ R d×K , and K is a model hyperparameter. Each row of S provides a soft assignment of the concept node to different intents. Then we aggregate concept nodes Z c according to the assignment S, resulting K cluster embeddings, then a semantic projection head g s (•) performs feature transformation on those cluster embeddings and outputs a set of concept-aware semantic bases as follows:</p><formula xml:id="formula_5">Z B = g s (S ⊤ Z c ) ∈ R K×∆d ,<label>(5)</label></formula><p>where ∆d = d/K, and</p><formula xml:id="formula_6">Z B = {b k } K k=1</formula><p>, each of which corresponds to a different semantic space, then they serve as semantic guidance and are combined with the behavior embedding to facilitate disentangling meaningful intent:</p><formula xml:id="formula_7">z e,k = g (k) b (z e ∥ b k ) ∈ R ∆d ,<label>(6)</label></formula><p>where ∥ means the concatenation of two embeddings, g</p><formula xml:id="formula_8">(k) b</formula><p>is the behavior projection head that maps the combination to the k th intent spaces, and z e,k indicates the k th intent. Analogously, Eq. ( <ref type="formula" target="#formula_7">6</ref>) is also applied to calculate all remaining intents via separatly projection heads in</p><formula xml:id="formula_9">g b (•) = g (k) b (•) K k=1</formula><p>. The final disentangled behavior representation can be obtained by combining all intents: z e = [z e,1 ; z e,2 ; . . . ; z e,K ].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Intent-wise Contrastive Learning</head><p>As there is usually no intent-wise labeled data in reality, however, disentanglement learning highly desires to consider the role of (implicit) supervision <ref type="bibr" target="#b5">[Locatello et al., 2018]</ref>. Additionally, behavior distributions over intents can further reflect the strength of different user intents, increasing the interpretability of recommendation. Thus, in this module, a intentwise contrastive learning is designed to enforce meaningful disentangling and infer behavior distributions.</p><p>We first construct the augmented graph G ′ for the original graph G through widely used edge dropout strategy <ref type="bibr" target="#b10">[Wu et al., 2021]</ref>, and the shared graph encoder and behavior projection heads are all applied to the augmented view, then we get the augmented factorized behavior embedding z e ′ = z ′ e,1 , z ′ e,2 , . . . , z ′ e,K . Thus, as <ref type="bibr">[Li et al., 2021]</ref>, the intentwise contrastive learning loss can be defined as follows:</p><formula xml:id="formula_10">L icl = e∈O + −logE p θ (k|e) [p θ (e ′ |e, k)],<label>(7)</label></formula><p>where p θ (k|e) indicates the probability over the k th intent of behavior e, and p θ (e ′ |e, k) is the behavior contrastive learning subtask under the k th intent. We aim to learn the optimal K intents which are able to maximize the expectation of K subtasks. The behavior confidence over the k th intent is inferred based on the concept-aware semantic basis b k as:</p><formula xml:id="formula_11">p θ (k|e) = exp ϕ (z e,k , b k ) K k=1 exp ϕ (z e,k , b k ) , (<label>8</label></formula><formula xml:id="formula_12">)</formula><p>where b k is calculated from Eq. ( <ref type="formula" target="#formula_5">5</ref>), ϕ is the cosine similarity with temperature τ , and K k=1 p θ (k|e) = 1, which ensures that intents with high confidence are more likely to have a greater impact on contrastive learning. It is worth mentioning that we utilize {b k } K k=1 as prototypes instead of random initialization <ref type="bibr">[Li et al., 2021;</ref><ref type="bibr" target="#b6">Ma et al., 2019b]</ref>, which incorporates the interpretable signals from item-related concepts.</p><p>The contrastive learning subtask of the k th intent is:</p><formula xml:id="formula_13">p θ (e ′ |e, k) = exp ϕ z e,k , z ′ e,k |O + | j∈O + ,j̸ =e exp ϕ z e,k , z ′ j,k ,<label>(9)</label></formula><p>where z e,k and z ′ e,k are the positive pair of the k th intent. To reduce the computational complexity, we use the NT-Xent loss on a minibatch and randomly sample a portion of behaviors from each training batch <ref type="bibr">[Chen et al., 2020]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Coding Rate Reduction Regularization</head><p>As behaviors driven by different intents should be distributed in different subspaces, which enables the learned behavior representations more discriminative according to intents. Here we utilize maximizing coding rate reduction (MCR 2 ) <ref type="bibr" target="#b13">[Yu et al., 2020]</ref> as a geometric regularizer for behavior representations, which measures the volume difference between representations of the entire behaviors and each intent group of behaviors. It is worth mentioning that MCR 2 considers the intrinsic geometric of features, which is able to enhance the diversity of behavior representations.</p><p>Firstly, we compute the coding rate of all behaviors, where a higher coding rate indicates that more space is required to encode the representations. Given behavior representations Z e = {z e } F e=1 ∈ R F ×d , the coding rate for the whole behaviors is defined as the average coding length per behavior <ref type="bibr" target="#b5">[Ma et al., 2007]</ref>, which is formulated as follows:</p><formula xml:id="formula_14">R(Z e , ϵ) = 1 2 log det I + d F ϵ 2 Z e ⊤ Z e , (<label>10</label></formula><formula xml:id="formula_15">)</formula><p>where ϵ is a tolerated hyperparameter, which denotes the expected decoding error is less than ϵ.</p><p>In fact, we tend to map the behaviors driven by different intents into different subspaces, keeping them as orthogonal as possible. Fortunately, Eq. ( <ref type="formula" target="#formula_11">8</ref>) provides a soft assignment of each behavior to K intent groups. We define a set of membership matrices</p><formula xml:id="formula_16">Π = Π k ∈ R F ×F K k=1</formula><p>, where Π k is the diagonal matrix whose diagonal element is the probability of each behavior subject to the k th intent, i.e., p θ (k|e) in Eq. ( <ref type="formula" target="#formula_11">8</ref>). If each behavior group is coded separately, the k th group has an expected number of tr (Π k ) vectors. Thus, with respect to partition Π, the total compactness for each group of behaviors is the summation of coding rate for all behavior groups:</p><formula xml:id="formula_17">R c (Z e , ϵ|Π) . = K k=1 tr (Π k ) 2F log det I + d tr (Π k ) ϵ 2 Z e ⊤ Π k Z e .</formula><p>(11) The volume difference between representations of the whole and each group of behaviors is desired lager, i.e., maximizing the coding rate reduction brings a better representation:</p><formula xml:id="formula_18">L ∆R = −R(Z e , ϵ) + R c (Z e , ϵ|Π),<label>(12)</label></formula><p>where the first term expands the diverse feature space of all behaviors, and the second term enforces more similar representations for behaviors within the same intent group.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Prediction</head><p>Based on the learned representations of user and item, the preference score of user u towards item i can be predicted as:</p><formula xml:id="formula_19">ŷui = z ⊤ u z i .</formula><p>(13) We use pairwise Bayesian Personalized Ranking (BPR) loss <ref type="bibr">[Rendle et al., 2009]</ref>, which promotes higher score for the observed positive pair (u, i) ∈ O + than the unobserved counterparts (u, j) ∈ O − as follows:</p><formula xml:id="formula_20">L bpr = (u,i,j)∈O − log σ (ŷ ui − ŷuj ) .<label>(14)</label></formula><p>In addition to model user-item interaction, we treat the proposed two losses as supplementary and design a multi-task training loss to jointly optimize the traditional recommendation loss L bpr , the self-supervised loss L icl and the coding rate reduction regularization L ∆R : where Θ is the set of model parameters, λ 1 , λ 2 and λ 3 are hyperparameters to control the strengths of each components.</p><formula xml:id="formula_21">L = L bpr + λ 1 L icl + λ 2 L ∆R + λ 3 ∥Θ∥ 2 2 ,<label>(15)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experiment</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Experimental Settings</head><p>Datasets. We conduct our experiments on three real-world datasets. In detail, for two MovieLens datasets with different scales (i.e., ML-100k, ML-1M) <ref type="bibr" target="#b3">[Harper and Konstan, 2015]</ref>, we follow the split method in <ref type="bibr">MultiVAE [Liang et al., 2018]</ref> and MacridVAE <ref type="bibr" target="#b6">[Ma et al., 2019b]</ref>, and the movie genres are used as concepts. In addition, we also collect a dataset from the platform recommender system of Mobile Meituan App 1 , named MtBusiness, including 52041 purchase records of 11891 users to 20689 businesses, and it involves the multi-aspect business information as concepts that is suitable for disentangled learning. We split all users into training/validation/test sets as MultiVAE, then we select 4000 held-out users, for each held-out user, we randomly choose 50% of the interactions to report metrics.</p><p>Baselines. We compare IDCL with five SOTA baselines. Among them, NGCF <ref type="bibr">[Wang et al., 2019]</ref>, <ref type="bibr">LightGCN [He et al., 2020]</ref> and NCL <ref type="bibr">[Lin et al., 2022]</ref> as three popular GNN-based recommendation approaches are included. In addition, we include two recently proposed disentangled recommendation models, i.e., MacridVAE <ref type="bibr" target="#b6">[Ma et al., 2019b]</ref> and DGCF <ref type="bibr">[Wang et al., 2020a]</ref>. Evaluation Metrics. Following <ref type="bibr">[Wang et al., 2019]</ref>, for users in the testing set, we use the all-ranking protocol to evaluate the top-K recommendation performance. We adopt two popular metrics for evaluation: Recall@K and NDCG@K, where K ∈ {20, 50, 100}, and we report the average scores of 5 runs and standard deviation.</p><p>1 http://i.meituan.com/ Implementation and hyper-parameters. We implement our model based on Pytorch. 2 We conduct experiments on all datasets with the fixed training/validation/test split. We implement all the baselines with the unified opensource of recommendation algorithms, i.e., RecBole 3 [Zhao et al.,  2020]. To make a fair and reliable comparison, we take the same item-related concept information as the initial feature for all baselines, and we carefully search hyper-parameters of all the baselines to get the best performance. We keep the embedding size of ours and all baselines to be the same, and the GNN layers of ours and all GNN-based baselines are set to be consistent. We employ the early stopping strategy for all experiments to prevent overfitting. The Adam optimizerfor mini-batch gradient descent is applied to train all models. We turn the hyper-parameters in validation set using random search, and the search space of some important hyperparameters are: <ref type="bibr">8, 10, 12, 14, 16}, ∆d ∈ [20, 40]</ref>.</p><formula xml:id="formula_22">K ∈ {6,</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Overall Performance</head><p>Table <ref type="table" target="#tab_1">1</ref> summarizes the performance of IDCL and baselines.</p><p>We have the following observations: (1) Compared with all baselines, the proposed IDCL achieves SOTA performance across all datasets, which demonstrates the effectiveness of our proposed model. This improvement is brought by the informative intent-aware supervision. In particular, it achieves maximum relative improvement over the strongest baseline MacidVAE w.r.t. Recall@20 is 8.52% on ML-100k. IDCL has the most stable performance, i.e. low standard deviation compared to all baselines. Besides, IDCL generally yields more improvement at smaller positions (e.g., top 20 ranks) than at larger positions (e.g., top 100 ranks), indicating that IDCL promotes to rank related items higher, which is con-  . The result is shown in Figure <ref type="figure">3</ref>(a) (the higher similarity corresponds to the darker color), we can observe that the representations belonging to the same intent (the blocks on the diagonal) are strongly clustered, while the counterparts of different intents are generally independent of each other. It indicates that IDCL is able to enforce different intents to be independent, avoiding the information redundancy in behavior representations. Are IDCL able to disentangle user representations? Although the disentangling operation in IDCL is only imposed on behaviors, we explore if IDCL also promotes to learn disentangled user representations for deeper analysis. All user representations are also divided into K parts, i.e., Z u = [Z u,1 ; Z u,2 ; . . . ; Z u,K ], each of which indicates a group of identical intents, we also randomly selected 500 samples from . It exhibits the obviously diagonal blocks, i.e., the learned user representations also have a clear disentangled structure despite no explicit disentangling. This indicates that the graph encoder in IDCL is able to separate the distinct, informative intent variations in the interaction graph.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Independence Analysis</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Explainability Analysis</head><p>Does the learned representations of intent k capture the semantic of k th intention? According to the k th intent representation Z e,k , k ∈ [1, K], we investigate if the sample space is divided into two disjoint subsets on ML-100K, i.e., the user behaviors driven by the k th intent and not driven by the k th intent, respectively. We perform t-SNE visualization [ <ref type="bibr" target="#b7">Van and Hinton, 2008]</ref> on Z e,k to analyse the k th intent. In detail, we calculate the distribution of behavior z e according to Eq.( ( <ref type="formula" target="#formula_11">8</ref>)), then we color the points to blue if the confidence of intent k ranks in the top 3, which indicates that behavior z e is likely driven by the k th intent. The visualization results of three different intents are shown in Figure <ref type="figure">4</ref>. It can be seen that the learned intents can discover behavior partitions of each intent, i.e., the clear distance divide between the blue and purple data points. This indicates that we can characterize whether a user will interact with an item for the reason of intent k just based on the ∆d dimensional embedding Z e,k , which highlights the significance of disentangling. Is the learned user behavior distribution interpretable? We investigate whether the learned behavior distribution in Eq. ( <ref type="formula" target="#formula_11">8</ref>) can reflect the real reason of why a user interacts with  <ref type="figure" target="#fig_4">5</ref>(c), respectively. We disentangle each behavior into 16 intents, and the confidence over each intent is the corresponding polar coordinate value. Then we get some interesting observations. 1) A user watches movies with similar themes tends to be inferred similar behavior distributions, i.e., the radar charts of user 1 towards movie 2 and movie 3 (both of Adventure and Fantasy) have very similar shapes. Meanwhile, it exhibits a different pattern when user 1 interacts with movie 1 (Comedy), e.g., the confidence of intent 5 rises significantly. We guess that intent 5 likely indicates "Comedy" related information. 2) Even if different users watch the same movie, IDCL can still identify different interest distributions reflecting user personality. i.e., the radar charts of movie 1 from the two users exhibit dissimilar shapes. This is consistent with the real recommendation scenario. It indicates that the user's interest distribution is not only related to user personality, but also depends on the characteristics of the target item.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5">Ablation Studies</head><p>To understand the role of each components in IDCL more deeply, we perform ablation studies over two important com- As the results shown in Table <ref type="table">2</ref>, comparing IDCL with Variant A, we can see that ICL boosts recommendation performance across all datasets, which indicates that ICL can effectively provide fine-granularity supervised information and assist the representation learning of user and item. In addition, we further investigate the impact of ICL on disentangling in Figure <ref type="figure">3</ref>(c), it exhibits many regions with cluster structure in the off-diagonal blocks, suggesting that features belonging to different intents are highly entangled. It proves that ICL module guarantees the behavior disentangling.</p><p>Comparing IDCL with Variant B in Table <ref type="table">2</ref>, we find that the performance drops slightly without CR, then we further analyze the impact of CR on representation learning. To explore if CR can learn discriminative feature to avoid model collapse, i.e., a large percentage of behaviors are assigned to few intents <ref type="bibr">[Wang et al., 2022]</ref>. As in Figure <ref type="figure" target="#fig_5">6</ref>, we compare the proportion of behaviors under each intent group for IDCL and Variant B, respectively, and each behavior is assigned to the intent with the highest probability calculated by Eq. ( <ref type="formula" target="#formula_11">8</ref>). We observe that IDCL (blue pillars) distributes the behaviors relatively evenly to each intent. However, when CR is removed (purple pillars), the behaviors tend to concentrate on few intents, i.e., intent 4 and 7, and even no behavior in intent 12, which weakens the effectiveness of disentangling. This indicates that CR enhances the dimensional diversity of learned features, which prevents the mode collapse problem.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Conclusion</head><p>In this paper, we propose IDCL to disentangle user intents and infer behavior distributions. We design a behavior disentangling module to disentangle user intents. We propose a intent-wise contrastive learning module to promote meaningful disentangling and infer the behavior distributions. The coding rate reduction regularization is used to enforce the behaviors of different intents independence. Experimental results show that IDCL substantially improve the performance and interpretability of recommendation. One possible future direction is to incorporate external supervisions to facilitate the disentanglement of interpretable factors.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: An illustration of behavior distributions. The intents for each behavior are shown on the arrow (the main intents are bolded).</figDesc><graphic coords="1,365.63,240.63,141.74,73.70" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The framework of the proposed Intent-aware Recommendation via Disentangled Graph Contrastive Learning (IDCL) model.</figDesc><graphic coords="4,54.00,54.00,504.01,189.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :Figure 4 :</head><label>34</label><figDesc>Figure 3: Independence analysis on ML-100K with predefined 16 intents. Figure(a)-(b) shows the results in IDCL of behavior and user, respectively, i.e., the cosine similarity between the factors, the diagonal blocks indicates that different factors capture independent information.Figure(c) indicates the result of Variant A (IDCL w/o ICL), the confused high similarity emerge even across different factors.</figDesc><graphic coords="6,119.43,212.67,121.89,90.71" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>each intent group as Z * u,k , k ∈ [1, K].As in Figure3(b), we visualize the cosine similarity between each intent in</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Two users' behavior distributions over all intents for three movies. Method ML-100k ML-1M MtBusiness IDCL 0.3235 0.3160 0.2973 Variant A 0.3146 0.3122 0.2907 Variant B 0.3166 0.3146 0.2961Table2: Ablation studies on the variants of IDCL (Recall@20).</figDesc><graphic coords="7,127.14,202.70,70.87,70.87" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: The inferred proportion of behaviors under each intent for IDCL and Variant B, respectively.</figDesc><graphic coords="7,357.13,53.99,158.74,105.83" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>The recommendation performance comparison. Best results are in bold.</figDesc><table><row><cell>Dataset</cell><cell>Method</cell><cell>Recall@20</cell><cell>Metrics Recall@50 Recall@100</cell><cell>NDCG@100</cell></row><row><cell></cell><cell>NGCF</cell><cell cols="3">0.2395±0.0379 0.3885±0.0442 0.5123±0.0454 0.2758±0.0296</cell></row><row><cell></cell><cell>LightGCN</cell><cell cols="3">0.2724±0.0175 0.3878±0.0255 0.5278±0.0185 0.2975±0.0182</cell></row><row><cell>ML-100k</cell><cell cols="4">DGCF MacidVAE 0.2981±0.0384 0.4287±0.0175 0.5378±0.0317 0.3210±0.0176 0.2371±0.0369 0.3847±0.0264 0.5096±0.0291 0.2858±0.0234</cell></row><row><cell></cell><cell>NCL</cell><cell cols="3">0.2347±0.0191 0.3771±0.0175 0.5096±0.0291 0.2796±0.0201</cell></row><row><cell></cell><cell>IDCL</cell><cell cols="3">0.3235±0.0073 0.4450±0.0083 0.5554 ±0.0045 0.3378±0.0078</cell></row><row><cell></cell><cell>NGCF</cell><cell cols="3">0.2678±0.0171 0.4294±0.0177 0.5734±0.0221 0.3856±0.0148</cell></row><row><cell></cell><cell>LightGCN</cell><cell cols="3">0.2940±0.0097 0.4694±0.0194 0.6125±0.0172 0.4150±0.0117</cell></row><row><cell>ML-1M</cell><cell cols="4">DGCF MacidVAE 0.2981±0.0060 0.4590±0.0053 0.5988±0.0053 0.4104±0.0045 0.2961±0.0050 0.4664±0.0054 0.6073±0.0018 0.4115±0.0015</cell></row><row><cell></cell><cell>NCL</cell><cell cols="3">0.3017±0.0043 0.4754±0.0055 0.6175±0.0040 0.4177±0.0028</cell></row><row><cell></cell><cell>IDCL</cell><cell cols="3">0.3160 ±0.0030 0.4888±0.0030 0.6268±0.0028 0.4302±0.0017</cell></row><row><cell></cell><cell>NGCF</cell><cell cols="3">0.2768±0.0022 0.3088±0.0013 0.3303±0.0005 0.2258±0.0015</cell></row><row><cell></cell><cell>LightGCN</cell><cell cols="3">0.2934±0.0024 0.3354±0.0008 0.3597±0.0007 0.2378±0.0023</cell></row><row><cell>MtBusiness</cell><cell cols="4">DGCF MacidVAE 0.2887±0.0013 0.3309±0.0010 0.3569±0.0027 0.2333±0.0012 0.2915±0.0024 0.3318±0.0054 0.3541±0.0071 0.2358±0.0016</cell></row><row><cell></cell><cell>NCL</cell><cell cols="3">0.2906±0.0021 0.3353±0.0015 0.3605±0.0015 0.2335±0.0035</cell></row><row><cell></cell><cell>IDCL</cell><cell cols="3">0.2973±0.0010 0.3426±0.0011 0.3697±0.0014 0.2382±0.0003</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">https://pytorch.org/ 3 https://github.com/RUCAIBox/RecBole</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgements</head><p>The research was supported in part by the National Natural Science Foundation of China (No. 62172052, U22B2019) and BUPT Excellent Ph.D. Students Foundation (CX2022220).</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Infogan: Interpretable representation learning by information maximizing generative adversarial nets</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>References</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="volume">29</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Huifeng Guo, Ruiming Tang, Yunming Ye, Zhenguo Li, and Xiuqiang He. Deepfm: A factorization-machine based neural network for ctr prediction</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Chen</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2020. 2020. 2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note>A simple framework for contrastive learning of visual representations. international conference on machine learning. international joint conference on artificial intelligence</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Topicvae: Topic-aware disentanglement representation learning for enhanced recommendation</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM International Conference on Multimedia</title>
+				<meeting>the 30th ACM International Conference on Multimedia</meeting>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+			<biblScope unit="page" from="511" to="520" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Shakir Mohamed, and Alexander Lerchner. beta-vae: Learning basic visual concepts with a constrained variational framework</title>
+		<author>
+			<persName><forename type="first">Konstan ; F. Maxwell</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Konstan ; Xiangnan He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kuan</forename><surname>Chua ; Xiangnan He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongdong</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Higgins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The movielens datasets: History and context. Ksii Transactions on Internet and Information Systems</title>
+				<editor>
+			<persName><forename type="first">Jun-Ting</forename><surname>Hsieh</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Bingbin</forename><surname>Liu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">De-An</forename><surname>Huang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Li</forename><surname>Fei-Fei</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Juan</forename><forename type="middle">Carlos</forename><surname>Niebles</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Irina Higgins, Loic Matthey, Arka Pal, Christopher P. Burgess, Xavier Glorot, Matthew Botvinick</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2015">2015. 2015. 2017. 2017. 2020. 2017. 2017. 2018. 2018. 2016</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+	<note>Learning to decompose and disentangle representations for video prediction. neural information processing systems. Kipf and Welling, 2016] Thomas Kipf and Max Welling. Semi-supervised classification with graph convolutional networks. arXiv: Learning</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Computer</title>
+		<editor>Li et al., 2021] Haoyang Li, Xin Wang, Ziwei Zhang, Zehuan Yuan, Hang Li, and Wenwu Zhu</editor>
+		<imprint>
+			<date type="published" when="2009">2009. 2009. 2021</date>
+		</imprint>
+	</monogr>
+	<note>Disentangled contrastive learning on graphs. neural information processing systems</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Challenging common assumptions in the unsupervised learning of disentangled representations. Learning</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 world wide web conference</title>
+				<meeting>the 2018 world wide web conference</meeting>
+		<imprint>
+			<date type="published" when="2007">2024. 2024. 2018. 2018. 2022. 2018. 2018. 2007. 2007</date>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="1546" to="1562" />
+		</imprint>
+	</monogr>
+	<note>Segmentation of multivariate mixed data via lossy data coding and compression</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Christoph Freudenthaler, Zeno Gantner, and Lars Schmidt-Thieme. Bpr: Bayesian personalized ranking from implicit feedback. uncertainty in artificial intelligence</title>
+		<author>
+			<persName><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Disentangled graph convolutional networks. international conference on machine learning</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2009">2019a. 2019. 2019b. 2019. 2009. 2010</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="995" to="1000" />
+		</imprint>
+	</monogr>
+	<note>2010 IEEE International conference on data mining</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Visualizing data using t-sne</title>
+		<author>
+			<persName><forename type="first">Hinton ; Laurens</forename><surname>Van</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine learning research</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<date type="published" when="2008">2008. 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Community preserving network embedding</title>
+	</analytic>
+	<monogr>
+		<title level="m">2020a] Xiang Wang, Hongye Jin, An Zhang, Xiangnan He, Tong Xu, and Tat-Seng Chua. Disentangled graph collaborative filtering. international acm sigir conference on research and development in information retrieval</title>
+				<editor>
+			<persName><surname>Wang</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2017">2017. 2017. 2019. 2019. 2020</date>
+			<biblScope unit="volume">31</biblScope>
+		</imprint>
+	</monogr>
+	<note>Neural graph collaborative filtering. international acm sigir conference on research and development in information retrieval</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Multi-component graph convolutional collaborative filtering</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI conference on artificial intelligence</title>
+				<meeting>the AAAI conference on artificial intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020b. 2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="6267" to="6274" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Selfsupervised graph learning for recommendation. international acm sigir conference on research and development in information retrieval</title>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+				<editor>
+			<persName><surname>Wu</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2021">2022. 2022. 2021. 2022</date>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="page" from="1" to="37" />
+		</imprint>
+	</monogr>
+	<note>Graph neural networks in recommender systems: a survey</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m">Representation learning on graphs with jumping knowledge networks. international conference on machine learning</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Hierarchical graph representation learning with differentiable pooling</title>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+			<biblScope unit="page">31</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Learning diverse and discriminative representations via the principle of maximal coding rate reduction</title>
+	</analytic>
+	<monogr>
+		<title level="m">Ping Luo, Xiaogang Wang, and Xiaoou Tang. Multi-view perceptron: a deep model for learning face identity and view representations. neural information processing systems</title>
+				<editor>
+			<persName><forename type="first">Xinyan</forename><surname>Fan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Pengfei</forename><surname>Wang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Wendi</forename><surname>Ji</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yaliang</forename><surname>Li</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xiaoling</forename><surname>Wang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2014">2020. 2020. 2022. 2020. 2014</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="80" to="90" />
+		</imprint>
+	</monogr>
+	<note>Recbole: Towards a unified, comprehensive and efficient framework for recommendation algorithms. conference on information and knowledge management</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

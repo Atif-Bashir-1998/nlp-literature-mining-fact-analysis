@@ -1,0 +1,35 @@
+{
+  "methods": [
+    "After that, a simple and direct approach of profile generation for a user is to take all of his/her reviews and calculate the frequency of each feature therein, which intuitionally serve as an indicator of the extent that a user cares about a feature.",
+    "We particularly focus on the utilization of phrase-level sentient analysis technique to format, structure and summarize the free-text reviews, so as to take feature-level advantages of this information-rich resource.",
+    "It is important to point out that this procedure can be conducted even though the user made only a single review, because there may also exist a bunch of mentioned features in the review text.",
+    "This procedure is exposited in Figure 4.",
+    "Previous research on Recommender Systems (RS), especially the continuously popular approach of Collaborative Filtering (CF), has been mostly focusing on the information resource of explicit user numerical ratings or implicit (still numerical) feedbacks.",
+    "An important problem of traditional CF-based recommendation algorithm in real-world application is the difficulty to explain the recommendation results.",
+    "Hybrid recommender system, on the other hand, aims to combine the advantages of various strategies to make more informed recommendations."
+  ],
+  "domains": [
+    "By conducting phrase-level sentiment analysis on this corpus, a sentiment lexicon [27,10,5,15] is constructed, which includes the product feature words (e.g.",
+    "This information rich resource of textual reviews have clearly exhibited brand-new approaches to solving many of the important problems that have been perplexing the research community for years, such as the paradox of cold-start, the explanation of recommendation, and the automatic generation of user or item profiles.",
+    "In CF-based recommendation algorithms, one of the most fundamental causes of cold-start comes from the absence of purchasing or rating information of new users or items.",
+    "We will also attempt to bridge up explanations and its application in cold-start recommendation scenarios in the following research tasks.",
+    "We will further investigate the application of automatic profiling in personalized recommendation in the following work.",
+    "Apart from exhibiting the profiles to users for product comparison, the user and product profiles can also be easily used for content-based or hybrid recommendation, because they model the users and items in the same and intuitional feature space, thus, for example, it would be very easy to calculate the similarity between two users, two products, or even a user and a product.",
+    "We focus on leveraging phrase-level sentiment analysis on the reviews to better solve the above mentioned cuttingedge research problems.",
+    "We argue that the existence of textual reviews is of fundamental importance to personalized recommendation, even compared with the previously mostly concerned numerical ratings.",
+    "In the following work, we will continue to investigate the great potential of leveraging textual reviews in solving the problems of cold-start recommendation, recommendation explanation and automatic profile generation for hybrid recommender systems.",
+    "By conducting phraselevel sentiment analysis [15,10,5,31] on the textual reviews, we are able to extract these feature-opinion word pairs, thus to gain more detailed information about the user's overall opinion towards a product (the overall rating), which helps to understand the item characterises and user needs in a wider range of dimension, and to alleviate the problem of data sparsity in the scenario of cold-start recommendation.",
+    "In this research, we stress the importance of incorporating textual reviews for recommendation through phrase-level sentiment analysis, and further investigate the role that the texts play in various important recommendation tasks.",
+    "We first extract all the matched product features and their accompanying opinion words from each piece of review, and estimate the appropriate score that the user expressed towards each of the features, by considering the sentiment polarities of the opinion words.",
+    "An important problem of traditional CF-based recommendation algorithm in real-world application is the difficulty to explain the recommendation results.",
+    "ness and efficiency of explanations in recommendation."
+  ],
+  "baselines": [
+    "The product profiles can be displayed in different forms to help users better understand the pros and cons of a product, or to compare the profiles of two products so as to make more informed purchasing decisions.",
+    "By conducting phraselevel sentiment analysis [15,10,5,31] on the textual reviews, we are able to extract these feature-opinion word pairs, thus to gain more detailed information about the user's overall opinion towards a product (the overall rating), which helps to understand the item characterises and user needs in a wider range of dimension, and to alleviate the problem of data sparsity in the scenario of cold-start recommendation."
+  ],
+  "datasets": [
+    "We first integrate all the textual reviews in a product domain (mobile phone domain in this example) to construct a review corpus.",
+    "By conducting phrase-level sentiment analysis on this corpus, a sentiment lexicon [27,10,5,15] is constructed, which includes the product feature words (e.g."
+  ]
+}

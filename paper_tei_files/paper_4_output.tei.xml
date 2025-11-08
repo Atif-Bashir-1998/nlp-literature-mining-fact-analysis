@@ -1,0 +1,1461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Towards Explainable Conversational Recommender Systems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-05-27">27 May 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Shuyu</forename><surname>Guo</surname></persName>
+							<email>guoshuyu225@gmail.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Shuo</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Pengjie</forename><surname>Ren</surname></persName>
+							<email>renpengjie@sdu.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Zhumin</forename><surname>Chen</surname></persName>
+							<email>chenzhumin@sdu.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+							<email>zhaochun.ren@sdu.edu.cn</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Shandong University</orgName>
+								<address>
+									<settlement>Qingdao</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">Weiwei Sun Shandong University</orgName>
+								<address>
+									<settlement>Qingdao</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Shandong University</orgName>
+								<address>
+									<settlement>Qingdao</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">Shandong University</orgName>
+								<address>
+									<settlement>Qingdao</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Shandong University</orgName>
+								<address>
+									<settlement>Qingdao</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Towards Explainable Conversational Recommender Systems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-05-27">27 May 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">DA4DC3F971792484F4DC90F81E9691E6</idno>
+					<idno type="DOI">10.1145/3539618.3591884</idno>
+					<idno type="arXiv">arXiv:2305.18363v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS CONCEPTS • Information systems → Users and interactive retrieval</term>
+					<term>Recommender systems</term>
+					<term>• Human-centered computing → Human computer interaction (HCI) Explainable recommendation, conversational recommendation, conversational information access</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Explanations in conventional recommender systems have demonstrated benefits in helping the user understand the rationality of the recommendations and improving the system's efficiency, transparency, and trustworthiness. In the conversational environment, multiple contextualized explanations need to be generated, which poses further challenges for explanations. To better measure explainability in conversational recommender systems (CRS), we propose ten evaluation perspectives based on concepts from conventional recommender systems together with the characteristics of CRS. We assess five existing CRS benchmark datasets using these metrics and observe the necessity of improving the explanation quality of CRS. To achieve this, we conduct manual and automatic approaches to extend these dialogues and construct a new CRS dataset, namely Explainable Recommendation Dialogues (E-ReDial). It includes 756 dialogues with over 2,000 high-quality rewritten explanations. We compare two baseline approaches to perform explanation generation based on E-ReDial. Experimental results suggest that models trained on E-ReDial can significantly improve explainability while introducing knowledge into the models can further improve the performance. GPT-3 in the in-context learning setting can generate more realistic and diverse movie descriptions. In contrast, T5 training on E-ReDial can better generate clear reasons for recommendations based on user preferences.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Recommender systems provide personalized suggestions to help users find items based on their preferences and have been widely used in various online applications. Explanations for recommender systems are expected to clarify why such items are recommended. Researchers have pointed out that appropriate explanations can help improve the recommender systems' transparency, persuasiveness, effectiveness, trustworthiness, and user satisfaction <ref type="bibr" target="#b41">[42]</ref>. Thus, a growing body of work has been devoted to improving the recommendation explainability through various methods, e.g., incorporating user reviews <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b21">22]</ref>, counterfactual reasoning <ref type="bibr" target="#b36">[37,</ref><ref type="bibr" target="#b39">40]</ref>.</p><p>Conventional recommender systems primarily predict a user's preference over an item by analyzing their past behaviours, which can neither clarify what a user likes nor explain why a user likes an item. In contrast, conversational recommender systems (CRS) elicit user preferences dynamically and respond to users' needs through real-time multi-turn interactions <ref type="bibr" target="#b14">[15]</ref>. Compared to singleturn explanation generation in conventional recommender systems, CRS needs to generate multiple contextualized explanations, which poses further challenges. As of now, there is limited progress for explainable CRS <ref type="bibr" target="#b18">[19]</ref>. Wen et al. <ref type="bibr" target="#b40">[41]</ref> firstly try to generate explanations on real-world CRS datasets. However, due to the lack of evaluation methods for CRS explanations and datasets with highquality explanations, the performance of the generated explanations is limited and not effectively evaluated. In this study, we focus on explainable conversation recommender systems and conduct further investigations.</p><p>We elucidate the meaning of the explanation for CRS, combing explainable recommender systems <ref type="bibr" target="#b38">[39]</ref> and the characteristics of CRS. Formally, it refers to a response from CRS containing relevant details about the recommended items, e.g., the recommendation reasons, the items' descriptions and personal opinions when recommending items. To evaluate the explanation for CRS, we SYSTEM: What kind of movies do you like? USER: Can you find me a movie like [Pretty <ref type="bibr">Woman (1990)</ref>]. An all time favorite. Jones is determined to improve herself while she looks for love in a year in which she keeps a personal diary. I think it's one of the most charming romantic comedies in a while! I believe this movie will give you an unprecedented experience.</p><p>KNOWLEDGE: … Bridget Jones's Diary is a 2001 romantic comedy film directed by Sharon Maguire and written by … Bridget Jones is determined to improve herself while she looks for love in a year in which she keeps a personal diary … As a huge fan of the books, I had incredibly high expectations of the movie … Figure <ref type="figure">1</ref>: An example snippet of dialog in E-ReDial. Above each system's response with explanation and knowledge is different components. Best seen in colors.</p><p>propose ten evaluation perspectives. The effectiveness, efficiency, persuasiveness, satisfaction, scrutability, transparency, trust, and representativeness are inherited from explainable recommender systems <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b7">8]</ref>. They are used to evaluate properties common to all recommendation systems, e.g., system transparency, recommendation accuracy, and user satisfaction. In addition, the reasonability and coherence are derived from the characteristics of the CRS. They measure the consistency between explanations and conversations regarding logic and language, respectively. We measure five widely used CRS datasets using a human annotation task to verify the necessity of explainability in CRS. We design a questionnaire containing 13 questions covering 10 evaluation perspectives we proposed. With 50 dialogues sampled from each dataset, over 20 participants are invited to answer these questions at the dialogue exchange level. According to the questionnaire results, the existing datasets have relatively low-quality explanations. Specifically, lack of explanation, ambiguous recommended reason, unrepresentative item description, low effectiveness, low efficiency, low user satisfaction, trust or willingness to accept the recommendation in most dialogue turns. Meanwhile, we label all sampled dialogues at the dialogue level and compute the correlation between dialogues and explanations. This task covers effectiveness, efficiency, dialogue quality, and satisfaction <ref type="bibr" target="#b18">[19]</ref>. The results indicate that the explanation quality is highly correlated with the overall performance of the CRS. Specifically, improving any perspectives of explanation is beneficial to the effectiveness and efficiency of CRS. Dialogues with more diverse movie descriptions will be considered to have higher dialogue quality, while more trustworthy explanations lead to higher satisfaction.</p><p>To improve the explainability of CRS, we construct a new dataset named Explainable Recommendation Dialogues (E-ReDial). We conduct a user study to investigate high-quality explanations for CRS and extract four main characteristics, i.e., clear recommendation reason, representative item description, encouragement or personal opinion, and reasonable and contextual. Based on these, we conduct manual and automatic approaches to rewrite the system responses with low-quality explanations sampled from a commonly used real-world CRS dataset. In the manual method, over 30 participants are involved. We ask them to search for relevant information about movies mentioned in responses (or knowledge for short), e.g., the plots, the trailers, the wikis and the reviews and extend responses to meet all requirements. In the automatic method, we use GPT-3 for rewriting. We input the context with a prompt covering all requirements and collect the generated responses. We observe that the automatic method often fails to meet the rewriting requirements by evaluating the explanations obtained by both methods. Thus E-ReDial is constructed entirely by manual method. It consists of 756 dialogues in the movie domain with 2,058 high-quality rewriting explanations, where each explanation is additionally annotated for corresponding knowledge and different components. Figure <ref type="figure">1</ref> presents an illustrative example for our E-ReDial dataset.</p><p>We compare training-based and prompt-based approaches to perform explanation generation, i.e., given the context and the ground-truth recommended movies to generate corresponding explanations. Experimental results suggest that models trained on E-ReDial can significantly improve explainability, while introducing knowledge into the models can further improve the performance. In addition, both training-based and prompt-based methods have their own advantages. While GPT-3 can generate more realistic and diverse movie descriptions in an in-context learning setting. T5 training on E-ReDial can better generate clear reasons for recommendations based on user preferences.</p><p>In summary, this paper makes the following contributions: <ref type="bibr" target="#b0">(1)</ref> We propose the definition and evaluation perspectives of the explanation for CRS and verify its necessity. <ref type="bibr" target="#b1">(2)</ref> We collect and share a CRS dataset, E-ReDial, which includes over 2,000 high-quality explanations. (3) We introduce both training-based and prompt-based baseline methods for explanation generation using E-ReDial. The data and code are available at https://github.com/Superbooming/E-ReDial.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORK</head><p>Conversational recommendation. Unlike conventional recommendations, conversational recommenders interact with users through real-time, multi-turn conversations <ref type="bibr" target="#b14">[15]</ref>. Two main types of conversational recommender systems (CRS) are being studied: attribute-aware and topic-guided <ref type="bibr" target="#b18">[19]</ref>. The former focus on the recommendation strategy <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b46">47]</ref>, while the latter interacts with users through free-form natural language <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b46">47]</ref>. We focus on topic-guided CRS in this paper. We analyze them from the view of explainability and enhance their corresponding abilities through manual and automatic methods. Explainable recommendation. The explainable recommendation provides the items and explanations for why such items are recommended. Providing explanations for the recommendations can help improve the recommender systems' transparency, persuasiveness, effectiveness, trustworthiness, and user satisfaction <ref type="bibr" target="#b41">[42]</ref>. There are various forms of explanations, such as item features <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b42">43]</ref>, natural language <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b20">21]</ref>, images <ref type="bibr" target="#b4">[5]</ref>, and prototypes <ref type="bibr" target="#b27">[28]</ref>. Since CRS interacts with users through multi-turn conversations using natural language, we focus on the natural language explanations in this paper. To evaluate the explainability of recommender system, Tintarev and Masthoff <ref type="bibr" target="#b38">[39]</ref> have proposed 7 evaluation goals: transparency, scrutability, trust, effectiveness, persuasiveness, efficiency and satisfaction. Chen et al. <ref type="bibr" target="#b7">[8]</ref> extend on these to propose a new goal, scrutability, which has the same name mentioned above but has a different meaning. For the sake of distinction, we rename it as representativeness in the remainder of this paper. We integrate these goals into the CRS in Section 3.2. Explainable conversational recommendation. There are only a few papers so far study explainable conversational recommendations. The existing works in CRS aim to make the generated responses more natural and fluent instead of more explanatory <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b44">45]</ref>. Compared to single-turn explanation generation in conventional recommender systems, CRS generates multiple contextualized explanations, which poses further challenges for explanations. Chen et al. <ref type="bibr" target="#b8">[9]</ref> is the first work on this topic. Still, it constructs dialogues using template-based user feedback to improve the performance of single-turn explanation generation rather than in a CRS scenario. Wen et al. <ref type="bibr" target="#b40">[41]</ref> firstly propose a framework to generate explanations on a real-world CRS dataset. However, the performance of the generated explanations is limited and not effectively evaluated due to the lack of evaluation methods for CRS explanations and datasets with high-quality explanations. To alleviate these issues, we propose 10 evaluation perspectives and collect a new CRS dataset with high-quality explanations in this work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">THE EXPLANATION FOR CRS</head><p>In this section, we elucidate the meaning of the explanation for CRS, evaluation measurements and detail how to validate the necessity of explainability for CRS.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Definition</head><p>The definition of explanation in conventional recommender systems has been widely accepted as a justification for why items have been recommended <ref type="bibr" target="#b41">[42]</ref>, or an item description helping the user better understand the qualities of the item at a broader level <ref type="bibr" target="#b38">[39]</ref>. CRS differs from conventional recommendation systems in many aspects. The major difference is that CRS dynamically interacts with users through real-time multi-turn conversations to elicit their preferences <ref type="bibr" target="#b14">[15]</ref>; thus, the scope of queries is enlarged. Combining these factors, we deem the explanation for CRS as: Explanation for CRS A response from CRS that contains relevant details about the recommended items in the recommended round.</p><p>We expect the explanations only appear when CRSs are recommending items, i.e., responses in subsequent conversation rounds with details about the item can only be considered as an addition to its information and not as an explanation for the recommendation. In addition, an explanation must contain relevant details of recommended items, e.g., the recommendation reasons, the item descriptions, and personal opinions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Evaluation perspectives</head><p>Explanations for recommendation can vary in purposes, e.g., providing users with recommendations and reasons to increase their trust in the system or providing detailed item descriptions to help users make a more informed decision. Thus, evaluating the explanations are expected to be comprehensive, i.e., covering different perspectives. We propose the following evaluation perspectives to better evaluate the explanation quality for CRS and list their definitions and evaluation methods in Table <ref type="table" target="#tab_0">1</ref>. Among these perspectives, the effectiveness, efficiency, persuasiveness, satisfaction, scrutability, transparency, trust, and representativeness are inherited from explainable recommender systems. They are used to evaluate properties common to all recommendation systems, e.g., system transparency, recommendation accuracy, and user satisfaction. In addition, the reasonability and coherence is derived from the characteristics of the CRS. They measure the consistency between explanations and conversations regarding logic and language, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Necessity</head><p>To validate the necessity of explainability for CRS, we look into five widely used CRS datasets as representatives and check their explanation quality at exchange and dialogue levels, respectively. Datasets. The five CRS datasets are as follows. ( <ref type="formula">1</ref>) ReDial <ref type="bibr" target="#b22">[23]</ref> is an English conversational movie recommendation dataset in realistic dialogue scenarios that contains 10,006 conversations.</p><p>(2) TG-ReDial <ref type="bibr" target="#b45">[46]</ref> is a Chinese conversational movie recommendation dataset incorporating topic threads annotated by semi-automatic approaches. It contains 10,000 conversations. (3) DuRec-Dial <ref type="bibr" target="#b23">[24]</ref> is a Chinese conversational recommendation dataset with multi-type dialogues which contains 10,190 conversations. ( <ref type="formula">4</ref>) IN-SPIRED <ref type="bibr" target="#b17">[18]</ref> is an English conversational movie recommendation dataset with good social strategies which contains 1,001 conversations. ( <ref type="formula">5</ref>) OpenDialKG <ref type="bibr" target="#b28">[29]</ref> is an English conversational recommendation dataset pairing each dialogue with corresponding knowledge graph paths, which contains 15,673 conversations. We sample 50 dialogues randomly from each dataset for validation. Explanation quality at exchange level. We design a questionnaire 1 containing 13 questions covering all evaluation perspectives in Table <ref type="table" target="#tab_0">1</ref>. Over 20 participants are invited to assess system responses from the sampled dialogues resorting to these evaluation metrics at the dialogue exchange level. For more details on annotation, see our repository https://github.com/Superbooming/E-Redial/blob/main/Exchange_level.md. The annotation results are shown in Table <ref type="table" target="#tab_1">2</ref>. The metrics are obtained by averaging the corresponding perspectives' scores across all exchange turns. We also compute Cohen's Kappa to measure the annotation disagreement. Since there are few explanations in OpenDialKG, its annotation results are highly agreed upon, so we omit Cohen's Kappa. Our results indicate that the existing datasets have relatively low-quality explanations for our proposed metrics. Specifically, lack of explanation, ambiguous recommended reason, unrepresentative item description, low effectiveness, low efficiency, low user satisfaction, trust, or willingness to accept the recommendation in most dialogue turns. The results differ across datasets, with the two Chinese datasets performing the best, INSPIRED and OpenDialKG the next best, and ReDial the worst. The results also differ across metrics, reasonability and coherence are relatively high, while others are pretty low. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Metric Definition and Measure Method Reference</head><p>Effectiveness D: whether the explanation can help users to make good decisions <ref type="bibr" target="#b38">[39]</ref> [2, 3, 34, 38, 39] M: difference between the ratings of the item before and after consuming Efficiency D: whether the explanation can help users to make decisions faster <ref type="bibr" target="#b38">[39]</ref> [3, 16, 39] M: time spent making decisions <ref type="bibr" target="#b15">[16]</ref>, reading an explanation <ref type="bibr" target="#b2">[3]</ref>, the number of dialogue turns Persuasiveness D: whether the explanation can convince users to accept the recommendation <ref type="bibr" target="#b38">[39]</ref> [11, 39] M: accept rate of recommendation in conversations Transparency D: whether the explanation explains how the system works <ref type="bibr" target="#b38">[39]</ref> [12, 39] M: user's perceived understanding of how the system works Scrutability D: whether the explanation allows users to know their preference for the item <ref type="bibr" target="#b38">[39]</ref> [13, 39] M: user's perceived understanding of how their preference is used to make recommendations Trust D: whether the explanation increases users' confidence in the system <ref type="bibr" target="#b38">[39]</ref> [30, 39] M: related questions on transparency and scrutability Satisfaction D: whether the explanation can make the use of the system enjoyable <ref type="bibr">[39] [14, 27, 35, 36</ref>, 39] M: ask users whether they prefer a system with explanations <ref type="bibr" target="#b35">[36]</ref> or whether they will choose the system again for the next  Explanation quality at dialogue level. We average the values on all explanation metrics in each dialogue as their overall ratings.</p><p>To figure out the relationship between explanation quality and dialogue performance, we ask annotators to label all sampled dialogues at the dialogue level. We design another questionnaire 2 containing 5 questions covering the main overall goals of CRS, i.e., the effectiveness, efficiency, dialogue quality and satisfaction <ref type="bibr" target="#b18">[19]</ref>. These overall  shown in Figure <ref type="figure" target="#fig_2">2</ref>. We omit the effectiveness, reasonability and coherence of explanations since they are weakly correlated with CRS metrics. Our results indicate that the explanation quality is highly correlated with the overall performance of the CRS. Specifically, the existence (explanation rate) and quality of explanations (overall) can significantly influence the performance of CRS. The effectiveness and efficiency of CRS are strongly correlated with almost all explanation metrics, which means the improvement of any perspectives of explanation is beneficial to them. The dialogue quality of CRS is mainly related to representativeness of explanation, which suggests that dialogues with more diverse movie descriptions will be considered to have higher dialogue quality. The satisfaction of CRS has a higher correlation with trust-related metrics of explanation, e.g., the transparent and scrutability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">DATASET AUGMENTATION</head><p>This section elaborates on our efforts to improve the explainability of CRS. We conduct a user study to investigate the characteristics of good explanations for CRS and conduct both manual and automatic methods to rewrite the low-quality explanations on a commonly used CRS dataset. Finally, we propose a new dataset with highquality explanations, Explainable Recommendation Dialogues (E-ReDial). Below, we detail the creation of the dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">User study</head><p>To explore the approaches to improving the explanation quality of CRS, we conduct a user study to investigate the characteristics of good explanations. Specifically, we invite over 20 participants and let each participant annotate 30 system responses containing explanations of different qualities, which we have evaluated in Section 3.3. We ask them to explain each response why the explanation is good or bad. By analyzing the explanations collected, we arrive at four main characteristics of high-quality explanations for CRS:</p><p>(1) Clear recommendation reason is a rational explanation about why the system recommends these items and what preferences the recommendation is based on. (2) Representative item description, which means the detailed information about recommended items, e.g., the directors, the actors, the genres, and the plot of recommended movies. The description should be true and have a cinematic characteristic.</p><p>(3) Encouragement or personal opinion on recommended items, which means persuading users to accept recommendations from the view of language or personal experience. (4) Be reasonable and contextual, meaning the explanations must be logically and linguistically consistent with the conversation. We aspire to enhance the overall explanation quality of the dataset by generating better explanations, as the existing explanations within the dataset are commonly lacking in meeting the four aforementioned characteristics.</p><p>We consider three methods to generate good explanations: recollecting dialogues and rewriting low-quality explanations manually and automatically. Given the difficulty and cost of re-collecting, we choose the latter two and will explore the approach to recollecting in future work. This work extends the ReDial and rewrites its low-quality explanations. We choose ReDial since it is more commonly used and more realistic than a dataset constructed by some specific schemas. Meanwhile, according to annotation results in Section 3.3, it performs the worst explanation quality. We conduct manual and automatic approaches to rewrite its explanations and compare the two methods' performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Manual method</head><p>Our manual method involves over 30 participants. They are expected to search for relevant information and rewrite the response to meet all requirements in Section 4.1. The annotation pipeline includes three steps: searching for information, rewriting the response and checking quality. Figure <ref type="figure" target="#fig_3">3</ref> illustrates the steps. Searching for information: To facilitate the needed information for rewriting the responses, such as the movie plot, the trailer, the reviews from IMDb, and the wiki knowledge from Wikipedia, our annotation pipeline provides the search function to retrieve them. Specifically, the search function leverages Tf-IDF similarity between the context and all reviews and returns the three most relevant reviews. For diversity, external information sources are also allowed. Rewriting the response: The annotators are asked to rewrite the less explainable responses without changing the original meaning of the sentence. We further ask the annotators to label the rewritten responses' different aspects, i.e., the recommendation reasons, movie descriptions, encouragement or personal opinions. Checking quality: Another 10 participants are instructed to check the qualify of the rewritten responses. They are asked to answer the questions to determine whether the responses meet the requirements. Responses having no qualified explanations are excluded and resent for annotations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Automatic method</head><p>In addition to the manual approach, we extend the explanations by applying automatic text generation models. We choose GPT-3 3 as our benchmark model for an extension since it has achieved outstanding performance on lots of text generation tasks. We test two versions of GPT-3, namely text-davinci-003 and code-davici-002. We input the dialogue context and the system  response to be rewritten alongside a task instruction 4 covering all requirements in Section 4.1. Then, we collect the generated text as the new response to the dialogue. We invite five annotators to check the quality of generated responses. Analyzing the results shows that more than 30% of the generated responses need to meet the rewriting requirement. Specifically, changing the original meaning of the sentence, the lack of recommended movies, user preference, and movie descriptions in most cases. An example of extension results generated by the manual and automatic methods is shown in Table <ref type="table" target="#tab_3">3</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">The E-ReDial dataset</head><p>After collecting all eligible manually rewritten responses from Re-Dial 5 , we put them together with the corresponding context to form new dialogues. This results in a new CRS dataset, Explainable Recommendation Dialogues (E-ReDial). It comprises 756 dialogues with 12,003 utterances, each with 15.9 turns on average. 2,058 highquality explanations are included, each with 79.2 tokens on average. We annotate it in the same way as in Section 3.3 to measure the explanation quality. The detailed evaluation results of E-ReDial are shown in Table <ref type="table" target="#tab_1">2</ref>. The results show that our dataset is significantly better than others in all metrics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EXPERIMENTS 5.1 Dataset and metrics</head><p>Training and testing data. We divide the newly labelled data into training and test sets at an 8:2 ratio. The test set comprises 150 conversations and 1121 system responses. Out of the system responses in the test set, 823 are idle or interrogative, with no movie recommendations, while the remaining 418 responses include movie recommendations and explanations. We have categorized the subset of tests that contain recommendations and explanations as Test-Rec, while the entire set of tests is referred to as Test-Full. Automatic evaluation metrics. Following previous studies on text generation, we utilize the following automatic evaluation metrics: F1, unigram F1 score that measures the similarity between the generated text and the ground-truth response. BLEU, we employ BLEU-2 (B2) and BLEU-4 (B4) implemented in the NLTK toolkit https://www.nltk.org/. METEOR, or MT, is a widely-used metric demonstrating good consistency in human evaluation. Distinct assesses text diversity by measuring the number of distinct n-grams in the generated text. Our experiments employ Distinct-2 (D2) and Distinct-3 (D3). Human Evaluation Metrics. In addition to automatic evaluation, we conduct a human evaluation of various benchmark models. Specifically, we randomly sample 30 dialogues generated by the tested models and engage three well-informed annotators to evaluate the responses based on the metrics introduced in Section 3.2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Benchmark models</head><p>We test various benchmark dialogue generation models in E-ReDial: • T5-Base <ref type="bibr" target="#b31">[32]</ref>, a pre-trained encoder-decoder Transformer with 220M parameters; • BART-Base <ref type="bibr" target="#b19">[20]</ref>, a pre-trained encoder-decoder Transformer with 140M parameters; • GPT-2 <ref type="bibr" target="#b30">[31]</ref>, a decoder-only Transformer with 117M parameters; • DialoGPT-Small <ref type="bibr" target="#b43">[44]</ref>, a decoder-only language model that continues pre-trains GPT-2 on 2 billion dialogue corpus; • Flan-T5-XXL <ref type="bibr" target="#b9">[10]</ref>, an 11B-parameter language model that is finetuned on various NLP datasets using instruction tuning; • Davinci-002, a large language model developed by OpenAI with about 170B parameters 6 and the model is pre-trained on a mixed corpus including both code and text. This paper aims to compare the efficacy of different approaches for generating responses with explanations rather than improving the accuracy of movie recommendations. Therefore, we keep the recommendation results as the ground truth for all benchmark models to ensure a fair comparison. The inputs for the models are the dialogue context and the names of the recommended movies, while the output is the response to the dialogue.</p><p>To further enhance the models, we propose a knowledge-grounded (KG) approach that utilizes the background knowledge of the recommended movies when generating recommendation explanations. For the KG approach, we incorporate each movie's plot, wiki, and reviews into the model input, as described in Section 4.2. We only select the most relevant reviews based on the context to account for input length limitations.</p><p>Finetuning can be extremely costly in benchmark models incorporating large language models such as Flan-T5-XXL and Davinci-002. Therefore, we use a prompt-based approach with in-context learning (ICL). Specifically, we select eight (context, response) examples from the E-ReDial training set to serve as in-context exemplars, which are then inputted into the model alongside a task instruction 7 . Due to the model's limited context size, we do not input background knowledge to prompt-based models. Implementation details. We implement the models using Py-Torch and Huggingface Transformers. All the finetuned models are optimized using AdamW optimizer with 𝑙𝑟 =5𝑒−5, batch size of 16, and are trained up to 20 epochs. During testing, for finetuned-based models, we employ greedy decoding. For prompt-based models, i.e., Flan-T5-XXL and code-davinci-002, we employ nucleus decoding with top-𝑝=0.9, tempearture=0.8.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Automatic evaluation results</head><p>Performance of training-based models. Table <ref type="table" target="#tab_4">4</ref> displays the results of various training-based models for response generation. +ReDial indicates that the models are trained on the original ReDial datasets, while +E-ReDial indicates that they are trained on the newly collected E-ReDial dataset. The addition of +KG indicates using a knowledge-grounded approach.</p><p>From the results, we have three key findings: Firstly, the models trained on E-ReDial outperform those trained on ReDial across all backbone models and metrics. This suggests that the proposed E-ReDial dataset can enhance the quality of CRS responses. Secondly, incorporating knowledge-grounded methods (+KG) significantly 8 improves the performance of models trained on E-ReDial data, but no improvement is witnessed in the models trained on ReDial. This may be because the ReDial responses merely mention the name of movies without providing explanations using background knowledge, unlike E-ReDial. Lastly, the T5-Base + E-ReDial + KG  performs the best overall, and thus, we conduct a detailed analysis of it in our subsequent experiments. Impact of data size. Since the proposed E-ReDial data size is relatively small, we conduct ablation experiments on data size to analyze its impact. Table <ref type="table" target="#tab_5">5</ref> presents the results of training the T5-Base+KG model on different proportions of E-ReDial data, ranging from 0% to 100%. We also compare the models finetuned from the vanilla T5 or the T5 pre-trained on ReDial data, with the former representing the first group in Table <ref type="table" target="#tab_5">5</ref> and the latter representing the second group. From the results, we see that as the amount of data increases, the models demonstrate improvement on all metrics until 50% of the data is used. Beyond that point, the models show a decrease in some metrics. This finding suggests that the labelled data size of E-ReDial is sufficient to train the knowledge-grounded T5-Base model to generate explanations, and increasing the annotated data may provide limited gains. Moreover, using the ReDial pre-trained model effectively enhances the model's performance in low-resource settings. For example, using the pre-trained model, it is possible to use only 10% of the E-ReDial data to outperform vanilla T5-Base trained with 100% of the E-ReDial data. Performance of prompt-based methods. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Human evaluation results</head><p>Table <ref type="table" target="#tab_8">7</ref> shows the human evaluation results of explanations generated by four benchmark models. The results suggest that the T5 model trained on ReDial data (T5+ReDial) not only has a low explanation generation rate, accounting for only 23% but produces low-quality responses, with an overall score of only 1.14. Training the model on the proposed E-ReDial significantly improves the explanation generation rate and quality. Furthermore, comparing the results of the explanations generated by T5-Base with and without knowledge-grounded generation indicates that introducing knowledge can substantially enhance almost all metrics. This finding is consistent with the automatic evaluation results shown in Table <ref type="table" target="#tab_4">4</ref> Additionally, T5-Base+KG and Davinci-002 exhibit their strengths, with T5-Base+KG having a slightly higher overall rating. By analyzing the generated responses, we infer that Davinci-002 generates more human-like and diverse movie descriptions, improving the effectiveness and efficiency of conversation and leading to higher user satisfaction and acceptance. T5-Base+KG generates more precise reasons for recommendations based on user preferences, reasons increasing user trust and persuasiveness.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">Case study</head><p>Table <ref type="table" target="#tab_9">8</ref> shows two examples of the model outputs. In the first example, T5+ReDial recommends the movie without explanation. T5-E-ReDial explains, but its description of the movie is vague and unconvincing due to a lack of background knowledge. T5-E-ReDial+KG, quoting classic scenes from the movie, better recommends the movie [Spider-Man (2002)] to users. Davinci-002 also explains the recommendations by acknowledging the user preferences and introducing the movie plot. A similar phenomenon can be seen in the second example. T5+ReDial gives a short explanation that is non-factual and unconvincing. T5+E-ReDial's response is more explanatory but also includes factual mistakes. T5+E-ReDial+KG and Davinci-002 generate responses that satisfy the users, whereas  <ref type="bibr">2017)</ref>] is a good one. The story is that a young man who is trying to get out of a house with his girlfriend and her friend is forced to make a decision that will affect their future. I highly recommend it.</p><p>T5+E-ReDial+KG: Since you like dramas or comedies, then I think these movies well suit your taste [Get Out (2017)] It's nostalgic in its embracing of contemporary and classic horror and also brave in the accomplished handling of the film's combative themes. This movie is worth watching, you will like it.</p><p>Davinci-002: [Get Out (2017)] is a great horror film. It's about Chris and his girlfriend meeting her parents for the first time. At first, Chris reads the family's overly accommodating behavior as nervous attempts to deal with their daughter's interracial relationship, but as the weekend progresses, a series of increasingly disturbing discoveries lead him to a truth that he could have never imagined. I recommend this movie to you, you won't be disappointed.</p><p>T5+E-ReDial+KG gives more apparent reasons based on user preferences, and Davinci-002's response is more realistic and contains diverse movie descriptions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">CONCLUSION</head><p>To elaborate on more explainable CRS, we have elucidated the meaning of the explanation for CRS and proposed ten evaluation perspectives to evaluate them. We further assessed existing benchmarks and verified the necessity of improving the explanation quality for CRS. To improve the explanation quality, both manual and automatic methods are employed. Our manual method has collected and released a new CRS dataset, E-ReDial, which includes 756 dialogues with 2,058 high-quality explanations. In addition, we compared two baselines for explanation generation: trainingbased and prompt-based methods. Experiments conducted on the newly collected dataset suggest that models trained on E-ReDial can significantly improve explainability while introducing knowledge into the models can further improve the performance. GPT-3 in the in-context learning setting can generate more realistic and diverse movie descriptions. In contrast, T5 training on E-ReDial can better generate clear reasons for recommendations based on user preferences.</p><p>Resource utilization. The E-ReDial dataset can be used for explanation generation and other conversational information access tasks. As a CRS dataset, it can be used for any CRS-related tasks.</p><p>Since each explanation is annotated with the knowledge, it can also be used in knowledge-grounded conversation. The components annotated on explanations, i.e., the recommendation reasons, the items' descriptions, encouragement, or personal opinions, can be used for corresponding generation tasks.</p><p>Limitations. There are some limitations in this work. Firstly, we improve the explainability of CRS by extending an existing CRS dataset. We rewrite the responses with low-quality explanations via manual and automatic methods. All rewritten responses passing the quality check will be collected, and we have put them with the corresponding context to construct our dataset. Since the dialogue is obtained by extending the existing dialogue rather than from a real-world conversation scene, its explanations may not be realistic enough. Secondly, We only use the commonly used text generation models to generate explanations without designing a dedicated module, lacking further exploration. Future work. This work opens up several directions for future studies in building explainable conversational recommender systems, as follows. Firstly, we will explore more effective approaches to improving the explainability of CRS datasets, e.g., constructing dialogues from scratch. Secondly, we will investigate more complex evaluation methods for explanation quality, e.g., automatic metrics. Finally, we will explore more methods to generate better explanations automatically.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>, I have seen that and that was good. course. Since you want a movie like [Pretty Woman (1990)], I recommend [Bridget Jones's Diary (2001)], it's also a romance comedy. It tells a story that Bridget</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>RepresentativenessD: whether the explanation can exactly correspond to the items<ref type="bibr" target="#b7">[8]</ref> [8] M: question-based Reasonability D: whether the explanation is logically correct -M: question-based Coherence D: whether the explanation is contextual -M: question-based</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Spearman Correlation between the overall goals of CRS and different explanation perspectives. Each column corresponds to one CRS metric, and each row corresponds to one explanation metric.</figDesc><graphic coords="5,53.80,83.69,240.25,146.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Illustration of the manual annotation pipeline. The response is structured into separate paragraphs for the recommendation reason, movie description, and encouragement, with different coloured highlights indicating varied information sources.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Evaluation perspectives used in CRS. D denotes definition and M is for Measure method.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Annotation results resorting to evaluation perspectives we proposed in different CRS datasets. The Explainable Rate ranges from 0 to 1, while the Overall metric ranges from 1 to 5. The other perspective metrics exhibit values between 1 to 3. Higher scores indicate better performance.</figDesc><table><row><cell>Datasets</cell><cell cols="2">ReDial</cell><cell cols="2">TG-ReDial</cell><cell cols="2">DuRecDial</cell><cell cols="2">INSPIRED</cell><cell cols="2">OpenDialKG</cell><cell cols="2">E-ReDial (Ours)</cell></row><row><cell></cell><cell>Avg</cell><cell>Kappa</cell><cell>Avg</cell><cell>Kappa</cell><cell>Avg</cell><cell>Kappa</cell><cell>Avg</cell><cell>Kappa</cell><cell>Avg</cell><cell>Kappa</cell><cell>Avg</cell><cell>Kappa</cell></row><row><cell>Explainable Rate</cell><cell>0.32</cell><cell>0.97</cell><cell>0.79</cell><cell>0.98</cell><cell>0.64</cell><cell>0.97</cell><cell>0.24</cell><cell>0.96</cell><cell>0.22</cell><cell>-</cell><cell>1.00</cell><cell>1.00</cell></row><row><cell>Effectiveness</cell><cell>1.77</cell><cell>0.65</cell><cell>1.91</cell><cell>0.62</cell><cell>2.19</cell><cell>0.95</cell><cell>2.19</cell><cell>0.65</cell><cell>1.92</cell><cell>-</cell><cell>2.96</cell><cell>0.92</cell></row><row><cell>Efficiency</cell><cell>1.75</cell><cell>0.79</cell><cell>2.12</cell><cell>0.80</cell><cell>2.37</cell><cell>0.83</cell><cell>2.00</cell><cell>0.57</cell><cell>2.00</cell><cell>-</cell><cell>2.95</cell><cell>0.92</cell></row><row><cell>Persuasiveness</cell><cell>1.83</cell><cell>0.79</cell><cell>1.99</cell><cell>0.79</cell><cell>2.21</cell><cell>0.88</cell><cell>1.93</cell><cell>0.65</cell><cell>2.00</cell><cell>-</cell><cell>2.92</cell><cell>0.94</cell></row><row><cell>Transparency</cell><cell>1.79</cell><cell>0.78</cell><cell>1.97</cell><cell>0.70</cell><cell>2.21</cell><cell>1.00</cell><cell>1.89</cell><cell>0.54</cell><cell>1.92</cell><cell>-</cell><cell>2.97</cell><cell>0.97</cell></row><row><cell>Scrutability</cell><cell>1.69</cell><cell>0.79</cell><cell>1.94</cell><cell>0.65</cell><cell>2.07</cell><cell>0.91</cell><cell>1.78</cell><cell>0.60</cell><cell>2.00</cell><cell>-</cell><cell>2.95</cell><cell>0.93</cell></row><row><cell>Trust</cell><cell>1.90</cell><cell>0.71</cell><cell>2.08</cell><cell>0.82</cell><cell>2.26</cell><cell>0.85</cell><cell>2.07</cell><cell>0.64</cell><cell>2.00</cell><cell>-</cell><cell>2.89</cell><cell>0.93</cell></row><row><cell>Satisfaction</cell><cell>1.73</cell><cell>0.79</cell><cell>2.02</cell><cell>0.79</cell><cell>2.26</cell><cell>0.83</cell><cell>2.11</cell><cell>0.73</cell><cell>2.08</cell><cell>-</cell><cell>2.92</cell><cell>0.91</cell></row><row><cell>Representativeness</cell><cell>1.98</cell><cell>0.63</cell><cell>2.11</cell><cell>0.69</cell><cell>2.19</cell><cell>0.86</cell><cell>2.04</cell><cell>0.89</cell><cell>2.08</cell><cell>-</cell><cell>2.99</cell><cell>0.95</cell></row><row><cell>Reasonability</cell><cell>2.79</cell><cell>0.57</cell><cell>2.64</cell><cell>0.74</cell><cell>2.86</cell><cell>1.00</cell><cell>2.52</cell><cell>0.57</cell><cell>2.92</cell><cell>-</cell><cell>2.99</cell><cell>0.99</cell></row><row><cell>Coherence</cell><cell>2.54</cell><cell>0.68</cell><cell>2.55</cell><cell>0.83</cell><cell>2.84</cell><cell>0.92</cell><cell>2.48</cell><cell>0.65</cell><cell>2.75</cell><cell>-</cell><cell>2.99</cell><cell>0.99</cell></row><row><cell>Overall</cell><cell>2.06</cell><cell>0.74</cell><cell>2.68</cell><cell>0.74</cell><cell>2.98</cell><cell>0.74</cell><cell>2.56</cell><cell>0.48</cell><cell>2.33</cell><cell>-</cell><cell>4.04</cell><cell>0.94</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Since you want some comedies, you should definitely watch these movies: [Meet theParents (2000)], in this movie, male nurse Greg Focker meets his girlfriend's parents before proposing, but her suspicious father is every date's worst nightmare; [Meet the Fockers (2004)], which is the second part, this time, Focker came back again, and all hell breaks loose when the Byrnes family meets the Focker family for the first time! Both are hilarious, so don't miss them! They can surely bring you a happy day!</figDesc><table /><note>An example of extension methods. The automatic method misses [Meet the Parents (2000)] and fails to generate the description of [Meet the Fockers (2004)], while the manual method meets all requirements. System: Hi. User: Hello! Could you recommend some comedy's? I've had a tough day. System: Sure, have you seen [Meet the Parents (2000)]? It is soooo funny. User: No, I haven't.ReDial: You have to see it. There is also [Meet theFockers (2004)] which is the second part, they both are hilarious.Automatic: You should definitely watch [Meet the Fockers (2004)], since it's a hilarious comedy. It will surely make you laugh and bring some joy to your tough day.Human:</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 :</head><label>4</label><figDesc>Performance for response generation among different training-based models in Test-Full. Bold face indicates the best result in terms of the corresponding metric.</figDesc><table><row><cell></cell><cell>F1</cell><cell>B2</cell><cell>B4</cell><cell>MT</cell><cell>D2</cell><cell>D3</cell></row><row><cell>T5-Base</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ ReDial</cell><cell>20.35</cell><cell>3.65</cell><cell>1.70</cell><cell>11.34</cell><cell>34.04</cell><cell>39.23</cell></row><row><cell>+ ReDial + KG</cell><cell>19.34</cell><cell>3.56</cell><cell>1.44</cell><cell>11.01</cell><cell>32.39</cell><cell>36.62</cell></row><row><cell>+ E-ReDial</cell><cell>24.31</cell><cell>6.75</cell><cell>2.38</cell><cell>15.14</cell><cell>26.69</cell><cell>39.18</cell></row><row><cell>+ E-ReDial + KG</cell><cell cols="6">26.01 7.89 4.10 16.29 47.60 59.44</cell></row><row><cell>BART-Base</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ ReDial</cell><cell>18.63</cell><cell>3.12</cell><cell>1.39</cell><cell>10.38</cell><cell>30.57</cell><cell>32.27</cell></row><row><cell>+ ReDial + KG</cell><cell>18.04</cell><cell>2.71</cell><cell>1.37</cell><cell>9.86</cell><cell>31.91</cell><cell>32.97</cell></row><row><cell>+ E-ReDial</cell><cell>23.63</cell><cell>6.26</cell><cell>2.52</cell><cell>14.11</cell><cell>26.96</cell><cell>35.60</cell></row><row><cell>+ E-ReDial + KG</cell><cell cols="6">24.46 7.87 4.61 16.48 47.38 59.11</cell></row><row><cell>GPT-2</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ ReDial</cell><cell>19.82</cell><cell>3.61</cell><cell>1.54</cell><cell>11.80</cell><cell>28.10</cell><cell>34.51</cell></row><row><cell>+ ReDial + KG</cell><cell>18.71</cell><cell>3.08</cell><cell>1.54</cell><cell>10.65</cell><cell>34.15</cell><cell>39.62</cell></row><row><cell>+ E-ReDial</cell><cell>22.87</cell><cell>6.02</cell><cell>2.53</cell><cell>13.86</cell><cell>25.29</cell><cell>34.44</cell></row><row><cell>+ E-ReDial + KG</cell><cell cols="6">25.38 8.75 4.55 17.83 40.33 52.63</cell></row><row><cell>DialoGPT-Small</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ ReDial</cell><cell>18.67</cell><cell>3.49</cell><cell>1.39</cell><cell>11.29</cell><cell>31.37</cell><cell>36.72</cell></row><row><cell>+ ReDial + KG</cell><cell>18.12</cell><cell>3.11</cell><cell>1.46</cell><cell>10.33</cell><cell>29.34</cell><cell>33.77</cell></row><row><cell>+ E-ReDial</cell><cell>22.80</cell><cell>6.06</cell><cell>2.13</cell><cell>14.23</cell><cell>19.02</cell><cell>26.83</cell></row><row><cell>+ E-ReDial + KG</cell><cell cols="6">25.70 8.12 4.22 16.61 30.87 40.34</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 5 :</head><label>5</label><figDesc>Performance for response generation among models training on different data size in Test-Full. Bold face indicates the best result in terms of the corresponding metric.</figDesc><table><row><cell></cell><cell>F1</cell><cell>B2</cell><cell>B4</cell><cell>MT</cell><cell>D2</cell><cell>D3</cell></row><row><cell>From T5-Base</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ E-ReDial (0%)</cell><cell>9.74</cell><cell>1.70</cell><cell>0.40</cell><cell>6.17</cell><cell>27.80</cell><cell>36.12</cell></row><row><cell>+ E-ReDial (5%)</cell><cell>20.46</cell><cell>6.23</cell><cell>3.01</cell><cell>14.11</cell><cell>43.75</cell><cell>57.71</cell></row><row><cell>+ E-ReDial (10%)</cell><cell>21.46</cell><cell>6.92</cell><cell>3.69</cell><cell>15.46</cell><cell>41.29</cell><cell>52.52</cell></row><row><cell>+ E-ReDial (50%)</cell><cell>24.92</cell><cell cols="3">8.45 4.76 16.73</cell><cell>46.53</cell><cell>58.61</cell></row><row><cell cols="2">+ E-ReDial (100%) 26.01</cell><cell>7.89</cell><cell>4.10</cell><cell>16.29</cell><cell cols="2">47.60 59.44</cell></row><row><cell cols="3">From T5-Base finetuned on full ReDial</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>+ E-ReDial (0%)</cell><cell>22.61</cell><cell>4.38</cell><cell>2.16</cell><cell>12.46</cell><cell>32.83</cell><cell>40.65</cell></row><row><cell>+ E-ReDial (5%)</cell><cell>25.50</cell><cell>7.92</cell><cell>3.90</cell><cell>17.12</cell><cell>42.92</cell><cell>57.68</cell></row><row><cell>+ E-ReDial (10%)</cell><cell>27.04</cell><cell>8.69</cell><cell>4.66</cell><cell>17.37</cell><cell>44.47</cell><cell>58.41</cell></row><row><cell>+ E-ReDial (50%)</cell><cell>27.63</cell><cell>9.65</cell><cell>5.00</cell><cell>18.65</cell><cell cols="2">47.72 60.28</cell></row><row><cell cols="3">+ E-ReDial (100%) 27.98 9.71</cell><cell>4.84</cell><cell>18.88</cell><cell>47.07</cell><cell>59.20</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 6 :</head><label>6</label><figDesc>Performance for response generation between training-based and prompt-based models in Test-Rec. Bold face indicates the best result.</figDesc><table><row><cell></cell><cell>F1</cell><cell>B2</cell><cell>B4</cell><cell>MT</cell><cell>D2</cell><cell>D3</cell></row><row><cell>T5-Base (+ReDial)</cell><cell>14.76</cell><cell>0.47</cell><cell>0.21</cell><cell cols="3">8.37 41.70 48.74</cell></row><row><cell>T5-Base (+E-ReDial)</cell><cell cols="2">29.53 12.69</cell><cell cols="4">5.22 19.83 27.17 40.95</cell></row><row><cell cols="7">T5-Base (+E-ReDial +KG) 34.62 18.10 11.22 26.65 48.66 62.24</cell></row><row><cell cols="2">Flan-T5-XXL (8-shot ICL) 24.52</cell><cell>7.53</cell><cell cols="4">2.45 15.34 51.08 70.33</cell></row><row><cell cols="3">Davinci-002 (8-shot ICL) 33.81 14.86</cell><cell cols="4">6.07 25.55 53.07 74.60</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 6</head><label>6</label><figDesc></figDesc><table><row><cell>compares the</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 7 :</head><label>7</label><figDesc>Human evaluation results of explanations generated by different models. Bold face indicates the best result in terms of the corresponding metric.</figDesc><table><row><cell></cell><cell cols="4">T5+ReDial T5+E-ReDial T5+E-ReDial+KG Davinci-002</cell></row><row><cell>Explanation rate</cell><cell>0.23</cell><cell>1.00</cell><cell>1.00</cell><cell>1.00</cell></row><row><cell>Effectiveness</cell><cell>1.00</cell><cell>1.77</cell><cell>2.33</cell><cell>2.50</cell></row><row><cell>Efficiency</cell><cell>1.00</cell><cell>2.10</cell><cell>2.43</cell><cell>2.50</cell></row><row><cell>Persuasiveness</cell><cell>1.00</cell><cell>2.00</cell><cell>2.30</cell><cell>2.30</cell></row><row><cell>Transparency</cell><cell>1.71</cell><cell>2.97</cell><cell>2.97</cell><cell>2.50</cell></row><row><cell>Scrutability</cell><cell>1.71</cell><cell>2.47</cell><cell>2.63</cell><cell>2.17</cell></row><row><cell>Trust</cell><cell>1.00</cell><cell>2.03</cell><cell>2.47</cell><cell>2.37</cell></row><row><cell>Satisfaction</cell><cell>1.14</cell><cell>2.00</cell><cell>2.47</cell><cell>2.57</cell></row><row><cell>Representativeness</cell><cell>1.43</cell><cell>2.10</cell><cell>2.70</cell><cell>2.83</cell></row><row><cell>Reasonability</cell><cell>1.71</cell><cell>2.60</cell><cell>2.73</cell><cell>2.77</cell></row><row><cell>Coherence</cell><cell>1.57</cell><cell>2.63</cell><cell>2.73</cell><cell>2.77</cell></row><row><cell>Overall</cell><cell>1.14</cell><cell>3.10</cell><cell>3.67</cell><cell>3.43</cell></row><row><cell cols="5">comparable results to the best-performing training model T5-Base</cell></row><row><cell cols="5">(+E-ReDial +KG), despite not explicitly inputting the background</cell></row><row><cell>knowledge.</cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head>Table 8 :</head><label>8</label><figDesc>Case study. Since you like love movies, then I think these movies will suit your taste: [Spider-Man (2002)]. With great power comes great responsibility. These words, spoken by Peter Parker's uncle Ben (Cliff Robertson) during their last conversation and which have become Spider-Man's motto, also perfectly represent the challenge Sam Raimi was facing when asked to bring one of America's most loved superheroes to the screen. I believe that you will enjoy yourself while watching it.Davinci-002: I will recommend you [Spider-Man (2002)] since you like Marvel movies. After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers. I will recommend you this movie and hope you like it. See any good films lately? Any dramas or comedies you'd lie to suggest? System: I recommend [Wonder Woman (2017)] and [The Big Sick (2017)] because they are both drama or comedy films, [...] User: I was dissapointed in the last two films I saw [The Shape of Water (2017)] and [Lady Bird (2017)]. haven't seen [Wonder Woman (2017)] . Loved [The Big Sick (2017)]T5+ReDial: I also recommend [Get Out (2017)], which is a drama film about a young girl who falls in love with a man who is a teen.</figDesc><table><row><cell>Example 1</cell></row><row><cell>User: Do you recommend any movies?</cell></row><row><cell>System: Do you like Marvel movies?</cell></row><row><cell>User: Sure! What do you recommend to me?</cell></row><row><cell>T5+ReDial: [Spider-Man (2002)] is a good one.</cell></row><row><cell>T5+E-ReDial: I will recommend [Spider-Man (2002)] since you like Marvel movies. It tells that Spider-Man, a mutant, must step forward to lead his people</cell></row><row><cell>into a new future and must confront a challenger from his country's past. You will love this movie!</cell></row><row><cell>T5+E-ReDial+KG: Example 2</cell></row><row><cell>User:</cell></row></table><note>T5+E-ReDial: [Get Out (2017)] is a good one. Since you want a good drama, [Get Out (</note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">See https://github.com/Superbooming/E-Redial/blob/main/Exchange_level.md</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">https://openai.com/api/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">The complete prompt we used is in https://github.com/Superbooming/E-Redial/blob/ main/Prompt.md</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">The homepage of ReDial is https://redialdata.github.io/website/. ReDial is published under the CC BY 4.0 License, allowing redistribution.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6">We use the code-davinci-002 API, and OpenAI has not disclosed the details of the parameters of the model until the time of writing the paper.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="7">The complete prompt we used is in https://github.com/Superbooming/E-Redial/blob/ main/Prompt.md<ref type="bibr" target="#b7">8</ref> Improvements are significant at 𝑝 &lt; 0.05 level using t-test.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head><p>This research was funded by the Natural Science Foundation of China (62272274,61972234,62072279,62102234,62202271), the Natural Science Foundation of Shandong Province (ZR2022QF004), the Key Scientific and Technological Innovation Program of Shandong Province (2019JZZY010129), Shandong University multidisciplinary research and innovation team of young scholars (No.2020QNQT017), the Fundamental Research Funds of Shandong University.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Measuring Recommendation Explanation Quality: The Conflicting Goals of Explanations</title>
+		<author>
+			<persName><forename type="first">Krisztian</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Filip</forename><surname>Radlinski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="329" to="338" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Explaining Recommendations: Satisfaction vs. Promotion</title>
+		<author>
+			<persName><forename type="first">Mustafa</forename><surname>Bilgic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Raymond</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+		<idno>IUI. 153</idno>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Crowd-Based Personalized Natural Language Explanations for Recommendations</title>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">Maxwell</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Loren</forename><forename type="middle">G</forename><surname>Terveen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="175" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Towards Knowledge-Based Recommender Dialog System</title>
+		<author>
+			<persName><forename type="first">Qibin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junyang</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yichang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yukuo</forename><surname>Cen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxia</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Tang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1803" to="1813" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Personalized fashion recommendation with visual explanations based on multimodal attention network: Towards visually explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="765" to="774" />
+		</imprint>
+	</monogr>
+	<note>Yixin Cao, Zheng Qin, and Hongyuan Zha</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Learning to Rank Features for Recommendation over Multiple Categories</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="305" to="314" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Learning to rank features for recommendation over multiple categories</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="305" to="314" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Measuring &quot;Why</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingxuan</forename><surname>Wen</surname></persName>
+		</author>
+		<idno>abs/2202.06466</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems: a Comprehensive Survey on the Evaluation of Explainable Recommendation. ArXiv</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Xiang Ao, and Enhong Chen. 2021. Towards explainable conversational recommendation</title>
+		<author>
+			<persName><forename type="first">Zhongxia</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mehul</forename><surname>Parsana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akshay</forename><surname>Soni</surname></persName>
+		</author>
+		<idno>IJCAI. 2994-3000</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Scaling Instruction-Finetuned Language Models</title>
+		<author>
+			<persName><surname>Hyung Won</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barret</forename><surname>Longpre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zoph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Fedus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siddhartha</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Albert</forename><surname>Brahma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Webson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shane</forename><surname>Shixiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuyun</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirac</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyun</forename><surname>Suzgun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aakanksha</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dasha</forename><surname>Chowdhery</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharan</forename><surname>Valter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gaurav</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mishra</surname></persName>
+		</author>
+		<editor>Adams Wei Yu, Vincent Zhao, Yanping Huang, Andrew M. Dai, Hongkun Yu, Slav Petrov, Ed Huai hsin Chi, Jeff Dean, Jacob Devlin, Adam Roberts, Denny Zhou, Quoc Le, and Jason Wei</editor>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note>ArXiv abs/2210.11416 (2022</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Cosley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shyong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edwin</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Albert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Riedl</surname></persName>
+		</author>
+		<title level="m">Is seeing believing?: how recommender system interfaces affect users&apos; opinions. In CHI</title>
+				<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="585" to="592" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">The effects of transparency on trust in and acceptance of a content-based art recommender</title>
+		<author>
+			<persName><forename type="first">Henriette</forename><surname>Cramer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vanessa</forename><surname>Evers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Satyan</forename><surname>Ramlal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lloyd</forename><surname>Maarten Van Someren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Natalia</forename><surname>Rutledge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lora</forename><surname>Stash</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bob</forename><forename type="middle">J</forename><surname>Aroyo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wielinga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">UMUAI</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="455" to="496" />
+			<date type="published" when="2008">2008. 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A Scrutable Adaptive Hypertext</title>
+		<author>
+			<persName><forename type="first">Marek</forename><surname>Czarkowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judy</forename><surname>Kay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AH</title>
+				<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="384" to="387" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">An Empirical Study on Consumer Behavior in the Interaction with Knowledge-based Recommender Applications</title>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Felfernig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bartosz</forename><surname>Gula</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CEC/EEE</title>
+				<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="37" to="37" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Advances and Challenges in Conversational Recommender Systems: A Survey</title>
+		<author>
+			<persName><forename type="first">Chongming</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenqiang</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">AI Open</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="100" to="126" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">How should I explain? A comparison of different explanation types for recommender systems</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Fatih Gedikli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mouzhi</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Hum. Comput. Stud</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="page" from="367" to="382" />
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Improving Personalized Explanation Generation through Visualization</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerard</forename><surname>De Melo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="244" to="255" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">INSPIRED: Toward Sociable Recommendation Dialog Systems</title>
+		<author>
+			<persName><forename type="first">Dongyeop</forename><surname>Shirley Anugrah Hayati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingxiaoyang</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiyan</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhou</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="8142" to="8152" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahtsham</forename><surname>Manzoor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wanling</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">2020. A Survey on Conversational Recommender Systems. CSUR</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="1" to="36" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension</title>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yinhan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Naman</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marjan</forename><surname>Ghazvininejad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abdelrahman</forename><surname>Mohamed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Omer</forename><surname>Levy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Veselin</forename><surname>Stoyanov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luke</forename><surname>Zettlemoyer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="7871" to="7880" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Extra: Explanation ranking datasets for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2463" to="2469" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Neural Rating Regression with Abstractive Tips Generation for Recommendation</title>
+		<author>
+			<persName><forename type="first">Piji</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lidong</forename><surname>Bing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wai</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="345" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Towards Deep Conversational Recommendations</title>
+		<author>
+			<persName><forename type="first">Raymond</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Samira</forename><forename type="middle">Ebrahimi</forename><surname>Kahou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hannes</forename><surname>Schulz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vincent</forename><surname>Michalski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NeurIPS</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="9748" to="9758" />
+		</imprint>
+	</monogr>
+	<note>Laurent Charlin, and Chris Pal</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Towards Conversational Recommendation over Multi-Type Dialogs</title>
+		<author>
+			<persName><forename type="first">Zeming</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haifeng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng-Yu</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hua</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wanxiang</forename><surname>Che</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ting</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1036" to="1049" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">RevCore: Review-Augmented Conversational Recommendation</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junwei</forename><surname>Bao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zichen</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuguang</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Youzheng</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaodong</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1161" to="1173" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Deep Critiquing for VAEbased Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hojin</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ga</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Scott</forename><surname>Sanner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1269" to="1278" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<author>
+			<persName><forename type="first">Sean</forename><forename type="middle">M</forename><surname>Mcnee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shyong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Riedl</surname></persName>
+		</author>
+		<title level="m">terfaces for Eliciting New User Preferences in Recommender Systems. In UM</title>
+				<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="178" to="187" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">ProtoMF: Prototype-based Matrix Factorization for Effective and Explainable Recommendations</title>
+		<author>
+			<persName><forename type="first">Alessandro</forename><forename type="middle">B</forename><surname>Melchiorre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Navid</forename><surname>Rekabsaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Ganhör</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Schedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="246" to="256" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">OpenDi-alKG: Explainable Conversational Reasoning with Attention-based Walks over Knowledge Graphs</title>
+		<author>
+			<persName><forename type="first">Seungwhan</forename><surname>Moon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pararth</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anuj</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rajen</forename><surname>Subba</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="845" to="854" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Construction and Validation of a Scale to Measure Celebrity Endorsers&apos; Perceived Expertise, Trustworthiness, and Attractiveness</title>
+		<author>
+			<persName><forename type="first">Roobina</forename><surname>Ohanian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Advertising</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="39" to="52" />
+			<date type="published" when="1990">1990. 1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Language models are unsupervised multitask learners</title>
+		<author>
+			<persName><forename type="first">Alec</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rewon</forename><surname>Child</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Luan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dario</forename><surname>Amodei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilya</forename><surname>Sutskever</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">OpenAI blog</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">9</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Exploring the Limits of Transfer Learning with a Unified Text-to-TextTransformer</title>
+		<author>
+			<persName><forename type="first">Colin</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharan</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Matena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanqi</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><forename type="middle">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Mach. Learn. Res</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page">67</biblScope>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Huasheng Liang, M. de Rijke, and Zhumin Chen. 2022. Variational Reasoning about User Preferences for Conversational Recommendation</title>
+		<author>
+			<persName><forename type="first">Zhi</forename><surname>Zhaochun Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongdong</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pengjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liu</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<biblScope unit="page" from="165" to="175" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Do social explanations work?: studying and modeling the effects of social explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">Amit</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Cosley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="1133" to="1144" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Simulating User Satisfaction for the Evaluation of Task-oriented Dialogue Systems</title>
+		<author>
+			<persName><forename type="first">Weiwei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krisztian</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pengjie</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhumin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2499" to="2506" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Justified Recommendations based on Content and Rating Data</title>
+	</analytic>
+	<monogr>
+		<title level="m">Panagiotis Symeonidis</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+	<note>Alexandros Nanopoulos, and Yannis Manolopoulos. In WebKDD</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Counterfactual Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Juntao</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunqi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1784" to="1793" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Over-and underestimation in different product domains</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECAI</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="14" to="19" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Explaining Recommendations: Design and Evaluation</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="353" to="382" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Counterfactual Explanations for Neural Recommenders</title>
+		<author>
+			<persName><forename type="first">Khanh</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Azin</forename><surname>Ghazimatin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishiraj Saha</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1627" to="1631" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">EGCR: Explanation Generation for Conversational Recommendation</title>
+		<author>
+			<persName><forename type="first">Bingbing</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoning</forename><surname>Bu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chirag</forename><surname>Shah</surname></persName>
+		</author>
+		<idno>abs/2208.08035</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ArXiv</title>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation: A Survey and New Perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Found. Trends Inf. Retr</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">DIALOGPT : Large-Scale Generative Pre-training for Conversational Response Generation</title>
+		<author>
+			<persName><forename type="first">Yizhe</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siqi</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michel</forename><surname>Galley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yen-Chun</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Brockett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingjing</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><forename type="middle">B</forename><surname>Dolan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="270" to="278" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Improving Conversational Recommender Systems via Knowledge Graph based Semantic Fusion</title>
+		<author>
+			<persName><forename type="first">Kun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuqing</forename><surname>Bian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanhang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Rong Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingsong</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1006" to="1014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title level="m" type="main">Towards Topic-Guided Conversational Recommender System</title>
+		<author>
+			<persName><forename type="first">Kun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanhang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoke</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Wen</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="4128" to="4139" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<author>
+			<persName><forename type="first">Lixin</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yulong</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangyu</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weidong</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangji</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawei</forename><surname>Yin</surname></persName>
+		</author>
+		<title level="m">Neural Interactive Collaborative Filtering. In SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="749" to="758" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

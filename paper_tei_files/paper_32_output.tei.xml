@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">ReasoningRec: Bridging Personalized Recommendations and Human-Interpretable Explanations through LLM Reasoning</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-10-30">30 Oct 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Millennium</forename><surname>Bismay</surname></persName>
+							<email>mbismay@tamu.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Texas A&amp;M University College Station</orgName>
+								<address>
+									<region>TX</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiangjue</forename><surname>Dong</surname></persName>
+							<email>xj.dong@tamu.edu</email>
+							<affiliation key="aff1">
+								<orgName type="institution">Texas A&amp;M University College Station</orgName>
+								<address>
+									<region>TX</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">James</forename><surname>Caverlee</surname></persName>
+							<email>caverlee@tamu.edu</email>
+							<affiliation key="aff2">
+								<orgName type="institution">Texas A&amp;M University College Station</orgName>
+								<address>
+									<region>TX</region>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">ReasoningRec: Bridging Personalized Recommendations and Human-Interpretable Explanations through LLM Reasoning</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-10-30">30 Oct 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">17A62842E6572FAF10D09FC0C1A85326</idno>
+					<idno type="arXiv">arXiv:2410.23180v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:01+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>This paper presents ReasoningRec, a reasoningbased recommendation framework that leverages Large Language Models (LLMs) to bridge the gap between recommendations and humaninterpretable explanations. In contrast to conventional recommendation systems that rely on implicit user-item interactions, ReasoningRec employs LLMs to model users and items, focusing on preferences, aversions, and explanatory reasoning. The framework utilizes a larger LLM to generate synthetic explanations for user preferences, subsequently used to finetune a smaller LLM for enhanced recommendation accuracy and human-interpretable explanation. Our experimental study investigates the impact of reasoning and contextual information on personalized recommendations, revealing that the quality of contextual and personalized data significantly influences the LLM's capacity to generate plausible explanations. Empirical evaluations demonstrate that ReasoningRec surpasses state-of-the-art methods by up to 12.5% in recommendation prediction while concurrently providing human-intelligible explanations. The code is available here.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>In our day-to-day life, many of our experiences are driven by word-of-mouth recommendations. For example, a friend may suggest a good book to read, knowing my preference for historical fiction and thriller novels. A work colleague may introduce me to a new software library based on our shared work history. These recommendations often focus on likes and dislikes of a user and provide explanatory reasoning for why a user may like a target item as in this example:</p><p>You prefer movies which are heartwarming, inspiring, ... themes of love, family, and personal growth ... but dislike movies that rely on predictable gags and tired humor ... You might like 'My Dog Skip' as it is a heartwarming coming-of-age film about a young boy and his loyal dog, filled with friendship, adventure, and personal growth ... In practice, many modern recommendation systems aim to scale recommendations based on the actions of millions of users, e.g., <ref type="bibr" target="#b12">(Kang and McAuley, 2018;</ref><ref type="bibr" target="#b23">Tang and Wang, 2018;</ref><ref type="bibr" target="#b15">Koren et al., 2009;</ref><ref type="bibr" target="#b9">He et al., 2017;</ref><ref type="bibr" target="#b35">Yue et al., 2024;</ref><ref type="bibr" target="#b22">Sun et al., 2019)</ref>. These approaches, however, are typically not driven by such explicit human-interpretable explanatory reasoning, since such detailed reasons are rarely provided by users and challenging to infer from online system traces. Instead, these systems model implicit user-item interaction signals (e.g., from clicks or likes) toward predicting the next item a user may like.</p><p>With the rise of Large Language Models (LLMs), we are motivated to revisit the core word-ofmouth reasoning assumption that inspired much of the early work in recommendation systems, e.g., <ref type="bibr" target="#b21">(Shardanand and Maes, 1995)</ref>, but that has been mostly missing from today's large scale recommender systems. That is, can we leverage the reasoning capabilities of LLMs to bridge the gap between recommendations and the human-intelligible, interpretable reasoning behind them? Concretely, we propose a reasoning-based recommendation framework called ReasoningRec. The core idea is to model users and items through LLM-powered generation (corresponding to the likes and dislikes above), and then use a large LLM to generate synthetic explanations for why a user may like an item (corresponding to the explanatory reasoning); these explanations are then used to fine-tune a smaller LLM (SLM) toward generating more accurate recommendations than methods that ignore such powerful reasoning chains. A side effect of the model is that it can also generate such human-interpretable explanations alongside its predictions.</p><p>In our experiments, we find that the ability of the LLM to generate plausible explanations is heavily influenced by the quality of the contextual and personalized information about both users and items. That is, simply relying on an LLM to reason about items in the absence of such rich contextual information results in poor performance. Instead, finetuning according to the proposed framework, Rea-soningRec, with such rich contextual and personalized information about users and items, results in improved performance in recommendation prediction while generating human-interpretable and intelligible explanations. We further observe that user profiles play a significant role for long useritem interaction sequences while item descriptions play a crucial role for datasets with high sparsity.</p><p>In summary, our contributions are as follows:</p><p>• We present the first comprehensive study on the impact of human-interpretable explanations through LLM generated reasoning using contextual information, in the context of personalized recommendation. • We propose ReasoningRec, a robust, efficient and effective instruction fine-tuning framework to enhance the performance of SLMs in both recommendation prediction and reasoning generation. • We conduct extensive experiments and show that ReasoningRec outperforms the state-ofthe-art (SOTA) up to 12.5% on recommendation prediction, while also introducing a novel dimension to recommendation tasks by bridging the gap between recommendations and human-intelligible reasoning.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Work</head><p>LLMs for Recommender Systems. Recent advancements in LLMs have introduced transformative capabilities across a broad range of applications, including recommender systems. Influenced by the In-Context Learning (ICL) abilities <ref type="bibr">(Dong et al., 2022)</ref> of LLMs and their capacity to follow Chain of Thought (CoT) prompting <ref type="bibr" target="#b30">(Wei et al., 2024)</ref>, initial work explored task-specific prompting paradigms to tailor LLMs for downstream tasks such as re-ranking <ref type="bibr" target="#b7">(Ferraretto et al., 2023)</ref> and conversational recommender systems <ref type="bibr" target="#b26">(Wang et al., 2022b)</ref>. Some methods have further inves-tigated the zero-shot capability of LLMs to understand user preferences <ref type="bibr" target="#b13">(Kang et al., 2023)</ref>. More recently, research has shifted towards cost and compute-effective instruction fine-tuning methods of Small Language Models (SLMs) for predicting binary recommendation ratings, as seen in TALL-Rec <ref type="bibr" target="#b0">(Bao et al., 2023)</ref>, PALR <ref type="bibr">(Yang et al., 2023)</ref>, and ReLLa/ReiT <ref type="bibr" target="#b17">(Lin et al., 2024)</ref>. This fine-tuning process involves training pre-trained models using task-specific recommendation datasets, which include user-item interactions (e.g., purchases, ratings, clicks). These finetuned SLMs demonstrate improved performance compared to LLMs relying solely on zero-shot prompting.</p><p>Explanations in Recommendation. Prior work has aimed to explain or justify what items are suggested by a recommender system, e.g., <ref type="bibr" target="#b18">(Ni et al., 2019;</ref><ref type="bibr" target="#b4">Dong et al., 2017;</ref><ref type="bibr">Li et al., 2019;</ref><ref type="bibr" target="#b19">Ni et al., 2017)</ref>. These methods typically generate explanations post-hoc, and are not incorporated for training new recommendation models. In this work, we propose to generate synthetic explanations based on user-item interactions that can then be used to finetune a more effective recommender.</p><p>LLM Reasoning. Recent studies have suggested that LLMs with parameters beyond a certain scale exhibit emergent reasoning abilities <ref type="bibr">(Wei et al., 2022;</ref><ref type="bibr" target="#b3">Cobbe et al., 2021)</ref>. When provided with examples of "chain of thought" (CoT), which represent intermediate natural language reasoning steps, these models can generate explicit rationales similar to eliciting inductive/abductive reasoning <ref type="bibr" target="#b30">(Wei et al., 2024;</ref><ref type="bibr" target="#b11">Huang and Chang, 2023)</ref>. Advances such as zero-shot CoT <ref type="bibr" target="#b14">(Kojima et al., 2024)</ref>, where a model is prompted with phrases like "Let's think step by step," allow for reasoning without the need for explicit few-shot examples. Building on this, multi-step reasoning approaches -such as Successive Prompting <ref type="bibr" target="#b6">(Dua et al., 2022)</ref>, Tree-of-Thought <ref type="bibr" target="#b33">(Yao et al., 2023a)</ref>, Graph-of-Thought <ref type="bibr">(Besta et al., 2024;</ref><ref type="bibr" target="#b34">Yao et al., 2023b)</ref>, Iterating CoT <ref type="bibr" target="#b25">(Wang et al., 2022a)</ref>, and Self-Consistency <ref type="bibr" target="#b27">(Wang et al., 2022c)</ref> -have become critical strategies for enhancing reasoning in various downstream tasks. In the recommendation domain, Logic-Scaffolding <ref type="bibr" target="#b20">(Rahdari et al., 2024)</ref> provides a preliminary CoT framework for generating reasoning. Additionally, there has been an early exploration into knowledge adaptation using multiple experts in cross-domain knowledge transfer <ref type="bibr" target="#b31">(Xi et al., 2023)</ref>. Despite these advancements, reasoning-based approaches for rec- </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Target Item</head><p>User Profile ommendation prediction remain underexplored. A notable exception is Rec-SAVER <ref type="bibr" target="#b24">(Tsai et al., 2024)</ref>, a recent approach which applies reasoning generation for rating prediction by fine-tuning an SLM.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Target Item Ground Truth</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Reasoning</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ReasoningRec</head><p>In this section, we introduce the framework of Rea-soningRec. We begin with preliminaries, then introduce how we model items and user profiles, before creating reasoning-based explanations that guide our model fine-tuning.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Preliminaries</head><p>We define the recommendation task as a binary classification problem using multi-field categorical data. Given a dataset D = {(X n , y n ) N n=1 }, where X n represents the user features (e.g., User ID, gender, age) and item features (e.g., Item ID, title, brand) for the n-th instance, and y n denotes the corresponding binary label (with y n = 1 indicating a "like" and y n = 0 indicating a "dislike"), the goal of the recommendation system is to learn a function F(•) that accurately predicts the probability of a "like" for each sample X n , i.e., P (y n = 1|X n ). The predicted probability ŷn is given by ŷn = F(X n ; θ), where θ represents the model parameters.</p><p>Let U = {u 1 , u 2 , . . . , u |U | } denote the set of users and I = {i 1 , i 2 , . . . , i |I| } denote the set of items. The historical interaction sequence of a user u ∈ U is represented as</p><formula xml:id="formula_0">S u = (s u 1 , s u 2 , . . . , s u |S u | )</formula><p>, where s u i refers to the chronological interaction of user u with item i, ∀i ∈ I. Each user-item interaction is represented by a rating, r ′ u,i ∈ [1, 5], and an optional review K * u,i 1 , which is a textual string representing the user's feedback for the item. To adapt the ratings into a binary classification framework, we binarize the rating using a threshold r T . Specifically, we define r u,i = 1 if r ′ u,i &gt; r T and r u,i = 0 otherwise.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Item Description Generation</head><p>We aim to model user preferences based on past interactions with items. Hence, it is crucial to create human-intelligible item descriptions with rich semantic information to enhance these models of user preference. Formally, we define the item description D i for an item i as:</p><formula xml:id="formula_1">D i = L M (M i ),</formula><p>where i ∈ I, and M i is the metadata corresponding to that item, consisting of details such as -title, genre, brand, price, and reviews. For each item i, we curate a list of at most p user reviews. We use an LLM, L M , to generate a concise n-word item description -D i , which takes into account the item metadata M i and the selected item reviews. Appendix A.4.1 provides the item description generation process in details. Appendix C Table <ref type="table" target="#tab_8">8</ref> shows the prompts used to create the item descriptions.</p><p>The product is a beautiful watch, with big size .... It is comfortable, easy to put on/take off, perfect for workouts but has a short-lived rubber band.</p><p>As shown in the above example, for an item, the blue text provides a concise description, the green text describes the positive features of the item, and the red text describes the negative features.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">User Profile Creation</head><p>Sequential recommendation tasks typically consider the most recent k items to predict whether the user will like or dislike the next item. The idea behind this approach is to capture temporal user behavior from the most recent interactions. However, this process overlooks some of the user's broader preferences which might have been exhibited prior to the most recent k items. To address this, we create a user profile P u , a concise q-word profile summary that captures the initial behavior and preference of a user u ∈ U. To create this user profile, we select at most the first m user interacted items such that the set of items does not overlap with the most recent k items. This ensures that the user profile reflects diverse preferences from earlier interactions. For each of the m items, we use r u,i to assess whether the user liked the item or not. We then prompt an LLM, L M , with the r u,i and corresponding item description, D i , following the Chain-of-Thought (CoT) <ref type="bibr" target="#b30">(Wei et al., 2024)</ref> prompts as shown in Appendix C Table <ref type="table">9</ref> to generate a 100-word user profile, P u , summarizing the user preferences. Formally,</p><formula xml:id="formula_2">P u = L M ((s u i ) m i=1 ),</formula><p>where s u i =&lt; r u,i , D i &gt;, represents the user-item interactions for the user u with item i.</p><p>The user seems to prefer fashionable, eye-catching products at a reasonable price... However, they dislike products that have quality issues such as loose fit ... As shown in the above example, the green text represents the features liked by the user, and the red text represents the features disliked by the user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Explanatory Reasoning Generation</head><p>In this section, our goal is to create explicit humaninterpretable explanatory reasoning to guide our recommendation framework. Recall that most useritem interactions are implicit and so explicit reasoning about why a user prefers a particular item is typically unavailable. Even for the rare cases where a user may explicitly indicate a preference (as in the case of a written review), patterns connecting sequential interactions are often missing.</p><p>We employ a well-curated zero-shot CoT prompting method to generate synthetic explanatory reasoning for a user's implicit preference towards the target item, by conditioning the generation process on the user's implicit feedback for the target item. This process is crucial to the quality of human-intelligible reasoning generation. For a user u and target item i t , we utilize the User Profile P u , recent k user-item interactions for the same user u,</p><formula xml:id="formula_3">(s u i ) t−1 i=t−k−1 =&lt; r u,i , D i &gt; t−1 i=t−k−1</formula><p>, and ground truth rating r u,it which indicates whether the user originally liked or disliked the target item. This information is used to generate reasoning R u,it which explains the user's behavior about what features are most likely to influence the user's decision, given the ground truth rating r u,it . We formally define this process as:</p><formula xml:id="formula_4">R u,it = L M (P u , (s u i ) t−1 i=t−k−1 |r u,it ).</formula><p>The structure of the prompts is detailed in Appendix C Table <ref type="table" target="#tab_1">10</ref>. Note that such explanatory reasoning is based on previous user-item interactions (where we know the ground truth of whether the user likes an item or not). It is not typically available in practice since the model must predict whether a user will like an item or not. Hence, we next demonstrate how to fine-tune a smaller LLM over these synthetic reasoning chains toward generating more accurate recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Finetuning with Personalized Reasoning</head><p>In this section, we demonstrate our framework, ReasoningRec, for instruction finetuning the SLM, Llama-2-7b-chat-hf, denoted as L L . Let Θ be the pre-trained parameters of L L . Our approach is based on the conditional language model objective. However, finetuning an LLM can be both computationally intensive and highly time-consuming, particularly for long sequences. To address this, we adopt LoRA (Low-Rank Adaptation) (Hu et al.,</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Prompt Template and Output for ReasoningRec</head><p>You are an expert &lt;assign_role_for_llm&gt;.You are provided with the user profile and list of recent &lt;items&gt; that the user has &lt;user_activity&gt; and whether the user likes it or not. User Profile -&lt;P u &gt; List of recent &lt;items&gt; and their description -</p><formula xml:id="formula_5">Liked/Disliked &lt; i , D i &gt; t−1 i=t−k−1</formula><p>Analyze all the information given in order. Do not use any information not mentioned above.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Prompt</head><p>Predict whether the user will like the target &lt;item&gt; -&lt;i t , D it &gt; or not. Answer with a Yes or No in the following format -Prediction: Yes or No by analyzing the user's behavior from the given list of &lt;items&gt; and identify the &lt;item&gt; characteristics that the user likes and dislikes in at most 100 words. Explain with reasoning whether the user will like or dislike the target &lt;item&gt; -&lt;i t &gt; in at most 100 words.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Prediction: Yes</head><p>The user has shown a preference for cute and comfortable accessories ...</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Output</head><p>They have disliked products that appear cheap or break easily ... ... the bracelet is described as high quality and nicely polished, suggesting it will not have these issues ... the user is likely to appreciate the bracelet's adjustable and high-quality features ... </p><formula xml:id="formula_6">max Φ (p,q)∈D T |q| v=1 log (P Θ+Φ (q v | p, q &lt;v )) ,</formula><p>where Θ represents the pre-trained frozen parameters of the LLM L L , and Φ is the LoRA parameters trained and updated during finetuning. D T is the Training dataset, consisting of K pairs of (p, q), where p is the "Instruction Input" and q is the "Instruction Output". Let q v be the vth token of the output q, and q &lt;v represents all the tokens before q v . We define p as an instruction prompt comprising the User Profile P u , recent k user-item interactions for the same user u,</p><formula xml:id="formula_7">(s u i ) t−1 i=t−k−1 =&lt; r u,i , D i &gt; t−1 i=t−k−1</formula><p>, Item description for target item D it and an instruction to generate q, where q consists of the binary ground truth rating r u,it and a ground truth reasoning R u,it . As we generated R u,it in Section 3.4, based on the ground truth rating r u,it , we use this as the ground truth reasoning for training the model. The goal is to train L Θ+Φ L in such a way that,</p><formula xml:id="formula_8">&lt; ru,it , Ru,it &gt;= L Θ+Φ L (P u , (s u i ) t−1 i=t−k−1 , D it ),</formula><p>where ru,it represents the binary rating prediction of user u for target item i t and Ru,it represents the generated reasoning describing the user behavior and factors affecting the user's predicted rating. The Instruction Input Template and Output example are detailed in Table <ref type="table" target="#tab_1">1</ref>. The actual prompts are detailed in Appendix C Table <ref type="table" target="#tab_1">11</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experimental Setup</head><p>In this section, we introduce the datasets, baseline methods, evaluation metrics, and implementation details used in our experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Datasets</head><p>Given that real-world datasets frequently exhibit different levels of sparsity, we aim to evaluate the performance of our methods across datasets with varying degrees of sparsity. ML1M (Harper and <ref type="bibr" target="#b8">Konstan, 2015)</ref> is a widely used benchmark dataset about movies with 1 million user-item interactions.</p><p>Amazon Fashion and Beauty <ref type="bibr" target="#b18">(Ni et al., 2019)</ref> are series of datasets comprising large corpora of product reviews crawled from Amazon. They have high sparsity.</p><p>Following the SASRec <ref type="bibr" target="#b12">(Kang and McAuley, 2018)</ref> approach, for a user-item historical sequence, we use the last interaction as test data, the second last interaction as validation data, and the third last interaction as training data. Details about datasets are shown in Appendix A.1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Baselines and Evaluation Metrics</head><p>We consider two representative sequential recommenders -SASRec <ref type="bibr" target="#b12">(Kang and McAuley, 2018)</ref> and Caser <ref type="bibr" target="#b23">(Tang and Wang, 2018)</ref>. These are pre-LLM recommenders that are trained over historical user-item interactions. SASRec is a strong attention-based sequential recommender and Caser is a CNN-based sequential recommender.</p><p>TALLRec <ref type="bibr" target="#b0">(Bao et al., 2023</ref>) is an LLM-based recommender that uses an instruction finetuning method with K ∈ {64, 128, 256} training samples to finetune an SLM, Llama-2-7b-chat-hf for recommendation prediction.</p><p>Rec-SAVER <ref type="bibr" target="#b24">(Tsai et al., 2024</ref>) is a contemporaneous approach that addresses the simultaneous tasks of rating prediction and reasoning generation by finetuning a Flan-T5 XL model. Specific details are mentioned in Appendix A.1.</p><p>We also consider two zero-shot methods for comparison -Zero-shot Vanilla and Zero-shot Rea-soningRec. Zero-shot Vanilla is prompted with only item titles for the recommendation prediction task. Zero-shot ReasoningRec is prompted with all contextual and semantic information, including item descriptions and user profiles, to generate both recommendation predictions and corresponding reasoning. We follow the same prompt template shown in Table <ref type="table" target="#tab_1">1</ref> and use Llama-2-7b-chat-hf and Mixtral 8x7b Instruct v0.1 as two backbone models for these two baselines.</p><p>Our study focuses on both recommendation prediction and the quality of reasoning generation. We employ Binary AUC <ref type="bibr" target="#b2">(Bradley, 1997)</ref> for evaluating the binary recommendation prediction task. We use BERTScore <ref type="bibr">(Zhang* et al., 2020)</ref>, which uses contextual embeddings to capture the semantic similarity between the generated reasoning and the ground truth reasoning to access the quality of reasoning generation. Specific details are mentioned in Appendix A.3</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Implementation Details</head><p>We binarize the ratings using the threshold r T = 3 for our experiments, following TALLRec <ref type="bibr" target="#b0">(Bao et al., 2023)</ref> paper. As mentioned in Section 3.2, for item descriptions, we use at most p = 10 reviews sampled in a stratified manner and generate a n = 25 word description for every item. For user profile, we use at most m = 15 initial items to generate a concise q = 100 word profile summary, capturing the user preference and behavior from their initial interactions, as mentioned in section 3.3. For all the generation tasks, we use Mixtral-8x7b-Instruct-v0.1 as the LLM.</p><p>For the proposed method, ReasoningRec, we instruction finetune an SLM, Llama2-7b-chat-hf, with limited number of training samples, K ∈ {64, 128, 256}, following TALLRec. We conduct all experiments on NVIDIA RTX A5000 24GB GPUs. Additional implementation details for our methods, models, and finetuning are explained in Appendix A.4</p><p>5 Results and Analysis</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">ReasoningRec outperforms all baselines</head><p>Table 2 compares the performance of the proposed method, ReasoningRec, with baselines like SAS-Rec <ref type="bibr" target="#b12">(Kang and McAuley, 2018)</ref>, Caser <ref type="bibr" target="#b23">(Tang and Wang, 2018)</ref>, and TALLRec <ref type="bibr" target="#b0">(Bao et al., 2023)</ref>. We report the results from the contemporaneous Rec-SAVER XL paper <ref type="bibr" target="#b24">(Tsai et al., 2024)</ref> for the Beauty dataset, based on a finetuned Flan-T5 XL model.</p><p>We see the highest performance gain on the ML1M dataset (12.59%), as compared to 4.38% on Fashion and 7.55% on Beauty, over TALLRec performance. The proposed ReasoningRec framework outperforms all other tested methods including traditional methods like SASRec, Caser, and finetuned SLM methods like TALLRec in recommendation prediction capability while providing human intelligible and interpretable reasoning validating the prediction. The finetuned ReasoningRec outperforms a contemporary work, Rec-SAVER XL, which leverages a highly compute-intensive training process by generating multiple reasoning outputs and selecting the best one for finetuning a Flan-T5 XL model, through self-verification using another prompt to the same LLM. It is also finetuned with a considerably higher number of training examples as compared to ReasoningRec. Improved performance of ReasoningRec could be attributed to the use of rich semantic information </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">ReasoningRec compared to Zero-shot larger LLMs</head><p>We investigate the recommendation prediction and reasoning ability of an LLM (Mixtral 8x7b Instruct v0.1), in a zero-shot setting -not finetuned on any training sample, i.e. K = 0. LLMs are pre-trained on a huge corpus of data with a very large number of parameters, which help them to perform well across various tasks in zero-shot settings using ICL abilities <ref type="bibr">(Dong et al., 2022)</ref>. We use the CoT prompt 2 as depicted in Table <ref type="table" target="#tab_1">1</ref>, which is used for the ReasoningRec framework and evaluated the results as shown in Table <ref type="table" target="#tab_2">2</ref>. We demonstrate strong results for zero-shot ReasoningRec, outperforming traditional SoTA methods like SASRec and Caser and performing comparably to finetuned models with K = 64 training samples. We also investigate the zero-shot capabilities of SLM (Llama2-7b-hf-chat). We observe that SLMs perform poorly with recommendation tasks in a zero-shot setting. Zero-shot ReasoningRec 2 An ablation of Prompts is provided in Appendix B.1 improved the average prediction performance by 14.3% from the Vanilla method 3 , however, the average performance of the SLM improved by only 3%, which underscores the drawback of SLMs in performing recommendation prediction even when provided with rich contextual information. However, once the same SLM is instruction finetuned according to the proposed framework, ReasoningRec, it outperforms the zero-shot ReasoningRec and every other baseline method. Hence, we establish that the proposed lightweight instruction finetuning framework with synthetic reasoning ground truth helps in effectively improving the recommendation prediction as well as reasoning generation performance in SLMs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Ablation study for ReasoningRec</head><p>Table <ref type="table" target="#tab_3">3</ref> demonstrates the importance of features like Item Description and User Profile on the recommendation prediction and reasoning generation capability. We demonstrate that item description plays a significant role in improving the quality of reasoning generation as ReasoningRec w/o Profile consistently outperforms ReasoningRec w/o Description. Specifically, in extremely sparse datasets like Beauty, item description plays a crucial role due to additional contextual information improving both reasoning and recommendation predictions. We establish that user profile is crucial for long interaction sequences such as in ML1M which signifies the importance of capturing the user's early preferences. We also show the collective importance of both profile and description for ReasoningRec which consistently outperforms the other methods. We observe a positive correlation between the recommendation prediction performance (Binary AUC) with the quality of reasoning (BERTScore), which underscores the importance of reasoning for improvement in recommendation prediction performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Ablation study for Zeroshot ReasoningRec</head><p>We investigated the impact of key factors like Item Description and User Profile on the recommendation prediction and reasoning generation performance for zero-shot ReasoningRec. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusion</head><p>In this work, we studied the importance of rich contextual and semantic information about users and items in generating human-interpretable explanations. We introduced ReasoningRec, a lightweight and efficient framework, to instruction finetune an SLM on synthetic reasoning data generated by an LLM, conditioned on ground truth user ratings. We observed that our proposed method outperformed all the baseline methods in the recommendation prediction task while bridging the gap between recommendation prediction and human-interpretable explanations. Evaluations over different methods showed that item descriptions are crucial in improving performance for sparse datasets while user profiles are crucial for long user-item interaction sequences. Our experiments also illustrated how the proposed method helped in improving both recommendation prediction and reasoning generation in an SLM. Finally, we demonstrated a strong positive correlation between recommendation prediction and the quality of generated reasoning, underscoring the importance of reasoning and explanations in providing accurate recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Limitations and Future Work</head><p>This paper proposes to generate synthetic explanations as a guide for LLM recommendation finetuning. However, how plausible the reasoning might be, the explanations generated are an approximation of the actual reasoning justifying the user's action. Hence there is a need for follow-on work to more rigorously explore the failure cases of synthetic explanations and their impact. There is also a need for further study of the interpretability of the LLM-generated explanations; do they reflect actual user motivations?</p><p>We have focused on one aspect of recommendation -prediction of likes or dislikes while producing plausible and human-interpretable explanations.</p><p>It is an open question how the method presented here could impact other recommendation tasks like candidate retrieval and re-ranking. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Experimental Setup</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1 Dataset</head><p>In this study, we evaluate our methods on three recommendation datasets. The datasets vary significantly in domains, platforms, implicitness and sparsity as shown in Table <ref type="table">5</ref>:</p><p>MovieLens A widely used benchmark dataset. We used the version with 1 million user-item interactions, called ML1M. This is a highly dense dataset. The item metadata, M i , is, however, limited to Title, Genre, and Year (of release) only and doesn't include any user review, making it highly implicit.</p><p>Amazon A series of datasets comprising large corpora of product reviews crawled from Amazon.com. Top-level product categories on Amazon are treated as separate datasets. We consider two categories-'Beauty' and 'Fashion.' This dataset is notable for its high sparsity and variability. M i consists of title, price, brand, description (only 8% of items), and user reviews.  As described in Section 3, our method requires the most recent k items interacted with by a user u to predict recommendations. For these datasets, we define the k-core as the set of users with at least k interactions. Following the approach of baseline methods such as SASRec, Caser, and TALLRec, we set k = 5 for the Beauty and Fashion datasets, and k = 20 for ML1M. Figure <ref type="figure" target="#fig_2">2</ref> illustrates the sparsity of the datasets in terms of the number of unique users relative to the k values in corresponding k-core datasets.</p><p>For creating the Test, Valid, and Train dataset, we follow the same approach as SASRec, and split the sequence S u for each user u into three parts:</p><p>• For Test data, we consider the most recent interaction s u |S| as i t .</p><p>• For Validation data, we consider the second most recent interaction s u |S|−1 as i t .</p><p>• For Training data, we consider the third most recent interaction s u |S|−2 as i t .</p><p>and their corresponding historical sequences (s u i ) t−1 i=t−k−1 are used as past user-item interaction sequence for recommendation prediction and reasoning generation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Baselines</head><p>To demonstrate the effectiveness of our methods, we include three different baselines:</p><p>SASRec is an attention-based sequential recommender that employs a multi-headed self-attention architecture, similar to the Transformer decoder, to capture user preferences. In the final layer of the network, we use the Sigmoid activation function instead of Softmax, as we are performing binary classification.</p><p>Caser is a CNN-based sequential recommender that embeds a sequence of recent items as an image and learns sequential patterns using horizontal and vertical convolution filters. Similar to SASRec, in the final layer, we use the Sigmoid activation function instead of Softmax, due to the binary classification task.</p><p>TALLRec proposes an efficient tuning framework to align LLMs with recommendation tasks. Initially, they instruction-tune LLaMA-7B using the Alpaca dataset, followed by additional instruction finetuning with a recommendation dataset. In our study, we use Llama-2-7b-chat-hf 4 , denoted as L L , which is already instruction-tuned. Thus, we focus on instruction fine-tuning with the recommendation dataset directly.</p><p>Rec-SAVER addresses the simultaneous tasks of rating prediction and reasoning generation. It finetunes a Flan-T5 XL model to generate prediction and reasoning. It employs a highly computationally intensive training method, by generating multiple reasoning and self-validating the reasoning outputs to select the best reasoning for training. We were unable to reproduce their results on our dataset due to limited computational resources. Instead, we compare results on the Beauty dataset using the results reported in their paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 Evaluation Metrics</head><p>Our study focuses on both recommendation prediction and the quality of reasoning generation. For recommendation prediction, we adopt a binary classification approach, where the LLM, L, predicts the binary rating ru,it ∈ {1, 0}, with 1 corresponding to a "like" and 0 to a "dislike". The LLM outputs a sequence in the form of Prediction: Yes/No, where 'Yes' indicates ru,it = 1 and 'No' indicates ru,it = 0. To evaluate this binary classification, we employ Binary AUC.</p><p>For the reasoning generation task, we use the model L M to generate ground truth reasoning Ru, i t , as described in Section 3.5.1. To compare the performance of our methods in both Zero-shot and Finetuned ReasoningRec settings, we evaluate the generated reasoning Ru, i t against the ground truth reasoning Ru, i t . We use BERTScore, which calculates token-level maximum semantic similarity, making it the most comprehensive metric for this evaluation. Specifically, we use the 'debertaxlarge-mnli' model as the BERTScore backbone.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.4 Implementation details.</head><p>We use r T = 3 for all of our datasets such that we convert the original user rating r ′ u,i to binary rating r u,i for recommendation tasks for this study.</p><p>We use L M for multiple generation tasks. The hyper-parameters used for L M is listed in Table <ref type="table" target="#tab_7">6</ref>. The temperature hyper-parameter controls the degree of randomness in the model's output generation. We used a very low temperature throughout our experiments to ensure consistent results.</p><p>The top-p hyper-parameter regulates the range of tokens the model considers when generating the next token. For the reasoning generation task, we selected a lower value to minimize the chances of off-topic or illogical outputs, which is crucial for instruction finetuning our SLM. This also helps to enhance the coherence and consistency of the generated reasoning.</p><p>The max_new_tokens hyper-parameter limits the number of tokens the model can generate. As discussed in Section 3, the maximum number of tokens generated is in accordance with the instructions provided to the LLM.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.4.1 Item Description Generation</head><p>Section 3.2 introduced that we generate a concise n -word item description, D i for every item i. For our experiments we have used n = 25. Given, the varied level of implicitness, we describe the process of D i generation. The ML1M dataset, being highly implicit, provides very limited item metadata which contains only the year and genre of each movie. To enrich this information, we utilize the Cinemagoer Python library to retrieve the plot for each movie. We then prompt, Mixtral-8X7b-Instruct-v0.1 5 , L M as shown in Appendix C Table <ref type="table" target="#tab_8">8</ref> to generate a 25word summary for each movie.</p><p>For the Beauty and Fashion datasets, we observed that the item titles contain some basic information about the products such as title, brand, price, description and reviews. However, only 8% of the items in these datasets include a description in the metadata, M i . To address this, for each item i, we leverage the ratings and reviews provided by the users, &lt; r ′ u,i , K u,i &gt; ∀u ∈ U and s u i ∈ S u , to generate a more comprehensive item description. With the aim of capturing both strong (positive) and weak (negative) features of each item i, we sample up to p = 10 reviews from the available pool of reviews. These sampled reviews are selected in a stratified manner to have the original distribution across all rating levels for the item, ensuring original rating representation. The pseudo code for selecting reviews is demonstrated in Algorithm 1. We then prompt L M , with the selected reviews following the format shown in </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.4.2 Instruction Finetuning</head><p>It is the most crucial task for the purpose of getting the best finetuned model. Given the LLMs are pre-trained on huge amount of corpus, even few training examples can improve their performance considerably. We adopted a textitK-shot training paradigm, similar to TALLRec, where only a limnumber of samples, K ∈ {64, 128, 256}, are randomly selected from the training dataset for instruction finetuning. We used Llama-2-7b-chat-hf (L L ) as the base model for finetuning, both for TALLRec and our ReasoningRec.</p><p>For TALLRec, we used the parameters used in the original implementation to generate the results -maximum numbers of epochs = 100, learning rate = 1e − 4, LoRA r = 8, alpha = 16, dropout = 0.05, and target modules = ["q_proj", "v_proj"].</p><p>For finetuning ReasoningRec, we tuned hyperparameters from the following range -learning rate: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B Additional Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.1 Template Ablation</head><p>Table <ref type="table">7</ref> demonstrates the consistency of our prompt for zero-shot ReasoningRec. We generated multiple prompts by tweaking instructions and validated that the models perform almost similar given they are provided with rich semantic and contextual information such as Item Description and User Profile. We used the Mixtral-8x7b-Instruct-v0.1 for all these experiments. and weak (negative) features or characteristics of the product from the given reviews. You are given the list of reviews about the product -{List of Reviews}. Give a 25 word concise product description mentioning strong and weak features of the product. You are an expert movie critic. List of user's liked and disliked movies and their descriptions are given -&lt; r u,i , D i &gt; m i=1 Generate a user profile in at most 100 words. Do not include information not present in the movie descriptions. Fashion/Beauty You are an expert {fashion/beauty} product reviewer and recommender. You are provided with a user's list of recent products and their descriptions that the user purchases and whether the user liked it or disliked it. Please go through the list in order -&lt; r u,i , D i &gt; m i=1 . Analyze the provided list of products purchased by the user in order and summarize the user behavior by identifying the characteristics liked and disliked about the products in at most 100 words. Do not include information not present in the item descriptions.</p><p>Table <ref type="table">9</ref>: Chain-of-Though (CoT) Prompts given to LLM (L M ) for generating User Profile. The LLM is assigned a dataset specific role to generate a 100-word user profile P u . The CoT prompt consists of user preference r u,i and item description D i for the first m items from user's historical interactions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Dataset</head><p>CoT Prompt for Reasoning Generation ML1M</p><p>You are an expert movie critic. You are provided with a user profile and a list of recent movies that the user has watched and whether the user likes it or not. User Profile -{P u }. User watched the following movies recently in the given order. List of recent movies and their description -{Liked/Disliked} {(D i ) t−1 i=t−k−1 }. Now, We know that the user will {r u,it } the next movie -{D it }. As an expert movie critic, do the following steps -1. Analyze the user's movie watching history given in order and summarize the user's behavior from the given list of movies and identify the movie characteristics that he likes and dislikes in atmost 100 words. 2. Explain with reasoning why the user will {r u,it } the target movie {i t } in atmost 100 words. Do not use any information not mentioned above. Fashion/Beauty You are an expert {fashion/beauty} product recommender. You are provided with a user's profile and list of recent products and their descriptions that the user purchased and whether the user liked it or disliked it. User Profile -{P u }. User purchased the following items in the given order. List of recent items and their description -{Liked/Disliked} {(D i ) t−1 i=t−k−1 }. Now, we know that the user will {r u,it } the next item -{D it }. As an expert {fashion, beauty} product recommender, do the following steps -1. Analyze the user profile, list of products purchased by the user in order and summarize the user behavior by identifying the characteristics he liked and disliked about the products in at most 100 words. 2. Explain with reasoning why the user will {r u,it } the next item -{i t }, in atmost 100 words.</p><p>Table 10: Chain-of-Though (CoT) Prompts given to LLM (L M ) for generating ground truth Reasoning R u,it . The prompts consist of CoT instructions along with User Profile P u , Item Description D i of the k most recent user-item interactions and user preference r u,i for those corresponding items, and the user ground truth preference for the target item r u,it</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Dataset</head><p>CoT Prompts for ReasoningRec ML1M</p><p>You are an expert movie critic. You are provided with the user profile and list of recent movies that the user has watched and whether the user likes it or not. User Profile -{P u }. User watched the following movies recently in the given order. List of recent movies and their description -{Liked/Disliked} &lt; D i &gt; t−1 i=t−k−1 Analyze all the information given in order. Do not use any information not mentioned above. Predict whether the user will like the target movie -{D it } or not. Answer with a Yes or No in the following format -Prediction: Yes or No by analyzing the user's behavior from the given list of movies and identify the movie characteristics that the user likes and dislikes in at most 100 words. Explain with reasoning whether the user will like or dislike the next target movie -{i t } in at most 100 words. Fashion/Beauty You are an expert {fashion/beauty} product recommender. You are provided with a user's profile and list of recent products and their descriptions that the user purchases and whether the user liked it or disliked it. User Profile -{P u }. User purchased the following items in the given order. List of recent items and their description -{Liked/Disliked} &lt; D i &gt; t−1 i=t−k−1 . As an expert {fashion/beauty} product recommender, do the following steps -Predict whether the user will like the target item -{D it } or not in the following format -Prediction: Yes or No by analyzing the provided list of products purchased by the user in order and summarize the user behavior by identifying the characteristics the user liked and disliked about the products in at most 100 words. Explain with reasoning whether the user will like or dislike the next target item -{i t } in at most 100 words.</p><p>Table <ref type="table" target="#tab_1">11</ref>: Chain-of-Though (CoT) Prompts given to LLM (L M ) for generating recommendation prediction ru,it and reasoning Ru,it . The prompts consists of CoT instructions along with User Profile P u , Item Description D i of the k most recent user-item interactions and user preference r u,i for those corresponding items, and the item description of target item D it</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Overview of ReasoningRec framework. (a) We use an LLM, Mixtral-8x7B-Instruct-v0.1, to generate item description and user profile. We use Chain-of-Thought prompting with the most recent k items and leverage the rich semantic information to generate reasoning ground truth, conditioned on the target item ground truth rating. (b) We propose a lightweight instruction finetuning framework, utilizing LoRA architecture, with very limited training samples to instruction finetune an SLM, Llama-2-7b-chat-hf. (c) We use the instruction finetuned model to perform recommendation prediction and reasoning generation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>Datasets, their respective number of unique users and items, and sparsity.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The multi-line graph represents the unique number of users with at least k user-item interactions in each dataset. ML1M drops beyond k = 20 suggesting very dense dataset. However, Beauty and Fashion drops drastically from k = 5 to k = 7, highlighting the sparsity in the dataset.</figDesc><graphic coords="12,70.87,500.65,218.27,140.44" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>[1e − 3, 3e − 4, 1e − 4, 4e − 5, 5e − 6], LoRA r:[4,  8]  and alpha:[8, 16]. The hyperparameters used for the best model are -max epochs = 100, LoRA r = 8, alpha = 16, dropout = 0.05, target modules = ["q_proj", "v_proj"], and learning rate = 1e − 4 for Beauty and Fashion, and 3e − 5 for ML1M. We also used the SFTTrainer with DataCollatorFor-CompletionOnlyLM and Early Stopping scheduler with patience = 5 to train the model with the crossentropy loss from the generation output. We use the max seq length = 2048.A.4.3 Model Quantization L M is used with 4-bit quantization with quant_type = nf4 and compute_dtype = bfloat16. L L is used with 8-bit quantization with dtype = float16.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>Prompt</figDesc><table /><note>given to LLM (L) -We first assign a role to the llm. We provide the LLM with User Profile, P u , and Item Descriptions, D i , of k most recent interacted items and their corresponding preference, r u,i . We assign some guardrails to the LLM to mitigate hallucinations. Finally, for a target item D it , we provide a Chain-of-Thought instruction to predict and generate reasoning. Output -The model first generates the recommendation prediction, ru,it . It mentions some key features that are liked or disliked by the user. Finally, the model generates the reasoning for the provided prediction, Ru,it . 2022), which involves freezing the pre-trained model's parameters Θ and introducing trainable low-rank decomposition matrices into select layers of the Transformer architecture. It is possible to achieve near-equivalent performance to full-model finetuning by updating only a small subset of LoRA parameters<ref type="bibr" target="#b10">(Hu et al., 2022)</ref>, designated as Φ. By optimizing these low-rank matrices, we can efficiently and effectively incorporate new information without altering the frozen parameters. The final learning objective is computed as:</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Recommendation performance of ReasoningRec and baselines across three datasets. SASRec and Caser are trained on the complete dataset while TALLRec and our method use instruction finetuned SLM with K ∈ {64, 128, 256} samples. Zero-shot methods are used with both LLMs and SLMs to understand the importance of finetuning on SLMs. The best results are highlighted in bold, and the second best results are underlined.</figDesc><table><row><cell></cell><cell></cell><cell>ML1M</cell><cell></cell><cell></cell><cell>Fashion</cell><cell></cell><cell></cell><cell>Beauty</cell><cell></cell></row><row><cell>Model</cell><cell>K</cell><cell>AUC</cell><cell>BERT Score</cell><cell>K</cell><cell>AUC</cell><cell>BERT Score</cell><cell>K</cell><cell>AUC</cell><cell>BERT Score</cell></row><row><cell>SASRec</cell><cell cols="2">6040 0.594</cell><cell>-</cell><cell cols="2">1273 0.526</cell><cell>-</cell><cell cols="2">624 0.538</cell><cell>-</cell></row><row><cell>Caser</cell><cell cols="2">6040 0.619</cell><cell>-</cell><cell cols="2">1273 0.549</cell><cell>-</cell><cell cols="2">624 0.551</cell><cell>-</cell></row><row><cell>Zero-shot Vanilla</cell><cell>0</cell><cell>0.509</cell><cell>-</cell><cell>0</cell><cell>0.473</cell><cell>-</cell><cell>0</cell><cell>0.475</cell><cell>-</cell></row><row><cell>Zero-shot ReasoningRec</cell><cell>0</cell><cell>0.510</cell><cell>-</cell><cell>0</cell><cell>0.500</cell><cell>-</cell><cell>0</cell><cell>0.510</cell><cell>-</cell></row><row><cell>Zero-shot Vanilla (Mixtral)</cell><cell>0</cell><cell>0.523</cell><cell>-</cell><cell>0</cell><cell>0.620</cell><cell>-</cell><cell>0</cell><cell>0.646</cell><cell>-</cell></row><row><cell>Zero-shot ReasoningRec (Mixtral)</cell><cell>0</cell><cell cols="2">0.614 0.658</cell><cell>0</cell><cell cols="2">0.731 0.667</cell><cell>0</cell><cell cols="2">0.693 0.664</cell></row><row><cell></cell><cell>64</cell><cell>0.546</cell><cell>-</cell><cell>64</cell><cell>0.653</cell><cell>-</cell><cell>64</cell><cell>0.684</cell><cell>-</cell></row><row><cell>TALLRec</cell><cell cols="2">128 0.621</cell><cell>-</cell><cell cols="2">128 0.705</cell><cell>-</cell><cell cols="2">128 0.721</cell><cell>-</cell></row><row><cell></cell><cell cols="2">256 0.659</cell><cell>-</cell><cell cols="2">256 0.753</cell><cell>-</cell><cell cols="2">256 0.742</cell><cell>-</cell></row><row><cell>Rec-SAVER XL</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell>-</cell><cell cols="2">4000 0.78</cell><cell>0.67</cell></row><row><cell></cell><cell>64</cell><cell cols="2">0.604 0.709</cell><cell>64</cell><cell cols="2">0.675 0.677</cell><cell>64</cell><cell cols="2">0.741 0.686</cell></row><row><cell>ReasoningRec (Ours)</cell><cell cols="3">128 0.691 0.719</cell><cell cols="3">128 0.762 0.688</cell><cell cols="3">128 0.768 0.687</cell></row><row><cell></cell><cell cols="3">256 0.744 0.724</cell><cell cols="3">256 0.786 0.696</cell><cell cols="3">256 0.798 0.691</cell></row></table><note>such as User Profile and enriched Item Descriptions. The model is finetuned with only K = 256 training samples and is able to outperform all other models in both recommendation prediction and reasoning generation, showcasing the cost and compute -efficiency, and effectiveness of the proposed lightweight instruction finetuning framework with LoRA (Hu et al., 2022) architecture.</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Ablation on ReasoningRec -Understanding the importance of Item Description and User Profile. ReasoningRec w/o Description is finetuned with only user profiles to generate recommendation prediction and reasoning. Similarly, ReasoningRec w/o Profile is finetuned with only item descriptions.</figDesc><table><row><cell>Model</cell><cell>K</cell><cell cols="6">ML1M AUC BERTScore AUC BERTScore AUC BERTScore Fashion Beauty</cell></row><row><cell></cell><cell>64</cell><cell>0.563</cell><cell>0.686</cell><cell>0.663</cell><cell>0.649</cell><cell>0.701</cell><cell>0.619</cell></row><row><cell>ReasoningRec w/o Description</cell><cell cols="2">128 0.624</cell><cell>0.696</cell><cell>0.700</cell><cell>0.664</cell><cell>0.748</cell><cell>0.621</cell></row><row><cell></cell><cell cols="2">256 0.681</cell><cell>0.700</cell><cell>0.750</cell><cell>0.665</cell><cell>0.761</cell><cell>0.662</cell></row><row><cell></cell><cell>64</cell><cell>0.556</cell><cell>0.671</cell><cell>0.661</cell><cell>0.648</cell><cell>0.645</cell><cell>0.628</cell></row><row><cell>ReasoningRec w/o Profile</cell><cell cols="2">128 0.621</cell><cell>0.684</cell><cell>0.720</cell><cell>0.664</cell><cell>0.741</cell><cell>0.682</cell></row><row><cell></cell><cell cols="2">256 0.662</cell><cell>0.699</cell><cell>0.779</cell><cell>0.667</cell><cell>0.792</cell><cell>0.685</cell></row><row><cell></cell><cell>64</cell><cell>0.604</cell><cell>0.709</cell><cell>0.675</cell><cell>0.677</cell><cell>0.741</cell><cell>0.686</cell></row><row><cell>ReasoningRec</cell><cell cols="2">128 0.691</cell><cell>0.719</cell><cell>0.762</cell><cell>0.688</cell><cell>0.768</cell><cell>0.687</cell></row><row><cell></cell><cell cols="2">256 0.744</cell><cell>0.724</cell><cell>0.786</cell><cell>0.696</cell><cell>0.798</cell><cell>0.691</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4</head><label>4</label><figDesc></figDesc><table><row><cell cols="4">presents the ablation study of zero-shot methods.</cell></row><row><cell cols="4">An initial analysis demonstrates that reasoning on</cell></row><row><cell>Method</cell><cell>ML1M (AUC)</cell><cell>Fashion (AUC)</cell><cell>Beauty (AUC)</cell></row><row><cell>Vanilla</cell><cell>0.524</cell><cell>0.620</cell><cell>0.646</cell></row><row><cell>w/ Description</cell><cell>0.561</cell><cell>0.612</cell><cell>0.610</cell></row><row><cell>w/ Profile</cell><cell>0.585</cell><cell>0.641</cell><cell>0.618</cell></row><row><cell>w/ Description, Profile</cell><cell>0.591</cell><cell>0.646</cell><cell>0.651</cell></row><row><cell>Reasoning</cell><cell>0.562</cell><cell>0.593</cell><cell>0.594</cell></row><row><cell>Reasoning w/ Description</cell><cell>0.585</cell><cell>0.647</cell><cell>0.661</cell></row><row><cell>Reasoning w/ Profile</cell><cell>0.571</cell><cell>0.665</cell><cell>0.661</cell></row><row><cell>Zeroshot ReasoningRec Reasoning w/ Description, Profile</cell><cell>0.614</cell><cell>0.731</cell><cell>0.693</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 4 :</head><label>4</label><figDesc>Ablation on Zero-shot Results: Reasoning is effective with key factors such as User Profiles and Item Descriptions to enhance the recommendation prediction.</figDesc><table><row><cell>item titles only performs worse than the Vanilla</cell></row><row><cell>(No Reasoning, Only Binary Prediction) method,</cell></row><row><cell>suggesting the model's inability to generate mean-</cell></row><row><cell>ingful reasoning from limited inputs like item titles,</cell></row><row><cell>reinforcing the importance of combining reason-</cell></row><row><cell>ing with rich semantic context. We see a gradual</cell></row><row><cell>improvement in performance when we introduce</cell></row><row><cell>Item Description and then User Profile into the</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head></head><label></label><figDesc>on Web Search and Data Mining, WSDM '24, page 930-938, New York, NY, USA. Association for Computing Machinery. Tianyi Zhang*, Varsha Kishore*, Felix Wu*, Kilian Q. Weinberger, and Yoav Artzi. 2020. Bertscore: Evaluating text generation with bert. In International Conference on Learning Representations.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 6 :</head><label>6</label><figDesc>L M hyper-parameters used for different generation tasks in zero-shot settings.</figDesc><table><row><cell>Generation Task</cell><cell cols="3">temperature top_p max_new_tokens</cell></row><row><cell>User Profile</cell><cell>0.01</cell><cell>0.9</cell><cell>256</cell></row><row><cell>Item Description</cell><cell>0.01</cell><cell>0.9</cell><cell>64</cell></row><row><cell>Reasoning Ground Truth</cell><cell>0.01</cell><cell>0.75</cell><cell>256</cell></row><row><cell>Zero-shot ReasoningRec</cell><cell>0.01</cell><cell>0.9</cell><cell>300</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 8</head><label>8</label><figDesc></figDesc><table><row><cell>and Equa-</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head></head><label></label><figDesc>expert movie critic. You are provided with the Movie -{Title, Year, Plot}. Summarize the movie in at most 25 words. Fashion/Beauty As an expert {fashion/beauty} product recommender and advertiser, extract the strong (positive)</figDesc><table><row><cell>Dataset</cell><cell>Prompts for Item Description Generation</cell><cell></cell><cell></cell></row><row><cell>ML1M</cell><cell>You are an</cell><cell></cell><cell></cell></row><row><cell></cell><cell>Model</cell><cell cols="3">ML1M Fashion Beauty AUC AUC AUC</cell></row><row><cell></cell><cell>Zeroshot ReasoningRec (Template 1)</cell><cell>0.614</cell><cell>0.731</cell><cell>0.693</cell></row><row><cell></cell><cell>Zeroshot ReasoningRec (Template 2)</cell><cell>0.608</cell><cell>0.731</cell><cell>0.693</cell></row><row><cell></cell><cell>Zeroshot ReasoningRec (Template 3)</cell><cell>0.605</cell><cell>0.717</cell><cell>0.687</cell></row><row><cell></cell><cell cols="4">Table 7: Ablation Study with different templates</cell></row><row><cell></cell><cell cols="2">C Prompts and Outputs</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>Table 8 :</head><label>8</label><figDesc>Instruction Prompts given to LLM (L M ) for Item Description Generation. The LLM is assigned a dataset specific role to generate a concise 25-word item description D i .</figDesc><table><row><cell>Dataset</cell><cell>CoT Prompts for User Profile Generation</cell></row><row><cell>ML1M</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">K * u,i is unavailable for the ML1M dataset and sparsely available for the Beauty and Fashion datasets</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">Vanilla: prompted with only item titles to predict the binary recommendation task</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">Llama 2 Community License Agreement</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">Apache license 2.0</note>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Method</head><p>Generation Output Reasoning Ground Truth <ref type="bibr">(Mixtral)</ref> Prediction: Yes 1. The user profile shows that the user likes blouses that are cute, classy, and stylish. They prefer blouses with small neck openings and tight sleeves. The user dislikes blouses that are sheer, not stretchy, and run small. They also prefer blouses that are not too revealing and are comfortable to wear in a desk job. 2. The user will like the next item, Pandora Women's Charm 791726PCZ, Silver, because it is a beautiful and original charm that is perfect for Pandora charm bracelets. Although the product may not be love at first sight and may not meet all expectations, the user has shown a preference for fashion items that are stylish and attractive. The charm is a fashion accessory that can add a touch of elegance to any outfit, making it a great addition to the user's collection. Additionally, the user has shown a preference for fashion items that are not too revealing, and the charm is a subtle and elegant accessory that can be worn in any setting. ReasoningRec (Finetuned Llama2)</p><p>Prediction: Yes 1. The user seems to prefer blouses with lace details and a double-layered design. They also seem to prefer loose-fitting blouses, as indicated by the user's purchase of the BLDO Women's Short Sleeve Lace Patchwork Short Loose Chiffon Blouse and BLDO Women's Summer Slim Lace Sleeve Chiffon Blouse Crop Top. The user also seems to prefer products that are stylish and attractive, as indicated by their purchase of the Allegra K Women Peter Pan Collar Sheer Crochet Sleeves Chiffon Blouse M Beige and Zeagoo Women's Chiffon Long Sleeve Blouse Tops Shirts Lace Embellished. 2. The user will like the next item, Pandora Women's Charm 791726PCZ, Silver, because it is a stylish and attractive accessory that can be added to a Pandora charm bracelet. The product description states that it may not meet all expectations, but the user has shown a preference for stylish and attractive items." Zero-shot Reason-ingRec (Mixtral) Prediction: Yes, the user will like the target item.The user seems to like blouses that are stylish, attractive, and have lace detailing. They also prefer items that are loose or non-sleeveless. The user has had issues with sizing in the past, so they may prefer items that run true to size or have a more generous fit.The Pandora charm meets the user's preference for stylish and attractive items. While it is not a blouse, it is a fashion accessory that can add a touch of elegance to any outfit. The charm is also silver, which is a neutral color that can match with various outfits. Additionally, the charm is not too flashy, which aligns with the user's preference for subtle yet stylish items. However, the user may be concerned about the size of the charm. The description does not provide information on the size of the charm, which may cause uncertainty for the user. To address this concern, the seller can provide more information on the size of the charm or offer a size chart for customers to refer to.Overall, the user's past purchases suggest that they prefer stylish and attractive items with lace detailing. The Pandora charm meets these criteria and is likely to be appreciated by the user." Zero-shot Reason-ingRec (Llama2) Prediction: Yes, the user will like the target item. Liked Allegra K Women Peter Pan Collar Sheer Crochet Sleeves Chiffon Blouse M Beige Brand: Allegra K Description: The product is a cute, classy blouse with a small neck opening and tight sleeves. It is available in cream and black, but the colors may vary from the picture. The quality is average and it may cause discomfort in a desk job.Liked Zeagoo Women's Chiffon Long Sleeve Blouse Tops Shirts Lace Embellished, apricot, Asian XL(US L) Brand: Zeagoo Description: The product is a beautiful blouse with pearls on the top and detailed design. However, it runs small, is sheer, and not stretchy, causing fitting issues.Liked BLDO Women's Short Sleeve Lace Patchwork Short Loose Chiffon Blouse White (XXL) Brand: BLDO Description: The product is a pretty, double-layered, non-sleeveless blouse with lace detailing. However, it runs significantly smaller than the listed size, requiring customers to order 2 sizes up." Table <ref type="table">12</ref>: Generated outputs for User -46 Target Item -Pandora Women's Charm 791726PCZ in Amazon Fashion: ReasoningRec and Zero-shot ReasoningRec (Mixtral) provide similar reasoning as the Reasoning Ground Truth. However, Zero-shot ReasoningRec (Llama2) just repeats the input prompt without providing any reasoning.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Tallrec: An effective and efficient tuning framework to align large language model with recommendation</title>
+		<author>
+			<persName><forename type="first">Keqin</forename><surname>Bao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jizhi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3604915.3608857</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM Conference on Recommender Systems, RecSys &apos;23</title>
+				<meeting>the 17th ACM Conference on Recommender Systems, RecSys &apos;23<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1007" to="1014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Piotr Nyczyk, and Torsten Hoefler. 2024. Graph of thoughts: Solving elaborate problems with large language models</title>
+		<author>
+			<persName><forename type="first">Maciej</forename><surname>Besta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nils</forename><surname>Blach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ales</forename><surname>Kubicek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Gerstenberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michal</forename><surname>Podstawski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lukas</forename><surname>Gianinazzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joanna</forename><surname>Gajda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tomasz</forename><surname>Lehmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hubert</forename><surname>Niewiadomski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<publisher>AAAI Press</publisher>
+			<biblScope unit="page" from="17682" to="17690" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">The use of the area under the roc curve in the evaluation of machine learning algorithms</title>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">P</forename><surname>Bradley</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0031-3203(96)00142-2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1145" to="1159" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">Karl</forename><surname>Cobbe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vineet</forename><surname>Kosaraju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><surname>Bavarian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heewoo</forename><surname>Jun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lukasz</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthias</forename><surname>Plappert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jerry</forename><surname>Tworek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Hilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reiichiro</forename><surname>Nakano</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2110.14168</idno>
+		<title level="m">Training verifiers to solve math word problems</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Learning to generate product reviews from attributes</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaohan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Furu</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirella</forename><surname>Lapata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 15th Conference of the European Chapter</title>
+		<title level="s">the Association for Computational Linguistics</title>
+		<meeting>the 15th Conference of the European Chapter<address><addrLine>Long Papers; Valencia, Spain</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="623" to="632" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">Qingxiu</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Damai</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ce</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiyong</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baobao</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingjing</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhifang</forename><surname>Sui</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2301.00234</idno>
+		<title level="m">2022. A survey on in-context learning</title>
+				<imprint/>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Successive prompting for decomposing complex questions</title>
+		<author>
+			<persName><forename type="first">Dheeru</forename><surname>Dua</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shivanshu</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sameer</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matt</forename><surname>Gardner</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2022.emnlp-main.81</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>the 2022 Conference on Empirical Methods in Natural Language Processing<address><addrLine>Abu Dhabi, United Arab Emirates</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1251" to="1265" />
+		</imprint>
+	</monogr>
+	<note>Association for Computational Linguistics</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Exaranker: Synthetic explanations improve neural rankers</title>
+		<author>
+			<persName><forename type="first">Fernando</forename><surname>Ferraretto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thiago</forename><surname>Laitz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Roberto</forename><surname>Lotufo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rodrigo</forename><surname>Nogueira</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3539618.3592067</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR &apos;23</title>
+				<meeting>the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR &apos;23<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="2409" to="2414" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The movielens datasets: History and context</title>
+		<author>
+			<persName><forename type="first">F</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maxwell</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2827872</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Interact. Intell. Syst</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3038912.3052569</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th International Conference on World Wide Web, WWW &apos;17</title>
+				<meeting>the 26th International Conference on World Wide Web, WWW &apos;17</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+		<respStmt>
+			<orgName>Republic and Canton of Geneva</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">LoRA: Low-rank adaptation of large language models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Edward</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Phillip</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeyuan</forename><surname>Wallis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanzhi</forename><surname>Allen-Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shean</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Towards reasoning in large language models: A survey</title>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin Chen-Chuan</forename><surname>Chang</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2023.findings-acl.67</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Findings of the Association for Computational Linguistics: ACL 2023</title>
+				<meeting><address><addrLine>Toronto, Canada</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1049" to="1065" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Selfattentive sequential recommendation</title>
+		<author>
+			<persName><forename type="first">Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICDM.2018.00035</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="197" to="206" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<author>
+			<persName><forename type="first">Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhil</forename><surname>Mehta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maheswaran</forename><surname>Sathiamoorthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lichan</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Derek</forename><forename type="middle">Zhiyuan</forename><surname>Cheng</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2305.06474</idno>
+		<title level="m">Do llms understand user preferences? evaluating llms on user rating prediction</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Large language models are zero-shot reasoners</title>
+		<author>
+			<persName><forename type="first">Takeshi</forename><surname>Kojima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shane</forename><surname>Shixiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Machel</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yutaka</forename><surname>Reid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yusuke</forename><surname>Matsuo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Iwasawa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th International Conference on Neural Information Processing Systems, NIPS &apos;22</title>
+				<meeting>the 36th International Conference on Neural Information Processing Systems, NIPS &apos;22<address><addrLine>Red Hook, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Curran Associates Inc</publisher>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/MC.2009.263</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Generating long and informative reviews with aspect-aware coarse-to-fine decoding</title>
+		<author>
+			<persName><forename type="first">Junyi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Song</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/P19-1190</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics</title>
+				<meeting>the 57th Annual Meeting of the Association for Computational Linguistics<address><addrLine>Florence, Italy</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1969" to="1979" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Rella: Retrieval-enhanced large language models for lifelong sequential behavior comprehension in recommendation</title>
+		<author>
+			<persName><forename type="first">Jianghao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rong</forename><surname>Shan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenxu</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kounianhua</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shigang</forename><surname>Quan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruiming</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weinan</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3589334.3645467</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM Web Conference 2024, WWW &apos;24</title>
+				<meeting>the ACM Web Conference 2024, WWW &apos;24<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="3497" to="3508" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Justifying recommendations using distantly-labeled reviews and fine-grained aspects</title>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/D19-1018</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)</title>
+				<meeting>the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)<address><addrLine>Hong Kong, China</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="188" to="197" />
+		</imprint>
+	</monogr>
+	<note>Association for Computational Linguistics</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Estimating reactions and recommending products with generative models of reviews</title>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zachary</forename><forename type="middle">C</forename><surname>Lipton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharad</forename><surname>Vikram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eighth International Joint Conference on Natural Language Processing</title>
+				<meeting>the Eighth International Joint Conference on Natural Language Processing<address><addrLine>Taipei, Taiwan</addrLine></address></meeting>
+		<imprint>
+			<publisher>Long Papers</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="783" to="791" />
+		</imprint>
+	</monogr>
+	<note>Asian Federation of Natural Language Processing</note>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Logic-scaffolding: Personalized aspectinstructed recommendation explanation generation using llms</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Behnam Rahdari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziwei</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yifei</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuotong</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chen</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3616855.3635689</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM International Conference on Web Search and Data Mining, WSDM &apos;24</title>
+				<meeting>the 17th ACM International Conference on Web Search and Data Mining, WSDM &apos;24<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="1078" to="1081" />
+		</imprint>
+	</monogr>
+	<note>Anoop Deoras, and Branislav Kveton</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Social information filtering: algorithms for automating &quot;word of mouth</title>
+		<author>
+			<persName><forename type="first">Upendra</forename><surname>Shardanand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pattie</forename><surname>Maes</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Human Factors in Computing Systems</title>
+				<imprint>
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Bert4rec: Sequential recommendation with bidirectional encoder representations from transformer</title>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Changhua</forename><surname>Pei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Ou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Jiang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3357384.3357895</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM International Conference on Information and Knowledge Management, CIKM &apos;19</title>
+				<meeting>the 28th ACM International Conference on Information and Knowledge Management, CIKM &apos;19<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1441" to="1450" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Personalized top-n sequential recommendation via convolutional sequence embedding</title>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3159652.3159656</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM International Conference on Web Search and Data Mining, WSDM &apos;18</title>
+				<meeting>the Eleventh ACM International Conference on Web Search and Data Mining, WSDM &apos;18<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="565" to="573" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Leveraging LLM reasoning enhances personalized recommender systems</title>
+		<author>
+			<persName><forename type="first">Alicia</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Kraft</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenwei</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anahita</forename><surname>Hosseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Taibai</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zemin</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lichan</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyang</forename><surname>Yi</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2024.findings-acl.780</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Findings of the Association for Computational Linguistics ACL 2024</title>
+				<meeting><address><addrLine>Bangkok, Thailand</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="13176" to="13188" />
+		</imprint>
+	</monogr>
+	<note>and virtual meeting</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Iteratively prompt pre-trained language models for chain of thought</title>
+		<author>
+			<persName><forename type="first">Boshi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huan</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference on Empirical Methods in Natural Language Processing</title>
+				<imprint>
+			<date type="published" when="2022">2022a</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Towards unified conversational recommender systems via knowledge-enhanced prompt learning</title>
+		<author>
+			<persName><forename type="first">Xiaolei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3534678.3539382</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, KDD &apos;22</title>
+				<meeting>the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, KDD &apos;22<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2022">2022b</date>
+			<biblScope unit="page" from="1929" to="1937" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Selfconsistency improves chain of thought reasoning in language models</title>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dale</forename><surname>Schuurmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Huai Hsin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chi</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+		<idno>abs/2203.11171</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ArXiv</title>
+		<imprint>
+			<date type="published" when="2022">2022c</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishi</forename><surname>Bommasani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Colin</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barret</forename><surname>Zoph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dani</forename><surname>Yogatama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Donald</forename><surname>Metzler</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">Emergent abilities of large language models</title>
+		<author>
+			<persName><forename type="first">Tatsunori</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oriol</forename><surname>Hashimoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Percy</forename><surname>Vinyals</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Dean</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fedus</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2206.07682</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Chain-of-thought prompting elicits reasoning in large language models</title>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dale</forename><surname>Schuurmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Ichter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><forename type="middle">H</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th International Conference on Neural Information Processing Systems, NIPS &apos;22</title>
+				<meeting>the 36th International Conference on Neural Information Processing Systems, NIPS &apos;22<address><addrLine>Red Hook, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Curran Associates Inc</publisher>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Towards openworld recommendation with knowledge augmentation from large language models</title>
+		<author>
+			<persName><forename type="first">Yunjia</forename><surname>Xi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiwen</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianghao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoling</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jieming</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruiming</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weinan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.10933</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">Fan</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziyan</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eunah</forename><surname>Cho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaojiang</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanbin</forename><surname>Lu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2305.07622</idno>
+		<title level="m">Palr: Personalization aware llms for recommendation</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Tree of thoughts: Deliberate problem solving with large language models</title>
+		<author>
+			<persName><forename type="first">Shunyu</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dian</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Izhak</forename><surname>Shafran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan</forename><surname>Griffiths</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karthik</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Narasimhan</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/pdf/2305.10601.pdf" />
+		<imprint>
+			<date type="published" when="2023">2023a. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Beyond chainof-thought, effective graph-of-thought reasoning in large language models</title>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hai</forename><surname>Zhao</surname></persName>
+		</author>
+		<idno>abs/2305.16582</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ArXiv</title>
+		<imprint>
+			<date type="published" when="2023">2023b</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Linear recurrent units for sequential recommendation</title>
+		<author>
+			<persName><forename type="first">Zhenrui</forename><surname>Yue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yueqi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhankui</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huimin</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dong</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3616855.3635760</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM International Conference</title>
+				<meeting>the 17th ACM International Conference</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

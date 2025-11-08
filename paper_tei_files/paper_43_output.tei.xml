@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Restricted Boltzmann Machines for Collaborative Filtering</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+							<email>b.abdollahi@louisville.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Dept. of Computer Engineering &amp; Computer Science</orgName>
+								<orgName type="laboratory">Knowledge Discovery and Web Mining Lab</orgName>
+								<orgName type="institution">University of Louisville</orgName>
+								<address>
+									<postCode>40222</postCode>
+									<settlement>Louisville</settlement>
+									<region>KY</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+							<email>olfa.nasraoui@louisville.edu</email>
+							<affiliation key="aff1">
+								<orgName type="department">Dept. of Computer Engineering &amp; Computer Science</orgName>
+								<orgName type="laboratory">Knowledge Discovery and Web Mining Lab</orgName>
+								<orgName type="institution">University of Louisville</orgName>
+								<address>
+									<postCode>40222</postCode>
+									<settlement>Louisville</settlement>
+									<region>KY</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explainable Restricted Boltzmann Machines for Collaborative Filtering</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">4014840F0696BB1DC7975BF995927992</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Most accurate recommender systems are black-box models, hiding the reasoning behind their recommendations.</p><p>Yet explanations have been shown to increase the user's trust in the system in addition to providing other benefits such as scrutability, meaning the ability to verify the validity of recommendations.</p><p>This gap between accuracy and transparency or explainability has generated an interest in automated explanation generation methods. Restricted Boltzmann Machines (RBM) are accurate models for CF that also lack interpretability. In this paper, we focus on RBM based collaborative filtering recommendations, and further assume the absence of any additional data source, such as item content or user attributes.</p><p>We thus propose a new Explainable RBM technique that computes the top-n recommendation list from items that are explainable. Experimental results show that our method is effective in generating accurate and explainable recommendations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Explanations for recommendations can have several benefits, such as: helping the user make a good decision (effectiveness), helping the user make a faster decision (efficiency), and revealing the reasoning behind the system's recommendation (transparency) <ref type="bibr" target="#b13">(Tintarev &amp; Masthoff, 2011;</ref><ref type="bibr" target="#b15">Zanker, 2012)</ref>. As a result, users are more likely to follow the recommendation and use the system in better ways <ref type="bibr" target="#b12">(Tintarev &amp; Masthoff, 2007;</ref><ref type="bibr" target="#b4">Herlocker et al., 2000)</ref>. For instance, the Netflix recommender system justifies its movie suggestions by listing similar movies, obtained from the user's social network. Amazon's recommender system shows similar items to the ones that the user (or other similar users) have bought or viewed, when recommending a new item using neighborhood based Collaborative Filtering (CF).</p><p>CF approches provide recommendations to users based on their collective recorded interests on items, typically relying on the similarity between users or items, giving rise to neighborhood-based CF approaches, which can be user-based or item-based. Neighborhood-based CF methods are white-box approaches that can be explained based on the ratings of similar users or items.</p><p>Most accurate recommender systems are modelbased methods that are black-boxes. Among model-based approaches are Restricted Boltzmann Machines (RBM) <ref type="bibr" target="#b6">(Hinton, 2010)</ref> that can assign a low dimensional set of features to items in a latent space. The newly obtained set of features capture the user's interests and different items groups; however, it is very difficult to interpret these automatically learned features.</p><p>Therefore, justification of the recommendation or the reasoning behind the recommended item in these models is not clear. RBM approaches have recently proved to be powerful for designing deep learning techniques to learn and predict patterns in large datasets because they can provide very accurate results <ref type="bibr" target="#b8">(Hinton &amp; Salakhutdinov, 2006)</ref>. However, they suffer from the lack of interpretation of the results, especially for recommender systems.</p><p>Lack of explanations 31 arXiv:1606.07129v1 [stat.ML] 22 Jun 2016 can result in users not trusting the suggestions made by the recommender system. Therefore, the only way for the user to assess the quality of a recommendation is by following it. This, however, is contrary to one of the goals of a recommendation system, which is reducing the time that users spend on exploring items.</p><p>It would be very desirable and beneficial to design recommender systems that can give accurate suggestions, which, at the same time, facilitate conveying the reasoning behind the recommendations to the user. A main challenge in creating a recommender system is to choose an interpretable technique with moderate prediction accuracy or a more accurate technique, such RBM, which does not give explainable recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.1.">Problem Statement</head><p>Our research question is: can we design an RBM model for a CF recommender engine that suggests items that are explainable, while recommendations remain accurate? Our current scope is limited to CF recommendations where no additional source of data is used in explanations, and where explanations for recommended items can be generated from the ratings given to these items, by the active user's neighbors only (user-based neighbor style explanation), as shown in Figure <ref type="figure" target="#fig_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related Work</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">Explaining CF</head><p>There are different ways of classifying explanation styles. Generally explanations can be user-based neighbor-style (Figure <ref type="figure" target="#fig_0">1</ref>), item-based neighbor style (also known as influence-style), and keyword-style <ref type="bibr" target="#b1">(Bilgic &amp; Mooney, 2005)</ref>. A user-based neighbor-style explanation is based on similar users, and generally is used when the CF method is also a user-based neighborhood style method. An item-based neighborstyle explanation is generally used in item-based CF methods by presenting the items that had the highest impact on the recommender system's decision. A keyword-style explanation is based on the items' features or users' demographic data available as content data and is mostly used in content based recommender systems <ref type="bibr" target="#b1">(Bilgic &amp; Mooney, 2005)</ref>.</p><p>In all styles, the explanation may, or may not reflect the underlying algorithm used by the recommender system. Also, data sources employed in the recommendation task, may be different from the data sources used in generating the explanation <ref type="bibr" target="#b14">(Vig et al., 2009;</ref><ref type="bibr" target="#b4">Herlocker et al., 2000;</ref><ref type="bibr" target="#b11">Symeonidis et al., 2008;</ref><ref type="bibr" target="#b1">Bilgic &amp; Mooney, 2005;</ref><ref type="bibr" target="#b2">Billsus &amp; Pazzani, 1999)</ref>. Hence, the explanation generation is a separate module from the recommender system. However, performing the recommendation task based on the items' explainability (thus integrating recommendation and explanation) may improve the transparent suggestion of interpretable items to the user, while enjoying the powerful prediction of a model-based CF approach.</p><p>Zhang et al. <ref type="bibr" target="#b17">(Zhang et al., 2014)</ref> proposed a modelbased CF to generate explainable recommendations based on item features and sentiment analysis of user reviews, as data sources, in addition to the ratings data. That said, their approach is similar to our proposed method in that the recommender model suggests highly explainable items as recommendations and in that the recommendation and explanation engines are not separate. They further expanded their feature-level explanation by considering different forms such as word clouds <ref type="bibr" target="#b16">(Zhang, 2015)</ref>. Also, <ref type="bibr" target="#b0">(Abdollahi &amp; Nasraoui, 2016)</ref> proposed explainable MF (EMF) method for explainable CF. In contrast to Zhang et al. <ref type="bibr" target="#b17">(Zhang et al., 2014)</ref>, EMF approach does not require any additional data such as reviews for explanation generation. Herlocker et al. <ref type="bibr" target="#b4">(Herlocker et al., 2000)</ref> performed a detailed study on 21 different styles of explanation generation for neighbor-based CF methods, including content-based explanations that present a list of features from the recommended item to the user. Symeonidis et al. <ref type="bibr" target="#b11">(Symeonidis et al., 2008)</ref> also proposed an explanation approach based on the content features of the items. Their recommender system and the explanation approach are both content-based but they used different algorithms. <ref type="bibr" target="#b1">Bilgic and Mooney (Bilgic &amp; Mooney, 2005)</ref> proposed three forms of explanations: keyword style, neighbor style and influence style, as separate forms of explanation approaches from their recommender system, a hybrid approach, called LIBRA, that recommends books <ref type="bibr" target="#b9">(Mooney &amp; Roy, 2000)</ref>. <ref type="bibr" target="#b2">Billsus and Pazzani (Billsus &amp; Pazzani, 1999)</ref> presented a keyword style and influence style explanation approach for their news recommendation system. The system generates explanations and adapts its recommendation to the user's interests based on the user's preferences and interests. In all the reviewed existing approaches except <ref type="bibr" target="#b4">(Herlocker et al., 2000)</ref>, the explanations have to resort to external data such as item content or reviews, while useful when available, are outside the scope of the work in this paper that primarily aims at explainability of pure CF without resorting to external data. Annie Hall (Comedy) Miller's Crossing (Thriller) 8 out of 10 people with similar interests to you have rated this movie 4 and higher.</p><p>Carrie (Drama) Sinin' in the Rain (Comedy) 9 out of 10 people with similar interests to you have rated this movie 3 and higher.</p><p>Jaws (Thriller) Psycho (Horror) 4 out of 10 people with similar interests to you have rated this movie 5. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">RBM for CF</head><p>RBM is a two layer stochastic neural network consisting of visible and hidden units. Each visible unit is connected to all the hidden units in an undirected form. No visible/hidden unit is connected to any other visible/hidden unit. The stochastic, binary visible units encode user preferences on the items from the training data, therefore the state of every visible unit is known. Hidden units are also stochastic, binary variables that capture the latent features. A probability p(v, h) is assigned to each pair of a hidden and a visible vector:</p><formula xml:id="formula_0">p(v, h) = e −E(v,h) Z (<label>1</label></formula><formula xml:id="formula_1">)</formula><p>where E is the energy of the system and Z is a normalizing factor, as defined in <ref type="bibr" target="#b7">(Hinton, 2002)</ref>.To train for the weights, a Contrastive Divergence method was proposed by Hinton <ref type="bibr" target="#b7">(Hinton, 2002)</ref>. <ref type="bibr" target="#b10">Salakhutdinov et al. (Salakhutdinov et al., 2007)</ref>, proposed an RBM framework for CF. Their model assumes one RBM for each user and takes only rated items into consideration when learning the weights. They presented the results of their approach on the Netflix data and showed that their technique was more accurate than Netflix's own system. The focus of this RBM approach was only on the accuracy and predicting error and not explanation generation. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Proposed Methods</head><p>In this section, we present our explainable RBM framework. First, we present our approach for measuring explainability of each item for each user using explicit rating data. Next, we propose the explainable RBM framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Explainability</head><p>Explainability can be formulated based on the rating distribution within the active user's neighborhood.</p><p>The main idea is that if many neighbors have rated the recommended item, then this could provide a basis upon which to explain the recommendations, using neighborhood style explanation mechanisms. For user-based neighbor-style explanations, such as the ones shown in Figure <ref type="figure" target="#fig_0">1</ref>, we can therefore define the Explainability Score of item i for user u as follows:</p><formula xml:id="formula_2">Expl. Score(u, i) = x∈N k (u) r x,i N k (u) R max<label>(2)</label></formula><p>where N k (u) is the set of user u's k neighbors, r x,i is the rating of x on item i and R max is the maximum rating value of N k (u) on i. Neighbors are determined based on the cosine similarity. Without loss of information, r x,i is considered as 0 for missing ratings, indicating that user x does not contribute to the userbased neighbor-style explanation of item i for user u.</p><p>Given this definition, it is obvious that Explainability Score is between zero and one. Item i is explainable for user u only if its explainability score is larger than zero. When no explanation can be made, the explainability ratio would be zero.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Conditional RBM</head><p>The conditional RBM model takes explainability into account with an additional visible layer, m, with n nodes, where n is the number of items. Each node has a value between 0 and 1, indicating the explainability score of the relative item to the current user in the iteration, calculated as explained in Section 4. The idea is to define a joint distribution over (v, h), conditional on the explainability scores, m.</p><p>Figure <ref type="figure" target="#fig_1">2</ref> presents the conditional RBM model with explainability. Based on <ref type="bibr" target="#b6">(Hinton, 2010)</ref>, the p(h j = 1|v, m), p(v i = 1|h), and p(m i = 1|h) are defined as:</p><formula xml:id="formula_3">p(h j = 1|v, m) = σ(a j + n i=1 v i W ij + n i=1 m i D ij ) (3) p(v i = 1|h) = σ(b i + f j=1 h j W ij ) (4) p(m i = 1|h) = σ(c i + f j=1 h j D ij )<label>(5)</label></formula><p>where a, b, and c are biases, f and n are the numbers of hidden and visible units, respectively, and W and D are the weights of the entire network. σ(x) is the logistic function</p><formula xml:id="formula_4">1 (1+e −x ) .</formula><p>To avoid computing a model, we follow an approximation to the gradient of a different objective function called "Contrastive Divergence" (CD) <ref type="bibr" target="#b7">(Hinton, 2002)</ref>:</p><formula xml:id="formula_5">∆W ij = W (&lt; v i h j &gt; data − &lt; v i h j &gt; recom )<label>(6)</label></formula><p>where W ij is an element of a learned matrix that models the effect of ratings on h. Learning D, which is the effect of explainability on h, using CD, is similar and takes the form:</p><formula xml:id="formula_6">∆D ij = D (&lt; m i h j &gt; data − &lt; m i h j &gt; recom ) (7)</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Experimental results</head><p>We tested our approach on the MovieLens 1 ratings data which consists of 100, 000 ratings, on a scale of 1 to 5, for 1700 movies and 1000 users. The data is split into training and test sets such that 10% of the latest ratings from each user are selected for the test set and the remaining are used in the training set. Ratings are normalized between 0 and 1, to be used as RBM input. We compare our results with RBM, Explainable Matrix Factorization <ref type="bibr" target="#b0">(Abdollahi &amp; Nasraoui, 2016)</ref>, user-based top-n recommendations <ref type="bibr" target="#b3">(Herlocker et al., 1999)</ref>, and non-personalized most popular items. Each Experiments is run 10 times and the average results are reported. To assess the rating prediction accuracy, we used the Root Mean Squared Error (RMSE) metric: RM SE = (u,i)∈testset (r ui − rui ) 2 /|testset|. Note that RMSE can only be calculated for the prediction based methods and not the top-n recommendation techniques. To evaluate the top-n recommendation task, we used the nDCG@10 metric following <ref type="bibr" target="#b5">(Herlocker et al., 2004)</ref>. The results for RMSE and nDCG, when varying the number of hidden units, f , is presented in Figure <ref type="figure" target="#fig_2">3</ref>, top row. It can be observed that Explainable RBM (E-RBM) outperforms other approaches when f &gt; 20 for RMSE and when f &lt; 20 for nDCG. To evaluate the explainability of the proposed approach, we used Mean Explainability Precision (MEP) and Mean Explainability Recall (MER) metrics <ref type="bibr" target="#b0">(Abdollahi &amp; Nasraoui, 2016)</ref> which are higher when the recommend items are explainable as per Eq (2). The results are shown in Figure <ref type="figure" target="#fig_2">3</ref>, bottom row. It can be observed that explainable RBM outperforms other approaches in terms of explainability. For a test user, the top-3 rated movies and their genres by the user, in addition to the top-3 recommended movies and the explanations generated using the proposed method, are presented in Table <ref type="table" target="#tab_0">1</ref>. Explanations can be presented to the users using the format shown in Figure <ref type="figure" target="#fig_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">Conclusion</head><p>We presented an explainable RBM approach for CF recommendations that achieves both accuracy and interpretability by learning an RBM network that tries to estimate accurate user ratings while also taking into account the explainability of an item to a user. Both rating prediction and explainability are integrated within one learning goal allowing to learn a network model that prioritizes the recommendation of items that are explainable.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. An example of a user-based neighbor style explanation for a recommended item.</figDesc><graphic coords="3,78.84,168.03,187.20,135.54" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Conditional RBM for explainabilty.</figDesc><graphic coords="3,342.54,168.03,163.79,91.50" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>1Figure 3 .</head><label>3</label><figDesc>Figure 3. RMSE, nDCG (top row) vs. f , and MEP, MER (bottom row) vs. k (number of neighbors).</figDesc><graphic coords="4,313.42,148.98,117.00,77.26" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Top-3 recommendations and explanations for a test user.</figDesc><table><row><cell>top-3 test use ratings</cell><cell></cell><cell>Explainable RBM</cell></row><row><cell>movie</cell><cell>recommended movie</cell><cell>explanation (ratings out of 5)</cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Explainable matrix factorization for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th International Conference Companion on World Wide Web</title>
+				<meeting>the 25th International Conference Companion on World Wide Web</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="5" to="6" />
+		</imprint>
+	</monogr>
+	<note>International World Wide Web Conferences Steering Committee</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Explaining recommendations: Satisfaction vs. promotion</title>
+		<author>
+			<persName><forename type="first">Mustafa</forename><surname>Bilgic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Raymond</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Beyond Personalization Workshop, IUI</title>
+				<imprint>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="volume">5</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A personal news agent that talks, learns and explains</title>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Billsus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><forename type="middle">J</forename><surname>Pazzani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the third annual conference on Autonomous Agents</title>
+				<meeting>the third annual conference on Autonomous Agents</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="268" to="275" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">An algorithmic framework for performing collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Al</forename><surname>Borchers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval</title>
+				<meeting>the 22nd annual international ACM SIGIR conference on Research and development in information retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="230" to="237" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Explaining collaborative filtering recommendations</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Joseph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM conference on Computer supported cooperative work</title>
+				<meeting>the 2000 ACM conference on Computer supported cooperative work</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Evaluating collaborative filtering recommender systems</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Terveen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Loren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Riedl</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">T</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems (TOIS)</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="5" to="53" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A practical guide to training restricted boltzmann machines</title>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Momentum</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">926</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Training products of experts by minimizing contrastive divergence</title>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><forename type="middle">E</forename><surname>Hinton</surname></persName>
+		</author>
+		<idno type="DOI">10.1162/089976602760128018</idno>
+		<ptr target="http://dx.doi.org/10.1162/089976602760128018" />
+	</analytic>
+	<monogr>
+		<title level="j">Neural Comput</title>
+		<idno type="ISSN">0899-7667</idno>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1771" to="1800" />
+			<date type="published" when="2002-08">August 2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Reducing the dimensionality of data with neural networks</title>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><forename type="middle">E</forename><surname>Hinton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ruslan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">313</biblScope>
+			<biblScope unit="issue">5786</biblScope>
+			<biblScope unit="page" from="504" to="507" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Contentbased book recommending using learning for text categorization</title>
+		<author>
+			<persName><forename type="first">Raymond</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Loriene</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fifth ACM conference on Digital libraries</title>
+				<meeting>the fifth ACM conference on Digital libraries</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="195" to="204" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Restricted boltzmann machines for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Ruslan</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andriy</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/1273496.1273596</idno>
+		<ptr target="http://doi.acm.org/10.1145/1273496.1273596" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th International Conference on Machine Learning, ICML &apos;07</title>
+				<meeting>the 24th International Conference on Machine Learning, ICML &apos;07<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="791" to="798" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Justified recommendations based on content and rating data</title>
+		<author>
+			<persName><forename type="first">Panagiotis</forename><surname>Symeonidis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexandros</forename><surname>Nanopoulos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yannis</forename><surname>Manolopoulos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WebKDD Workshop on Web Mining and Web Usage Analysis</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A survey of explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE 23rd International Conference on</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2007">2007. 2007</date>
+			<biblScope unit="page" from="801" to="810" />
+		</imprint>
+	</monogr>
+	<note>Data Engineering Workshop</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Designing and evaluating explanations for recommender systems</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="479" to="510" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: explaining recommendations using tags</title>
+		<author>
+			<persName><forename type="first">Jesse</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shilad</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th international conference on Intelligent user interfaces</title>
+				<meeting>the 14th international conference on Intelligent user interfaces</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="47" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">The influence of knowledgeable explanations on users&apos; perception of a recommender system</title>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Zanker</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2365952.2366011</idno>
+		<ptr target="http://doi.acm.org/10.1145/2365952.2366011" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Sixth ACM Conference on Recommender Systems, RecSys &apos;12</title>
+				<meeting>the Sixth ACM Conference on Recommender Systems, RecSys &apos;12<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="269" to="272" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Incorporating phrase-level sentiment analysis on textual reviews for personalized recommendation</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eighth ACM International Conference on Web Search and Data Mining</title>
+				<meeting>the Eighth ACM International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="435" to="440" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Guokun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

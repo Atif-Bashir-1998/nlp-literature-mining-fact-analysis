@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">UIPC-MF: User-Item Prototype Connection Matrix Factorization for Explainable Collaborative Filtering</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-08-14">14 Aug 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Lei</forename><surname>Pan</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">National Tsing Hua University † Chang Gung University</orgName>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Von-Wun</forename><surname>Soo</surname></persName>
+							<email>soo@cgu.edu.tw</email>
+							<affiliation key="aff0">
+								<orgName type="institution">National Tsing Hua University † Chang Gung University</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">UIPC-MF: User-Item Prototype Connection Matrix Factorization for Explainable Collaborative Filtering</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-08-14">14 Aug 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">114BF16D7D953B3A41EEF54924060471</idno>
+					<idno type="arXiv">arXiv:2308.07048v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recommending items to potentially interested users has been an important commercial task that faces two main challenges: accuracy and explainability. While most collaborative filtering models rely on statistical computations on a large scale of interaction data between users and items and can achieve high performance, they often lack clear explanatory power. We propose UIPC-MF, a prototype-based matrix factorization method for explainable collaborative filtering recommendations. In UIPC-MF, both users and items are associated with sets of prototypes, capturing general collaborative attributes. To enhance explainability, UIPC-MF learns connection weights that reflect the associative relations between user and item prototypes for recommendations. UIPC-MF outperforms other prototype-based baseline methods in terms of Hit Ratio and Normalized Discounted Cumulative Gain on three datasets, while also providing better transparency.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>Recommending items to potential interested users has been an important commercial task that faces with two main challenges the accuracy and explainability. The well-known collaborative filtering methods that typically used to recommend items for a particular users rely on statistical computing on a large scale of interaction data between users and items and can achieve high performance. However, the sophisticated hidden underlying computing has made the methods vague in explaining the rationales of its recommendation. Therefore, making recommendation explainable and interpretable has become a performance metric for an recommender system in addition to its accuracy of recommendation prediction.</p><p>Prototypes are representative examples that involve the learning of latent representations from the data space that were widely adopted in interpretable machine learning <ref type="bibr" target="#b22">(Molnar 2022;</ref><ref type="bibr" target="#b35">Zhang et al. 2021</ref>) and had extensive applications in computer vision <ref type="bibr" target="#b18">(Li et al. 2018;</ref><ref type="bibr" target="#b5">Chen et al. 2019;</ref><ref type="bibr" target="#b24">Nauta, Van Bree, and Seifert 2021;</ref><ref type="bibr" target="#b14">Keswani et al. 2022)</ref>. These approaches leverage prototypes to extract significant patterns from large images and determine similarity scores between a specific photo and learned prototypes in order to facilitate effective identification. The features of the prototypes can serve as the interpretable basis for a group of typical objects.</p><p>However, selecting or identifying the proper prototypes can be critical in both accuracy and interpretability in recommendation. We propose User-Item Prototypes Connections Matrix Factorization (UIPC-MF), a novel prototype-based collaborative filtering algorithm. UIPC-MF learns two sets of prototypes for both users and items from large interaction data, with each prototype capturing a common attribute derived from collective wisdom. A predicted logit score is computed through a linear combination of user similarities between a user representation and each user prototype, as well as item similarities between an item representation and each item prototype. The score computation is conducted based on the connection weights among the user prototypes and item prototypes. This novel approach allows transparent understanding of how the predicted logit score is composed, offering more insights than other prototype-based methods. The transparency makes the recommender systems explainable as it enables the model designers to understand the recommender system's underlying operations and effects, and thus can provide users with rationales of a recommendation <ref type="bibr" target="#b29">(Tintarev and Masthoff 2015;</ref><ref type="bibr" target="#b7">Chen, Zhang, and Wen 2022;</ref><ref type="bibr" target="#b1">Balog and Radlinski 2020)</ref>.</p><p>In optimization of the UIPC-MF model, due to the large training parameter space that may lead to local optimality of the model and the training process can be also biased to certain states that lead to biased interpretation. It is important to setup regularization term in the objective loss function in order to avoid the biased results.</p><p>The objectives of the paper focus on the issues around learning the models of the prototype representation connection mapping between the user space and item space in order to make accurate and transparent recommendations given user interaction history data. They can be formulated as the following three research questions:</p><p>• RQ1.How does the performance of our recommendation model compare with the state-of-the-art baseline model? • RQ2.How can we understand the underlying inference of our model and to generate explanation rationales for the recommendations? • RQ3. How can we setup the loss objective functions as well as proper regularization term in avoid of the potential learning bias of the model in the optimization of the parameters of the model against the given training data?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Related Work</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Collaborative filtering</head><p>The collaborative filtering based models tracking the user's history or feedback (e.g. ratings or clicks) to evaluate user's preference and relations to items. The difference of techniques among different collaborative filtering based models is the ways of calculating the item-user association scores based on the user-item interaction history. When the useritem pair is fed into the kind of models, it returns an association score in which the higher score indicates higher preference of the user to the item. To acquire such an user-item association relation, the most popular technique is the matrix factorization (MF) methods <ref type="bibr" target="#b16">(Koren, Bell, and Volinsky 2009;</ref><ref type="bibr" target="#b26">Rendle et al. 2009</ref>) which the user-item interactions construct an original user-item interaction matrix. Recently, deep learning models have been widely used in recommendation systems due to their high performance in learning implicit representations. These systems utilize deep learning models to learn user/item representations and interaction functions to estimate the user-item scores. For example, in <ref type="bibr">(He et al. 2017)</ref> they used multi-layer perceptrons to learn the interaction function rather than using the traditional inner product. In <ref type="bibr" target="#b19">(Liang et al. 2018)</ref>, they utilized a variational autoencoder for collaborative filtering and learned a multinomial likelihood distribution for the user-item interaction. In <ref type="bibr" target="#b11">(He et al. 2020)</ref>, they applied graph convolution networks to collaborative filtering. Their results outperformed traditional MF-based methods.</p><p>However, these algorithms, regardless of their association accuracy, are based on sophisticated statistical correlation calculation that is hard to understand the underlying inference mechanisms for the final recommendation and thus become explanation opague. In order to make the correlation calculation more explicit and interpretable, we propose prototype-based collaborative filtering method to be discussed in the following section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explainable Recommender Models</head><p>Transparency of a recommender system is important to allow users or developers to understand the rationales of underlying operations or inferences of the recommender system <ref type="bibr" target="#b29">(Tintarev and Masthoff 2015;</ref><ref type="bibr" target="#b7">Chen, Zhang, and Wen 2022;</ref><ref type="bibr" target="#b1">Balog and Radlinski 2020</ref>). An explainable recommender system refers to generating explanations for the predicted outcomes of the recommender system. An explainable recommender system can provide users and developers with a reason for why a particular recommendation was made. An explainable system may not necessarily be totally transparent.</p><p>The explainable recommender models can be categorized into two types based on their levels of transparency <ref type="bibr" target="#b34">(Zhang, Chen et al. 2020)</ref>. The first is the model-intrinsic approach <ref type="bibr" target="#b22">(Molnar 2022)</ref>, where the recommendation mechanism is transparent by design and can be utilized to generate explanations. For example, Chen et al. <ref type="bibr" target="#b6">(Chen et al. 2018)</ref> proposed the Attention-driven Factor Model (AFM), which incorporates a learnable attention mechanism for user to consider item features in the recommendation model. Another example of a model-intrinsic approach is the prototypebased models such as UIPC-MF, which learn representative examples within the model's internal workings. The latter is the model-agnostic approach, also known as a post-hoc approach. <ref type="bibr" target="#b22">(Molnar 2022)</ref> In this approach, the recommendation model is a blackbox by itself that requires to implement another explanation model to explain the recommendations made by the recommendation model <ref type="bibr" target="#b34">(Zhang, Chen et al. 2020)</ref>. For instance, Wang et al. <ref type="bibr">(Wang et al. 2018)</ref> proposed a reinforcement learning framework for explainable recommendation. They design a black box agent to generate the predicted recommendation rating score, and two explainable agents that receive the state from the black box agent and environment to generate the explanation and predicted rating. Finally, the explainable component can learn to explain and predict.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The Prototype-based Collaborative Filtering</head><p>The concept of using prototypes to learn representative vectors for users and items has recently been employed in Anchor-based Collaborative Filtering (ACF) <ref type="bibr" target="#b2">(Barkan et al. 2021)</ref> and Prototype-based Matrix Factorization (ProtoMF) <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>. ACF learns shared vectors known as anchors, and users and items are represented as convex combinations of these anchor vectors. The predicted output in ACF is obtained through the dot product between the user representation and the item representation. However, this output logit does not directly reflect a linear relationship with the anchors that can limit the interpretability.</p><p>In ProtoMF, prototypes are learned separately for users and items. The predicted logit in ProtoMF is computed by summing the dot products between user similarities from each user prototype and item representation with linear transformation weights, as well as the dot products between item similarities from each item prototype and user representation with linear transformation weights. Although the logit output of ProtoMF can be decomposed into a linear combination of user prototype similarities and item prototype similarities, the lack of connections between user prototypes and item prototypes makes it unable to directly associate the relationship between them as well as distinguish user's preference over each item prototype.</p><p>In summary, these methods learn representative prototype vectors from user vectors and item vectors, where the user vectors and item vectors have direct relationships with the prototype vectors. However, there is a lack of clear and direct relationships between the user prototype vectors and the item prototype vectors, which limits transparency. To address this problem, UIPC-MF introduces weights between user prototype vectors and item prototype vectors. The predicted scores are then calculated as a linear combination of user prototype similarities and item prototype similarities, resulting in improved transparency.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methodology</head><p>In this section, we first provide a detailed description on on our proposed model, User-Item Prototypes Connections Matrix Factoriza-tion (UIPC-MF), and then explain the objective function. UIPC-MF is specifically designed for the top-N recommendation based on implicit feedback, such as user's listening events and click history, rather than explicit feedback like user ratings. The goal of top-N recommendation is to provide each user with a small set of N items from a large pool of available items <ref type="bibr" target="#b8">(Cremonesi, Koren, and Turrin 2010;</ref><ref type="bibr" target="#b36">Zolaktaf, Babanezhad, and Pottinger 2018)</ref>. In top-N recommendations, a higher logit of the predicted output indicates a greater likelihood of user interaction with the recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>User-Item Prototypes Connections Matrix Factorization (UIPC-MF)</head><p>The aim of UIPC-MF is to identify collaborative patterns among users and items based on interaction data in terms of prototype vectors. For example, from the perspective of user prototypes, an individual who likes metal music may have an embedding vector that is closer to a user prototype with an attribute being a metal lover. Similarly, from the perspective of item prototypes, the embedding vector of a metal music piece will be closer to an item prototype with an attribute belonging to the metal genre.</p><p>Firstly, we define</p><formula xml:id="formula_0">U = {u i ∈ R d } N i=1 and T = {t j ∈ R d } M</formula><p>j=1 as the set of N users and M items, respectively. Let</p><formula xml:id="formula_1">P u = {p u i ∈ R d } L u i=1</formula><p>be the set of L u learnable user prototypes, where L u ≪ N , and</p><formula xml:id="formula_2">P t = {p t i ∈ R d } L t i=1</formula><p>be the set of L t learnable item prototypes, where L t ≪ M . L u and L t are hyperparameters. For the implicit interaction data, I = {(u i , t j )}, where (u i , t j ) represents that the user u i has interacted with the item t j . For simplicity, we omit the indices of users or items to represent any user or item.</p><p>To obtain the collaborative patterns of user u, we adopt the method proposed in <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>, which calculates the user-prototype similarity vector u * based on the user vector and each user prototype vector. UIPC-MF first calculates the similarity scores between a user u and each user prototype p u , resulting in u * ∈ R L u , a user-prototype similarity vector. The similarity function used is the shifted cosine similarity, which has a range of 0 to 2. Similarly, UIPC-MF calculates t * ∈ R L t , an item-prototype similarity vector, using item t and each item prototype vector p t in the similar manner as u * . The index i in u * represents the similarity score between a user embedding u and the i-th user prototype vector p u i , allowing u * to capture all the scores of the user's collaborative patterns. The same concept applies to t * . The formulas for calculating u * and t * are shown in equation 1.</p><formula xml:id="formula_3">u * = sim(u, p u 1 ) ... sim(u, p u L u ) ∈ R L u , t * =   sim(t, p t 1 ) ... sim(t, p t L t )   ∈ R L t , where sim(a, b) = 1 + a T b ∥a∥ • ∥b∥ (1)</formula><p>Finally, UIPC-MF utilizes connection weights to link u * and t * in order to calculate the final predicted logit for (u, t). The connection weights assign a learnable weight w ∈ R to each pair (sim(u, p u ), sim(t, p t )). This implies that UIPC-MF assumes each user prototype has some degree of relation with each item prototype. For example, the user prototype representing a metal lover may exhibit a strong association with the item prototype of the metal genre and a weaker association with the classical genre. It is important to note that the connection weights are global and shared by all users and items. The overall architecture of UIPC-MF is depicted in Figure <ref type="figure">1</ref>. The formula for generating the predicted logit of (u, t) is shown in equation 2.</p><p>Figure <ref type="figure">1</ref>: UIPC-MF Model. The red lines show the used connection weights to obtain user preference value for a particular item prototype 1, r 1 .</p><formula xml:id="formula_4">U IP C-Score(u, t) = L u i=1 L t j=1 w ij sim(u, p u i )sim(t, p t j )</formula><p>(2) where w ij represents the connection weight between the user prototype p u i and item prototype p t j . Equation 2 demonstrates that the predicted logit is a linear combination of sim(u, p u ) and sim(t, p t ). For each user u, u * and the connection weights can be utilized to calculate the user's preference value r over an item prototype p t j according to equation 3.</p><formula xml:id="formula_5">r j = L u i=1 w ij sim(u, p u i )<label>(3)</label></formula><p>where, r j represents the preference value of users toward an item prototype p t j . It is computed by summing the similarities between a user and all user prototypes, multiplied by the corresponding connection weights, for a specific item prototype. This calculation provides a clear insight into the user preference toward the corresponding item prototype. The red lines in Figure <ref type="figure">1</ref> indicate the connection weights of users against the first item prototype as r 1 . A higher absolute value of r j indicates a stronger association between user and item prototype p t j . Consequently, the user preference values for all item prototypes can be represented as {r 1 , ..., r L t }.</p><formula xml:id="formula_6">U IP C-Score(u, t) = L t j=1 s j , s j = r j • sim(t, p t j ) (4)</formula><p>In Equation <ref type="formula">4</ref>, s j denotes the final score of item prototype j for the user u. The predicted logit can also be represented as the sum of all s j . This equation provides a clear explanation of how the UIPC-Score is composed and computed as well as the roles of user preference and item prototype similarity in calculating the score.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Loss function</head><p>To train the UIPC-MF model, we adopt the loss function L total (I, Θ) as equation 5, given the data I with the model parameters Θ.</p><formula xml:id="formula_7">L total (I, Θ) = L base (I, Θ) + λ L2 ∥Θ∥ 2 + λ 1 R {P u →U } + λ 2 R {U →P u } + λ 3 R {P t →T } + λ 4 R {T →P t } + λ L1 ∥r∥ 1</formula><p>(5) where L base (I, Θ) can be binary cross-entropy loss (BCE Loss), Bayesian personalized ranking loss (BPR Loss), or sampled softmax loss (SSM Loss), is commonly used in implicit feedback for recommender systems <ref type="bibr" target="#b25">(Rendle 2021;</ref><ref type="bibr" target="#b33">Wu et al. 2022)</ref>. We describe the details of these losses below. Θ refers to the model parameters, and ∥Θ∥ indicates the L 2 -norm using the hyperparameter λ L2 as a regularization term. The following four terms are additional interpretability terms from <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>, and the last term is the L 1 -norm for users' preference scores.</p><p>During training, for each observed interaction (u, t), we sample a set as negative examples, denoted by N = {n 1 , n 2 , ..., n |N | }. We use I and I to denote the all observed interactions and the all sampled negative interactions, respectively. For each user u, I u = {i 1 , i 2 , ..., i |Iu| } denotes the item set that the user u has interacted with. The function f denotes the UIPC-MF which outputs the logit score, and σ denotes the logistic sigmoid function σ(x) = 1 1+e −x . Binary Cross-Entropy Loss The binary cross-entropy loss is defined as follows:</p><formula xml:id="formula_8">L BCE = − (u,t)∈I log σ(f (u, t))− (u,n)∈I − log(1 − σ(f (u, n))) (6)</formula><p>This is a pointwise loss, which means that it treats the recommendation problem as a binary classification or regression problem. <ref type="bibr" target="#b25">(Rendle 2021;</ref><ref type="bibr" target="#b33">Wu et al. 2022)</ref> The BCE loss measures the distance between the predicted and true probability distributions.</p><p>Bayesian Personalized Ranking Loss The Bayesian personalized ranking loss <ref type="bibr" target="#b26">(Rendle et al. 2009</ref>) is defined as follows:</p><formula xml:id="formula_9">L BP R = − 1 |I| N u=1 t∈Iu,n / ∈Iu log σ(f (u, t) − f (u, n)) (7)</formula><p>This is a pairwise loss, which means that it treats the recommendation problem as a ranking task. The BPR loss maximizes the score difference between observed items and unobserved items for each user. Specifically, it aims to learn a ranking such that observed items for each user are ranked higher than unobserved items. <ref type="bibr" target="#b25">(Rendle 2021;</ref><ref type="bibr" target="#b33">Wu et al. 2022)</ref> Sampled Softmax Loss The sampled softmax loss is defined as follows:</p><formula xml:id="formula_10">L SSM = − 1 |I| (u,t)∈I log exp(f (u, t)) exp(f (u, t)) + n∈N exp(f (u, n)) (8)</formula><p>The SSM loss is used as a substitute for the softmax loss by considering only a small subset of items within the loss. Its purpose is to assign a relatively higher probability to observed interactions compared to sampled negative interactions in the softmax function <ref type="bibr" target="#b25">(Rendle 2021;</ref><ref type="bibr" target="#b33">Wu et al. 2022)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Interpretability Terms</head><p>The following four terms are interpretability terms utilized in ProtoMF <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>. Their definitions are as follows:</p><formula xml:id="formula_11">R {P u →U } = − 1 L u L u l=1 max i∈[1,...,N ] sim(u i , p u l )<label>(9)</label></formula><formula xml:id="formula_12">R {U →P u } = − 1 N N i=1 max l∈[1,...,L u ] sim(u i , p u l )<label>(10)</label></formula><formula xml:id="formula_13">R {P t →T } = − 1 L t L t l=1 max j∈[1,...,M ] sim(t j , p t l ) (11) R {T →P t } = − 1 M M j=1 max l∈[1,...,L t ] sim(t j , p t l )<label>(12)</label></formula><p>The first term, R {P u →U } , ensures that each user prototype is correlated with at least one user embedding. This is accomplished by maximizing the similarity between each user prototype and the user with the highest similarity value. The second term, R {U →P u } , ensures that each user embedding is correlated with at least one user prototype. This is achieved by maximizing the similarity between each user and the prototype with the highest similarity value. The concept of the third term, R {P t →T } , is the same as the first term, guaranteeing that each item prototype is correlated with at least one item embedding. Similarly, the last term, R {T →P t } , ensures that each item embedding is correlated with at least one item prototype.</p><p>L 1 -Norm for Users' Preference Scores</p><formula xml:id="formula_14">∥r∥ 1 = 1 N N i=1 L t j=1 |r ij |<label>(13)</label></formula><p>The last term as shown in equation 13 is L 1 -Norm for users' preference values that promotes the convergence of preference values r towards zero, ensuring that each preference value for an item prototype does not have a strong bias towards either a strictly positive or negative range for all users. Instead, we aim for each user's preference value for an item prototype to be positive or negative depending on their individual preferences. This helps prevent prototypes from becoming a bias during training.</p><p>To reduce computation time, we only calculate the users and items that appear in the sampled batch during training. Hyperparameters λ 1 , λ 2 , λ 3 , λ 4 and λ L1 are used to adjust the influence of these terms. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Experiments and Discussion</head><p>Our experiments for collaborative filtering include the following datasets which cover three domains: MovieLens-1M (ML-1M): (Harper and Konstan 2015) The movie rating dataset comprises 1 million ratings on a scale from 1 to 5. We adopted the settings described in <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>. Ratings above 3.5 are considered positive interactions, and a 5-core filtering approach was applied to both users and items, which involved filtering out users and items with fewer than 5 occurrences in the interactions.</p><p>Amazon Video Games (AMAZONVID): <ref type="bibr" target="#b20">(McAuley et al. 2015)</ref> The video game rating dataset is rated on a scale from 1 to 5. We also adopted the settings described in <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>. Ratings above 3.5 are considered positive interactions, and a 5-core filtering approach was applied to both users and items.</p><p>Music4All-Onion-3Months (MO-3MON): <ref type="bibr" target="#b23">(Moscati et al. 2022)</ref> This dataset is derived from the LFM-2b dataset <ref type="bibr" target="#b28">(Schedl et al. 2022)</ref>, which is a large dataset of music listening events. We utilized the listening events recorded during the last three months, specifically from January 1, 2020, to March 19, 2020. Following the filtering approach LFM2B-1MON described in <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>, we retained users whose age ranges from 10 to 95 and for whom gender information is available. Outlier users who listened to more than the 99th percentile compared to all users were removed. Finally, a 10-core filtering approach was applied to both users and items.</p><p>The statistical information of the filtered datasets is presented in Table <ref type="table" target="#tab_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluation Metrics</head><p>Hit Ratio (HR) The Hit Ratio measures the proportion of true interaction pairs that rank within a specified cutoff number among other negatively sampled interactions with true interaction pairs in the ranked list. In our experiments, the ranked list corresponds to either the validation data or the test data. The formula of HR@K is below:</p><formula xml:id="formula_15">HR@K = I K hit |I all | (<label>14</label></formula><formula xml:id="formula_16">)</formula><p>where I K hit represents the number of true interaction pairs ranked within the top K positions in the ranked list, and |I all | represents the total number of ranked items in the ranked list. <ref type="bibr" target="#b30">(Wang 2021)</ref> Normalized Discounted Cumulative Gain (NDCG) NDCG is a widely used evaluation metric in recommender systems that measures the quality of a ranked list of items based on their relevance to a user's preferences. The NDCG score ranges from 0 to 1, where a higher score indicates a better ranking quality. If the true interaction pairs (items relevant to the user) are ranked closer to the top of the list, the NDCG score will be higher.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Baseline Models</head><p>We compared the performance of three baseline methods: Matrix Factorization (MF) <ref type="bibr" target="#b16">(Koren, Bell, and Volinsky 2009;</ref><ref type="bibr" target="#b26">Rendle et al. 2009</ref>), a classical collaborative filtering method, and two prototype-related methods Anchorbased Collaborative Filtering <ref type="bibr" target="#b2">(Barkan et al. 2021</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Training Details</head><p>In this section, we describe the training details. First, we employ the leave-one-out strategy to obtain the train/validation/test data. This means we retrieve the second from last and the last interacted items sorted by timestamp as validation and test data, respectively, for each user. For evaluation, we sample 99 negative interactions for each validation and test interaction. The number of negative interactions sampled for each interaction in the training set is a hyperparameter.</p><p>To optimize all models, we use the mini-batch optimizers: Adam <ref type="bibr" target="#b15">(Kingma and Ba 2014)</ref> and Adagrad <ref type="bibr" target="#b9">(Duchi, Hazan, and Singer 2011)</ref>.</p><p>Hyperparameter Tuning We followed the hyperparameter tuning method and value range described in <ref type="bibr" target="#b21">(Melchiorre et al. 2022</ref>) for all models in our experiments. All hyperparameter types and ranges in UIPC-MF are the same as Pro-toMF <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>, except for λ L1 which has the same range as λ L2 . We used Tree-structured Parzen Estimators <ref type="bibr" target="#b3">(Bergstra et al. 2011;</ref><ref type="bibr" target="#b4">Bergstra, Yamins, and Cox 2013)</ref> to tune each model by sampling 100 hyperparameter configurations. The maximum number of training epochs was set to 100. To save training time, we utilized the HyperBand trial-scheduler <ref type="bibr" target="#b17">(Li et al. 2017)</ref> for both the ML-1M and MO-3MON datasets. Training was stopped if the HR@10 metric on the validation set did not improve for 10 consecutive epochs. The model with the highest HR@10 was selected as the best model. We repeated this process three times using different seeds and reported the average performance against the test set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluation Results</head><p>To empirically investigate RQ1, we evaluated UIPC-MF with and without the L 1 -Norm. Table <ref type="table">2</ref> demonstrates that UIPC-MF outperforms all baseline models on the three datasets, and UIPC-MF-L 1 further improves performance across all datasets. In-depth analysis of the results show that ACF outperforms MF on all datasets, and ProtoMF outperforms ACF. Compared with the best-performing model Pro-toMF in the baselines, UIPC-MF-L 1 improves on average by 4.7% in HR@10, 6.8% in NDCG@10, 7.1% in HR@5 and 8.2% in NDCG@5 across the three datasets. UIPC-MF-L 1 significantly improves performance against all other ML-1M AMAZONVID MO-3MON Model HR@5 HR@10 N@5 N@10 HR@5 HR@10 N@5 N@10 HR@5 HR@10 N@5 N@10 MF 0. The tables 6, 7 and 8 in Appendix display the optimal hyperparameters and their corresponding test results for UIPC-MF-L 1 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explaining UIPC-MF Recommendations</head><p>To answer RQ2, we visualize an example of MO-3MON on Figure <ref type="figure" target="#fig_0">2</ref>, which corresponds to Equation <ref type="formula">4</ref>. In this example, the user has the highest preference for item prototype 15, and the item has the highest similarity to prototype 15. As a result, the score of item prototype 15 accounts for the majority of the weight in the predicted score.</p><p>Since the item prototypes and items are in the same space, we can calculate the top nearest items with the item prototype. The left column of Table <ref type="table" target="#tab_5">4</ref> shows the top 10 nearest items to item prototype 15, including their song names, genres, and total occurrences in the dataset. All of them close to the metal genre.</p><p>In this example, where the user has the highest preference for item prototype 15, we can obtain the top songs with the highest similarity to prototype 15 that the user has listened to in the training dataset. Table <ref type="table" target="#tab_4">3</ref> shows the top 10 nearest items to item prototype 15 that the user has listened to in the training dataset.</p><p>This information can be used as the explanation rationales for the recommendation. For example:"Since you love metal music, you may also enjoy the music we are recommending." or "Other listeners who have listened to XXX also enjoyed the music we are recommending." This example demonstrates the transparency of the proposed model, as it allows the recommender systems to access the underlying inference of the model in generating a recommendation item for a specific user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The impact of L 1 -Norm in reduction of learning bias</head><p>To assess the impact of L 1 -Norm on the model and answer RQ3, we present boxplots of users' preferences for item prototypes in the MO-3MON dataset. Figure <ref type="figure" target="#fig_0">2</ref> shows that UIPC-MF-L 1 exhibits less bias towards extreme positive or negative values in comparison to UIPC-MF. All users in UIPC-MF exhibit strictly positive or negative preference values towards item prototypes 6, 32, 47, 49, and 51 within a specified range. However, prototype 25 in UIPC-MF-L 1 still has negative preferences for all users. We list the top       <ref type="table" target="#tab_5">4</ref>. The occurrences are approximately equal to the preprocessing filtering threshold (10), and their genres lack significant consistency. This indicates a negative bias towards long tail items learned by UIPC-MF-L 1 . This phenomenon aligns with common observations in collaborative filtering <ref type="bibr" target="#b0">(Abdollahpouri et al. 2019;</ref><ref type="bibr" target="#b27">Sankar et al. 2021)</ref>, and it is observed within the internal workings of UIPC-MF-L 1 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Parameter Complexity</head><p>We compare the parameter complexities of the baseline models against the UIPC-MF model, as discussed in <ref type="bibr" target="#b21">(Melchiorre et al. 2022)</ref>. We assume a simple setting for all models, including N users and M items. Additionally, ACF has K anchors, while ProtoMF and UIPC-MF have K user prototypes and K item prototypes. We assume each user embedding vector, item embedding vector, anchor vector, and prototype vector is a d-dimensional vector. Then the MF model contains (N + M ) × d parameters for N users and M items. ACF adds K × d parameters for the K anchors.</p><p>ProtoMF has an additional 2K × d parameters for the user and item prototypes, as well as extra 2K × d parameters for the linear transformation weights. UIPC-MF has an additional 2K × d parameters for the user and item prototypes, along with K 2 parameters for the connection weights. Since N and M are much larger than K and d, the additional parameters in ACF, ProtoMF, and UIPC-MF constitute only a small portion compared to the parameters required for N users and M items. We display the parameter count and the ratio of additional parameter count to MF parameter count (APC/MF ratio) for each model with N = 5000, M = 5000, K = 100, and d = 100 in Table <ref type="table" target="#tab_7">5</ref>. From the Table <ref type="table" target="#tab_7">5</ref>, it shows that the additional parameters in ACF, ProtoMF, and UIPC-MF constitute only a small portion compared to the MF parameters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusion and Future work Conclusion</head><p>This paper presents a novel prototype-based collaborative filtering that offers several contributions. First, the proposed approach learns both user and item representations from the same data space as the corresponding prototypes. Second, the predicted logit score is determined by a linear combination of the crossover interactions between user prototype similarities and item prototype similarities. This allows our model to reveal the preference of each user against each item prototype and the association relationships between user prototypes and item prototypes using the connection weights. Third, to enhance performance and alleviate bias, we employ the L 1 -Norm on user preference to avoid bias towards positive or negative preference values for all users. Fourth, the transparency of the model reveals a negative bias towards long tail items for all users. Finally, through experimental results on three datasets, we demonstrate the superiority of our model in comparison to other prototype-based methods in top-N recommendation tasks, establishing it as a state-of-the-art solution.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Future work</head><p>For future research directions, we can utilize the prototype in explainable content-based recommendation. Content-based recommendation enhances representations by incorporating more information such as user and item features, as well as content data of items. Perhaps the prototype used in contentbased recommendation can help us better understand the effects of this information on recommendations. Additionally, since the prototype can learn general attributes from the training data, we can combine it with content-based recommendation to address the cold start problem in recommender systems. For example, we can use the prototype to learn the general attributes from the music audio signal. When a new music item is added to the music recommender system, the system can compute an estimated score for all users based on the prototypes of the music audio signal.</p><p>Since the experiments are conducted using implicit feedback, it is also possible to apply UIPC-MF to explicit feedback. By leveraging the transparency of UIPC-MF, we may be able to uncover the reasons behind users' preferences or dislikes for certain items, which differ from the reasons why users may interact with items in this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Optimal Hyperparameters for UIPC-MF-L</head><p>The tables below display the optimal hyperparameters with their corresponding test results for UIPC-MF-L 1 . Since we repeated the tuning process three times using different seeds for each model, there are three sets of hyperparameter combinations for each dataset. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The left side shows the visualization of the user preference value r, sim(t, p t ), and the item prototype score s, while the right side presents the boxplots with the range of user preference values in UIPC-MF (top) and UIPC-MF-L 1 (bottom).</figDesc><graphic coords="7,54.00,54.00,504.00,106.09" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Statistics of the filtered datasets for collaborative filtering</figDesc><table><row><cell></cell><cell cols="3">ML-1M AMAZONVID MO-3MON</cell></row><row><cell># Users</cell><cell>6,034</cell><cell>6,950</cell><cell>8,385</cell></row><row><cell># Items</cell><cell>3,125</cell><cell>14,494</cell><cell>27,696</cell></row><row><cell cols="3"># Interactions 574,376 132,209</cell><cell>921,194</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 3 :</head><label>3</label><figDesc>The top 10 nearest items to item prototype 15 that the user has listened to in the training dataset.</figDesc><table><row><cell>Item prototype 15</cell><cell>Item prototype 25</cell></row><row><cell>Mask of the Red Death</cell><cell>Low Grade Buzz</cell></row><row><cell>black metal/15</cell><cell>indietronica/11</cell></row><row><cell>Unhallowed</cell><cell>Airsick</cell></row><row><cell>black metal/36</cell><cell>ambient/11</cell></row><row><cell>Crown</cell><cell>Betrayed in the Octagon</cell></row><row><cell>black metal/15</cell><cell>ambient/10</cell></row><row><cell cols="2">Grim and Frostbitten Kingdoms Hymn to Eternal Frost</cell></row><row><cell>black metal/25</cell><cell>black metal/9</cell></row><row><cell>Release From Agony</cell><cell>Blue Drive</cell></row><row><cell>thrash metal/13</cell><cell>ambient/12</cell></row><row><cell>Heaving Earth</cell><cell>Criminals</cell></row><row><cell>death metal/20</cell><cell>indie rock/12</cell></row><row><cell>Sworn to the Black</cell><cell>Baby</cell></row><row><cell>death metal/21</cell><cell>folk/9</cell></row><row><cell>Certain Death,Sadus</cell><cell>A Lesson Never Learned</cell></row><row><cell>thrash metal/17</cell><cell>metalcore/12</cell></row><row><cell>Flag of Hate,Kreator</cell><cell>Applesauce</cell></row><row><cell>thrash metal/36</cell><cell>indie rock/8</cell></row><row><cell>The Day You Died</cell><cell>Vanishing Point</cell></row><row><cell>death metal/20</cell><cell>dark ambient/11</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 4 :</head><label>4</label><figDesc>The top 10 nearest items in item prototypes 15 and</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 5 :</head><label>5</label><figDesc>Parameter count in each model 10 nearest items to item prototype 25 in the right column of Table</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 6 :</head><label>6</label><figDesc>Optimal Hyperparameters for UIPC-MF-L 1 in ML-1M</figDesc><table><row><cell></cell><cell></cell><cell>#1</cell><cell>#2</cell><cell>#3</cell></row><row><cell></cell><cell>Embedding size</cell><cell>33</cell><cell>49</cell><cell>90</cell></row><row><cell></cell><cell>λ L2</cell><cell>.134173e-2</cell><cell>.951028e-3</cell><cell>.336879e-3</cell></row><row><cell></cell><cell>Base loss</cell><cell>SSM</cell><cell>SSM</cell><cell>SSM</cell></row><row><cell></cell><cell>Sampling</cell><cell>uniform</cell><cell>uniform</cell><cell>uniform</cell></row><row><cell></cell><cell>Neg. samples</cell><cell>37</cell><cell>48</cell><cell>28</cell></row><row><cell></cell><cell>Batch size</cell><cell>124</cell><cell>142</cell><cell>126</cell></row><row><cell></cell><cell>Optimizer</cell><cell>Adagrad</cell><cell>Adagrad</cell><cell>Adam</cell></row><row><cell>Hyperparameters</cell><cell>LR</cell><cell>.226839e-1</cell><cell>.168761e-1</cell><cell>.373224e-3</cell></row><row><cell></cell><cell># User prototypes</cell><cell>84</cell><cell>59</cell><cell>66</cell></row><row><cell></cell><cell># Item prototypes</cell><cell>95</cell><cell>88</cell><cell>69</cell></row><row><cell></cell><cell>λ1</cell><cell>.153054e-1</cell><cell>.592179</cell><cell>.849859</cell></row><row><cell></cell><cell>λ2</cell><cell>.134081e-1</cell><cell>.104536e-2</cell><cell>.365722e-1</cell></row><row><cell></cell><cell>λ3</cell><cell>.188699</cell><cell>.240550e-1</cell><cell>.755034e-1</cell></row><row><cell></cell><cell>λ4</cell><cell>1.322822</cell><cell>.341394</cell><cell>.712384e-1</cell></row><row><cell></cell><cell>λ L1</cell><cell>.318446e-2</cell><cell>.271684e-2</cell><cell>.534349e-2</cell></row><row><cell></cell><cell>NDCG@5</cell><cell>.3409</cell><cell>.3372</cell><cell>.3276</cell></row><row><cell>Results</cell><cell>NDCG@10 HR@5</cell><cell>.3983 .4988</cell><cell>.3978 .4914</cell><cell>.386 .4783</cell></row><row><cell></cell><cell>HR@10</cell><cell>.6757</cell><cell>.6725</cell><cell>.6588</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head>Table 7 :</head><label>7</label><figDesc>Optimal Hyperparameters for UIPC-MF-L 1 in AMAZONVID</figDesc><table><row><cell></cell><cell></cell><cell>#1</cell><cell>#2</cell><cell>#3</cell></row><row><cell></cell><cell>Embedding size</cell><cell>56</cell><cell>51</cell><cell>55</cell></row><row><cell></cell><cell>λ L2</cell><cell>.175263e-2</cell><cell>.365098e-3</cell><cell>.190545e-3</cell></row><row><cell></cell><cell>Base loss</cell><cell>SSM</cell><cell>SSM</cell><cell>BPR</cell></row><row><cell></cell><cell>Sampling</cell><cell>uniform</cell><cell>uniform</cell><cell>uniform</cell></row><row><cell></cell><cell>Neg. samples</cell><cell>19</cell><cell>47</cell><cell>40</cell></row><row><cell></cell><cell>Batch size</cell><cell>146</cell><cell>130</cell><cell>148</cell></row><row><cell></cell><cell>Optimizer</cell><cell>Adagrad</cell><cell>Adagrad</cell><cell>Adam</cell></row><row><cell>Hyperparameters</cell><cell>LR</cell><cell>.163911e-1</cell><cell>.698419e-1</cell><cell>.123853e-3</cell></row><row><cell></cell><cell># User prototypes</cell><cell>99</cell><cell>41</cell><cell>71</cell></row><row><cell></cell><cell># Item prototypes</cell><cell>50</cell><cell>96</cell><cell>77</cell></row><row><cell></cell><cell>λ1</cell><cell>.171384e-2</cell><cell>.302235e-1</cell><cell>.563671e-1</cell></row><row><cell></cell><cell>λ2</cell><cell>.436756e-2</cell><cell>.125097e-1</cell><cell>.350694</cell></row><row><cell></cell><cell>λ3</cell><cell>.761652e-2</cell><cell>.290637</cell><cell>.147196</cell></row><row><cell></cell><cell>λ4</cell><cell>.686550e-2</cell><cell>.449296e-2</cell><cell>1.143978</cell></row><row><cell></cell><cell>λ L1</cell><cell>.139693e-2</cell><cell>.732059e-3</cell><cell>.704644e-3</cell></row><row><cell></cell><cell>NDCG@5</cell><cell>.4135</cell><cell>.4155</cell><cell>.3873</cell></row><row><cell>Results</cell><cell>NDCG@10 HR@5</cell><cell>.4614 .5671</cell><cell>.463 .5666</cell><cell>.4401 .5403</cell></row><row><cell></cell><cell>HR@10</cell><cell>.7134</cell><cell>.7123</cell><cell>.7035</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>Table 8 :</head><label>8</label><figDesc>Optimal Hyperparameters for UIPC-MF-L 1 in MO-3MON</figDesc><table /></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mansoury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Burke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Mobasher</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1907.13286</idno>
+		<title level="m">The unfairness of popularity bias in recommendation</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Measuring recommendation explanation quality: The conflicting goals of explanations</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Radlinski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 43rd international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="329" to="338" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Anchor-based collaborative filtering</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hirsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Caciularu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 30th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2877" to="2881" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Algorithms for hyper-parameter optimization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bergstra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bardenet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Kégl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page">24</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Making a science of model search: Hyperparameter optimization in hundreds of dimensions for vision architectures</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bergstra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yamins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning</title>
+				<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="115" to="123" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">This looks like that: deep learning for interpretable image recognition</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barnett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rudin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">K</forename><surname>Su</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page">32</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Attention-driven factor model for explainable personalized recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 41st International ACM SIGIR Conference on Research &amp; Development in Information Retrieval</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="909" to="912" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Measuring&quot; Why</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-R</forename><surname>Wen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2202.06466</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems: a Comprehensive Survey on the Evaluation of Explainable Recommendation</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Performance of recommender algorithms on top-n recommendation tasks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cremonesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fourth ACM conference on Recommender systems</title>
+				<meeting>the fourth ACM conference on Recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="39" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Adaptive subgradient methods for online learning and stochastic optimization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Duchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Hazan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Singer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine learning research</title>
+		<imprint>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page">12</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">The movielens datasets: History and context</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">M</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Acm transactions on interactive intelligent systems (tiis)</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="1" to="19" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Lightgcn: Simplifying and powering graph convolution network for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval</title>
+				<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-S</forename><surname>Chua</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th international conference on world wide web</title>
+				<meeting>the 26th international conference on world wide web</meeting>
+		<imprint>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Proto2Proto: Can you recognize the car, the way I do?</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Keswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ramakrishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Reddy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">N</forename><surname>Balasubramanian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+				<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="10233" to="10243" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Adam: A method for stochastic optimization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ba</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.6980</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Hyperband: A novel bandit-based approach to hyperparameter optimization</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Jamieson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Desalvo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rostamizadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Talwalkar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Machine Learning Research</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="6765" to="6816" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Deep learning for case-based reasoning through prototypes: A neural network that explains its predictions</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rudin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">32</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Variational autoencoders for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">G</forename><surname>Krishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Hoffman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jebara</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 world wide web conference</title>
+				<meeting>the 2018 world wide web conference</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="689" to="698" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Image-based recommendations on styles and substitutes</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Targett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Van Den</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hengel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 38th international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 38th international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="43" to="52" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">ProtoMF: Prototype-based Matrix Factorization for Effective and Explainable Recommendations</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Melchiorre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Rekabsaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ganhör</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th ACM Conference on Recommender Systems</title>
+				<meeting>the 16th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="246" to="256" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Molnar</surname></persName>
+		</author>
+		<title level="m">Interpretable Machine Learning</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note>2 edition</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Music4All-Onion-A Large-Scale Multi-Faceted Content-Centric Music Recommendation Dataset</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Moscati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Parada-Cabaleiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Deldjoo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Zangerle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31th ACM International Conference on Information &amp; Knowledge Management (CIKM&apos;22)</title>
+				<meeting>the 31th ACM International Conference on Information &amp; Knowledge Management (CIKM&apos;22)</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Neural prototype trees for interpretable fine-grained image recognition</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nauta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Van Bree</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Seifert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</title>
+				<meeting>the IEEE/CVF Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="14933" to="14943" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Item recommendation from implicit feedback</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="143" to="171" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">BPR: Bayesian Personalized Ranking from Implicit Feedback</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence, UAI &apos;09</title>
+				<meeting>the Twenty-Fifth Conference on Uncertainty in Artificial Intelligence, UAI &apos;09</meeting>
+		<imprint>
+			<publisher>AUAI Press</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Protocf: Prototypical collaborative filtering for few-shot recommendation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sankar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Krishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Sundaram</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 15th ACM Conference on Recommender Systems</title>
+				<meeting>the 15th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="166" to="175" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">LFM-2B: a dataset of enriched music listening events for recommender systems research and fairness analysis</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schedl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Brandl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Lesota</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Parada-Cabaleiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Penz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Rekabsaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGIR Conference on Human Information Interaction and Retrieval</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="337" to="341" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">Explaining recommendations: Design and evaluation. Recommender systems handbook</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="353" to="382" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Ranking Evaluation Metrics for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">A reinforcement learning framework for explainable recommendation</title>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE international conference on data mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<biblScope unit="page" from="587" to="596" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">On the effectiveness of sampled softmax loss for item recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.02327</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">A survey on neural network interpretability</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Tiňo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Leonardis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Emerging Topics in Computational Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="726" to="742" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">A generic top-n recommendation framework for trading-off accuracy, novelty, and coverage</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zolaktaf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Babanezhad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pottinger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE 34th International Conference on Data Engineering (ICDE)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="149" to="160" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

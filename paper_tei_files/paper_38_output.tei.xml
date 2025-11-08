@@ -1,0 +1,1261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Towards Explainable Collaborative Filtering with Taste Clusters Learning</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yuntao</forename><surname>Du</surname></persName>
+							<email>ytdu@zju.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Jianxun</forename><surname>Lian</surname></persName>
+							<email>jianxun.lian@outlook.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Jing</forename><surname>Yao</surname></persName>
+							<email>jingyao@microsoft.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mingqi</forename><surname>Wu</surname></persName>
+							<email>mingqi.wu@microsoft.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Lu</forename><surname>Chen</surname></persName>
+							<email>chenlu@zju.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Yunjun</forename><surname>Gao</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+							<email>xingx@microsoft.com</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Zhejiang University Hangzhou</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">Microsoft Research Asia</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Microsoft Research Asia</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">Microsoft Gaming Redmond</orgName>
+								<address>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Zhejiang University Hangzhou</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="institution">Microsoft Research Asia</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Towards Explainable Collaborative Filtering with Taste Clusters Learning</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">4B5FBA327D851538BD91581FBA6EF5E5</idno>
+					<idno type="DOI">10.1145/3543507.3583303</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>• Information systems → Collaborative filtering</term>
+					<term>Clustering</term>
+					<term>Recommender systems</term>
+					<term>Web mining</term>
+					<term>Summarization</term>
+					<term>• Computing methodologies → Learning from implicit feedback Collaborative Filtering</term>
+					<term>Explanability</term>
+					<term>Recommendation</term>
+					<term>Clustering</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Collaborative Filtering (CF) is a widely used and effective technique for recommender systems. In recent decades, there have been significant advancements in latent embedding-based CF methods for improved accuracy, such as matrix factorization, neural collaborative filtering, and LightGCN. However, the explainability of these models has not been fully explored. Adding explainability to recommendation models can not only increase trust in the decisionmaking process, but also have multiple benefits such as providing persuasive explanations for item recommendations, creating explicit profiles for users and items, and assisting item producers in design improvements.</p><p>In this paper, we propose a neat and effective Explainable Collaborative Filtering (ECF) model that leverages interpretable cluster learning to achieve the two most demanding objectives: (1) Precise -the model should not compromise accuracy in the pursuit of explainability; and (2) Self-explainable -the model's explanations should truly reflect its decision-making process, not generated from post-hoc methods. The core of ECF is mining taste clusters from user-item interactions and item profiles. We map each user and item to a sparse set of taste clusters, and taste clusters are distinguished by a few representative tags. The user-item preference, users/items' cluster affiliations, and the generation of taste clusters are jointly optimized in an end-to-end manner. Additionally, we introduce a forest mechanism to ensure the model's accuracy, explainability, and diversity. To comprehensively evaluate the explainability quality of taste clusters, we design several quantitative metrics, including in-cluster item coverage, tag utilization, silhouette, and informativeness. Our model's effectiveness is demonstrated through extensive experiments on three real-world datasets.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Collaborative filtering (CF) is an effective and widely used technique for recommender systems. The rationale behind CF is that the user's potential interests can be inferred from a group of like-minded users' behaviors (e.g., user-based CF), or, a set of similar items to the user's behavior history (e.g., item-based CF). Existing methods for CF can be roughly categorized into two types: memory-based CF and model-based CF. Memory-based CF methods <ref type="bibr" target="#b28">[29]</ref> explicitly find the neighborhood of users/items for preference inference. These methods, although concise and effective, usually suffer from memory consumption, (inference) computational cost, and data sparsity issues. In contrast, model-based CF uses machine learning methods to help model the relationship between users and items. In the past decades, the research trends have been mainly focusing on modelbased CF, with methods evolving from latent factorization-based methods (such as MF <ref type="bibr" target="#b17">[18]</ref> and SVD++ <ref type="bibr" target="#b16">[17]</ref>) to neural embeddingbased methods (such as NCF <ref type="bibr" target="#b11">[12]</ref> and CDAE <ref type="bibr" target="#b37">[38]</ref>), and to recently neural graph-based methods (such as LightGCN <ref type="bibr" target="#b10">[11]</ref> and Ultra-GCN <ref type="bibr" target="#b21">[22]</ref>). The foundation model in this direction is to represent users and items with high-quality latent factor embeddings, so that users' preference towards items can be decoded from the latent embeddings.</p><p>A notable drawback of latent factor-based CF is the lack of transparency and explainability. Knowing the decision logic of recommender algorithms rather than using them as black boxes is important on multiple aspects, such as assisting developers in model debugging and abnormal case studies or generating persuasive explanations to promote the recommended items and increase conversion rates. Many prior attempts have been made to achieve this goal. To name a few representative works, <ref type="bibr" target="#b22">[23]</ref> combines a latent matrix factorization model with a latent topic model, then each dimension of user/item embeddings can be associated with a textual topic mined from users' reviews. <ref type="bibr" target="#b41">[42]</ref> proposes the Explicit Factor Model (EFM), which extracts aspect features from textual reviews and makes predictions by combining scores from a latent factor model and from aspect-level interest matching. <ref type="bibr" target="#b23">[24]</ref> proposes a feature mapping paradigm. By mapping latent embeddings to interpretable aspect features, an uninterpretable model can now provide explainability. However, we argue that explainable CF is still an open question, because existing solutions fail to satisfy at least one of the properties: (P1,flexibility) the dimension of latent embeddings and the number of interpretable features/topics do not necessarily match (e.g., <ref type="bibr" target="#b22">[23]</ref> fails on this); (P2,coherence) a model's interpretable modules and predictive modules should be harmoniously integrated for decision making, instead of functioning as isolated modules, which may lead to divergent outcomes (e.g., <ref type="bibr" target="#b41">[42]</ref> fails on this); (P3, intrinsic explainability) a model is inherently understandable and interpretable, instead of relying on a post-hoc model for explanations (e.g., <ref type="bibr" target="#b23">[24]</ref> fails on this).</p><p>In this paper, we propose a neat yet effective Explainable Collaborative Filtering (ECF) framework with the goal of accurate and explainable recommendations, while satisfying all three properties. At the core of ECF is mining various taste clusters. We assume that items have some explicit features such as tags or aspects (hereinafter we will use tags for unification). A taste cluster is a group of items which are not only similar in users' latent interest space, but also explicitly share some common tags, so that the overlapping tags can be selected as descriptive interpretation for the taste cluster. Both users and items are mapped to multiple taste clusters. On the one hand, item recommendations can be made by measuring the coherence between users' and items' taste cluster affiliations; on the other hand, the descriptive tags interpret what determines users' preference towards items. We also design a new set of quantitative metrics to evaluate the quality of ECF beyond the accuracy, covering: <ref type="bibr" target="#b0">(1)</ref> In-cluster item coverage; (2) Tag utilization; (3) Silhouette; (4) Tag informativeness, with the goal of discovering the discriminability of taste clusters as well as the exactitude, diversity, and uniqueness of clusters interpretability in a holistic manner. The ECF framework has many more application potentials beyond the user-item prediction and interpretation. For example, the affiliation of users to taste clusters can be used for user profiling, empowering web-scale services like ads audience targeting and audience extension. The affiliation of items to taste clusters can help missing tags discover for items, automatic item topic generation and theme-wise item recommendations (such as the playlist recommendation in online music service).</p><p>However, the implementation and optimization of ECF is a nontrivial task. Main challenges include: (1) how to construct an endto-end model, so that taste cluster generation, tags selection, userand item-cluster affiliations can be optimized jointly; <ref type="bibr" target="#b1">(2)</ref> how to achieve good performance on both accuracy and explainability simultaneously, instead of sacrificing one for the other; (3) how to guarantee the diversity of generated taste clusters. To this end, we design an embedding-based model to generate taste clusters with discriminative tags and establish the sparse mapping between users/items and clusters. We further devise the forest mechanism for ECF, which can not only substantially lift the accuracy, but also provides a diverse set of taste clusters. For each targeting merit (such as exactitude, diversity, and uniqueness of clusters interpretability) we design a corresponding objective function, so that the whole model can be trained in an end-to-end manner.</p><p>In summary, our main contributions include:</p><p>• We present a neat yet effective explainable collaborative filtering framework, called ECF </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">METHODOLOGIES</head><p>In this section, we first outlines the task definition for explainable recommendations and introduces the framework of Explainable Collaborative Filtering (ECF). We then delve into the methodology of the end-to-end optimization process for training ECF and establish a comprehensive set of metrics to quantitatively evaluate the effectiveness of explainability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Problem Formulation</head><p>User-item Interactions and Item Tags. We focus on the implicit feedback <ref type="bibr" target="#b26">[27]</ref> in recommendation, where a user's preferences are inferred through implicit signals such as clicks or play actions. Let U be a set of users and I a set of items. Let Y ∈ R |U |×|I | as the user-item interaction matrix, where 𝑦 𝑢𝑖 = 1 means that there is an interaction between user 𝑢 and item 𝑖, otherwise 𝑦 𝑢𝑖 = 0. Besides, we assume there is a set of tags T for items, and each item 𝑖 has a subset of tags T 𝑖 ⊂ T to describe its genre and features.</p><p>Task Description. Given the interactions data Y and items' tags T , the task of explainable recommendation is to (1) predict how likely user 𝑢 adopts item 𝑖, and ( <ref type="formula" target="#formula_2">2</ref>) explain what determines the recommendation of item 𝑖 to user 𝑢 with the descriptions from T .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">The Proposed ECF framework</head><p>We propose an ECF framework for explainable recommendations with collaborative filtering. The core of ECF is mining various taste clusters which represent specific interest patterns. We first give the definition of taste clusters and show how to leverage them for recommendation and explanation. Then we detail the proposed method to generate sparse affiliations between users/items and taste clusters. The pseudocode of ECF is shown in the Appendix A.1.</p><p>A Taste Cluster is a group of items 𝑐 = {𝑖 1 , 𝑖 2 , ..., 𝑖 𝑐 } that uncovers a certain type of underlying interest for users and can be easily identified through shared tags among the items within the cluster. So, each taste cluster is associated with a set of tags T 𝑐 = {𝑡 1 , 𝑡 2 , ..., 𝑡 𝑘 }, which are derived from corresponding item sets and acts as the descriptive interpretation for the cluster.</p><p>Assuming there is a set of taste clusters C = {𝑐}, we map users/items to these taste clusters with sparse affiliation matrix. To be specific, let</p><formula xml:id="formula_0">A ∈ R | U |× | C | and X ∈ R | I |× | C |</formula><p>be the affiliation matrices between users/items and taste clusters, respectively. Each entry 𝑎 𝑢𝑐 in A denotes the preference degree of user 𝑢 to taste cluster 𝑐, and each entry 𝑥 𝑖𝑐 denotes the relatedness between item 𝑖 and taste cluster 𝑐. To enhance the clarity and persuasiveness of the explanation, the affiliation matrix should be kept sparse, meaning only the most pertinent entries have non-zero values, making it possible to clearly identify a user's preferences and item affiliations using only a few taste clusters.</p><p>After that, both users and items are mapped to multiple taste clusters, and ECF can make user-item recommendation and explanation with taste clusters and affiliations as follows.</p><p>Item recommendation. We assume that a user's decision about whether to make a purchase/click is based on her preference with taste clusters, as well as the item's relatedness with them. Thus, the prediction score of user 𝑢 and item 𝑖 can be calculated by multiplying their affiliations:</p><formula xml:id="formula_1">ŷ𝑢𝑖 = sparse_dot(a 𝑢 , x 𝑖 ),<label>(1)</label></formula><p>where sparse_dot(•) denotes sparse dot product for a 𝑢 and x 𝑖 .</p><p>Personalized explanation. For each prediction ŷ𝑢𝑖 , ECF is able to generate explanation by measuring the coherence between users' and items' taste cluster affiliations. Specifically, the overlapped taste clusters are first derived from affiliation matrix:</p><formula xml:id="formula_2">C 𝑢𝑖 = 𝑆 (a 𝑢 ) ∩ 𝑆 (x 𝑖 ),<label>(2)</label></formula><p>where 𝑆 (•) is an index selector to collect corresponding clusters where the affiliation between users/items and taste clusters exists, and C 𝑢𝑖 denotes the set of overlapped taste clusters for user 𝑢 and item 𝑖. Thus, the descriptive tags of taste clusters in C 𝑢𝑖 are used to interpret what determines user 𝑢 preference toward item 𝑖. Moreover, importance score 𝑤 𝑐 𝑢𝑖 is introduced to quantify the contribution of each taste cluster in C 𝑢𝑖 :</p><formula xml:id="formula_3">𝑤 𝑐 𝑢𝑖 = 𝑎 𝑢𝑐 × 𝑥 𝑖𝑐 .<label>(3)</label></formula><p>Therefore, ECF is able to explain the prediction decision by using the descriptive tags of overlapped taste clusters C 𝑢𝑖 and their corresponding importance scores 𝑤 𝑐 𝑢𝑖 . Due to the sparsity of affiliation matrix, the size of overlapped taste clusters is small, so that we could easily derive the readable decision logic of ECF by investigating only a few taste clusters. And the final explanation results can be constructed by existing methods (e.g., template-based explanation <ref type="bibr" target="#b41">[42]</ref>) or explanation paths from user to taste clusters and items (demonstrated in Section 3.5.2).</p><p>Despite the simplicity, it is still unclear how to obtain the desired taste clusters and sparse affiliation matrix. This is a non-trivial task since performing clustering algorithm (e.g., K-means) for items or blindly collecting items with same tags would fail to encode both user interest and item profiles simultaneously (see Section 3.3 for comparison). Besides, directly learning the affiliation matrix from data is unable to train due to its sparsity nature. Instead, we represent items and taste clusters as embeddings, and measure their affiliations with cosine similarity:</p><formula xml:id="formula_4">x𝑖𝑐 = cos(v 𝑖 , h 𝑐 ),<label>(4)</label></formula><p>where v ∈ R 𝑑 and h ∈ R 𝑑 are the embeddings of items and clusters, and 𝑑 is the embedding size. To clearly identify the belongings between items and clusters, we only consider the Top-𝑚 clusters for each item:</p><formula xml:id="formula_5">𝑚 𝑖𝑐 = 1 if 𝑐 ∈ argTopm( x𝑖 ) 0 otherwise<label>(5)</label></formula><formula xml:id="formula_6">x 𝑖 = 𝜎 ( x𝑖 ) ⊙ m 𝑖 ,<label>(6)</label></formula><p>where ⊙ denotes Hadamard product, 𝜎 (•) is the sigmoid function.</p><p>In the above equations, we first make Top-𝑚 selection for each item according to the similarity scores, and apply the sigmoid function to indicate the relatedness of items and clusters with none-zero probabilities, then use a binary mask to filter other less relevant clusters and obtain the final item-cluster affiliation matrix X. However, due to the non-differentiability and discrete nature of argTop operation, the computation is intractable thus cannot be optimized with gradients. Therefore, we relax it by tempered softmax:</p><formula xml:id="formula_7">𝑚 𝑖𝑐 ≈ m𝑖𝑐 = exp(cos(v 𝑖 , h 𝑐 )/𝑇 ) 𝑐 exp(cos(v 𝑖 , h 𝑐 )/𝑇 ) ,<label>(7)</label></formula><p>where 𝑇 is a hyperparameter called temperature, which controls the entropy of the distribution. Thus, for back-propagation, the continuous relaxation m𝑖𝑐 is used to approximate 𝑚 𝑖𝑐 . However, when calculating the probability of taste clusters, we should directly use 𝑚 𝑖𝑐 instead of m𝑖𝑐 , to be consistent with the real affiliation relationship. To close the gap between forward pass and backward pass, we follow a similar idea to reparameterized trick <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b39">40]</ref>, and rewrite 𝑚 𝑖𝑐 as follows:</p><formula xml:id="formula_8">m𝑖𝑐 = m𝑖𝑐 + detach_gradient(𝑚 𝑖𝑐 − m𝑖𝑐 ),<label>(8)</label></formula><p>where the detach_gradient will prevent the gradient from backpropagating through it. In the forward pass, detach_gradient has no effect, thus the affiliated clusters can be directly computed by argTop operation. In the backward pass, detach_gradient takes effect, so ∇ m𝑖𝑐 L = ∇ m𝑖𝑐 L. So the whole computation is fully differentiable and can be smoothly optimized with the model. We use the same mechanism to obtain the affiliations between users and clusters. Specifically, the user-cluster similarity matrix can be computed as Ã = Y × X, where Y is the user-item interaction matrix. Then, we also force each user to connect with Top-𝑛 taste clusters to derive the user-cluster affiliation matrix A.</p><p>Forest Mechanism. Preference sparsification with taste clusters is an approximation of latent factor-based collaborative filtering. As a result, ECF inevitably suffers from sub-optimal performance and limited diversity.To overcome these two challenges, we introduce a straightforward yet impactful ensemble approach that improves the expressiveness of taste clusters and preserves its interpretability. Specifically, for each individual ECF model, we randomly select |C| items as the initial taste clusters and use different random seeds for model training. Then we train 𝐹 different ECF instances to form the final ECF model, and the final prediction is based on the summation of all 𝐹 models. We find this simple random mechanism can boost the performance of ECF and provide a comprehensive explanation for predictions (the impact of different number of models is discussed in Section 3.4.3).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Optimization of ECF</head><p>Next, we introduce an end-to-end optimization method to train ECF, with the aim of constraining the taste cluster from different perspectives to meet its definition. First, since taste clusters can reveal both the user's interests and the similarity between items, it is reasonable to directly predict user preference for an item through their common taste clusters (as described in Equation ( <ref type="formula" target="#formula_1">1</ref>)). Therefore, the cluster-based predictions can be optimized with BPR loss <ref type="bibr" target="#b26">[27]</ref>:</p><formula xml:id="formula_9">L CS = ∑︁ (𝑢,𝑖,𝑗) ∈ O − ln 𝜎 ( ŷ𝑢𝑖 − ŷ𝑢 𝑗 ),<label>(9)</label></formula><p>where O = {(𝑢, 𝑖, 𝑗)|𝑦 𝑢𝑖 = 1, 𝑦 𝑢 𝑗 = 0} denotes the training set of user-item interactions. Then we consider the informativeness of tags. We first calculate the tag distribution of taste clusters:</p><formula xml:id="formula_10">D = X ⊤ E,<label>(10)</label></formula><p>where</p><formula xml:id="formula_11">E ∈ R | I |× | T |</formula><p>is the multi-hot matrix where each entry 𝑒 𝑖𝑡 denotes whether item 𝑖 has the tag 𝑡, and D represents the tag frequency of each taste cluster. Intuitively, we can directly select the most frequent tags as the description of taste clusters. However, this naive approach would result in the indistinguishability between different clusters, since some tags are commonly shared by most items, and they would dominate the tag distribution across different taste clusters. Take the game genres at Xbox dataset as an example. Most of the games are online and allow for mutiplayer, thus selecting the "Multiplayer-Online" tag fails to provide informative description for taste clusters. To tackle this problem, we first reweight each tag according to its frequency of occurrence in items, and then compute the weighted distribution:</p><formula xml:id="formula_12">𝑑 𝑐𝑡 = d𝑐𝑡 × log( 𝑁 𝑓 𝑡 + 𝜖 ),<label>(11)</label></formula><p>where 𝑁 is the number of items, 𝑓 𝑡 is the frequency of tag 𝑡 across all items, and 𝜖 is a small fraction (we set it as 10 −6 ) to avoid numerical overflow. Thus, the above equation considers both tag frequency and items' affiliations for tag informativeness: the more frequently the distinctive tag appears, the more informative it is for interpreting the taste cluster.</p><p>To improve the understanding of taste clusters, we advocate for an appropriate number of tags, not too few or too many. An excessive or inadequate number of tags makes it difficult to identify users' true interests and results in a complex or abstract interpretation of the taste cluster." To achieve that, we first normalize their frequencies as:</p><formula xml:id="formula_13">𝛽 𝑐𝑡 = exp(𝑑 𝑐𝑡 /𝜏) 𝑗 ∈ T exp(𝑑 𝑐 𝑗 /𝜏) , (<label>12</label></formula><formula xml:id="formula_14">)</formula><p>where 𝜏 is the is the temperature hyperparameter. At low temperatures, the distribution sharpens, causing only the tag with the highest score to stand out. As the temperature increases, the distribution becomes more even and the distinctiveness between tags will decrease. Then, we consider maximizing the likelihood of the probabilities of Top-𝑃 tags so that the taste clusters can be easily interpreted by those tags:</p><formula xml:id="formula_15">L TS = ∑︁ 𝑐 ∈ C ∑︁ 𝑡 ∈argTopP(𝛽 𝑐 ) − log 𝛽 𝑐𝑡 ,<label>(13)</label></formula><p>where C denotes the set of taste clusters. We fix the number of tags 𝑃 = 4 for all experiments, since it achieves a good balance between informativeness and readability. Moreover, different taste clusters should contain different items and reveal different user preferences, so that the latent interest space could be better preserved. Hence, for better model capacity and diversity, we encourage the embeddings of taste clusters to differ from each other's. There are many methods for independence modeling, such as distance correlation <ref type="bibr" target="#b29">[30]</ref>, orthogonality <ref type="bibr" target="#b19">[20]</ref>, and mutual information <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b35">36]</ref>. Here we opt for mutual information for all experiments due to its simplicity and effectiveness:</p><formula xml:id="formula_16">L IND = ∑︁ 𝑐 ∈𝐶 − log exp(𝑠 (h 𝑐 , h 𝑐 )) 𝑐 ′ ∈𝐶 exp(𝑠 (h 𝑐 , h 𝑐 ′ )) ,<label>(14)</label></formula><p>where 𝑠 (•) is the similarity function to measure the associations of any two taste clusters, which is set as cosine function here. Finally, we consider learning taste clusters by putting the above objective functions together:</p><formula xml:id="formula_17">L TC = L CS + L TS + L IND .</formula><p>For simplicity we do not need to tune any weighting coefficients for each loss. However, due to the argTop operations in affiliation selections, the supervised signals are sparse and hard to converge. Thus, we add auxiliary supervised signals from user-item predictions:</p><formula xml:id="formula_18">L CF = ∑︁ (𝑢,𝑖,𝑗) ∈ O − ln 𝜎 (u ⊤ 𝑢 v 𝑖 − u ⊤ 𝑢 v 𝑗 ),<label>(15)</label></formula><p>where u 𝑢 denotes the embeddings of user 𝑢. We choose inner product of embeddings to measure the similarity between users and items for simplicity, but more sophisticated embedding-based models (e.g., LightGCN <ref type="bibr" target="#b10">[11]</ref>) can also be applied, which will be discussed in Section 3.4.4. By combing the taste clusters loss and collaborative loss, we minimize the following objective function to learn the model parameters:</p><formula xml:id="formula_19">L ECF = L TC + 𝜆L CF ,<label>(16)</label></formula><p>where 𝜆 a hyperparameter to control the impact of auxiliary collaborative signals.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4">New Metrics for Explainability</head><p>Here we aim to design a holistic set of quantitative metrics to qualify the effectiveness of explanation w.r.t. taste clusters:</p><p>• In-cluster item coverage denotes the average proportion of items in a taste cluster that the selected tags can cover. With a slight abuse of notation, we use T 𝑖 to denote the tags of item 𝑖 and T 𝑐 to denote the tags of cluster 𝑐:</p><formula xml:id="formula_20">Cov. = 1 |C| ∑︁ 𝑐 ∈ C ∑︁ 𝑖 ∈𝑐 1(|T 𝑖 ∩ T 𝑐 |) |𝑐 | ,<label>(17)</label></formula><p>where 1(𝑥) = 1 if and only if 𝑥 &gt; 0, otherwise 0. When the item coverage ratio is high, we deem that these tags can be properly used as the descriptive interpretation for the taste cluster. • Tag utilization represents how many unique tags are used for interpreting taste clusters:</p><formula xml:id="formula_21">Util. = 1 |T | 𝑐 ∈ C T 𝑐 ,<label>(18)</label></formula><p>where we union all the selected tags from each taste cluster, and a higher tag utilization indicates a more diverse interpretation of interest patterns. • Silhouette <ref type="bibr" target="#b27">[28]</ref> is a clustering metric which measures the similarity difference between intra-cluster and inter-cluster items:</p><formula xml:id="formula_22">Sil. = 1 |C| 2 ∑︁ 𝑐 1 ∈ C ∑︁ 𝑐 2 ∈ C 𝑏 (𝑐 1 , 𝑐 2 ) − 𝑎(𝑐 1 ) max{𝑎(𝑐 1 ), 𝑏 (𝑐 1 , 𝑐 2 )} , (<label>19</label></formula><formula xml:id="formula_23">)</formula><p>where 𝑏 (𝑐 1 , 𝑐 2 ) is the mean cosine similarity between all disjoint items in 𝑐 1 and 𝑐 2 , and 𝑎(𝑐 1 ) is the mean cosine similarity of items in taste cluster 𝑐 1 . The high silhouette indicates the items are similar in the same taste clusters. • Informativeness measures the distinctiveness of selected tags to represent the items in the taste cluster:</p><formula xml:id="formula_24">Info. = 1 |C| ∑︁ 𝑐 𝑖 ∈ C |𝑅(T 𝑐 ) ∩ 𝑐 | |𝑐 | ,<label>(20)</label></formula><p>where 𝑅(T 𝑐 ) is an post-hoc discriminator that predicts the most likely top |𝑐 | items given the tags of taste cluster 𝑐 . We detail the implementation of the function 𝑅(•) in Appendix A.9. A greater informativeness score implies that those tags more accurately characterize the items within the taste clusters.</p><p>The above four metrics measure the quality of taste clusters from different aspects. Since ECF depends on taste clusters to make recommendation and explanation, these metrics can be also viewed as the evaluation of explanation. We further provide an overall metric by normalizing each metric with a random approach. In addition, since explainability is a human notion and cannot be fully evaluated computationally without input from human users, we also included two user studies as complementary to the metrics, which will be detailed in Section 3.3.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.5">Complexity Analysis</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">EXPERIMENTS</head><p>We design experiments to answer the following research questions:</p><p>(1) How does ECF perform in accuracy, compared with related competitive methods? (2) What is the quality of ECF's interpretability?</p><p>(3) What is the impact of various components and hyperparameters on the effectiveness of ECF? (4) What do the generated taste clusters resemble and what are the potential uses for ECF?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Experimental Settings</head><p>We use three real-world datasets for experiments: Xbox, MovieLens and Last-FM, which vary in domain, size, tag numbers, and sparsity. The Xbox dataset is provided by Microsoft Gaming and collected from the GamePass scenario 2 . GamePass is a popular membershipbased service offered by Xbox, with which users can freely play a few hundreds of high-quality games (that is why in Table <ref type="table" target="#tab_1">1</ref> Xbox has only 330 items). MovieLens is a widely used dataset which contains user rating history and the types of movies, we follow <ref type="bibr" target="#b23">[24]</ref> to get 18 neat tags for movie description. Last-FM is a public music listening dataset. We use the official APIs 3 of Last.fm to obtain the tags for each track and discard rare tags which are annotated by less than 50 people. Besides, to reduce noise, we adopt the 10-core setting, i.e., retaining users and items with at least ten interactions. We use the same data partition with previous study <ref type="bibr" target="#b23">[24]</ref> for comparison (i.e., the proportions of training, validation, and testing set are 80%, 10%, and 10% for all datasets). Table <ref type="table" target="#tab_1">1</ref> summarizes the basic statistics of the three datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Evaluation of Accuracy (RQ1)</head><p>3.2.1 Baselines. We compare ECF with two groups of models:</p><p>• MF <ref type="bibr" target="#b26">[27]</ref>, NCF <ref type="bibr" target="#b11">[12]</ref>, CDAE <ref type="bibr" target="#b37">[38]</ref> and LightGCN <ref type="bibr" target="#b10">[11]</ref> are four strong and representative embedding-based CF methods which learn users' hidden preference from interactions. But they suffer from poor explainability. • EFM <ref type="bibr" target="#b41">[42]</ref> and AMCF <ref type="bibr" target="#b23">[24]</ref> are two strong explainable recommendation models, but they fail to satisfy all three explanation merits. We adapt EFM model slightly to make it fit for our scenario (see Appendix A.2 for details).</p><p>We also add the single model version of ECF for variant comparison, denoted as "ECF 𝑠𝑖𝑛𝑔𝑙𝑒 ".</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2">Evaluation Metrics.</head><p>We adopt two widely used evaluation protocols <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b41">42]</ref> for top-𝐾 recommendation: Recall@K and NDCG@K. Hyper-parameters are reported in Appendix A.3. LightGCN outperforms all other baselines on MovieLens and Last-FM datasets, we contribute this to the ability of capturing the highorder user-item relationship in bipartite graph. On the other hand, explainable methods -EFM and AMCF -only show a slight improvement over MF. As for the ECF 𝑠𝑖𝑛𝑔𝑙𝑒 , we can see the performance drops compared with MF, due to the sparsity design of taste clusters affiliations for interpretability. However, the forest mechanism in ECF makes up for its shortcomings in accuracy and outperforms all the baselines by a large margin (including the forest version of MF, see Appendix A.4 for details). This demonstrates that ECF is not taking a trade-off between accuracy and interpretability, instead, it can achieve excellent accuracy performance while providing interpretability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Evaluation of Explainability (RQ2)</head><p>Then we evaluate the explainability of ECF. As elaborated in Section 2.4, we utilize four metrics to evaluate the explainability of our model: in-cluster item coverage, tag utilization, silhouette and informativeness. Since ECF is a cluster-based CF method, for comparison, we use three strong competitors to construct the clusters from different perspectives as baselines. Specifically, TagCluster is a tag-oriented method which groups items with the same tags into clusters; K-means is a similarity-oriented method which utilizes item embedding from MF to perform K-means algorithm; Random is a baseline method by randomly selecting items into clusters. The detailed implementation of baselines is reported in Appendix A.5.</p><p>To have an overall understanding of the explainability, we introduce an aggregated metric denoted as Overall in Table <ref type="table" target="#tab_3">3</ref>. To overcome the scale inconsistency issue in different metrics, we first normalize each metric by calculating the relative gain over the Random baseline, then sum up the normalized four scores as the Overall metric. In terms of the overall metric, ECF outperforms all competitors by a large margin. Specifically, all the baselines can only preserve a certain aspect while ignoring the rest three aspects. For instance, since TagCluster only considers the explicit tags for clustering, it fails to preserve the collaborative filtering-related similarity in the cluster. Furthermore, traditional clustering methods like K-means suffer from low coverage ratio and poor informativeness, revealing their inability to form significant taste clusters with descriptive tags. In contrast, ECF considers all relevant factors, thus preventing significant shortcomings in any one metric.   Besides, we have included two user studies on the LastFM dataset complementary to Table <ref type="table" target="#tab_3">3</ref>. These studies involved 30 volunteers evaluating the explainability of both taste clusters and user-item recommendations. Volunteers were asked to participate two tasks as human evaluation. The task description and results are detailed in Appendix A.6, and ECF also achieved the best among baselines from human judgements.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Study of ECF (RQ3)</head><p>3.4.1 Impact of Top-𝑚 and Top-𝑛. As described in Section 2.2, we use Top-𝑚 and Top-𝑛 to select the most relevant taste clusters for items/users. The experimental results of different 𝑚 and 𝑛 on Xbox and Last-FM dataset are reported in Figure <ref type="figure" target="#fig_3">1</ref>, while the results on MovieLens dataset is omitted due to similar trend and limited space. We observe that the recommendation performance boosts dramatically when 𝑚 and 𝑛 increase, especially from 10 to 20. This is because when the affiliations between taste clusters and users/items are sparse, it is unable to model the complex and latent users' preference, as well as the multi-faceted semantics of items. However, large 𝑚 and 𝑛 would make the explanation results hard to understand because of the excessive number of reachable paths between users, taste clusters and items. Therefore, to balance the readability and accuracy, we set 𝑚 and 𝑛 to 20 for all datasets.</p><p>3.4.2 Impact of 𝜆. We then verify the effectiveness of the auxiliary collaborative signals. The results on Last-FM dataset is illustrated in the left of Figure <ref type="figure" target="#fig_6">3</ref>, and the results on other two datasets     <ref type="formula" target="#formula_19">16</ref>). Right: impact of the forest mechanism.</p><p>are reported in Appendix A.8. We observe that a small 𝜆 value results in a significant decline in the performance of ECF, due to the insufficient supervised signals for the learning of taste clusters. On the other hand, when 𝜆 exceeds 0.6, the improvement is minimal, indicating that ECF can be optimized with adequate collaborative signals. Thus, we fix 𝜆 to 0.6 for all of our experiments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.3">Impact of Forest Mechanism.</head><p>To analyze the effect of the ensemble version of ECF, we gradually increase the size of forest, and the performance results are reported in the right of Figure <ref type="figure" target="#fig_6">3</ref>. We find that there is a notable performance gain of ECF, compared with the single ECF model. We contribute the improvement to the holistic modeling of users' latent interest space with diverse taste clusters. Besides, we also find that the performance of ECF is even better than the forest version of MF (see Figure <ref type="figure" target="#fig_6">3</ref> and Appendix A1 for details), which indicates the effectiveness of taste cluster learning.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.4">Flexibility of ECF.</head><p>Since the ECF framework only relies on embeddings to learn explainable taste clusters, it can be viewed as a model-independent explainable paradigm, which is easily applied with other popular embedding-based methods. Thus, we also incorporate ECF with LightGCN <ref type="bibr" target="#b10">[11]</ref>, a competitive graph-based embedding method, to investigate its flexibility. The results in Fig- <ref type="figure">ure A</ref>.10 indicate that the performance and explainability of ECF would also benefit from more complex embedding-based methods, which demonstrates the superiority and universality of ECF (see Appendix A.10 for details).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Case Study and Applications (RQ4)</head><p>In this section, we present examples from the Last-FM dataset to provide an intuitive understanding of taste clusters and demonstrate the explainability of ECF. Additionally, we showcase the versatility of ECF by highlighting useful scenarios beyond item recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3.5.1</head><p>Learned Taste Clusters. We first illustrate the generated five taste clusters in Figure <ref type="figure" target="#fig_5">2</ref>. Each taste cluster is interpreted with   four tags, which are the best description of the tracks within. For instance, all the tracks in taste cluster 𝑐 3 are soundtrack, while some are ambient music (e.g., "Hand Covers Bruise"), and some are tagged with "alternative" (e.g., "Only Hope"). Besides, each taste cluster is able to explicitly represent certain users' preference. Taking the taste cluster 𝑐 2 as an example, users who have a high affiliation score with it tend to favor rap and hip-pop music, especially these tracks that are accompanied with dancing. Moreover, different taste clusters have different tags (e.g., pop music in 𝑐 1 and folk music in 𝑐 5 ), indicating the diversity of users' preference.</p><p>As for the relationship between taste clusters and items, we find taste clusters have the ability to serve as complementary information to the tagging of items, which we call tag discovery. For instance, folk song "Bubbly" in taste cluster 𝑐 5 is tagged with "female_vocalists|pop|folk|acoustic|love" by Last.fm. Thus, we can suspect whether "Bubbly" has the missing tag "singer_songwriter" since other tags in the taste cluster 𝑐 5 (i.e., "folk|acoustic|pop") are perfectly to describe the track. In fact, the singer of the song, Colbie Caillat, is also a songwriter who wrote the song. Therefore, taste clusters can be useful for automatic tag completion.</p><p>3.5.2 Recommendation Explanation. Next, we demonstrate the explanation ability of ECF. Taking the recommendation of user 𝑢 71 to track 𝑖 77414 ("Bubbly") as an example, Figure <ref type="figure" target="#fig_8">4</ref> shows the listening history of 𝑢 71 as well as the recommendation logic of ECF, where we have the following observations. First, ECF maps users as well as items with their corresponding taste clusters. For user 𝑢 71 , since he/she has listened different kinds of songs from soundtrack to pop and soul music, three different taste clusters (i.e., 𝑐 1 , 𝑐 3 and 𝑐 4 .) have been affiliated to reveal his interest. Similarly, track 𝑖 77414 is also connected with three taste clusters (i.e., 𝑐 1 , 𝑐 4 and 𝑐 5 ), which is able to describe the song from different aspects. Besides, the weights of affiliation matrix indicate the relatedness between users/items with taste clusters.</p><p>Second, to recommend track 𝑖 77414 to user 𝑢 71 , ECF first finds their interactions of taste clusters according to the affiliations (i.e., 𝑐 1 , 𝑐 4 ), which are depicted as red circles in Figure <ref type="figure" target="#fig_8">4</ref>. These taste clusters serve as a bridge to explicitly connect user's preference and items' semantics. Then two explanation paths (𝑖 71 → 𝑐 1 → 𝑖 77414 and 𝑖 71 → 𝑐 4 → 𝑖 77414 ) are constructed for recommendation. For each path, we multiply their affiliation weight to generate the importance score of the taste cluster, according to Equation (3). At last, by summarizing all the scores over intersected taste clusters, we can calculate the final prediction score, as well as the explanation paths from user 𝑢 71 to 𝑖 77414 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5.3">Taste Cluster Recommendation.</head><p>Here we propose a new recommendation scenario, called taste cluster recommendation, which means users are recommended with a bundle of similar items, and these items can be described with few tags (or features). We find this task is ubiquitous in real-world applications, like playlist recommendation in Spotify <ref type="bibr" target="#b13">[14]</ref>. Current solutions to tackle this problem typically rely on manual selection by editors to guarantee the selected items are similar in tags (or other explicit features). However, this approach suffers from tedious selection process and poor personality. Our method could be a substitution for labor selections by learning taste clusters in an end-to-end manner. To be specific, since each learned taste cluster is a collection of items with descriptive tags, it can be naturally viewed as a playlist or game set. Thus, we can directly recommend taste clusters to users according to their affiliation weights. Taking user 𝑢 71 in Figure <ref type="figure" target="#fig_8">4</ref> as an example, ECF could recommend him/her with a pop song playlist which is sung by female artists, since he/she used to listen lots of pop music by female artists, like Colbie Caillat, Adele and Celine Dion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3.5.4</head><p>User Profiling. The user-cluster affiliations discovered by ECF can also be used as user profiles directly. Take Figure <ref type="figure" target="#fig_8">4</ref> for example, ECF assigns user 𝑢 71 to three clusters: 𝑐 1 , 𝑐 3 and 𝑐 4 . Then we can use the tag summary of these clusters as (part of) her profile. Such kind of clusters as user profiles can benefit various web applications, including (1) user-level predictive tasks, such as user demographic attributes prediction and user churn/uplift prediction <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b12">13]</ref>, where cluster profiles can be consumed as auxiliary features;</p><p>(2) ad audience targeting <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b31">32]</ref>, where ad platforms or advertisers can leverage user clusters to reach a certain segment of users that have targeted interests and habits in an interpretable manner; (3) look-alike audience extension <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b20">21]</ref>, where the task is to reach users similar to a given set of seed users, especially with the goal of enhancing the performance of cold-start and long tail items and improving the recommendation diversity. User clusters are naturally suitable for this task because similar users have already been indexed in the same clusters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">RELATED WORKS</head><p>Collaborative filtering techniques, especially model-based CF methods, have achieved great success in personalized recommender systems. Most (if not all) of those methods rely on the latent factor embeddings to generate rating predictions, which makes it difficult to give explanations for the predictions. However, explaining why a user likes an item can be as important as the accuracy of the prediction itself <ref type="bibr" target="#b40">[41]</ref>, since it can not only enhance the transparency and trustworthiness of the system, but also significantly improve user satisfaction. Therefore, varieties of strategies for rendering explainable recommendations have been proposed. We first review explainable collaborative filtering methods <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b41">42]</ref>, then we discuss other recent explainable recommendation works.</p><p>Explainable collaborative filtering methods. EMF <ref type="bibr" target="#b0">[1]</ref> adds an explainability regularizer into the objective function of MF to force user/item hidden vectors to be close if a lot of the user's neighbors also purchased the item. HFT <ref type="bibr" target="#b22">[23]</ref> leverages the topic model to obtain interpretable textual labels for latent rating dimensions. EFM <ref type="bibr" target="#b41">[42]</ref> factorizes a rating matrix in terms of both explicit phases from textual reviews as well as latent factors, and makes predictions by combing the scores of both explicit and implicit features. Tri-Rank <ref type="bibr" target="#b9">[10]</ref> models user-item-tag ternary relation as a heterogeneous tripartite graph and performs vertex ranking for recommendation. ATM <ref type="bibr" target="#b4">[5]</ref> utilizes latent factors to estimate tag importance of a user towards an item, and makes predictions via a linear combination of tag ratings. More recently, AMCF <ref type="bibr" target="#b23">[24]</ref> maps uninterpretable embeddings into the interpretable aspect features by minimizing both ranking loss and interpretation loss. Nonetheless, those methods are unable to satisfy all three important explanation properties: flexible, coherence and self-explainable, resulting in ineffectiveness to boost the transparency of recommender systems.</p><p>Other directions of explainable recommendation. There is also a large literature that considers other auxiliary information or other methods to explain recommendations <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref>. For example, NARRE <ref type="bibr" target="#b2">[3]</ref> designs an attention mechanism over the user and item reviews for rating prediction, and leverages the attention weight for explanation. VECF <ref type="bibr" target="#b3">[4]</ref> proposes visually explainable recommendation based on personalized region-of-interest highlights by a multimodal attention network. PLM-Rec <ref type="bibr" target="#b8">[9]</ref> learns a language model over knowledge graph to generate explainable paths. Those methods leverage more expressive data for explanation, which can be the future direction of our ECF framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">CONCLUSION AND FUTURE WORK</head><p>In this paper, we propose a neat yet effective explainable collaborative filtering framework, called ECF, which is able to learn informative taste clusters in an end-to-end manner, and perform both recommendation and explanation by measuring the intersection between user-/item-cluster affiliations. ECF is flexible, coherent and self-explainable. Meanwhile, we design four quantitative metrics and conduct human studies to evaluate the explainability quality of taste clusters in a comprehensive manner. Extensive experiments conducted on three real-world datasets demonstrate the superiority of ECF from both recommendation accuracy and explanation quality. In the future, we aim to apply ECF to real-world recommendation scenarios with millions of users and items to improve its scalability. Besides, we plan to incorporate ECF with more expressive data beyond tags, such as reviews <ref type="bibr" target="#b2">[3]</ref>, knowledge graphs <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b35">36]</ref> to fully exploit the power of this framework.</p><p>Technology Special Innovation Projects with Grant Nos. 2022Z095 and 2021Z019. Yunjun Gao is the corresponding author of the work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A APPENDIX A.1 Pseudocode of ECF</head><p>To help readers get an intuitive sense of the framework, we provide a pseudocode in Algorithm 1. Calculate the sparse affiliations a 𝑢 , x 𝑖 and x 𝑗 with Eq.( <ref type="formula" target="#formula_6">6</ref>)</p><formula xml:id="formula_25">6</formula><p>Perform cluster-based predictions with Eq. ( <ref type="formula" target="#formula_9">9</ref>)</p><formula xml:id="formula_26">7</formula><p>Calculate tags distribution for taste clusters with Eq.( <ref type="formula" target="#formula_15">13</ref>)</p><formula xml:id="formula_27">8</formula><p>Calculate independence of taste clusters with Eq.( <ref type="formula" target="#formula_16">14</ref>)</p><formula xml:id="formula_28">9</formula><p>Update model parameters with Eq.( <ref type="formula" target="#formula_19">16</ref>)</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Adaptation of EFM</head><p>Since EFM relies on the phase-level reviews for prediction and explanation, we make a few modifications to fit our settings where only tags of items are available. First, we generate the user-feature matrix by counting all the features of items that users have interacted with, which means that all the mentioned features are considered as positive. Second, the negative opinions of item's features are discarded because no auxiliary information is available. Third, the item-feature quality matrix is simplified as a 0-1 matrix where 1 denotes the item has the tag in attributes, while 0 denotes otherwise. After reconstructing the user-feature matrix and item-feature quality matrix, we run the EFM model as it describes in the paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 Hyper-Parameter Settings</head><p>We optimize all models with Adam <ref type="bibr" target="#b15">[16]</ref>, where the batch size is fixed at 1024. For CDAE, the hidden size is 100, and the dropout ratio is set to 0.5. For LightGCN, we set the number of layers to 3, and the dropout ratio is also set to 0.5. For EFM, we fix the percentage of explicit factors to 40%, and tune the coefficient of feature-based score for best performance. For AMCF, we use their official codes (https://github.com/pd90506/AMCF) for implementation and set the hyperparameter of feature mapping as 0.05. For ECF, we set 𝑚 = 20 and 𝑛 = 20, which means that we restrict that each item and item are associated with only 20 clusters. The temperature hyperparameters 𝑇 and 𝜏 are all set as 2. We also set |C| = 64 for all datasets, which indicates each ECF model could generate 64 taste clusters. Besides, the number of single ECF model 𝐹 is set as 9 for all experiments. Moreover, early stopping strategy is performed for all methods, i.e., premature stopping if recall@20 on the test set does not increase for 10 successive epochs. We report the average metrics for all the users in the testing set.</p><p>Besides, since ECF utilize sparse affiliations between users/items and taste clusters instead of embeddings to perform recommendation, we choose two options for fair comparison: (1) we fix the size of ID embeddings (users, items and taste clusters) as 64 for all methods; (2) since the affiliation size of ECF is 180 (top 20 affiliated taste clusters for each users/items, and we use 9 single ECF model), we align it with the embedding size of all other methods, and set the size of embeddings as 180. We conduct both experiments for all baselines and select the best performance for the report.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.4 Complete Recommendation Performance</head><p>We report the comprehensive recommendation performance in Table <ref type="table" target="#tab_1">A1</ref>, where 𝐾 = 20 is omitted since the results are already reported in Table <ref type="table" target="#tab_2">2</ref>. From the results we see a similar trend as we discussed in Section 3.2: embedding-based methods (e.g., MF and LightGCN) show strong performance across different datasets yet suffer from poor explanation; explainable methods can only slightly outperform MF, since they need to balance the trade-off between accuracy and transparency. However, ECF achieves the best performance in all ranking metrics (including the forest version of MF). Therefore, our model is able to not only provide accurate recommendation results, but also intuitive and clear explanations for each prediction with taste clusters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.5 Baselines for Explanation Evaluation</head><p>• TagCluster is a tag-oriented method which collects items according to their tags. To be specific, we first randomly sample |C| items as the seed of clusters, and search for the items which have the same tags with them. When there is no item that has the exactly the same tags as the seed, we relax it by randomly discarding one tag and continue to search. We iteratively conduct the operations until the size of clusters meets threshold 𝑍 . And we choose the 4 most frequent tags in the clusters as the tags of taste clusters. • K-means is a similarity-oriented method which leverages the item embeddings from FM to perform K-means clustering algorithm. The result clusters are as directly used as the taste clusters. And we also select the top-4 most common tags as the descriptive tags for taste clusters. • Random is a baseline method which randomly select 𝐾 items to construct the clusters. The procedure is repeated until all items are allocated in at least one cluster. We use the same mechanism as above methods to generate tags for each clusters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.6 Human Evaluation</head><p>We conducted two task to evaluate the explanability of ECF from human perspective. Task(1) is to rank the quality of the clusters' tags generated by ECF and three baselines; and Task(2) is to rank the quality of user-item explanations, with rank 1 representing the best and rank 4 representing the worst. We randomly select 10 generated clusters for evaluation, and the mean ranking results of these two tasks are shown in Table <ref type="table" target="#tab_8">A2</ref>. We can see that ECF achieved the best from human judgements, which ranks 1.73 and 1.3 for clusters' tags and recommendation explanation, respectively. Since human evaluation can be time-consuming, expensive, and not scalable, our proposed computational metrics are important for automatic evaluation.</p><p>Table <ref type="table" target="#tab_1">A1</ref>: Complete Top-𝐾 recommendation results. " †" indicates the improvement of the ECF over the baseline is significant at the level of 0.05. R and N refer to Recall and NDCG, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Xbox MovieLen</head><p>Last-FM R@5 R@10 N@5 N@10 R@5 R@10 N@5 N@10 R@5 R@10 N@5 N@10 MF 0.    We also investigate the impact of different 𝜆 on other two datasets, and the results are shown in Figure <ref type="figure" target="#fig_13">A1</ref>. We find that as the increase of auxiliary collaborative signals, the performance of ECF improves gradually. However, when the weighting coefficient 𝜆 reaches beyond 0.6, the improvement becomes marginal. Thus, we set 𝜆 = 0.6 for all experiments.</p><p>A.8 Ablation Study w.r.t. Forest Mechanism</p><p>We briefly discuss how the number of single ECF model influences the performance. Since the single ECF model is unable to model the complex and hidden users' interest space at once, more learned taste clusters may help to alleviate this issue. We confirm this assumption by adding more single ECF model for ensemble prediction, and the results on Xbox and MovieLens dataset are illustrated in Figure <ref type="figure" target="#fig_11">A2</ref>. We can see the huge performance gains when we increase the number of ECF models, especially from a single model to three models. However, as the number of single models continuously increases, the improvements become negligible. We set the number of ECF models to 9 for all experiments.</p><p>NDCG@20 Recall@20  A.9 Implementation of Discriminator</p><p>We opt for a simple Multi-Layer Perceptron (MLPs) as the post-hoc discriminator. Specifically, it is a three-layer MLP (hidden size is 64) with ReLU as the activate function, cross-entropy as the loss function. We utilize the tags of items as the input data, and feed them into the MLPs to predict the item it belongs with. To improve the robustness of the model, we randomly mask 50% of the item's tags for training. After training, we use the tags of taste clusters as the input, and collect top |𝑐 𝑖 | items as 𝑅(T 𝑐 𝑖 ) by ranking their prediction probabilities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.10 Implementation of ECF with LightGCN</head><p>We use the item embeddings of the last layer in LightGCN for taste clusters learning, and the auxiliary collaborative signal is also replaced with the prediction loss from LightGCN. We denote this variant as ECF 𝐿𝐺𝑁 and the results of both performance and explainability on Last-FM dataset are shown in Table <ref type="table" target="#tab_7">A3</ref>.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>arXiv:2304.13937v1 [cs.IR] 27 Apr 2023 WWW '23, May 1-5, 2023, Austin, TX, USA Du et al.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>2. 5 . 1</head><label>51</label><figDesc>Model Size. We analyze the size of ECF from both training and inference perspectives. During the training, the model parameters of single ECF consist of (1) ID embedding of users and items {U, V|U ∈ R | U |×𝑑 , V ∈ R | I |×𝑑 }, which are also used by all embedding-based methods; and (2) ID embedding of taste clusters {H|H ∈ R | C |×𝑑 }. We utilize 𝐹 different ECF models for training, so that the overall parameters are 𝐹 times of the single model parameters. During the inference, different from other embedding-based methods, ECF only needs the sparse affiliations between users/items and clusters for prediction, and the parameters are 𝐹 (𝑚|I| + 𝑛|U|), where 𝑚 and 𝑛 are the number of affiliations. The size of ECF is similar or even less than typical embedding-based methods (i.e., MF need 𝑑 (|I| + |U|) parameters) when selected affiliations 𝑚, 𝑛 ≪ 𝑑. 2.5.2 Time Complexity. Time cost of ECF mainly comes from the taste clusters learning. For collaborative similarity learning of taste clusters, the computational complexity of calculating the affiliations is 𝑂 (|C|(𝑑 |I| + |Y|), where |C|, |I|, |Y| and 𝑑 denote the number of taste clusters, items, interactions, and the embedding size. For tag similarity learning, the computational complexity of tag distribution is 𝑂 (|C||I|| t |), where | t | is the average number of tags that items have. As for independence modeling, the cost of mutual information is 𝑂 (𝑑 |C| 2 ). Besides, computing the auxiliary collaborative signals would cost 𝑂 (𝑑 |I||U|). Thus, the time complexity of the whole training epoch is 𝑂 (|C||Y| + 𝑑 |I||U|) when the number</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Impact of affiliation number on items (Top-𝑚) and on users (Top-𝑛).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: 5 real examples of learned taste clusters on Last-FM dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 3 :</head><label>3</label><figDesc>Figure3: Hyperparameter study on Last-FM dataset. Left: impact of 𝜆 in Eq.(16). Right: impact of the forest mechanism.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Explanations of the recommendation of user 𝑢 71 to track 𝑖 77414 ("Bubbly") on Last-FM dataset. 𝑐 denotes the taste cluster which shows in Figure 2. The tags of the track 𝑖 77414 are "female_vocalists|pop|folk|acoustic|love".</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Algorithm 1 :</head><label>1</label><figDesc>Training Pipeline for an individual ECF Input: a set of users U and items I; user-item interactions Y; tags T for items Output: Learned user embeddings U; item embeddings V; taste cluster embeddings H; sparse affiliation matrix A and X 1 Randomly initialize all parameters 2 Randomly select | C | items as the initial taste clusters 3 while not converge do 4 for each pair (𝑢, 𝑖, 𝑗) in Y do 5</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure A2 :</head><label>A2</label><figDesc>Figure A2: Impact of forest mechanism on Xbox and Movie-Lens datasets.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figure A1 :</head><label>A1</label><figDesc>Figure A1: Impact of 𝜆 on Xbox and MovieLens datsets.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head></head><label></label><figDesc>1 , which leverages interpretable taste clusters and sparse user-and item-cluster affiliations for recommendation in a flexible, coherent, and self-explainable way.• We propose an optimization method for ECF to learn high quality taste clusters with informative tags and sparse affiliations simultaneously in an end-to-end manner. • We design a new set of quantitative metrics to evaluate the explainability quality of taste clusters comprehensively. • We conduct extensive experiments on three real-world datasets with various state-of-the-art methods to demonstrate the effectiveness of ECF.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>Statistics of the datasets used in our experiments.</figDesc><table><row><cell>Dataset</cell><cell cols="4">#Users #Items #Interactions #Tags</cell></row><row><cell>Xbox</cell><cell>465,258</cell><cell>330</cell><cell>6,240,251</cell><cell>115</cell></row><row><cell>MovieLens</cell><cell>6,033</cell><cell>3,378</cell><cell>836,434</cell><cell>18</cell></row><row><cell>Last-FM</cell><cell>53,486</cell><cell>2,062</cell><cell>2,228,949</cell><cell>54</cell></row><row><cell cols="5">of taste clusters is far more less than the number of users/items.</cell></row><row><cell cols="5">Under the same experimental settings (i.e., same embeddings size</cell></row><row><cell cols="5">and same number of tags), ECF has comparable complexity to EFM</cell></row><row><cell cols="4">and AMCF, two representative explainable methods.</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Top-20 recommendation results. " †" indicates the improvement of the ECF over the baseline is significant at the level of 0.05. † 0.3721 † 0.2124 † 0.2903 † 0.0851 † 0.0773 † 3.2.3 Performance Comparison. The performance w.r.t. Recall@20 and NDCG@20 is reported in Table2. More experiments with different 𝐾 can be found in Appendix A.<ref type="bibr" target="#b3">4</ref>. In comparison, embeddingbased methods achieve competitive performance on all datasets.</figDesc><table><row><cell></cell><cell cols="2">Xbox</cell><cell cols="2">MovieLens</cell><cell cols="2">Last-FM</cell></row><row><cell></cell><cell>Recall</cell><cell>NDCG</cell><cell>Recall</cell><cell>NDCG</cell><cell>Recall</cell><cell>NDCG</cell></row><row><cell>MF</cell><cell>0.5048</cell><cell>0.3268</cell><cell>0.1603</cell><cell>0.2416</cell><cell>0.0658</cell><cell>0.0506</cell></row><row><cell>NCF</cell><cell>0.4746</cell><cell>0.2931</cell><cell>0.1606</cell><cell>0.2406</cell><cell>0.0618</cell><cell>0.0401</cell></row><row><cell>CDAE</cell><cell>0.5192</cell><cell>0.3286</cell><cell>0.1627</cell><cell>0.2499</cell><cell>0.0589</cell><cell>0.0534</cell></row><row><cell>LightGCN</cell><cell>0.4933</cell><cell>0.3261</cell><cell>0.1854</cell><cell>0.2698</cell><cell>0.0788</cell><cell>0.0675</cell></row><row><cell>EFM</cell><cell>0.5070</cell><cell>0.3312</cell><cell>0.1702</cell><cell>0.2525</cell><cell>0.0703</cell><cell>0.0549</cell></row><row><cell>AMCF</cell><cell>0.5036</cell><cell>0.3217</cell><cell>0.1604</cell><cell>0.2405</cell><cell>0.0675</cell><cell>0.0516</cell></row><row><cell>ECF 𝑠𝑖𝑛𝑔𝑙𝑒</cell><cell>0.4231</cell><cell>0.2331</cell><cell>0.1068</cell><cell>0.1501</cell><cell>0.0467</cell><cell>0.0380</cell></row><row><cell>ECF</cell><cell>0.5922</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Explainability Evaluation of ECF.</figDesc><table><row><cell>Method</cell><cell>Cov.</cell><cell>Util.</cell><cell>Sil.</cell><cell cols="2">Info. Overall</cell></row><row><cell></cell><cell></cell><cell>Xbox</cell><cell></cell><cell></cell></row><row><cell>ECF</cell><cell cols="5">0.8002 0.7052 0.2604 0.3162 1.7463</cell></row><row><cell cols="6">TagCluster 0.9950 0.2878 -0.1788 0.1579</cell><cell>0.9262</cell></row><row><cell>K-means</cell><cell cols="5">0.5710 0.3739 0.4286 0.0185</cell><cell>1.0563</cell></row><row><cell>Random</cell><cell cols="5">0.5396 0.1450 -0.3614 0.0125</cell><cell>0.0000</cell></row><row><cell></cell><cell></cell><cell cols="2">MovieLens</cell><cell></cell></row><row><cell>ECF</cell><cell cols="5">0.7992 0.7778 0.1964 0.3131 1.5651</cell></row><row><cell cols="2">TagCluster 0.991</cell><cell cols="4">0.5259 -0.2573 0.1517</cell><cell>0.8898</cell></row><row><cell>K-means</cell><cell cols="5">0.6877 0.4478 0.3265 0.0168</cell><cell>0.9573</cell></row><row><cell>Random</cell><cell cols="5">0.5933 0.3672 -0.4452 0.0061</cell><cell>0.0000</cell></row><row><cell></cell><cell></cell><cell cols="2">Last-FM</cell><cell></cell></row><row><cell>ECF</cell><cell cols="5">0.7648 0.6259 0.1584 0.2996 1.5352</cell></row><row><cell cols="6">TagCluster 0.9880 0.3703 -0.2511 0.1206</cell><cell>0.9143</cell></row><row><cell>K-means</cell><cell cols="5">0.5667 0.4841 0.3197 0.0182</cell><cell>1.0752</cell></row><row><cell>Random</cell><cell cols="5">0.5385 0.2275 -0.4673 0.0148</cell><cell>0.0000</cell></row><row><cell></cell><cell></cell><cell></cell><cell>0.55</cell><cell></cell></row><row><cell></cell><cell></cell><cell>Recall@20</cell><cell>0.25 0.35 0.45</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>10 0.15</cell><cell>20</cell><cell>30</cell><cell>40</cell><cell>50</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Number of Affiliation</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head></head><label></label><figDesc>† 0.4299 † 0.2644 † 0.3193 † 0.0788 0.1325 † 0.3183 † 0.2952 † 0.0455 † 0.0635 † 0.0782 † 0.0749 †</figDesc><table><row><cell></cell><cell>2615</cell><cell>0.3686</cell><cell>0.2383</cell><cell>0.2824</cell><cell>0.0601</cell><cell>0.0975</cell><cell>0.2738</cell><cell>0.2511</cell><cell>0.0289</cell><cell>0.0446</cell><cell>0.0428</cell><cell>0.0443</cell></row><row><cell>NCF</cell><cell>0.2372</cell><cell>0.3433</cell><cell>0.2065</cell><cell>0.2503</cell><cell>0.0594</cell><cell>0.0985</cell><cell>0.2701</cell><cell>0.2517</cell><cell>0.0269</cell><cell>0.0456</cell><cell>0.0396</cell><cell>0.0383</cell></row><row><cell>CDAE</cell><cell>0.2604</cell><cell>0.3738</cell><cell>0.2346</cell><cell>0.2813</cell><cell>0.0609</cell><cell>0.0946</cell><cell>0.2671</cell><cell>0.2534</cell><cell>0.0286</cell><cell>0.0402</cell><cell>0.0431</cell><cell>0.0518</cell></row><row><cell>LightGCN</cell><cell>0.2684</cell><cell>0.3625</cell><cell>0.2382</cell><cell>0.2837</cell><cell>0.0699</cell><cell>0.1163</cell><cell>0.2979</cell><cell>0.2752</cell><cell>0.0398</cell><cell>0.0578</cell><cell>0.0605</cell><cell>0.0634</cell></row><row><cell>EFM</cell><cell>0.2647</cell><cell>0.3652</cell><cell>0.2368</cell><cell>0.2873</cell><cell>0.0657</cell><cell>0.1027</cell><cell>0.2866</cell><cell>0.2635</cell><cell>0.0319</cell><cell>0.0482</cell><cell>0.0471</cell><cell>0.0484</cell></row><row><cell>AMCF</cell><cell>0.2601</cell><cell>0.3613</cell><cell>0.2355</cell><cell>0.2806</cell><cell>0.0603</cell><cell>0.0986</cell><cell>0.2719</cell><cell>0.2498</cell><cell>0.0295</cell><cell>0.0488</cell><cell>0.0456</cell><cell>0.0457</cell></row><row><cell>MF 𝑓 𝑜𝑟𝑒𝑠𝑡</cell><cell>0.2907</cell><cell>0.3983</cell><cell>0.2615</cell><cell>0.3159</cell><cell>0.0787</cell><cell>0.1276</cell><cell>0.3122</cell><cell>0.2911</cell><cell>0.0374</cell><cell>0.0548</cell><cell>0.0562</cell><cell>0.0594</cell></row><row><cell>ECF 𝑠𝑖𝑛𝑔𝑙𝑒</cell><cell>0.1714</cell><cell>0.2763</cell><cell>0.1423</cell><cell>0.1854</cell><cell>0.0352</cell><cell>0.0608</cell><cell>0.1584</cell><cell>0.1505</cell><cell>0.0205</cell><cell>0.0315</cell><cell>0.0339</cell><cell>0.0345</cell></row><row><cell>ECF</cell><cell cols="4">0.2970  NDCG@20 Recall@20</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="3">Number of ECF Models</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table A3 :</head><label>A3</label><figDesc>The recommendation performance and explainability of ECF and ECF 𝐿𝐺𝑁 on Last-FM dataset.</figDesc><table><row><cell></cell><cell>Performance</cell><cell></cell><cell></cell><cell>Explainability</cell><cell></cell></row><row><cell></cell><cell>R@20 N@20</cell><cell>Cov.</cell><cell>Util.</cell><cell>Sil.</cell><cell>Info.</cell><cell>Overall</cell></row><row><cell>ECF</cell><cell cols="6">0.0851 0.0773 0.7648 0.6259 0.1584 0.2996 1.5352</cell></row><row><cell cols="7">ECF 𝐿𝐺𝑁 0.0876 0.0792 0.7831 0.6430 0.1590 0.3042 1.5758</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table A2 :</head><label>A2</label><figDesc>The human evaluation results on Last-FM dataset.</figDesc><table><row><cell cols="4">ECF TagCluster K-means Random</cell></row><row><cell>RankOfTask(1) 1.73</cell><cell>2</cell><cell>2.73</cell><cell>3.63</cell></row><row><cell>RankOfTask(2) 1.3</cell><cell>2.5</cell><cell>2.23</cell><cell>3.93</cell></row></table><note>A.7 Ablation Study w.r.t. 𝜆</note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">The codes are available at https://github.com/zealscott/ECF.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">https://www.xbox.com/en-US/xbox-game-pass</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head><p>This work was supported in part by the NSFC under Grants No. (62025206, 61972338, and 62102351), and the Ningbo Science and</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Explainable matrix factorization for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="5" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">Mohamed</forename><forename type="middle">Ishmael</forename><surname>Belghazi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aristide</forename><surname>Baratin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sai</forename><surname>Rajeshwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sherjil</forename><surname>Ozair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aaron</forename><surname>Courville</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Devon</forename><surname>Hjelm</surname></persName>
+		</author>
+		<title level="m">Mutual information neural estimation. In ICML</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="531" to="540" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Neural attentional rating regression with review-level explanations</title>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1583" to="1592" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Personalized Fashion Recommendation with Visual Explanations Based on Multimodal Attention Network: Towards Visually Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="765" to="774" />
+		</imprint>
+	</monogr>
+	<note>Yixin Cao, Zheng Qin, and Hongyuan Zha</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Aspectaware latent factor model: Rating prediction with ratings and reviews</title>
+		<author>
+			<persName><forename type="first">Zhiyong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohan</forename><surname>Kankanhalli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A large scale benchmark for uplift modeling</title>
+		<author>
+			<persName><forename type="first">Eustache</forename><surname>Diemert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Artem</forename><surname>Betlei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christophe</forename><surname>Renaudin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Massih-Reza</forename><surname>Amini</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">HAKG: Hierarchy-Aware Knowledge Gated Network for Recommendation</title>
+		<author>
+			<persName><forename type="first">Yuntao</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinjun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baihua</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunjun</forename><surname>Gao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1390" to="1400" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">RecoNet: An Interpretable Neural Architecture for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Fusco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michalis</forename><surname>Vlachos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vasileios</forename><surname>Vasileiadis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kathrin</forename><surname>Wardatzky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Johannes</forename><surname>Schneider</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="2343" to="2349" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Path Language Modeling over Knowledge Graphsfor Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juntao</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerard</forename><forename type="middle">De</forename><surname>Melo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="946" to="955" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">TriRank: Review-Aware Explainable Recommendation by Modeling Aspects</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min-Yen</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1661" to="1670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kuan</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongdong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<title level="m">Neural collaborative filtering. In WWW</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Customer churn prediction in telecommunications</title>
+		<author>
+			<persName><forename type="first">Bingquan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohand</forename><surname>Tahar Kechadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Buckley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="1414" to="1425" />
+			<date type="published" when="2012">2012. 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Music personalization at Spotify</title>
+		<author>
+			<persName><forename type="first">Kurt</forename><surname>Jacobson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vidhya</forename><surname>Murali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edward</forename><surname>Newett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Whitman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Romain</forename><surname>Yon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="373" to="373" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Categorical reparameterization with gumbel-softmax</title>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Jang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shixiang</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ben</forename><surname>Poole</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>In ICLR</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Adam: A method for stochastic optimization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Diederik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ba</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+	<note>In ICLR</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Factorization meets the neighborhood: a multifaceted collaborative filtering model</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="426" to="434" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Real-time attention based look-alike model for recommender system</title>
+		<author>
+			<persName><forename type="first">Yudan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaikai</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leyu</forename><surname>Lin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="2765" to="2773" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Hi-Fi Ark: Deep User Representation via High-Fidelity Archive Network</title>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Xing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fangzhao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingxiao</forename><surname>An</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="3059" to="3065" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">A sub-linear, massivescale look-alike audience extension system a massive-scale look-alike audience extension</title>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Musen</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhen</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Datong</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Workshop on Big Data, Streams and Heterogeneous Source Mining: Algorithms, Systems, Programming Models and Applications</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="51" to="67" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">UltraGCN: ultra simplification of graph convolutional networks for recommendation</title>
+		<author>
+			<persName><forename type="first">Kelong</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jieming</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xi</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Biao</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaowei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiuqiang</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1253" to="1262" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation via Interpretable Feature Mapping and Evaluation of Explainability</title>
+		<author>
+			<persName><forename type="first">Xiangrui</forename><surname>Deng Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongxiao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2690" to="2696" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Explanation mining: Post hoc interpretability of latent factor models for recommendation systems</title>
+		<author>
+			<persName><forename type="first">Georgina</forename><surname>Peake</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="2060" to="2069" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Audience Selection for On-Line Brand Advertising: Privacy-Friendly Social Network Targeting</title>
+		<author>
+			<persName><forename type="first">Foster</forename><surname>Provost</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Dalessandro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rod</forename><surname>Hook</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan</forename><surname>Murray</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="707" to="716" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">BPR: Bayesian Personalized Ranking from Implicit Feedback</title>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeno</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lars</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">UAI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Silhouettes: A graphical aid to the interpretation and validation of cluster analysis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rousseeuw</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0377-0427(87)90125-7</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">J. Comput. Appl. Math</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="53" to="65" />
+			<date type="published" when="1987">1987. 1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">Badrul</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="285" to="295" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Measuring and testing dependence by correlation of distances</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gábor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">L</forename><surname>Székely</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rizzo</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Bakirov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The annals of statistics</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="2769" to="2794" />
+			<date type="published" when="2007">2007. 2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Rating-boosted latent topics: Understanding users and items with ratings and reviews</title>
+		<author>
+			<persName><forename type="first">Yunzhi</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="2640" to="2646" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Learning to Rank Audience for Behavioral Targeting in Display Ads</title>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ning</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yelong</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaodan</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuicheng</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="605" to="610" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: explaining recommendations using tags</title>
+		<author>
+			<persName><forename type="first">Jesse</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shilad</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IUI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="47" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation via multi-task learning in opinionated text data</title>
+		<author>
+			<persName><forename type="first">Nan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongning</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiling</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="165" to="174" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">TEM: Tree-enhanced embedding model for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1543" to="1552" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<title level="m" type="main">Learning intents behind interactions with knowledge graph for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tinglin</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dingxian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yancheng</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenguang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="878" to="887" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Explainable reasoning over knowledge graphs for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dingxian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Canran</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="5329" to="5336" />
+		</imprint>
+	</monogr>
+	<note>Xiangnan He, Yixin Cao, and Tat-Seng Chua</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Collaborative denoising auto-encoders for top-n recommender systems</title>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Dubois</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alice</forename><forename type="middle">X</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ester</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="153" to="162" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Flame: A probabilistic model combining aspect based opinion mining and collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ester</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="199" to="208" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<monogr>
+		<author>
+			<persName><forename type="first">Peitian</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.04406</idno>
+		<title level="m">GateFormer: Speeding Up News Feed Recommendation with Input Gated Transformers</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation: A Survey and New Perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Found. Trends Inf. Retr</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

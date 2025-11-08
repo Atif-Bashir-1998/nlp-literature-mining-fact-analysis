@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Chat-REC: Towards Interactive and Explainable LLMs-Augmented Recommender System</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-04-04">4 Apr 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yunfan</forename><surname>Gao</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Shanghai Key Laboratory of Data Science</orgName>
+								<orgName type="department" key="dep2">School of Computer Science</orgName>
+								<orgName type="institution">Fudan University</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Tao</forename><surname>Sheng</surname></persName>
+							<email>tsheng16@fudan.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Shanghai Key Laboratory of Data Science</orgName>
+								<orgName type="department" key="dep2">School of Computer Science</orgName>
+								<orgName type="institution">Fudan University</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Youlin</forename><surname>Xiang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Shanghai Key Laboratory of Data Science</orgName>
+								<orgName type="department" key="dep2">School of Computer Science</orgName>
+								<orgName type="institution">Fudan University</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yun</forename><surname>Xiong</surname></persName>
+							<email>yunx@fudan.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Shanghai Key Laboratory of Data Science</orgName>
+								<orgName type="department" key="dep2">School of Computer Science</orgName>
+								<orgName type="institution">Fudan University</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Haofen</forename><surname>Wang</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">College of Design and Innovation</orgName>
+								<orgName type="institution">Tongji University</orgName>
+								<address>
+									<settlement>Shanghai</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jiawei</forename><surname>Zhang</surname></persName>
+							<email>jiawei@ifmlab.org</email>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="laboratory">IFM Lab</orgName>
+								<orgName type="institution">University of California</orgName>
+								<address>
+									<settlement>Davis</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Chat-REC: Towards Interactive and Explainable LLMs-Augmented Recommender System</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-04-04">4 Apr 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">6F79A476C8E52EEDAF1F223C30D23733</idno>
+					<idno type="arXiv">arXiv:2303.14524v2[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>LLMs</term>
+					<term>Recommender System</term>
+					<term>Prompt Engineering</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Large language models (LLMs) have demonstrated their significant potential to be applied for addressing various application tasks. However, traditional recommender systems continue to face great challenges such as poor interactivity and explainability, which actually also hinder their broad deployment in real-world systems. To address these limitations, this paper proposes a novel paradigm called Chat-Rec (Chat-GPT Augmented Recommender System) that innovatively augments LLMs for building conversational recommender systems by converting user profiles and historical interactions into prompts. Chat-Rec is demonstrated to be effective in learning user preferences and establishing connections between users and products through in-context learning, which also makes the recommendation process more interactive and explainable. What's more, within the Chat-Rec framework, user's preferences can transfer to different products for cross-domain recommendations, and prompt-based injection of information into LLMs can also handle the cold-start scenarios with new items. In our experiments, Chat-Rec effectively improve the results of top-k recommendations and performs better in zero-shot rating prediction task. Chat-Rec offers a novel approach to improving recommender systems and presents new practical scenarios for the implementation of AIGC (AI generated content) in recommender system studies.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>With the scaling of model and corpus size, LLMs (Large Language Models) have shown remarkable capabilities, such as complex inference, knowledge infer-ence, and external robustness <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b5">6]</ref>. These capabilities, referred to as Emergent Abilities, only become apparent after reaching a specific threshold of model parameters <ref type="bibr" target="#b19">[20]</ref>. The emergence of LLMs has brought about a paradigm shift in research. Previously, applying models to downstream tasks typically involved adjusting model parameters through backpropagation. However, the latest development of LLMs <ref type="bibr" target="#b17">[18]</ref> has enabled both researchers and practitioners to facilitate learning during the forward process by constructing prompts, namely In-Context Learning (ICL) <ref type="bibr" target="#b0">[1]</ref>. In addition, the adoption of techniques such as Chain-of-Thought <ref type="bibr" target="#b20">[21]</ref> and Instruct Learning <ref type="bibr" target="#b18">[19]</ref> has further harnessed the reasoning capabilities and task generalization abilities of LLMs, thereby promoting their application across various domains.</p><p>In the era of big data, manual information searching has become infeasible and recommender systems have been widely deployed for automatically inferring people's preference and providing high-quality recommendation services. However, due to the great limitations and drawbacks in both model design and data distribution biases, most existing recommender systems still have great performance in their real-world deployment. One of the primary constraints is their poor interactivity, explainability, and lack of feedback mechanisms. Another limitation is the cold start problem, which makes it difficult to provide accurate recommendations for both new items and new users. Lastly, current recommender systems face challenges in making recommendations across multiple domains <ref type="bibr" target="#b25">[26]</ref>. In many recommendation tasks, in order to obtain the required background or general knowledge, an external library or knowledge graph needs to be set up for retrieval <ref type="bibr" target="#b21">[22]</ref> or multi-task learning needs to be trained on augmented data <ref type="bibr" target="#b7">[8]</ref>. LLMs offer a promising solution to these challenges. They can generate more natural and explainable recommendations, solve the cold start problem, and make cross-domain recommendations. Additionally, LLMs have stronger interactivity and feedback mechanisms, which enhance the overall user experience. By leveraging internal knowledge, LLMs can improve the performance of recommender systems without relying on external retrievers <ref type="bibr" target="#b22">[23]</ref>.</p><p>Applying LLMs for addressing the recommendation tasks has received several preliminary research experimental trials already <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b24">25]</ref>. Recommender system tasks are formulated as prompt-based natural language tasks, where user-item information and corresponding features are integrated with personalized prompt templates as model inputs. However, in the current research, LLMs are still involved in training as part of the model.</p><p>In this paper, we introduce a novel approach to learning conversational recommender systems augmented by LLMs, which possess both interactive and explainable capabilities. We present a paradigm called Chat-Rec (ChatGPT Augmented Recommender System) that does not require training and instead relies solely on in-context learning, resulting in more efficient and effective outcomes. With LLM-enhanced recommender system, it is beneficial to learn users' preferences during the conversation. After each step of the conversation, the user's preferences can be further drilled down to update the candidate recommendation results. In addition, users' preferences between products are linked, allowing for better cross-domain product recommendations. We conducted recommendation and rating tests on real-world datasets and experimental results show that Chat-Rec achieves significant improvements. Chat-Rec sheds light on a promising technical route for the application of conversation AI such as ChatGPT in multiple recommendation scenarios.</p><p>Our contributions are summarized as follows:</p><p>-We introduce a novel and effective paradigm called Chat-Rec, which combines traditional recommender systems with LLMs through prompts, leveraging LLMs' ability to learn from context. -Chat-Rec employs LLMs as a recommender system interface, enabling multi-round recommendations, enhancing interactivity and explainability. -We evaluate our method on real-world datasets for top-k recommendation and rating prediction tasks and experiments demonstrate the effectiveness of Chat-Rec.</p><p>2 Related Work</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Augmented Language Models</head><p>Augmented Language Models (ALMs) are a new research direction that aims to overcome the limitations of traditional Language Models (LMs) <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b0">1,</ref><ref type="bibr" target="#b3">4]</ref> by equipping them with reasoning skills and the ability to use external tools, which has served millions of users, such as the coding assistant Copilot <ref type="bibr" target="#b1">[2]</ref>, or more recently ChatGPT based on GPT3.5 and GPT4 4 . Reasoning is defined as breaking down complex tasks into simpler subtasks that the LM can solve more easily by itself or with the help of tools <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b12">13]</ref>, while tools are external modules that the LM can call to augment its context. ALMs can use these augmentations separately or in combination to expand their context processing ability and outperform most regular LMs on several benchmarks. ALMs can learn to reason, use tools, and even act, while still performing standard natural language tasks. This new research direction has the potential to address common limitations of traditional LMs such as interpretability, consistency, and scalability issues. By jointly discussing reasoning and tools, and tools and actions, ALMs can solve a broad range of complex tasks without heuristics, thus offering better generalization capabilities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">NLP for Recommendation</head><p>The field of recommender systems has had a long-standing relationship with natural language processing (NLP) techniques, especially when pre-trained language models (PLMs) comes out, which improve the performance of recommender systems and explainability <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b10">11]</ref>. PLMs are language models that have learned universal representations on large corpora in a self-supervised manner, and the learned representations can be beneficial to a series of downstream NLP tasks.</p><p>In the recommendation domain, PLMs can help alleviate the data sparsity issue, which is a major performance bottleneck of current deep recommendation models. By extracting and transferring knowledge from pre-trained models learned by different PLM-related training paradigms, researchers aim to improve recommendation performance from various perspectives, such as generality, sparsity, efficiency, and effectiveness. In this vibrant field, there are open issues and future research directions that need to be explored, including the connection between PLM-based training paradigms and different input data types for recommender systems. Overall, adapting language modelling paradigms for recommendation is seen as a promising direction in both academia and industry.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Cold-start Recommendation</head><p>Cold start recommendation is a problem that arises in recommender systems when users or items have no prior interaction records with the system. This means that there is no data available for the system to make personalized recommendations. To address this issue, solutions have been proposed that either learn to model content features <ref type="bibr" target="#b15">[16]</ref> or transfer representations from auxiliary domains <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b25">26]</ref>. The former approach focuses on learning about the characteristics of the items or users based on their content, such as text, images, or metadata.</p><p>The latter approach involves leveraging information from other domains, such as social networks or product descriptions, to infer user preferences. Additionally, there are approaches that aim to quickly adapt to new domains instead of only providing recommendations for cold-start cases. A good generalization ability of recommendation models on startup cases is essential to ensure a better user experience and increased engagement. In our work, we use the reasoning and background knowledge of LLMs to enhance the performance of recommender systems for cold start scenarios.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Method</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Bridge Recommender Systems and LLMs</head><p>Recommender systems are designed to suggest items to users based on their preferences and behavior. Traditionally, these systems have relied on user data such as clickstream and purchase history to make recommendations. However, NLP techniques have proven to be valuable in expanding the scope of recommender systems beyond traditional user data. NLP techniques can be used to analyze user-generated content such as reviews and social media posts to gain insights into user preferences and interests. LLMs can also be used to generate natural language responses to user queries, improving the overall user experience and engagement.</p><p>To bridge recommender systems and LLMs, we propose an enhanced recommender system module based on ChatGPT, a large language model trained by OpenAI. As the Fig. <ref type="figure" target="#fig_0">1</ref> shows, the module takes as input user-item history interactions, user profile, user query Q i , and history of dialogue H &lt;i (if available, and the notation &lt;i denotes the dialogue history prior to the current query), and interfaces with any recommender system R. If the task is determined to be a recommendation task, the module uses R to generate a candidate set of items. Otherwise, it directly outputs a response to the user, such as an explanation of a generation task or a request for item details.</p><p>The prompt constructor module in the enhanced recommender system takes multiple inputs to generate a natural language paragraph that captures the user's query and recommendation information. The inputs are as follows:</p><p>-User-item history interactions, which refers to the user's past interactions with items, such as items they have clicked, purchased, or rated. This information is used to understand the user's preferences and to personalize the recommendation. -User profile, which contains demographic and preference information about the user. This may include age, gender, location, and interests. The user profile helps the system understand the user's characteristics and preferences. -User query Q i , which is the user's specific request for information or recommendation. This may include a specific item or genre they are interested in, or a more general request for recommendations in a particular category. -History of dialogue H &lt;i , which contains the previous conversation between the user and the system. This information is used to understand the context of the user's query and to provide a more personalized and relevant response.</p><p>As shown in Fig. <ref type="figure" target="#fig_1">2</ref>, the Chat-Rec framework proposed in this paper empower recommender systems with the conversational interface, which makes the interactive and explainable recommendation possible. Formally, based on the aforementioned inputs, the prompt constructor module generates a natural language paragraph that summarizes the user's query and recommendation information, and provides a more personalized and relevant response to the user's request. The intermediate answer generated by the recommender system is then used to refine the prompt constructor and generate an optimized prompt to further compress and refine the candidate set. The resulting recommendation and a brief explanation are output to the user.</p><p>For example, in the first round of Q&amp;A, the user requests action movies. The system determines that a recommendation task is needed, and executes the Recommendate Action Movies module using the input information. The intermediate answer A 1 contains the top-20 results, which are then reranked and adjusted in the second module using the input information to generate the final output of the top-5 results.</p><p>In the second round of Q&amp;A, the user asks why the movie "Fargo" was recommended. The system determines that no recommendation task is needed and instead executes the explanation for the recommendation module, using the movie title, history interaction, and user profile as inputs. The answer A 2 is then generated, which provides a brief explanation of the recommendation, including information about the user's general interests and the specific characteristics of the movie that may be appealing to the user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Recommendation Based on Candidate Set Compression</head><p>Traditional recommender systems typically generate a small number of sorted candidate products, each with a score that reflects the system's recommendation confidence or result quality. However, considering the huge size of the product set, the performance obtained by most existing recommender systems are all way far from satisfactory, which still have a very large room for improvement.</p><p>This article proposes a method of using LLMs to improve the performance of recommender systems by narrowing down the candidate set. The recommender system generates a large set of candidate items, which can be overwhelming for the user. LLMs play several different critical roles in narrowing down the product candidate set within the system. Firstly, we convert users' profiles and historical interactions into prompts, including the item description and user rating. Secondly, LLMs are asked to summarize user preferences for items in a domain based on the above information. LLMs can learn from context and effectively capture users' background information and preferences. With this information, they can establish the relationship between product attributes and user preferences, enabling them to make better product recommendations. By utilizing in-context learning, LLMs can enhance their recommendation reasoning ability, resulting in more accurate and personalized product recommendations.</p><p>Once the LLMs have learned the user's preferences, the candidate set generated by the recommender system is provided to the LLMs. The LLMs can further filter and sort the candidate set based on the user's preferences. This approach ensures that the user is presented with a smaller, more relevant set of items, increasing the likelihood that they will find something they like. Where the user profile and historical users are converted into corresponding prompts for personalized recommendations, but the input of this part of the prompts is not visible to the user. The dialogue on the left shows that when a user asks why the movie was recommended, LLM can give an explanation based on the user's preferences and specific information about the recommended movie. The dialog on the right shows that Chat-Rec can make multiple rounds of recommendations based on user feedback. Questions about the details of the movie can also be answered in a specific way. LLM also takes into account ethical and moral issues when recommending movies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Cold-start Recommendations</head><p>With the textual description and profile information about the products, regardless the new products or the old ones, LLMs can effectively relate such products with each other, which provides us with the opportunity for solving the persistent cold-start recommendation problem once and for all.</p><p>For example, if a user asks for recommendations for a new movie that was released in 2021, the recommender system could use text data about the movie to generate an embedding and then calculate similarities to other movies in the system to make recommendations. This capability allows recommender systems to make relevant and accurate recommendations for new items, improving the overall user experience.</p><p>Large language models can use the vast amount of knowledge they contain to help recommender systems alleviate the cold-start problem of new items, i.e., recommending items that lack a large number of user interactions. However, since the knowledge held by ChatGPT is limited to September 2021, ChatGPT does not cope well when encountering unknown items, such as a user requesting to recommend some new movies released in 2023 or content related to a movie that ChatGPT is not aware of, as shown in the top part of Fig. <ref type="figure" target="#fig_2">3</ref>. To address this issue, we introduce external information about new items, utilizing large language models to generate corresponding embedding representations and cache them. When encountering new item recommendations, we calculate the similarity between item embeddings and embeddings of user requests and preferences, then retrieve the most relevant item information based on the similarity and construct a prompt to input to ChatGPT for recommendation, as illustrated in the lower half of Fig. <ref type="figure" target="#fig_2">3</ref>. This approach allows the recommender system to work in conjunction with ChatGPT to better recommend new items, thus enhancing the user experience.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Cross-Domain Recommendations</head><p>The LLMs-augmented recommender system introduced above can be used to address several challenging tasks, that are hard or even impossible to be addressed with conventional recommender systems, such as cross-domain recommendation <ref type="bibr" target="#b25">[26]</ref> and cold-start recommendation <ref type="bibr" target="#b16">[17]</ref>. In this part, we will first talk about how to use the LLMs-augmented recommender system for the cross-domain recommendation.</p><p>LLMs pre-trained with information across the Internet actually can serve as the multi-perspective knowledge base <ref type="bibr" target="#b13">[14]</ref>. Besides the target product in one domain, such as movies, the LLMs not only has a broad knowledge about products many other domains, like music and books, but also understands the relations among the products across the domains mentioned above.</p><p>For example, as illustrated in Fig. <ref type="figure" target="#fig_3">4</ref>, once the conversation regarding movie recommendations is finished, the user inquires LLM for suggestions on other types of works. LLM then proceeds to recommend a variety of options, such as  books, TV series, podcasts, and video games, based on the user's movie preferences. This demonstrates LLM's ability to transfer the user's preferences from movies to other items, resulting in cross-domain recommendations. This crossdomain recommendation capability has the potential to significantly expand the scope and relevance of recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experiment</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Dataset and Experimental Settings</head><p>The dataset used in our experiment is MovieLens 100K, which is a benchmark dataset of a real-world recommender system. It comprises 100,000 movie ratings provided by 943 users on a scale of 1 to 5 across 1,682 movies. Additionally, the dataset contains demographic information about the users, such as age, gender, occupation, and zip code, as well as movie information, such as title, release year, and genres. To create our experimental dataset, we randomly selected 200 users. Table <ref type="table" target="#tab_0">1</ref> provides detailed statistical information about the dataset used in the experiment.</p><p>When evaluating the performance of top-k recommendations, Precision, Recall, and Normalized Discounted Cumulative Gain (NDCG) are used. For rating prediction task, the Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) are employed as evaluation metrics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Baselines</head><p>The baseline methods studied in the experiment include both classic recommender system models and the LLMs-augmented recommender systems proposed in this paper. Detailed information about the comparison methods studied in our experiments are provided as follows:</p><p>-LightFM is a recommendation algorithm that combines collaborative filtering and content-based methods to recommend items to users. -LightGCN is a graph-based collaborative filtering algorithm that uses a simplified graph convolutional network (GCN) to model the user-item interactions in a recommender system. -Item-KNN is a neighborhood-based collaborative filtering algorithm that uses the similarity between items to make recommendations to users. -Matrix Factorization (MF) is a widely used collaborative filtering algorithm that represents users and items as latent factors in a low-dimensional space.</p><p>We select three representative models from the GPT-3 and GPT-3.5 series as LLMs in Chat-Rec:</p><p>-gpt-3.5-turbo is the most capable GPT-3.5 model and optimized for chat.</p><p>-text-davinci-003 can do any language task with better quality, longer output, and consistent instruction-following. -text-davinci-002 is similar to text-davinci-003 but is trained with supervised fine-tuning instead of reinforcement learning.</p><p>The model notations, like Chat-Rec (gpt-3.5-turbo), denote the Chat-Rec framework built by adopting "gpt-3.5-turbo" as the backbone model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Result and Analysis</head><p>Top-5 Recommendation. As presented in Table <ref type="table" target="#tab_1">2</ref>, our proposed Chat-Rec framework has demonstrated effective improvement of traditional recommender systems in the top-k recommendation task. The NDCG scores of all three GPT-3.5 models surpassed that of LightGCN, with text-davinci-003 delivering the best result and demonstrating strong contextual learning abilities. Specifically, the precision score of 0.3240 is 6.93% higher than that of LightGCN, while NDCG score of 0.3802 is 11.01% higher. However, the recall rate of 0.1404 is slightly lower than that of LightGCN by 3.51%. It is noteworthy that the performance of gpt-3.5-turbo was slightly weaker than that of text-davinci-002. LightGCN is not well-suited for rating prediction tasks, it was excluded from our experimental range. Among the three GPT-3.5 models tested, text-davinci-003 achieved the best result, with an RMSE of 0.785, which is 15.86% higher than that of Item-KNN, and an MAE of 0.593, which is 19.21% higher. Textdavinci-002 came in second place. However, the performance of gpt-3.5-turbo was slightly weaker than that of Item-KNN. The experimental results reveal that even without relying on recommender systems, LLMs can achieve better results in predicting user preferences for specific movies. The weaker performance of gpt-3.5-turbo is due to the model's emphasis on the ability of human-computer dialogue and its trade-off of the in-context learning abilitys, which is consistent with other research conclusions. Additionally, it also can be concluded that the performance of gpt-3.5-turbo in numerical prediction tasks is weaker than that of text-davinci-003 and text-davinci-002. During experiment, we discovered that Chat-Rec's most important ability is to optimize the refined candidate set of the recommender system, meaning to resort the movies that the user may like but were placed further down in the recommender system's candidate set. This requires the application of LLMs' knowledge of movies, understanding of user preferences, and the ability to reason about the matching relationship between the two. To confirm this finding, we conducted separate empirical studies and asked LLMs again, in the same conversation, about movies that appeared in the recommender system's top 5 but did not appear in LLMs' top 5. LLMs' feedback revealed that it is unlikely that the user would like the movie or it is difficult to determine whether the user would like it, with clear reasons given. The inconsistent shows that Chat-Rec's recommendations are entirely based on an understanding of user preferences and movie information.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Ablation Study</head><p>In this study, we select the text-davinci-003 model, which achieved the best results in both top-k recommendation and rating prediction, to investigate the impact of different prompts and temperatures on the model's performance. The result is shown in Fig. <ref type="figure" target="#fig_4">5</ref>. In the context of this study, "w/random" refers to the random shuffling of the 20 candidate sets generated by the recommender system before being provided to LLM as the candidate set prompt input, while "w/top1" indicates that the top 1 recommendation is not given as the initial background knowledge when constructing the prompt, but instead directly asks LLM to select 5 movies from the candidate set. The temperature parameter affects the answer generated by LLM, with lower temperatures indicating more certain answers, and higher for more random answers. All experiments, except for the experiment with a temperature of 0, used the average of 5 tests.</p><p>The results demonstrate that the effect slightly decreased after the order of the candidate set was shuffled. For example, when the temperature is 0.9, the NDCG of text-davinci-003 decreased from 0.3802 to 0.3653, representing a decrease of 3.92%. The effect of Chat-Rec decreased significantly when the recommender system's top 1 was missing in the prompt. For instance, when the temperature is 0.9, the NDCG of text-davinci-003 decreased from 0.3802 to 0.3055, which is a decrease of 19.65%. This trend was observed at different temperatures, and the experiment showed that the best results could be achieved when the temperature was 0.9.</p><p>It is worth noting that the existence of the recommender system was not explicitly mentioned in Chat-Rec's prompt, and the function of the recommender system was merely to provide a candidate set. However, the design of the candidate set can significantly impact Chat-Rec's performance. Our experiment revealed that Chat-Rec's prompt design can effectively inject the recommender system's knowledge implicitly into LLMs. This implicit knowledge is reflected in the ranking of movies in the candidate set, and the use of Top1 as the background can further strengthen this information. This implicit knowledge can be captured by LLMs in in-context learning and can enhance the recommendation performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Conclusion</head><p>In this paper, we present Chat-Rec which bridges recommender system and LLMs by converting user information and user-item interactions to prompt. We evaluated our approach in the task of top-k recommendation and zeroshot movie rating prediction. In conclusion, LLMs offer significant potential for enhancing recommender systems by improving interactivity explainability and cross-domain recommendation. In addition, prompt plays an important role, and experiments prove that implicitly expressing the knowledge in the recommender system in prompt can effectively improve the recommendation effect.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Implementation Details</head><p>A.1 Prompts Below, we list the prompts used in top-k recommendation and zero-shot movie rating tasks.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Example Answers</head><p>In fact, the LLMs do not always output answers in the format we expect every time, especially at higher temperatures. In table 4, we give some failed cases while invoking LLMs' API to generate answers. During the experiment, output that does not match the format is automatically retried. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 :</head><label>1</label><figDesc>Fig. 1: Overview of Chat-Rec. The left side shows a dialogue between a user and ChatGPT. The middle side shows the flowchart to how Chat-Rec links traditional recommender systems with conversational AI such as ChatGPT. The right side describes the specific judgment in the process.</figDesc><graphic coords="5,133.04,115.84,349.28,155.69" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 :</head><label>2</label><figDesc>Fig. 2: Case study of interactive recommendation. It shows two conversations between different users and LLM .Where the user profile and historical users are converted into corresponding prompts for personalized recommendations, but the input of this part of the prompts is not visible to the user. The dialogue on the left shows that when a user asks why the movie was recommended, LLM can give an explanation based on the user's preferences and specific information about the recommended movie. The dialog on the right shows that Chat-Rec can make multiple rounds of recommendations based on user feedback. Questions about the details of the movie can also be answered in a specific way. LLM also takes into account ethical and moral issues when recommending movies.</figDesc><graphic coords="7,100.18,115.83,414.99,489.85" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3 :</head><label>3</label><figDesc>Fig. 3: Case Study of New Item Recommendation. The top shows that ChatGPT is unable to recommend new items beyond the timeframe of its training data. The middle part demonstrates the process of how to utilize external information about new items to enable ChatGPT to handle recommendations for new items. The bottom shows that ChatGPT can effectively handle recommendations for new items after incorporating external information.</figDesc><graphic coords="9,134.77,115.84,345.82,481.15" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4 :</head><label>4</label><figDesc>Fig.4: Case study of cross-domain recommendation. After the conversation about the movie's recommendation is completed. The user asks LLM to recommend works other than movies. It can be seen that LLM recommends different types of works, including books, TV series Podcasts and video games, according to the user's movie preferences. This shows that LLM can migrate the user's movie preferences to items and thus achieve cross-domain recommendations.</figDesc><graphic coords="10,134.77,115.84,345.84,197.07" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 5 :</head><label>5</label><figDesc>Fig. 5: Performance on different prompt and temperature.</figDesc><graphic coords="13,100.19,251.82,138.33,92.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 6 :</head><label>6</label><figDesc>Fig. 6: Prompt for top-k recommendation task.</figDesc><graphic coords="16,134.77,199.48,345.82,160.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 7 :</head><label>7</label><figDesc>Fig. 7: Prompt for moving rating task.</figDesc><graphic coords="16,134.77,404.14,345.83,161.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Details of the dataset used for evaluation.</figDesc><table><row><cell>Dataset</cell><cell cols="4">Users Items Ratings Rating Scale Density</cell></row><row><cell>MovieLens 100K</cell><cell>943</cell><cell>1,682 100,000</cell><cell>[1-5]</cell><cell>6.304%</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Results of top-5 recommendation.Rating Prediction As illustrated in the Table3, Chat-Rec outperforms traditional recommender systems in predicting movie ratings. The experimental results demonstrate that LLMs can effectively learn user preferences from user portraits and historical interactions through in-context learning, without any explicit training, and accurately predict user ratings for candidate movies. Since</figDesc><table><row><cell>Models</cell><cell>Precision</cell><cell>Recall</cell><cell>NDCG</cell></row><row><cell>LightFM</cell><cell>0.2830</cell><cell>0.1410</cell><cell>0.2846</cell></row><row><cell>LightGCN</cell><cell>0.3030</cell><cell>0.1455</cell><cell>0.3425</cell></row><row><cell>Chat-Rec (gpt-3.5-turbo)</cell><cell>0.3103</cell><cell>0.1279</cell><cell>0.3696</cell></row><row><cell cols="4">Chat-Rec (text-davinci-003) 0.3240 (+6.93%) 0.1404 (-3.51%) 0.3802 (+11.01%)</cell></row><row><cell>Chat-Rec (text-davinci-002)</cell><cell>0.3031</cell><cell>0.1240</cell><cell>0.3629</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Results of movie rating prediction.</figDesc><table><row><cell>Models</cell><cell>RMSE</cell><cell>MAE</cell></row><row><cell>MF</cell><cell>0.988</cell><cell>0.771</cell></row><row><cell>Item-KNN</cell><cell>0.933</cell><cell>0.734</cell></row><row><cell>Chat-Rec (gpt-3.5-turbo)</cell><cell>0.969</cell><cell>0.756</cell></row><row><cell>Chat-Rec (text-davinci-003)</cell><cell>0.785</cell><cell>0.593</cell></row><row><cell>Chat-Rec (text-davinci-002)</cell><cell>0.8309</cell><cell>0.6215</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 :</head><label>4</label><figDesc>Some cases and explanations that failed to generate canonical answers The current list is: 1.The Shawshank Redemption (1994) (It should be "Shawshank Redemption, The(1994)") 2.A Fish Called Wanda (1988) (It should be "Fish Called Wanda, A (1988)") ... Failure to output film names in accordance with film industry norms. such as "A" and "The" are not in the right place. ... The current list is: 1.Toy Story (1995) 2.Groundhog Day (1993) 3.Star Trek: The Wrath of Khan (1982) 4.Fargo (1996) Sometimes it can't output a sufficient number of movies. In this case, it only output 4 movies while sometimes may output 19 movies. ... The current list is: a:Star Wars (1977) a:Raiders of the Lost Ark (1981) n:Back to the Future (1985) m:Fargo (1996) ...</figDesc><table><row><cell>Example</cell><cell>Explanation</cell><cell>Correct</cell></row><row><cell>...</cell><cell>The output conforms to the</cell><cell></cell></row><row><cell>The current list is: 1.Toy Story (1995)</cell><cell>formatting requirements</cell><cell></cell></row><row><cell>2.Fargo (1996) 3.Die Hard (1988) 4.Fish</cell><cell></cell><cell></cell></row><row><cell>Called Wanda, A (1988) 5. Wrong</cell><cell></cell><cell></cell></row><row><cell>Trousers, The (1993)</cell><cell></cell><cell></cell></row><row><cell>...</cell><cell></cell><cell></cell></row><row><cell></cell><cell>Sometimes the id infor-</cell><cell></cell></row><row><cell></cell><cell>mation is lost when LLM</cell><cell></cell></row><row><cell></cell><cell>is asked to output movies</cell><cell></cell></row><row><cell></cell><cell>in the following format</cell><cell></cell></row><row><cell></cell><cell>[id]:[name].</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">https://openai.com/blog/chatgpt/</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Language models are few-shot learners</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Mann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ryder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Subbiah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Kaplan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dhariwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Neelakantan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Shyam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Sastry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Askell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="1877" to="1901" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tworek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">P D O</forename><surname>Pinto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kaplan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Edwards</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Burda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Joseph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Brockman</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2107.03374</idno>
+		<title level="m">Evaluating large language models trained on code</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Personalized fashion recommendation with visual explanations based on multimodal attention network: Towards visually explainable recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zha</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="765" to="774" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Chowdhery</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Devlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mishra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Barham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">W</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sutton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gehrmann</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.02311</idno>
+		<title level="m">Palm: Scaling language modeling with pathways</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Devlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">W</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Toutanova</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1810.04805</idno>
+		<title level="m">Bert: Pre-training of deep bidirectional transformers for language understanding</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">How does gpt obtain its ability? tracing emergent abilities of language models to their sources. Yao Fu&apos;s Notion</title>
+		<author>
+			<persName><forename type="first">Yao;</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Khot</surname></persName>
+		</author>
+		<idno>https://yaofu</idno>
+	</analytic>
+	<monogr>
+		<title level="s">notion.site/ How-does-GPT-Obtain-its-Ability-Tracing-Emergent-Abilities-of-Language-Models-to-their-Sources-b9</title>
+		<imprint>
+			<date type="published" when="2022-12">Dec 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Recommendation as language processing (rlp): A unified pretrain, personalized prompt &amp; predict paradigm (p5)</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th ACM Conference on Recommender Systems</title>
+				<meeting>the 16th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="299" to="315" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<author>
+			<persName><forename type="first">D</forename><surname>Khashabi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Min</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Khot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sabharwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Tafjord</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Clark</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hajishirzi</surname></persName>
+		</author>
+		<title level="m">Unifiedqa: Crossing format boundaries with a single qa system</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A path towards autonomous machine intelligence version 0</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Open Review</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="2022" to="2026" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Generate neural template explanations for recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 29th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="755" to="764" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2105.11601</idno>
+		<title level="m">Personalized transformer for explainable recommendation</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Pre-train, prompt and recommendation: A comprehensive survey of language modelling paradigm adaptations in recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Gulla</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2302.03735</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Parisi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Fiedel</surname></persName>
+		</author>
+		<title level="m">Talm: Tool augmented language models</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Petroni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Rocktäschel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bakhtin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Riedel</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1909.01066</idno>
+		<title level="m">Language models as knowledge bases? arXiv preprint</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Toolformer: Language models can teach themselves to use tools</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Schick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dwivedi-Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dessì</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Raileanu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lomeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zettlemoyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Cancedda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Scialom</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Adaptive feature sampling for recommendation with missing content feature values</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM International Conference on Information and Knowledge Management</title>
+				<meeting>the 28th ACM International Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1451" to="1460" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Lara: Attribute-to-feature adversarial learning for new-item recommendation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Gan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th international conference on web search and data mining</title>
+				<meeting>the 13th international conference on web search and data mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="582" to="590" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><surname>Touvron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lavril</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Izacard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Martinet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Lachaux</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lacroix</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Rozière</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Hambro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Azhar</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2302.13971</idno>
+		<title level="m">Llama: Open and efficient foundation language models</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Finetuned language models are zero-shot learners</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Guu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">W</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lester</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Le</surname></persName>
+		</author>
+		<idno>abs/2109.01652</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ArXiv</title>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bommasani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zoph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yogatama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Metzler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">H</forename><surname>Hsin Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hashimoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Vinyals</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dean</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Fedus</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note>Emergent abilities of large language models. ArXiv abs/2206.07682 (2022</note>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">Chain of thought prompting elicits reasoning in large language models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schuurmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">H</forename><surname>Hsin Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhou</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note>ArXiv abs/2201.11903 (2022</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">Fusing context into knowledge graph for commonsense question answering</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Huang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">W</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Iter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sanyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jiang</surname></persName>
+		</author>
+		<title level="m">Generate rather than retrieve: Large language models are strong context generators</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">One person, one model, one world: Learning continual user representation without forgetting</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jose</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="696" to="705" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Shui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Deoras</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<title level="m">Language models as recommender systems: Evaluations and limitations</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Liu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2103.01696</idno>
+		<title level="m">Cross-domain recommendation: challenges, progress, and prospects</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

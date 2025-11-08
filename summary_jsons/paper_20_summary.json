@@ -1,0 +1,55 @@
+{
+  "methods": [
+    "Manually selecting the most suitable process discovery algorithm from a range of options for a given event log is a time-consuming and error-prone task.",
+    "To recommend the most prominent discovery algorithm for event log L, ProReco takes a vector of weights W representing the importance of different measures in addition to L.",
+    "Then, the process might be either \"cancel\" or followed by a delivery procedure.",
+    "In general, the problem of process discovery can be defined as follows: A process discovery algorithm is a function that maps an event log L onto a process model N such that the model N is representative of the behaviors seen in the log L.",
+    "Despite the development of process discovery algorithms, manually finding the most appropriate algorithm is a challenging and error-prone task.",
+    "The choice of the predictor to predict the measure values for each algorithm is of little importance here, as it is flexible to switch among different predictors whenever suitable.",
+    "The procedure is time-consuming and error-prone even for process mining experts, let alone inexperienced users.",
+    "Given an event log and user preferences regarding model quality measures, ProReco recommends the most appropriate process discovery algorithm tailored to the users' needs.",
+    "The structure for an algorithm score predictor is shown in Fig.",
+    "While various process discovery algorithms have been proposed in the last 25 years, there is no consensus on a dominating discovery algorithm.",
+    "The plot begins at the bottom, displaying the expected measure for the selected algorithm.",
+    "This paper proposes ProReco, a Process discovery Recommender system.",
+    "3a, the machine learning predictor consists of a score predictor for each algorithm in the algorithm portfolio, which consists of Alpha Miner, Alpha-Plus Miner, Heuristics Miner, Inductive Miner (classic, infrequent, direct), ILP Miner, and Split Miner.",
+    "Recommendation As a recommender system for process discovery, ProReco recommends the most prominent algorithm for the user according to the predicted weighted sum of the four quality measures discussed in Sec.",
+    "Under such a circumstance, users are left with the task of manually selecting the most prominent process discovery algorithm for the event log at hand.",
+    "In response, this paper introduces ProReco, a process discovery recommender system designed to recommend the most appropriate process discovery algorithm based on user preferences and event log characteristics.",
+    "Due to the vast search space, the challenge is finding an efficient method to determine the best value per technique.",
+    "The scores are then used to rank and recommend the discovery algorithm.",
+    "Process discovery aims to automatically generate process models representing the underlying information system from event logs.",
+    "The measure weights W provided by the user are then used for the final computation of the overall score for a discovery algorithm.",
+    "Selecting the most suitable discovery algorithm remains a challenge due to competing quality measures and diverse user requirements.",
+    "Once the measure weights are submitted, users are redirected to the recommendation page, where a ranking of the algorithm portfolio, the score for each algorithm, and the predicted measure values for each algorithm and measure are available.",
+    "This paper introduces ProReco, a Process discovery Recommender system designed to recommend the most appropriate algorithm based on user preferences and event log characteristics.",
+    "As efficiency is one of the motivations for developing such a recommender system, using features that are expensive to compute does counteract the benefit.",
+    "The weights (within the interval [0,100]) are given by the users and will be used to calculate the final score of the algorithm.",
+    "The higher the score, the better the algorithm adapts to the users' preferences.",
+    "To assist users with identifying the most prominent discovery algorithm, we present ProReco in the next section.",
+    "Event data can be extracted from various sources such as a database, a transaction log, a business suite/ERP system, etc.",
+    "The output of ProReco is a ranking for each discovery algorithm in our portfolio, as well as the corresponding score calculated based on the weighted sum of the quality measures."
+  ],
+  "baselines": [
+    "ProReco incorporates state-of-the-art discovery algorithms, extends the feature pools from previous work, and utilizes eXplainable AI (XAI) techniques to provide explanations for its recommendations.",
+    "Feature Extractor Based on previous work [6,7,8], we extract an initial pool of various features.",
+    "ProReco not only expands the features pool from previous work but also includes state-of-the-art process discovery algorithms.",
+    "A shift to the left indicates a decrease in the measure, while a shift to the right indicates an increase.",
+    "ProReco expands upon previous work by incorporating state-of-the-art algorithms and providing transparent explanations for its recommendations."
+  ],
+  "datasets": [
+    "The input of such methods is a collection of data related to the historical execution of a process, often in the form of discrete events.",
+    "Discovery algorithms read events and their attributes from a dataset (often called an event log), and output a process model, to provide a representation as close as possible to the real process operations.",
+    "An event log can be seen as a collection of cases, whereas a case is a trace/sequence of events."
+  ],
+  "domains": [
+    "To initiate the recommendation, users have to upload an event log (.xes format) as input.",
+    "Users can access the explanations by clicking on \"Explain the Predictions\" on the resulting recommendation page.",
+    "The source code for ProReco can be found on a GitHub repository 4 , which provides detailed instruction for installation.",
+    "Recommendation As a recommender system for process discovery, ProReco recommends the most prominent algorithm for the user according to the predicted weighted sum of the four quality measures discussed in Sec.",
+    "Once the measure weights are submitted, users are redirected to the recommendation page, where a ranking of the algorithm portfolio, the score for each algorithm, and the predicted measure values for each algorithm and measure are available."
+  ],
+  "metrics": [
+    "The Score Predictor consists of individual predictors for each of the four measures (fitness, precision, generalization, and simplicity)."
+  ]
+}

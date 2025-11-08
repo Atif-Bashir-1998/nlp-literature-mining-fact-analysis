@@ -1,0 +1,82 @@
+{
+  "baselines": [
+    "Furthermore, it is worth noticing how convincing the categories are: by looking at the results, if the personalized style exploits categorical features, then it performs very well in terms of persuasiveness if compared to others.",
+    "After several years of research and industrial findings looking after better algorithms to improve accuracy and diversity metrics, explanation services for recommendation are gaining momentum as a tool to provide a human-understandable feedback to results computed, in most of the cases, by black-box machine learning techniques.",
+    "Summing up, from the experimental results, we may argue that the pairwise approach with factual information gets better performance in users' satisfaction, effectiveness and trust, while it outperforms the pointwise one in persuasiveness and transparency when both factual and categorical information are exploited.",
+    "We evaluated the effectiveness of our approach through an A/B testing platform with 892 volunteers and compared its results to two baselines.",
+    "More precisely, we compare how the use of categorical information, factual one or a mixture of them both in building explanations, affect explanatory criteria for a recommender system.",
+    "Online experimental results show that a content based explanation is preferred by users, as it outperforms other baselines in terms of transparency, trust, satisfaction, persuasiveness and effectiveness.",
+    "A possible reason for this behavior is that the probability for a user to know factual data and accepts it as explanation is higher if compared to categorical one."
+  ],
+  "metrics": [
+    "After several years of research and industrial findings looking after better algorithms to improve accuracy and diversity metrics, explanation services for recommendation are gaining momentum as a tool to provide a human-understandable feedback to results computed, in most of the cases, by black-box machine learning techniques.",
+    "While research has mainly focused on improving accuracy metrics in recommenders, under the hood, their algorithms are becoming more and more complex thus making extremely hard to understand the reasons behind model predictions for a particular input."
+  ],
+  "domains": [
+    "Moreover, when users understand how the system works, they can refine their preferences in order to get a better recommendation according to their tastes.",
+    "This lets the user to better understand how her preferences are involved in the recommendation process.",
+    "3 The code implementing SemAuto has been developed by using TensorFlow and is available at https://github.com/sisinflab/SEMAUTO-2.0.",
+    "This continuous loop could pave the way to a new kind of conversational recommender systems in which the user is allowed to explore and move in the feature space by knowing which features relevant to her are involved in the recommendation process.",
+    "Experimental results are validated through an A/B testing platform which uses a recommendation engine based on a Semantics-Aware Autoencoder to build users profiles which are in turn exploited to compute recommendation lists and to provide an explanation.",
+    "Language Processing and, very recently, few attempts have also been made to solve the Recommendation problem.",
+    "Once the recommendation has been generated, the user is asked to rate the suggested items, even if no explanation has been 6 https://grouplens.org/datasets/movielens/20m/ (a) Step 4.",
+    "After several years of research and industrial findings looking after better algorithms to improve accuracy and diversity metrics, explanation services for recommendation are gaining momentum as a tool to provide a human-understandable feedback to results computed, in most of the cases, by black-box machine learning techniques.",
+    "The non-personalized explanation, instead, tries to explain the provided recommendation by using additional information about the suggested items.",
+    "Indeed, it has been proven that showing to users an explanation for the provided recommendation leads to better interaction with the recommender system.",
+    "In particular, given a user u and a recommendation list rec(u) = [⟨i 1 , ru 1 ⟩, .",
+    ", ⟨i n , ru n ⟩], with ru k being a score/rating computed for the item i k by a recommendation engine, we may compute a pointwise and a pairwise personalized explanation.",
+    "The remainder of the paper is structured as follows: in the next section we recap the most prominent works related to the explanation in the recommendation scenario.",
+    "In order to show the difference between a pointwise and a pairwise personalized explanation, hereafter we report the two explanation styles with reference to a recommendation having Terminator 2: Judgment Day and Transformers: Revenge of the fallen as the first two items in the recommendation list.",
+    "Then, she is invited to rate each selected movie on a five-stars rating scale; data so gathered are exploited to get both the user profile computed with the semantic autoencoder and a top-5 recommendation list."
+  ],
+  "methods": [
+    "Moreover, when users understand how the system works, they can refine their preferences in order to get a better recommendation according to their tastes.",
+    "Since we train one autoencoder per user and we want it to overfit on user ratings, we did not use any form of regularization.",
+    "As a matter of fact, the system transparency has the highest values when both semantic and factual properties are exploited; as these values are very close to those achieved by just using factual properties, we can claim that it is the factual information itself that improves the measured performances.",
+    "Analogously, richer items descriptions make more effective the explanation: when the system leverages both categories and factual attributes, the effectiveness achieves its best results.",
+    "transparency I understood the reason why the two movies have been ranked in the proposed order.",
+    "As we train an autoencoder per user, once the model converges, in a semanticsaware autoencoder, for each user we have a latent representation of item's features which, actually, result to be no more latent because every neuron corresponds to an entity in the KG.",
+    "We tested both a pointwise and a pairwise explanation style by exploiting different kinds of information on DBpedia (categorical and factual), in order to investigate how the effectiveness of the proposed explanation changes according to the selected properties.",
+    "As previously said, in the training phase, an autoencoder learns how to reconstruct the input vector (in our case user ratings) using the latent representation encoded in the hidden layer.",
+    "As previously said, in this paper we explore the adoption of a semantic autoencoder to provide an explanation for top-N recommendations.",
+    "This means that each neuron represents an entity in the adopted KG and the edge between two autoencoder nodes exist if the corresponding KG entities are connected with a predicate (labeled edge).",
+    "As a matter of fact, explanations may guarantee users satisfaction, trust, and loyalty in a system.",
+    "It is worth noticing that when categorical features are combined with factual information, they lead to a better persuasiveness, in particular the pairwise approach gets better results than the pointwise one.",
+    "As for RQ2, we can assert that the pairwise approach outperforms the pointwise one in all metrics especially in transparency because it provides a better justification on how the system ranks items according to the importance of the features in the user profile.",
+    "To verify that the explanation generated through a Semantics-Aware Autoencoder is able to satisfy the main explanatory criteria of transparency, persuasiveness, effectiveness, trust and satisfaction, we built a web platform 5 that returns the top-5 recommendations and then asks for users' feedback about the provided explanation.",
+    "Experimental results are validated through an A/B testing platform which uses a recommendation engine based on a Semantics-Aware Autoencoder to build users profiles which are in turn exploited to compute recommendation lists and to provide an explanation.",
+    "Originally developed to cope with the cold start problem, in SemAuto the structure of the DBpedia KG is injected within an Autoencoder Neural Network, whose structure is built by mimicking the existing connections in the KG.",
+    "After training the autoencoder for each user u, we extract the weights of the hidden neurons and use them to build a user profile P(u): P(u) = {⟨f u1 , w u1 ⟩, .",
+    "This trend is already confirmed by the pointwise approach, and the pairwise one gets even higher score with those metrics.",
+    "Then, she is invited to rate each selected movie on a five-stars rating scale; data so gathered are exploited to get both the user profile computed with the semantic autoencoder and a top-5 recommendation list.",
+    "In our implementation, we adopted three different configurations based on a single hidden layer semantics-aware autoencoder (see Figure 2) which exploits one of the following sets of information available in DBpedia: (i) semantic data, or rather categorical attributes of items; (ii) factual data, specific items properties (such as actors and directors in the movie domain); (iii) semantic and factual information, a mixture of the previous ones.",
+    "Very interestingly, a pairwise approach has the same trends for all the evaluation metrics of the pointwise one but it outperforms the latter.",
+    "More precisely, we compare how the use of categorical information, factual one or a mixture of them both in building explanations, affect explanatory criteria for a recommender system.",
+    "In order to evaluate the persuasiveness of the proposed explanation, we asked users to rate each recommended item before and after showing them the explanation: if the rating provided after looking at the explanation is higher than the original one, then the explanation has been able to persuade the user to try the suggested item.",
+    "On the other hand, still considering the pairwise personalized approach, factual properties turn out to be more effective as concerning satisfaction, trust and effectiveness; we suppose that users feel more confident in specific information such as actors or directors rather than just a set of movie categories.",
+    "trust The explanation increased my trust in the system.",
+    "The main research questions we address in this paper are then: RQ1 Can we assume that the information encoded in the hidden layer of the SemAuto autoencoder is representative of user preferences?",
+    "In fact, this has an impact especially for the persuasiveness metric where the pairwise approach has a higher score with respect to the pointwise explanation, thus leading users in consuming an item after they have read the provided explanation.",
+    "Please notice that the considered set of features per item varies according to the different configuration adopted for the SemAuto autoencoder; it may include just item categories, factual data or both of them.",
+    "Summing up, from the experimental results, we may argue that the pairwise approach with factual information gets better performance in users' satisfaction, effectiveness and trust, while it outperforms the pointwise one in persuasiveness and transparency when both factual and categorical information are exploited.",
+    "As a third style we propose our pairwise approach.",
+    "As future work it would be interesting to investigate about the system's scrutability, by allowing users to correct the recommender engine reasoning.",
+    "Indeed, it has been proven that showing to users an explanation for the provided recommendation leads to better interaction with the recommender system.",
+    "As a matter of fact, the personalized approach, which computes the explanation by leveraging users preferences, outperforms all its competitors, even with the pairwise approach.",
+    "Hence, the resulting autoencoder has three layers: input layer, hidden layer and output layer where the input and output layers represent items in the catalog while the middle hidden layer contains their DBpedia categories and/or properties.",
+    "We evaluated the effectiveness of our approach through an A/B testing platform with 892 volunteers and compared its results to two baselines.",
+    "Explanations here should be part of a continuous cycle where the user understands how the system is working under the hood and takes control over the type of recommendations made by the engine.",
+    "It turns out that this kind of explanation is not perceived as a valid justification of why the system is recommending certain items and it hardly improves users loyalty in the system.",
+    "This can be interpreted as a strong signal that the information encoded in the autoencoder hidden layer is representative of the users' preferences because the users is less prone to change her ratings after she read the explanation."
+  ],
+  "explanation_types": [
+    "This recently led both researchers and companies to pay more attention to explainable models.",
+    "Deep Learning techniques have proven their strength thus gaining the attention of both researchers and companies and being widely deployed in nowadays recommender systems.",
+    "The weights update step in SGD (Stochastic Gradient Descent) backpropagation has been modified according to Equations (2) in order to take into account the masking matrix: Where E is the mean squared error loss while W 1 and W 2 represent the weight matrices for the connections between the input and hidden layer (W 1 ) and between the hidden layer and the output layer (W 2 )."
+  ],
+  "datasets": [
+    "The movies belong to the well-known MovieLens 20M dataset 6 .",
+    "Once the recommendation has been generated, the user is asked to rate the suggested items, even if no explanation has been 6 https://grouplens.org/datasets/movielens/20m/ (a) Step 4.",
+    "Thus, some attempts have been made in order to exploit Knowledge Graphs as data source for items' content description."
+  ]
+}

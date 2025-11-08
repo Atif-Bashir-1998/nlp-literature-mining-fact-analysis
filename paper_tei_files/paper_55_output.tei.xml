@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Incorporating Phrase-level Sentiment Analysis on Textual Reviews for Personalized Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+							<email>zhangyf07@gmail.com</email>
+							<affiliation key="aff0">
+								<orgName type="department">State Key Laboratory of Intelligent Technology and Systems Department of Computer Science and Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Incorporating Phrase-level Sentiment Analysis on Textual Reviews for Personalized Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">76640A691448737E3471762DC6ED3069</idno>
+					<idno type="DOI">10.1145/2684822.2697033</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>H.3.3 [Information Storage and Retrieval]: Information Filtering</term>
+					<term>I.2.7 [Artificial Intelligence]: Natural Language Processing</term>
+					<term>H.3.5 [Online Information Services]: Webbased services Personalized Recommendation</term>
+					<term>Collaborative Filtering</term>
+					<term>Sentiment Analysis</term>
+					<term>Text Mining</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Previous research on Recommender Systems (RS), especially the continuously popular approach of Collaborative Filtering (CF), has been mostly focusing on the information resource of explicit user numerical ratings or implicit (still numerical) feedbacks. However, the ever-growing availability of textual user reviews has become an important information resource, where a wealth of explicit product attributes/features and user attitudes/sentiments are expressed therein. This information rich resource of textual reviews have clearly exhibited brand-new approaches to solving many of the important problems that have been perplexing the research community for years, such as the paradox of cold-start, the explanation of recommendation, and the automatic generation of user or item profiles. However, it is only recently that the fundamental importance of textual reviews has gained wide recognition, perhaps mainly because of the difficulty in formatting, structuring and analyzing the free-texts. In this research, we stress the importance of incorporating textual reviews for recommendation through phrase-level sentiment analysis, and further investigate the role that the texts play in various important recommendation tasks.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>The continuous prospering of various Web2.0 online applications such as e-commerce and social networks has pushed users into the problem of information overwhelming <ref type="bibr" target="#b6">[7]</ref>. The difficulty in accessing the desired online items further con-tributed to the emerging of Personalized Recommender Systems (PRS) <ref type="bibr" target="#b11">[12]</ref>, which attempt to make personalized and targeted item recommendations to users on various platforms and devices.</p><p>The research of personalized recommendation can be generally classified into Content-based <ref type="bibr" target="#b19">[20]</ref>, Collaborative Filtering (CF)-based <ref type="bibr" target="#b25">[26]</ref> and Hybrid approaches <ref type="bibr" target="#b2">[3]</ref>. The contentbased approach attempts to construct user and item profiles, and thus to make recommendations through some meticulously designed matching strategies <ref type="bibr" target="#b13">[14]</ref>, while CF-based approaches attempt to learn the preferences of users automatically by considering the historical choices of other users <ref type="bibr" target="#b11">[12]</ref>. Hybrid recommender system, on the other hand, aims to combine the advantages of various strategies to make more informed recommendations.</p><p>The CF-based approach has gained much attention from the research community, especially since the Netflix grand prize in the year of 2007 through 2009 <ref type="bibr" target="#b1">[2]</ref>, because the CFapproaches, especially those based on Matrix Factorization (MF) techniques <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b7">8]</ref> on user-item numerical rating matrices, achieved important success in the task of rating prediction <ref type="bibr" target="#b11">[12]</ref>, and also exhibited great advantage in many other recommendation tasks <ref type="bibr" target="#b3">[4]</ref>.</p><p>However, the application of CF on numerical ratings has come across many difficulties in face of some key problems like data sparsity <ref type="bibr" target="#b34">[35]</ref> and the explainability of numerical ratings <ref type="bibr" target="#b28">[29,</ref><ref type="bibr" target="#b31">32]</ref>. This further leads to some of the most concerned tasks in the research community, such as cold-start recommendation <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b12">13]</ref>, explainability of the recommendations <ref type="bibr" target="#b31">[32]</ref>, and automatic user/item profile generation.</p><p>The continuous growing of online textual user reviews, as another important information resource besides numerical ratings, has shed light on brand new solutions towards these issues. For example, although a user may have only made a single numerical rating towards a product in online shopping websites, she usually expresses more detailed opinions towards various product features/aspects in the corresponding piece of review text <ref type="bibr" target="#b32">[33]</ref>. This is exposited in the sampled review in Figure <ref type="figure">1</ref>, where the user expressed positive Figure <ref type="figure">1</ref>: A piece of sampled user review towards the iPhone 5s product extracted from Amazon.com opinions towards the features service and phone quality of the product, with the opinion words excellent and perfect, correspondingly, which composes into his overall numerical rating of five stars.</p><p>We see that the textual reviews contain both productoriented information (i.e. product features) and user-oriented information (i.e. user opinions), and they usually exist in the form of pairs (user takes an opinion word to express his/her attitude towards a product feature). By conducting phraselevel sentiment analysis <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b30">31]</ref> on the textual reviews, we are able to extract these feature-opinion word pairs, thus to gain more detailed information about the user's overall opinion towards a product (the overall rating), which helps to understand the item characterises and user needs in a wider range of dimension, and to alleviate the problem of data sparsity in the scenario of cold-start recommendation. The extracted features and opinions also help to make explanations about why or why not an item is recommended <ref type="bibr" target="#b31">[32]</ref>, and to construct user (or item) profiles automatically by estimating their preferences towards the features.</p><p>In this research, we aim to stress the importance of making further use of textual reviews in recommender systems. We focus on leveraging phrase-level sentiment analysis on the reviews to better solve the above mentioned cuttingedge research problems. In the following part, we review the related work in Section 2, and exposit some of the research topics, current research progress and the upcoming research plans on each topic in Section 3. Finally, we discuss, conclude and summarize the future directions in Section 4.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RELATED WORK</head><p>Collaborative Filtering (CF)-based techniques <ref type="bibr" target="#b25">[26]</ref> have achieved great success in personalized recommender systems <ref type="bibr" target="#b11">[12]</ref> due to their ability to take advantage of the wisdom of crowds, especially in the task of numerical rating prediction. With the remarkable performance on prediction accuracy, the Matrix Factorization (MF) <ref type="bibr" target="#b27">[28]</ref> approaches have gained great popularity in both research community and the industry. Some of the commonly used matrix factorization algorithms include Singular Value Decomposition (SVD) <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b23">24]</ref>, Non-negative Matrix Factorization (NMF) <ref type="bibr" target="#b8">[9]</ref>, Probabilistic Matrix Factorization (PMF) <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b21">22]</ref> and Max-Margin Matrix Factorization (MMMF) <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b20">21]</ref>.</p><p>However, the ratings made by each each is usually far less than the large volume of products in a typical system, which implies that the user-item rating matrices that CF algorithms attempt to tackle with are usually very sparse <ref type="bibr" target="#b34">[35]</ref>, as exampled in Figure <ref type="figure" target="#fig_1">2</ref>, which shows the scattered small communities corresponding to the sparse submatrices on the Yelp rating dataset <ref type="bibr" target="#b34">[35]</ref>. Besides, new users and items are continuously added to the online systems, which further worsens the sparsity <ref type="bibr" target="#b33">[34]</ref>. All these factors lead to the important cold-start problem in recommender systems, where it is difficult to estimate the preferences or make recombinations to a user who rated only a few of the items <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b12">13]</ref>.</p><p>Fortunately, the ever growing availability of textual reviews has shed light on new approaches to alleviate the cold-start problem. The product features and user opinions included in the textual reviews can be extracted, formatted and summarized through Sentiment Analysis <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b17">18]</ref> techniques. One of the core tasks in sentiment analysis is to determine the sentiment orientations that users express in reviews, sentences or on specific product features, corre-  sponding to review(document)-level <ref type="bibr" target="#b18">[19]</ref>, sentence-level <ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b16">17]</ref> and phrase-level <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b4">5]</ref> sentiment analysis. Review-and sentence-level sentiment analysis attempt to label a review or sentence as one of some predefined sentiment polarities, which are typically positive, negative and sometimes neutral <ref type="bibr" target="#b10">[11]</ref>. Phrase-level sentiment analysis aims to analyze the sentiment expressed by users in a finer-grained granularity. It considers the sentiment expressed on specific product features or aspects <ref type="bibr" target="#b5">[6]</ref>. One of the most important tasks in phrase-level sentiment analysis is the construction of Sentiment Lexicon <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b14">15]</ref>, which is to extract featureopinion word pairs and their corresponding sentiment polarities from these opinion rich user-generated free-texts.</p><p>In <ref type="bibr" target="#b15">[16]</ref>, McAuley et al leveraged topic modelling to help extract the hidden topics from user reviews, thus to help improve the rating prediction accuracy. Textual reviews also help to construct intuitional explanations about why an item is recommended against the others. In <ref type="bibr" target="#b31">[32]</ref>, Zhang et al proposed a feature-level explainable recommendation strategy where the system persuades a user by telling him about his previously concerned product features in historical reviews.</p><p>As an integration of content-and CF-based recommendation strategies, the hybrid recommendation techniques <ref type="bibr" target="#b2">[3]</ref> have achieved state-of-the-art performance in real-world applications <ref type="bibr" target="#b11">[12]</ref>. However, the manual construction of user and item profiles requires a vast amount of domain knowledge, which is expensive and time consuming <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b13">14]</ref>. Phraselevel sentiment analysis on textual reviews makes it possible to conduct automatic profile construction, by analyzing and structuring the reviews corresponding to a target user or product. In this work, we exposit the promising potentialities that textual reviews bring into recommender systems, state our current research achievements on the related topics, and pose some of the future research directions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">RESEARCH TOPICS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Cold-Start Recommendation</head><p>In CF-based recommendation algorithms, one of the most fundamental causes of cold-start comes from the absence of purchasing or rating information of new users or items. Although various CF techniques attempt to construct meticulously designed algorithms to estimate user preferences from a small number of ratings <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b35">36]</ref>, the performance remains limited as we know little about a user philosophically.</p><p>For example, many a user (about 49%) in the commonly used Yelp rating dataset 1 made only a single numerical rating, which makes it difficult to estimate his/her preference in a latent factorization space <ref type="bibr" target="#b35">[36]</ref>. However, the corresponding piece of textual review plays a role of the user's explanation towards his/her rating, which may contain the user's opinions towards several features of the product that composes into his final rating. This information source could have been well used to tackle with the cold-start problem.</p><p>This procedure is exposited in Figure <ref type="figure" target="#fig_3">4</ref>. We first integrate all the textual reviews in a product domain (mobile phone domain in this example) to construct a review corpus. By conducting phrase-level sentiment analysis on this corpus, a sentiment lexicon <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b14">15]</ref> is constructed, which includes the product feature words (e.g. screen, battery, price) extracted from user reviews.</p><p>Next, we analyze the review(s) corresponding to each targeted user by extracting the features that he/she concerns. It is important to point out that this procedure can be conducted even though the user made only a single review, because there may also exist a bunch of mentioned features in the review text. Finally, the recommended items can be provided by selecting those products that perform well on those features that the user concerns, and the product performance on each feature can also be estimated from the reviews made by users towards that product.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Recommendation Explanation</head><p>An important problem of traditional CF-based recommendation algorithm in real-world application is the difficulty to explain the recommendation results. This is partially because of the fact that we do not know how a user composed his opinions from the many aspects into a single and simple numerical rating, and that CF algorithms (especially those based on matrix factorization techniques) only attempt to estimate these ratings in a latent (unknown) factorization space. These Latent Factor Models (LFM) makes it even more difficult to make the recommendations explainable, although the algorithm may achieve satisfactory rating prediction accuracies <ref type="bibr" target="#b28">[29]</ref>.</p><p>However, the existence of textual user reviews, as exposited in the previous section, provides a brand new information resource to help understand the user preferences and specific needs. By extracting the frequently mentioned product features from a user's historical reviews, we are able to get to know the product aspects that he/she concerns.</p><p>Different users may care about different produce features when making purchasing decisions. For example, a user may choose a mobile phone product given its large screen and good graphics performance, while another may make the same choice while considering its nice product design, although they may well give the same numerical rating of five stars. In many similar cases, the numerical ratings are insufficient to distinguish the preferences of different users, but the textual reviews tell us why a user made such a choice.</p><p>Preliminary studies on this research topics have been published in our paper <ref type="bibr" target="#b31">[32]</ref>, which attempts to improve the rating prediction accuracy and at the same time construct intuitional recommendation explanations. We will further investigate the explanations constructed from textual reviews by considering different explanation forms like product tags and word clouds, etc., as well as the scrutability, effective-  The preference/profile of a user/item can be constructed by analyzing the corresponding review(s) of the user/item, thus to make cold-start recommendations when the ratings of a user is limited.</p><p>ness and efficiency of explanations in recommendation. We will also attempt to bridge up explanations and its application in cold-start recommendation scenarios in the following research tasks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Automatic Profile Generation</head><p>The construction of accurate user/item profiles is the key factor in content-based recommendation, and they help to make more informed recommendations in hybrid recommender systems <ref type="bibr" target="#b2">[3]</ref>. However, the profile construction process is time consuming, and usually requires the existence of domain knowledge, which is expensive in real-world scenarios.</p><p>However, the textual reviews in a specific product domain naturally serve as a kind of domain-dependent information, and it is possible to extract the user-generated domain knowledge with the help of the wisdom of crowds.</p><p>This can be intuitionally exposited in Figure <ref type="figure" target="#fig_5">5</ref>. We first extract all the matched product features and their accompanying opinion words from each piece of review, and estimate the appropriate score that the user expressed towards each of the features, by considering the sentiment polarities of the opinion words.</p><p>Star Ra'ng: 4 stars Review Text: Screen is perfect, but earphone is not that good.   After that, a simple and direct approach of profile generation for a user is to take all of his/her reviews and calculate the frequency of each feature therein, which intuitionally serve as an indicator of the extent that a user cares about a feature. Symmetrically, we can also consider all the reviews corresponding to a product, and integrate the opinions from different users to estimate its performance on each product feature, thus to construct the product profiles.</p><p>The product profiles can be displayed in different forms to help users better understand the pros and cons of a product, or to compare the profiles of two products so as to make more informed purchasing decisions. The reader might refer to our prototype demo systems on smart TV 2 and mobile phone 3 products, and this is also exampled in Figure <ref type="figure" target="#fig_6">3</ref>, which displays and compares the profiles of two mobile phones, in the forms of both word cloud and bar charts.</p><p>Apart from exhibiting the profiles to users for product comparison, the user and product profiles can also be easily used for content-based or hybrid recommendation, because they model the users and items in the same and intuitional feature space, thus, for example, it would be very easy to calculate the similarity between two users, two products, or even a user and a product. We will further investigate the application of automatic profiling in personalized recommendation in the following work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">CONCLUSIONS AND RESEARCH PLAN</head><p>In this research proposal, we attempt to incorporate textual user reviews to tackle with some of the most cuttingedge topics in the research of personalized recommender systems. We particularly focus on the utilization of phrase-level sentient analysis technique to format, structure and summarize the free-text reviews, so as to take feature-level advantages of this information-rich resource.</p><p>We argue that the existence of textual reviews is of fundamental importance to personalized recommendation, even compared with the previously mostly concerned numerical ratings. However, the textual reviews have mostly been ignored for years in the previous research, perhaps due to the tremendous prosperity of collaborative filtering techniques based on user ratings. In the following work, we will continue to investigate the great potential of leveraging textual reviews in solving the problems of cold-start recommendation, recommendation explanation and automatic profile generation for hybrid recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">ACKNOWLEDGEMENT</head><p>I would like to sincerely thank my supervisors Prof. Min Zhang, Yiqun Liu, Shaoping Ma and Prof. Yi Zhang from UCSC, as well as Prof. Tat-Seng Chua and Min-Yen Kan from NUS for their continuous mentoring and support during my research career. This work was supported by Tsinghua-Samsung Joint Lab, under the Chinese Natural Science Foun-</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>(a) Yelp dataset Matrix (b) Yelp dataset Graph</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Structures of Yelp dataset. In the left is the exampled structure of the rating matrix, and in the right is the real structure of the scattered blocks.</figDesc><graphic coords="2,369.44,101.45,65.78,55.70" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>1</head><label></label><figDesc>http://www.yelp.com/dataset_challenge</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: The product feature set of a domain (e.g. mobile phone) is extracted from a review corpus.The preference/profile of a user/item can be constructed by analyzing the corresponding review(s) of the user/item, thus to make cold-start recommendations when the ratings of a user is limited.</figDesc><graphic coords="3,426.68,84.50,90.20,56.01" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>(</head><label></label><figDesc>screen, perfect, 1) [normal] (earphone, good, 1) [reversed] (screen, 1), (earphone, --1)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: An example of user-item review matrix and automatic profile extraction. Each shaded block is a review made by a user towards an item; the entries included in the review are extracted, and further transformed to feature scores while considering the negation words. The features together with the user opinions extracted from the set of reviews corresponding to a user/item are further aggregated to generate a profile.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Automatic product profile construction and comparison. The word-cloud based profile displays the Feature-Opinion word pairs extracted from the product's corresponding reviews, where the green ones are positive comments and blue ones are negative, giving an intuitional and first-sight view of the pros and cons of each product. The bar chart based profiles allow the users to examine the detailed scores and reviews on each specific product feature. This demo can be visited at http://mobile.thuir.org.</figDesc><graphic coords="4,102.47,175.53,403.03,177.51" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">http://tv.thuir.org 3 http://mobile.thuir.org</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0" />
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Singular value decomposition (svd) and generalized singular value decomposition (gsvd)</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Abdi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Ency. of Measu. and Stat</title>
+		<imprint>
+			<biblScope unit="page" from="907" to="912" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lanning</surname></persName>
+		</author>
+		<title level="m">The Netflix Prize. KDD Cup and Workshop</title>
+				<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Hybrid Recommender Systems: Survey and Experiments</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Burke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="331" to="370" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Performance of recommender algorithms on top-n recommendation tasks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cremonesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turrin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+	<note>RecSys</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">A Holistic Lexicon-Based Approach to Opinion Mining</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<publisher>WSDM</publisher>
+			<biblScope unit="page" from="231" to="239" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Mining and Summarizing Customer Reviews</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<biblScope unit="page" from="168" to="177" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Introduction to recommender systems: Algorithms and Evaluation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems (TOIS)</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="4" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Algorithms for Non-negative Matrix Factorization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">S</forename><surname>Seung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NIPS</title>
+		<imprint>
+			<biblScope unit="page" from="556" to="562" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Opinion Observer: Analyzing and Comparing Opinions on the Web</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<publisher>WWW</publisher>
+			<biblScope unit="page" from="342" to="351" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">A Survey of Opinion Mining and Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Jour. Mining Text Data</title>
+		<imprint>
+			<biblScope unit="page" from="415" to="463" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Recent advances in personal recommender systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Information and Systems Sciences</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="230" to="247" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<author>
+			<persName><forename type="first">N</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Meng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Liu</surname></persName>
+		</author>
+		<title level="m">Wisdom of the Better Few: Cold Start Recommendation via Representative based Rating Elicitation. RecSys</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="37" to="44" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Content-based recommender systems: State of the art and trends. Recommender Systems Handbook</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lops</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Gemmis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Semeraro</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="73" to="105" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Automatic Construction of a Context-Aware Sentiment Lexicon: An Optimization Approach</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Castellanos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Dayal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhai</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>WWW</publisher>
+			<biblScope unit="page" from="347" to="356" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">RecSys</title>
+		<imprint>
+			<biblScope unit="page" from="165" to="172" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Dependency Tree-based Sentiment Classification using CRFs with Hidden Variables</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Nakagawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Inui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kurohashi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NAACL</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Opinion Mining and Sentiment Analysis. Foundations and Trends in Information Retrieval</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="1" to="135" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<author>
+			<persName><forename type="first">B</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vaithyanathan</surname></persName>
+		</author>
+		<title level="m">Thumbs up? Sentiment Classification using Machine Learning Techniques. EMNLP</title>
+				<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="79" to="86" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Content-based recommendation systems</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Pazzani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Billsus</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Adaptive Web LNCS</title>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Fast maximum margin matrix factorization for collaborative prediction</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rennie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ICML</title>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">Bayesian probabilistic matrix factorization using markov chain monte carlo. ICML</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mnih</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">Probabilistic matrix factorization. NIPS</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mnih</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">N</forename><surname>Srebro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jaakkola</surname></persName>
+		</author>
+		<title level="m">Weighted low-rank approximations. ICML</title>
+				<imprint>
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Maximum-margin matrix factorization</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Srebro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rennie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Jaakkola</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NIPS</title>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">A survey of collaborative filtering techniques. Advances in AI</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Khoshgoftaar</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Lexicon-Based Methods for Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Taboada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Brooke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tofiloski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Voll</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Stede</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Linguastics</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Investigation of various matrix factorization methods for large recommender systems</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Takacs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Pilaszy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Nemeth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tikk</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ICDM</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">A Survey of Explanations in Recommender Systems. ICDE</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">Annotating Expressions of Opinions and Emotions in Language. Language Resources and Evaluation (LREC)</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wiebe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Cardie</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Recognizing Contextual Polarity in Phrase-Level Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wiebe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hoffmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EMNLP</title>
+		<imprint>
+			<biblScope unit="page" from="347" to="354" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Explicit Factor Models for Explainable Recommendation based on Phrase-level Sentiment Analysis. SIGIR</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Do Users Rate or Review? Boost Phrase-level Sentiment Labeling with Review-level Sentiment Classification</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>SIGIR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Localized Matrix Factorization for Recommendation based on Matrix Block Diagonal Forms</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Feng</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<title level="m" type="main">Understanding the Sparsity: Augmented Matrix Factorization with Sampled Constraints on Unobservables</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>CIKM</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zha</surname></persName>
+		</author>
+		<title level="m">Functional Matrix Factorizations for Cold-Start Recommendation. SIGIR</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="315" to="324" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

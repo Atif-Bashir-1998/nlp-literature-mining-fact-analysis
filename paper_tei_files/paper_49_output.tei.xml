@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2022-12-29">December 29, 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Parantapa</forename><surname>Bhattacharya</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Saptarshi</forename><surname>Ghosh</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Muhammad</forename><forename type="middle">Bilal</forename><surname>Zafar</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Soumya</forename><forename type="middle">K</forename><surname>Ghosh</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Niloy</forename><surname>Ganguly</surname></persName>
+						</author>
+						<title level="a" type="main">What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-12-29">December 29, 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">43A3E772EFA56401E078043CD1C29534</idno>
+					<idno type="arXiv">arXiv:2212.13897v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>With over 500 million tweets posted per day, in Twitter, it is difficult for Twitter users to discover interesting content from the deluge of uninteresting posts. In this work, we present a novel, explainable, topical recommendation system, that utilizes social annotations, to help Twitter users discover tweets, on topics of their interest. A major challenge in using traditional rating dependent recommendation systems, like collaborative filtering and content based systems, in high volume social networks is that, due to attention scarcity most items do not get any ratings. Additionally, the fact that most Twitter users are passive consumers, with 44% users never tweeting, makes it very difficult to use user ratings for generating recommendations. Further, a key challenge in developing recommendation systems is that in many cases users reject relevant recommendations if they are totally unfamiliar with the recommended item. Providing a suitable explanation, for why the item is recommended, significantly improves the acceptability of recommendation. By virtue of being a topical recommendation system our method is able to present simple topical explanations for the generated recommendations. Comparisons with state-of-the-art matrix factorization based collaborative filtering, content based and social recommendations demonstrate the efficacy of the proposed approach. 1 1 This study was conducted during the year 2016 when Parantapa Bhattacharya was a student at Indian Institute of Technology Kharagpur.</p><p>This study was conducted respecting the guidelines set by our institute's ethics board and with their knowledge and permission.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="25" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="26" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="27" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="28" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="29" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="30" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="31" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="32" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="33" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="34" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="35" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="36" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="37" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="38" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="39" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>As social media and user generated content have gained popularity, so has the problem of information overload. In Twitter, over 500 million tweets are posted per day <ref type="bibr" target="#b22">[23]</ref>. This makes it incredibly difficult for users to discover new and interesting content from within the deluge of uninteresting ones. To help users navigate through massive amounts of content and to direct their attention towards items that would potentially be of their interest, designers of online systems have traditionally used recommender systems. Recommender systems have been developed to help users in numerous contexts, including item purchase <ref type="bibr" target="#b43">[44]</ref>, movie selection <ref type="bibr" target="#b35">[36]</ref>, and choosing music <ref type="bibr" target="#b51">[52]</ref>. A large volume of literature has also been published to help users find better content in online social media systems <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b24">25]</ref>.</p><p>Most of the state-of-the-art recommender systems, including those discussed above, are powered by collaborative-filtering <ref type="bibr" target="#b46">[47]</ref> or are content-based recommender systems <ref type="bibr" target="#b30">[31]</ref>; and sometimes a combination of both. To be successful, collaborativefiltering and content based methods depend on having rating or like/dislike information associated with large number of users and items. However, with posts being generated at such huge volumes, attention scarcity does not allow most content to receive any likes or retweets in Twitter. We estimate that less than 13% tweets receive any retweets and less than 23% tweets receive any likes or favorites (Section 6.1). The problem is compounded by the fact that 44% Twitter users are only passive consumers of content, never posting any tweets themselves <ref type="bibr" target="#b28">[29]</ref>. The problem is similar for other high volume social media systems such as Reddit <ref type="bibr" target="#b20">[21]</ref>. Hence, for such systems, the wellknown cold start problem is present not only for new users but persists for a large fraction of old but passive users. For content, however, the cold start problem is even worse, as the cold start problem keeps renewing itself eternally, due to huge content creation rates and small content lifetimes.</p><p>Another issue in developing recommender systems for online social networks like Twitter is that tweets that eventually become popular, receiving likes or retweets, take time to accumulate these interactions. As one of the prime focus of microblogging platforms, like Twitter, is to deliver information in realtime, it is problematic to build recommender systems for these platforms that depend on such delayed information as part of their core methodology. Additionally, state-of-the-art recommender algorithms such as matrix factorization based collaborative-filtering are quite computationally intensive. While this is acceptable for systems where the item set is relatively stable over time, it becomes inadequate when over 500 million items are created during the period of a single day.</p><p>A common problem for developers of recommender systems is that, their users are in many cases hesitant to accept recommendations that they are completely unfamiliar with, even when they are relevant <ref type="bibr" target="#b21">[22]</ref>. An explanation for why the item was recommended significantly increases the probability of the user accepting the recommendation. This problem becomes even more acute when recommending tweets, which due to their short lengths, can be difficult to interpret without context. What further compounds the problem of explainability is that traditional collaborative-filtering and content based recommender systems encode user interests using latent representations which are difficult for humans to interpret. Studies which have tried to explain recommendations have generally disassociated the process of generating recommendations and the method of explaining them <ref type="bibr" target="#b21">[22]</ref>. However, this disassociation between recommendation generation and recommendation explanation procedures, can lead to users developing wrong intuitions about the recommendation methodology, leading to lower trust and dissatisfaction when the intuition is violated <ref type="bibr" target="#b15">[16]</ref>.</p><p>In this work, we try to work around the above difficulties, by developing a novel personalized recommender system for Twitter, that utilizes social annotations to infer interests of Twitter users and ascertain topics of tweets. Social annotations are pieces of information about a user, that is mined from how others describe the given user. For example, in this current work we mine social annotations from Twitter Lists feature. Using Twitter Lists, regular Twitter users can create named groups for organizing their social connections. But in doing so they describe the members of such groups. <ref type="bibr" target="#b45">[46]</ref> used social annotations in Twitter to infer descriptive tags for a large number Twitter users. In our previous work <ref type="bibr" target="#b5">[6]</ref>, we presented a preliminary work trying to infer a user's relative interests in different topics. This was done by simply comparing the number of experts on the different topics that the user was following. Social annotations have also been used by other authors, including: to establish connections between a user's follow relations <ref type="bibr" target="#b18">[19]</ref>, and to analyze a user's political leanings <ref type="bibr" target="#b6">[7]</ref>.</p><p>This work utilizes the intuitions presented in our earlier work <ref type="bibr" target="#b5">[6]</ref> and further improves on them to create a novel topical recommendation system which by virtue of its design is highly explainable. At a high level, our method for generating personalized recommendations can be conceptualized as a four-step process. First, using social annotations we mine meaningful topics of expertise for a large corpus of Twitter users (whom we refer to as topical experts). Second, for every user for whom we generate recommendations, we infer their interests in different topics by modeling their followings of topical experts on different topics. For this purpose we propose a variant of the Preferential Attachment model <ref type="bibr" target="#b2">[3]</ref>, that we call the Topical Preferential Attachment model, and present an Expectation-Maximization based algorithm that utilizes it to infer user interests. Third, we present a method for efficiently computing relative relevance of large volumes of tweets with respect to given topics. For this purpose, we propose a tweet ranking methodology, that we call the Topical Binary Independence Model, which uses the content of tweets posted by topical experts on a given topic, to estimate the relevance of a tweet with respect to the given topic. Finally, to generate recommendations for a user, we present her with tweets that are most likely to be about her topics of interest.</p><p>The above approach has a number of advantages over traditional collaborative filtering and content based recommender systems.</p><p>• First, as the core methodology does not depend on user ratings, it can be used for recommending to the large fraction of passive users. Also, this makes it suitable for recommending items that may not be popular but are potentially interesting to different topical communities.</p><p>• Second, in social networking systems such as Twitter, where huge volumes of content is being created constantly and interest in created items fades quickly, information mined from user-item relationships deprecate quickly. For example, a user may tweet about her political opinions during a presidential election cycle, however she may only have minor interest in politics and may not be interested in politics most of the time. Thus, the use of a higher level abstraction of mining user-interest relations has an added advantage of inferring more stable relationships.</p><p>• Finally, not using ratings has the added advantage that relevance of tweets to topics can be computed, without having to wait for likes and retweets to accu-mulate. Another, major advantage of the method is that, because of its approach generating explanations of the form "this tweet is on topic 𝑡 and it has been recommended to you because you seem to be interested in 𝑡" becomes very straight forward. Additionally, since such an explanation is easy to understand, it is expected to increase user satisfaction.</p><p>However, a number of challenges need to be tackled to successfully implement and develop such a system. First, using social annotations as one of the primary sources of information, for building recommendation systems, requires that a very large corpus of experts be identified, with expertise on a diverse set of topics. Size of the expert set bounds the set of users for whom interests can be inferred, while diversity of the expert set limits the range of interests that can be inferred. Further, having a sizable set of experts for different topics is essential in trying identify robust signals of what characterizes information on those topics. Second, while previous works <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b52">53]</ref> have inferred tags of expertise from social annotations, the inferred tags were very noisy. For example the topic 'Celebrity' was present in the corpus through a number of abbreviated and mispronounced tags such as: celeb, famous, celbrity, etc. Presence of such tags was not a major hindrance for <ref type="bibr" target="#b19">[20]</ref> and <ref type="bibr" target="#b52">[53]</ref>, as they were primarily search systems, where matching user query (even if misspelt) to results was more important than the cleanliness of the tags themselves. However, as the present work is a recommendation system and the topics identified are displayed to the users as part of the explanation process, it is important to have clean topics and not noisy tags. Third, <ref type="bibr" target="#b4">[5]</ref> had shown that topics identified via social annotation have wide range or popularity. They had noted, that when discovering such topics using social annotation, one finds few topics that are very popular and have many experts, and large numbers of topics that are quite niche and have fewer of experts. <ref type="bibr" target="#b5">[6]</ref> ranked a user's topics of interest by simply ranking the topics by the number of experts the user had followed on that topic. However, the large variance in the number of experts available for each topic to follow leads to an inherent popularity bias in interest inference. Thus, for accurately modeling a user's interest, it is necessary to take into account the popularity factor. Finally, the sheer volume of tweets available for a user to see, still makes it a computationally difficult task to perform recommendations in realtime. Thus, it is necessary to make careful trade-off between accuracy and speed to build a system capable of utilizing the above opportunity.</p><p>The major contributions of this paper are five fold.</p><p>• (i) Extending the approach of our prior work <ref type="bibr" target="#b19">[20]</ref>, we present in Section 3.1, a methodology for inferring human interpretable topics of expertise of Twitter users, by using Twitter List based social annotations.</p><p>• (ii) Section 3.2 presents the Topical Preferential Attachment model, which we employ to infer human interpretable topics of interests of Twitter users, by modeling their following behavior with respect to topical experts.</p><p>• (iii) Section 3.3 presents the Topical Binary Independence Model, which we utilize to compute relative relevance of candidate tweets with respect to given topics, by utilizing information about tweets of topical experts.</p><p>• (iv) In Section 3.5, we present a recommendation methodology that utilizes the information about user's interests and the knowledge of topics of tweets. Further, in Section 5, we discuss the working of a web based recommendation system that utilizes the above approach, and can be used by any active Twitter user.</p><p>• (v) We evaluate our system against matrix factorization based collaborative filtering, content based recommendation, and social recommendation (Section 4).</p><p>Our approach shows competitive performance against these baselines under user based evaluations with 55 users.</p><p>To quantify the efficacy of our interest inference and recommendation methodology, we performed a controlled user study. Evaluators were recruited from the authors' university via advertising in mailing lists. In the end, we obtained judgments from 55 evaluators on the quality of the interest inference and the recommendation methodology. The evaluators were asked to rate top 10 topics of interest inferred using our methodology and that of <ref type="bibr" target="#b5">[6]</ref> on a five point Likert scale. We found that, when comparing to the baseline, our method performed better with a mean average score of 3.627 compared to 3.567 for the baseline. Further, we compared overall recommendation methodology to that of traditional recommendation techniques such as matrix factorization based collaborative filtering (FunkSVD), social recommendation, and content based recommendation. We found that overall our topical recommendation methodology outperformed the above three baselines in terms of mean average score, while slightly trailing behind social recommendation in terms of mean nDCG.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related works</head><p>Growth of the internet and proliferation of available information has led to an ever increasing information overload and an ever increasing dilemma of choices. To help users navigate through this morass of choices, developers of online systems have traditionally used recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Recommender systems in general</head><p>Of the different recommender system methodologies the most popular have been collaborative filtering <ref type="bibr" target="#b46">[47]</ref> and content based systems <ref type="bibr" target="#b30">[31]</ref>. Large volumes of literature have been published on developing recommender systems using the above two techniques, and their variations. In the current work, however, we take a completely different approach; first, using social annotations to infer interests of users, followed by finding content that are on topics of their interest. Thus, we do not discuss collaborative filtering and content based approaches in much detail here. Readers interested in thorough surveys on these methods are referred to works by <ref type="bibr" target="#b46">[47]</ref> and <ref type="bibr" target="#b30">[31]</ref> for further details.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Social recommendation</head><p>Online social networking sites have also been facing the effects of information overload, as they are becoming more and more popular. Many studies have been published trying to develop recommender systems specialized for social networks <ref type="bibr" target="#b31">[32,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b50">51,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b8">9,</ref><ref type="bibr" target="#b24">25]</ref>. Most of the works trying to develop social recommender systems, try to incorporate user-user relationships, such as those available for friendship or follower-followee relations, into traditional collaborative filtering or content based models <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b54">55,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b25">26]</ref>. The general idea behind these systems is to exploit homophily and trust relations between users, and to use them to constrain the recommendation model. <ref type="bibr" target="#b48">[49]</ref> postulated the correlation between the interests of users who were friends on Yahoo! Pulse, and presented a 'friendship-interest propagation' model, trying to utilize the friendship network for recommendation. Similarly, <ref type="bibr" target="#b50">[51]</ref> presented the 'social influenced selection' model based on the idea that friends have similar interests, and the intuition that if a person likes an item the probability of their friends liking it grows significantly higher. <ref type="bibr" target="#b23">[24]</ref> presented a hybrid recommendation model by using collaborative filtering along with explicit item features. Using LinkedIn as their test social network, they presented a learning algorithm that used the learning to rank paradigm. <ref type="bibr" target="#b16">[17]</ref> presented a recommendation model that in addition to traditional trust relationships obtained from user relations, incorporated distrust relations obtained from web-of-trust and personal block-lists. Through experiments on the Epinions dataset, they showed that incorporating such information significantly improved the results. <ref type="bibr" target="#b25">[26]</ref> presented a method that distinguished itself by incorporating social contextual information in addition to the regular user trust relations. The key idea behind their approach being to incorporate influence between users as separate from trust relationships, to help the recommendation algorithm. When compared to baseline their method outperformed others on Renren and Tencent Weibo data. <ref type="bibr" target="#b8">[9]</ref> noted that user trust relations may not always be good for recommendation, and a trusted user may point to items that are not liked by the user. Thus, they factored the trust relation between users to Poisson factorization (SPF), "a probabilistic model that incorporates social network information into a traditional factorization method". <ref type="bibr" target="#b24">[25]</ref> created a novel hybrid social network by combining information from multiple social networks covering different item domains. By using a random walk based link prediction algorithm they predicted user-item links (recommendations) and showed that it outperformed existing methods.</p><p>The primary aspect where our approach differs from the above works is that, we distinguish between expertise and interests of users, especially in directed social networks, such as Twitter. Our intuition is that, if a user 𝑢 follows another user 𝑣, them 𝑢 is likely to be interested in consuming content which is being produced by 𝑣, presumably on topics in which 𝑣 has expertise. This is fundamentally different from saying that, 𝑢 follows 𝑣 indicates 𝑢 and 𝑣 are likely to have similar interests. While the interests and expertise of 𝑣 are likely to have overlaps, 𝑣 is likely to have interests beyond her topics of expertise. Further, as will be discussed in more detail later, 𝑣 can have expertise on a number of topics, only a subset of which is of interest to 𝑢. Our approach takes this finer grained view of expertise and interests of social network users and utilizes it for recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Recommendations for Twitter</head><p>As Twitter has grown popular, its users have also been facing the problems associated with information overload. Many works have tried to alleviate this problem by trying to build better content recommendation systems for Twitter <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b27">28,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b37">38]</ref>. <ref type="bibr" target="#b9">[10]</ref> in their influential work, presented the idea of social recommendation on Twitter. They presented a comparative study, comparing a number of content based tweet recommendation algorithms, along with a social voting system. They noted that out of the variations they developed, the version that had maximum performance matched the content of potential tweets to the user's own posted tweets. The authors also noted that social voting, that is weighing potential candidates for recommendation by the number of times similar tweets have been posted, in the user's neighborhood, produced better results. <ref type="bibr" target="#b10">[11]</ref> presented a hybrid recommendation system, that used binary ratings (whether a user retweeted a tweet or not), content features, and author features to build an extended collaborative filtering system. Interestingly, the authors noted the data sparsity problem and difficulty of using retweets as rating source, as very few tweets are retweeted. To work around this problem, they considered individual terms in tweets as items, rather than whole tweets, for the recommendation process. The final part of the recommendation process involved computing most relevant terms and recommending tweets containing those terms. <ref type="bibr" target="#b47">[48]</ref> presented a heterogeneous graph based model, for the recommendation process. The authors created a graph consisting of three parts: (i) the user-user follower-followee graph, (ii) the tweet-tweet text similarity graph, and (iii) the user-tweet authorship graph. Further, they used Latent Dirichlet Allocation (LDA), to model users interests as high level latent topics, using the tweets posted by a single user as documents. They proposed a 'co-ranking framework' which utilized node rankings in the three subnetworks (obtained via PageRank) and user's latent interests for performing recommendations. In a recent work, <ref type="bibr" target="#b37">[38]</ref> extend their earlier work <ref type="bibr" target="#b10">[11]</ref> and tried to combine the modeling of information diffusion and the process of generating recommendations. The key intuition behind their method is to incorporate the already known diffusion characteristics of a tweet (current cascade size, current cascade depth, popularity of existing users who have retweeted, etc.) in to the collaborative filtering model.</p><p>The current work also tries to build a recommendation system for the Twitter microblogging network. However, the major difference between this work and all the other ones presented above, is that we use social annotations as our primary information source, as opposed tweet ratings (such as retweets and likes). Social annotations are first used to infer expertise of a large and diverse set of Twitter users. Next the inferred expertise of the expert users is used to infer interests of users who follow them, as well as to infer likely topics of tweets. The use of a completely different information source allows us to bypass the problems traditionally faced with rating dependent systems. As noted by previous works <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38]</ref> most tweets are not retweeted. This sparsity in retweet data imposes a fundamental limitation on the accuracy of traditional rating based approaches, which is avoided by our social annotation based approach. Additionally, many of the works tried to model user interests in terms of latent representations. While, this work also infers user interests, it infers explicit human interpretable topics of interests, rather than non-interpretable latent interests like the above works. This allows us not only to use them to do recommendations but also to explain them.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4">Inferring interests of Twitter users</head><p>As mentioned earlier, the recommendation process described in this work tries to infer explicit human interpretable topics of interest for its users, as an intermediate step.</p><p>Here we discuss earlier works that have also tried to infer human interpretable high level user interests.</p><p>[35] presented a method to infer high level topics of interests for Twitter users. Their methodology involved extracting entities from tweets and matching them with Wikipedia articles. This was followed by a traversal of the Wikipedia category tree <ref type="bibr" target="#b39">[40]</ref> to obtain high level Wikipedia categories that best matched with the Wikipedia articles, found in the previous step. The authors noted the difficulty in validating interests of Twitter users. For their work, they chose to manually validate the inferred topics of interests of only four users. <ref type="bibr" target="#b26">[27]</ref> presented a method based on ideas similar to <ref type="bibr" target="#b34">[35]</ref>. Using a third party service, they mapped entities within tweets to Wikipedia articles. Further, they computed a Wikipedia category tree and tried to obtain subtrees that best captured the Wikipedia articles obtained previously. The subtree thus obtained is presented as the 'Hierarchical interest graph' of the user.</p><p>The primary difference between the apporach taken by the current work, to infer interpretable topics of interests, and the works describe above is that, this work uses social annotations to infer user interests for a user's expert followings, rather than from the tweets posted by the users. According to a recent study, 44% twitter users have never posted tweets <ref type="bibr" target="#b28">[29]</ref>. This fact severely limits the percentage of the Twitter population for whom such interests can be inferred. Further, even for the fraction of users who post tweets, it is not necessary they post tweets on all or even most topics that are of their interest. Thus, the coverage of interests that can be obtained from such methods is also limited. In contrast, inferring the interests of users by means of analyzing the topical experts they are following, is more robust towards the sparsity of tweet data, and allows for capture of a more diverse set of interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.5">Inferring topics of tweets</head><p>As part of the methodology of recommending tweets of users based on their interests, this work presents a simple method for finding topics of tweets. Here we discuss existing works which delve in similar tasks.</p><p>A number of works have focused on inferring topics of tweets using topic modeling <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b33">34]</ref>. <ref type="bibr" target="#b40">[41]</ref> noted that the small size of tweets, provides some unique challenges for topic modeling. To overcome the problems of data sparsity when performing topic modeling with a single tweet as document, they utilized the semi-supervised topic modeling method, Labeled-LDA. The topics inferred by their model had both labeled (supervised) and unlabeled (latent) topics. For the labeled topics, the authors chose topic properties such as hashtags, presence of different type of emoticons, and presence of social features such as user mentions, replies, etc. The authors manually categorized the unlabeled learned latent topics, into the five classes: substance, status, style, social, and others. Similar to the previous work, To address the problem of data sparsity due to the small size of tweets, <ref type="bibr" target="#b33">[34]</ref> compared several tweet pooling techniques to create documents for topic modeling. Using techniques for measuring goodness of unsupervised clustering, they measured the resultant clusters to comment on the goodness of the tweet pooling scheme. They noted that compared to other techniques (such as author based pooling, temporal pooling, etc.) hashtag based pooling system performed best.</p><p>Multiple works have also been done trying to match tweets to topics on top of a well known topic ontology or taxonomy. Although the primary purpose of the works done by <ref type="bibr" target="#b34">[35]</ref> and <ref type="bibr" target="#b26">[27]</ref> was to find interests of Twitter users, as a prerequisite to that, they mapped entities of tweets on to the Wikipedia category graph. <ref type="bibr" target="#b49">[50]</ref> presented a detailed description of a topic inference system developed by Twitter. The authors present high level descriptions of creating a topic taxonomy (derived from the Open Directory Project and Wikipedia) and a semi supervised system that maps non-chatter tweets to the topic hierarchy.</p><p>In a preliminary earlier study, we utilized social annotation data to design a simple system for inferring interests of users (Who-Likes-What <ref type="bibr" target="#b5">[6]</ref>). While the present work borrows intuitions from our previous work, it is significantly different from the prior work in a number of aspects. First, the Who-Likes-What system in <ref type="bibr" target="#b5">[6]</ref> used a very basic methodology to compute the relative interests of a user on a given topic -by simply counting of the number of experts that the user was following on the given topic. In contrast, the methodology for inferring interests of users proposed in the current work first develops a model for explaining user behavior with respect to following of experts. Next, it utilizes an expectation maximization based learning algorithm to infer the topics of interest of the user. As will be discussed in further detail later, this approach allows us to address the problem of popularity bias in interests -whereby most users have very popular topics as their top topics of interest. It also allows for accounting for the fact that when a user follows an expert with multiple topics of expertise, she may actually be interested in only a subset of the expert's topic of expertise. Additionally, while the Who-Likes-What system utilized noisy tags obtained directly from Twitter List descriptions, the present work takes a different and improved approach for mining topics from social annotations -by utilizing Wikipedia corpus for extracting meaningful topics as opposed to noisy tags. This is necessary in our case, as the topics mined by our system are also utilized for the process of explaining recommendations to the user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methodology</head><p>In this section, we describe our methodology for generating personalized, topical tweet recommendations. Figure <ref type="figure" target="#fig_0">1</ref> shows a high level overview of the four stage process employed by our methodology. First, for a substantial and diverse set of topics, we identify expert Twitter users, who are well known for their expertise on these topics. For this purpose, we utilize social annotations mined from Twitter Lists. Second, for every target user, for whom we generate recommendations, we infer their relative interest in different topics. This is accomplished by modeling user behavior, from her following of topical experts, using a generative model, that we call the Topical Preferential At-  neuroscience Neuroscientists and neuroscience related tweets @PsychToday, @PsychCentral, @OliverSacks (Neurologist), @SamHarrisOrg (NeuroScientist) recsys Recommender systems people @xamat (Xavier Amatriain), @danielequercia, @alansaid, @wernergeyer sociology Sociologists and sociological stuff @SocialPsych, @bourdieu (French Sociologist), @SociologyLens, @markgammon (Sociologist) pro-soccer Pro soccer players and clubs @FCBarcelona, @Arsenal, @10Ronaldinho (Ronaldinho Gaúcho), @Cristiano (Cristiano Ronaldo)</p><p>Table <ref type="table">1</ref>: Example Twitter Lists: their names, descriptions, and sample members.</p><p>tachment model. We use an Expectation-Maximization (EM) algorithm <ref type="bibr" target="#b13">[14]</ref> that uses the above generative model to rank the target user's relative interest in the various topics. Third, for a large corpus of tweets, we compute relative relevance of every tweet with respect to the different topics. To efficiently compute relative relevance of large volumes of tweets with respect to many topics, we propose a variant of a probabilistic information retrieval model, the Binary Independence Model (BIM) <ref type="bibr" target="#b29">[30]</ref>, that we call the Topical Binary Independence Model. Finally, having computed the relative interest of a target user on different topics, and having computed the relative relevance of a large corpus of tweets with respect to the various topics, we employ a simple round robin algorithm to generate a ranking of tweets, with topical explanations, for the target user. The rest of this section details the steps presented above.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Using social annotations to find topical experts</head><p>Our methodology, for generating topical tweet recommendations relies extensively, on having a large dataset of Twitter experts with diverse topics of expertise. For this purpose, we extend the methodology proposed in <ref type="bibr" target="#b45">[46,</ref><ref type="bibr" target="#b19">20]</ref>, that demonstrated the utility of social annotations, derived from Twitter Lists, in reliably inferring topics of expertise of popular Twitter users.</p><p>Lists are an organizational feature in Twitter that allows users to create named groups of other Twitter users, who are termed as members of the List. For instance, a user can create a List named 'Music and musicians' and add famous musicians like Eminem, Adele, and Lady Gaga to the List. List creators can optionally add a more detailed description, describing the members of the List. Once a user has created a List, she can then view the tweets posted by the members of the List separately from her regular tweet timeline. Table <ref type="table">1</ref> shows some example Lists, created by different Twitter users, along with some members of those Lists.</p><p>Users create Lists for their personal benefit, that is to better organize the sources from whom they want to receive tweets. However, in doing so they give out strong signals about the topical expertise of the List's members, which can be mined from names and descriptions of the Lists.</p><p>[20] built an expert search system for finding experts on different topics, based on tags mined from List names and description. Although, the tags that were obtained were noisy and in most cases did not represent meaningful topics, they fulfilled the purpose of expert search, given a query topic. However, as the current work builds a recommendation system that needs meaningful topics, which are used for the purpose of explaining recommendations, the above method is inadequate.</p><p>Twitter List and Wikipedia dataset for finding experts: For the purpose of this work, we consider article titles in the English language Wikipedia as the source of meaningful topics. Specifically, for the results described in this work we used the March 5, 2016, dump of the English Wikipedia corpus. At a high level, to find experts on a given topic 𝑡, we first find all Twitter Lists in our database that have the topic 𝑡 in their List name or description. For this purpose, we obtained all Twitter Lists created by the first 50 million Twitter users. We were able to obtain 18.1 million distinct Lists created by 7.4 million different users.</p><p>To create the corpus of topical experts we use the following steps: Expertise inference step 1: For every Twitter List find matching Wikipedia articles: To match Twitter Lists to Wikipedia articles, we first convert the title of the articles into a query. This is done by case folding the article's title and removing any special characters. Further, we ignore those queries that consist entirely of known English, Spanish, and Portuguese stopwords, and a custom set of Twitter specific stopwords, such as Twitter, tweet, follow, etc. Similarly, we normalize the List names and Topic Experts Music @Eminem, @Linkinpark, @Beyonce, @PinkFloyd, @jtimberlake (Justin Timberlake), @TaylorSwift13, @LadyGaga, @KatyPerry, @KanyeWest, @BrunoMars, @Adele, @springsteen (Bruce Springsteen) Politics @BarackObama, @HillaryClinton, @realDonaldTrump, @SenSanders (Bernie Sanders), @JustinTrudeau, @DWStweets (Debbie Wasserman Schultz), @NarendraModi, @David Cameron Comedy @StephenAtHome (Stephen Colbert), @ConanOBrien, @TheEllenShow (Ellen DeGeneres), @BillBurr, @JimCarrey, @JerrySeinfeld, @KevinHart4real (Kevin Hart), @iamjohnoliver (John Oliver) Astronomy @MarsCuriosity (Curiosity Rover), @TheRealBuzz (Buzz Aldrin), @neiltyson (Neil deGrasse Tyson) @NASAJPL, @Cmdr Hadfield (Chris Hadfield), @Space Station (Intl. Space Station)  <ref type="table" target="#tab_1">2</ref> shows some sample redirections present in the Wikipedia corpus. Expertise inference step 4: For all compute topical expertise: Finally, we compute the topical expertise of a user by combining the user's List membership information, the Twitter List to Wikipedia query mapping (computed in steps 1 and 2), and the Wikipedia query to Wikipedia article mapping (computed in step 3). As in <ref type="bibr" target="#b19">[20]</ref> we consider a user to be an expert on a given topic, if he has been included in 10 Lists on the given topic. Additionally, to limit the focus on only the primary topics of expertise of a user, we take only the top 50 topics of expertise for the given user. Overall, using the above methodology, we were able to find 741 thousand experts on a diverse set of 11.6 thousand topics. Table <ref type="table" target="#tab_2">3</ref> shows some sample topics along with sample experts identified for those topics.</p><p>List topics <ref type="bibr" target="#b19">[20]</ref> Wikipedia filtered List topics fm, tv, celebs, bieber, new, noticias, bands, pr, os, seo, sexy, melhores, jb, internet, foodies, bot, books, medios Search engine optimization, Real estate, New York City, Nonprofit organization, National Football League, Austin Texas, Entrepreneurship, Technology journalism, The Walt Disney Company, Veganism Table <ref type="table">4</ref>: Sample of popular topics, generated using methodology presented in <ref type="bibr" target="#b19">[20]</ref> and the Wikipedia based methodology. Topics shown for each group are not present in the other group.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Benefits of using Wikipedia for filtering List topics:</head><p>To understand the difference between the topics identified using our methodology and that of <ref type="bibr" target="#b19">[20]</ref>, we compare sample popular topics identified using both, in Table <ref type="table">4</ref>. A visible difference between our methodology and that described by <ref type="bibr" target="#b19">[20]</ref> is that, as our method does not have any limit on the number of terms that can be part of the topics, they are likely to be longer and more descriptive. However, the main advantage of the Wikipedia based filtering methodology is that topics identified using it are more well formed and meaningful.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Modeling expert following behavior for inferring interests of users</head><p>Traditionally collaborative filtering based recommender systems, especially those based on matrix factorization, have represented user interests using latent entities <ref type="bibr" target="#b46">[47]</ref>. While such systems have been shown to produce state-of-the-art results, it can be quite difficult to interpret these latent interests, and hence difficult to explain to users, why they received a particular recommendation <ref type="bibr" target="#b46">[47]</ref>. To address this issue, we propose a novel method for computing human-interpretable topics of interests of Twitter users. Our basic idea is to utilize social signals that can be mined from user behavior pertaining to following other expert users. We utilize the basic intuition that if a user follows a number of experts on a given topic, the user is likely to be interested in that topic. However, to ascertain why a user is following another expert user, from a single follow action alone is a difficult problem. The expert user being followed may have expertise on multiple topics, making it difficult to determine which of the multiple topics of expertise a particular follower of her is interested in. Further, many expert users are also popular celebrities, and a follower of her may just be interested about information related to her, and not about any of her topics of expertise in particular. Additionally, a user may also be a personal friend (in the offline world) of the expert user, leading her to follow the expert, without a general interest in the expert's topics of expertise. Hence, to extract stable and meaningful information about a user's interest from her follow actions, we pose the problem of inferring interests of users, from their expert followings, as a problem of jointly modeling all her expert followings. The Topical Preferential Attachment model: At its heart, our method for modeling user follow behavior is a generalization of the Preferential Attachment model <ref type="bibr" target="#b2">[3]</ref>, that we call the Topical Preferential Attachment model. We assume that for a user the process of following an expert is a two step process. In the first step, the user selects one of her topics of interest. In the second step, she preferentially follows an expert on that topic based on the expert's popularity in that particular topical community. That is, the more popular an expert is in her topical community, the more likely that a user, interested in the topic, will follow the expert. We assume that the number of times an expert has been included in Lists related to that particular topic, is indicative of her popularity in that topical community. However, there may be cases where a user just wants to follow popular experts, who are also well known celebrities, without having any particular interest in their expertise. To account for such cases, we assume that an unnamed global topic exists, in which all experts have expertise. Further, similar to the Preferential Attachment model, we assume that the follower count of the experts, is indicative of how popular they are, with respect to this global topic.</p><p>Here we describe the generative model that we utilize for jointly modeling a user's expert followings, and present an Expectation-Maximization (EM) algorithm to compute interests in realtime.</p><p>Let T = T ∪{𝑡 𝑔 } be the set of all topics. Here, T is the set of all regular topics such as news, politics, music, etc. Additionally, we define the global topic 𝑡 𝑔 , different from regular topics, as a special topic in which all experts have expertise. Let the probability that a user is interested in a certain topic 𝑡 be 𝑃(𝑡; 𝑖 𝑢 ) = 𝑖 𝑢 𝑡 , where 𝑖 𝑢 the corresponding stacked vector of the probabilities 𝑖 𝑢 𝑡 over all the topics. Then,</p><formula xml:id="formula_0">∀ 𝑡 ∈T 𝑖 𝑢 𝑡 ≥ 0 and ∑︁ 𝑡 ∈T 𝑖 𝑢 𝑡 = 1</formula><p>Let V be the set of all experts. Also, let the probability that an expert 𝑣 ∈ V is selected be 𝑃(𝑣|𝑡) = 𝜃 𝑡 𝑣 , when a user is selecting an expert on topic 𝑡 to follow. Additionally, 𝜃 𝑡 is defined as the corresponding stacked vector of the probabilities 𝜃 𝑡 𝑣 over all the experts, for the given topic 𝑡. Then, given a particular topic 𝑡,</p><formula xml:id="formula_1">∀ 𝑣 ∈V 𝜃 𝑡 𝑣 ≥ 0 and ∑︁ 𝑣 ∈V 𝜃 𝑡 𝑣 = 1</formula><p>The generative process describing how a user selects her expert followings is as follows:</p><p>1. First, the user selects a random topic 𝑡 using her own interest vector 𝑖 𝑢 following: 𝑡 ∼ Multinomial(𝑖 𝑢 ) 2. Next, the user selects a random expert 𝑣, on the topic 𝑡, using the topic's popularity vector 𝜃 𝑡 following: 𝑣 ∼ Multinomial(𝜃 𝑡 ) For regular topics 𝑡 ∈ T , we define 𝜃 𝑡 𝑣 ∝ 𝜆 𝑣,𝑡 , where 𝜆 𝑣,𝑡 is the number of times the expert 𝑣 has been included in a List on topic 𝑡. For the global topic 𝑡 = 𝑡 𝑔 , we define 𝜃 𝑡 𝑔 𝑣 ∝ 𝜙 𝑣 , where 𝜙 𝑣 is the number of followers the expert has. Using Expectation-Maximization for parameter inference: Next, we present an Expectation-Maximization algorithm to infer the interest vector of a user 𝑖 𝑢 , from her expert followings. Expectation-Maximization is a class of iterative algorithms for inferring model parameters that uses the maximum likelihood method <ref type="bibr" target="#b13">[14]</ref>. It is particularly useful for inferring model parameters in cases involving unobserved latent variables. In our model, the topics selected by the user, from her interest vector, in the first step of the generative model are latent variables. This makes the Expectation-Maximization approach particularly suitable for our case.</p><p>Individual iteration steps of Expectation-Maximization algorithms are divided into two parts. In the first part, known as expectation step or E-step, the probability distribution of the latent variables are computed, given the current estimate of model parameters. In the second part, also known as maximization step or M-step, maximum likelihood estimates of model parameters are computed, given the observed data and the probability distribution over the latent variables computed in the previous step. The iterations are continued until convergence of model parameters.</p><p>We now describe the Expectation-Maximization algorithm in detail. Let the V 𝑢 ⊆ V be the set of experts that a user is following. Further, let T 𝑣 ⊆ T be the topics of expertise of a given expert 𝑣. Given information about the set of experts V 𝑢 a user is following we compute the maximum likelihood estimate of the user's interest, 𝑖 𝑢 .</p><p>The joint log likelihood function can be written as:</p><formula xml:id="formula_2">ℓ(𝑖 𝑢 ) = ∑︁ 𝑣 ∈V 𝑢 log 𝑃(𝑣; 𝑖 𝑢 ) = ∑︁ 𝑣 ∈V 𝑢 log ∑︁ 𝑡 ∈T 𝑃(𝑣|𝑡)𝑃(𝑡; 𝑖 𝑢 ) = ∑︁ 𝑣 ∈V 𝑢 log ∑︁ 𝑡 ∈T 𝑣 𝑃(𝑣|𝑡)𝑃(𝑡; 𝑖 𝑢 ) ∵ 𝑃(𝑣|𝑡) = 0 if 𝑡 ∉ T 𝑣</formula><p>Using the above log likelihood function we can derive the E-step weights as, E-step:</p><formula xml:id="formula_3">𝑤 𝑣 𝑡 = 𝑃(𝑡|𝑣; 𝑖 𝑢 ) = 𝑃(𝑣, 𝑡; 𝑖 𝑢 ) 𝑃(𝑣; 𝑖 𝑢 ) = 𝜃 𝑡 𝑣 • 𝑖 𝑢 𝑡 𝑡 ∈T 𝑣 𝜃 𝑡 𝑣 • 𝑖 𝑢 𝑡<label>(1)</label></formula><p>To obtain the M-step updates, we maximize:</p><formula xml:id="formula_4">𝑖 𝑢 = arg max 𝑖 𝑢 ∑︁ 𝑣 ∈V 𝑢 ∑︁ 𝑡 ∈T 𝑣 𝑤 𝑣 𝑡 log 𝑃(𝑣, 𝑡; 𝑖 𝑢 ) 𝑤 𝑣 𝑡 = arg max 𝑖 𝑢 ∑︁ 𝑣 ∈V 𝑢 ∑︁ 𝑡 ∈T 𝑣 𝑤 𝑣 𝑡 log 𝜃 𝑡 𝑣 • 𝑖 𝑢 𝑡 𝑤 𝑣 𝑡</formula><p>However, as 𝑖 𝑢 𝑡 are probabilities, the above maximization is subject to the constraint 𝑡 𝑖 𝑢 𝑡 = 1. Thus, we construct and maximize the Lagrangian:</p><formula xml:id="formula_5">L (𝑖 𝑢 ) = ∑︁ 𝑣 ∈V 𝑢 ∑︁ 𝑡 ∈T 𝑣 𝑤 𝑣 𝑡 log 𝜃 𝑡 𝑣 • 𝑖 𝑢 𝑡 𝑤 𝑣 𝑡 + 𝛽 ∑︁ 𝑡 ∈T 𝑖 𝑢 𝑡 − 1</formula><p>where 𝛽 is the Lagrangian multiplier. Taking derivative and equating to zero we find:</p><formula xml:id="formula_6">𝜕 𝜕𝑖 𝑢 𝑡 L (𝑖 𝑢 ) = ∑︁ 𝑣 ∈V 𝑢 𝑤 𝑣 𝑡 𝑖 𝑢 𝑡 + 𝛽 = 0 or 𝑖 𝑢 𝑡 = − 1 𝛽 ∑︁ 𝑣 ∈V 𝑢 𝑤 𝑣 𝑡</formula><p>Since, 𝑡 𝑖 𝑢 𝑡 = 1 we have:</p><formula xml:id="formula_7">∑︁ 𝑡 ∈ T 𝑖 𝑢 𝑡 = − 1 𝛽 ∑︁ 𝑡 ∈T ∑︁ 𝑣 ∈V 𝑢 𝑤 𝑣 𝑡 = − 1 𝛽 ∑︁ 𝑣 ∈V 𝑢 1 = − |V 𝑢 | 𝛽 = 1 or 𝛽 = − |V 𝑢 |</formula><p>Thus we have the M-step update rule, M-step:</p><formula xml:id="formula_8">𝑖 𝑢 𝑡 = 1 |V 𝑢 | ∑︁ 𝑣 ∈V 𝑢 𝑤 𝑣 𝑡 (2)</formula><p>For our algorithm, we initialize the vector of user interests 𝑖 𝑢 in a data driven fashion, instead of using a random initial value. We choose the initial value of the interest vector of a user 𝑖 𝑢 𝑡 , to be proportional to the number of experts on the topic that the user is following. For the global topic we choose initial value of 𝑖 𝑢 𝑡 𝑔 , to be proportional to the total number of experts that the user is following. Similar to <ref type="bibr" target="#b7">[8]</ref>, we find that initializing the system in deterministic data driven manner leads to the algorithm converging quicker to more meaningful results.</p><p>Similar to <ref type="bibr" target="#b7">[8]</ref>, we run the update steps of the expectation maximization algorithm is run till the relative improvement in subsequent iterations of the algorithm falls below 1%. Benefits of inference based on followership modeling over expert counting: The methodology for inferring topics of interest presented above has a number of benefits compared to the simple expert-counting methodology used by the Who-Likes-What system in our prior work <ref type="bibr" target="#b5">[6]</ref>. First, the Who-Likes-What system computed the relative interests of a user on a given topic by simply counting the number of experts that the user was following on the given topic. The major problem with this approach is that, it fails to account for the popularity bias of topics. A popular topic such as 'Politics' by virtue of being popular has many more experts on the topic, than a niche topic such as 'Neurology'. Thus, it is intuitive that a user following equal number of experts on both topics is likely to be more interested in the more niche topic. But by simply counting the number of experts, Who-Likes-What fails to account for the above phenomenon. By using the modeling based approach presented above, our method is accurately able to tackle this issue. Second,if a user follows an expert with multiple topics of expertise, it is not possible for a simple expert counting algorithm to infer which of the expert's topics made the user follow the expert. By taking into account the expert's relative popularity in the different topical communities, our modeling based approach is able to weigh the probabilities of topical interest for the user. Third, an expert counting algorithm in general ignores the relationship between topical tags. For instance, a user who is an expert on 'Libertarian Politics' in the USA is likely to be also an expert on the general topic of 'politics'. Our inference algorithm is able to account for these topical interactions, by utilizing a generative model of following behavior.</p><p>To demonstrate the improvement in quality of interest inference from our prior work <ref type="bibr" target="#b5">[6]</ref>, we show in Table <ref type="table" target="#tab_3">5</ref>, the inferred interests of some sample users using both the expert counting methodology in <ref type="bibr" target="#b5">[6]</ref>, and the inference based method proposed in the current work. The sample users shown in human judgment based evaluation process for judging the quality of interest inference and recommendation presented in the current work. Detailed demographic information about the evaluators who participated in our study is given later in Section 4.1.</p><p>In can be clearly seen, that whereas the expert counting based method is affected by popularity bias -inferring highly popular topics such as, News, Tech, and Media as interests of most users -the methodology proposed in this work does not suffer from such issues. Additionally, our method is able to extract meaningful niche topics -such as, Computer science, Journalism, Machine Learning, Public relations, and so on -as relevant topics of interests for the given users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Selecting candidate tweets for recommendation process</head><p>Having inferred the relative interests of users in different topics, the next of our recommendation process involves finding important and interesting tweets to recommend to users related to their topics of interest.</p><p>While it would certainly be desirable to compute relevance of all tweets posted in Twitter to different topics, with hundreds of millions of tweets posted every day, it is a practical challenge to process all tweets in realtime. Thus, many analytic companies and researchers are increasingly resorting to some form of sampling. In our prior work <ref type="bibr" target="#b53">[54]</ref>, we compared two orthogonal sampling strategies for sampling tweets: random sampling and expert sampling. The first method involved using the Twitter provided 1% random sample, while the second consisted all tweets posted by over 500 thousand experts on a diverse set of topics.</p><p>It was noted that a number of properties of the expert sample make it more desirable for information mining. We had observed that tweets contained in the expert sample contained much less spam, less chatter, and had a much larger fraction of informative content. Interestingly, we also found that, although the tweets in the expert sample were obtained from a very small fraction of the Twitter population, they were a good representation of the overall crowd sentiment on different events and entities. Further, for a number of major news events, the information about the event appeared in the expert sample before it appeared in the Twitter streaming API. The above features make expert sampling a very attractive choice for the purpose of tweet recommendation.</p><p>For creating the expert sample for the current work, we regularly crawl new tweets, posted by the 741 thousand experts in our dataset, every 15 minutes. During the month of April 2016 our expert sample contained an average of 2.5 million tweets per day.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Computing relevance of tweets with respect to different topics</head><p>Although our recommendation process considers candidate tweets that are tweeted by experts with known topics of expertise, it is still necessary to ascertain the relative relevance of the chosen tweets to the given topics, for a number of reasons. First, it is not necessary for users who are experts on specific topics to limit their tweets within the boundaries of their topical expertise. In our previous work <ref type="bibr" target="#b53">[54]</ref>, we actually observed that, apart from posting tweets relevant to their expertise, the topical experts often participate in day-to-day conversations, and tweet about topics beyond their topics of expertise. Second, many topics with broad public appeal, such as sports, entertainment and politics, are discussed by everyone, including users who are not experts on those subjects. Further, within our dataset, a user may have multiple topics of expertise. Thus, it is important to ascertain which topic a tweet is about, when an expert with a multitude of expertise posts a tweet. Finally, even if the topic of a tweet is explicitly known, it is important for the purposes of recommendation to obtain a relative ranking for the tweets on a given topic.</p><p>For this work, we take a probabilistic approach in trying to ascertain the relative relevance of a tweet with respect to a given topic. Ideally, we want to answer the following question, for every tweet-topic pair: what is the probability that the given tweet is on the given topic? We try to approximate the answer to the above question with the answer of the following one: given information only about the content of the tweet, what can we tell about the probability, that the given tweet was posted by an expert on the given topic? The intuition behind the above approach is that, if the contents of a tweet make it seem, that an expert on the given topic had tweeted it, it is likely that the tweet itself is relevant to the topic.</p><p>The problem of computing the likelihood of a tweet being posted by an expert on a given topic, from the content of the tweet, implores the use of a classification framework. Further, given the dataset of topical experts and their tweets, it is quite straight forward to set up one of the common state-of-the-art text based classification frameworks, such as Linear SVM or Naive Bayes Classifier <ref type="bibr" target="#b44">[45]</ref>. However, given that fact that our dataset consists of over 11.6 thousand different topics, one would have to train at-least 11.6 thousand different classifiers in one-vs-all mode. To avoid the expensive operation of training such a large number classifiers, we take an alternate approach based on the Binary Independence Model (BIM) <ref type="bibr" target="#b29">[30]</ref>. The Topical Binary Independence Model: The Binary Independence model or BIM is a probabilistic document retrieval, model based on the Naive Bayes Classifier. The primary reason for using a BIM inspired model rather than directly using Naive Bayes Classifier is that, the vanilla BIM model makes few reasonable assumptions over and above the 'Naive Bayes' assumption of the Naive Bayes Classifier, that makes computation of the model parameters much faster and storage efficient. Additionally, the time complexity of computing the ranking score function, of a tweet with respect to a topic, is orders of magnitude faster, when compared to the regular Naive Bayes Classifier. However, this speedup in model training and computing ranking score comes at the cost of not being able to compare the relevance of tweets across topics. This is due to the fact that the document rankings computed for different topics using the BIM model, are independent of each other. However, we found this trade off acceptable for our purpose, as having already computed the topics of interest of a given user, our recommendation algorithm only needs relative rankings of tweets with respect to given topics.</p><p>For computing tweet rankings with respect to different topics using our Topical BIM model, we represent a tweet as a bag of entities, 𝑥 ⊆ E, where an entity 𝑒 ∈ E is either present or absent in the tweet. Here, E is the set of all entities in our corpus. To extract meaningful entities from tweets we used the following steps. First, we filtered out non-English tweets from our dataset. For this purpose we used the language field provided by Twitter. Any tweet that did not have its language field set as 'en', were removed. Next, we processed the tweets using the CMU ARK part-of-speech Tagger <ref type="bibr" target="#b36">[37]</ref>. We selected as entities, terms marked with the following POS tags: proper nouns, common nouns, and #hashtags.</p><p>We denote, relevance of a tweet 𝑥 to the topic 𝑡 using 𝑃(𝑡|𝑥), which represents the probability the tweet's author is an expert on topic 𝑡 given the content of the tweet. Ranking tweets using the above probability is equivalent to ranking them using the following ranking function:</p><formula xml:id="formula_9">f rank (𝑥, 𝑡) = OddsRatio 𝑃(𝑡|𝑥) = 𝑃(𝑡|𝑥) 𝑃(t|𝑥) (3) = 𝑃(𝑥|𝑡) • 𝑃(𝑡)/𝑃(𝑥) 𝑃(𝑥|t) • 𝑃(t)/𝑃(𝑥)<label>(4)</label></formula><p>= 𝑃(𝑥|𝑡) 𝑃(𝑥|t)</p><formula xml:id="formula_10">• 𝑃(𝑡) 𝑃(t)<label>(5)</label></formula><p>Here, 𝑃(t|𝑥) represents the probability that the tweet's author is not an expert on topic 𝑡. As the term 𝑃(𝑡)/𝑃(t) is a constant when ranking relevant tweets for a given topic, the ranking function can be further simplified to:</p><formula xml:id="formula_11">f rank (𝑥, 𝑡) = 𝑃(𝑥|𝑡) 𝑃(𝑥|t)<label>(6)</label></formula><p>Next, we make the 'Naive Bayes' conditional independence assumption: the probability of presence of different entities in a tweet are independent of each other, given the topic of expertise of the tweet's author. Then the above ranking function can be written as,</p><formula xml:id="formula_12">f rank (𝑥, 𝑡) = 𝑒 ∈E 𝑃(𝑒|𝑡) 𝑃(𝑒|t) = 𝑒 ∈𝑥 𝑝 𝑒,𝑡 𝑞 𝑒,𝑡 • 𝑒∉𝑥 (1 − 𝑝 𝑒,𝑡 ) (1 − 𝑞 𝑒,𝑡 )<label>(7)</label></formula><p>Where 𝑝 𝑒,𝑡 is the probability that 𝑒 occurs in a tweet posted by an expert on topic 𝑡, and 𝑞 𝑒,𝑡 is the probability that 𝑒 occurs in a tweet not posted by an expert on topic 𝑡.</p><p>Next, we make the first BIM model assumption, also known as the relevance of empty document assumption: that is a tweet with no entities present in it is equally probable to be tweeted by expert on topic 𝑡 and a non-expert on topic 𝑡 <ref type="bibr" target="#b29">[30]</ref>. This allows us to write the ranking function as:</p><formula xml:id="formula_13">f rank (𝑥, 𝑡) = 𝑒 ∈𝑥 𝑝 𝑒,𝑡 𝑞 𝑒,𝑡 • 𝑒∉𝑥 (1 − 𝑝 𝑒,𝑡 ) (1 − 𝑞 𝑒,𝑡 ) / 𝑒 ∈E (1 − 𝑝 𝑒,𝑡 ) (1 − 𝑞 𝑒,𝑡 )<label>(8)</label></formula><formula xml:id="formula_14">= 𝑒 ∈𝑥 𝑝 𝑒,𝑡 (1 − 𝑞 𝑒,𝑡 ) 𝑞 𝑒,𝑡 (1 − 𝑝 𝑒,𝑡 )<label>(9)</label></formula><p>Here, 𝑒 ∈ E (1 − 𝑝 𝑒,𝑡 )/(1 − 𝑞 𝑒,𝑡 ) = 𝑃(∅|𝑡)/𝑃(∅|t) = 1 is the ratio of two probabilities: (i) the probability that the empty tweet was posted by an expert on topic 𝑡, 𝑃(∅|𝑡), and (ii) the probability that the empty tweet was not posted by an expert, whose expertise did not contain topic 𝑡, 𝑃(∅|t). The above ratio is equal to 1 by the relevance of empty document assumption.</p><p>Having the expert sample, the probability 𝑝 𝑒,𝑡 can be estimated as 𝑛 𝑒,𝑡 /𝑛 𝑡 . Here, 𝑛 𝑒,𝑡 is the number of tweets in the corpus posted by experts on topic 𝑡, that contained the entity 𝑒, and 𝑛 𝑡 is total number of tweets posted by experts on topic 𝑡. As 𝑞 𝑒,𝑡 represents the number of tweets not belonging to topic 𝑡 that contained entity 𝑒, the computation of 𝑞 𝑒,𝑡 results in a dense matrix, which is difficult to store and operate on. Hence, we make the second BIM model assumption: for a given topic, as most documents in the corpus have not been tweeted by an expert on the topic, the whole corpus of tweets is a good approximation of tweets not tweeted by an expert on the specific topic. Thus, we can approximate: 𝑞 𝑒,𝑡 as 𝑞 𝑒 = 𝑛 𝑒 /𝑛, that is probability that the entity 𝑒 occurs in any given tweet in the corpus. Here, 𝑛 𝑒 is the total number of tweets in the corpus containing entity 𝑒, and 𝑛 is the total number of tweets in the corpus. Thus, the ranking function can be further simplified to:</p><formula xml:id="formula_15">f rank (𝑥, 𝑡) = 𝑒 ∈𝑥 𝑝 𝑒,𝑡 (1 − 𝑞 𝑒 ) 𝑞 𝑒 (1 − 𝑝 𝑒,𝑡 ) = 𝑒 ∈𝑥 𝑛 𝑒,𝑡 𝑛 𝑡 (1 − 𝑛 𝑒 𝑛 ) 𝑛 𝑒 𝑛 (1 − 𝑛 𝑒,𝑡 𝑛 𝑡 )<label>(10)</label></formula><formula xml:id="formula_16">= 𝑒 ∈𝑥 𝑛 𝑒,𝑡 (𝑛 − 𝑛 𝑒 ) 𝑛 𝑒 (𝑛 𝑡 − 𝑛 𝑒,𝑡 )<label>(11)</label></formula><p>To further speedup the computation of the score function at runtime, and to guard against over fitting, we rewrite the above equation as:</p><formula xml:id="formula_17">f rank (𝑥, 𝑡) = 𝑒 ∈𝑥 𝑠 𝑒,𝑡<label>(12)</label></formula><p>where</p><formula xml:id="formula_18">𝑠 𝑒,𝑡 =        𝑛 𝑒,𝑡 (𝑛 − 𝑛 𝑒 + 𝛿) 𝑛 𝑒 (𝑛 𝑡 − 𝑛 𝑒,𝑡 + 𝛿) if 𝑛 𝑒,𝑡 ≥ 𝑘 1 otherwise</formula><p>Here, 𝛿 is a positive smoothing factor which also ensures that none of the terms reduce to zero, and 𝑘 is model parameter that ensures that an entity occurs at-least 𝑘 times in tweets from experts on topic 𝑡 before it is used for rank calculation. For the purposes of this work, we chose 𝛿 = 1 and 𝑘 = 5. Finally, to guard against the potential bias of the ranking function towards longer tweets with more entities, we rewrite the final ranking function as:</p><formula xml:id="formula_19">f rank (𝑥, 𝑡) = 𝑖 ∈ {1..𝜈 } 𝑠 𝑖 𝑒,𝑡<label>(13)</label></formula><p>where 𝑠 𝑖 𝑒,𝑡 is the 𝑖th largest value in the collection {𝑠 𝑒,𝑡 : 𝑒 ∈ 𝑥}. For this work, we experimented with a range of thresholds, and found that value of 𝜈 = 3 works well in practice. Suitability of using BIM inspired model in current scenario: Although BIM has been an influential model, it has been heavily criticized <ref type="bibr" target="#b29">[30]</ref> for some assumptions it makes, especially for making strong assumptions about probabilities 𝑝 𝑒,𝑡 , ignoring term counts in documents, the conditional Naive Bayes assumption, and ignoring document length. Numerous works have been published since, trying to address the above limitations. However, for our current purpose, we find the BIM inspired model quite effective as the controversial assumptions do not create significant issues in the domain where we use it. First, in the document retrieval setting, where BIM model was originally used, the model had to make assumptions about the probabilities 𝑝 𝑒,𝑡 , as it was not possible to know a priori which documents would be relevant to an arbitrary query. However, for our task, since we already know which tweets were made by which experts, we can directly compute 𝑝 𝑒,𝑡 . Further, as tweets are small, it is unlikely that relevant tweets have much repetition of entities, thus making the binary entity count assumption a reasonable one. <ref type="bibr" target="#b11">[12]</ref> noted that the Naive Bayes assumption in the BIM model (and hence our model) can be replaced with a much weaker and more reasonable "linked dependence assumption" without changing the model computation. This allows models using the Naive Bayes assumption, such as our method, to perform much more competitively than what would be expected of models making such a drastic and simplistic assumption. Additionally, the BIM inspired model used in the current work does not ignore document lengths and corrects for the problem by limiting the effective number of entities that are used in computing the final topical rank score of a tweet. Source of speedup in Topical BIM: It straightforward to see that training our Topical BIM model, which needs only one pass over the data to obtain frequency counts of the distinct entity-topic pairs, is much faster than training 11.6 thousand Linear SVM models in one vs all mode, each of which require an expensive gradient descent based optimization schedule. However, it is not so obvious to see the speedup obtained from using Topical BIM over a traditional Naive Bayes classifier, which has similar training times. The main speed advantage of Topical BIM comes from utilizing the 'relevance of the empty document assumption', which reduces the time complexity of computing the relevance score of a tweet to a topic f rank (𝑥, 𝑡), from the order of total number of entities in the corpus, to the order of the number of entities in the tweet. This change can be seen, by observing how the computation of the scoring function f rank (𝑥, 𝑡), changes from Eq. 7 to Eq. 9. To compute the score function in Eq. 7 one would have to compute the product of |E | separate terms. While after using the 'relevance of the empty document assumption' the number of terms required to compute the score function in Eq. 9 reduces to |𝑥|. The median number of entities present in the daily tweet corpus, posted by 741 thousand experts in our dataset, during the month of April 2016, came to be 363,553. While the median number of entities present in individual tweets, for the same dataset, came to be 5. This represents a 72.7K (thousand) times increase in tweettopic scoring speed that is obtained from using the Topical BIM model, compared to a vanilla Naive Bayes classifier!</p><p>The rate of decrease in the cost of computation power due to advancement in computational hardware is clearly lower than the ever increasing pace at which content is being produced in online social media today. Thus, it is imperative to be able to judiciously trade off computation speed and computation accuracy, to be able to process millions of pieces of content in real-time. The efficiency of the Topical BIM model presented above, significantly contributed in enabling us to build a practical system, that we describe in Section 5, for demonstrating the efficacy of our approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Recommending tweets to users</head><p>In Section 3.2 we described the Topical Preferential Attachment model for inferring relative interest of Twitter users in different topics. This was followed by Section 3.4 which described the scalable Topical Binary Independence model for scoring the relative relevance of a tweet with respect to given topics. In this section, we present the overall recommendation algorithm that utilizes the above methods to create personalized tweet ranking to be presented to the user.</p><p>The steps of the overall recommendation algorithm are as follows:</p><p>• Step 1: For the target user 𝑢 for whom the recommendations are to be generated, compute the top 𝑀 interests of the user using the Expectation-Maximization algorithm described in Section 3.2.</p><p>• Step 2: For each of the 𝑀 topics of interest obtained in previous step, compute the top 𝑁 most relevant tweets using the Topical BIM model described in Section 3.4.</p><p>• Step 3: For each of the 𝑀 ranked lists of tweets, corresponding to the 𝑀 topics of interest, remove tweets that are similar to other tweets in the list. If two similar tweets with rank 𝑟 1 and 𝑟 2 are present in a single list, and 𝑟 1 &lt; 𝑟 2 then remove the tweet with rank 𝑟 2 from the list.</p><p>• Step 4: Fill up the recommendation list for the user 𝑢, by selecting tweets from the 𝑀 topical lists in a round robin fashion.</p><p>• Step 5: From the final recommendation list created the in the last step, remove tweets that are similar to other tweets in the list. If two similar tweets with rank 𝑟 1 and 𝑟 2 are present in a single list, and 𝑟 1 &lt; 𝑟 2 then remove the tweet with rank 𝑟 2 from the list.</p><p>For the above procedure of generating the recommendation list of tweets, we consider two tweets to be similar, if the Jaccard similarity of their entity sets is greater than or equal to 0.7.</p><p>For the evaluations described in the following section, we choose the number of topics 𝑀 = 50 for every user, and for every topic we compute the top 𝑁 = 1000 tweets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Evaluation</head><p>In this section, we try to quantify the efficacy of our interest inference algorithm and our tweet recommendation methodology. Most recommendation studies utilize an offline evaluation approach <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b24">25]</ref>. In these studies, the recommendation algorithm produces a ranking of recommended items, for every given user. The goodness of the recommendation algorithm is measured by how high-ranked are the items, that are already known to be liked by the user. However, as the tweets recommended by our system are likely to come from sources, that the user does not follow, such as topical experts other than the ones that the user is following, it is unlikely for the users to have liked them, making it difficult to utilize the above evaluation approach. Thus, to compare the recommendations generated by our methodology with existing works, we take a user study based evaluation approach, where human evaluators are asked to rate the top recommendations generated for them, on a five point Likert scale. This method of evaluation has an additional advantage for our case. As an intermediate step, our algorithm computes meaningful topics of interest, for the given user. Evaluating interest inference is an inherently difficult problem, as only the users whose interests are inferred can judge the quality of the results. This makes a user-study based evaluation particularly suitable for the current task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Demographics of evaluators</head><p>Active Twitter users were recruited as evaluators, by advertising in the mailing lists of the first author's institute. The evaluators were given a token compensation for participating in the process. As discussed earlier, a large fraction of Twitter users are passive consumers, not tweeting, or liking many tweets. This makes it difficult to apply traditional rating based recommendation algorithms, which use retweets and likes as ratings. To ensure that our comparison with the above baselines are fair, we required our evaluators to have followed at-least 50 users, and have retweeted or liked at-least 10 tweets. A total of 55 evaluators participated in the study. All evaluators were Indian nationals. The age of the evaluators ranged between 19 and 28 years, with the median being 23 years. Six out of the 55 evaluators were female, while the rest were male. Of the 55 evaluators, 21 were graduate students, 16 were under-graduate students, and 18 were employed in the industry.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Evaluating interest inference</head><p>Our interest inference algorithm, infers high-level topics of interests for Twitter users. This is in contrast with most earlier works where inferred interests have one of the two forms: (i) latent interests in an abstract domain <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38]</ref> or (ii) distributions of tags and terms computed from tweets, received or posted by the Twitter users <ref type="bibr" target="#b9">[10]</ref>. The interest inference apporach that is most similar to the current work is that of our earlier work <ref type="bibr" target="#b5">[6]</ref>, where we computed a user's relative interest in a topic by simply counting the number of experts that the user was following on that topic.</p><p>In this work, we compare the Expectation-Maximization based interest inference algorithm of our 'What You Like' system (WYL-Infer), with the expert counting based approach of the 'Who Likes What' system presented in our prior work <ref type="bibr" target="#b5">[6]</ref> (WLW-Count) because of the following reasons: since, it is difficult for a human user to understand the underlying meaning of abstract latent interests, it is difficult for them to directly compare those abstract latent interests, with the meaningful topics of interests that our algorithm produces. Additionally, we have already demonstrated that even simple expert counting works better at extracting meaningful interests of users than tag distributions obtained from using language modeling techniques on posted or received tweets.</p><p>For our evaluation, we used our dataset of user expertise, to compute top 10 topics of interests of every user who participated in the evaluation process, using our EM based inference algorithm (WYL-Infer) as well as expert counting method (WLW-Count). For every topic, the evaluators were asked to rate, how much they were interested in that particular topic, on five point Likert scale, ranging from 'Very interested' (score 5) to 'Not interested at all' (score 1).</p><p>To compare the results of the evaluation process we measure overall relevance of the methodologies using mean average score (mean of the average scores computed per user) and mean precision. For computing precision, which requires binary relevance scores, we counted rating scores of 4 and 5 as relevant, while scores between 1 and 3 were counted as irrelevant. Additionally, we measured the goodness of the rankings obtained from the different systems using mean average precision (MAP) and mean normalized discounted cumulative gain (nDCG). Table <ref type="table">6</ref> shows the summary of the evaluation results. We find that when compared to the expert counting based approach (WLW-Count) the current EM based interest inference (WYL-Infer) shows modest to marginal improvements across all the chosen metrics. The largest improvements are observed for the binary precision based measures, with 3.05% improvement in terms of mean precision, and 4.41% improvement using mean average precision. However, when comparing using absolute scores, the improvements are smaller: 1.68% improvement in terms of mean average score, and 0.32% improvement as per mean nDCG.</p><p>Next, to understand the qualitative difference in the results obtained from the two methods, we compare the topic clouds of the 10 topics of interests, generated for the 55 evaluators using the two methods. Figure <ref type="figure">2</ref> shows generated topic clouds. The font size used to depict a topic is proportional to the number of evaluators for whom the topic was inferred as an interest while the brightness of the topic is proportional to the mean score received by that topic.</p><p>It is easy to observe, that the diversity and granularity of topics inferred using the proposed method is much higher. For the 55 evaluators, the top 10 topics of interests inferred by the inference method (WYL-Infer) yielded 237 distinct topics. While the same for the expert counting method (WLW-Count) was only 73. Additionally, the topics inferred by the inference method better captures the local interests of the Indian evaluators: India News, Indian Cricket, Indian Cinema (Bollywood, Tollywood, Cinema of India), Indian political parties (Bhartiaya Janta Party). While those inferred by the expert counting method (WLW-Count) are much more generic in nature, like music, movies, politics, etc.</p><p>Interestingly, we find that topics that are inferred as interests for many evaluators, by the expert counting method (WLW-Count), are likely to be more disliked by the evaluators. The Spearman rank correlation between the mean score obtained by a topic of interest and the number of evaluators for whom the topic was inferred as interest is 𝜌 = −0.290 (𝑝 = 0.013). However, similar correlation does not exist for the topics inferred by our current inference based method (WYL-Infer): 𝜌 = −0.064 (𝑝 = 0.321). This can also be seen in Figure <ref type="figure">2</ref> where the larger topics in Figure <ref type="figure">2b</ref> are darker, than the larger topics in Figure <ref type="figure">2a</ref>.</p><p>To better explain the cases, where our inference based method (WYL-Infer) was performing poorly, we followed up with the evaluators to understand why they found particular inferred topics of interests uninteresting. We found in general the cases followed the following themes.</p><p>Foreign topic descriptions were more disliked: Even though the topics inferred by our methodology are limited to topics present in English language Wikipedia, our topical dataset contains a number of non-English topics. This is because the English language Wikipedia contains a number of topics with non-English names. In particular, we found that one of the evaluators was interested in a number of Argentine Footballers, because of which our algorithm found him to be interested in 'Torneos y Competencias' an Argentine sports firm. However, the evaluator was not acquainted in this particular institution and found it not interesting. Similarly, we found another evaluator who is interested in the South African Cricket Team, who are nicknamed 'the Proteas'. However, the evaluator was not familiar with this term and marked the topic uninteresting. Additionally, we found evaluators who were following a number of popular performers from United Kingdom, but marked the topic 'UK Music' irrelevant as they were only interested in the particular performers and not in the UK Music scene in general.</p><p>Rival/foreign league teams are disliked: We found for a number of cases, that evaluators who were soccer fans, and followed particular international soccer players, were inferred as interested in particular soccer teams such as Sao Paolo FC, Real Madrid, etc. However, the evaluators marked that they were not interested in information from some of those particular teams. We found that these were soccer teams where the players, whom the evaluators followed, were associated. However, it emerged that although those players were associated with multiple teams in their lifetime, the evaluators were only interested in a subset of them. Specifically, they did not like teams that were associated with soccer leagues that they did not follow.</p><p>Follows celebrity but not interested: We found that in a number of cases, the evaluators were inferred to be interested in a number of Indian celebrities (Shahrukh Khan, Sachin Tendulkar, ...) because they had followed them and other related accounts. However, when inquired, the evaluators responded that although they followed certain celebrities, they were not interested in news or information regarding them.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evaluating recommendation methodology</head><p>To understand the effectiveness of our topical recommendation strategy (Topical Reco.), we compared it with three popular baseline recommendation algorithms. However, as the different baseline algorithms draw on different information sources to generate good recommendations, we had to create baseline specific datasets to obtain meaningful recommendations from the baselines. Next we describe the baseline strategies, and the datasets created for them.</p><p>(i) FunkSVD: FunkSVD is a matrix factorization based collaborative filtering algorithm <ref type="bibr" target="#b38">[39,</ref><ref type="bibr" target="#b17">18]</ref>, that uses regularized gradient descent SVD design. For this work, we used the FunkSVD implementation from the LensKit Recommendation Toolkit <ref type="bibr" target="#b14">[15]</ref>. To create the user-item matrix, to be used with the FunkSVD framework, first we chose up to 1000 candidate users for every target user, as described below. Next, the boolean user-item matrix was created for every target user, using the retweet and liked tweet information of the target user as well the corresponding candidate users. We ran FunkSVD on the user-item matrix with 40 features and 100 training iterations per feature, and took the top 10 recommended tweets.</p><p>To create the dataset for the FunkSVD algorithm, we created the FunkSVD candidate user set for every target user. For this purpose, we first crawled users who had retweeted tweets that were liked or retweeted by the target user. For every tweet retweeted or liked by the target user, up to 200 such users were chosen. Next, the crawled users were ranked by the number of common liked/retweeted tweets they shared with the target user. The candidate user set was chosen by selecting the top 1000 users from the above set.</p><p>(ii) Content Based Recommendation (Content Reco.): At its base, content based recommendation algorithms choose items to recommend, by finding items that are most similar to a user's already preferred items, using some form of content similarity <ref type="bibr" target="#b30">[31]</ref>. To construct the content-based recommendation system, we first rank tweets from the set of tweets posted by a candidate set of users based on how similar they are to tweets posted or liked by the target user. The top 10 tweets are then selected for the purpose of recommendation. We used the Jaccard similarity for computing similarity between the set of entities contained in the tweets.</p><p>To create the dataset for the content based recommendation method, we first created a candidate user set for every target user, by first crawling 1000 followees of every user, the target user was following. The followee of followee users thus crawled, were ranked by computing the overlap between the user's follower set and the target user's followee set. The candidate user set was chosen by selecting the top 1000 users from the above set.</p><p>(iii) Social Recommendation (Social Reco.): The social recommendation process selects the most highly retweeted or liked tweets from the user's neighborhood <ref type="bibr" target="#b9">[10]</ref>. Tweets for the social recommendation baseline were chosen from the set of tweets retweeted or liked by users in the candidate user set. To create the dataset for the social recommendation algorithm, we created target user specific candidate user sets, by first crawling 1000 followers of every user, the target user was following. The follower of followee users thus crawled were ranked by computing the overlap between the user's followee set and the target user's followee set. The key idea behind the above ranking being, that users who share many followees with the target user are likely to have shared interests with the target user. The candidate user set was chosen by selecting the top 1000 users from the above set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Mean</head><p>Additionally, for all of the above three cases, users in the candidate sets chosen, had following properties: (i) they had posted a tweet within one week from the date of evaluation, (ii) they had more than 10 followers and 10 followees, and (iii) they had posted at-least 10 tweets in their lifetime. Further, candidate tweets selected for the recommendation process were posted within one week from the date of evaluation.</p><p>Similar to the strategy of comparing interest inference, we presented each evaluator with four sets of top 10 tweets, generated using the four recommendation algorithms: our topical recommendation strategy (Topical Reco.) and the three baselines: FunkSVD, Content based recommendation (Content Reco.) and Social recommendation (Social Reco.). The evaluators were asked to rate how much they liked each tweet of a five point Likert scale, ranging from 'Like very much' (score 5) to 'Don't like at all' (score 1).</p><p>As with the method for comparing user's interests we compared the results of the evaluation process by measuring overall relevance of the methodologies using mean average score and mean precision. For measuring precision, scores of 4 and 5 as were considered as relevant, while scores between 1 and 3 were counted as irrelevant. For measuring goodness of ranking we used mean average precision metric and mean normalized discounted cumulative gain (nDCG).</p><p>Table <ref type="table" target="#tab_4">7</ref> shows the performance of the proposed Topical recommendation strategy (Topical Reco.) when compared to the performances of the baseline strategies: FunkSVD, Content based recommendation (Content Reco.) and Social recommendation (Social Reco.) Topical recommendation performs modestly better compared to other baselines in terms of all metrics other than mean nDCG. In terms of mean average score and mean precision, Topical Reco. shows 4.97% and To better understand the performance of our Topical recommendation algorithm, we setup a linear regression analysis for explaining the score given by the evaluators to tweets, recommended by our algorithm. The key question that we wanted to answer from this regression analysis is that, can certain features of the recommended tweets themselves explain the scores received by the tweets?. Specifically, we wanted to understand the effect of the following tweet features: whether the tweet is a retweet and whether the tweet contains entities such as: hashtags, user mentions, embedded photos, and external urls. Additionally, we included tweet based popularity measures: number of favorites and retweets received by the tweet at the time of evaluation. The favorite count and retweet count of the tweets were log scaled. Additionally, to account for the behavior of the evaluators, we included the adjusted user mean score feature, which is the mean of the scores given by the evaluator to all tweets rated by him, except the current one. Further, we also included in the regression model, the topic score given by the evaluator to the topic based on which the tweet is being recommended.</p><p>Table <ref type="table" target="#tab_5">8</ref> shows results of the regression analysis. We find that presence of different entities, such as hashtags, user mentions, photos, and urls, does not show a significant relation with the score received by a tweet. Also, whether a tweet is a retweet or not, also does not seem to significantly effect the score of a tweet. However, we find that favorite and retweet counts of tweets have significant relations with the score received by a tweet. Interestingly, while higher retweet count of tweets seem to positively effect the score received by a tweet, higher favorite counts have a negative effect on the probability of the tweet getting a higher score. As expected, the topic score and the evaluator's adjusted mean score have significant effects on the score of the tweet. The design of the What You Like system consists of three distinct parts: the tweettopic scoring module, the interest computation and management module, and the recommendation and topical tweet presentation module. We describe the modules briefly in the rest of this section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">The tweet-topic scoring module</head><p>The tweet scoring module is responsible for retrieving newly posted tweets of the known topical experts every 15 minutes, and computing the scores of the retrieved tweets with respect to the different topics. The list of known topical experts is updated periodically by crawling the Twitter Lists created by the first 50 million Twitter users. The crawled List data is then used along with the latest English language Wikipedia dump, to discover new topical experts, using the expertise inference method presented in Section 3.1. By using the efficient Topical BIM model (described in Section 3.4), for computing relevance of tweets with respect to topics, every tweet of every expert Twitter user, posted within last 24 hours, is scored with respect to every topic of expertise of its author. As of writing, the current version of the system uses expertise information of 741 thousand experts with expertise on 11 thousand distinct topics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">The interest computation and management module</head><p>When a target user uses the system for the first time, the system fetches the list of Twitter accounts that the target user is following, to find out the expert followings of the user. The expert followings of the target user is then used for inferring her topics of interest, by employing the interest inference method proposed in Section 3.2. Additionally, the system also allows the user to directly modify her interest list, by allowing her to remove topics from the list and insert additional topics into it. Over time the Twitter user may start following additional Twitter users and may develop new topics of interest. To accommodate for this scenario, the system also allows users to manually trigger re-computation of interests using the inference mechanism, and incorporate into her known set of interests any new topics discovered.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">The recommendation and topical tweet presentation module</head><p>While the relative relevance of tweets with respect to different topics is computed in batch by the tweet scoring module, the matching of user interests to tweet topics for generating recommendation is done at run-time (i.e., when the recommendations for a user are to be generated). The recommendation and topical tweet presentation module is responsible for generating the personalized ranking of tweets for every user, and also allows users to view the most relevant tweets given particular topics. When showing a particular tweet to a user as part of her recommendations, the module displays the topic of interest of the user that led to the system selecting the tweet for the purpose of recommendation. Figure <ref type="figure" target="#fig_2">3</ref> shows an example tweet recommendation generated by the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Discussion</head><p>In this section, we discuss some observations which indicate the practicality of the methodologies proposed in this work, and some potential future extensions of the present work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1">Understanding the severity in lack of rating data on Twitter</head><p>State-of-the-art collaborative filtering based recommender systems take as input the user-item rating matrix. The effectiveness of these approaches drop significantly in cases where sufficient rating information, associated with most users and most items, is not available. Developers of recommender systems for the Twitter platform generally use retweets and favorites/likes as binary ratings when recommending tweets <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38]</ref>. However, due to the well noted sparsity in retweet data, authors often have to take alternative routes. For example, in <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b37">38]</ref> the authors chose to use user-keyword matrix, instead of the regular user-tweet matrix for the purposes of recommendation.</p><p>Earlier studies had noted that 44% of Twitter users are only passive consumers of content <ref type="bibr" target="#b28">[29]</ref>. With no rating data available for such a large percentage of population, the task of generating personalized recommendations using traditional systems is very challenging. While the above percentage shows the percentage of users with whom no rating information is associated, we also wanted to know the fraction of tweets for which rating information is completely missing.</p><p>To estimate the percentage of tweets that receive any rating, that is likes or retweets, we sampled one million original tweets from the Twitter streaming API for each of the seven days during the period of June 5, 2016, to June 11, 2016. We re-crawled those same tweets after one month of them being tweeted. Interestingly, we found that of the 7 million tweets selected, only 22.7% tweets received likes (at-least one), while only 12.5% tweets received retweets (at-least one). When looking at the combined results, we found that only 27% of the selected tweets have received likes or retweets. Thus, we find the problem of data sparsity is not only severe due to passive users, but is even more acute when seen from the perspective of tweets with no ratings.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Recommending tweets not created by known topical experts</head><p>The current study utilizes the expert sample <ref type="bibr" target="#b53">[54]</ref>, or tweets posted by known topical experts, as the candidate set of tweets to be used for the purposes of recommendation. However, as shown in the third block of Figure <ref type="figure" target="#fig_0">1</ref>, our method can easily be used to obtain tweet-topic scores for a different set of candidate tweets. The necessity of using expert tweets is limited to the training phase of the Topical BIM method. Once trained however, the Topical BIM model can then be used to score any tweet.</p><p>The primary reason for using the expert sample as the candidate set of tweets for this work, is that the expert sample has been shown to have a number of interesting properties that make it suitable for information mining tasks <ref type="bibr" target="#b53">[54]</ref>. The more interesting of these properties include, having significantly less spam and more informative content, and significantly less conversational tweets.</p><p>However, many studies have been published that have separately attacked the problems discussed above. This includes trying to filter out spam and malicious content <ref type="bibr" target="#b32">[33]</ref>, trying to identify information devoid of chatter <ref type="bibr" target="#b1">[2]</ref>, and trying to detect events early on Twitter <ref type="bibr" target="#b42">[43]</ref>. When used in conjunction with the above techniques, it is possible to use Twitter streaming API, and even the Twitter Firehose API, as the candidate set of tweets for doing recommendation. In fact, when using high volume data source such as the Twitter Firehose API, using an efficient method for computing relevance of tweets to topics, such as our Topical BIM methodology, may become the only practical choice.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.3">Using social annotations for recommendation beyond Twitter</head><p>The key data source utilized by this study, that is not generally used by traditional recommender systems, is social annotations mined from Twitter Lists. However, the availability of social annotations is not limited to the Twitter microblogging platform. A very similar feature that exists in Facebook is known as Friend Lists, which allows a user to create named lists of their friends on Facebook. The Circle feature on Google+ also functions similarly. LinkedIn allows for social annotations in a more direct manner -users on LinkedIn can endorse skills and expertise of their connections <ref type="bibr" target="#b3">[4]</ref>. Social annotations can thus be viewed as a generally available resource, allowing for easy extension of methods similar to ours on other platforms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4">Stability of relations inferred using different recommendation methodologies</head><p>State-of-the-art matrix factorization based collaborative filtering algorithms factorize the user-item matrix, using low rank approximations, to learn affinity of users and items with respect to abstract latent topics <ref type="bibr" target="#b46">[47]</ref>. Thus, when using such models in Twitter, using the user-tweet matrix, one learns from the collaborative filtering model the relationship of users and tweets with respect to abstract topics. However, it has been observed that most stories discussed on Twitter change rapidly and are only discussed on Twitter for short periods of time <ref type="bibr" target="#b0">[1]</ref>. <ref type="bibr" target="#b0">[1]</ref> studied the trend feature on Twitter, which capture popular evolving stories on the Twitter platform. They noted that volumes of tweets posted, related to different trends, decay as a power low, indicating short lifetimes for the stories themselves. Additionally, the number of times for which a story is captured in trending topic lists also follows a power law. The authors noted that 66% of stories never appear twice on the trending topic list. Thus, it can be argued that with the ever changing set of stories being discussed on Twitter, abstract topics that are learned from using collaborative filtering tools on user-tweet matrices are also ephemeral in nature. In other words, if models are not continuously updated from very recent data, their performance are likely to deteriorate quickly.</p><p>In contrast, when compared to how quickly the stories change on Twitter, the useruser follow relationship are much more stable. Thus, user-topic interest relationships learned from them, such as the case in the current work, are much more stable.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.5">Incorporating social annotations into MF based recommendation techniques</head><p>Matrix Factorization (MF) based techniques that create low rank approximations of data to perform recommendation tasks have been very popular in recent recommendation literature. Most social recommender systems, in addition to the user-item matrix, incorporate user-user trust and homophily relations in their models for performing the recommendation task <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b54">55,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b25">26]</ref>. While this paper has made different modeling choices, it seems definitely feasible to develop a recommendation methodology that uses matrix factorization based modeling techniques along with the intuitions and data sources presented in this paper. The key idea for such a study would be to distinguish between experts and regular users interested in the different topics, and use the user-expert follower matrix as opposed to the user-user trust or homophily data. Also, a key data source that is used in this study is the expert-topic data, capturing the expertise information of experts mined from social annotation data. Incorporating the above social annotation data would be fundamental to the success of such an approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Conclusion</head><p>The primary contribution of this work is in the development of a novel technique for generating personalized tweet recommendations. The major novelty in the proposed recommendation technique comes from mapping both content of tweets and interests of users to a common domain of explicit human-interpretable topics. This is in stark contrast to state-of-the-art model based collaborative filtering techniques, that use abstract latent topics for the same purpose. To execute the above task, this paper introduces the Topical Preferential Attachment model, that models behavior of users with respect to following of topical experts. Based on the above model, this paper presents an Expectation-Maximization based algorithm to infer interests of users. This paper also presents the Topical Binary Independence Model (Topical BIM), that is used to efficiently compute ranked list of relevant tweets with respect to a given topic. The recommendation algorithm presented in this paper combines the above two techniques to create personalized tweet rankings for individual Twitter users. An obvious advantage of being able to map content of tweets and interests of users to meaningful human-interpretable topics is that the topics themselves can then be used for providing simple explanations to the target user, about why a particular item was recommended to her. While earlier works trying to explain recommendations have generally disassociated the process of generating explanations from the methodology of generating recommendations <ref type="bibr" target="#b21">[22]</ref>, studies have found that in such cases users can develop wrong intuitions about the recommendation system which can lead to impaired user satisfaction <ref type="bibr" target="#b15">[16]</ref>.</p><p>A major advantage of the methodology proposed in the current work is its ability to produce recommendations for passive Twitter users, that is users who are passive consumers of content, who do not tweet or retweet other's tweets. With over 44% of Twitter users being only passive consumers of content <ref type="bibr" target="#b28">[29]</ref>, traditional collaborative filtering and content based recommender systems, that depend extensively on useritem rating information, suffer tremendously due to lack of rating information for such a large fraction of users. Further, given the huge pace at which tweets are produced today, and the fast pace with which tweets lose the ability to attract attention <ref type="bibr" target="#b41">[42]</ref>, the abstract representations of latent topics learned by model based collaborative filtering algorithms are likely to be extremely ephemeral in nature. The methodology presented in the current paper avoids the above pitfalls by learning more stable relations of user interests based on a user's expert followings, which are more easily obtainable and more stable over time.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: An overview of the four overall stages of the recommendation methodology proposed in the current work.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Table 6 :Figure 2 :</head><label>62</label><figDesc>Figure2: Comparing the topic clouds created from the top 10 interests of the 55 evaluators, computed using the interest inference method (WYL-Infer) and expert counting method (WLW-Count). Font size of the topic in the wordclouds is proportional to the number of evaluators for whom the topic was inferred as an interest. The brightness of the font's color is proportional to the average interest score received by the topic (brighter is better).</figDesc><graphic coords="25,133.77,248.02,168.42,105.26" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: An example of a recommendation, along with the topical explanation, generated by the What You Like system.</figDesc><graphic coords="30,185.33,124.80,240.59,53.03" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Examples of manually curated redirections in the English language Wikipedia.</figDesc><table><row><cell>Main Article</cell><cell>Alternative Names</cell></row><row><cell>Celebrity</cell><cell>Celebs, Famous people, Media Personality</cell></row><row><cell>Television</cell><cell>TV, Tely, TeeVee, Télévision</cell></row><row><cell>Sociology</cell><cell>Social physics, Sociologist, Sosiology</cell></row><row><cell cols="2">United Kingdom UK, UKGBR, British State</cell></row><row><cell>Barack Obama</cell><cell>Barack, Obama, Barry Obama, 0bama</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Example topical experts detected using the List based methodology.</figDesc><table /><note>descriptions by case folding the List names and descriptions and removing any special characters. Since List names can not exceed 25 characters, multiple words in List names are often joined using CamelCase. Before the casefolding step, we split List names that are in CamelCase into individual words. Finally, for every Wikipedia query we search for the presence of the query in the normalized List names and descriptions. Expertise inference step 2: Merge articles titles that are substring of other titles:The query for the Wikipedia article 'New York' is a substring of the query for the Wikipedia article 'New York Yankees'. To ensure that most appropriate topics are selected for a given List, given such cases we only keep the longest matched title. That is, if a List name or description matches two queries 𝑞 1 and 𝑞 2 and query 𝑞 2 is a substring of query 𝑞 1 , we discard shorter query 𝑞 2 for the given List. Expertise inference step 3: Use Wikipedia redirects to normalize topic names: As List names and descriptions are freeform texts, they contain a number of misspellings and abbreviations of the actual topic. To alleviate this problem, we utilized Wikipedia redirects. Wikipedia, contains a rich corpus of manually curated redirections, that map commonly used abbreviations, alternative wordings, and incorrect spellings to the actual topic. Table</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 5 :</head><label>5</label><figDesc>Table 5  are evaluators who participated in our Top ten topics of interests, of sample evaluators, identified using the simple expert counting based methodology presented in<ref type="bibr" target="#b5">[6]</ref>, and the Expectation-Maximization based inference algorithm presented in this paper. Details about the evaluators, for whom interests are shown, is presented later in Section 4.1.</figDesc><table><row><cell cols="2">Evaluator Interests inferred using expert</cell><cell>Interests inferred using EM based</cell></row><row><cell></cell><cell>counting method of [6]</cell><cell>inference alogorithm proposed in</cell></row><row><cell></cell><cell></cell><cell>current work</cell></row><row><cell>P1</cell><cell>News, Social media, Media,</cell><cell>Web search engine, Ted, Journalism</cell></row><row><cell></cell><cell>Tech, Organization, Blog,</cell><cell>school, Mass media, Labs,</cell></row><row><cell></cell><cell>Business, Education, Gadget,</cell><cell>Computer science, Google News,</cell></row><row><cell></cell><cell>Geek</cell><cell>Google products, Search engine</cell></row><row><cell></cell><cell></cell><cell>marketing, Journalism</cell></row><row><cell>P12</cell><cell>News, Tech, Technology,</cell><cell>Google, India, University, Computer</cell></row><row><cell></cell><cell>Media, Science, Business,</cell><cell>science, Machine learning, Nvidia,</cell></row><row><cell></cell><cell>Blog, Information,</cell><cell>Technical, Coding, Google</cell></row><row><cell></cell><cell>Organization, Technology</cell><cell>Shopping, Mathematics</cell></row><row><cell></cell><cell>journalism</cell><cell></cell></row><row><cell>P17</cell><cell>News, Humour, Celebrity,</cell><cell>Humour, Desi, Ubuntu, Director,</cell></row><row><cell></cell><cell>Entertainment, Famous, Actor,</cell><cell>Influence, Java, Google, Metallica,</cell></row><row><cell></cell><cell>Media, Hollywood, Artist,</cell><cell>Eminem, Breaking Bad</cell></row><row><cell>P33</cell><cell>Music Science, News, Research,</cell><cell>Information technology, Journal,</cell></row><row><cell></cell><cell>Tech, Media, Blog, Business,</cell><cell>Computer science, Machine</cell></row><row><cell></cell><cell>Education, Social media,</cell><cell>learning, Influence, Doctor of</cell></row><row><cell></cell><cell>Geek</cell><cell>Philosophy, Research, Labs, NLP,</cell></row><row><cell>P36</cell><cell>News, Media, India, Celebrity,</cell><cell>CNET India, Public relations, Bollywood,</cell></row><row><cell></cell><cell>Business, Journalist, Blog,</cell><cell>India News, Tech, Business</cell></row><row><cell></cell><cell>Tech, Entertainment, Politics</cell><cell>journalism, Global News, Corporate</cell></row><row><cell></cell><cell></cell><cell>finance, Humour, News</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 7 :</head><label>7</label><figDesc>Performance comparison of baseline recommendation algorithms (FunkSVD, content based recommendation, and social recommendation) with the proposed Topical recommendation methodology.</figDesc><table><row><cell></cell><cell></cell><cell>Mean</cell><cell>Mean</cell><cell>Mean</cell></row><row><cell></cell><cell>Average</cell><cell>Precision</cell><cell>Average</cell><cell>nDCG</cell></row><row><cell></cell><cell>Score</cell><cell></cell><cell>Precision</cell><cell></cell></row><row><cell>FunkSVD</cell><cell>3.296</cell><cell>0.490</cell><cell>0.661</cell><cell>0.906</cell></row><row><cell>Content Reco.</cell><cell>3.400</cell><cell>0.532</cell><cell>0.608</cell><cell>0.901</cell></row><row><cell>Social Reco.</cell><cell>3.307</cell><cell>0.512</cell><cell>0.622</cell><cell>0.919</cell></row><row><cell>Topical Reco. (proposed)</cell><cell>3.569</cell><cell>0.567</cell><cell>0.667</cell><cell>0.908</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 8 :</head><label>8</label><figDesc>Coefficents of linear regression, for predicting the score given by the evaluators to tweets, recommended using the Topical recommendation method. 𝑅 2 = 0.171, 𝐹 = 10.85 (𝑝 &lt; 10 −14 ). ** and *** indicate significance at levels 𝛼 = 0.01 and 𝛼 = 0.001 respectively.</figDesc><table><row><cell>6.57% better perfor-</cell></row></table><note>mean average precision Topical Reco. shows only 0.91% increase in performance with respect to FunkSVD, which performs second best. Finally, we find that Topical Reco. performs 1.19% worse than Social recommendation, which performs best in terms of Mean nDCG.</note></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Beyond being able to recommend to passive consumers on Twitter, this paper also demonstrated, using a user based controlled study, that the methodology proposed in this work gives better results when compared to traditional techniques, such as matrix factorization based collaborative filtering (FunkSVD), content based recommendation, and social recommendation. Evaluations from 55 different evaluators showed that when compared using the top ten recommendations, our methodology outperformed the baseline methods on mean average score, mean precision, and mean average precision (MAP).</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Trends in Social Media: Persistence and Decay</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Asur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Huberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Szabo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 5th International AAAI Conference on Web and Social Media</title>
+				<meeting>the 5th International AAAI Conference on Web and Social Media</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">w00t! feeling great today!&quot; chatter in Twitter: identification and prevalence</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Balasubramanyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolcz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2013 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining</title>
+				<meeting>the 2013 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="306" to="310" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Emergence of Scaling in Random Networks</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Barabási</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Albert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">286</biblScope>
+			<biblScope unit="issue">5439</biblScope>
+			<biblScope unit="page" from="509" to="512" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">LinkedIn Skills: Large-scale Topic Extraction and Inference</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bastian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hayes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Vaughan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Skomoroch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Uryasev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lloyd</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th ACM Conference on Recommender System</title>
+				<meeting>the 8th ACM Conference on Recommender System</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Deep Twitter Diving: Exploring Topical Groups in Microblogs at Scale</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhattacharya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kulshrestha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mondal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Zafar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM Conference on Computer Supported Cooperative Work and Social Computing</title>
+				<meeting>the 17th ACM Conference on Computer Supported Cooperative Work and Social Computing</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="197" to="210" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Inferring User Interests in the Twitter Social Network</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhattacharya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Zafar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th ACM Conference on Recommender Systems</title>
+				<meeting>the 8th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="357" to="360" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">What&apos;s in Twitter, I know what parties are popular and who you are supporting now! Social Network Analysis and Mining</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Boutet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yoneki</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="1379" to="1391" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Blobworld: Image Segmentation Using Expectation-Maximization and Its Application to Image Querying</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Carson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Belongie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Greenspan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Malik</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="1026" to="1038" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A Probabilistic Model for Using Social Networks in Personalized Item Recommendation</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J B</forename><surname>Chaney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Eliassi-Rad</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 9th ACM Conference on Recommender Systems</title>
+				<meeting>the 9th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="43" to="50" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Short and Tweet: Experiments on Recommending Content from Information Streams</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Nairn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bernstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM SIGCHI Conference on Human Factors in Computing Systems</title>
+				<meeting>the ACM SIGCHI Conference on Human Factors in Computing Systems</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1185" to="1194" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Collaborative Personalized Tweet Recommendation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="661" to="670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Some Inconsistencies and Misidentified Modeling Assumptions in Probabilistic Information Retrieval</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">S</forename><surname>Cooper</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on the Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="100" to="111" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Who Should Share What?: Item-level Social Influence Prediction for Users and Posts Ranking</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 34th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 34th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="185" to="194" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Maximum Likelihood from Incomplete Data via the EM Algorithm</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Dempster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Laird</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">B</forename><surname>Rubin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society. Series B</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="1977">1977</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Rethinking the Recommender Research Ecosystem: Reproducibility, Openness, and LensKit</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Ekstrand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ludwig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fifth ACM Conference on Recommender Systems</title>
+				<meeting>the Fifth ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="133" to="140" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">I Always Assumed That I Wasn&apos;T Really That Close to [Her]&quot;: Reasoning About Invisible Algorithms in News Feeds</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Eslami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rickman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Vaccaro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Aleyasen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vuong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Karahalios</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sandvig</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 33rd Annual ACM Conference on Human Factors in Computing Systems</title>
+				<meeting>the 33rd Annual ACM Conference on Human Factors in Computing Systems</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="153" to="162" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Matrix Factorization with Explicit Trust and Distrust Side Information for Improved Social Recommendation</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Forsati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mahdavi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Shamsfard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sarwat</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on the Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page">38</biblScope>
+			<date type="published" when="2014-10">oct 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Netflix Update: Try This at Home</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Funk</surname></persName>
+		</author>
+		<ptr target="http://sifter.org/˜simon/journal/20061211.html" />
+		<imprint>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Characterising Emergent Semantics in Twitter Lists</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>García-Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Lerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Corcho</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 9th Extended Semantic Web Conference</title>
+				<meeting>the 9th Extended Semantic Web Conference</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="530" to="544" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Cognos: Crowdsourcing Search for Topic Experts in Microblogs</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Benevenuto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Gummadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="575" to="590" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Widespread Underprovision on Reddit</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Gilbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2013 Conference on Computer Supported Cooperative Work</title>
+				<meeting>the 2013 Conference on Computer Supported Cooperative Work</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="803" to="808" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Explaining Collaborative Filtering Recommendations</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM Conference on Computer Supported Cooperative Work</title>
+				<meeting>the 2000 ACM Conference on Computer Supported Cooperative Work</meeting>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><surname>Holt</surname></persName>
+		</author>
+		<ptr target="http://www.telegraph.co.uk/technology/twitter/9945505/Twitter-in-numbers.html" />
+		<title level="m">Twitter in Numbers</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Learning to Rank Social Update Streams</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bekkerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Adler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">D</forename><surname>Davison</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="651" to="660" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Social Recommendation with Cross-Domain Transferable Knowledge</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="3084" to="3097" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Scalable Recommendation with Social Contextual Information</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="2789" to="2802" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">User Interests Identification on Twitter Using a Hierarchical Knowledge Base</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kapanipathi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Venkataramani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sheth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European Semantic Web Conference</title>
+				<meeting>the European Semantic Web Conference</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="99" to="113" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">TWITOBI: A Recommendation System for Twitter Using Probabilistic Modeling</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 11th IEEE International Conference on Data Mining</title>
+				<meeting>the 11th IEEE International Conference on Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="340" to="349" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koh</surname></persName>
+		</author>
+		<ptr target="http://blogs.wsj.com/digits/2014/04/11/new-data-quantifies-dearth-of-tweeters-on-twitter/" />
+		<title level="m">Report: 44% of Twitter Accounts Have Never Sent a Tweet</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Naive (Bayes) at Forty: The Independence Assumption in Information Retrieval</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lewis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th European Conference on Machine Learning</title>
+				<meeting>the 10th European Conference on Machine Learning</meeting>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+			<biblScope unit="page" from="4" to="15" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Content-based Recommender Systems: State of the Art and Trends</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lops</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Gemmis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Semeraro</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="73" to="105" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">SoRec: Social Recommendation Using Probabilistic Matrix Factorization</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM Conference on Information and Knowledge Management</title>
+				<meeting>the 17th ACM Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="931" to="940" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Spam Detection on Twitter Using Traditional Classifiers</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mccord</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chuah</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th International Conference on Autonomic and Trusted Computing</title>
+				<meeting>the 8th International Conference on Autonomic and Trusted Computing</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="175" to="186" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Improving LDA Topic Models for Microblogs via Tweet Pooling and Automatic Labeling</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mehrotra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sanner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Buntine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 36th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="889" to="892" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Discovering Users&apos; Topics of Interest on Twitter: A First Look</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Michelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Macskassy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 4th Workshop on Analytics for Noisy Unstructured Text Data</title>
+				<meeting>the 4th Workshop on Analytics for Noisy Unstructured Text Data</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="73" to="80" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">MovieLens Unplugged: Experiences with an Occasionally Connected Recommender System</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">N</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Albert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">K</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th International Conference on Intelligent User Interfaces</title>
+				<meeting>the 8th International Conference on Intelligent User Interfaces</meeting>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="263" to="266" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Improved Part-of-Speech Tagging for Online Conversational Text with Word Clusters</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Owoputi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>O'connor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Gimpel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</title>
+				<meeting>the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="380" to="390" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Diffusion-aware Personalized Social Update Recommendation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Cong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM Conference on Recommender Systems</title>
+				<meeting>the 7th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="69" to="76" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Improving regularized singular value decomposition for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Paterek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of KDD Cup and Workshop</title>
+				<meeting>KDD Cup and Workshop</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="5" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Deriving a large scale taxonomy from Wikipedia</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">P</forename><surname>Ponzetto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Strube</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd AAAI Conference on Artificial Intelligence</title>
+				<meeting>the 22nd AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="1400" to="1445" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Characterizing Microblogs with Topic Models</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramage</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">T</forename><surname>Dumais</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Liebling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 4th International AAAI Conference on Weblogs and Social Media</title>
+				<meeting>the 4th International AAAI Conference on Weblogs and Social Media</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">Your tweet half-life is 1 billion times shorter than Carbon-14&apos;s</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Rey</surname></persName>
+		</author>
+		<ptr target="http://www.wiselytics.com/blog/tweet-isbillion-time-shorter-than-carbon14/" />
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Earthquake Shakes Twitter Users: Realtime Event Detection by Social Sensors</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Sakaki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Okazaki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Matsuo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th International Conference on World Wide Web</title>
+				<meeting>the 19th International Conference on World Wide Web</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="851" to="860" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Recommender Systems in e-Commerce</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Schafer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 1st ACM Conference on Electronic Commerce</title>
+				<meeting>the 1st ACM Conference on Electronic Commerce</meeting>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="158" to="166" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">More Features Are Not Always Better: Evaluating Generalizing Models in Incident Type Classification of Tweets</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schulz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Guckelsberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Schmidt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>the 2015 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="421" to="430" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Inferring Who-is-who in the Twitter Social Network</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">K</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Benevenuto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Gummadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2012 ACM Workshop on Workshop on Online Social Networks</title>
+				<meeting>the 2012 ACM Workshop on Workshop on Online Social Networks</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="55" to="60" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Collaborative Filtering Beyond the User-Item Matrix: A Survey of the State of the Art and Future Challenges</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Larson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hanjalic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys</title>
+		<imprint>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">45</biblScope>
+			<date type="published" when="2014-05">may 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Tweet Recommendation with Graph Co-ranking</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lapata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics</title>
+				<meeting>the 50th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="516" to="525" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Like Like Alike: Joint Friendship and Interest Propagation in Social Networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sadagopan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zha</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 20th International Conference on World Wide Web</title>
+				<meeting>the 20th International Conference on World Wide Web</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="537" to="546" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Large-scale High-precision Topic Modeling on Twitter</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kolcz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schlaikjer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Gupta</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 20th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 20th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1907" to="1916" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Exploring Social Influence for Recommendation: A Generative Model Approach</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="671" to="680" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">An Efficient Hybrid Music Recommender System Using an Incrementally Trainable Probabilistic Generative Model</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yoshii</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Goto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Komatani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ogata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">G</forename><surname>Okuno</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Speech, and Language Processing</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="435" to="447" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">On the Wisdom of Experts vs. Crowds: Discovering Trustworthy Topical News in Microblogs</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Zafar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhattacharya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th ACM Conference on Computer-Supported Cooperative Work and Social Computing</title>
+				<meeting>the 19th ACM Conference on Computer-Supported Cooperative Work and Social Computing</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="438" to="451" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Sampling Content from Online Social Networks: Comparing Random vs. Expert Sampling of the Twitter Stream</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Zafar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhattacharya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ganguly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ghosh</surname></persName>
+		</author>
+		<idno>12:1-12:33</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on the Web</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<date type="published" when="2015-06">jun 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">TopRec: Domain-Specific Recommendation through Community Topic Mining in Social Network</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd International World Wide Web Conference</title>
+				<meeting>the 22nd International World Wide Web Conference</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="1501" to="1510" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

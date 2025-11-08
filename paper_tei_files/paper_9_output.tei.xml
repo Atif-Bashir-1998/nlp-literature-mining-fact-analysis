@@ -1,0 +1,3464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Leveraging Large Language Models in Conversational Recommender Systems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Luke</forename><surname>Friedman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Sameer</forename><surname>Ahuja</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">David</forename><surname>Allen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Zhenning</forename><surname>Tan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Hakim</forename><surname>Sidahmed</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Changbo</forename><surname>Long</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Jun</forename><surname>Xie</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Gabriel</forename><surname>Schubiner</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Ajay</forename><surname>Patel</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Harsh</forename><surname>Lara</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Brian</forename><surname>Chu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Zexi</forename><surname>Chen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Manoj</forename><surname>Tiwari</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Google</forename><surname>Research</surname></persName>
+						</author>
+						<title level="a" type="main">Leveraging Large Language Models in Conversational Recommender Systems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D3DD15971C48FD1243AEF4BB770DCD65</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:51+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>A Conversational Recommender System (CRS) offers increased transparency and control to users by enabling them to engage with the system through a real-time multi-turn dialogue. Recently, Large Language Models (LLMs) have exhibited an unprecedented ability to converse naturally and incorporate world knowledge and common-sense reasoning into language understanding, unlocking the potential of this paradigm. However, effectively leveraging LLMs within a CRS introduces new technical challenges, including properly understanding and controlling a complex conversation and retrieving from external sources of information. These issues are exacerbated by a large, evolving item corpus and a lack of conversational data for training. In this paper, we provide a roadmap for building an end-to-end large-scale CRS using LLMs.</p><p>In particular, we propose new implementations for user preference understanding, flexible dialogue management and explainable recommendations as part of an integrated architecture powered by LLMs. For improved personalization, we describe how an LLM can consume interpretable natural language user profiles and use them to modulate session-level context. To overcome conversational data limitations in the absence of an existing production CRS, we propose techniques for building a controllable LLM-based user simulator to generate synthetic conversations. As a proof of concept we introduce RecLLM, a large-scale CRS for YouTube videos built on LaMDA, and demonstrate its fluency and diverse functionality through some illustrative example conversations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Recommender systems are one of the most prominent success stories of machine learning in industry, delivering personalized content to billions of users over a wide range of domains such as Search, Videos, News, and Shopping. Machine learning algorithms have transformed the way these systems are built within industry; in particular, over the last decade deep learning based systems that thrive in the large data regime have capitalized on the abundance of user interaction data available through products to learn sophisticated statistical correlations and better optimize for key engagement metrics <ref type="bibr" target="#b16">[17]</ref>. However, despite the success of ML in this setting, this increasing reliance on implicit interaction signals like clicks as a proxy for user preference has its downsides as well. It is well documented that many modern large-scale recommender systems encounter problems like surfacing clickbait, propagating societal biases and polarization of the user base <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b54">55,</ref><ref type="bibr" target="#b103">104]</ref>. Recommender systems based on point-and-click interfaces also afford the user only a limited channel to communicate with the system and little opportunity to engage in any type of interactive exploration. *Corresponding author: lbfried@google.com.</p><p>A Conversational Recommender System (CRS) gives users more control over their recommendations through the ability to engage in a real-time multi-turn dialogue <ref type="bibr" target="#b21">[22,</ref><ref type="bibr" target="#b36">37]</ref>. This enables the system to actively query the user instead of relying solely on prior behavior to infer preferences, and in response the user can provide feedback and refine suggestions over a series of turns. This new paradigm is a generalization of both recommender and classical search systems, in which typically users direct the system through a single-shot query. Now the system must explore cooperatively with the user and, to maintain a natural flow, sometimes even veer off into modes tangential to the core recommendation task such as undirected chitchat and question answering (see e.g. <ref type="bibr" target="#b8">[9]</ref>). Oftentimes the CRS must also be multimodal, for instance displaying recommendation slates within a visual UI while simultaneously carrying on a conversation through a natural language interface (see e.g. <ref type="bibr" target="#b111">[112]</ref>).</p><p>Although conversational recommender systems have existed in some form for decades <ref type="bibr" target="#b50">[51,</ref><ref type="bibr" target="#b84">85]</ref>, the recent explosion of Large Language Models (LLMs) <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b85">86]</ref> unlocks new opportunities. LLMs have made a huge leap in the ability of machines to converse in a human-like way and can power the natural language interface between the user and the system. LLMs have also shown an unprecedented ability to draw on general world knowledge and utilize some level of common sense reasoning <ref type="bibr" target="#b33">[34]</ref>, which can be exploited in various ways within a CRS. For instance, we can try to use an LLM to directly reason about how well an item matches the context of a conversation within a ranking module and generate an intuitive natural language explanation as a byproduct. Other possible use cases for LLMs behind the scenes include dialogue management, incorporating natural language user profiles for better personalization and building realistic user simulators to generate synthetic data at scale for evaluation and tuning of system components.</p><p>Tantalizing as LLMs are as a tool for a CRS, new technical challenges must be overcome to leverage them effectively. For instance, LLMs are prone to hallucinations and grounding them remains a largely unsolved problem <ref type="bibr" target="#b39">[40]</ref>. Also, one of the appeals of LLMs is their sense of naturalness and unpredictability, but when operating in a task-oriented setting this means that controlling an LLM can be more difficult than with a template based system. Particularly challenging in the recommendation setting is how to interface between the LLM and the underlying recommendation engine. One approach is to have the LLM be the recommendation engine in addition to its role as a dialogue agent (see e.g. <ref type="bibr" target="#b41">[42]</ref>). However, for large-scale recommender applications the item corpus can contain millions or billions of always-changing items, making it challenging for an LLM to memorize the corpus within its parameters. Alternatively the LLM must somehow connect to an external recommendation engine or database, passing on relevant preference information. (1) A dialogue management module uses an LLM to converse with the user, track context and make system calls such as submitting a request to a recommendation engine all as a unified language modeling task. (2) Various solutions are presented for tractable retrieval over a large item corpus within an LLM-based CRS.</p><p>(3) A ranker module uses an LLM to match preferences extracted from the context of the conversation to item metadata and generate a slate of recommendations that is displayed to the user. The LLM also jointly generates explanations for its decisions that can be surfaced to the user. ( <ref type="formula">4</ref>) Interpretable natural language user profiles are consumed by system LLMs to modulate session-level context and increase personalization. ( <ref type="formula">5</ref>) A controllable LLM-based user simulator can be plugged into the CRS to generate synthetic conversations for tuning system modules.</p><p>While studied recently <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b72">73]</ref>, this approach is yet to be solved in the general large-scale recommendation setting.</p><p>In this paper we provide a roadmap for leveraging LLMs in a variety of ways to build a controllable and explainable large-scale CRS. Key contributions of the proposal are:</p><p>• A dialogue management module that reframes natural language generation, preference understanding, context tracking, and calls to a recommendation engine as a unified language modeling task performed by a single LLM. • A general conceptual framework for performing retrieval with an LLM over a huge corpus of items. Various solutions are presented depending on efficiency requirements and what data and external APIs are available. • A joint ranking / explanation module that uses an LLM to extract user preferences from an ongoing conversation and match them to textual artifacts synthesized from item metadata. As a byproduct of intermediate chain-of-thought reasoning <ref type="bibr" target="#b94">[95]</ref>, the LLM generates natural language justifications for each item shown to the user, increasing the transparency of the system. • Incorporation of persistent, interpretable natural language user profiles as additional input to system LLMs, which supplements session-level context and improves the personalized experience. • Techniques for building controllable LLM-based user simulators that can be used to generate synthetic conversations for tuning system modules.</p><p>As a proof of concept we introduce RecLLM, an LLM-based CRS for YouTube videos powered by LaMDA <ref type="bibr" target="#b85">[86]</ref>, and share some example conversations showing the fluency and diverse functionality of the system. Our goal is to make a compelling argument for the promise and viability of LLM-based conversational recommender systems and to take a first step towards realizing this vision in practice. In RecLLM, we represent the CRS in a multi-modal setup comprised of two components: A slate of recommendations and an ongoing conversation between the user and the conversational agent (see Figure <ref type="figure" target="#fig_1">2</ref>). The user outputs a natural language message on their turn, and the agent responds with a natural language message, optionally updating the slate of recommendations based on the conversation. By separating dialogue from the recommendation slate we hope to more accurately reflect how a large-scale CRS would eventually look in a production setting.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">PROBLEM SCOPE</head><p>Traditionally, users have interacted with recommender systems via user interface interactions such as viewing the recommended items, or marking recommendations as good or bad via interface widgets <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b75">76]</ref>. Although currently in RecLLM we exclude these types of interactions we do not intend to replace them; our eventual goal is to augment them with the more expressive channel of natural language that allows users to better express nuance about their interests.</p><p>In terms of the item corpus, RecLLM recommends from the corpus of all public YouTube videos. We make this choice due to two characteristics that increase the applicability of the system to other real-world problems: One, unlike corpora of items that occur frequently in the LLM's training data (e.g., movies and popular music), an LLM cannot feasibly be used to directly recommend YouTube videos and must interface with the corpus. Secondly, it's a largescale corpus, requiring a scalable approach to recommendations. A natural consequence of building such a system from scratch is that there are no logs of users interacting with this system to jumpstart training of the model(s). Although RecLLM focuses on YouTube videos, our intention in this paper is to outline a general approach that can be easily extended to many other domains.</p><p>While evaluating with initial testers, we found that users expect a CRS that pairs slate recommendations with natural language conversation to possess a wide range of conversational capabilities, such as retaining context, handling topic shifts and referencing slate items. RecLLM focuses on leveraging techniques that can scale over a broad number of these use-cases. In Figure <ref type="figure" target="#fig_2">3</ref> a few of the core conversational capabilities currently supported are demonstrated via a mock conversation.</p><p>Finally, there are several problems that need to be addressed for conversational agents to become mainstream. These include safety of dialogue, debiasing, consistent personality of agents, etc. In this work we do not attempt to tackle these problems directly, rather focusing on problems that are unique to the setting of conversational recommenders.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">SYSTEM OVERVIEW</head><p>In this section we take a closer look at key system components of RecLLM (see Figure <ref type="figure" target="#fig_0">1</ref>). In particular we focus on dialogue management, retrieval, ranking and explanations, and incorporation of natural language user profiles.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Dialogue Management</head><p>Figure <ref type="figure">4</ref>: A unified LLM dialogue management module. An LLM takes as input the full session context and outputs a sequence of messages ending in a terminal output that triggers a system action, such as a response to the user.</p><p>Dialogue management is the central module of a CRS, acting as the interface between the user and the rest of the system. It is responsible for guiding the user through a multi-turn exploration of the recommendation corpus and generating sensible, useful, and grounded responses at each turn. In the process it must either implicitly or explicitly perform context tracking to extract useful representations of user preferences and intents. This information can be used to inform the dialogue policy and also as the basis for outputting API calls to initiate system actions (e.g. by sending a search query to a recommendation engine backend, see Section 3.2.1). From an end-to-end point of view, given context information (dialogue history, a user profile, item summaries, etc.), the goal of the dialogue manager is to generate system actions to take, as well as an appropriate system utterance.</p><p>There are extra challenges and requirements to dialogue management in the context of conversational recommenders:</p><formula xml:id="formula_0">• Control:</formula><p>In contrast to open-ended dialogue, a CRS dialogue manager must actively work with the user to explore the recommendation corpus. This entails a mixed-initiative setup where the system must respond to user requests and also at times actively steer the conversation in a specific direction.</p><p>For instance, preference elicitation-in which the system must figure out when and how to best query the user in order to extract maximal information about their preferences-is an entire subfield of CRS dialogue management <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b73">74,</ref><ref type="bibr" target="#b82">83,</ref><ref type="bibr" target="#b111">112]</ref>. • Ambiguity: Compared to task-oriented dialogue there is no clear cut measure of success for a CRS dialogue manager. Although the system should try to ensure that the conversation does not get too far off track the core recommendation task, the goal is not necessarily to minimize the number of turns that it takes the user to find an acceptable item, but rather to provide an overall satisfactory exploratory experience (see, for instance <ref type="bibr" target="#b77">[78]</ref>). This means that there is rarely a single objectively "correct" thing for a conversational system to say at any given time, nor an easily defined metric for whether the dialogue manager is doing a good job. • Grounding: One of the main challenges of a CRS dialogue manager is to faithfully ground its responses to the user in the recommendation corpus. After returning a slate of recommendations, the system should be able to refer to the items in a relevant and factually correct way. Other sources of external information, such as long term preferences coming from a user profile, may also be injected and the dialogue manager should be able to incorporate them appropriately in the ongoing conversation.</p><p>Traditionally CRSs take a modular approach to dialogue management, where a hardcoded policy graph maps dialogue states (e.g. intent) to different system actions, such as whether to get a recommendation, ask a question, or chat casually. Natural language understanding models extract preferences and determine the dialogue states, and separate natural language generation models generate system responses. Alternatively, in some recent CRSs language models are tuned end-to-end directly to imitate dialogue collected from crowdsource workers, discarding any notion of dialogue states or internal structure.</p><p>In RecLLM we employ a single unified LLM to execute dialogue management purely in terms of language modeling. At each turn the LLM takes as input the prior conversation context along with additional information like textual representations of recommendation slates and user profiles that are potentially injected from external sources. Like the end-to-end approach mentioned above, one of the distinguishing features of this architecture is that there no longer exists a hardcoded policy graph with fixed dialogue states. Instead, on a given system turn the LLM generates a sequence of natural language outputs that encapsulate all context tracking, intermediate reasoning, natural language generation, and API calls to the rest of the system. It is hardcoded that certain string patterns in outputs from the dialogue manager trigger system actions. For instance an output "Response: &lt;message&gt;" will cause message to be shown as a user facing response, and "Request: &lt;query&gt;" will cause query to be sent to the recommendation engine backend to retrieve a slate of recommendations. Other outputs of the LLM can function as chain-of-reasoning steps, instructions to itself to follow, or dialogue state tracking inferences. Unlike the system calls, there are no ingrained rules about the functionality of these intermediate outputs, and conventions about their use must be taught to the LLM either through in-context few-shot learning or tuning.</p><p>The advantage of this architecture over the modular approach is its simplicity and flexibility. In the modular approach, any new functionality such as the addition of a new user intent or dialogue state has to be engineered into the system, which is a serious impediment to scalability. The unified LLM architecture shifts the emphasis from engineering-driven to data-driven quality iteration. To fix a problem or introduce new capabilities, instead of engineering a new component a designer must now create examples that enable the LLM to learn the desired behavior. This also creates the potential for the dialogue manager to learn new policy states and useful dialogue state tracking artifacts through the generalization abilities of the LLM.</p><p>The main challenge to the unified LLM approach is how to effectively control the dialogue manager and guide it towards a reasonable dialogue policy without explicitly constraining it via hard rules. In our initial implementation we tune our unified LLM on a moderate number of manually generated examples. In this way we are able to establish some direction about the type of behavior and internal states we would like to see while still relying heavily on the ability of LLMs pretrained on dialogue data to converse naturally with only minimal supervision. Although we are able to build a functional dialogue manager this way, with only a limited amount of training examples it is difficult to teach the dialogue manager a sophisticated policy tailored to the conversational recommender domain. In Section 4.2 we discuss ideas for overcoming this limitation by tuning our dialogue manager and recommendation modules with larger amounts of synthetically generated data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Recommendations and Refinement</head><p>Once triggered by the dialogue management module, it is the responsibility of the recommendation module to return a slate of high quality, relevant, and diverse recommendations that will be shown to the user. This can either be an initial recommendation slate or a refinement of an earlier slate from the session based on feedback from the user. A traditional recommender system chooses items by inferring preferences of the user from some type of user profile or dense representation built from historical data, possibly taking into account other contextual factors (e.g. the location or time of day). In a search system, the user can supplement these implicit signals with explicit intents, usually through a simple static query. A primary challenge of a CRS is that now the user can express these explicit intents over the course of a full multi-turn conversation, which the recommendation module must understand and connect to the item corpus. Many traditional recommender systems employ a two stage pipeline, first retrieving candidate items and then ranking them <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b53">54]</ref>. RecLLM follows this strategy, with the added twist that the ranker also jointly generates natural language explanations for why each item is being selected.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3.2.1</head><p>Retrieval. The purpose of the retrieval phase is to take the full corpus, which for some domains such as videos or urls may contain hundreds of millions of items, and based on the context select a small number of candidate items (e.g. 100) that will be fed to a downstream ranker. A key challenge of retrieval is to make this process tractable, as it is not computationally feasible to process each item independently at inference time. In Figure <ref type="figure" target="#fig_3">5</ref> we illustrate a general conceptual framework for retrieval in our problem setting. An LLM processes the session context and generates a request, either implicitly through a model activation layer or explicitly through its language output interface. A recommendation engine then uses a tractable search algorithm to retrieve candidates from the item corpus. In Table <ref type="table" target="#tab_0">1</ref> we give a few illustrative examples of possible retrieval algorithms that fit into this framework, which we describe in more detail below.  Generalized Dual Encoder Model. A popular solution to retrieval in traditional deep learning based recommenders is to use a dual encoder model consisting of two neural net towers, one to encode the context and one to encode the items (see e.g <ref type="bibr" target="#b101">[102]</ref> and Figure <ref type="figure" target="#fig_7">10a</ref>). Item embeddings can be generated offline using the item tower and stored in an efficient data structure. An approximate nearest neighbor lookup can then use the generated context embedding to perform a sub-linear time retrieval of item embeddings at inference time <ref type="bibr" target="#b97">[98]</ref>. We can extend this approach for conversational recommenders by using an LLM as a context encoder that processes the full ongoing conversation between the user and system along with any other additional context information. In this case the request sent to the recommendation engine is an embedding, which can be generated by extracting and then projecting a suitable activation layer from the model.</p><p>One downside to this approach of pulling embeddings from the internals of an LLM is that it severely hampers our ability to learn a retrieval model in a sample efficient way. Dual encoder models trained from scratch require large amounts of training data to constrain the context tower embeddings to occupy the same subspace as the item tower embeddings. Sometimes it is possible to use pretrained embeddings on the item side (for instance by taking them from an existing production search or recommender system), but still the context embeddings must be tuned to align with the item embeddings to get good results. LLMs operate via a text-in / text-out interface and much of their power comes from the transfer learning afforded by knowledge gained through extensive pretraining. By leaving the level of language abstraction we are sacrificing much of this ability to generalize from a small amount of data.</p><p>Direct LLM Search. In this method the LLM directly outputs ids or titles of items to recommend as text. The tractable search algorithm is an exact or fuzzy match against items in the corpus and the recommendation engine plays no role beyond this simple matching. The LLM must learn to output these ids/titles through some combination of its pretraining and a corpus-specific fine tuning phase (see e.g <ref type="bibr" target="#b83">[84]</ref>). Given the assumption that our system must be able to return slates from a fixed item corpus, this is the closest thing to having an LLM-based chatbot function directly as a CRS. The downside to this approach is that because only negligible work is being offloaded to the recommendation engine, the LLM must memorize information about the entire item corpus within its model parameters. For a large corpus this can be prohibitively expensive in terms of the model size and training data needed, and also makes it difficult to refresh the item corpus without retraining the LLM.</p><p>Concept Based Search. In this method the LLM outputs a list of concepts, which are then embedded and aggregated by the recommendation engine into a single context embedding. This is used to lookup items through approximate k-nearest neighbor search similar to the generalized dual encoder method. A technique like Concept Activation Vectors <ref type="bibr" target="#b42">[43]</ref> can be used to perform this transformation from concepts to embeddings in the item space. The appeal of this approach is that extracting relevant concepts from a conversation is a natural task that can be taught to an LLM through in-context learning or tuning with a small number of examples. Also, because only item embeddings are needed (the concept embeddings are derived from these) if pretrained item embeddings can be borrowed from an existing source then no additional tuning of embeddings is required. However, one limitation is that lists of concepts are often a coarse representation of a conversation and similar to continuous bag-of-words methods <ref type="bibr" target="#b59">[60]</ref> are lossy with respect to word order and other nuances of language, which can negatively affect retrieval quality.</p><p>Search API Lookup. In this method, the LLM directly outputs a search query, which gets fed into a black-box search API to retrieve items. Unlike Concept Based Search, which is generic as long as item embeddings can be trained or reused, Search API Lookup is only applicable when such a search API already exists for the domain in question. However, when available, this type of API is often backed by a sophisticated search stack and can yield higher quality results. Analogous to Concept Based Search, in Search API Lookup the LLM can be taught to output relevant search queries using a small number of examples (see Section 3.1), but the quality of retrieval is limited by the extent to which a search query can properly represent the full context of a conversation.</p><p>In Section 4.2 we build upon these methods by discussing options for tuning a retrieval model using large-scale synthetic data.</p><p>3.2.2 Ranking / Explanations. After candidate items have been retrieved, a ranker decides which of them will be included in the recommendation slate and in what order. Unlike the retrieval module, the ranking module does not need to perform tractable search over a large corpus and is therefore less constrained in the types of computation that are possible. In a traditional recommender system, this usually manifests in the ranker crossing context and item features (instead of processing them in separate towers as is done in a dual encoder) and potentially using custom ranking losses during training that directly compare candidate items <ref type="bibr" target="#b9">[10]</ref>. In the case of RecLLM, we take advantage of this extra room for computation to use an LLM that reasons sequentially about how well an item matches the context and generates a rationalization for its decision as a byproduct.</p><p>Figure <ref type="figure">6</ref> gives a schematic for the LLM ranker. For each candidate item, the LLM jointly generates a score and a natural language explanation for the score 1 . These scores implicitly induce a ranking of the items. The first step is to create a text summarization of the item that fits into the context window of the LLM based on metadata associated with the item. In the case of a YouTube video recommender, this metadata consists of information such as the title, knowledge graph entities associated with the video, developer description of the video, transcript of the video, and user comments. In the future we would also expect a large multimodal model to directly process the raw video instead of relying only on textual artifacts. This item summarization can be done offline and is necessary in the case where the metadata is high volume (e.g. if we have thousands of user comments). We can view this summarization as a special case of the multi-document summarization problem <ref type="bibr" target="#b52">[53]</ref>; it is also related to a main challenge of the user profile module (see Section 3.3), which must summarize large amounts of prior user data into a text format that can be passed into an LLM (or alternatively augment the LLM with the ability to access this information efficiently at inference time). There also can be a similar preprocessing step for summarizing the context information, although this must be done at inference time since 1 There are many proposed solutions for enabling text in / text out LLMs to solve regression problems (i.e. output a score) <ref type="bibr" target="#b51">[52]</ref>; within RecLLM we use the simple approach of bucketing the range of possible scores and having the LLM output a semantically meaningful phrase (e.g. "excellent fit") corresponding to a bucket id.</p><p>unlike for items we cannot enumerate all possible contexts and process them offline.</p><p>Figure <ref type="figure">6</ref>: A joint LLM ranking / explanation module. The conversation is used as context for the user's preferences and the video metadata is used as context for the item. The LLM takes in summaries of the item side and context side to produce a score for the item and an explanation for the score.</p><p>Given these item and context summaries as input, the LLM ranker then scores the item using chain-of-thought reasoning, which has been shown to improve the performance of LLMs on these types of classification / regression tasks <ref type="bibr" target="#b94">[95]</ref>. The intermediate chain-ofthought reasoning steps generated by the LLM function as explanations for why certain items are eventually included or left out of the recommendation slate. These explanations can be viewed internally for debugging purposes and also shown to the user, either by including them as input to the dialogue manager that produces utterances within the conversational interface or by postprocessing and including them within pop-up boxes in the visual UI where the recommendation slates are displayed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">User Profile</head><p>One of the key advantages to a CRS is the ability of the user to articulate their preferences over the course of a session, so that the system can assist them without necessarily needing any prior background information. Despite this, the personalized experience can be improved if the system has built up a profile of the user beforehand so that there is a mutual starting base to build the conversation on top of. For instance, if a user dislikes jazz music and has shared this previously, they should not have to reiterate this point every new session when searching for music videos.</p><p>In traditional deep learning based recommender systems, nonverbal interaction signals such as clicks or ratings are often used to train embedding representations of a user that can be fed into a neural net. In RecLLM we instead represent users with natural language profiles (see e.g. <ref type="bibr" target="#b69">[70]</ref>), which can be consumed by an LLM. These are more transparent compared to embeddings and specific pieces of information can usually be attributed to an original source, which aids in explainability. Also, users can manually edit these natural language profiles, which gives them greater control to monitor and update their preferences. In RecLLM we build user profiles based on a user's repeated interaction with the system over multiple sessions, although it would be possible to incorporate other data sources as well.</p><p>An important open research question is how to structure a user profile in terms of natural language. Currently in RecLLM we represent a user by a set of salient facts we have extracted from prior sessions (e.g. "I do not like listening to jazz while in the car") similar to <ref type="bibr" target="#b108">[109]</ref>, although many other more sophisticated schemes are possible. Another extreme possibility is to avoid any lossiness by defining a user profile degenerately as the raw conversational history of all sessions the user has had with the system in the past. In this case we would need to implement an efficient mechanism for an LLM to retrieve relevant facts from this raw history at inference time.</p><p>There are three main components to the User Profile module, which we now describe.</p><p>Memory Extraction. The purpose of the memory extraction component is to identify when a particular utterance contains a meaningful and enduring fact about the user that can be extracted and added to the user profile. In RecLLM, this is currently implemented by an LLM using in-context few-shot learning as part of the dialogue management module.</p><p>Triggering and Retrieval. The triggering and retrieval component decides at what instances during a session it is likely beneficial to query the user profile for supplementary information and to then retrieve the most relevant facts related to the current context. Currently at each turn RecLLM retrieves a single fact from the user profile by embedding the last user utterance and doing a cosine distance comparison between this embedding and precomputed embeddings of each fact in the user profile. Triggering is implemented post hoc by thresholding on this minimal cosine distance. Better performance is likely possible by using a separate LLM classifier for triggering, retrieving multiple facts from the user profile, and basing retrieval on the entire conversation context of the session as opposed to just the last utterance.</p><p>System Integration. Once the user profile information is retrieved, it must be integrated into the rest of the system so that it can influence behavior such as the system's dialogue and API calls to the recommendation engine. How to properly integrate facts coming from a user profile is a difficult open question, as it is highly context dependent how they should modulate short term preferences expressed by the user in the current session. For instance, the system may know that the user is allergic to seafood, but if the user explicitly says they want to see some videos about fish recipes to pass along to a friend it's important that the system overrides this preference from the user profile and gives the user what they are asking for. In RecLLM we use a simple strategy of injecting facts from the user profile into the text input of the dialogue manager (see Section 3.1). By doing so we allow LLMs powering the dialogue manager to make nuanced decisions about how to utilize this auxiliary information in the context of the ongoing session without having to engineer any hard rules into the system. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">SIMULATION AND LARGE-SCALE TUNING</head><p>A major impediment to building a high-quality industrial CRS is a lack of data available for training and evaluation. Typically, largescale recommender systems are trained on user interaction data mined from the logs of existing products; however, conversational recommenders are a nascent technology and for the most part products using this paradigm do not exist yet. An initial high quality system must be built to make such a product viable, after which a bootstrapping cycle can begin in which real data is generated from the system and then increasingly better versions of the system are trained using that data. RecLLM deals with the data sparsity problem by exploiting the transfer learning ability of large language models using in-context few-shot learning or fine-tuning on a small number of manually generated examples. However, we hypothesize that ultimately there is a ceiling to the quality that can be achieved through these approaches, given the long-tail of different scenarios that can arise within a mixed-initiative CRS. In this section we discuss the use of LLM-powered user simulators to generate realistic data at scale and techniques for tuning system components using larger amounts of data.  According to the conversational recommender setup considered in this paper (see Section 2), a session consists of a sequence 𝑆 = {𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ..., 𝑠 𝑛 , 𝑢 𝑛 }, where each 𝑢 𝑖 is a natural language utterance by the user and each 𝑠 𝑖 is a combination of a natural language utterance and possibly a slate of recommendations by the CRS. Therefore, a user simulator is defined by a function 𝑓 (𝑆 ′ ) = 𝑈 𝑖 , where 𝑆 ′ = {𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ..., 𝑠 𝑖 } is a partial session and 𝑈 𝑖 is a distribution over possible user utterances 𝑢 𝑖 continuing the session. Given a fixed CRS and such a user simulator 𝑓 , we can generate a new sample session by having the CRS and 𝑓 interact for a given number of turns (i.e. the CRS generates each 𝑠 𝑖 and 𝑓 generates each 𝑢 𝑖 ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">User Simulation</head><p>The ideal property we would like our user simulator to have when synthetically generating data for evaluation or training is realism: Conversations between the user simulator and CRS should be nearly indistinguishable from conversations between a representative group of real users and the CRS. Let R be a set of sessions generated by having real users interact with a particular CRS, and Q be a set of simulated sessions sampled from the CRS and a user simulator 𝑓 according to the procedure outlined above. We offer three possible ways to measure the realism of 𝑓 :</p><p>• Have crowdsource workers attempt to distinguish between simulated sessions coming from Q and real sessions coming from R. • Train a discriminator model <ref type="bibr" target="#b27">[28]</ref> on the same differentiation task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>• Let 𝑔(𝑆) → [1, 𝑘] be a function that classifies a session into 𝑘</head><p>categories and let 𝐺 = {𝑔 𝑖 } be an ensemble of such classifiers. One way to define such an ensemble is by adapting dialogue state tracking artifacts used within the dialogue management module of a CRS (see Section 3.1). For instance, we can have a classifier that labels the user intent at a specific turn, or the topics that are covered within a session, or the primary sentiment of a session. Once defined, we can measure how close the distributions Q and R are by matching statistics according to the classifier ensemble 𝐺. A necessary condition of realism is diversity: Simulated sessions from Q should have sufficient variation to invoke all the different functionality of a CRS users will encounter in practice when using the system. It may be that in certain situations measuring realism directly is difficult, for instance if collecting a representative set of real user sessions is infeasible. In this case we can at least attempt to measure the diversity of the user simulator, for instance by defining a notion of entropy of Q with respect to the classifier ensemble 𝐺.</p><p>Controlled Simulation. Our starting point for building a user simulator is the observation that an unconstrained LLM built for dialogue such as LaMDA <ref type="bibr" target="#b85">[86]</ref> can interact with a CRS in a similar way to real users. The LLM takes as input the full history of the ongoing conversation and outputs the next user utterance, analogous to how a CRS dialogue manager can use an LLM to generate system utterances. However, we would like to exhibit greater control over the simulator to increase its realism. In controlled simulation, we condition the user simulator on additional latent (to the CRS) variables that allow us to guide its behavior in a certain direction. We explore with two different variations:</p><p>• Session-level control: A single variable 𝑣 is defined at the beginning of the session and is used to condition the user simulator throughout the session. For instance, we could define 𝑣 as a user profile such as the ones discussed in Section 3.3. • Turn-level control: A distinct variable 𝑣 𝑖 is defined at each turn of the session and is used to condition the simulator for that turn. For instance, we could define each 𝑣 𝑖 to be a user intent for the simulator to adopt at that turn.</p><p>In the case of an LLM user simulator, one way to execute the control is to translate the variable into text that can be included as part of the simulator's input along with the rest of the conversation. For instance, for the user profile example we could append the statement "I am a twelve year old boy who enjoys painting and video games" to the beginning of the conversation to induce the LLM to imitate this personality. To increase realism, one possible strategy is to define session-level or turn-level variables in terms of the classifiers making up one of the ensembles 𝐺 discussed above and then to sample the variables according to the empirical distribution of the collection of real user sessions R. Another possibility is to ground the conditioning in trajectories coming from real data from a related product. For instance, we could look at query sequences submitted by users in a non-conversational search application and sample turn-level variables as trajectories of topics that match these query sequences.</p><p>Generating Synthetic Training Data. To use a user simulator to generate data for supervised training of one of the CRS system modules an additional property is needed: ground truth labels that the system can learn from. As a toy example, suppose we are trying to learn a sentiment classifier as part of a traditional dialogue state tracking module. For this we need to generate a set of examples 𝑆 𝑖 , 𝑙 𝑖 , where 𝑆 𝑖 is a session 𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ...𝑠 𝑛 , 𝑢 𝑛 and 𝑙 𝑖 is a ground truth label for the primary user sentiment within 𝑆 𝑖 coming from a set of possible labels 𝐿, e.g {angry, satisfied, confused, ...}. We can use controlled user simulation to solve this problem, by defining a session level variable 𝑣 over this set of labels 𝐿. First we sample a variable 𝑣 from 𝐿 (e.g. "angry") and then condition the simulator based on this label, for instance in a priming implementation by appending the message "You are an angry user" to the beginning of the input of the simulator. If we are able to solve this LLM control problem effectively then we can attach a label 𝑙 𝑖 ="angry" to the session 𝑆 𝑖 and trust that with high probability it will be accurate.</p><p>A more ambitious use case is generating data for training the retrieval and ranking modules discussed in Sections 3.2.1 and 3.2.2. For this we can define a session level variable 𝑣 as a tuple (𝑥, 𝑗), where 𝑥 is an item from the corpus and 𝑗 is an integer turn index. Once we sample a 𝑣 = (𝑥, 𝑗), we condition the simulator to generate a session 𝑆 = {𝑣, 𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ..., 𝑠 𝑗 , 𝑢 𝑗 , ...} such that after 𝑗 turns the item 𝑥 is a good match for the context 𝑆 (i.e. the user would be satisfied if on turn 𝑠 𝑗+1 the system included 𝑥 within a recommendation slate). This session can then be used as an input example for training a recommendation module, where the item 𝑥 is a positive instance and other items from the corpus can be sampled as negatives. This is a far more complex conditioning problem, and a simple zero-shot priming instruction (e.g. "Generate a session such that after 𝑗 turns item 𝑥 is a good match for the context") will not work. How to solve this control problem effectively, either through more sophisticated turn level priming or by tuning the user simulator LLM, is an ongoing research effort.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Tuning System Modules</head><p>For the remainder of this section we focus on tuning LLMs within our system using large amounts of synthetically generated data. For concreteness we examine three modules discussed earlier in the paper: Retrieval (Section 3.2.1), Ranking / Explanation (Section 3.2.2), and Dialogue Management (Section 3.1).</p><p>Retrieval. In Section 4.1 we outlined a strategy for generating synthetic training data for tuning a recommendation module. For retrieval we assume our training examples are tuples of the form (𝑆 ′ , 𝑥 𝑝𝑜𝑠 , {𝑥 𝑛𝑒𝑔 }), where 𝑆 ′ is a partial session 𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ...𝑠 𝑖 , 𝑢 𝑖 , 𝑥 𝑝𝑜𝑠 is an item that is a good match for the context 𝑆 ′ (in the sense defined previously) and {𝑥 𝑛𝑒𝑔 } is a set of negative items generated by some negative sampling procedure. Given this data, we can tune a Generalized Dual Encoder Model (see Section 3.2.1), in which the initial context representation and item representations are each encoded by an LLM. Regardless of whether we choose to tune only the adapter layers of the two tower model or the LLM params as well, the loss is fully differentiable and normal supervised learning with gradient descent suffices.</p><p>In Search API Lookup (see Section 3.2.1), an LLM processes the session history and outputs a search query, which then gets passed into a black-box search algorithm. When this architecture is used, the loss is no longer differentiable and ordinary supervised learning is not possible. Instead, we can reframe the setup as a contextual bandit problem <ref type="bibr" target="#b4">[5]</ref>, where the LLM is a policy, the labels are rewards signals, and the black box search algorithm is treated as the environment (see Figure <ref type="figure" target="#fig_7">10b</ref>). If the LLM encoder is shared with other modules we have the choice of tuning protected parameters of the LLM that influence only this task of outputting a search query, or instead tuning shared parameters of the LLM that also influence the behavior of these other modules.</p><p>Ranking. For this use case we assume our training examples are tuples of the form (𝑆 ′ , 𝑌 ), where 𝑆 ′ is a partial session 𝑠 1 , 𝑢 1 , 𝑠 2 , 𝑢 2 , ..., 𝑠 𝑖 such that 𝑠 𝑖 contains a recommendation slate and 𝑌 is a list of relevancy scores for the items in that slate. In Section 3.2.2 we present an LLM based ranking module that jointly generates a score for each item and an explanation for that score. Using this data, we can tune the ranking LLM to predict the ground truth labels as a regression problem. Using only this relevancy data we cannot directly tune the LLM to generate better explanations, although this is still possible using bootstrapping methods that depend only on labels for the end task (in this case the scoring task) <ref type="bibr" target="#b34">[35,</ref><ref type="bibr" target="#b106">107]</ref>.</p><p>Dialogue Management. In Section 3.1 we present a dialogue management module based on a unified LLM that at each turn generates a sequence of natural language outputs, the last of which triggers a system action such as a response to the user or an API call to the recommendation engine. Our initial implementation involves tuning the LLM on a moderate (e.g. O(1000)) number of example sequences meant to demonstrate desired behavior. Here we propose a Reinforcement Learning from Human Feedback (see e.g. <ref type="bibr" target="#b64">[65]</ref>) strategy for building on this medium-scale tuning:</p><p>(1) Generate a set of simulated sessions Q using a user simulator as outlined in Section 4.1 (2) Have crowdsource workers evaluate our unified LLM by rating per turn responses within Q in terms of fluency, interestingness, groundedness etc, as well as giving session level ratings based on overall how effective the system was at helping the user explore the recommendations corpus (3) Train reward models on this rating data (likely also using LLMs with chain-of-thought reasoning). ( <ref type="formula">4</ref>) Further tune the unified LLM on simulated sessions through reinforcement learning to optimize for proxy rewards generated by these reward models</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">RELATED WORK</head><p>In this section we briefly survey prior research related to the main topics covered in this paper; for a more comprehensive treatment covering CRSs and other conversational information seeking applications, see for instance <ref type="bibr" target="#b21">[22,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b105">106]</ref> Large Language Models. Large Language Models based on the transformer architecture <ref type="bibr" target="#b87">[88]</ref> have revolutionized the field of artificial intelligence in recent years, producing state of the art results across a variety of natural language understanding and dialogue tasks <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b70">71,</ref><ref type="bibr" target="#b85">86]</ref>. In particular these models excel in the zero or few-shot learning setting, where through appropriately engineered prompts they can be adapted to novel tasks without modifying the model parameters <ref type="bibr" target="#b74">[75]</ref>. When more training data is available, parameter efficient tuning methods such as prompt tuning can achieve even better performance while still enabling a single LLM to handle multiple sub tasks. <ref type="bibr" target="#b46">[47,</ref><ref type="bibr" target="#b88">89]</ref>. LLMs have also demonstrated an exciting ability to execute multi-step reasoning using chain of thought prompting <ref type="bibr" target="#b94">[95]</ref>, a faculty that appears to emerge only at certain model scales <ref type="bibr" target="#b93">[94]</ref>. A number of recent papers have employed self-consistency and boosting techniques to amplify this reasoning potential further <ref type="bibr" target="#b49">[50,</ref><ref type="bibr" target="#b91">92,</ref><ref type="bibr" target="#b106">107]</ref>. One challenge explored in this paper is how to effectively harness these new skills within the conversational recommender space, where scarcity of available training data places a high premium on these types of sample efficient learning methods.</p><p>CRS Datasets. Evaluation of CRSs is difficult in part due to the generative and open-ended nature of the mixed-initiative dialogue (see for example <ref type="bibr" target="#b38">[39]</ref> for a more detailed discussion). Many popular public CRS datasets are based around relatively small domains such as movies and are conversation-only, i.e. recommendations are offered by the system directly within the dialogue without a notion of recommendation slates or other visual elements (see e.g. <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b41">42,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b113">114]</ref>). These datasets rely on crowdsource workers to provide examples of good system utterances and recommendations that are treated as ground truth. A few other CRS datasets are adapted from non-conversational datasets involving large-scale domains such as e-commerce or Yelp reviews <ref type="bibr" target="#b44">[45,</ref><ref type="bibr" target="#b111">112,</ref><ref type="bibr" target="#b113">114]</ref>. However in this case the conversations are generated either synthetically or through substitution from other sources, and are overly rigid compared to actual human dialogue. In this paper we focus on recommendations over a large-scale corpus with recommendation slates distinct from the dialogue, a setup that doesn't fit cleanly into any existing offline benchmarks. As future work we are planning to release human evaluations and a public dataset to quantitatively evaluate design alternatives within RecLLM.</p><p>Dialogue Management. Early CRSs did not rely on natural language but instead on simple forms of preference elicitation by the system and "critiquing" by the user <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b50">51,</ref><ref type="bibr" target="#b56">57]</ref>. When conversational recommenders with natural language interfaces first emerged, they were highly rule-based and limited in their ability to handle mixed-initiative interactions <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b84">85]</ref>. Later, CRSs with model based language generation and understanding appeared, although they tended to still be narrowly focused on issues such as when to ask a question of the user versus showing recommendations, and what questions to ask <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b82">83,</ref><ref type="bibr" target="#b109">110,</ref><ref type="bibr" target="#b111">112]</ref>. Other works have explored learning more flexible dialogue management modules end-to-end, usually by fine-tuning language models on dialogues collected from crowdsource workers <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b41">42,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b66">67]</ref>, although a recent study has indicated that more progress is needed to make these systems practically useful <ref type="bibr" target="#b37">[38]</ref>. In some cases the end-to-end approach has been extended to jointly train a separate item recommendation module along with the dialogue <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b45">46,</ref><ref type="bibr" target="#b89">90]</ref>. The unified LLM dialog management architecture from Section 3.1 builds on this prior work by:</p><p>• Integrating with a recommendation module that can handle a large scale corpus. • Learning internal natural language representations such as dialogue state tracking artifacts and self-instructions along with the final dialogue utterances. • Incorporating natural language inputs such as user profiles and textual representations of recommendation slates from external sources.</p><p>Recommendations / Explanations. In <ref type="bibr" target="#b104">[105]</ref> the authors define a conceptual framework for Retrieval Enhanced Machine Learning; our framework defined in Section 3.2.1 is similar in nature but is simplified and focused on capturing existing approaches to retrieval in the recommendation domain. An overall theme of this paper is how to properly integrate LLMs with external resources, particularly recommendation engines and user profiles, in order to build a better CRS. Some prior research <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b60">61,</ref><ref type="bibr" target="#b72">73,</ref><ref type="bibr" target="#b85">86]</ref> explores with tuning conversational systems through human demonstrations to make calls to an external search API, but not for recommendations over a large corpus. More generally, it is a fundamental research area in machine learning to augment deep learning models with external memory <ref type="bibr" target="#b28">[29,</ref><ref type="bibr" target="#b96">97,</ref><ref type="bibr" target="#b98">99]</ref>, and it has been demonstrated that giving LLMs the ability to retrieve from external corpora can improve performance on tasks like question answering and reduce hallucinations <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b78">79]</ref>.</p><p>Explainability has been a longstanding concern in recommender systems <ref type="bibr" target="#b110">[111]</ref> and a number of works have previously explored jointly generating explanations and recommendations in more traditional recommender systems <ref type="bibr">[11-13, 23, 58, 91, 113]</ref>. Recently, LLMs have been used to explain classifiers and also boost their performance <ref type="bibr" target="#b43">[44,</ref><ref type="bibr" target="#b61">62,</ref><ref type="bibr" target="#b71">72]</ref>. LLMs have also been used for document ranking <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b63">64,</ref><ref type="bibr" target="#b67">68]</ref>; however, we are not aware of previous attempts to apply them to ranking problems in the CRS setting or over large-scale corpora where items are represented by heterogeneous metadata, as we do within RecLLM. What type of explanations a recommender system should share is a difficult question (see e.g. <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b65">66]</ref>); in RecLLM we currently have the system give post hoc natural language justifications for item slates, although this still leaves open the question of how to verify their correctness. User Profile. A number of recent works explore extracting transparent natural language user profiles in order to personalize openended chat bots <ref type="bibr" target="#b55">[56,</ref><ref type="bibr" target="#b100">101,</ref><ref type="bibr" target="#b108">109]</ref>, and recommender systems <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b69">70,</ref><ref type="bibr" target="#b86">87]</ref>. Our proposal from Section 3.3 is perhaps most closely related to BlenderBot <ref type="bibr" target="#b79">[80]</ref>, which also breaks the problem down into separate extraction, triggering, retrieval and generation phases.</p><p>Simulation / Large scale training. Various user simulators have been built for training and evaluating recommender systems, often to support experimentation with reinforcement learning algorithms <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b76">77,</ref><ref type="bibr" target="#b107">108,</ref><ref type="bibr" target="#b114">115]</ref>. Recently there has also been a surge in research using LLMs to generate synthetic data for training dialogue systems and text classifiers <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b58">59,</ref><ref type="bibr" target="#b68">69,</ref><ref type="bibr" target="#b102">103]</ref>. Particularly relevant is Unsupervised Data Generation <ref type="bibr" target="#b92">[93]</ref>, in which an LLM takes a description of a desired label and then generates an input that fits the label. This input / label pair then becomes a synthetic example that can be used for training. Controlled simulation from section 4.1 employs a similar principle where we condition on a latent variable to generate a simulated session and then use the latent variable as a label for tuning. However, we are attempting to generate entire conversations (partially generated by a system outside the simulator's control) and more sophisticated techniques than basic few-shot prompting are likely required.</p><p>In <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b62">63,</ref><ref type="bibr" target="#b99">100]</ref> a pretrained language model is tuned to process documents as part of a dual encoder retrieval model, and in <ref type="bibr" target="#b31">[32]</ref> this is extended to full conversations as in the Generalized Dual Encoder proposal from Section 4.2. When the ground truth labels do not enable a fully differentiable loss function (such as in Search API Lookup), <ref type="bibr" target="#b64">[65,</ref><ref type="bibr" target="#b81">82]</ref> show it is still effective to tune LLMs for language generation tasks using techniques derived from reinforcement learning. Other works <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b80">81]</ref> also use reinforcement learning to tune LLMs for open ended or task based dialogue using reward signals inferred from the conversations (e.g. through sentiment analysis or a notion of task completion). The proposal for tuning a dialogue manager LLM in Section 4.2 is an example of Reinforcement Learning from Human Feedback <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b64">65]</ref>, a technique that is often used for teaching LLMs to follow instructions and align better with human values.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">RECLLM PROTOTYPE</head><p>We have built an initial RecLLM prototype based on the outline shared within this paper. Retrieval is currently implemented via Search API Lookup (see Section 3.2.1) using in-context few-shot learning and a public YouTube search API. LaMDA <ref type="bibr" target="#b85">[86]</ref> is currently used as the underlying LLM powering dialogue management, recommendations and explanations, user profile integration and user simulation within the system. In Appendix A we share sample sessions from RecLLM demonstrating some of its core competencies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">ETHICAL CONSIDERATIONS</head><p>It is our belief that by leveraging large language models within CRSs we can mitigate some challenging ethical problems that have been noted in many recommender systems. RecLLM has the following desirable properties:</p><p>• A recommendation module that reasons over the attributes of items and is less reliant on learning from interaction data such as clicks that are noisy and can promote unintentional biases. • The ability to give natural language justifications for why certain recommendations are being shown, which the user can then validate. • Opportunity for the user to control their recommendations in a nuanced way through language. • Transparent personalization through human interpretable and editable user profiles.</p><p>On the other hand, our proposed system relies heavily on large language models and therefore inherits all of their well-known problems centered around societal biases learned through pretraining, hallucinations, and expensive use of resources <ref type="bibr" target="#b95">[96]</ref>. Various controls are included to constrain the LLMs to the conversational recommender task, but these are unlikely to fully wash away their inherent issues. Significant further progress needs to be made in areas like debiasing, grounding in factuality and efficient serving before we can safely deploy this type of system in a production setting.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">CONCLUSIONS AND FUTURE WORK</head><p>In this paper we examine the system architecture of a conversational recommender system and identify areas where large language models can unlock new capabilities, along with the technical challenges that emerge through their use. In particular we reimagine how LLMs can transform dialogue management, retrieval, ranking and user profiles to improve system quality, give the user greater control and increase transparency throughout the system. We focus on how to build a large-scale end-to-end CRS without assuming access to logs data coming from an existing product, by utilizing the generalization abilities of LLMs and generating synthetic training data using LLM-powered user simulators. As a proof of concept we introduce RecLLM and share example conversations highlighting its diverse functionality. Our hope is that this roadmap can accelerate progress towards a world where controllable and explainable CRSs allow users to explore content within a healthier recommender system ecosystem. Some important items for future work include:</p><p>• We are planning the release of human evaluations and a public dataset based on our system to quantitatively evaluate design alternatives for RecLLM and help the community better study CRSs in the multimodal, large-scale setting. • In this paper we assume a simplified setting where users interact with the system only through conversation. We would like to generalize our system to handle more realistic scenarios where users give feedback through other channels as well such as clicking on items or like buttons. We would also like to consider more complicated recommender system UIs containing hierarchical structures such as item shelves as opposed to just flat slates. • We have proposed ideas for large-scale tuning of the main system modules based on synthetically generated data, but currently RecLLM relies exclusively on in-context few-shot learning or tuning on small amounts of data collected through crowdsourcing. Successfully proving out these ideas will be critical to properly handle huge item corpora and the full space of possible conversations. • We would like to support new use cases that naturally arise in a mixed-initiative conversational recommender dialogue, such as question answering over corpus items.     </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Overview of key contributions from RecLLM.(1) A dialogue management module uses an LLM to converse with the user, track context and make system calls such as submitting a request to a recommendation engine all as a unified language modeling task. (2) Various solutions are presented for tractable retrieval over a large item corpus within an LLM-based CRS.(3) A ranker module uses an LLM to match preferences extracted from the context of the conversation to item metadata and generate a slate of recommendations that is displayed to the user. The LLM also jointly generates explanations for its decisions that can be surfaced to the user. (4) Interpretable natural language user profiles are consumed by system LLMs to modulate session-level context and increase personalization. (5) A controllable LLM-based user simulator can be plugged into the CRS to generate synthetic conversations for tuning system modules.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Screenshot of an LLM-based user simulator talking with RecLLM.</figDesc><graphic coords="2,317.96,448.39,240.24,189.83" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: RecLLM possesses many conversational capabilities such as the ability to retain context throughout a session, handle topic shifts and reference items from recommendation slates.</figDesc><graphic coords="3,53.80,83.69,504.38,117.55" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Overview of large-scale retrieval in an LLM-based CRS.</figDesc><graphic coords="5,53.80,385.63,240.25,72.63" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Overview of the architecture incorporating the User Profile module</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: An example of session based control: A single variable (a user profile) is used to condition the user simulator.</figDesc><graphic coords="7,366.00,511.92,144.15,149.27" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 9 :</head><label>9</label><figDesc>Figure 9: An example of turn level control: A series of variables (user intents) are used to condition the user simulator at each turn.</figDesc><graphic coords="8,77.82,83.68,192.19,98.50" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 10 :</head><label>10</label><figDesc>Figure 10: Tuning Recommendation Modules: (a) Tuning a General Dual Encoder retrieval model. (b) Tuning a Search API Lookup retrieval model, framed as a contextual bandits problem. (c) Tuning a joint ranking / explanation model. The only learning signal comes from ground truth scores, but through self-consistency / bootstrapping tricks it is possible to indirectly tune the explanations as well.</figDesc><graphic coords="10,53.80,83.69,504.40,153.62" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 11 : 1 Figure 12 :Figure 13 :</head><label>1111213</label><figDesc>Figure 11: General System Overview Sample 1</figDesc><graphic coords="15,66.41,83.69,479.18,514.41" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 14 :</head><label>14</label><figDesc>Figure 14: Refinement and Explanation Sample 2</figDesc><graphic coords="18,66.41,340.29,479.17,217.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 15 :</head><label>15</label><figDesc>Figure 15: Refinement and Explanation Sample 3</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 16 : 1 Figure 17 : 2 Figure 18 : 3 Figure 19 :</head><label>16117218319</label><figDesc>Figure 16: Simulated Conversations Sample 1</figDesc><graphic coords="19,66.41,83.68,479.19,314.34" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 20 : Exploration Sample 2 Figure 21 : Exploration Sample 3 Figure 22 :Figure 23 : 1 Figure 24 :</head><label>2022132223124</label><figDesc>Figure 20: Exploration Sample 2</figDesc><graphic coords="22,66.41,301.94,479.18,187.36" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="16,66.41,83.68,479.19,393.31" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="20,66.41,83.68,479.17,318.06" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="21,66.41,83.69,479.19,290.26" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="21,66.41,404.83,479.18,249.65" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="23,129.46,83.69,353.10,249.33" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="23,66.41,363.89,479.18,193.73" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="24,66.41,83.68,479.18,197.46" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Various possible solutions to large-scale retrieval in a CRS.</figDesc><table><row><cell>Approach</cell><cell>Request Type</cell><cell>Tractable Search</cell></row><row><cell></cell><cell></cell><cell>Algorithm</cell></row><row><cell cols="2">Generalized Dual Encoder Model Internal LLM embed-</cell><cell>KNN or ScaNN [30]</cell></row><row><cell></cell><cell>dings</cell><cell></cell></row><row><cell>Direct LLM Search</cell><cell>Title or id</cell><cell>Fuzzy lookup</cell></row><row><cell>Concept Based Search</cell><cell>List of concepts</cell><cell>Concept Activation</cell></row><row><cell></cell><cell></cell><cell>Vector [43]</cell></row><row><cell>Search API Lookup</cell><cell>Search query</cell><cell>Search API</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="9">ACKNOWLEDGEMENTS</head><p>We would like to thank Filip Radlinski, Karan Singhal, Abhinav Rastogi, Raghav Gupta and Yinlam Chow for useful feedback on drafts of this paper.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A RECLLM SAMPLES</head><p>In this appendix we share a small number of samples meant to demonstrate some of the core competencies of RecLLM. They are grouped into the following categories: General System Overview, Refinement and Explanation, Simulated Conversations, Topic Exploration and Incorporation of User Profiles. Note that in these samples we only visualize the final recommendation slate, although in reality the recommendation slate evolves throughout the conversation within the RecLLM user interface.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Training a helpful and harmless assistant with reinforcement learning from human feedback</title>
+		<author>
+			<persName><forename type="first">Yuntao</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andy</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kamal</forename><surname>Ndousse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amanda</forename><surname>Askell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anna</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nova</forename><surname>Dassarma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawn</forename><surname>Drain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stanislav</forename><surname>Fort</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deep</forename><surname>Ganguli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tom</forename><surname>Henighan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.05862</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Transparent, scrutable and explainable user models for personalized recommendation</title>
+		<author>
+			<persName><forename type="first">Krisztian</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Filip</forename><surname>Radlinski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shushan</forename><surname>Arakelyan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd international acm sigir conference on research and development in information retrieval</title>
+				<meeting>the 42nd international acm sigir conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="265" to="274" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Cases, scripts, and information-seeking strategies: On the design of interactive information retrieval systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nicholas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Colleen</forename><surname>Belkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adelheit</forename><surname>Cool</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ulrich</forename><surname>Stein</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Thiel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert systems with applications</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="379" to="395" />
+			<date type="published" when="1995">1995. 1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arthur</forename><surname>Mensch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jordan</forename><surname>Hoffmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trevor</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eliza</forename><surname>Rutherford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katie</forename><surname>Millican</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Van Den Driessche</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jean-Baptiste</forename><surname>Lespiau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bogdan</forename><surname>Damoc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aidan</forename><surname>Clark</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2112.04426</idno>
+		<title level="m">Improving language models by retrieving from trillions of tokens</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Survey on applications of multi-armed and contextual bandits</title>
+		<author>
+			<persName><forename type="first">Djallel</forename><surname>Bouneffouf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Irina</forename><surname>Rish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Charu</forename><surname>Aggarwal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Congress on Evolutionary Computation (CEC). IEEE</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="8" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Language models are few-shot learners</title>
+		<author>
+			<persName><forename type="first">Tom</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benjamin</forename><surname>Mann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nick</forename><surname>Ryder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Melanie</forename><surname>Subbiah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jared</forename><forename type="middle">D</forename><surname>Kaplan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Prafulla</forename><surname>Dhariwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arvind</forename><surname>Neelakantan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pranav</forename><surname>Shyam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Girish</forename><surname>Sastry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amanda</forename><surname>Askell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="1877" to="1901" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">The FindMe approach to assisted browsing</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Robin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kristian</forename><forename type="middle">J</forename><surname>Burke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C</forename><surname>Hammond</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Yound</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Expert</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="32" to="40" />
+			<date type="published" when="1997">1997. 1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">TicketTalk: Toward human-level performance with end-to-end, transaction-based dialog systems</title>
+		<author>
+			<persName><forename type="first">Bill</forename><surname>Byrne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karthik</forename><surname>Krishnamoorthi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saravanan</forename><surname>Ganesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mihir</forename><surname>Sanjay Kale</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2012.12458</idno>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Predicting user intents and satisfaction with dialogue-based conversational recommendations</title>
+		<author>
+			<persName><forename type="first">Wanling</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM Conference on User Modeling, Adaptation and Personalization</title>
+				<meeting>the 28th ACM Conference on User Modeling, Adaptation and Personalization</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="33" to="42" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Learning to rank: from pairwise approach to listwise approach</title>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tie-Yan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Feng</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hang</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th international conference on Machine learning</title>
+				<meeting>the 24th international conference on Machine learning</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="129" to="136" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">Qibin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junyang</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yichang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yukuo</forename><surname>Cen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxia</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Tang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1908.05391</idno>
+		<title level="m">Towards knowledge-based recommender dialog system</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Sequential recommendation with user memory networks</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the eleventh ACM international conference on web search and data mining</title>
+				<meeting>the eleventh ACM international conference on web search and data mining</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="108" to="116" />
+		</imprint>
+	</monogr>
+	<note>Yixin Cao, Zheng Qin, and Hongyuan Zha</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Dynamic explainable recommendation based on neural attentive models</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Qin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="53" to="60" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">A Mixture-of-Expert Approach to RL-based Dialogue Management</title>
+		<author>
+			<persName><forename type="first">Yinlam</forename><surname>Chow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aza</forename><surname>Tulepbergenov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ofir</forename><surname>Nachum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Moonkyung</forename><surname>Ryu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><surname>Ghavamzadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Craig</forename><surname>Boutilier</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2206.00059</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<author>
+			<persName><forename type="first">Aakanksha</forename><surname>Chowdhery</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharan</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Devlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gaurav</forename><surname>Mishra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Barham</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hyung Won</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Charles</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Sutton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Gehrmann</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.02311</idno>
+		<title level="m">Palm: Scaling language modeling with pathways</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Q&amp;R: A two-stage approach toward interactive recommendation</title>
+		<author>
+			<persName><forename type="first">Konstantina</forename><surname>Christakopoulou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Beutel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sagar</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><forename type="middle">H</forename><surname>Chi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="139" to="148" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Deep Neural Networks for YouTube Recommendations</title>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Covington</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jay</forename><surname>Adams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emre</forename><surname>Sargin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th ACM Conference on Recommender Systems</title>
+				<meeting>the 10th ACM Conference on Recommender Systems<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Dialog inpainting: Turning documents into dialogs</title>
+		<author>
+			<persName><forename type="first">Zhuyun</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arun</forename><forename type="middle">Tejasvi</forename><surname>Chaganty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Vincent</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aida</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Amini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Qazi Mamunur Rashid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kelvin</forename><surname>Green</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Guu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Machine Learning. PMLR</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="4558" to="4586" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Unified conversational recommendation policy learning via graph-based reinforcement learning</title>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yaliang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bolin</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wai</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1431" to="1441" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Designing a conversational travel recommender system based on data-driven destination characterization</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Linus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Saadi</forename><surname>Dietz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wolfgang</forename><surname>Myftija</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wörndl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM RecSys workshop on recommenders in tourism</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="17" to="21" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Pixie: A system for recommending 3+ billion items to 200+ million users in real-time</title>
+		<author>
+			<persName><forename type="first">Chantat</forename><surname>Eksombatchai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pranav</forename><surname>Jindal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jerry</forename><forename type="middle">Zitao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuchen</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rahul</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Charles</forename><surname>Sugnet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Ulrich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 world wide web conference</title>
+				<meeting>the 2018 world wide web conference</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1775" to="1784" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Xiangnan He, Maarten de Rijke, and Tat-Seng Chua. 2021. Advances and challenges in conversational recommender systems: A survey</title>
+		<author>
+			<persName><forename type="first">Chongming</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenqiang</forename><surname>Lei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">AI Open</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="100" to="126" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation through attentive multi-view learning</title>
+		<author>
+			<persName><forename type="first">Jingyue</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yasha</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="3622" to="3629" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenyan</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nick</forename><surname>Craswell</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.05176</idno>
+		<title level="m">Neural approaches to conversational information retrieval</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">A long-term analysis of polarization on Twitter</title>
+		<author>
+			<persName><forename type="first">Kiran</forename><surname>Venkata Rama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ingmar</forename><surname>Garimella</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Weber</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Eleventh international AAAI conference on web and social media</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">How should I explain? A comparison of different explanation types for recommender systems</title>
+		<author>
+			<persName><forename type="first">Fatih</forename><surname>Gedikli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mouzhi</forename><surname>Ge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Studies</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="page" from="367" to="382" />
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Improving alignment of dialogue agents via targeted human judgements</title>
+		<author>
+			<persName><forename type="first">Amelia</forename><surname>Glaese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nat</forename><surname>Mcaleese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maja</forename><surname>Trębacz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Aslanides</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vlad</forename><surname>Firoiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Timo</forename><surname>Ewalds</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maribeth</forename><surname>Rauh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Weidinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Chadwick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Phoebe</forename><surname>Thacker</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2209.14375</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Generative adversarial networks</title>
+		<author>
+			<persName><forename type="first">Ian</forename><surname>Goodfellow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jean</forename><surname>Pouget-Abadie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mehdi</forename><surname>Mirza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bing</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Warde-Farley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sherjil</forename><surname>Ozair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aaron</forename><surname>Courville</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Commun. ACM</title>
+		<imprint>
+			<biblScope unit="volume">63</biblScope>
+			<biblScope unit="page" from="139" to="144" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Graves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Wayne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivo</forename><surname>Danihelka</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1410.5401</idno>
+		<title level="m">Neural turing machines</title>
+				<imprint>
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">New Loss Functions for Fast Maximum Inner Product Search. CoRR abs</title>
+		<author>
+			<persName><forename type="first">Ruiqi</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quan</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Simcha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felix</forename><surname>Chern</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanjiv</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1908.10396</idno>
+		<ptr target="http://arxiv.org/abs/1908.10396" />
+		<imprint>
+			<date type="published" when="1908">2019. 1908.10396. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dongyeop</forename><surname>Shirley Anugrah Hayati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingxiaoyang</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiyan</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhou</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Yu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2009.14306</idno>
+		<title level="m">INSPIRED: Toward sociable recommendation dialog systems</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<author>
+			<persName><forename type="first">Matthew</forename><surname>Henderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iñigo</forename><surname>Casanueva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikola</forename><surname>Mrkšić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pei-Hao</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tsung-Hsien</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivan</forename><surname>Vulić</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1911.03688</idno>
+		<title level="m">ConveRT: Efficient and accurate conversational representations from transformers</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Efficiently teaching an effective dense retriever with balanced topic aware sampling</title>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Hofstätter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheng-Chieh</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jheng-Hong</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Allan</forename><surname>Hanbury</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="113" to="122" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin Chen-Chuan</forename><surname>Chang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2212.10403</idno>
+		<title level="m">Towards Reasoning in Large Language Models: A Survey</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<title level="m" type="main">Large language models can self-improve</title>
+		<author>
+			<persName><forename type="first">Jiaxin</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shixiang</forename><forename type="middle">Shane</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuexin</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongkun</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Han</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2210.11610</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">Eugene</forename><surname>Ie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chih-Wei</forename><surname>Hsu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Mladenov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vihan</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanmit</forename><surname>Narvekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Craig</forename><surname>Boutilier</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1909.04847</idno>
+		<title level="m">Recsim: A configurable simulation platform for recommender systems</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2203.09126</idno>
+		<title level="m">Conversational Recommendation: A Grand AI Challenge</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">End-to-End Learning for Conversational Recommendation: A Long Way to Go</title>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahtsham</forename><surname>Manzoor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IntRS@ RecSys</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="72" to="76" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">A survey on conversational recommender systems</title>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahtsham</forename><surname>Manzoor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wanling</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys (CSUR)</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="1" to="36" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Yejin Bang, Andrea Madotto, and Pascale Fung. 2022. Survey of hallucination in natural language generation</title>
+		<author>
+			<persName><forename type="first">Ziwei</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nayeon</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rita</forename><surname>Frieske</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tiezheng</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Etsuko</forename><surname>Ishii</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Surveys</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Text-to-text Multiview Learning for Passage Re-ranking</title>
+		<author>
+			<persName><forename type="first">Jia-Huei</forename><surname>Ju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jheng-Hong</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuan-Ju</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1803" to="1807" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">Recommendation as a communication game: Self-supervised bot-play for goal-oriented dialogue</title>
+		<author>
+			<persName><forename type="first">Dongyeop</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anusha</forename><surname>Balakrishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pararth</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Crook</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y-Lan</forename><surname>Boureau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1909.03922</idno>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<title level="m" type="main">Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV)</title>
+		<author>
+			<persName><forename type="first">Been</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Wattenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Justin</forename><surname>Gilmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carrie</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>Wexler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fernanda</forename><surname>Viegas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rory</forename><surname>Sayres</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/ARXIV.1711.11279</idno>
+		<ptr target="https://doi.org/10.48550/ARXIV.1711.11279" />
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<author>
+			<persName><forename type="first">Ishita</forename><surname>Andrew K Lampinen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Dasgupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Stephanie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kory</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><forename type="middle">Henry</forename><surname>Matthewson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antonia</forename><surname>Tessler</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Creswell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>James</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jane</forename><forename type="middle">X</forename><surname>Mcclelland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felix</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hill</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.02329</idno>
+		<title level="m">Can language models learn from explanations in context? arXiv preprint</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Estimation-action-reflection: Towards deep interaction between conversational and recommender systems</title>
+		<author>
+			<persName><forename type="first">Wenqiang</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yisong</forename><surname>Miao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingyun</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richang</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min-Yen</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Web Search and Data Mining</title>
+				<meeting>the 13th International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="304" to="312" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Interactive path reasoning on graph for conversational recommendation</title>
+		<author>
+			<persName><forename type="first">Wenqiang</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gangyi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yisong</forename><surname>Miao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th acm sigkdd international conference on knowledge discovery &amp; data mining</title>
+				<meeting>the 26th acm sigkdd international conference on knowledge discovery &amp; data mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2073" to="2083" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<title level="m" type="main">The power of scale for parameter-efficient prompt tuning</title>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Lester</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rami</forename><surname>Al-Rfou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noah</forename><surname>Constant</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2104.08691</idno>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Retrieval-augmented generation for knowledge-intensive nlp tasks</title>
+		<author>
+			<persName><forename type="first">Patrick</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ethan</forename><surname>Perez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aleksandra</forename><surname>Piktus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabio</forename><surname>Petroni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vladimir</forename><surname>Karpukhin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Naman</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heinrich</forename><surname>Küttler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wen-Tau</forename><surname>Yih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Rocktäschel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="9459" to="9474" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Towards deep conversational recommendations</title>
+		<author>
+			<persName><forename type="first">Raymond</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Samira</forename><forename type="middle">Ebrahimi</forename><surname>Kahou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hannes</forename><surname>Schulz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vincent</forename><surname>Michalski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+			<biblScope unit="page">31</biblScope>
+		</imprint>
+	</monogr>
+	<note>Laurent Charlin, and Chris Pal</note>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yifei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeqi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shizhuo</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian-Guang</forename><surname>Lou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhu</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2206.02336</idno>
+		<title level="m">On the Advance of Making Language Models Better Reasoners</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Interactive assessment of user preference models: The automated travel assistant</title>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Linden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Steve</forename><surname>Hanks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neal</forename><surname>Lesh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">User Modeling</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1997">1997</date>
+			<biblScope unit="page" from="67" to="78" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<monogr>
+		<author>
+			<persName><forename type="first">Frederick</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siamak</forename><surname>Shakeri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongkun</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2110.08426</idno>
+		<title level="m">EncT5: Finetuning T5 Encoder for Non-autoregressive Tasks</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">Hierarchical transformers for multi-document summarization</title>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirella</forename><surname>Lapata</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1905.13164</idno>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Off-policy learning in two-stage recommender systems</title>
+		<author>
+			<persName><forename type="first">Jiaqi</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyang</forename><surname>Yi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minmin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lichan</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><forename type="middle">H</forename><surname>Chi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of The Web Conference 2020</title>
+				<meeting>The Web Conference 2020</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="463" to="473" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Feedback loop and bias amplification in recommender systems</title>
+		<author>
+			<persName><forename type="first">Masoud</forename><surname>Mansoury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Himan</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mykola</forename><surname>Pechenizkiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bamshad</forename><surname>Mobasher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robin</forename><surname>Burke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM international conference on information &amp; knowledge management</title>
+				<meeting>the 29th ACM international conference on information &amp; knowledge management</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2145" to="2148" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<title level="m" type="main">Training millions of personalized dialogue agents</title>
+		<author>
+			<persName><forename type="first">Pierre-Emmanuel</forename><surname>Mazaré</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Samuel</forename><surname>Humeau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Raison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Bordes</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1809.01984</idno>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Experience-based critiquing: Reusing critiquing experiences to improve conversational recommendation</title>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Mccarthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yasser</forename><surname>Salem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barry</forename><surname>Smyth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Case-Based Reasoning</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="480" to="494" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Explore, exploit, and explain: personalizing explainable recommendations with bandits</title>
+		<author>
+			<persName><forename type="first">James</forename><surname>Mcinerney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benjamin</forename><surname>Lacker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Samantha</forename><surname>Hansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karl</forename><surname>Higley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hugues</forename><surname>Bouchard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM conference on recommender systems</title>
+				<meeting>the 12th ACM conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="31" to="39" />
+		</imprint>
+	</monogr>
+	<note>Alois Gruson, and Rishabh Mehrotra</note>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<author>
+			<persName><forename type="first">Shikib</forename><surname>Mehri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yasemin</forename><surname>Altun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maxine</forename><surname>Eskenazi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2207.14393</idno>
+		<title level="m">LAD: Language Models as Data for Zero-Shot Dialog</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<title level="m" type="main">Efficient estimation of word representations in vector space</title>
+		<author>
+			<persName><forename type="first">Tomas</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Dean</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1301.3781</idno>
+		<imprint>
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<monogr>
+		<author>
+			<persName><forename type="first">Reiichiro</forename><surname>Nakano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Hilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suchir</forename><surname>Balaji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christina</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Hesse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shantanu</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vineet</forename><surname>Kosaraju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><surname>Saunders</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2112.09332</idno>
+		<title level="m">WebGPT: Browser-assisted question-answering with human feedback</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<author>
+			<persName><forename type="first">Sharan</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Colin</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noah</forename><surname>Fiedel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Karishma</forename><surname>Malkan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2004.14546</idno>
+		<title level="m">Wt5?! training text-to-text models to explain their predictions</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuyun</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gustavo</forename><forename type="middle">Hernández</forename><surname>Ábrego</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Vincent</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Luan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Keith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Wei</forename><surname>Hall</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2112.07899</idno>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>et al. 2021. Large dual encoders are generalizable retrievers</note>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<title level="m" type="main">Document ranking with a pretrained sequence-to-sequence model</title>
+		<author>
+			<persName><forename type="first">Rodrigo</forename><surname>Nogueira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiying</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Lin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2003.06713</idno>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<monogr>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Diogo</forename><surname>Almeida</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Carroll</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pamela</forename><surname>Wainwright</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Mishkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sandhini</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katarina</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Slama</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ray</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2203.02155</idno>
+		<title level="m">Training language models to follow instructions with human feedback</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Design considerations for explanations made by a recommender chatbot</title>
+		<author>
+			<persName><forename type="first">Sunjeong</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lim Youn-Kyung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IASDR Conference 2019. IASDR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">What does bert know about books, movies and music? probing bert for conversational recommendation</title>
+		<author>
+			<persName><forename type="first">Gustavo</forename><surname>Penha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Claudia</forename><surname>Hauff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Fourteenth ACM Conference on Recommender Systems</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="388" to="397" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<monogr>
+		<title level="m" type="main">The expando-mono-duo design pattern for text ranking with pretrained sequence-to-sequence models</title>
+		<author>
+			<persName><forename type="first">Ronak</forename><surname>Pradeep</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rodrigo</forename><surname>Nogueira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Lin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2101.05667</idno>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<monogr>
+		<title level="m" type="main">Training question answering models from synthetic data</title>
+		<author>
+			<persName><forename type="first">Raul</forename><surname>Puri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ryan</forename><surname>Spring</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostofa</forename><surname>Patwary</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><surname>Shoeybi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bryan</forename><surname>Catanzaro</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2002.09599</idno>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<monogr>
+		<author>
+			<persName><forename type="first">Filip</forename><surname>Radlinski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krisztian</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fernando</forename><surname>Diaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Dixon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ben</forename><surname>Wedin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2205.09403</idno>
+		<title level="m">On Natural Language User Profiles for Transparent and Scrutable Recommendation</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Exploring the limits of transfer learning with a unified text-to-text transformer</title>
+		<author>
+			<persName><forename type="first">Colin</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katherine</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharan</forename><surname>Narang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Matena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanqi</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Mach. Learn. Res</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="1" to="67" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<monogr>
+		<title level="m" type="main">Explain yourself! leveraging language models for commonsense reasoning</title>
+		<author>
+			<persName><forename type="first">Bryan</forename><surname>Nazneen Fatema Rajani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Caiming</forename><surname>Mccann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Socher</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1906.02361</idno>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Towards scalable multi-domain conversational agents: The schema-guided dialogue dataset</title>
+		<author>
+			<persName><forename type="first">Abhinav</forename><surname>Rastogi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoxue</forename><surname>Zang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Srinivas</forename><surname>Sunkara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Raghav</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pranav</forename><surname>Khaitan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="8689" to="8696" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Learning to ask appropriate questions in conversational recommendation</title>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Xuhui Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="808" to="817" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Prompt programming for large language models: Beyond the few-shot paradigm</title>
+		<author>
+			<persName><forename type="first">Laria</forename><surname>Reynolds</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyle</forename><surname>Mcdonell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Acquiring and revising preferences in a critique-based mobile recommender system</title>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Ricci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quang Nhat</forename><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Intelligent systems</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="22" to="29" />
+			<date type="published" when="2007">2007. 2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<title level="m" type="main">Recogym: A reinforcement learning environment for the problem of product recommendation in online advertising</title>
+		<author>
+			<persName><forename type="first">David</forename><surname>Rohde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephen</forename><surname>Bonner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Travis</forename><surname>Dunlop</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Flavian</forename><surname>Vasile</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexandros</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1808.00720</idno>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Short-term satisfaction and long-term coverage: Understanding how users tolerate algorithmic exploration</title>
+		<author>
+			<persName><forename type="first">Tobias</forename><surname>Schnabel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Paul</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Susan</forename><forename type="middle">T</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thorsten</forename><surname>Dumais</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Joachims</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM International Conference on Web Search and Data Mining</title>
+				<meeting>the Eleventh ACM International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="513" to="521" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<monogr>
+		<author>
+			<persName><forename type="first">Kurt</forename><surname>Shuster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><surname>Poff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Moya</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Douwe</forename><surname>Kiela</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2104.07567</idno>
+		<title level="m">Retrieval augmentation reduces hallucination in conversation</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<monogr>
+		<title level="m" type="main">BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage</title>
+		<author>
+			<persName><forename type="first">Kurt</forename><surname>Shuster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mojtaba</forename><surname>Komeili</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Da</forename><surname>Ju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><forename type="middle">Michael</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephen</forename><surname>Roller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Megan</forename><surname>Ung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Moya</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kushal</forename><surname>Arora</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joshua</forename><surname>Lane</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2208.03188</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<title level="m" type="main">Context-Aware Language Modeling for Goal-Oriented Dialogue Systems</title>
+		<author>
+			<persName><forename type="first">Charlie</forename><surname>Snell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sherry</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Justin</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sergey</forename><surname>Levine</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.10198</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Learning to summarize with human feedback</title>
+		<author>
+			<persName><forename type="first">Nisan</forename><surname>Stiennon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Ziegler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ryan</forename><surname>Lowe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chelsea</forename><surname>Voss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alec</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dario</forename><surname>Amodei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul F</forename><surname>Christiano</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="3008" to="3021" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Conversational recommender system</title>
+		<author>
+			<persName><forename type="first">Yueming</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 41st international acm sigir conference on research &amp; development in information retrieval</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="235" to="244" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Vinh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dara</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Harsh</forename><surname>Bahri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhen</forename><surname>Mehta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Hui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jai</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Gupta</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2202.06991</idno>
+		<title level="m">Transformer memory as a differentiable search index</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">A personalized system for conversational recommendations</title>
+		<author>
+			<persName><surname>Cynthia A Thompson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mehmet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pat</forename><surname>Goker</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Langley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Artificial Intelligence Research</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="393" to="428" />
+			<date type="published" when="2004">2004. 2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<monogr>
+		<author>
+			<persName><forename type="first">Romal</forename><surname>Thoppilan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><forename type="middle">De</forename><surname>Freitas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jamie</forename><surname>Hall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Apoorv</forename><surname>Kulshreshtha</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Heng-Tze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alicia</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Taylor</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leslie</forename><surname>Bos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Baker</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Du</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.08239</idno>
+		<title level="m">Lamda: Language models for dialog applications</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title level="a" type="main">You get what you chat: Using conversations to personalize search-based recommendations</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ghazaleh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>Torbati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerhard</forename><surname>Yates</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Weikum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">European Conference on Information Retrieval</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="207" to="223" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<monogr>
+		<title level="m" type="main">Attention is all you need. Advances in neural information processing systems</title>
+		<author>
+			<persName><forename type="first">Ashish</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Niki</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jakob</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Llion</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aidan</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Łukasz</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Illia</forename><surname>Polosukhin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+			<biblScope unit="page">30</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<monogr>
+		<author>
+			<persName><forename type="first">Tu</forename><surname>Vu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Lester</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noah</forename><surname>Constant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rami</forename><surname>Al-Rfou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Cer</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2110.07904</idno>
+		<title level="m">Spot: Better frozen model adaptation through soft prompt transfer</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<monogr>
+		<title level="m" type="main">Finetuning Large-Scale Pre-trained Language Models for Conversational Recommendation with Knowledge Graph</title>
+		<author>
+			<persName><forename type="first">Lingzhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Sha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Can</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kam-Fai</forename><surname>Wong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daxin</forename><surname>Jiang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2110.07477</idno>
+		<ptr target="https://arxiv.org/abs/2110.07477" />
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title level="a" type="main">A reinforcement learning framework for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiru</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhengtao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE international conference on data mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="587" to="596" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<monogr>
+		<title level="m" type="main">Self-consistency improves chain of thought reasoning in language models</title>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dale</forename><surname>Schuurmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2203.11171</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<monogr>
+		<author>
+			<persName><forename type="first">Zirui</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adams</forename><forename type="middle">Wei</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Orhan</forename><surname>Firat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan</forename><surname>Cao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2109.09193</idno>
+		<title level="m">Towards zero-label language learning</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishi</forename><surname>Bommasani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Colin</forename><surname>Raffel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barret</forename><surname>Zoph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dani</forename><surname>Yogatama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Donald</forename><surname>Metzler</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2206.07682</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>et al. 2022. Emergent abilities of large language models</note>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<monogr>
+		<title level="m" type="main">Chain of thought prompting elicits reasoning in large language models</title>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuezhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dale</forename><surname>Schuurmans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Bosma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Chi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denny</forename><surname>Zhou</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.11903</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<monogr>
+		<author>
+			<persName><forename type="first">Laura</forename><surname>Weidinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Mellor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maribeth</forename><surname>Rauh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Conor</forename><surname>Griffin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Uesato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Po-Sen</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Myra</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mia</forename><surname>Glaese</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Borja</forename><surname>Balle</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2112.04359</idno>
+		<title level="m">Atoosa Kasirzadeh, et al. 2021. Ethical and social risks of harm from language models</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sumit</forename><surname>Chopra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Bordes</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1410.3916</idno>
+		<imprint>
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Memory networks. arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<monogr>
+		<title level="m" type="main">Retrieve and Refine: Improved Sequence Generation Models For Dialogue</title>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emily</forename><surname>Dinan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><forename type="middle">H</forename><surname>Miller</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1808.04776</idno>
+		<ptr target="http://arxiv.org/abs/1808.04776" />
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b98">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Yuhuai</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><forename type="middle">N</forename><surname>Rabe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Delesley</forename><forename type="middle">S</forename><surname>Hutchins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Szegedy</surname></persName>
+		</author>
+		<idno>abs/2203.08913</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">2022. Memorizing Transformers. ArXiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b99">
+	<monogr>
+		<author>
+			<persName><forename type="first">Lee</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenyan</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ye</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kwok-Fung</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jialin</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junaid</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arnold</forename><surname>Overwijk</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2007.00808</idno>
+		<title level="m">Approximate nearest neighbor negative contrastive learning for dense text retrieval</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b100">
+	<monogr>
+		<title level="m" type="main">Beyond goldfish memory: Long-term open-domain conversation</title>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arthur</forename><surname>Szlam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2107.07567</idno>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b101">
+	<analytic>
+		<title level="a" type="main">Sampling-bias-corrected neural modeling for large corpus item recommendations</title>
+		<author>
+			<persName><forename type="first">Xinyang</forename><surname>Yi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lichan</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Derek</forename><forename type="middle">Zhiyuan</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lukasz</forename><surname>Heldt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditee</forename><surname>Kumthekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ed</forename><surname>Chi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th ACM Conference on Recommender Systems</title>
+				<meeting>the 13th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="269" to="277" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b102">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dongju</forename><surname>Kang Min Yoo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jaewook</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sang-Woo</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Woomyeong</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Park</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2104.08826</idno>
+		<title level="m">GPT3Mix: Leveraging large-scale language models for text augmentation</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b103">
+	<analytic>
+		<title level="a" type="main">Beyond Position Bias: Examining Result Attractiveness as a Source of Presentation Bias in Clickthrough Data</title>
+		<author>
+			<persName><forename type="first">Yisong</forename><surname>Yue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rajan</forename><surname>Patel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hein</forename><surname>Roehrig</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/1772690.1772793</idno>
+		<ptr target="https://doi.org/10.1145/1772690.1772793" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th International Conference on World Wide Web (WWW &apos;10)</title>
+				<meeting>the 19th International Conference on World Wide Web (WWW &apos;10)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1011" to="1018" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b104">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hamed</forename><surname>Zamani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fernando</forename><surname>Diaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mostafa</forename><surname>Dehghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Donald</forename><surname>Metzler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Bendersky</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2205.01230</idno>
+		<title level="m">Retrieval-Enhanced Machine Learning</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b105">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hamed</forename><surname>Zamani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Johanne</forename><forename type="middle">R</forename><surname>Trippas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Dalton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Filip</forename><surname>Radlinski</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.08808</idno>
+		<title level="m">Conversational information seeking</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b106">
+	<monogr>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Zelikman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuhuai</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noah D</forename><surname>Goodman</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2203.14465</idno>
+		<title level="m">Star: Bootstrapping reasoning with reasoning</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b107">
+	<analytic>
+		<title level="a" type="main">Evaluating conversational recommender systems via user simulation</title>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krisztian</forename><surname>Balog</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th acm sigkdd international conference on knowledge discovery &amp; data mining</title>
+				<meeting>the 26th acm sigkdd international conference on knowledge discovery &amp; data mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1512" to="1520" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b108">
+	<monogr>
+		<title level="m" type="main">Personalizing dialogue agents: I have a dog</title>
+		<author>
+			<persName><forename type="first">Saizheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emily</forename><surname>Dinan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jack</forename><surname>Urbanek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arthur</forename><surname>Szlam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Douwe</forename><surname>Kiela</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1801.07243</idno>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note>do you have pets too? arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b109">
+	<analytic>
+		<title level="a" type="main">Conversational contextual bandit: Algorithm and application</title>
+		<author>
+			<persName><forename type="first">Xiaoying</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John Cs</forename><surname>Lui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the web conference 2020</title>
+				<meeting>the web conference 2020</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="662" to="672" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b110">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b111">
+	<analytic>
+		<title level="a" type="main">Towards conversational search and recommendation: System ask, user respond</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingyao</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liu</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W Bruce</forename><surname>Croft</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th acm international conference on information and knowledge management</title>
+				<meeting>the 27th acm international conference on information and knowledge management</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="177" to="186" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b112">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b113">
+	<monogr>
+		<author>
+			<persName><forename type="first">Kun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanhang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoke</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2010.04125</idno>
+		<title level="m">Towards topic-guided conversational recommender system</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b114">
+	<analytic>
+		<title level="a" type="main">Pseudo Dyna-Q: A reinforcement learning framework for interactive recommendation</title>
+		<author>
+			<persName><forename type="first">Lixin</forename><surname>Zou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Long</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pan</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuo</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ting</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weidong</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian-Yun</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawei</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Web Search and Data Mining</title>
+				<meeting>the 13th International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="816" to="824" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
