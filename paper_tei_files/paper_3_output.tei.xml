@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Multi-Stakeholder Job Recommender Systems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Roan</forename><surname>Schellingerhout</surname></persName>
+							<email>roan.schellingerhout@maastrichtuniversity.nl</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Maastricht University Maastricht</orgName>
+								<address>
+									<settlement>Limburg</settlement>
+									<country key="NL">The Netherlands</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explainable Multi-Stakeholder Job Recommender Systems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">81A78691867704EF0EAD74E03CE1D639</idno>
+					<idno type="DOI">10.1145/3640457.3688014</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Job Recommender Systems</term>
+					<term>Explainable AI</term>
+					<term>Multi-Stakeholder Recommendation</term>
+					<term>Graph Neural Networks</term>
+					<term>Knowledge Graphs ACM RecSys &apos;24</term>
+					<term>Bari</term>
+					<term>Italy</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Public opinion on recommender systems has become increasingly wary in recent years. In line with this trend, lawmakers have also started to become more critical of such systems, resulting in the introduction of new laws focusing on aspects such as privacy, fairness, and explainability for recommender systems and AI at large. These concepts are especially crucial in high-risk domains such as recruitment. In recruitment specifically, decisions carry substantial weight, as the outcomes can significantly impact individuals' careers and companies' success. Additionally, there is a need for a multi-stakeholder approach, as these systems are used by job seekers, recruiters, and companies simultaneously, each with its own requirements and expectations. In this paper, I summarize my current research on the topic of explainable, multi-stakeholder job recommender systems and set out a number of future research directions.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>more trust in its efficacy and less suspicion of foul play <ref type="bibr" target="#b3">[4]</ref>. Explainable AI can be critical for gaining user trust, as well as compliance with regulations such as the GDPR and the EU AI Act <ref type="bibr" target="#b8">[8,</ref><ref type="bibr" target="#b10">10,</ref><ref type="bibr" target="#b12">11]</ref>.</p><p>While considerable research has been done on using explainable AI to aid system developers and users, further prominent stakeholders (e.g., advertising companies, item providers, lawmakers) should not be ignored. This need for a multi-stakeholder approach requires a nuanced approach, as it makes recommending and explaining items more complex <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b4">5]</ref>. All stakeholders want recommendations and explanations optimized for their needs, but they often have conflicting interests. This balancing act becomes even more complex in high-risk domains, such as recruitment. Job recommender systems (JRSs), which match job seekers with potential employment opportunities, can have a considerable impact on individuals' lives <ref type="bibr" target="#b9">[9]</ref>. Job recommender systems generally have three main stakeholders, all of which fall under the three main recommender system stakeholder types identified by Abdollahpouri et al. <ref type="bibr" target="#b0">[1]</ref>: candidates -the people looking for a job (i.e., consumers); companies -businesses offering positions of employment (i.e., providers); and recruiters -people whose job it is to match candidates and vacancies (i.e., system). Each of these stakeholders has different needs and priorities, making a multi-stakeholder approach to generating explanations crucial <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b9">9]</ref>. For example, candidates need to trust the system and understand why a job is suitable for them before making such an impactful decision <ref type="bibr" target="#b16">[15]</ref>. Proper explanations can also help mitigate biases and ensure fair treatment of all candidates, as it enables the system to be scrutinized. Furthermore, recruiters can use explanations to understand why certain candidates are recommended, allowing them to focus more efficiently on promising matches. Companies, on the other hand, can be enabled to quickly find the most relevant candidate from a large pool of options, increasing their productivity.</p><p>This leads us to formulate the following research question for my PhD project: How can we create an explainable, multi-stakeholder job recommender system that supports targeted explanations for different stakeholders?</p><p>To assist in answering this research question, we consider the following sub-questions: SQ1: What are the stakeholder-specific explanations requirements and preferences of candidates, recruiters, and companies respectively? SQ2: How can we design an explainable multi-stakeholder job recommender system that outperforms state-of-the-art systems in user-and provider-side performance metrics? SQ3: To what extent does the inclusion of explainability into a real-world job recommender system improve its perceived usefulness, transparency, and trust?</p><p>In the rest of this paper, we first summarize the research conducted so far. Then, we set out multiple directions for future work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>arXiv:2410.00654v1 [cs.HC] 1 Oct 2024</head><p>The research conducted during the PhD project up until this point has focused on SQ1 (finding stakeholder requirements and preferences) and SQ2 (building an explainable multi-stakeholder job recommender system). In this section, we describe the specific experiments we have performed so far.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Stakeholder preferences (SQ1)</head><p>To get an initial indication of the explanation preferences of the three main stakeholder types, we conducted a small-scale user study wherein we interviewed 6 participants while we exposed them to different examples of possible explanation types <ref type="bibr" target="#b16">[15]</ref>. We used this user study as a starting point to get an indication of what explanation types were most promising to explore in more depth in future work. While we used a relatively small sample size, this allowed us to spend a considerable amount of time with each participant (around 1 hour per person), which enabled us to have the participants co-design the explanation types.</p><p>We found considerable preference differences, both between and within stakeholder types. Candidates and recruiters strongly preferred textual explanations over visual explanations, mentioning that those were easier to grasp and had a more 'personal' feel to them. Company representatives initially gravitated towards the textual explanations too, as those were easiest to understand at first. However, they indicated a preference towards visual, graph-based explanations once they had spent some time trying to grasp those. Once they understood how the graph-based explanations should be interpreted, they mentioned how such visualizations allowed them to get a comprehensive overview of the complex relations in the data at a glance. This difference between stakeholders could largely be attributed to the fact that company representatives tended to have more experience with working with charts and graphs as part of their day-to-day job.</p><p>However, there was significant disagreement between members of each stakeholder type as well. For example, recruiters disagreed on how comprehensive the explanations should be -either preferring long texts allowing them to provide sufficient detail to their clients when trying to convince them of potential matches, or preferring more limited explanations to offer them an initial indication of suitability, after which they could use their expertise to come to a more honed-in decision. To allow users to cater the explanation environment to their personal preferences and needs, we determined that interactive interfaces are crucial for job recommendation, as those allow individuals to access the data they find important, while not getting overwhelmed by information they do not consider useful.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Mock-up System Experiment (SQ1)</head><p>After having co-designed the different explanation types, we created a prototypical explanation environment wherein users could browse multiple recommended items and their accompanying explanations (Fig. <ref type="figure">1</ref>). We tested this explanation environment with 30 participants in total; 10 of each stakeholder type. When interacting with the environment, both subjective (perceived usefulness, trust, and transparency) and objective (correctness and efficiency) metrics were collected. Participants were tasked to select what they considered to be the best option from the list of items twice -once after having seen real explanations generated by a graph neural network, and once after having seen random explanations (they were shown the different explanations in random order). Due to the nature of the data available to us at the time, this system did not allow users to get recommendations for their personal CV or vacancy, but rather had them read a pre-selected CV or vacancy before seeing the recommended items, after which they were instructed to decide as if they were the person/company whose CV/vacancy they just read.</p><p>We found that preferences largely stayed the same, with candidates and recruiters strongly gravitating towards the textual explanations, and company representatives having a more diverse range of preferences. However, regardless of which explanation type the participants preferred, the difference in metrics between the random and real explanations was very limited. I.e., whether a user was shown a 'nonsensical' random explanation or a genuine explanation, their opinion of the system barely changed. While the subjective metrics trended upward with the real explanations, this trend was not statistically significant. Correctness, on the other hand, even went down when participants were using real explanations to come to a decision. One contributing factor to this lack of difference is that the most commonly preferred explanation type, text, lends itself quite poorly to indicating minor differences between examples (i.e., it is hard for users to spot discrepancies in phrasing between explanations, e.g., 'somewhat' instead of 'strongly'). Furthermore, the decrease in correctness indicates that users do not actively engage with the explanations and instead apply their own reasoning to the situation. Even if the system gives a specific argument for why an item is a good match, users often come up with widely different reasons for their decision, even when agreeing with the model. This lack of engagement leads to a slight benefit for the random explanations, as those are less likely to create 'friction', allowing participants to always apply their own reasoning to their decision without feeling like they disagree with the model.</p><p>Based on these findings, we determine that we should instead provide decision-support to the users of a job recommender system. While most XAI research focuses on persuasive explanations, we find that trying to persuade the stakeholders of the model's correctness is futile, as they will apply their domain expertise to the decision-making process regardless. As such, it is better to support them in this process, rather than trying to steer them in a certain direction. This also addresses another concern in job recommendation: ground truth values are often generated manually by human recruiters -as a result, they are not objective truths. Attempting to force users to agree with the system can therefore be counterproductive, as their decision could, in theory, be preferable over the one determined to be 'correct'. Furthermore, during the experiment, multiple participants indicated wanting a clear, direct relation between the explanation and the 'source material' (i.e., the CV or vacancy). If the explanation contained information that was not (directly) present in the CV/vacancy (e.g., work experience stored in the data, but not written in the CV), participants tended to get confused, wondering where that new information came from. Therefore, we conclude that the arguments used by the decision-support system should be clearly grounded in the source material.</p><p>Figure <ref type="figure">1</ref>: The interface of the online environment with which the participants interacted. In this screenshot, all explanations are enabled. These can individually be toggled based on the user's preference. The web environment uses exclusively Dutch text, as the interviewees were all native Dutch speakers. The environment consists of the following components: (1) the list of recommended items, which were presented in a randomized order (i.e., the top item was not necessarily the best match); (2) the textual explanation; (3) the bar chart explanation; (4) the graph-based explanation. This example shows a real explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Explainable Graph Neural Network (SQ2)</head><p>The aforementioned papers made use of a rather low-quality, but publicly available dataset. As a result, the performance of the recommender system, and as a consequence its explanations, had significant room for improvement. To address this shortcoming, we collaborated with a large, international recruitment agency in order to gain access to a high-quality, manually labeled, proprietary job recommendation dataset. To determine the efficacy of graph neural networks (GNN) on this dataset, we implemented a novel explainable GNN, the Occupational Knowledge-based Recommender using Attention (OKRA). We then compared OKRA to multiple stateof-the-art job recommendation models; both text-only and other graph-based models.</p><p>Our experiments showed that graph-based models strongly outperformed text-only models. Considering the majority of JRS research focuses primarily on text-based solutions, this finding could have considerable consequences on the field. While most research focuses on utilizing transformer-based models to compare CV and vacancy texts to find matches, our findings indicate that this leaves a significant amount of predictive power unused. Compared to state-of-the-art graph-based models, OKRA performed significantly better due to its ability to make stakeholder-specific decisions (as candidates and companies are not necessarily always in agreement), but at the cost of increased training time. Additionally, we found that most state-of-the-art models are slightly biased against both rural candidates and companies, indicating a need for the consideration of regional fairness in the field of job recommendation.</p><p>While OKRA is inherently explainable, the focus of this paper was on its recommendation performance rather than its explainability. Due to the architecture we used, OKRA is able to generate multiple explanations for a single prediction, meaning it can separate 'positive' and 'negative' contributions to a decision. While this theoretically lends OKRA's explanations to a decision support system, we did not evaluate the model's explainability component, leaving it for future work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">FUTURE WORK</head><p>During the rest of the project, we will primarily focus on improving the model and its explanations so that they conform to the stakeholders' demands as much as possible. In the rest of this section, we set out multiple avenues for future research related to each sub-question.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">SQ1: Designing desirable explanations</head><p>Based on the research we have conducted for sub-question 1 so far, we already have a general understanding of the preferences and needs of the different stakeholders. However, we have also identified multiple shortcomings with our previous approach that need to be addressed. To conclusively answer SQ1, we will focus on alleviating these shortcomings in future work, so that we can present a concrete implementation that adheres to all stakeholder requirements.</p><p>3.1.1 Improving explanation coherence. One of the main difficulties faced by the stakeholders in our mock-up experiment was that they struggled to connect the explanations to the source material. Considering the explanations were generated using both the source material and structured data, parts of the explanation based on the structured data did not necessarily align with what was shown in the CV or vacancy (e.g., it highlighted a skill that someone did not list on their CV). This led to confusion and made it more difficult for participants to understand the explanations. To address this shortcoming, we will attempt to integrate the CVs/vacancies and the structured data so that their contents are more aligned.</p><p>One possible approach is to make use of automated knowledge graph construction from text <ref type="bibr" target="#b7">[7,</ref><ref type="bibr" target="#b18">17,</ref><ref type="bibr" target="#b19">18]</ref>. For this, we would create a machine learning pipeline capable of automatically finding entities and their underlying relations in a given text. The graphs generated from this text could then be linked to the rest of the structured data, so that for every piece of structured data, there exists a link to a word or phrase in the source material. This would not only improve the coherence of the textual explanations but also allow the model to more directly integrate the information stored in the CV/vacancy into the recommendation process. However, this approach would require some type of training data, as zero-shot learning is likely to be insufficiently integrated into the existing ontology. Alternatively, we could apply untrained clustering algorithms to cluster the embeddings of different tokens, so that different tokens referring to the same concept can be coalesced. While this approach does not require training data, it is presumed to be less reliable, as mismatches between the structured and unstructured data could still occur. When only using textual data to generate the knowledge graph, it is certain that all the information in the graph is also stored in the text, however, when combining structured and unstructured data, even with clustering, some tokens/concepts come up in one data type, but not the other (e.g., work experience that is stored in the structured data, but not mentioned in the CV).</p><p>3.1.2 Clarifying textual explanations. Furthermore, we found that substantive differences in attention weights can lead to rather minute differences in the textual explanations. As mentioned above, this made it difficult for users to differentiate between textual explanations with different contents correctly. While an attention weight of 0.7 instead of 0.2 stands out immediately, properly communicating this difference without referring to the exact values (since referring to numeric values directly was indicated as complicated and overwhelming by stakeholders) can be difficult for LLMs. For example, while describing these values as 'moderately high' and 'fairly low' is correct, such formulations do not stand out immediately, which causes users to easily gloss over them. To solve this, we intend to fine-tune an LLM, such as GPT-4, on a collection of explanations that have been manually verified as 'clear' or 'understandable'. To determine what constitutes a clear explanation, we will conduct an experiment wherein participants will be asked to pick a preferred option between two versions of the same explanation, but with the value of one textual feature (such as word count, word complexity, level of formality, etc.) altered. By repeating this match-up multiple times, each time with different features being changed, we can finally determine a user's preferred explanation type (e.g., high word count, low word complexity, low formality, etc.) Given a sufficient sample, we can then determine what type of explanation is preferred by the end users.</p><p>3.2 SQ2: Improving model performance 3.2.1 Exploiting linked data. One major benefit of using knowledge graphs is that they are capable of easily combining data from multiple sources <ref type="bibr" target="#b6">[6]</ref>. While regular databases can be difficult to combine, primarily due to differences in (naming) conventions and higher-order relations being hard to implement using relational algebra, knowledge graphs easily allow data from multiple sources to be combined. One major aspect of job recommendation where this can make a large difference, is in the initial creation of node embeddings. Currently, all node embeddings used by OKRA were initialized randomly, except for those based on CVs or vacancies. The CV and vacancy nodes had a starting embedding based on the text embedding value created by a transformer-based model. By incorporating linked data, node types that currently do not have any text related to them, such as function titles and codes (e.g., international standard classification of occupation, 1 or ISCO, codes), can be linked to their respective nodes in existing graphs like that of WikiData 2 and DBpedia. 3 These linked data sources often have extensive descriptions of the functions/codes, allowing the model to use those descriptions to create starting embeddings. Furthermore, these data sources contain significantly more data than most domain-specific datasets, using which the knowledge graph can be made more exhaustive, enabling more high-level relations in the data to be identified.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">SQ3:</head><p>Evaluating the system as a whole 3.3.1 Evaluating in a real-world context. The explanation evaluations we have done so far have all been conducted using nonpersonal data. The CVs and vacancies used in our mock-up system were examples using which the participants had to role-play. While this was sufficient for the scope of this study, using such data can lead to some bias, as it is more difficult to make a decision on behalf of someone else than for oneself. Logically, we aim to address this in future work by creating a live version of the environment, wherein users will be able to submit their own vacancy/CV and personal data, so that the model can generate a personalized list of recommended items for them. This will enable the users to go through a more natural decision-making process, as they do not have to bear the additional cognitive load of having to remember a CV/vacancy that is not theirs. As a result, we will be able to evaluate the system in a more holistic manner using this live version of the environment; users can interact with the system as they would in a real-world scenario as well, making it possible for us to determine to what extent the users interact with the explanations (rather than simply reading the recommended vacancies/CVs like they would with a non-explainable environment). Furthermore, by having a live, working system, we will be able to more easily experiment with a large sample size, as participants will be able to interact with the system independently on their own time (which was not possible with the mock-up version, as there they needed to be supervised).</p><p>We will again need to collaborate with a recruitment agency to conduct such a live evaluation, which may cause difficulties (or even be impossible within our time span). This leads to another avenue of future research: determining to what extent our findings generalize to other domains. Although our project focuses specifically on JRSs, many overlaps exist between the recruitment domain and domains such as dating. While the stakeholders' exact requirements are likely to differ, we do expect general similarities to exist between the two groups. As a result, it would be interesting to additionally evaluate our findings in a different domain that is similar in nature, to assess the generalizability of our findings.</p><p>3.3.2 List-wise explanations. Lastly, a significant challenge we anticipate when shifting towards decision-support-focused explanations is having to present explanations related to a list of recommendations. When users are shown the pros and cons of different recommended items, understanding why one item is ranked higher than another can be complex. While providing pair-wise comparisons is relatively straightforward, offering clear and comprehensive explanations in a list-wise context is much more challenging <ref type="bibr" target="#b13">[12]</ref>. This difficulty arises from the need to show the intricate relationships and trade-offs among multiple items simultaneously. To address this issue, we will explore ways to effectively communicate the advantages and disadvantages of multiple items in future research. This could involve developing new comparative visualization techniques, interactive interfaces, or summary metrics that can help users grasp the overall ranking rationale and make informed decisions based on the recommendations provided.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="3,53.80,86.30,504.40,254.96" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://isco.ilo.org/en/ 2 https://www.wikidata.org/ 3 https://www.dbpedia.org/</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head><p>I would like to thank my supervisors, Francesco Barile and Nava Tintarev, for their guidance and support during my PhD research.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Multistakeholder recommendation: Survey and research directions</title>
+		<author>
+			<persName><forename type="first">Himan</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gediminas</forename><surname>Adomavicius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robin</forename><surname>Burke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ido</forename><surname>Guy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dietmar</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Toshihiro</forename><surname>Kamishima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jan</forename><surname>Krasnodebski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luiz</forename><surname>Pizzato</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="127" to="158" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Multi-stakeholder recommendation and its connection to multi-sided fairness</title>
+		<author>
+			<persName><forename type="first">Himan</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robin</forename><surname>Burke</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1907.13158</idno>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Multistakeholder recommender systems</title>
+		<author>
+			<persName><forename type="first">Himan</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robin</forename><surname>Burke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="647" to="677" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI</title>
+		<author>
+			<persName><forename type="first">Alejandro</forename><surname>Barredo Arrieta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Natalia</forename><surname>Díaz-Rodríguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Javier</forename><forename type="middle">Del</forename><surname>Ser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adrien</forename><surname>Bennetot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siham</forename><surname>Tabik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alejandro</forename><surname>Barbado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Salvador</forename><surname>Garcia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sergio</forename><surname>Gil-Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Molina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Benjamins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Fusion</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page" from="82" to="115" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Leveraging multi-method evaluation for multi-stakeholder settings</title>
+		<author>
+			<persName><forename type="first">Christine</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eva</forename><surname>Zangerle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Impact of Recommender Systems 2019. Proceedings of the 1st Workshop on the Impact of Recommender Systems co-located with 13th ACM Conference on Recommender Systems (ACM RecSys 2019)/Shalom</title>
+				<meeting><address><addrLine>Oren Sar</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Dietmar;</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ido</forename><surname>Guy</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Linked data: The story so far</title>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Bizer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tom</forename><surname>Heath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Berners-Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Semantic services, interoperability and web applications: emerging concepts. IGI global</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="205" to="227" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">COMET: Commonsense transformers for automatic knowledge graph construction</title>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Bosselut</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hannah</forename><surname>Rashkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Sap</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chaitanya</forename><surname>Malaviya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Asli</forename><surname>Celikyilmaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yejin</forename><surname>Choi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1906.05317</idno>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Proposal for a Regulation of the European Parliament and of the Council laying down harmonised rules on artificial intelligence (Artificial Intelligence Act) and amending certain Union legislative acts</title>
+		<ptr target="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52021PC0206" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<idno type="arXiv">arXiv:2111.13576</idno>
+		<title level="m">Job recommender systems: A review</title>
+				<editor>
+			<persName><forename type="first">Corné</forename><surname>De Ruijt</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Sandjai</forename><surname>Bhulai</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">European Parliament and Council of the European Union</title>
+		<imprint/>
+	</monogr>
+	<note>n. d.</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">/679 of the European Parliament</title>
+		<ptr target="https://data.europa.eu/eli/reg/2016/679/oj" />
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A survey of methods for explaining black box models</title>
+		<author>
+			<persName><forename type="first">Riccardo</forename><surname>Guidotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Anna</forename><surname>Monreale</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Salvatore</forename><surname>Ruggieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Franco</forename><surname>Turini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fosca</forename><surname>Giannotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dino</forename><surname>Pedreschi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM computing surveys (CSUR)</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="1" to="42" />
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">RankingSHAP-Listwise Feature Attribution Explanations for Ranking Models</title>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Heuss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avishek</forename><surname>Maarten De Rijke</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Anand</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Evaluating recommender systems from the user&apos;s perspective: Survey of the state of the art</title>
+		<author>
+			<persName><forename type="first">Pearl</forename><surname>Pu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rong</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="317" to="355" />
+			<date type="published" when="2012">2012. 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Introduction to recommender systems handbook</title>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Ricci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lior</forename><surname>Rokach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bracha</forename><surname>Shapira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul B</forename><surname>Kantor</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">A Co-design Study for Multi-stakeholder Job Recommender System Explanations</title>
+		<author>
+			<persName><forename type="first">Roan</forename><surname>Schellingerhout</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Barile</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">World Conference on Explainable Artificial Intelligence</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="597" to="620" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Building human values into recommender systems: An interdisciplinary synthesis</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Stray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alon</forename><surname>Halevy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Parisa</forename><surname>Assar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dylan</forename><surname>Hadfield-Menell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Craig</forename><surname>Boutilier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amar</forename><surname>Ashar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chloe</forename><surname>Bakalar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lex</forename><surname>Beattie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Ekstrand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Claire</forename><surname>Leibowicz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Recommender Systems</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="1" to="57" />
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">2021. Data set and evaluation of automated construction of financial knowledge graph</title>
+		<author>
+			<persName><forename type="first">Wenguang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yonglin</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chunhui</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunwen</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yijie</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hui</forename><surname>Wen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="418" to="443" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Automatic knowledge graph construction: A report on the 2019 icdm/icbk contest</title>
+		<author>
+			<persName><forename type="first">Xindong</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoyi</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiachen</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Jiang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2019 IEEE International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1540" to="1545" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

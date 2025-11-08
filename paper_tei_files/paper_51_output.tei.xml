@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">UniWalk: Explainable and Accurate Recommendation for Rating and Network Data</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Haekyu</forename><surname>Park</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Seoul National University</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hyunsik</forename><surname>Jeon</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Seoul National University</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Junghwan</forename><surname>Kim</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Seoul National University</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Beunguk</forename><surname>Ahn</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Seoul National University</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">U</forename><surname>Kang</surname></persName>
+							<email>ukang@snu.ac.kr</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Seoul National University</orgName>
+								<address>
+									<settlement>Seoul</settlement>
+									<country key="KR">Republic of Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">UniWalk: Explainable and Accurate Recommendation for Rating and Network Data</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">98D51E14D70AFBD777822757EBADA43E</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>How can we leverage social network data and observed ratings to correctly recommend proper items and provide a persuasive explanation for the recommendations? Many online services provide social networks among users, and it is crucial to utilize social information since recommendation by a friend is more likely to grab attention than the one from a random user. Also, explaining why items are recommended is very important in encouraging the users' actions such as actual purchases. Exploiting both ratings and social graph for recommendation, however, is not trivial because of the heterogeneity of the data.</p><p>In this paper, we propose UniWalk, an explainable and accurate recommender system that exploits both social network and rating data. UniWalk combines both data into a unified graph, learns latent features of users and items, and recommends items to each user through the features. Importantly, it explains why items are recommended together with the recommendation results. Extensive experiments show that UniWalk provides the best explainability and achieves the stateof-the-art accuracy.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Given rating and social network data, how can we recommend appropriate items convincingly? Recommending proper items is a crucial task benefiting both suppliers and consumers. Recommendation increases sales for suppliers by capturing latent demands and facilitates searches over massive items for consumers. Providing reasons behind a recommendation is much more important since it enriches user experiences and draws out user participation, which eventually enhances long-term performance of the recommender system.</p><p>Most recommender systems are based on rating data only. However, rating data are sparse and expensive to gather. Additional information is required to overcome the sparsity and enhance the recommendation results. One of the most prevalent additional infor-mation accompanying e-commerce services is social network among users. Social influence is powerful in recommendation, since people trust recommendation through acquaintance more than that from an anonymous one. Social information also provides useful information on tastes of users according to homophily property <ref type="bibr" target="#b18">[19]</ref>: neighbors in social networks are likely to share similar preferences. Consequently, it is essential to exploit social networks as well as rating data for explainable and accurate recommendations.</p><p>Leveraging both rating and social network data in recommendation and explanation, however, is challenging. Many multi-step relations such as friends of friends or friends' favorite items provide useful information on users' tastes, but there is no straightforward mechanism to translate the multi-step links into rating values. In addition, latent features represented by many collaborative filtering methods are no more than series of numbers to human. Existing methods suffer from those difficulties. For example, recommendation methods such as TrustSVD <ref type="bibr" target="#b6">[7]</ref>, ASMF and ARMF <ref type="bibr" target="#b14">[15]</ref> use social networks partially. TrustSVD utilizes only direct friendships, and ASMF and ARMF use social graphs only to pick out potential items in a pre-processing stage. Also, those methods do not offer any explanations.</p><p>In this paper, we propose UniWalk, an explainable and accurate recommendation model that utilizes both ratings and graph data. UniWalk generates a unified graph describing both preference and user similarity. Then, it samples not only quantitative links representing rating data but also qualitative links indicating entities' similarity or dissimilarity from the unified graph with random walks. Next, UniWalk learns entities' latent features with a newly devised objective function consisting of a supervised term for the quantitative links and unsupervised terms for the qualitative links. Uni-Walk then recommends items of the highest predicted ratings and provides reasons of the recommendation. UniWalk provides the best explainability and accuracy among competitors, as shown in Table <ref type="table">1</ref>.</p><p>The main contributions of this paper are as follows.</p><p>• Method. We propose UniWalk, a novel method that exploits ratings and social graph for recom-   Table <ref type="table">1</ref>: Comparison of UniWalk and other methods. UniWalk provides the best explainability and accuracy, and it is the only method that utilizes all types of links. Meta-explanation is sub-explanation for the main explanation. No No No mendations. UniWalk leverages not only quantitative rating information but also qualitative similarity and dissimilarity information for better understanding of users and items. • Explainability. UniWalk explains why items are recommended to a target user (Figure <ref type="figure" target="#fig_1">1</ref>). UniWalk recommends items when similar users like the same items or the target user prefers other similar items.</p><p>UniWalk also provides meta-explanations for better persuasiveness: why the other users and items are determined to be similar to the target user and the recommended item, respectively. • Accuracy. UniWalk achieves the state-of-theart accuracy for recommendation with ratings and a social network in terms of RMSE and MAE (Section 4.3).</p><p>The rest of this paper is developed as follows. We first explain backgrounds of UniWalk including matrix factorization and network embedding in Section 2. Then we propose our method UniWalk in Section 3. After presenting experimental results in Section 4, we list related works in Section 5 and conclude this paper in Section 6. The codes and datasets are available at http://datalab.snu.ac.kr/uniwalk.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Preliminary</head><p>In this section, we describe preliminaries on matrix factorization and network embedding.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Matrix Factorization with Bias Factors.</head><p>Matrix factorization (MF) predicts unobserved ratings given observed ratings. MF predicts a rating of an item i given by a user u as rui = µ + b u + b i + x T u y i , where µ is global average rating, b u is u's bias, b i is i's bias, x u is u's vector, and y i is i's vector. Biases indicate the average tendency of rating scores given by users or given to items. The bias terms are known to boost the performance of prediction accuracy compared to that by inner product term only.</p><p>The objective function is defined in Equation (2.1), where r ui is an observed rating and K is a set of (user, item) pairs for which ratings are observed. The term</p><formula xml:id="formula_0">λ(b 2 u + b 2 i + ||x u || 2 + ||y i || 2</formula><p>) prevents overfitting by regularizing the magnitude of parameters, where the degree of regularization is controlled by the hyperparameter λ. The objective function is minimized by gradient descent.</p><formula xml:id="formula_1">L = 1 2 (u,i)∈K (r ui − µ − b u − b i − x T u y i ) 2 (2.1) + λ(b 2 u + b 2 i + ||x u || 2 + ||y i || 2 )</formula><p>2.2 Network embedding. Network embedding represents each node as a vector that encodes structural information on the network. The task can be formalized as follows: given a graph G = (V, E), find a function f :</p><formula xml:id="formula_2">V → R d mapping each node v ∈ V to a d- dimensional vector f (v).</formula><p>DeepWalk <ref type="bibr" target="#b21">[22]</ref> is one of the most representative network embedding methods. It exploits Skipgram with negative sampling (SGNS) to learn node vectors. DeepWalk simulates multiple truncated random walks to apply SGNS on network data. For each node in the network, the model generates random walks of fixed length. Each step of random walk selects next node according to transition probabilities defined by weights on edges. The resulting walk is a sequence of nodes in which more strongly connected node pairs appear in close distance more frequently. Then, Skipgram defines 'neighborhood' where a pair of nodes co-occurs in the simulated random walk. Neighborhood node pair is defined by a window sliding on the node sequence. The center node in the window is defined as a target, and other nodes in the window are neighbors of the target. Pairs of co-occurring targets and neighbors are stored in a set D. Co-occurrence statistic represents proximity between nodes in the graph, since nodes closer in the graph co-occur more frequently in the random walk.</p><p>If the model optimizes over only proximate pairs, the embedding would converge to a single point. SGNS model applies negative sampling to prevent this convergence of embedding process by adding distant pairs into the process. Negative sampling technique randomly selects pairs of nodes and pushes embeddings for those pairs apart from each other. For each proximate node pair (v, w) ∈ D, n randomly selected nodes w 1 , ..., w n form n distant node pairs (v, w 1 ), ..., (v, w n ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Proposed Method</head><p>In this section, we describe UniWalk, our proposed method for rating prediction and explanation on its logic behind recommendations. We solve the following problems. Problem 1. (Recommendation with Ratings and a Graph) Given an explicit feedback rating matrix R ∈ R |U |×|I| and a social network G = (V, E), predict a rating of an item i given by a user u which is denoted as rui . Ideally, rui is close to the corresponding observed rating r ui = R ui .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Problem 2. (Explanation of Recommendation)</head><p>For a user u and predicted rating matrix R ∈ R |U |×|I| , recommend items of the highest predicted ratings and explain why they are recommended to u.</p><p>In the remaining part of this section, we first state challenges for explainable and accurate recommendation and our main ideas to overcome the challenges in Section 3.1. Then, we describe our proposed method UniWalk in detail to solve Problem 1 in Section 3.2 and to solve Problem 2 in Section 3.3. 3.1 Challenges and Solutions. For explainable and accurate recommendation, we take both quantitative and qualitative relationships of users and items into account. Quantitative links represent rating scores, and qualitative links indicate similarity or dissimilarity among users and items. They are stated as follows.</p><p>Definition 1. Link types for our learning process.</p><p>• Quantitative or score links are edges between users and items that represent observed ratings. • Qualitative links are relationships among users and items to represent similarity or dissimilarity among them. There are two types of qualitative links.</p><p>-Similarity links are relationships among similar entities. They include friend links and multi-step links between similar entities such as items rated similarly by common users. -Dissimilarity links are multi-step links among dissimilar entities such as users and their friends' unfavorable items. Modeling qualitative links is beneficial in two ways. First, the similarity links are used in explaining reasons of recommendation. We recommend items since "similar" other users like them, or the recommended items are "similar" to other observed preferred items. Second, the qualitative links lead to more accurate recommendation. The qualitative links contain additional information on users' tastes and items' properties and mitigate data-sparsity problem in rating and social data.</p><p>However, there are three key difficulties in using those qualitative links: (1) drawing out proper qualitative links spanning both ratings and a social network, (2) learning from the qualitative links in accordance with the score links, and (3) using qualitative links systemically in explanation. Most real-world graphs show the small-world phenomenon, meaning that the diameters are small, and thus random entities can be paired even with a small number of steps; sampling appropriate pairs of similar and dissimilar entities is essential for the learning process. In addition, qualitative links only imply possible similarities or dissimilarities in properties among users and items, while a quantitative link directly gives numerical values, which we predict.</p><p>We provide solutions to those challenges. UniWalk uses efficient random walk sampling to pick similar or dissimilar entities to tackle the first challenge. Proximate entity pairs in a simulated random walk are our desired qualitative connected pairs which potentially contain informative properties of entities. Random walk sampling process is efficient, because each sampled en-tity in the sequence of random walk forms multiple connections by being paired with multiple nearby entities. The second challenge is solved by our objective function that covers quantitative and qualitative links. The objective function combines supervised learning for quantitative links and unsupervised learning for qualitative ones in the same framework. We solve the last challenge by measuring similarities of the qualitative links and presenting the numerical values in explanation. 3.2 UniWalk for Rating Prediction. We present details of the process of UniWalk to solve Problem 1. UniWalk comprises three steps. First, it generates a unified graph to leverage rich relations among users and items from the heterogeneous input data. Next, UniWalk applies network embedding on the unified graph to learn bias and vector encoding preference or properties of users and items. Lastly, it calculates predicted ratings rui for each item i and user u.</p><p>Step 1: Build a unified graph. In this step, we generate a weighted and undirected graph G that combines ratings and a social network whose weights of edges present similarity of entities. Each rating is represented by a user-item edge in G. Social links are described as user-user edges in G. High ratings convey similarities of the users and items, and friends' similarities are determined by a hyperparameter c. The process of generating G = ( Ṽ , Ẽ) is as follows. First, we convert rating matrix R into a graph structure. For a user u and an item i where a rating r ui is observed, we add u and i into Ṽ and (u, i) into Ẽ. The added edge (u, i) has a weight of r ui . Next, we add edges in a social network G into G. Weights of the added social edges are set to the hyperparameter c. Users and items are termed as entities in the unified graph. Definition 2. Entity. Entities are users and items in the unified graph of ratings and a social network.</p><p>Step 2: Embed nodes of G. UniWalk applies network embedding on the unified graph G to learn biases and latent vectors of entities. There are three goals in our embedding method. First, we aim to reduce differences between observed ratings and predicted ratings corresponding to score links. Second, we increase inner products of vectors of two entities related by similarity links. Third, we decrease inner products of vectors of dissimilar entities connected by dissimilarity links.</p><p>We devise a loss function L consisting of terms (3.2) and (3.3). The terms implement the above three goals. Term (3.2) is aimed to minimize the difference between an observed rating r ui and a predicted rating rui for a user u and an item i. The left term in Equation (3.3) drives latent vectors z v and z w of similar entities v and w to have a high inner product. The right term in Equation (3.3) is aimed to make latent vectors z v and z w of dissimilar entities v and w have a negatively high inner product. We call the term (3.2) as supervised term, the left term in Equation (3.3) as positive unsupervised term, and the right one in Equation (3.3) as negative unsupervised term. In the objective function L, a predicted rating rui is calculated as µ + b u + b i + z T u z i , where µ is the average of rating values, b v and z v are a bias factor and a latent vector of entity v, respectively. λ b and λ z are regularization parameters for bias factors and latent embedding vectors, respectively. α and β indicate weight of the positive unsupervised term and the negative unsupervised term, respectively. b ∈ R | Ṽ | is the bias vector of all entities, and Z ∈ R | Ṽ |×d is the latent vector matrix of entities where d is the dimension of entities' vector z v .</p><formula xml:id="formula_3">(3.2) L = Supervised term (u,i)∈D R 1 2 (rui − rui) 2 + Regularization term λ b 2 ||b|| 2 + λz 2 ||Z|| 2 F (3.3) +α • Positive unsupervised term (v,w)∈D + −z T v zw + β • Negative unsupervised term (v,w)∈D − z T v zw</formula><p>Step 2 mainly consists of two parts: sampling and optimization. We sample node sequences from the unified graph in the sampling phase. We extract entity pairs from the sequences and minimize L in the optimization phase.</p><p>In the sampling phase, we generate node sequences with the following random walks on the unified graph. Definition 3. Random walks for sampling links.</p><p>• Positive random walk is a random walk whose transition probabilities are proportional to weights on edges. • Negative random walk is a random walk whose transition probabilities are proportional to (minR + maxR -weights on edges) for score links, and weights on edges for social links, where maxR and minR are the maximum and the minimum ratings, respectively. • Unweighted random walk is a random walk whose transition probabilities are uniform in all edges.</p><p>The positive random walk generates sequences of similar entities with its transition rule, since high weight of an edge indicates high similarity between the nodes. The negative random walk generates sequence of entities of two groups: users who dislike similar items and the items not preferred by the user group. The groups are dissimilar to each other, and members in a group are similar. The unweighted walk has the effect of sampling  more substantial nodes, because higher degree nodes, which are active users or items, are sampled more. Figure <ref type="figure" target="#fig_3">2a</ref> shows an example of the sampling phase.</p><p>In the optimization phase, we extract node pairs from the sampled node sequences and learn features of the nodes. We define sets of the node pairs as follows. We extract node pairs from node sequences generated by the walks and assign the pairs into the entity pair sets according to the entities' relationships. In a sliding window on each sequence, we appoint a center as target and other members as neighbors. We pair up the target and each neighbor. We assign the pairs into D R if they are linked by score links, into D + if the paired entities are similar and into D − if the paired ones are dissimilar. In the unweighted walk, we assign each pair into D R for entities linked by score links and discard it otherwise. In the positive walk, we assign each pair into D R for entities of score links and into D + otherwise. In the negative walk, we assign each pair into D R for entities linked with score links, into D − for a user and an item, and into D + for two users and two items. Figure <ref type="figure" target="#fig_3">2b</ref> shows an example of extracting node pairs. We learn biases and vectors of all node v ∈ G that minimize L with the extracted node pairs in D R , D + and D − by gradient descent method with momentum <ref type="bibr" target="#b22">[23]</ref> for a faster learning. The gradient update processes are stated in the supplementary material (Section 4.1 of <ref type="bibr" target="#b20">[21]</ref>).</p><p>Step 3: Predict ratings. For a user u and an item i, we predict rating of i given by u as rui = µ + b u + b i + z T u z i .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">UniWalk for Explainable Recommendation.</head><p>For a user u, we recommend items i whose predicted ratings rui = µ + b u + b i + z T u z i are the highest. UniWalk not only predicts rating scores, but also explains why items are recommended to a user. UniWalk recommends items to a target user u because (1) other users who are similar to u like the items, and (2) u likes other items that are similar to the recommended items. We reinforce the above two explanations by further examining the supplementary entities which are defined as follows. Definition 5. Supplementary entity. Supplementary entities are entities used in explanation of recommendation such as other users similar to a target user, and items similar to the recommended items.</p><p>We explain why the supplementary entities are actually similar to u and the recommended items for more understandable explanations. The further explanation is stated as follows. Definition 6. Meta-explainability of UniWalk. UniWalk provides meta-explanation (explanation for explanation): it explains why the supplementary entities are similar to target user or recommended items.</p><p>We use D R and D + in our explanation, because we use rating information to denote like (high rating) or dislike (low rating), and similar relationships of entities. We do not use D − in explanation, because multi-step dissimilar relationships are not used. The only dissimilar relationship we use is from low observed ratings in D R such as common unlikable items in Figure <ref type="figure" target="#fig_7">3a</ref>.</p><p>The first reason of our recommendations is that other similar users prefer the recommended items. The similar users are defined as ones with the highest similarities to the target user among all candidates who rate at least one of the recommended items. A similarity of distinct entities v and w is defined in Equation <ref type="bibr">(3.4)</ref>, where #(v, w) denotes the number of times the pair (v, w) appears in D + , and #v = ( (v,w)∈D + 1) + ( (w,v)∈D + 1).</p><formula xml:id="formula_4">(3.4) sim(v, w) = #(v, w) #v#w</formula><p>D + is a set of similar entities defined in Definition 4. #v#w serves as a normalization term. The next reason of our recommendations is that u prefers other similar items. The similar items are selected among all candidates that u rated. For each recommended item i, we find out the most similar items j to the recommended item among the candidates with the similarity score sim(i, j) defined in Equation <ref type="bibr">(3.4)</ref>.</p><p>UniWalk also provides meta-explanations. We explain why the supplementary entities are similar to the target user or the recommended items. The supplementary users are determined to be similar because the supplementary users and the target user have common friends, common favorite items, or common unlikable items. The common favorite items are highly rated items by the users, and the common unlikable items are lowly rated ones in observed ratings. The supplementary items are determined to be similar items because common users rate them favorably.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experiment</head><p>We present experimental results to answer the following questions.</p><p>• Q1 (Explainability): How can UniWalk explain its recommendation results to users? (Section 4. Machine. All experiments are conducted with a single CPU Intel(R) Xeon(R) CPU E5-2640 v3 @ 2.60GHz with 32 GB memory.</p><p>Datasets. We use social rating network data that have both observed ratings and a social network. We summarize datasets in Table <ref type="table" target="#tab_1">2</ref>. These datasets contain explicit ratings and directed or undirected edges between users. We convert directed edges to undirected edges in our experiment.</p><p>• FilmTrust 1 is a movie sharing and rating website. This dataset is crawled by Guo et al. <ref type="bibr" target="#b5">[6]</ref>. • Epinions 2 (epinions.com) is a who-trust-whom online social network of general consumer reviews. • Flixster 3 (flixster.com) is also a website where users share movie ratings. It is crawled by Jamali and Etser <ref type="bibr" target="#b9">[10]</ref>. Competitors. We compare UniWalk with explainable methods UCF and ICF. We also compare UniWalk with MF to show if the unsupervised terms in UniWalk improve accuracy. In addition, we choose TrustSVD as a baseline method because it outperforms other social recommender systems.</p><p>• UCF (User-based collaborative filtering) predicts a rating of a user u with k most similar users of cosine the highest cosine similarity. A predicted rating is calculated as rui = 1 k v∈K k r vi , where K k is a set of the similar users. UCF explains its recommendation: it recommends items that are preferred by the similar users.</p><p>• ICF (Item-based collaborative filtering) predicts a rating of an item i with k most similar items in terms of cosine similarity with i. The rating is predicted as rui = 1 k j∈K k r uj , where K k is a set of the similar items. ICF explains its recommendations for a user u: it recommends items that are similar to u's favorite items.</p><p>• MF (Matrix factorization with bias terms) is described in Section 2.1. • TrustSVD <ref type="bibr" target="#b6">[7]</ref> is based on matrix factorization, and the state-of-the-art method among the ones that use both a rating matrix and a social network.</p><p>TrustSVD outperforms other methods including PMF <ref type="bibr" target="#b19">[20]</ref>, RSTE <ref type="bibr" target="#b15">[16]</ref>, SoRec <ref type="bibr" target="#b16">[17]</ref>, SoReg <ref type="bibr" target="#b17">[18]</ref>, SocialMF <ref type="bibr" target="#b9">[10]</ref>, TrustMF <ref type="bibr" target="#b27">[28]</ref>, and SVD++ <ref type="bibr" target="#b13">[14]</ref>.</p><p>Hyperparameters. The hyperparameters of UniWalk, MF, UCF, and ICF were determined experimentally, and they are reported in supplementary document. We use hyperparameters for UniWalk as follows. In Filmtrust dataset, c=5, l=30, α=0.05, β=0.005, d=25, s=7, λ b =0.1, λ z =0.1, η=0.01, and γ=0.2. In Epinions dataset, c=6, l=50, α=0.001, β=0.0007, d=25, s=7, λ b =0.08, λ z =1.3, η=0.003, and γ=0.6. In Flixster dataset, c=5, l=50, α=0.001, β=0.001, d=25, s=7, λ b =0.2, λ z =0.2, η=0.005, and γ=0.6. We use hyperparameters for TrustSVD as reported in <ref type="bibr" target="#b6">[7]</ref>.</p><p>4.2 Explainability of UniWalk. We show an experiment on our explanation approach with Filmtrust dataset. UniWalk explains the reason behind its recommendations in two ways with meta-explanations for each reason. Items are recommended, because they are preferred by other similar users, and the target user  likes other items that are similar to the recommended ones. We generate meta-explanation about the reasons by providing further explanation on supplementary entities. We explain why the supplementary users and items are determined to be similar. Figure <ref type="figure" target="#fig_1">1</ref> 4 illustrates our explanation of recommendation. Figure <ref type="figure" target="#fig_1">1b</ref> illustrates the first reason in our recommendation that the items (a, b, and c) are recommended to the target user (u1): other similar users (u2, u3, u4, and u5) like them. We describe the similar users more by presenting their similarity and friend relationships with the target user. Figures 3a 5 and 3b 6 explain why the similar users are determined to be similar. They like or dislike common items and have common friends. Figure <ref type="figure" target="#fig_1">1c</ref> explains the second reason why the items are recommended: the target user likes other similar items (d, e, and f ). We explicitly present similarity scores of supplementary items with the recommended items. Figure <ref type="figure" target="#fig_7">3c</ref> explains why the supplementary item (d) is determined to be similar to the recommended items. It is preferred by common people including the target users' friends such as u5.   Tables <ref type="table" target="#tab_3">3 and 4</ref> show RMSE and MAE of UniWalk and competitors, respectively. UniWalk shows the lowest RMSE and MAE, outperforming competitors and achieving the state-of-the-art accuracy for recommendation with rating data and a social network. TrustSVD shows the second best accuracy; however, it fails to explain its recommendation results, as we described in Section 4.2. UniWalk is much more accurate than MF, which indicates our extended unsupervised terms enhance accuracy.</p><p>4.4 Learning Details. We present details of Uni-Walk's learning process and hyperparameter sensitivity.</p><p>We first present how the accuracy changes during learning iterations: a iteration performs learning from positive walks, negative walks, and unweighted walks (lines 9-11 in Algorithm 2 of <ref type="bibr" target="#b20">[21]</ref>). Figure <ref type="figure" target="#fig_4">4</ref> shows the learning process of UniWalk on FilmTrust dataset. We note that the minimum test error (denoted by the dashed line) is achieved after only three iterations, thanks to the momentum term in the gradient descent (Section 4.1 of <ref type="bibr" target="#b20">[21]</ref>). Learning with the momentum is 1.45× faster and requires 2.5× less iterations than learning without the momentum in our experiment. We assess our model's sensitivity to the learning weight α of positive unsupervised term, the learning weight β of negative unsupervised term, and the weight c of social links; sensitivity for other hyperparameters is reported in the supplementary document (Section 6.3 of <ref type="bibr" target="#b20">[21]</ref>). Figure <ref type="figure" target="#fig_12">5</ref> shows the UniWalk's hyperparameter sensitivity on FilmTrust dataset. UniWalk is less sensitive to c. UniWalk is sensitive to α and β, but not much.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Related Works</head><p>We review related works along the following highly related aspects: recommender systems with auxiliary information, explainable recommendation, and network embedding. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Recommendation with Additional Data.</head><p>Many studies have proved that using auxiliary data in recommendation improves accuracy. Various additional data alleviate rating sparsity problem. Recent studies employ auxiliary information for better performance.</p><p>Social Recommendation. Many recommender systems use social networks which contain rich information on influences among users. Studies <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b28">29]</ref> prove that a social network enhances rating prediction. <ref type="bibr" target="#b32">[33]</ref> trains ranking-based model with a social network. Chaney et al. <ref type="bibr" target="#b2">[3]</ref> develop a probabilistic model that integrates social network with traditional matrix factorization method.</p><p>Heterogeneous Information. Other information is used to improve recommendation performance. Li et al. <ref type="bibr" target="#b14">[15]</ref> use both geographical and social information. Another example shows that attributes of entities (e.g. genre) are used in recommending personalized entities <ref type="bibr" target="#b29">[30]</ref>. <ref type="bibr" target="#b30">[31]</ref> divides heterogeneous data into three categories and extracts features from the categories. Jeon et al. <ref type="bibr" target="#b10">[11]</ref> and Choi et al. <ref type="bibr" target="#b3">[4]</ref> exploit coupled tensor factorization to use additional heterogeneous information in tensor based recommendation. 5.2 Explainable Recommendation. Explainable recommender system explains reasons behind its recommendations. A reasonable explanation is beneficial: explainable predictions increase users' trust <ref type="bibr" target="#b24">[25]</ref>, and induce the users to inform the system of its wrong predictions <ref type="bibr" target="#b31">[32]</ref>. We study explainable recommendation models using users' reviews or social network.</p><p>Review-based explanation of recommendation. User reviews are useful in explaining recommendation because the reviews have keywords of users' preferences. Many models such as SCAR <ref type="bibr" target="#b23">[24]</ref>, TriRank <ref type="bibr" target="#b7">[8]</ref>, and EFM <ref type="bibr" target="#b31">[32]</ref> exploit user reviews. SCAR explains its recommendations by listing keywords of an item's concept with topic analysis, sentiment prediction, and viewpoint re-   gression. TriRank analyzes user-item-aspect tripartite graph, and explains its results using important phrases in the reviews to describe items. EFM extracts feature words of products and users' opinions from reviews. It suggests a set of feature words that users mainly focus on and that describe recommended products.</p><p>Friend-based explanation of recommendation. Social network is also useful to explain recommendations. Recommendation models such as SPF <ref type="bibr" target="#b2">[3]</ref> and LBSN <ref type="bibr" target="#b12">[13]</ref> explain reasons of its results with social links. SPF recommends items to a user because the items are favorites of the users' friends. LBSN recommends locations to a user at a certain time because the locations are visited by the users' friends and it is likely that the friends will visit the place again soon. 5.3 Network Embedding. Network embedding has been studied extensively and has become a popular way to represent graph data. Recently proposed network embedding methods <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27]</ref> try to encode proximity structure. Tian et al. <ref type="bibr" target="#b26">[27]</ref> apply autoencoder to reconstruct neighborhood structure of each node. Perozzi et al. <ref type="bibr" target="#b21">[22]</ref> propose DeepWalk model which applies language model on sequences of nodes generated by truncated random walks on a graph. Tang et al. <ref type="bibr" target="#b25">[26]</ref> directly model first-order and second-order proximities and optimize them. Grover and Leskovec <ref type="bibr" target="#b4">[5]</ref> extend DeepWalk by adding parameters in the truncated random walk to customize the random walk on different data.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>( a )</head><label>a</label><figDesc>We recommend items (a, b, and c) to a target user (u1) with two reasons (Figures1b and 1c).(b) Reason1: Explain with similar users. The recommended items are preferred by other users (u2, u3, u4, and u5) who are similar to the target user. (c) Reason2: Explain with similar items. The target user likes other similar items (d, e, and i).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: UniWalk explains its recommendation using two reasons. More details are described in Section 4.2.</figDesc><graphic coords="2,63.83,110.47,147.05,80.06" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>(a) Sampling phase to sample node sequences with random walks. The positive walk (+walk) is likely to walk on the blue high rating links and the black social link. The negative walk (-walk) is likely to walk on the orange low rating links and the black friend link. Unweighted walk is omitted, since it samples sequences randomly. (b) Extracting node pairs in the optimization phase. D R , D + , and D − are for entities linked by ratings, similar entities, and dissimilar entities, respectively.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: An example of step 2 in UniWalk. (a) shows the sampling phase, and (b) shows extracting pairs in the optimization phase.</figDesc><graphic coords="5,112.57,196.26,139.70,52.64" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Definition 4 .</head><label>4</label><figDesc>Entity pair sets. • D R is a multiset of node pairs connected by score links for the supervised term (Equation (3.2)). • D + is a multiset of node pairs connected by similarity links, which is used in the positive unsupervised term (left term in Equation (3.3)). • D − is a multiset of dissimilar node pairs for the negative unsupervised term (right term in Equation (3.3)).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>4 ) 4 . 1</head><label>441</label><figDesc>2) • Q2 (Accuracy): How accurately does UniWalk predict ratings? (Section 4.3) • Q3 (Learning details): How does accuracy of UniWalk change during iterations? How do hyperparameters affect the accuracy? (Section 4.Experimental settings.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head></head><label></label><figDesc>(a) u5 is determined to be similar to the target user (u1), because they like or dislike common items. (b) u2 is determined to be similar to u1, because they have common favorite items and friends. (c) The supplementary item d is similar to the recommended items since they are commonly preferred by other users.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: UniWalk's meta-explanation to further explain why the supplementary entities are determined to be similar to target user (u1) and recommended items (a, b, and c) in Figure 1.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>4 . 3</head><label>43</label><figDesc>Accuracy. We measure RMSE (Root Mean Square Error) and MAE (Mean Absolute Error) to evaluate accuracy of recommendation models. Lower values indicate accurate predictions. We separate training and test sets under 5-folded cross validation, ensuring that each observed rating is included in a test set only once.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Changing accuracy of UniWalk in training and test set. RMSE and MAE decrease initially and converge through the iterations.</figDesc><graphic coords="8,71.30,76.98,220.57,149.47" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head></head><label></label><figDesc>(a) Sensitivity to c. (b) Sensitivity to α.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head></head><label></label><figDesc>(c) Sensitivity to β.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: UniWalk's hyperparameter sensitivity.</figDesc><graphic coords="8,311.60,204.88,257.34,111.49" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Statistics of Datasets.</figDesc><table><row><cell></cell><cell cols="2">FilmTrust Epinions</cell><cell>Flixster</cell></row><row><cell># of users</cell><cell>1,642</cell><cell>49,289</cell><cell>787,213</cell></row><row><cell># of items</cell><cell>2,071</cell><cell>139,738</cell><cell>48,794</cell></row><row><cell># of rating</cell><cell>35,494</cell><cell cols="2">664,824 8,196,077</cell></row><row><cell># of social edges</cell><cell>1,309</cell><cell cols="2">381,036 7,058,819</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>RMSE of UniWalk and other competitors.</figDesc><table><row><cell>Dataset</cell><cell>UniWalk (proposed)</cell><cell cols="2">UCF ICF MF TrustSVD</cell></row><row><cell>Filmtrust</cell><cell>0.783</cell><cell>0.924 0.914 0.839</cell><cell>0.787</cell></row><row><cell>Epinions</cell><cell>1.041</cell><cell>1.200 1.257 1.135</cell><cell>1.043</cell></row><row><cell>Flixster</cell><cell>0.913</cell><cell>1.097 1.092 0.951</cell><cell>0.948</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 :</head><label>4</label><figDesc>MAE of UniWalk and other competitors.</figDesc><table><row><cell>Dataset</cell><cell>UniWalk (proposed)</cell><cell cols="2">UCF ICF MF TrustSVD</cell></row><row><cell>Filmtrust</cell><cell>0.598</cell><cell>0.727 0.713 0.658</cell><cell>0.607</cell></row><row><cell>Epinions</cell><cell>0.798</cell><cell>0.907 0.939 0.873</cell><cell>0.804</cell></row><row><cell>Flixster</cell><cell>0.711</cell><cell>0.854 0.871 0.739</cell><cell>0.726</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://www.librec.net/datasets.html. 2 http://www.trustlet.org/epinions.html 3 https://www.librec.net/datasets.html</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">Ids of entities in Filmtrust dataset: u1=28, u2=1332, u3=814, u4=319, u5=1038, a=1803, b=2820, c=3635, d=1859, e=1919, f =1948.5 g=1700, h=1908, i=1921. 6 u6=508, j=1930, k=1933.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>We propose UniWalk, a novel explainable and accurate recommendation model that exploits both rating data and a social network. UniWalk constructs a unified graph containing users and items where the weights reflect the degree of association among users and items. UniWalk uses network embedding on the unified graph to extract latent features of users and items, and predicts ratings with the embedded features. UniWalk provides the best explainability and accuracy for recommendation. Future works include extending the method for distributed systems for scalable learning.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Xu</surname></persName>
+		</author>
+		<title level="m">Grarep: Learning graph representations with global structural information</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+	<note>CIKM</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Deep neural networks for learning graph representations</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">A probabilistic model for using social networks in personalized item recommendation</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Chaney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Eliassi-Rad</surname></persName>
+		</author>
+		<editor>RecSys</editor>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Fast, accurate, and scalable method for sparse coupled matrix-tensor factorization, CoRR</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Kang</surname></persName>
+		</author>
+		<idno>abs/1708.08640</idno>
+		<ptr target="http://arxiv.org/abs/1708.08640" />
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<author>
+			<persName><forename type="first">A</forename><surname>Grover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">node2vec: Scalable feature learning for networks</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">G</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yorke-Smith</surname></persName>
+		</author>
+		<title level="m">A novel bayesian similarity measure for recommender systems, in IJCAI</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Trustsvd: Collaborative filtering with both the explicit and implicit influence of user trust and of item ratings</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yorke-Smith</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>AAAI</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Trirank: Review-aware explainable recommendation by modeling aspects</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Social recommendation with interpersonal influence</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECAI</title>
+				<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">A matrix factorization technique with trust propagation for recommendation in social networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jamali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ester</surname></persName>
+		</author>
+		<editor>RecSys</editor>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Scout: Scalable coupled matrix-tensor factorization -algorithm and discoveries</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Jeon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Jeon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sael</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Kang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">32nd IEEE International Conference on Data Engineering</title>
+				<meeting><address><addrLine>Helsinki, Finland</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016-05-16">2016. May 16-20, 2016, 2016</date>
+			<biblScope unit="page" from="811" to="822" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Social contextual recommendation</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kefalas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Symeonidis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Manolopoulos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">New perspectives for recommendations in locationbased social networks: time, privacy and explainability</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Factorization meets the neighborhood: a multifaceted collaborative filtering model</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Point-of-interest recommendations: Learning potential check-ins from friends</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Learning to recommend with social trust ensemble</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Sorec: Social recommendation using probabilistic matrix factorization</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Recommender systems with social regularization</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Birds of a feather: Homophily in social networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mcpherson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Smith-Lovin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Cook</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annual review of sociology</title>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Probabilistic matrix factorization</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jeon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Kang</surname></persName>
+		</author>
+		<ptr target="https://datalab.snu.ac.kr/uniwalk/resources/supplementary_uniwalk_sdm.pdf" />
+		<title level="m">Supplementary document of uniwalk</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Deepwalk: Online learning of social representations</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Perozzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Al-Rfou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Skiena</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">On the momentum term in gradient descent learning algorithms</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Qian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural networks</title>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</author>
+		<title level="m">Social collaborative viewpoint regression with explainable recommendations</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>WSDM</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Why should i trust you?: Explaining the predictions of any classifier</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Ribeiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Guestrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Line: Large-scale information network embedding</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Mei</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Learning deep representations for graph clustering</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-Y</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Social collaborative filtering by trust</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Circle-based recommendation in online social networks</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Steck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Personalized entity recommendation: A heterogeneous information network approach</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sturt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Khandelwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Norick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Han</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICWSDM</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Collaborative knowledge base embedding for recommender systems</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-Y</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Leveraging social connections to improve personalized ranking for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

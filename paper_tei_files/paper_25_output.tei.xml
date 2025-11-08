@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">FIRE: Faithful Interpretable Recommendation Explanations</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2025-08-07">7 Aug 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Asal</forename><surname>Meskin</surname></persName>
+							<email>asal.meskin82@sharif.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Sharif University of Technology</orgName>
+								<address>
+									<country key="IR">Iran</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mohammad</forename><surname>Amanlou</surname></persName>
+							<email>mohammad.amanlou@ut.ac.ir</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Sharif University of Technology</orgName>
+								<address>
+									<country key="IR">Iran</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hamid</forename><forename type="middle">R</forename><surname>Rabiee</surname></persName>
+							<email>rabiee@sharif.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Sharif University of Technology</orgName>
+								<address>
+									<country key="IR">Iran</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff0">
+								<orgName type="institution">Sharif University of Technology</orgName>
+								<address>
+									<country key="IR">Iran</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">FIRE: Faithful Interpretable Recommendation Explanations</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-08-07">7 Aug 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">54C29AA353024014A93B129CF3FEE72F</idno>
+					<idno type="arXiv">arXiv:2508.05225v1[cs.IR]</idno>
+					<note type="submission">Manuscript submitted to ACM Manuscript submitted to ACM</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:00+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS Concepts:</term>
+					<term>Information systems → Recommender systems;</term>
+					<term>Computing methodologies → Natural language generation Explainable Recommender Systems</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Natural language explanations in recommender systems are often framed as a review generation task, leveraging user reviews as ground-truth supervision. While convenient, this approach conflates a user's opinion with the system's reasoning, leading to explanations that may be fluent but fail to reflect the true logic behind recommendations. In this work, we revisit the core objective of explainable recommendation: to transparently communicate why an item is recommended by linking user needs to relevant item features. Through a comprehensive analysis of existing methods across multiple benchmark datasets, we identify common limitations-explanations that are weakly aligned with model predictions, vague or inaccurate in identifying user intents, and overly repetitive or generic. To overcome these challenges, we propose FIRE, a lightweight and interpretable framework that combines SHAP-based feature attribution with structured, prompt-driven language generation. FIRE produces faithful, diverse, and user-aligned explanations, grounded in the actual decision-making process of the model. Our results demonstrate that FIRE not only achieves competitive recommendation accuracy but also significantly improves explanation quality along critical dimensions such as alignment, structure, and faithfulness. This work highlights the need to move beyond the review-as-explanation paradigm and toward explanation methods that are both accountable and interpretable.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="25" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="26" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="27" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="28" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="29" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="30" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="31" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="32" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="33" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Recommender systems play a crucial role in guiding users through vast information spaces by suggesting relevant products, services, or content. As these systems increasingly influence user behavior and decision-making, the demand for transparency and trust has led to growing interest in explainable recommendation, particularly through natural language explanations <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b35">36]</ref>. Fig. <ref type="figure">1</ref>. Examples of generated explanations from various models across Tripadvisor, Amazon, and Yelp datasets. These outputs illustrate how review-as-explanation proxies often fail to reflect the model's actual decision-making process-frequently offering vague sentiments or unrelated opinions rather than grounded, faithful justifications.</p><p>A widely adopted paradigm in recent literature-especially among approaches leveraging Large Language Models (LLMs)-treats review generation as a proxy for explanation. This assumes that a review inherently encapsulates the rationale behind user preferences and thus serves as a surrogate for explainability.</p><p>While this strategy has enabled rapid progress, offering a practical supervised training setup and the ability to mimic natural language fluently, it deviates from the core goal of explainability. Generating text in the style of a review does not ensure that the explanation faithfully reflects the model's internal decision-making. Reviews are subjective, experiential, and often emotionally driven, whereas explanations should highlight the specific user-item interactions and features that influenced the recommendation.</p><p>Manuscript submitted to ACM Table <ref type="table">1</ref>. Evaluation metrics used in prior studies on explainable recommendation systems. Each study adopts its own arbitrary set of metrics due to the absence of a systematic and unified evaluation framework. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>✓ ✓ ✓ ✓</head><p>Figure <ref type="figure">1</ref> presents outputs from several recent models that adopt the review-as-explanation approach. Despite their fluency, these examples illustrate how generated explanations often fail to reflect the reasoning behind the model's decisions-offering vague sentiments, generic praise, or irrelevant details instead of faithful justifications.</p><p>The review-as-explanation perspective has also shaped evaluation practices. As summarized in Table <ref type="table">1</ref>, many prior studies have relied on textual overlap metrics such as BLEU and ROUGE. While these metrics are useful for measuring surface-level similarity, they are less suited for assessing semantic faithfulness. For example, they may penalize valid paraphrases while rewarding lexical overlap-even when the explanation does not reflect the model's actual reasoning (see Figure <ref type="figure" target="#fig_0">2</ref>, left). Moreover, in the absence of a shared understanding of what defines a "good" explanation, evaluation practices remain diverse, with different studies adopting metrics aligned with their own assumptions.</p><p>To guide the field back toward more faithful and useful explanations, we adopt criteria inspired by recent Retrieval-Augmented Generation (RAG) literature <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b33">34]</ref>, which emphasize faithfulness and relevance. We propose that effective explanations should satisfy the following principles:</p><p>(1) Faithfulness -grounded in the model's actual decision logic.</p><p>(2) Consistency -sentimentally aligned with the predicted rating.</p><p>(3) Justification -clearly linking item features to user preferences.</p><p>(4) Diversity -avoiding repetition or templated expressions. However, many state-of-the-art methods-particularly those encoding users and items into dense embeddings as LLM tokens <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b25">26]</ref>-struggle to meet these standards. Recommendation datasets are inherently sparse, and user preferences in reviews are often implicit, complicating semantic alignment. Consequently, generated outputs frequently miss user intent, misalign with predicted ratings, lack clear justification, or exhibit repetitive phrasing (as discussed in Section 5).</p><p>To address these challenges, this paper makes the following contributions:</p><p>(1) Review of natural language-based explainable recommendation methods, highlighting the limitations of the review-as-proxy paradigm and its influence on both modeling and evaluation practices (Section 2).</p><p>(2) A principled framework for evaluating explanations, grounded in faithfulness and relevance criteria from the RAG literature (Section 3).</p><p>(3) The introduction of FIRE (Faithful and Interpretable Recommendation Explanations), a framework that generates explanations by conditioning an LLM on structured inputs derived from the recommender's most influential features. These features are identified using SHAP <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b27">28,</ref><ref type="bibr" target="#b29">30]</ref>, a widely used method for model interpretability. By grounding generation in SHAP-based attributions, FIRE ensures its outputs are aligned with the actual factors behind the model's decisions-offering a meaningful departure from review mimicry (Section 4).</p><p>(4) A comprehensive empirical evaluation across multiple datasets, showing how FIRE consistently produces betteraligned, more informative, and more faithful explanations compared to recent baselines (Section 5).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Studies</head><p>Early efforts in generating textual explanations for recommender systems predominantly relied on template-based approaches, where fixed sentence structures were filled with explicit item attributes or topics <ref type="bibr" target="#b28">[29,</ref><ref type="bibr" target="#b39">40]</ref>. These methods were inherently transparent and maintained a strong connection to the underlying model logic, but lacked the flexibility to express nuanced, implicit user-item dynamics.</p><p>With the rise of deep learning, the field of explainable recommendation shifted toward free-text generation, often using user reviews as proxies for explanations. This shift began with RNN-based models utilizing LSTM architectures <ref type="bibr" target="#b6">[7]</ref>,</p><p>and was later improved by incorporating GRUs and multi-task learning objectives-simultaneously predicting ratings and generating explanations-to enhance the robustness of learned representations <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b20">21]</ref>. Eventually, RNNs were replaced by Transformer-based architectures, such as PETER <ref type="bibr" target="#b18">[19]</ref>, where Transformer blocks were trained from scratch.</p><p>More recently, models like PEPLER <ref type="bibr" target="#b19">[20]</ref> have integrated large pre-trained language models (PLMs), further improving generation fluency.</p><p>As the review-generation paradigm evolved, researchers began to identify several limitations-most notably, factual inconsistencies, overly generic outputs, and mismatches between the sentiment of the generated text and the model's predicted ratings. To address factual grounding, retrieval-augmented methods such as PRAG <ref type="bibr" target="#b35">[36]</ref>, ERRA <ref type="bibr" target="#b4">[5]</ref>, and others <ref type="bibr" target="#b34">[35]</ref> incorporate relevant content from historical reviews. Concurrently, models like CIER <ref type="bibr" target="#b25">[26]</ref>, REXPlug <ref type="bibr" target="#b11">[12]</ref>,</p><p>and work by Raczyński et al. <ref type="bibr" target="#b32">[33]</ref> focus on improving coherence and aligning generated sentiment with predicted scores.</p><p>Building on these foundations, further refinements have explored various modeling enhancements: causal reasoning with graphs <ref type="bibr" target="#b36">[37]</ref>, prompt-based frameworks such as P5 and VIP5 <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b10">11]</ref>, and integration of signals from GNNs <ref type="bibr" target="#b12">[13]</ref>,</p><p>missed-review interactions <ref type="bibr" target="#b21">[22]</ref>, multimodal learning <ref type="bibr" target="#b23">[24]</ref>, and next-item prediction <ref type="bibr" target="#b1">[2]</ref>. Additional strategies include combining summarization with efficient attention mechanisms <ref type="bibr" target="#b0">[1]</ref> and two-stage prompt tuning <ref type="bibr" target="#b7">[8]</ref>.</p><p>While each of these advances targets a specific limitation-such as hallucinations, factual grounding, or sentiment alignment-most still operate under the core assumption that user reviews can function as faithful explanations.</p><p>However, as demonstrated in our experimental analysis (Section 5), this assumption does not always hold. In many cases, explanations generated from user reviews-even when fluent or factual-remain only loosely coupled with the actual decision logic of the recommendation model.</p><p>This gap is also reflected in evaluation practices. Early models were assessed using rating prediction metrics like MSE and MAE, but with the transition to text generation, n-gram-based metrics such as BLEU, ROUGE, and METEOR <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b30">31]</ref> became standard. These favor surface-level similarity rather than explanatory depth. Although embedding-based metrics (e.g., BERTScore <ref type="bibr" target="#b37">[38]</ref>) and distributional measures (e.g., MAUVE <ref type="bibr" target="#b31">[32]</ref>) offer semantic improvements, they still fall short in evaluating explanation quality. This has led to the emergence of task-specific metrics targeting factuality (FMR, FCR, Entailment) <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b35">36]</ref>, diversity (USR, DISTINCT, n-gram Entropy) <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b17">18]</ref>, and sentiment consistency (HSC, ASC) <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b32">33]</ref>.</p><p>Despite these developments, the field still lacks a widely accepted definition of what constitutes a "good" explanation, which contributes to fragmented evaluation practices (see Table <ref type="table">1</ref>).</p><p>More recently, studies have explored using LLMs as evaluators. For example, Zhang et al. <ref type="bibr" target="#b38">[39]</ref> showed that LLMs can assess high-level qualities such as persuasiveness, transparency, accuracy, and user satisfaction. However, their framework stops short of clearly defining how these qualities map onto the recommendation context. In contrast, our work operationalizes these dimensions specifically for recommendation explanations. Separately, ALERT <ref type="bibr" target="#b22">[23]</ref> proposed a source-agnostic LLM-based evaluation framework. While sharing a similar goal, our approach differs by:</p><p>(1) identifying deeper issues missed by existing metrics, (2) grounding explanations in model-predicted user-item interactions, and (3) introducing a full explainable recommendation system with faithful, model-aligned outputs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Desiderata for Faithful Recommendation Explanations</head><p>The dominant practice in explainable recommendation has been to treat user reviews as ground-truth explanations. This framing has led to widespread reliance on metrics such as BLEU and ROUGE-tools that measure lexical overlap but are ill-equipped to assess explanatory quality. Consequently, evaluation practices across the field remain inconsistent and often misaligned with the core goal of explainability (see Table <ref type="table">1</ref>). A more principled approach requires rethinking what makes a recommendation explanation effective.</p><p>To address this, we draw inspiration from recent work in the evaluation of Retrieval-Augmented Generation (RAG) systems <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b33">34]</ref>. We conceptualize explanation generation in recommender systems as a RAG-like task: the system must "retrieve" (or extract) the most relevant user preferences and item attributes, and then generate a natural language explanation that faithfully answers the question, "Why is this item recommended with this predicted rating?" The RAG evaluation literature offers well-established criteria-context relevance, answer relevance, and faithfulness to the source-which serve as a rigorous foundation for defining desirable explanation properties.</p><p>Under this lens, a good explanation is not one that mimics human-written reviews, but rather one that explicitly and transparently links the model's internal evidence to its output. For instance, a faithful positive explanation might read:"You'll enjoy this hotel because it has a well-equipped gym, and exercise is important to you. " While a faithful negative explanation might state: "You may not like this hotel as it is far from shopping centers, while proximity to malls is important to you. "</p><p>Building on these RAG-inspired principles, we define five essential properties that a high-quality explanation 𝜖 𝑢,𝑖 should satisfy for a user-item pair (𝑢, 𝑖) with predicted rating r𝑢,𝑖 :</p><p>(1) User Alignment (Context Relevance): The explanation should explicitly mention at least one user preference or need. This ensures relevance and personalization.</p><p>(2) Item Alignment (Context Relevance): It should include a concrete item feature that justifies the recommendation.</p><p>(3) Need-Feature Connection (Answer Relevance): A coherent explanation must clearly link the user need to the item feature, showing how one fulfills or fails the other.</p><p>(4) Tone-Rating Consistency (Faithfulness): The sentiment expressed in the explanation should match the model's predicted rating (e.g., positive tone for high ratings).</p><p>(5) Diversity: Explanations should be varied across instances, avoiding repetitive templates and enhancing perceived authenticity and usefulness.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">FIRE Framework</head><p>We propose FIRE, a framework designed to produce explanations that are faithful to the underlying recommendation model's reasoning process. The pipeline comprises three stages: (1) extraction of interpretable user and item features, even when implicitly stated; (2) prediction of user preference for an item using a sentiment classification model; and (3) explanation generation based on the most influential features contributing to the model's decision, computed via SHAP values.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Feature Extraction</head><p>User reviews, though inherently subjective, provide rich signals about user preferences and item characteristics. While reviews may not directly serve as faithful explanations, they offer valuable information for modeling user needs and item features.</p><p>To extract these signals, we leverage a pretrained large language model (LLM), which enables us to capture both explicit descriptions and implicit intents beyond surface-level semantics. For each ground-truth review 𝑒 𝑢,𝑖 in the training set, we use an LLM 1 to extract:</p><p>• User Needs: 𝐴(𝑒 𝑢,𝑖 ) ∈ A, representing inferred user preferences or desires.</p><p>• Item Features: 𝐹 (𝑒 𝑢,𝑖 ) ∈ F , representing characteristics attributed to the item. To manage variation in phrasing and semantic similarity, we cluster the extracted expressions into interpretable categories using unsupervised clustering. This results in two cluster sets: C 𝑢 = {𝑎 1 , . . . , 𝑎 𝐾 𝑢 } for user needs and C 𝑖 = {𝑓 1 , . . . , 𝑓 𝐾 𝑖 } for item features.</p><p>We then construct structured feature vectors for users and items. Each cluster contributes two dimensions: (1) the frequency of its occurrence in a user or item's review history, and (2) the cumulative sum of ratings associated with those mentions. The resulting vectors are:</p><p>• 𝑣 𝑢 ∈ R 2𝐾 𝑢 : user features</p><formula xml:id="formula_0">• 𝑣 𝑖 ∈ R 2𝐾 𝑖 : item features</formula><p>These are concatenated to form a single input vector 𝑣 𝑢,𝑖 = 𝑣 𝑢 ⊕ 𝑣 𝑖 ∈ R 2(𝐾 𝑢 +𝐾 𝑖 ) . which is used for both sentiment classification and explanation generation (see Figure <ref type="figure" target="#fig_1">3a</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Sentiment Prediction</head><p>To model user-item interactions, we adopt XGBoost <ref type="bibr" target="#b3">[4]</ref> due to its strong performance on structured feature data and efficient SHAP value computation. We cast the recommendation task as a three-class classification problem. Original 1-5 Likert-scale ratings 𝑟 𝑢,𝑖 are converted into sentiment categories as follows:</p><p>• Positive: 𝑟 𝑢,𝑖 ≥ 3.5</p><p>• Neutral: 2.5 &lt; 𝑟 𝑢,𝑖 &lt; 3.5</p><formula xml:id="formula_1">• Negative: 𝑟 𝑢,𝑖 ≤ 2.5</formula><p>This reformulation is motivated by the observation that natural language explanations do not require exact numeric ratings, but rather a reliable indication of the user's attitude toward the item. The model is trained using standard cross-entropy loss:</p><p>Algorithm 1 Explanation Generation Input: Trained model 𝑀, feature vector 𝑣 𝑢,𝑖 , SHAP explainer S, explanation generator G </p><p>where 𝑦 𝑐 𝑗 is the ground-truth one-hot label and ŷ𝑐 𝑗 the predicted class probability for the 𝑗 th interaction (Figure <ref type="figure" target="#fig_1">3b</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Explanation Generation</head><p>To ensure that explanations reflect the recommendation model's actual decision logic, we use SHAP (SHapley Additive exPlanations) <ref type="bibr" target="#b27">[28]</ref>. SHAP is a game-theoretic method that assigns an importance value to each feature based on its contribution to the model's prediction. It is widely adopted across machine learning domains for feature attribution <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b29">30]</ref>.</p><p>To generate explanations that are faithful to the model's decision-making process, given a trained model 𝑀 and a user-item feature vector 𝑣 𝑢,𝑖 , we first compute the predicted sentiment ŷ𝑢,𝑖 = 𝑀 (𝑣 𝑢,𝑖 ). Next, we use a SHAP explainer S to obtain a set of importance scores 𝜙 = S(𝑀, 𝑣 𝑢,𝑖 ), where each score reflects the contribution of an input feature to the prediction. We then identify the top-𝐾 features with the highest absolute SHAP values, representing the most influential factors in the model's decision. These features are mapped back to their corresponding human-readable cluster descriptions, denoted T 𝑢,𝑖 . Using this set of influential features, along with the predicted sentiment ŷ𝑢,𝑖 and a few-shot template, we construct a prompt P 𝑢,𝑖 designed to elicit a coherent explanation. Finally, this prompt is passed to a pretrained large language model G, which generates the textual explanation 𝜖 𝑢,𝑖 . This explanation reflects the internal reasoning of the model while remaining interpretable and informative to end users.</p><p>This process is outlined in Algorithm 1 and illustrated in Figure <ref type="figure" target="#fig_1">3c</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Experiments</head><p>We evaluate FIRE against representative state-of-the-art (SOTA) models across the dimensions of desirable explanation characteristics introduced in Section 3. Our experiments aim to answer the following research questions:</p><p>(1) RQ1: How does FIRE's recommendation performance compare to contemporary SOTA methods?</p><p>(2) RQ2: Does FIRE's design-eschewing the "review-as-proxy" paradigm-yield explanations that better reflect the targeted desirable traits?</p><p>(3) RQ3: To what extent do FIRE's LLM-based explanations and evaluation outputs align with human judgments? </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Dataset</head><p>We evaluate our framework using three widely adopted benchmark datasets from distinct domains: TripAdvisor (hotels), Amazon (movies and TV), and Yelp (restaurants). These datasets were originally introduced by <ref type="bibr" target="#b17">[18]</ref> and have since been extensively used in subsequent studies on natural language explainable recommendation <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b35">36]</ref> 2 . Together, they cover diverse application contexts and exhibit varying levels of data sparsity, enabling a comprehensive assessment of explanation quality under different recommendation scenarios.</p><p>To ensure alignment with prior work, we retain users and items with at least 20 interactions. Each dataset is partitioned into training, validation, and test sets using an 8:1:1 ratio, while guaranteeing that every user and item is represented in the training set.</p><p>Table <ref type="table" target="#tab_2">2</ref> summarizes key dataset statistics. The datasets differ in size, interaction density, and average review length.</p><p>Notably, all three exhibit a pronounced class imbalance, with a significantly higher proportion of positive reviews relative to neutral and negative ones-posing additional challenges for generating balanced and meaningful explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Baselines</head><p>We evaluate the performance of our proposed FIRE framework by comparing it against several state-of-the-art baselines spanning three major categories of explanation generation methods:</p><p>(1) Language model-based generators: We include PETER <ref type="bibr" target="#b18">[19]</ref> and PEPLER <ref type="bibr" target="#b19">[20]</ref>, both of which utilize pre-trained language models to generate personalized reviews. For PEPLER, we consider both matrix factorization (MF) and multilayer perceptron (MLP) variants to reflect different collaborative modeling strategies.</p><p>(2) Retrieval-augmented models: We compare against ERRA <ref type="bibr" target="#b4">[5]</ref> and PRAG <ref type="bibr" target="#b35">[36]</ref>, which enhance generation quality and factual consistency by retrieving relevant historical reviews during the decoding process.</p><p>(3) Sentiment-aware generators: We include CIER <ref type="bibr" target="#b25">[26]</ref>, a model that aligns the sentiment of generated explanations with the predicted rating.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Recommendation Performance</head><p>Given the imbalanced nature of the rating distributions in all three datasets, we report weighted F1-scores to ensure fair comparison across models. The results are presented in Table <ref type="table" target="#tab_3">3</ref>.</p><p>FIRE achieves the best performance on the Yelp and Amazon datasets, while remaining highly competitive on</p><p>TripAdvisor, closely matching or outperforming several deep learning-based baselines.</p><p>10 S.M.F. Sani, Asal Meskin, Mohammad Amanlou, and Hamid. R. Rabiee for fast, resource-efficient training-often completed in minutes on a single GPU-while offering transparency in the prediction process, a crucial factor for building explainable and trustworthy systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Rating-Sentiment Consistency in Explanations</head><p>An effective explanation should align with the sentiment of the corresponding rating-positive reviews for high scores, negative for low. Although many models jointly train on both rating prediction and text generation, they often fail to maintain this alignment due to the lack of explicit conditioning on the predicted sentiment <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref>.</p><p>To assess sentiment consistency, we evaluate whether the tone of a generated explanation matches the sentiment of its predicted rating. Each predicted rating (positive, neutral, or negative) is paired with its corresponding explanation, and we use a robust sentiment classifier <ref type="bibr" target="#b13">[14]</ref> to estimate the sentiment of the explanation text. The classifier returns a score between 0 (strongly negative) and 1 (strongly positive), reflecting the explanation's sentiment polarity.</p><p>Figure <ref type="figure" target="#fig_2">4</ref> presents illustrative examples of generated explanations across sentiment categories. These samples show that FIRE generates explanations with clear and appropriate emotional tone corresponding to each predicted rating, demonstrating a key aspect of faithfulness in explainable recommendation.</p><p>Figures <ref type="figure" target="#fig_3">5, 6</ref>, and 7 present sentiment consistency scatter plots for the TripAdvisor, Amazon, and Yelp datasets, respectively. Each dot represents a test instance, with the x-axis showing the predicted rating and the y-axis showing the sentiment score of the generated explanation. A strong upward trend reflects good alignment.</p><p>While some baselines show partial consistency-PRAG, for instance, performs relatively well for negative ratings on TripAdviosr due to its question-answering generation style ("What was not good?")-most models fail to enforce alignment across the full rating range. Many models treat rating and explanation generation as multi-task objectives but don't explicitly condition the generated text on the rating output, leading to mismatches in tone.</p><p>Even CIER, a model designed to improve textual coherence, struggles with sentiment misalignment. Their evaluation metric, which considers a prediction consistent if its sentiment is within one star of the true rating, is overly lenient-especially problematic given the class imbalance in recommendation data, where positive ratings dominate.</p><p>This coarse-grained measure can mask inconsistencies and inflate performance metrics.</p><p>In contrast, FIRE maintains strong alignment between predicted sentiment and explanation tone across datasets. As shown in the scatter plots, explanations for negative ratings consistently receive low sentiment scores (near 0), those for neutral ratings vary more widely, and those for positive ratings cluster near 1.</p><p>Manuscript submitted to ACM  This alignment is intentional: FIRE conditions its explanation generation prompt explicitly on the predicted sentiment (see Appendix A). This prompt-driven design enables FIRE to produce coherent, sentiment-aligned explanations, ensuring consistency.</p><p>Fig. <ref type="figure">6</ref>. Sentiment consistency of generated explanations vs. predicted ratings on the Amazon dataset. Fig. <ref type="figure">7</ref>. Sentiment consistency of generated explanations vs. predicted ratings on the Yelp dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">User-Item Alignment in Explanations</head><p>For an explanation to be faithful, it must reflect the reasoning behind the recommendation-specifically, by referencing the user's need and the relevant item feature referenced in source text. Despite this being a core requirement for explainability, many recent models fail to meet it, often generating fluent but generic explanations that do not align with the underlying decision logic, even implicitly.</p><p>As illustrated in Figure <ref type="figure" target="#fig_4">8</ref>, explanations generated by several existing methods often fail to identify the correct user needs or item features that justify the recommendation. In contrast, the FIRE framework captures the appropriate user need and item feature and integrates them into the explanation. This demonstrates FIRE's ability to align closely with the model's prediction while grounding its reasoning in the same key elements present in the original review.</p><p>To evaluate this alignment systematically, we extract user needs (A) and item features (F ) from ground-truth reviews 𝑒 𝑢,𝑖 using a pretrained LLM, and compare them to the same elements in generated explanations (𝜖 𝑢,𝑖 ), computing alignment scores 𝑆 𝑢 and 𝑆 𝑖 :  </p><formula xml:id="formula_3">𝑆 𝑢 = 1 |D test | ∑︁ 𝑒 𝑢,𝑖 ∈ D test I[𝐴(𝑒 𝑢,𝑖 ) = 𝐴(𝜖 𝑢,𝑖 )] 𝑆 𝑖 = 1 |D test | ∑︁ 𝑒 𝑢,𝑖 ∈ D test I[𝐹 (𝑒 𝑢,𝑖 ) = 𝐹 (𝜖 𝑢,𝑖 )] (2)</formula><p>Table <ref type="table" target="#tab_4">4</ref> presents alignment scores across three datasets. Most baseline models exhibit poor alignment with user and item rationales, highlighting a lack of faithfulness in their generated explanations. A key reason for low alignment is the reliance on dense token-level user/item embeddings, which lack the granularity to surface specific user needs or item features-especially when these are not overtly mentioned in training reviews. As a result, many models fail to reflect what truly drove the prediction.</p><p>One exception is PRAG, which performs better on both alignment metrics by retrieving and conditioning on past reviews using keyword extraction and a QA-style generation model. Its retrieval-based design allows it to surface more concrete item features, especially for negative or nuanced cases. Despite PRAG's advantages, FIRE consistently outperforms all baselines. This performance stems from two critical design decisions:</p><p>(1) Interpretable input features mapped from review-derived semantic clusters, making the model aware of meaningful concepts.</p><p>(2) SHAP-based explanation generation, which grounds each explanation in the actual predictive features used by the model, rather than simply mimicking review style or content.</p><p>Together, these mechanisms ensure that FIRE's explanations are not only fluent, but also aligned with the internal logic of the recommendation-an essential property for building trust in real-world applications.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.6">Structure in Textual Explanations</head><p>A high-quality explanation in a recommender system should be structured and rationale-driven. Specifically, it must communicate:</p><p>• What the model believes about the user (i.e., the user's needs),</p><p>• What it knows about the item (i.e., the item's features), and</p><p>• Why it predicts the item to be a good or poor match, by connecting those two aspects.</p><p>Manuscript submitted to ACM Fig. <ref type="figure">10</ref>. Results of explanation format analysis on the TripAdvisor dataset. Outputs from recent explainable recommender models largely fail to meet the structural criteria for proper explanations. Fig. <ref type="figure">11</ref>. Results of explanation format analysis on the Amazon dataset. Outputs from recent explainable recommender models largely fail to meet the structural criteria for proper explanations.</p><p>However, many existing explanation models fail to provide this structure. As shown in Figure <ref type="figure" target="#fig_5">9</ref>, generated outputs from the CIER model often omit either user needs, item features, or a logical bridge between them-undermining the explanation's clarity and faithfulness. Only the final row illustrates a well-structured explanation that includes all critical elements.</p><p>To evaluate structure systematically, we used a pretrained large language model to assess each explanation across three key criteria: (1) Presence of a user need, (2) Presence of an item feature, and (3) A logical connection between the two. This evaluation was applied to test-set outputs from all models across the TripAdvisor, Amazon, and Yelp datasets.</p><p>The results are presented in Figures <ref type="figure" target="#fig_6">10, 11, and 12</ref>. Across all datasets, most baseline methods struggled to generate explanations with clear structure. This limitation arises from the review-as-proxy paradigm, which attempts to replicate user-written reviews rather than generating targeted justifications. Reviews tend to lack explicit intent or reasoning, as users write them retrospectively rather than explain proactively. FIRE's superiority stems from its prompting strategy, which explicitly instructs the model to generate structured explanations that (i) highlight user needs, (ii) cite item features, and (iii) form a coherent link between the two. This structure results in explanations that are interpretable, grounded, and faithful to the model's decision-making process.</p><p>5.6.1 Limitation. Despite its strengths, FIRE occasionally fails to produce fully structured explanations. Figure <ref type="figure" target="#fig_7">13</ref> illustrates three common types of failure cases:</p><p>• Missing Item Features: When all influential features belong to user clusters, the explanation lacks item-specific justifications.</p><p>• Missing User Needs: When influential features are item-based, the user's motivations are omitted.</p><p>• Disconnected Components: Even when both user and item aspects are present, no explanation could logically connect them, reducing coherence and persuasiveness.</p><p>These limitations highlight areas for future improvement, though FIRE still sets a strong benchmark for explanation structure in recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.7">Sentence Variation in Model Outputs</head><p>Linguistic diversity is a hallmark of human-written reviews. To capture this quality in generated explanations, we evaluate models using the Unique Sentence Ratio (USR)-the proportion of unique sentences among all generated outputs:</p><formula xml:id="formula_4">USR = |{ ê𝑠 } 𝑁 𝑠=1 | 𝑁 (3)</formula><p>where |{ ê𝑠 } 𝑁 𝑠=1 | is the number of unique generated sentences and 𝑁 is the total number of generated explanations. A higher USR indicates greater variation and is desirable, as long as explanatory quality is maintained.</p><p>Table <ref type="table" target="#tab_5">5</ref> presents USR scores across models and datasets. Human-written reviews naturally achieve near-perfect diversity (0.98 USR). In contrast, many recent models-including PETER, PEPLER, ERRA, and CIER-produce highly repetitive outputs, with low USR scores.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Missing Item Features in Explanation</head><p>• This accommodation may not meet your expectations for clear communication, consistent quality, and cleanliness, which are important to you. • This accommodation may not meet your need for clear communication and quality service, which could affect your overall convenience and experience. • Enjoy the scenic views and relaxing comfort, complemented by quality dining and reliable service that perfectly match your needs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Missing User Needs in Explanation</head><p>• The attentive concierge and reliable service ensure a comfortable stay, with easy transportation access and clear communication to meet your needs perfectly • Enjoy convenient access to local attractions and excellent dining options, supported by attentive concierge service ensuring a reliable and pleasant stay. • This accommodation offers a comfortable, practical living space with attractive design, ensuring a positive overall experience despite some service limitations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Lack of Coherent Connection Between User Needs and Item Features</head><p>• The attentive concierge and spacious bathrooms ensure reliable service and comfort, perfectly matching your expectations for quality and convenient dining. • The accommodation offers reliable service and spacious bathrooms, matching your expectations for quality and satisfying food variety. • You'll appreciate the convenient dining options and attentive concierge, along with spacious bathrooms that enhance your comfort and connectivity needs.  This lack of variation can be traced back to the models' reliance on dense user/item embeddings learned from sparse data. These representations fail to capture fine-grained user preferences and item distinctions-resulting in repetitive and semantically limited outputs.</p><p>Fig. <ref type="figure" target="#fig_2">14</ref>. Illustrative examples contrasting the outputs of PRAG and FIRE. PRAG's explanations, being faithful to the data, focus on concrete item features found in source reviews (e.g., "leaky shower, " "rude staff"). In contrast, FIRE's explanations, being faithful to the model, connect inferred user needs to item attributes (e.g., "reliable service, " "attentive concierge").</p><p>Among baselines, PRAG performs relatively well, thanks to its use of a QA-style prompting strategy with pretrained language models. However, FIRE outperforms all baselines, achieving near-human levels of diversity across all datasets-0.99 on TripAdvisor, 0.91 on Amazon, and 0.95 on Yelp.</p><p>FIRE's superior USR is the result of combining:</p><p>• The expressive generative capabilities of large language models, and</p><p>• Explicit prompting strategies that align outputs with model-inferred logic and key explanatory elements (user needs, item features, and justification).</p><p>This ensures that FIRE's explanations are not only diverse but also meaningful and faithful to the model's reasoning-a key advantage over methods that simply mimic natural reviews without structured intent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.8">Qualitative Comparison of FIRE and PRAG</head><p>The empirical results identify PRAG as the most competitive baseline against our proposed FIRE framework, particularly due to its high performance in diversity and alignment scores. This section provides a more in-depth qualitative analysis to complement the quantitative results and highlight the fundamental differences in their explanatory approaches.</p><p>Figure <ref type="figure" target="#fig_2">14</ref> presents side-by-side comparisons of explanations generated by both models.</p><p>The primary distinction between the two frameworks lies in what they are designed to be faithful to.</p><p>• PRAG: Faithfulness to Data PRAG is a retrieval-augmented model. Its methodology involves retrieving sentences from a corpus of actual human-written reviews and then conditioning its generator on this text. Consequently, PRAG's explanations are grounded in the explicit features and concrete details mentioned in the source data. As seen in the examples, its outputs often reference specific item attributes like "leaky shower, " "breakfast service, " or "free WiFi. " While this makes the explanations factually grounded in existing reviews, they reflect the experiences of other users rather than the reasoning of the recommendation model itself.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>• FIRE: Faithfulness to the Model</head><p>In contrast, FIRE is designed to be faithful to the internal logic of the recommender system. Its methodology uses SHAP to identify the features that the internal prediction model (XGBoost) deemed most critical for its decision.</p><p>The generation prompt, G, then synthesizes these key factors into a structured explanation. The resulting outputs articulate the connection between inferred user needs (e.g., "quality and cleanliness, " "comfort") and the item's ability to satisfy them. This approach explains why the model made its recommendation, directly linking its reasoning to the user's predicted preferences.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.9">Human Evaluation of LLM Reliability in FIRE</head><p>To assess the reliability of the Large Language Model (LLM) used within the FIRE framework, we conducted a targeted human evaluation across three key tasks where the LLM operates automatically:</p><p>(1) Feature Extraction from user reviews.</p><p>(2) Alignment Scoring of explanations with model logic (3) Structure Verification of explanation formats A total of 18 independent annotators-none of whom were involved in the research and all of whom held at least a Bachelor's degree-were recruited to evaluate the outputs. For each task, 100 samples were randomly selected, and each sample was rated by four different annotators. Ratings were given on a 5-point Likert scale (1 = poor, 5 = excellent), reflecting how well the language model performed the assigned task.</p><p>As summarized in Table <ref type="table" target="#tab_6">6</ref>, the LLM demonstrates consistently high performance across all evaluated tasks. Specifically, it achieved a mean score of 4.5 for alignment, 4.3 for structure, and 4.1 for feature extraction. These scores indicate a strong consensus among human annotators regarding the LLM's effectiveness in performing its designated functions. This assessment is further supported by Figure <ref type="figure" target="#fig_8">15</ref>, which shows a distribution of ratings heavily skewed toward the upper end of the scale across all tasks, reinforcing the model's reliability and consistency. Overall, the evaluation results indicate that the LLM consistently performs key subtasks within FIRE with a high level of accuracy and coherence. These findings reinforce the robustness of the framework's automated components and support the effectiveness of using LLMs for structured explanatory tasks in this setting.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Relationship to Prior Evaluation Metrics</head><p>This section clarifies how our evaluation approach relates to-and improves upon-existing metrics commonly used in explainable recommendation.</p><p>Recommendation Performance. Traditional studies typically report RMSE or MAE to evaluate predictive accuracy.</p><p>However, in natural language explainable recommendation, it is often sufficient to predict general sentiment (positive, neutral, negative) rather than exact ratings. Given the skewed nature of most rating datasets, we recast the task as a three-class classification problem and report weighted F1 scores, which are better suited to class imbalance.</p><p>Explanation Quality. Prior work often relies on text similarity metrics like BLEU, ROUGE, METEOR, BERTScore, and MAUVE to compare generated explanations to reference reviews. These metrics, however, can penalize valid paraphrasing and overlook explanation structure. In contrast, we assess whether the generated text adheres to a structured explanation format-linking user needs with item features-implicitly ensuring fluency and relevance (see Section 5.6).</p><p>Feature Alignment. Metrics like Feature Matching Ratio (FMR), Feature Coverage Ratio (FCR), Attribute Classification Performance (ACP), Entailment, and DIV have been used to evaluate how well explanations reflect key features from reviews. These methods typically rely on sentiment toolkits that only detect explicit mentions. Our framework leverages LLMs to extract both explicit and implicit features, then measures alignment based on how well generated explanations match ground-truth user needs and item attributes.</p><p>Explanation-Rating Consistency. Some studies include human (HSC) or automated (ASC) checks to assess consistency between explanations and predicted ratings. We instead use consistency plots (Section 5.4) to visualize this relationship more intuitively, revealing trends that correlation scores may miss.</p><p>Diversity of Explanations. To measure linguistic variation, prior work has employed USR, DISTINCT, and ENTROPY.</p><p>We adopt Unique Sentence Ratio (USR) due to its simplicity, interpretability, and broad use in previous literature.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Implementation and Experimental Setup</head><p>This section outlines the technologies, models, and configurations used to implement and evaluate the FIRE framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.1">Baselines</head><p>All baseline methods were re-executed using their official implementations from GitHub, with the best hyperparameters as reported in their original papers or repositories. All implementations were based on the PyTorch framework. 3   </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.2">Technologies Used in FIRE</head><p>FIRE leverages the following tools and models:</p><p>(1) LLM Backbone: All LLM-based tasks-including feature extraction, explanation generation, and evaluation-are performed using gpt-4.1-mini (queried in April 2025).</p><p>(2) Embedding and Clustering: We use sentence embeddings from the "all-MiniLM-L6-v2" model via the Sen-tenceTransformers library 4 . These embeddings are clustered using the K-Means algorithm from the FAISS library 5 .</p><p>(3) Sentiment Prediction: Implemented using the XGBoost library 6 .</p><p>(4) Attribution Analysis: SHAP values are computed using the SHAP library to identify key contributing features for explanations 7 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.3">Feature Extraction Module</head><p>To extract interpretable features:</p><p>(1) LLM-Based Phrase Extraction: We extract user needs and item features from individual reviews in the training set using a language model. These phrases serve as the basis for downstream modeling.</p><p>(2) Embedding: Extracted phrases are encoded using "all-MiniLM-L6-v2" for semantic clustering.</p><p>(3) Clustering: User needs and item features are clustered separately using K-Means (FAISS). Clustering is run five times with different initializations, selecting the run with the lowest loss.</p><p>(4) Hyperparameter Optimization: The number of centroids (ncentroids) and iterations (niter) are tuned using Optuna 8 (300 trials per dataset). Best values are reported in Table <ref type="table" target="#tab_7">7</ref>.</p><p>(5) Feature Construction: For each user/item, we aggregate: (1) Frequency: Count of reviews mentioning a cluster.</p><p>(2) Rating Sum: Total rating score for reviews referencing that cluster.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.4">Sentiment Prediction Module</head><p>Since explainability in recommendations often requires understanding whether a user will like an item, be neutral, or dislike it, we transform the continuous rating scores into three sentiment classes. This classification provides sufficient granularity for generating meaningful and sentiment-aligned explanations. 3 https://pytorch.org/ 4 https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 5 https://github.com/facebookresearch/faiss 6 https://github.com/dmlc/xgboost 7 https://github.com/shap/shap 8 https://optuna.org/ Given its strong performance on tabular data, we employ the XGBoost classifier to predict the sentiment class for each user-item pair. To address class imbalance (notably the under-representation of negative reviews), we also explore the use of class weighting during training.</p><p>We tune the following hyperparameters using the Optuna optimization framework on validation data:</p><formula xml:id="formula_5">• n_estimators • eta • max_depth • min_child_weight • colsample_bytree • gamma</formula><p>• use_weight (a boolean flag for class weighting)</p><p>The full range of search spaces and the best-performing values for each dataset are detailed in Table <ref type="table" target="#tab_7">7</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.5">Explanation Generation Module</head><p>To implement the explanation generation module, we first compute SHAP values for each prediction in the test dataset.</p><p>These values help identify which user need or item feature clusters most strongly influenced the recommender's decision.</p><p>For each prediction, we select the top-k influential features based on the absolute SHAP values. We then determine the corresponding clusters (user needs or item features) from which these features originated.</p><p>To provide interpretable textual labels for these clusters, we retrieve the five closest phrases to each cluster centroid in embedding space. These representative phrases are then provided to an LLM, which generates a concise and meaningful cluster name.</p><p>Finally, the explanation generation prompt includes:</p><p>• The top influential features (with textual names),</p><p>• The recommender's predicted sentiment (positive, neutral, or negative),</p><p>• And the desired explanation structure (e.g., referencing both user need and item feature, with a linking rationale).</p><p>The LLM is instructed to generate concise explanations (20-30 words), incorporating no more than five key features.</p><p>This design ensures that explanations remain focused, relevant, and faithful to the recommender's decision logic.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.6">Infrastructure</head><p>The FIRE framework has four main computational components:</p><p>(1) LLM-based Tasks: The extraction of user needs and item features from ground-truth reviews, as well as the generation of explanations, is performed using the "gpt-4.1-mini" model via API. This step is cloud-based and does not require local hardware resources.</p><p>(2) Clustering: We use the FAISS library to implement the K-Means clustering algorithm, executed on an NVIDIA RTX 4090 GPU with 24GB of memory. However, FAISS also supports CPU-based execution, making it feasible to run on machines without a GPU, albeit with longer runtimes.</p><p>(3) Recommender (Sentiment Predictor): The sentiment prediction module in FIRE is implemented using the XGBoost library. While we ran our experiments on an NVIDIA RTX 4090 GPU, XGBoost supports multi-core CPU training, allowing the model to be retrained on systems without GPU support.</p><p>(4) Attribution: SHAP values were computed on CPU using the SHAP library. Since this step does not require processing the full inference dataset simultaneously, it remains practical even without GPU acceleration.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">Conclusion</head><p>In this work, we revisit the core assumptions underlying explainable recommendation and challenge the prevalent notion that user reviews alone can serve as reliable and faithful explanations. Although review-based generation methods often produce fluent and persuasive text, they frequently fail to capture the actual reasoning behind model decisions.</p><p>Drawing inspiration from Retrieval-Augmented Generation (RAG), we argue that this discrepancy is not merely stylistic but reveals a deeper need for explanations that are grounded in the true mechanics of the recommendation process.</p><p>To address this, we introduce FIRE-a lightweight yet effective framework that bridges interpretability and generation.</p><p>FIRE combines SHAP-based feature attribution with structured prompt-driven language model generation, resulting in explanations that are not only fluent and diverse, but also faithful, transparent, and closely aligned with both user needs and item characteristics.</p><p>Through extensive experiments on multiple real-world datasets, FIRE consistently outperforms strong baselines in both recommendation accuracy and explanation quality. In particular, it excels in often-overlooked but essential dimensions such as alignment, structure, faithfulness, and diversity. These findings underscore the importance of moving beyond review imitation and toward explanation models that reflect genuine decision signals within the recommender.</p><p>Looking ahead, we believe this work opens the door to a new class of natural language explainable recommender systems-ones that do not merely echo reviews but instead provide accountable, interpretable, and user-centric explanations. We hope our findings motivate future research to build on this foundation and explore how explanation quality can be more rigorously evaluated, personalized, and integrated into the user experience.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Tripadvisor</head><p>You are a professional customer experience analyst. You are given a user review of their accommodation alongside a sentiment label (positive or negative). Your job is to infer the underlying user need or expectation, and identify what feature of the accommodation addressed or failed that need. Important:</p><p>• Do NOT just describe what was mentioned (e.g., "umbrellas" or "fire alarm").</p><p>• Instead, look at why the user is mentioning that detail.</p><p>• Consider the emotional experience, expectation, or need they had.</p><p>• Then extract the accommodation feature that met or failed that deeper need.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Amazon</head><p>You are a professional film critic and audience insights analyst. You are given a user review of a movie or TV show alongside a sentiment label (positive or negative).</p><p>Your job is to infer the underlying viewer need, expectation, or desired experience, and identify the element or aspect of the movie/TV show that addressed or failed that need. Important:</p><p>• Do NOT just describe what was mentioned (e.g., "the fight scene" or "the ending").</p><p>• Instead, look at why the user is mentioning that detail. What effect did it have on them?</p><p>• Consider the emotional impact, intellectual engagement, expectation for the genre, or narrative desire they had.</p><p>• Then extract the specific movie/TV show element (like plot, character development, pacing, cinematography, acting, writing, theme, etc.) that met or failed that deeper need.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Yelp</head><p>You are a professional customer experience analyst. You are given a user review of their restaurant experience alongside a sentiment label (positive or negative). Your job is to infer the underlying user need or expectation, and identify what feature of the restaurant addressed or failed that need. Important:</p><p>• Do NOT just list surface-level details mentioned in the review (e.g., "steak" or "waiter").</p><p>• Focus on why the user is bringing up each detail-what need, emotion, or expectation lies beneath it?</p><p>• Consider the tone, implied meaning, and subtext-especially in cases of sarcasm, irony, or passive phrasing. The sentiment label may not match the literal words used.</p><p>• Your goal is to identify both (1) The deeper user need/aspect being expressed and (2) The restaurant feature that met or failed to meet that need Fig. <ref type="figure">16</ref>. Prompt templates for extracting user needs and item features from reviews across TripAdvisor, Amazon, and Yelp datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1 Feature Extraction</head><p>Figure <ref type="figure">16</ref> illustrate the prompts used to extract user needs and item features from the TripAdvisor, Amazon, and Yelp datasets, respectively. In each case, we provide the sentiment polarity (positive or negative) as input to the LLM to ensure that the extracted features reflect either high-quality aspects (in positive cases) or low-quality shortcomings (in negative cases).</p><p>A. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are a Review Relevance Analyst. Your primary task is to analyze user reviews of travel accommodations to determine their relevance to specific user needs and accommodation features. You will be given:</p><p>(1) A "review" text written by a user.</p><p>(2) A specific "user aspect/need" that a potential guest might care about.</p><p>(3) A specific "accommodation feature".</p><p>Your goal is to determine if the review text contains information, **either explicitly stated or strongly implied**, that relates to the provided "user aspect/need" and the "accommodation feature". Instructions:</p><p>(1) Evaluate the "user aspect/need":</p><p>• Respond with "Y" (Yes) if the review's content directly discusses or clearly implies a concern, or experience related to the given user aspect/need.</p><p>• Respond with "N" (No) if the review's content does not relate to the given user aspect/need, even implicitly.</p><p>(2) Evaluate the "accommodation feature":</p><p>• Respond with "Y" (Yes) if the review's content directly describes, critiques, or praises the given accommodation feature or something intrinsically linked to it.</p><p>• Respond with "N" (No) if the review's content does not mention or allude to the given accommodation feature.</p><p>(3) For both evaluations, provide a concise, one-sentence explanation justifying your "Y" or "N" decision, referencing the review content where possible.</p><p>Fig. <ref type="figure">17</ref>. Prompt template used for checking the alignment of the generated explanation with the ground-truth user need and item feature on the TripAdvisor dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are a Media Review Relevance Analyst. Your primary task is to analyze user reviews of movies and TV shows to determine their relevance to specific viewr needs/expectations and specific movie/show features. You will be given:</p><p>(1) A "review" text written by a user about a movie or TV show.</p><p>(2) A specific "viewer aspect/need" that a potential viewer might care about (e.g., looking for something funny, thought-provoking, character-driven).</p><p>(3) A specific "movie/show feature" (e.g., plot, acting, cinematography, soundtrack).</p><p>Your goal is to determine if the review text contains information, either explicitly stated or strongly implied, that relates to the provided "viewer aspect/need" and the "movie/show feature". Instructions:</p><p>(1) Evaluate the "viewer aspect/need":</p><p>• Respond with "Y" (Yes) if the review's content directly discusses or clearly implies a concern, preference, experience, or outcome related to the given viewer aspect/need.</p><p>• Respond with "N" (No) if the review's content does not relate to the given viewer aspect/need, even implicitly.</p><p>(2) Evaluate the "movie/show feature":</p><p>• Respond with "Y" (Yes) if the review's content directly describes, critiques, or praises the given movie/show feature or something intrinsically linked to it.</p><p>• Respond with "N" (No) if the review's content does not mention or allude to the given movie/show feature.</p><p>(3) For both evaluations, provide a concise, one-sentence explanation justifying your "Y" or "N" decision, referencing the review content where possible. (4) Return your final answer strictly in JSON format as shown in the examples.</p><p>Fig. <ref type="figure" target="#fig_4">18</ref>. Prompt template used for checking the alignment of the generated explanation with the ground-truth user need and item feature on the Amazon dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.4 Cluster Naming</head><p>To map each user need or item feature cluster to an interpretable feature name, we retrieve the five nearest user needs or item features to the center of that cluster and prompt the LLM to assign a representative name. Figures <ref type="figure" target="#fig_2">23 and 24</ref> illustrate the prompts used for this purpose.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.5 Explanation Generation</head><p>To generate explanations within the FIRE framework, we first identify the most influential features contributing to the recommender's decision and assign interpretable names to them. The explanation is then generated by conditioning the</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are a Review Relevance Analyst. Your primary task is to analyze user reviews of restaurants to determine their relevance to specific user needs and restaurant features.</p><p>You will be given:</p><p>(1) A "review" text written by a user.</p><p>(2) A specific "user aspect/need" that a potential diner might care about.</p><p>(3) A specific "restaurant feature".</p><p>Your goal is to determine if the review text contains information, either explicitly stated or strongly implied, that relates to the provided "user aspect/need" and the "restaurant feature". Instructions:</p><p>(1) Evaluate the "user aspect/need":</p><p>• Respond with "Y" (Yes) if the review's content directly discusses or clearly implies a concern, preference, or experience related to the given user aspect/need.</p><p>• Respond with "N" (No) if the review's content does not relate to the given user aspect/need, even implicitly.</p><p>(2) Evaluate the "restaurant feature":</p><p>• Respond with "Y" (Yes) if the review's content directly describes, critiques, or praises the given restaurant feature or something intrinsically linked to it.</p><p>• Respond with "N" (No) if the review's content does not mention or allude to the given restaurant feature.</p><p>(3) For both evaluations, provide a concise, one-sentence explanation justifying your "Y" or "N" decision, referencing the review content where possible.</p><p>(4) Return your final answer strictly in JSON format as shown in the examples.</p><p>Fig. <ref type="figure" target="#fig_5">19</ref>. Prompt template used for checking the alignment of the generated explanation with the ground-truth user need and item feature on the Yelp dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are an AI assistant acting as a meticulous evaluator of recommendation explanations. Your task is to analyze textual explanations accompanying accommodation recommendations. You need to determine if the explanation clearly and logically connects a specific feature of the accommodation to an explicitly stated user need, and whether this connection aligns with the user's sentiment towards the recommendation. Core Principle: A high-quality explanation must:</p><p>(1) Explicitly mention at least one user need.</p><p>(2) Explicitly mention at least one accommodation feature.</p><p>(3) Clearly articulate how the feature addresses (or fails to address) the need.</p><p>(4) This connection must be consistent with the user's sentiment:</p><p>• Positive Sentiment: The explanation should show how the feature fulfills the need.</p><p>• Negative Sentiment: The explanation should show how the feature makes the accommodation unsuitable given the need (or highlights a mismatch).</p><p>• Neutral Sentiment: The explanation should clarify why the feature might or might not be suitable or interesting concerning the need.</p><p>Input: You will receive the following information for each evaluation:</p><p>• 'explanation': (String) The textual explanation provided for the recommendation.</p><p>• 'sentiment': (String) The user's sentiment towards the recommended accommodation ("positive", "negative", or "neutral").</p><p>Instructions:</p><p>(1) Carefully read the 'explanation'.</p><p>(2) Identify the user's need as explicitly stated within the 'explanation'. Do not infer needs not mentioned.</p><p>(3) Identify the accommodation's features as explicitly stated within the 'explanation'. Do not infer features not mentioned. ( <ref type="formula">4</ref>) Analyze the connection (the reasoning) presented in the 'explanation' linking the need and feature.</p><p>(5) Assess if this connection is logical and consistent with the given 'sentiment'. <ref type="bibr" target="#b5">(6)</ref> Format your output strictly as a JSON object.</p><p>Provide your analysis in a JSON object containing these keys:</p><p>• 'need': (String) The user's need explicitly mentioned in the 'explanation'. Return an empty string ('""') if no need is explicitly stated.</p><p>• 'features': (String) The accommodation's features explicitly mentioned in the 'explanation'. Return an empty string ('""') if no features are explicitly stated.</p><p>• 'reason': (String) A brief analysis of how the explanation connects (or fails to connect) the need and features, and whether this connection is consistent with the 'sentiment'. Explain why if the connection is unclear, missing, or inconsistent.</p><p>• 'verdict': (String) A final judgment:</p><p>-'"Y"' (Yes): If the explanation clearly states a 'need', 'features', provides an explicit connection between them, AND this connection is logical and consistent with the 'sentiment'. -'"N"' (No): If *any* of the following are true: no need is stated, no features are stated, the connection is missing/unclear, OR the connection is inconsistent with the 'sentiment'. language model on these influential features, the predicted sentiment from the recommender, and the desired structural characteristics of a good explanation. The prompt templates used for this generation process are illustrated in Figure <ref type="figure" target="#fig_3">25</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Tripadvisor</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are what user's need and care about in choosing accommodation. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . . . }</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Amazon</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are what viewer's need and care about in choosing movie/TV show. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>}</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Yelp</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are what diner's need and care about in choosing restaurant. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . . . } Fig. <ref type="figure" target="#fig_1">23</ref>. Prompts used to assign interpretable names to user need clusters on the TripAdvisor, Amazon, and Yelp datasets, respectively.</p><p>Manuscript submitted to ACM</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Tripadvisor</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are features and characteristics of travel accommodation. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . . . }</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Amazon</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are features and characteristics of movie/TV show. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . . . }</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Yelp</head><p>You are an expert in language and categorization. I have a dictionary with keys representing index and value group of five phrases that represent the core meaning of a larger cluster of text features. These text features are what diner's need and care about in choosing restaurant. Please analyze these five phrases and provide a short, descriptive, and meaningful name for the cluster they represent. The name should be descriptive and detailed while capture the main theme or topic implied by the phrases. Please output in Json format as below: Output: { 0: 0's name, 1: 1's name, . . . } Fig. <ref type="figure" target="#fig_2">24</ref>. Prompts used to assign interpretable names to item feature clusters on the TripAdvisor, Amazon, and Yelp datasets, respectively.</p><p>Manuscript submitted to ACM</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. Limitations of standard metrics in evaluating recommendation explanations. (Left) Lexical overlap metrics such as BLEU, ROUGE, and METEOR penalize valid paraphrases despite preserving meaning. (Right) Semantic similarity metrics like BERTScore capture token-level semantic similarity but overlook syntactic structure and reasoning coherence.</figDesc><graphic coords="4,153.00,95.04,342.71,112.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 3 .</head><label>3</label><figDesc>Fig. 3. Overview of the FIRE framework. The pipeline includes three main stages: (a) extraction of interpretable user and item features using a pretrained language model, (b) sentiment classification using a recommendation model, and (c) explanation generation based on SHAP feature attributions and a pretrained language model.</figDesc><graphic coords="7,116.28,95.04,342.72,192.78" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 4 .</head><label>4</label><figDesc>Fig. 4. Examples of explanations generated by FIRE, categorized into positive, neutral, and negative sentiment classes.</figDesc><graphic coords="11,116.28,95.04,342.73,258.69" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 5 .</head><label>5</label><figDesc>Fig. 5. Sentiment consistency of generated explanations vs. predicted ratings on the TripAdvisor dataset.</figDesc><graphic coords="11,116.28,401.97,342.71,155.20" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 8 .</head><label>8</label><figDesc>Fig. 8. Examples comparing outputs of different models to ground-truth reviews, highlighting how generated explanations often fail to mention the user's need or relevant item features, even implicitly.</figDesc><graphic coords="13,116.28,95.04,342.73,287.48" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 9 .</head><label>9</label><figDesc>Fig. 9. Example outputs from CIER on the TripAdvisor dataset showing how review-generation-based methods often fail to follow the desired explanation format.</figDesc><graphic coords="14,153.00,95.04,342.72,192.78" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Fig. 12 .</head><label>12</label><figDesc>Fig.12. Results of explanation format analysis on the Yelp dataset. Outputs from recent explainable recommender models largely fail to meet the structural criteria for proper explanations.</figDesc><graphic coords="16,153.00,95.04,342.70,143.26" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Fig. 13 .</head><label>13</label><figDesc>Fig. 13. Examples of failure cases in FIRE-generated explanations on the Tripadvisor dataset. Top: Explanations lacking item features. Center: Explanations lacking user needs. Bottom: Explanations where the user needs and item features are not meaningfully connected.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Fig. 15 .</head><label>15</label><figDesc>Fig. 15. Human evaluation scores for extraction, alignment, and structure tasks show a strong skew toward high ratings, reflecting overall positive assessment of the LLM.</figDesc><graphic coords="20,153.00,95.04,342.70,86.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Fig. 20 .</head><label>20</label><figDesc>Fig. 20. Prompt template used to verify the structural correctness of generated explanations for the TripAdvisor dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="2,153.00,95.04,342.72,384.73" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="12,153.00,95.04,342.71,154.95" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="12,153.00,288.66,342.72,156.17" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="15,116.28,278.17,342.70,148.33" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="18,153.00,95.04,342.73,297.17" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 .</head><label>2</label><figDesc>Dataset Statistics</figDesc><table><row><cell>Metric</cell><cell>Amazon</cell><cell>Yelp</cell><cell>TripAdvisor</cell></row><row><cell>#Users</cell><cell>7506</cell><cell>27147</cell><cell>9765</cell></row><row><cell>#Products</cell><cell>7360</cell><cell>20266</cell><cell>6280</cell></row><row><cell>#Records</cell><cell>441783</cell><cell>1293247</cell><cell>320203</cell></row><row><cell>Records/User</cell><cell>58.86</cell><cell>47.64</cell><cell>32.77</cell></row><row><cell>Records/Product</cell><cell>60.02</cell><cell>63.81</cell><cell>50.96</cell></row><row><cell>Average Review Length</cell><cell>14.05</cell><cell>12.23</cell><cell>12.98</cell></row><row><cell cols="3">Class Ratio (Pos:Neu:Neg) 4.8:1.3:1 5.4:1.1:1</cell><cell>14.7:3.1:1</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 .</head><label>3</label><figDesc>F1-scores of different models across three datasetsThese findings highlight an important insight: high-quality recommendation performance can be achieved without relying on complex, token-based dense embeddings tightly embedded within deep model architectures. Instead, FIRE reaches competitive accuracy by leveraging interpretable features and a lightweight XGBoost model. This design allows</figDesc><table><row><cell>Model</cell><cell cols="3">TripAdvisor Amazon Yelp</cell></row><row><cell>PETER</cell><cell>0.73</cell><cell>0.71</cell><cell>0.63</cell></row><row><cell>PEPLER (MF)</cell><cell>0.31</cell><cell>0.58</cell><cell>0.47</cell></row><row><cell>PEPLER (MLP)</cell><cell>0.74</cell><cell>0.71</cell><cell>0.62</cell></row><row><cell>PRAG</cell><cell>0.71</cell><cell>0.72</cell><cell>0.63</cell></row><row><cell>ERRA</cell><cell>0.74</cell><cell>0.72</cell><cell>0.63</cell></row><row><cell>CIER</cell><cell>0.74</cell><cell>0.70</cell><cell>0.62</cell></row><row><cell>FIRE</cell><cell>0.73</cell><cell>0.72</cell><cell>0.65</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 .</head><label>4</label><figDesc>Alignment scores of user needs and item features across three datasets.</figDesc><table><row><cell>TripAdvisor</cell><cell>𝑆 𝑢 𝑆 𝑖</cell><cell>0.31 0.14</cell><cell>0.32 0.16</cell><cell>0.3 0.15</cell><cell>0.46 0.22</cell><cell>0.31 0.15</cell><cell>0.32 0.16</cell><cell>0.56 0.24</cell></row><row><cell>Amazon</cell><cell>𝑆 𝑢 𝑆 𝑖</cell><cell>0.24 0.13</cell><cell>0.28 0.20</cell><cell>0.31 0.18</cell><cell>0.48 0.36</cell><cell>0.25 0.14</cell><cell>0.32 0.18</cell><cell>0.57 0.50</cell></row><row><cell>Yelp</cell><cell>𝑆 𝑢 𝑆 𝑖</cell><cell>0.35 0.17</cell><cell>0.31 0.15</cell><cell>0.37 0.19</cell><cell>0.50 0.29</cell><cell>0.35 0.17</cell><cell>0.36 0.18</cell><cell>0.50 0.26</cell></row></table><note>PETER PEPLER(MF) PEPLER(MLP) PRAG ERRA CIER FIRE</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 5 .</head><label>5</label><figDesc>USR scores across different models and datasets.</figDesc><table><row><cell>Model</cell><cell cols="3">TripAdvisor Amazon Yelp</cell></row><row><cell>Dataset</cell><cell>0.98</cell><cell>0.98</cell><cell>0.98</cell></row><row><cell>PETER</cell><cell>0.08</cell><cell>0.31</cell><cell>0.10</cell></row><row><cell>PEPLER (MF)</cell><cell>0.21</cell><cell>0.32</cell><cell>0.09</cell></row><row><cell>PEPLER (MLP)</cell><cell>0.19</cell><cell>0.39</cell><cell>0.21</cell></row><row><cell>PRAG</cell><cell>0.97</cell><cell>0.91</cell><cell>0.77</cell></row><row><cell>ERRA</cell><cell>0.05</cell><cell>0.15</cell><cell>0.10</cell></row><row><cell>CIER</cell><cell>0.30</cell><cell>0.53</cell><cell>0.30</cell></row><row><cell>FIRE</cell><cell>0.99</cell><cell>0.91</cell><cell>0.95</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 6 .</head><label>6</label><figDesc>Mean and standard deviation of human evaluation scores for each task. Scores range from 1 (poor) to 5 (excellent), based on the perceived success of the LLM.</figDesc><table><row><cell></cell><cell cols="3">Extraction Alignment Structure</cell></row><row><cell>Mean</cell><cell>4.1</cell><cell>4.5</cell><cell>4.3</cell></row><row><cell>STD</cell><cell>1.1</cell><cell>0.8</cell><cell>1.0</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 7 .</head><label>7</label><figDesc>Hyperparameter ranges and best values for TripAdvisor(TA), Amazon(AMZ), and Yelp datasets.</figDesc><table><row><cell>Param</cell><cell cols="6">TA Range AMZ Range YELP Range TA Best AMZ Best YELP Best</cell></row><row><cell>use_weight</cell><cell>{y, n}</cell><cell>{y, n}</cell><cell>{y, n}</cell><cell>y</cell><cell>y</cell><cell>y</cell></row><row><cell>n_estimators</cell><cell>100-2000</cell><cell>100-2000</cell><cell>100-2000</cell><cell>1000</cell><cell>1100</cell><cell>1900</cell></row><row><cell>eta</cell><cell>0.05-0.5</cell><cell>0.05-0.5</cell><cell>0.05-0.5</cell><cell>0.05</cell><cell>0.05</cell><cell>0.05</cell></row><row><cell>max_depth</cell><cell>5-20</cell><cell>5-20</cell><cell>5-20</cell><cell>16</cell><cell>12</cell><cell>19</cell></row><row><cell>min_child_weight</cell><cell>1-10</cell><cell>1-10</cell><cell>1-10</cell><cell>10</cell><cell>10</cell><cell>9</cell></row><row><cell>colsample_bytree</cell><cell>0.5-1.0</cell><cell>0.5-1.0</cell><cell>0.5-1.0</cell><cell>0.65</cell><cell>0.7</cell><cell>0.55</cell></row><row><cell>gamma</cell><cell>0-5</cell><cell>0-5</cell><cell>0-5</cell><cell>0.7</cell><cell>0.2</cell><cell>0.95</cell></row><row><cell>ncentroids</cell><cell>100-500</cell><cell>20-500</cell><cell>20-500</cell><cell>52</cell><cell>90</cell><cell>90</cell></row><row><cell>niter</cell><cell cols="2">{25, 50, 100} {25, 50, 100}</cell><cell>{25, 50, 100}</cell><cell>100</cell><cell>25</cell><cell>50</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head></head><label></label><figDesc>2 Alignment ScoringFigures 17,<ref type="bibr" target="#b17">18</ref>, and 19 illustrate the prompt templates used for assessing whether a user need and item feature are reflected in the generated explanations-even if mentioned implicitly. These prompts are a key component of our alignment scoring mechanism, enabling us to evaluate how well the generated explanations correspond to the ground-truth needs and features identified from the dataset.</figDesc><table><row><cell>A.3 Structure Verification</cell></row><row><cell>Figures 20, 21, and 22 illustrate the prompts used to verify the structural correctness of generated explanations for the</cell></row><row><cell>TripAdvisor, Amazon, and Yelp datasets, respectively.</cell></row></table><note>Manuscript submitted to ACM</note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">Manuscript submitted to ACM</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">We use 'gpt-4.1-mini' (accessed April 2025) due to its favorable cost-performance ratio and desirable human evaluation results (see Section 5.9). Other LLMs can be substituted with prompts; see Appendix A.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">https://github.com/lileipisces/PETER/tree/master Manuscript submitted to ACM</note>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Prompt Design and Utilization</head><p>In this section, we provide the details of the prompts designed for various tasks involving LLMs throughout this study.</p><p>We utilized LLMs in the following five key components <ref type="bibr" target="#b0">(1)</ref> Feature Extraction: To extract user needs and item features from individual reviews in the dataset.</p><p>(2) Alignment Scoring: To compute alignment scores between the generated explanations and the correct user needs/item features based on the ground-truth data.</p><p>(3) Structure Verification: To assess whether the generated explanations follow the desired structural format (i.e., contain both user need and item feature linked through reasoning).</p><p>(4) Cluster Naming: To generate meaningful, human-readable names for each cluster of user needs or item features, based on representative phrases.</p><p>(5) Explanation Generation: To generate the final explanation sentence by conditioning on the top influential features (via SHAP), the predicted sentiment, and the desired format.</p><p>In the following subsections, we include examples of these prompts along with their role in the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are an AI assistant acting as a meticulous evaluator of recommendation explanations. Your task is to analyze textual explanations accompanying movie/TV show recommendations. You need to determine if the explanation clearly and logically connects a specific feature/characteristic of the recommended item (movie/TV show) to an explicitly stated user/viewer preference, and whether this connection aligns with the user's sentiment towards the recommendation. Core Principle: A high-quality explanation must:</p><p>(1) Explicitly mention at least one user/viewer preference (e.g., liking a genre, actor, director; wanting something funny, thought-provoking, visually stunning, short, family-friendly, ...). ( <ref type="formula">2</ref>) Explicitly mention at least one item feature/characteristic (e.g., genre, actor, director, plot element, tone, visual style, runtime, rating, ...).</p><p>(3) Clearly articulate how the feature addresses (or fails to address) the preference. (4) This connection must be logical and consistent with the user's sentiment:</p><p>• Positive Sentiment: The explanation should show how the feature fulfills the preference.</p><p>• Negative Sentiment: The explanation should show how the feature makes the item unsuitable given the preference (or highlights a mismatch).</p><p>• Neutral Sentiment: The explanation should clarify why the feature might or might not be suitable or interesting concerning the preference.</p><p>Input: You will receive the following information for each evaluation:</p><p>• 'explanation': (String) The textual explanation provided for the recommendation.</p><p>• 'sentiment': (String) The user's sentiment towards the recommended movie/TV show ("positive", "negative", or "neutral").</p><p>Instructions:</p><p>(1) Carefully read the 'explanation'.</p><p>(2) Identify the viewer's preference as explicitly stated within the 'explanation'. Do not infer preferences not mentioned.</p><p>(3) Identify the item's (movie/TV show's) features/characteristics as explicitly stated within the 'explanation'. Do not infer features not mentioned. ( <ref type="formula">4</ref>) Analyze the connection (the reasoning) presented in the 'explanation' linking the preference and feature.</p><p>(5) Assess if this connection is logical and consistent with the given 'sentiment'. ( <ref type="formula">6</ref>) Format your output strictly as a JSON object.</p><p>Provide your analysis in a JSON object containing these keys:</p><p>• 'preference': (String) The viewer's preference explicitly mentioned in the 'explanation'. Return an empty string ('""') if no preference is explicitly stated.</p><p>• 'features': (String) The item's (movie/TV show's) features/characteristics explicitly mentioned in the 'explanation'. Return an empty string ('""') if no features are explicitly stated.</p><p>• 'reason': (String) A brief analysis of how the explanation connects (or fails to connect) the preference and features, and whether this connection is logical and consistent with the 'sentiment'. Explain why if the connection is unclear, missing, illogical, or inconsistent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>• 'verdict': (String) A final judgment:</head><p>-'"Y"' (Yes): If the explanation clearly states a 'preference', 'features', provides an explicit and logical connection between them, AND this connection is consistent with the 'sentiment'. -'"N"' (No): If *any* of the following are true: no preference is stated, no features are stated, the connection is missing/unclear/illogical, OR the connection is inconsistent with the 'sentiment'. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instruction</head><p>You are an AI assistant acting as a meticulous evaluator of recommendation explanations. Your task is to analyze textual explanations accompanying restaurant recommendations. You need to determine if the explanation clearly and logically connects a specific feature of the restaurant to an explicitly stated user need, and whether this connection aligns with the user's sentiment towards the recommendation. Core Principle: A high-quality explanation must:</p><p>(1) Explicitly mention at least one user need.</p><p>(2) Explicitly mention at least one restaurant feature.</p><p>(3) Clearly articulate how the feature addresses (or fails to address) the need.</p><p>(4) The connection must be consistent with the user's sentiment:</p><p>• Positive Sentiment: The explanation should show how the feature fulfills the need.</p><p>• Negative Sentiment: The explanation should show how the feature makes the restaurant unsuitable given the need (or highlights a mismatch).</p><p>• Neutral Sentiment: The explanation should clarify why the feature might or might not be suitable or interesting concerning the need.</p><p>Input:</p><p>You will receive the following information for each evaluation:</p><p>• 'explanation': (String) The textual explanation provided for the recommendation.</p><p>• 'sentiment': (String) The user's sentiment towards the recommended restaurant ("positive", "negative", or "neutral").</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Instructions</head><p>(1) Carefully read the explanation.</p><p>(2) Identify the user's need as explicitly stated. Do not infer unstated needs.</p><p>(3) Identify the restaurant features as explicitly stated. Do not infer unstated features. ( <ref type="formula">4</ref>) Analyze the connection (reasoning) linking the need and features.</p><p>(5) Assess if this connection is logical and consistent with the sentiment. ( <ref type="formula">6</ref>) Format your output strictly as a JSON object.</p><p>Provide your analysis in a JSON object containing these keys:</p><p>• 'preference': (String) The diner's preference explicitly mentioned in the 'explanation'. Return an empty string ('""') if no preference is explicitly stated.</p><p>• 'features': (String) The restaurant's features/characteristics explicitly mentioned in the 'explanation'. Return an empty string ('""') if no features are explicitly stated.</p><p>• 'reason': (String) A brief analysis of how the explanation connects (or fails to connect) the preference and features, and whether this connection is logical and consistent with the 'sentiment'. Explain why if the connection is unclear, missing, illogical, or inconsistent.</p><p>• 'verdict': (String) A final judgment:</p><p>-'"Y"' (Yes): If the explanation clearly states a 'preference', 'features', provides an explicit and logical connection between them, AND this connection is consistent with the 'sentiment'. -'"N"' (No): If *any* of the following are true: no preference is stated, no features are stated, the connection is missing/unclear/illogical, OR the connection is inconsistent with the 'sentiment'. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Tripadvisor</head><p>You are a Customer Service Specialist generating brief, natural-sounding explanations for accommodation recommendations. An AI model predicts user sentiment (positive, neutral, or dislike) based on how well accommodation features match user needs. Your task is to craft a concise justification for the model's prediction. Input (JSON):</p><p>(1) prediction: The model's sentiment ("positive", "negative", "neutral").</p><p>(2) key_features: Up to 5 key user needs or accommodation attributes influencing the prediction (human-readable strings).</p><p>Output (JSON): A single key, explanation, with a string value (max 20-30 words). You don't need to use all provided features. Explanation Guidelines:</p><p>(1) User-Centric: Mention at least one user need/preference.</p><p>(2) Item-Specific: Refer to at least one accommodation feature.</p><p>(3) Clear Connection: Explain how the feature addresses (or fails to address) the user's need, aligning with the prediction. (4) Tone Consistency:</p><p>• Positive: Enthusiastic and encouraging, highlighting why it's a great match.</p><p>• Negative: Polite but clear, indicating why it's not suitable by pointing out mismatches or missing features.</p><p>• Neutral: Balanced and objective, noting mixed aspects or features that don't strongly align either way.</p><p>Strive for natural, helpful, and concise explanations. "</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Amazon</head><p>You are a Recommendation Specialist generating brief, natural-sounding explanations for movie or TV show recommendations. An AI model predicts user sentiment (positive, neutral, or dislike) based on how well the movie/TV show's attributes match user preferences. Your task is to craft a concise justification for the model's prediction. Input (JSON):</p><p>(1) prediction: The model's sentiment ("positive", "negative", "neutral").</p><p>(2) key_features: Up to 5 key user preferences or movie/TV show attributes influencing the prediction (human-readable strings).</p><p>Output (JSON): A single key, explanation, with a string value (max 20-30 words). You don't need to use all provided features. Explanation Guidelines:</p><p>(1) User-Centric: Mention at least one user preference.</p><p>(2) Item-Specific: Refer to at least one attribute of the movie/TV show.</p><p>(3) Clear Connection: Explain how the attribute addresses (or fails to address) the user's preference, aligning with the prediction. (4) Tone Consistency:</p><p>• Positive: Enthusiastic and encouraging, highlighting why it's a great match.</p><p>• Negative: Polite but clear, indicating why it's not suitable by pointing out mismatches or missing attributes.</p><p>• Neutral: Balanced and objective, noting mixed aspects or attributes that don't strongly align either way.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Yelp</head><p>You are a Recommendation Specialist generating brief, natural-sounding explanations for restaurant recommendations. An AI model predicts user sentiment (positive, neutral, or dislike) based on how well the restaurant's attributes match user preferences.Your task is to craft a concise justification for the model's prediction. Input (JSON):</p><p>• prediction: The model's sentiment ("positive", "negative", "neutral").</p><p>• key_features: Up to 5 key user preferences or restaurant attributes influencing the prediction (these will be the string names of the features).</p><p>Output (JSON): A single key, explanation, with a string value (max 20-30 words). You don't need to use all provided features. Explanation Guidelines:</p><p>(1) User-Centric: Mention at least one user preference.</p><p>(2) Item-Specific: Refer to at least one attribute of the restaurant.</p><p>(3) Clear Connection: Explain how the attribute addresses (or fails to address) the user's preference, aligning with the prediction. (4) Tone Consistency:</p><p>• Positive: Enthusiastic and encouraging, highlighting why it's a great match.</p><p>• Negative: Polite but clear, indicating why it's not suitable by pointing out mismatches or missing attributes.</p><p>• Neutral: Balanced and objective, noting mixed aspects or attributes that don't strongly align either way.</p><p>Strive for natural, helpful, and concise explanations. </p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">An explainable recommendation algorithm based on content summarization and linear attention</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haolin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhan</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fengyu</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">630</biblScope>
+			<biblScope unit="page">129692</biblScope>
+			<date type="published" when="2025">2025. 2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Towards Self-Explaining Sequence-Aware Recommendation</title>
+		<author>
+			<persName><forename type="first">Alejandro</forename><surname>Ariza-Casabona</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Salamó</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ludovico</forename><surname>Boratto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gianni</forename><surname>Fenu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM Conference on Recommender Systems</title>
+				<meeting>the 17th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="904" to="911" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments</title>
+		<author>
+			<persName><forename type="first">Satanjeev</forename><surname>Banerjee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alon</forename><surname>Lavie</surname></persName>
+		</author>
+		<ptr target="https://aclanthology.org/W05-0909/" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine Translation and/or Summarization</title>
+				<editor>
+			<persName><forename type="first">Clare</forename><surname>Lin</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Voss</surname></persName>
+		</editor>
+		<meeting>the ACL Workshop on Intrinsic and Extrinsic Evaluation Measures for Machine Translation and/or Summarization<address><addrLine>Jade Goldstein, Alon Lavie; Ann Arbor, Michigan</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="page" from="65" to="72" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">XGBoost: A Scalable Tree Boosting System</title>
+		<author>
+			<persName><forename type="first">Tianqi</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Guestrin</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2939672.2939785</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining<address><addrLine>San Francisco, California, USA; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="785" to="794" />
+		</imprint>
+	</monogr>
+	<note>KDD &apos;16)</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation with Personalized Review Retrieval and Aspect Learning</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wensheng</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingyang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kezhong</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Liao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics</title>
+				<meeting>the 61st Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<publisher>Long Papers</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="51" to="64" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Explaining by removing: A unified framework for model explanation</title>
+		<author>
+			<persName><forename type="first">Ian</forename><surname>Covert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Scott</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Su-In</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Machine Learning Research</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="1" to="90" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Learning to generate product reviews from attributes</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaohan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Furu</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Lapata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">15th EACL 2017 Software Demonstrations</title>
+				<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="623" to="632" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Comprehend Then Predict: Prompting Large Language Models for Recommendation with Semantic and Collaborative Data</title>
+		<author>
+			<persName><forename type="first">Zhiang</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liya</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingyuan</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhihua</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Wu</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3716499</idno>
+		<imprint>
+			<date type="published" when="2025">2025. 2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Ragas: Automated evaluation of retrieval augmented generation</title>
+		<author>
+			<persName><forename type="first">Shahul</forename><surname>Es</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jithin</forename><surname>James</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luis</forename><surname>Espinosa Anke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Steven</forename><surname>Schockaert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations</title>
+				<meeting>the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="150" to="158" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Recommendation as language processing (rlp): A unified pretrain, personalized prompt &amp; predict paradigm (p5)</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuchang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th ACM conference on recommender systems</title>
+				<meeting>the 16th ACM conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="299" to="315" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">VIP5: Towards Multimodal Foundation Models for Recommendation</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juntao</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuchang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Findings of the Association for Computational Linguistics: EMNLP 2023</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="9606" to="9620" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Rexplug: Explainable recommendation using plug-and-play language model</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Deepesh</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shirish</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Shevade</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 44th international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="81" to="91" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">IReGNN: Implicit review-enhanced graph neural network for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Qingbo</forename><surname>Hao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chundong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingyuan</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenguang</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge-Based Systems</title>
+		<imprint>
+			<biblScope unit="page">113113</biblScope>
+			<date type="published" when="2025">2025. 2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">More than a Feeling: Accuracy and Application of Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">Jochen</forename><surname>Hartmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Heitmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Siebert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christina</forename><surname>Schamp</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ijresmar.2022.05.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Research in Marketing</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="75" to="87" />
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Learning to Generate Move-by-Move Commentary for Chess Games from Large-Scale Social Forum Data</title>
+		<author>
+			<persName><forename type="first">Harsh</forename><surname>Jhamtani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Varun</forename><surname>Gangal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eduard</forename><surname>Hovy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Graham</forename><surname>Neubig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Taylor</forename><surname>Berg-Kirkpatrick</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/P18-1154</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics</title>
+				<editor>
+			<persName><forename type="first">Iryna</forename><surname>Gurevych</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yusuke</forename><surname>Miyao</surname></persName>
+		</editor>
+		<meeting>the 56th Annual Meeting of the Association for Computational Linguistics<address><addrLine>Melbourne, Australia</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="1661" to="1671" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">BERT meets shapley: Extending SHAP explanations to transformer-based classifiers</title>
+		<author>
+			<persName><forename type="first">Enja</forename><surname>Kokalj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Blaž</forename><surname>Škrlj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nada</forename><surname>Lavrač</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Senja</forename><surname>Pollak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marko</forename><surname>Robnik-Šikonja</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the EACL hackashop on news media content analysis and automated report generation</title>
+				<meeting>the EACL hackashop on news media content analysis and automated report generation</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="16" to="21" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">A Diversity-Promoting Objective Function for Neural Conversation Models</title>
+		<author>
+			<persName><forename type="first">Jiwei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michel</forename><surname>Galley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Brockett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William B</forename><surname>Dolan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</title>
+				<meeting>the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="110" to="119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Generate neural template explanations for recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 29th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="755" to="764" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Personalized Transformer for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing</title>
+				<meeting>the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing</meeting>
+		<imprint>
+			<publisher>Long Papers</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="4947" to="4957" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Personalized prompt learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="1" to="26" />
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Neural rating regression with abstractive tips generation for recommendation</title>
+		<author>
+			<persName><forename type="first">Piji</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lidong</forename><surname>Bing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wai</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 40th International ACM SIGIR conference on Research and Development in Information Retrieval</title>
+				<meeting>the 40th International ACM SIGIR conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="345" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Incorporating Review-missing Interactions for Generative Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Xi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohe</forename><surname>Bo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st International Conference on Computational Linguistics</title>
+				<meeting>the 31st International Conference on Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+			<biblScope unit="page" from="7870" to="7880" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">ALERT: An LLM-powered Benchmark for Automatic Evaluation of Recommendation Explanations</title>
+		<author>
+			<persName><forename type="first">Yichuan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenwei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianyi</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yifan</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyumin</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaize</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhengyang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhihan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingbo</forename><surname>Shang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xian</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trishul</forename><surname>Chilimbi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the NAACL Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>the NAACL Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Aspect-enhanced explainable recommendation with multi-modal contrastive learning</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiwei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingyang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kezhong</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Intelligent Systems and Technology</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1" to="24" />
+			<date type="published" when="2025">2025. 2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">ROUGE: A Package for Automatic Evaluation of Summaries</title>
+		<author>
+			<persName><forename type="first">Chin-Yew</forename><surname>Lin</surname></persName>
+		</author>
+		<ptr target="https://aclanthology.org/W04-1013/" />
+	</analytic>
+	<monogr>
+		<title level="m">Text Summarization Branches Out</title>
+				<meeting><address><addrLine>Barcelona, Spain</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="74" to="81" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Coherency Improved Explainable Recommendation via Large Language Model</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruixing</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weihai</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mo</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoming</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 39th AAAI Conference on Artificial Intelligence (AAAI). Association for the Advancement of Artificial Intelligence</title>
+				<meeting>the 39th AAAI Conference on Artificial Intelligence (AAAI). Association for the Advancement of Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2025">2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">From local explanations to global understanding with explainable AI for trees</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Scott</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriel</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hugh</forename><surname>Erion</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jordan</forename><forename type="middle">M</forename><surname>Degrave</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bala</forename><surname>Prutkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ronit</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonathan</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nisha</forename><surname>Himmelfarb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Su-In</forename><surname>Bansal</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="2522" to="5839" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">A Unified Approach to Interpreting Model Predictions</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Scott</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Su-In</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><forename type="middle">I</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><forename type="middle">V</forename><surname>Guyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Luxburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wallach</surname></persName>
+		</author>
+		<ptr target="http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+				<editor>
+			<persName><forename type="first">S</forename><surname>Fergus</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Vishwanathan</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="4765" to="4774" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM conference on Recommender systems</title>
+				<meeting>the 7th ACM conference on Recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">GPUTreeShap: massively parallel exact calculation of SHAP scores for tree ensembles</title>
+		<author>
+			<persName><forename type="first">Rory</forename><surname>Mitchell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eibe</forename><surname>Frank</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Holmes</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PeerJ Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">e880</biblScope>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Bleu: a method for automatic evaluation of machine translation</title>
+		<author>
+			<persName><forename type="first">Kishore</forename><surname>Papineni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Salim</forename><surname>Roukos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Todd</forename><surname>Ward</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Jing</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 40th annual meeting of the Association for Computational Linguistics</title>
+				<meeting>the 40th annual meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="311" to="318" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers</title>
+		<author>
+			<persName><forename type="first">Krishna</forename><surname>Pillutla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Swabha</forename><surname>Swayamdipta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rowan</forename><surname>Zellers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Thickstun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sean</forename><surname>Welleck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yejin</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zaid</forename><surname>Harchaoui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NeurIPS</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">The Problem of Coherence in Natural Language Explanations of Recommendations</title>
+		<author>
+			<persName><forename type="first">Jakub</forename><surname>Raczyński</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mateusz</forename><surname>Lango</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jerzy</forename><surname>Stefanowski</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>In ECAI</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Ragchecker: A fine-grained framework for diagnosing retrieval-augmented generation</title>
+		<author>
+			<persName><forename type="first">Dongyu</forename><surname>Ru</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lin</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangkun</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianhang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuaichen</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Jiayang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cunxiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shichao</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huanyu</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="21999" to="22027" />
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Graph-based extractive explainer for recommendations</title>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renqin</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongning</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM Web Conference 2022</title>
+				<meeting>the ACM Web Conference 2022</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="2163" to="2171" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Factual and informative review generation for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Zhouhang</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sameer</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bodhisattwa Prasad</forename><surname>Majumder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="13816" to="13824" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Domain Counterfactual Data Augmentation for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kazunari</forename><surname>Sugiyama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Jatowt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="1" to="30" />
+			<date type="published" when="2025">2025. 2025</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">BERTScore: Evaluating Text Generation with BERT</title>
+		<author>
+			<persName><forename type="first">Tianyi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">*</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Varsha</forename><surname>Kishore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">*</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felix</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">*</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kilian</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoav</forename><surname>Artzi</surname></persName>
+		</author>
+		<ptr target="https://openreview.net/forum?id=SkeHuCVFDr" />
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Large language models as evaluators for recommendation explanations</title>
+		<author>
+			<persName><forename type="first">Xiaoyu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yishan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiayin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bowen</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhi</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peijie</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 18th ACM Conference on Recommender Systems</title>
+				<meeting>the 18th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="33" to="42" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

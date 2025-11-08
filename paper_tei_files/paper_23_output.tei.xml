@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Towards a Comprehensive Human-Centred Evaluation Framework for Explainable AI</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-07-31">31 Jul 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Ivania</forename><surname>Donoso-Guzmán</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">KU Leuven</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">Pontificia Universidad Católica de Chile</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jeroen</forename><surname>Ooge</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">KU Leuven</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="institution">Pontificia Universidad Católica de Chile</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Katrien</forename><surname>Verbert</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">KU Leuven</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Towards a Comprehensive Human-Centred Evaluation Framework for Explainable AI</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-07-31">31 Jul 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">F9ED6AAA516B16E98CE8276EF2EE2324</idno>
+					<idno type="arXiv">arXiv:2308.06274v1[cs.HC]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:59+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>XAI Evaluation</term>
+					<term>Human-centred evaluation</term>
+					<term>Evaluation framework</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>While research on explainable AI (XAI) is booming and explanation techniques have proven promising in many application domains, standardised human-centred evaluation procedures are still missing. In addition, current evaluation procedures do not assess XAI methods holistically in the sense that they do not treat explanations' effects on humans as a complex user experience. To tackle this challenge, we propose to adapt the User-Centric Evaluation Framework used in recommender systems: we integrate explanation aspects, summarise explanation properties, indicate relations between them, and categorise metrics that measure these properties. With this comprehensive evaluation framework, we hope to contribute to the human-centred standardisation of XAI evaluation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Explainable AI (XAI) is advancing fast: between 2017 and 2021 alone, the number of XAI papers increased eight-fold <ref type="bibr" target="#b43">[39]</ref> and researchers have proposed XAI methods for virtually all existing media types and families of AI models. However, it is still unclear to what extent explanations are effective in practice <ref type="bibr" target="#b38">[34]</ref> because full-fledged standardised evaluation procedures are missing. This is partly due to lacking consensus on which explanation properties should be assessed and which measurements should be used <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b38">34,</ref><ref type="bibr" target="#b39">35,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b55">49]</ref>.</p><p>To better assess XAI methods, researchers have tried to disentangle explanation's characteristics into simple measurable properties such as completeness <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b55">49]</ref>, novelty <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b36">32,</ref><ref type="bibr" target="#b48">43]</ref>, and interactivity <ref type="bibr" target="#b22">[21,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b55">49]</ref>. However, there is little evidence on how these properties relate to explanations being appropriate in real scenarios <ref type="bibr" target="#b31">[29]</ref>. In addition, while many researchers stress the importance of context, we are unaware of XAI evaluation methods that treat explanations' effects on humans as a complex user experience involving factors such as user perception and system interaction.</p><p>To evaluate explanations holistically, we are working towards a human-centred evaluation framework for XAI, which extends pioneering work on developing and evaluating user experience <ref type="bibr" target="#b27">[25]</ref> and explanations <ref type="bibr" target="#b51">[46]</ref> for recommender systems. We categorise explanation properties according to this framework and indicate their relations reported in the literature. Additionally, we present the explanation elements that help to classify metrics to simplify the choice of measurements. This adapted user-centric framework will allow researchers and practitioners to evaluate explanations of AI-based systems and potentially increase deployment of such systems in their respective domains <ref type="bibr" target="#b38">[34,</ref><ref type="bibr" target="#b40">36]</ref>.</p><p>The contributions of this paper are three-fold: first, we present an extensive analysis of existing definitions of explanation properties and methods, as well as their interrelationships. Our analysis aligns different properties and methods as defined by different research communities. Second, based on this analysis, we define a human-centred evaluation framework for XAI that presents an integrative approach and combines user-centric evaluation and functional metrics. Third, we present an example of the use of this framework.</p><p>2 Background and Related work</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Human-Centred Explainable AI</head><p>The XAI area of research has been led mostly by the AI community, even though it is a multidisciplinary area of research. For this reason, XAI methods have been criticised for being developed with the AI researchers' intuition of what constitutes a good explanation <ref type="bibr" target="#b39">[35]</ref>. In particular, the design and evaluation of XAI methods are often conducted without considering the final users' needs and their cognitive processes <ref type="bibr" target="#b31">[29]</ref>.</p><p>More recently, the HCI community started proposing ideas for tackling the XAI design, considering how the users reason about explanations: Wang et al. <ref type="bibr" target="#b58">[51]</ref> proposed a framework to design explanations based on how humans reason; Chen et al. <ref type="bibr" target="#b10">[10]</ref> characterised how explanations affect human understanding of task decision boundary, model decision boundary and model error; Most recently, Chen et al. <ref type="bibr" target="#b12">[12]</ref> conducted a study to investigate the decision-making process users follow when faced with AI predictions and their explanations.</p><p>Another line of work has been understanding the wants and needs of different shareholders and ensuring they are considered in the design. Mohseni et al. <ref type="bibr" target="#b40">[36]</ref> categorised the goals of target user groups and developed design guidelines to iteratively design and evaluate Explainable AI systems; Suresh et al. <ref type="bibr" target="#b49">[44]</ref> proposed a framework to characterise users with two multidimensional criteria: knowledge and interpretability needs, that together help to understand the system's users; Langer et al. <ref type="bibr" target="#b28">[26]</ref> review the main types of users of XAI systems and their wants and needs, to propose a model for designing XAI systems according to these desiderata; Liao et al. <ref type="bibr" target="#b30">[28]</ref> proposed a question-driven design process to fulfil the Explainable AI user's needs; Rong et al. <ref type="bibr" target="#b46">[41]</ref> analysed human-based XAI evaluations and provided guidelines for conducting user studies in the area.</p><p>Overall, these studies have emphasised the importance of users' characteristics and the tasks they perform during the design phase of XAI experiences. Although it has been stated as an important aspect of the final adoption of XAI systems <ref type="bibr" target="#b40">[36,</ref><ref type="bibr" target="#b46">41]</ref>, to the best of our knowledge, evaluation procedures that capture the complexity of the human-AI interaction have not yet been proposed. We contribute by adapting a widely accepted procedure in recommender systems to evaluate explanations generated by XAI methods holistically.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Evaluating Explanations</head><p>Even though AI/ML models have standard evaluation metrics, there is still no consensus on the strategy to evaluate XAI methods. Doshi-Velez et al. <ref type="bibr" target="#b19">[18]</ref> proposed the first standardisation of XAI evaluation. According to their work, the evaluation could be performed in three levels: application-grounded, with real tasks and users; human-grounded, with real users and proxy tasks; and functionality-grounded, with proxy tasks and no users. Currently, application or human-grounded approaches have been criticized for their lack of rigour <ref type="bibr" target="#b24">[22,</ref><ref type="bibr" target="#b25">23]</ref>, and for using proxy tasks <ref type="bibr" target="#b5">[6]</ref>.</p><p>To conduct functionally-grounded evaluations, i.e. proxy tasks and no users, some studies have focused on grouping concepts and defining properties <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b38">34,</ref><ref type="bibr" target="#b55">49]</ref> and their corresponding metrics <ref type="bibr" target="#b43">[39]</ref>. These works aggregate existing literature that defines properties or presents metrics to assess them. The proposed properties try to measure the quality of the explanations without context so that they can be used in functionality-grounded evaluation. Similarly, Hoffman et al. <ref type="bibr" target="#b21">[20]</ref> proposed to evaluate explanations using the 'goodness criteria' that assess the explanation quality without context. Most recently, Agarwal et al. <ref type="bibr" target="#b1">[2]</ref> presented a framework to benchmark different XAI methods using automatic metrics. Still, it is limited to particular methods and only works with specific datasets created for the benchmark.</p><p>Little work has been conducted to present the connections between these properties. Most papers state that trade-offs exist <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b38">34,</ref><ref type="bibr" target="#b43">39]</ref>, but they have not quantified them. To the best of our knowledge, only the study by Balog et al. <ref type="bibr" target="#b3">[4]</ref> uncovered conflicting relationships between some of the proposed properties, but they did not evaluate XAI-generated explanations.</p><p>Given the number of properties to evaluate, selecting the aspects to consider in the evaluation is becoming an important topic. According to Liao et al. <ref type="bibr" target="#b32">[30]</ref>, this selection depends on the tasks the system has to support because the user accomplishment of these tasks determines the overall system's success. Knijnenburg et al. <ref type="bibr" target="#b27">[25]</ref> indicate the selection is made according to theoretical models, i.e., it results from previous studies or from the hypothesis that is tested. Recently, Liao et al. <ref type="bibr" target="#b32">[30]</ref> presented a study that connects tasks with evaluation criteria to provide general guidelines for the field. In this study, experts and end-users selected the most appropriate properties to evaluate diverse XAI tasks. They found that XAI tasks obtained different property rankings regardless of the application domain (loan application, medical diagnosis, among others).</p><p>Our work builds upon these previous studies by proposing a unified framework that integrates previously proposed definitions and measurements by making the relations between them explicit and grounded in previous work. Additionally, we analysed measurement procedures and classified them by which explanation element they measure according to Miller's definition of explanation <ref type="bibr" target="#b39">[35]</ref>, which declares that explanations are composed of a cognitive process, a product and a social process. This new criteria to classify measurements provides researchers and practitioners with a new understanding of how to measure properties of explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">User Centric Evaluation of Recommender systems</head><p>The User Centric Evaluation Framework for recommender systems in Figure <ref type="figure">1</ref> was proposed by Knijnenburg et al. <ref type="bibr" target="#b27">[25]</ref> to explain how users experience the interaction with a recommendation system and to predict how users behave under similar circumstances. This framework has six conceptual components encompassing different constructs that can be measured during a user study. For example, the conceptual component Subjective system aspects groups constructs such as Perceived recommendation quality or Interaction adequacy, while User experience contains Choice difficulty and Choice satisfaction among others. The constructs and the causal relations between them found with Structural Equation Modelling (SEM) <ref type="bibr" target="#b26">[24]</ref> help explain how different aspects of the experience affect each other and influence the outcomes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Situational Characteristics</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Personal Characteristics</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Interaction User experience</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Subjective System Aspects</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Objective</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>System aspects</head><p>Fig. <ref type="figure">1</ref>. The User-Centric Evaluation Framework by Knijnenburg et al. <ref type="bibr" target="#b27">[25]</ref>. Each box represents a conceptual component that groups related constructs.</p><p>This evaluation framework has been used and appreciated in recommender systems because of its capacity to provide relations between different user experience aspects. By capturing the causal relations between different measurements, researchers can not only report and compare these measurements but also explain why differences do or do not occur. This provides a better understanding of what makes a system more adapted to the users and, ultimately, predicts whether it will be successful and why.</p><p>In this work, we expand this successful framework for XAI evaluation. We believe our comprehensive work sheds light on which explanation aspects are more important and relevant to users and their circumstances. Furthermore, since the framework provides causal relations between different properties, we believe it can provide better guidelines for XAI design.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methods</head><p>To adapt the user-centric evaluation framework by Knijnenburg et al. <ref type="bibr" target="#b27">[25]</ref>, we analysed current literature on the topic with a grounded theory approach. This section describes how we collected papers and categorised them along two axes (conceptual components and explanation elements), to build the foundation for our XAI framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Paper Collection</head><p>Finding relevant literature on XAI evaluation requires searching several research disciplines. Evaluation, in particular, has been published in several types of venues (workshops, posters, surveys), presenting concrete methods and execution procedures but also proposals and blue-sky ideas. To include as much relevant literature as possible, we consulted Google Scholar with this query: intitle:properties OR intitle:evaluation OR intitle:metrics OR intitle:property OR intitle:metric ("explainable" OR "interpretable") ("artificial intelligence" OR "machine learning" OR XAI OR AI)</p><p>The search was conducted at the end of October 2022 and was limited to the years 2017 and onwards because Doshi-Velez et al. <ref type="bibr" target="#b19">[18]</ref> then proposed one of the first XAI evaluation procedures. This query returned approximately 5970 results. As a first step, only the titles were reviewed to check whether the result was related to AI or XAI. We checked all result pages until the first page where no papers related to XAI or AI appeared. This occurred on page 25, similar to the results of Vilone et al. <ref type="bibr" target="#b55">[49]</ref>. This first screening yielded 80 research works.</p><p>These works were analysed by looking at the abstract and, in doubt, at the full paper. The aim of this second screening was to remove duplicate works and keep only works that describe properties, relations between them and measurements. The exclusion criteria were the following:</p><p>-The research did not use or propose properties or measurements for XAI explanations. -The study considered only non-XAI-generated explanations.</p><p>-The research compared different XAI methods using different metrics, but said metrics were not grounded on explanation quality aspects. -The evaluation of the explanations was performed with a ground truth explanation. -The search result was a master's or PhD thesis, and one or more papers were already published based on the same research, making it redundant.</p><p>After this screening process, only 19 results were kept. From their references, other related papers were found. We also included <ref type="bibr" target="#b51">[46]</ref> because it is a comprehensive review of the evaluation of explanations in the context of recommender systems. The final number of papers included was 29.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Classification Axis 1: Conceptual Components</head><p>A Grounded Theory <ref type="bibr" target="#b9">[9]</ref> approach was followed to analyse the collected works in three steps: Initial Coding, aimed at finding quotes that related to properties of explanation; Focused Coding, which consisted of labelling the passages according to a set of concepts; and finally Axial Coding, which connects and groups the different concepts.</p><p>The Initial Coding step was conducted in-vivo. Definitions of explanation properties, definitions of metrics to measure aspects of explanations, and relations between properties were searched for. Some of the papers had definitions of properties based on multiple previous works. In those cases, we kept the summarised definition and did not look for primary sources. In contrast, if the definition made in the survey paper did not fully explain metrics, we added the primary source to the group of papers.</p><p>The Focused Coding Step consisted of labelling the different definitions with the most appropriate concept, independently of the name the authors had coined. This iterative process aimed to group the definitions that point to the same desiderata of an explanation while avoiding overlapping concepts. The definition of each property was created at this step. In addition, passages that described a procedure to measure the property were marked as such. The procedure to analyse those quotations is described in Section 3.3.</p><p>The Axial Coding phase was conducted by first collecting the relations that were described in the selected papers. After these relations were captured, new relations that emerged from the definitions were investigated and added to the model. Additionally, relations were added based on evidence of other papers the researchers were aware of.</p><p>Finally, each of the found properties was matched to a conceptual component as defined in Knijnenburg's framework <ref type="bibr" target="#b27">[25]</ref>. Our analysis yielded very few and general properties for the situational and personal characteristics components, so it was decided to leave those properties out of the current analysis. During this phase, it was noted that some properties belonged to a new category that captured the abstract quality of the explanation. This idea aligns with the nature of XAI methods: the original framework was made for recommender systems, i.e., an AI model that selects objects, but XAI methods generate an object. To evaluate the quality of generated objects, it was decided to add the conceptual component Explanation Aspects (see Figure <ref type="figure">3</ref>), which groups properties that evaluate the explanation quality.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Classification Axis 2: Explanation Elements</head><p>Previous analysis of properties had classified measurement and metrics depending on their user dependency <ref type="bibr" target="#b4">[5]</ref>, the nature of the procedure (objective, subjective) <ref type="bibr" target="#b16">[16,</ref><ref type="bibr" target="#b22">21]</ref> or according to umbrella properties <ref type="bibr" target="#b42">[38,</ref><ref type="bibr" target="#b43">39]</ref>. However, during the analysis of the conceptual components and the properties of explanations, it was found that similar properties are often named differently because of the ways in which they are measured. For example, Carvalho et al. <ref type="bibr" target="#b7">[8]</ref> defined two similar concepts that were</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanation generation</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanation abstraction</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanation format Explanation communication</head><p>Process to identify and select causes Explanation contents provided by the XAI method Explanation design, e.g. visualisation, text, or image Humans interact with the explanation</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cognitive process Product Social process</head><p>Fig. <ref type="figure" target="#fig_0">2</ref>. The four elements of explanations. We use the same ideas as <ref type="bibr" target="#b39">[35]</ref> but changed the names of the elements.Additionally, we further divide the explanation product into abstraction and format.</p><p>applied in two types of evaluation. They used the name Representativeness for the evaluation without users and the concept General and probable for evaluation with user studies, even though both refer to the number of instances that can be explained with the same causes. We argue this inconsistency occurs because explanations are made of different elements. Miller <ref type="bibr" target="#b39">[35]</ref> states that explanations are both processes and products: the Cognitive process selects a subset of the causes; the Product is the resulting outcome; and the Social process consists of transferring the knowledge from explainer to explainee. With these ideas in mind, a focused coding was conducted only of the passages marked as describing a procedure to measure a property. Each passage was labelled as generation, product or communication. It was found that many metrics that were labelled product were very format dependent: for example, BLEU (BiLingual Evaluation Understudy) <ref type="bibr" target="#b14">[14]</ref>, which evaluates machine-translation quality, cannot be applied to visual-based explanations, but Covariate Homogeneity <ref type="bibr" target="#b43">[39]</ref> could be applied to both text and visual-based explanations. For this reason, the metrics under the product label were further categorised between abstraction and format. This categorisation allows classifying measurement procedures under three criteria: property they measure, element of explanation and type of procedure (questionnaire, metrics, etc). Different measurements can be applied to evaluate the properties along the four explanation elements. Some properties can only be assessed by measuring one element, while others can be measured in more than one. These new criteria are explained and justified in Section 4.3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">A User-Centric Evaluation Framework for XAI</head><p>This section presents an adapted version of the User-Centric Evaluation Framework. To describe it, we use the following terminology: conceptual components group explanation properties, which in turn can be measured with measurements. While each measurement applies to only one explanation element, a single property can be measured by several measurements. This section is organised as follows: in Section 4.1, the choice of properties for each conceptual component is justified and explained, and the properties are defined; then, in Section 4.2, the connections between properties are presented; finally in Section 4.3 the classification criteria for measurements is presented and justified, as well as the existing measurements for each property. Fig. <ref type="figure">3</ref>. The User-Centric Evaluation Framework by Knijnenburg et al. <ref type="bibr" target="#b27">[25]</ref> extended with a new conceptual component: Explanation Aspects. Each conceptual component displays its properties. The box of Objective system aspects (OSA) marks the properties that apply to the AI model and the ones that apply to the XAI method.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Explanation Properties</head><p>Objective system aspects. Objective systems aspects (OSAs) are 'the aspects of the system that are currently being evaluated' <ref type="bibr" target="#b27">[25]</ref>. It was found from the analysis that characteristics from the particular instance of the XAI method and AI model can affect the explanation. For instance, the AI model performance will affect the level of Trust users can achieve. Making these characteristics explicit in the framework can help to understand the specific aspects of the XAI method and AI model that affect the user experience.</p><p>The analysis yielded six properties: AI model performance, AI model certainty, Certainty, Continuity, Separability and Consistency. The first two properties measure the AI model, and the last four are applied to the XAI method. Continuity was described in several works as the desired 'smoothness' of the XAI function. In the beginning, Separability and Continuity were one concept, but it was noted that providing similar explanations to similar instances does not guarantee that different instances will get different explanations. Consistency evaluates the randomness of the XAI method: if different runs of the XAI method algorithm return different functions, the model will be highly inconsistent.</p><p>AI model certainty and XAI method certainty were complicated properties. Uncertainty quantification is a very active field of research within AI, and several approximation methods have been proposed. However, the problem is still being investigated due to its high computational cost <ref type="bibr" target="#b0">[1]</ref>. Papers' definitions for these concepts emphasised the fact that the models needed to tell the users when to trust their outputs. For this reason, we decided to keep them, even though there are no proven ways to compute them yet.</p><p>Explanation Aspects. The Explanation aspects component was added to the original framework (see Section 3.2). This component groups the properties that measure the quality of the generated explanation. These concepts have been generally associated with Functionality-Grounded evaluation because these properties can be measured with metrics at the abstraction level, that is, without the need for users.</p><p>From the analysis, eight properties were found. Necessity, Sufficiency and Contrastivity specifically measure the quality of the selected causes. Their goal is to evaluate whether the reasons the XAI method is providing clearly inform the prediction that was made. Correctness and Completeness are analogous to precision and recall in AI performance metrics. Correctness describes whether the XAI method selected the causes that the AI model used to make a prediction. For explanations generated using the AI model parameters, such as linear regression, the correctness will always be high. Explanations generated by surrogate models will have lower correctness. Completeness quantifies if all the causes that the model used to generate the prediction are present in the explanation. Representativeness determines whether the explanations are unique to each instance or they generalise over multiple instances. This property helps to estimate the Cognitive Load the users will face when using the system. Size and Structure evaluate the explanations' length and organisation, which affects how easy it will be for users to understand them.</p><p>Subjective System Aspects. Subjective System Aspects (SSA) are "users' perceptions of the Objective System Aspects" <ref type="bibr" target="#b27">[25]</ref>. These properties provide evidence that the users perceive the Objective System Aspects. In this modified framework, they help to establish whether the users perceive the OSAs and the Explanation Aspects. Additionally, this component helps us to understand the pertinence of the generated explanations to the users' situational context. These properties are mostly measured at the communication level, but some of them have measures at the abstraction and format level that can be used as proxies of the real value.</p><p>The analysis yielded seven properties for this component. Explanation power measures the perceived quality of the selected causes. Explanations with high power provide valuable justifications for the AI model behaviour. Form of cognitive chunks estimates the semantics of the information provided by the explanation. This concept was coined by Doshi-Velez et al. <ref type="bibr" target="#b19">[18]</ref> and it has been widely used in the XAI domain. Information expectedness measures whether the explanation provides new knowledge to the user. The analysed works used three concepts for this notion: plausibility, coherence with prior knowledge/beliefs, and novelty. We decided to keep these notions under one umbrella term because we found that they are part of the same scale (see Figure <ref type="figure">4</ref>). The relation of each concept with information expectedness is the following:</p><p>-Plausibility <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b42">38]</ref>: if the information is expected, the user will think it is plausible. However, the contrary does not necessarily holds. The information can be new but still plausible in the user's mind.</p><p>-Coherence with prior knowledge/beliefs <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b48">43]</ref>: the information provided by the explanation should have some level of connection to the user's background. If that relation does not exist, it will be hard for the user to understand the explanation. -Novelty <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b36">32,</ref><ref type="bibr" target="#b39">35,</ref><ref type="bibr" target="#b48">43]</ref>: explanations should focus on abnormal causes <ref type="bibr" target="#b39">[35]</ref> and provide information the user does not expect to increase her engagement with the system. However, if the reasons are too unexpected, the user will probably dismiss them and ignore the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Information expectedness</head><p>Low High</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Novelty</head><p>Coherence with prior knowledge/beliefs Plausible Fig. <ref type="figure">4</ref>. Relation between plausibility, coherence with prior knowledge/beliefs and Novelty with Information Expectedness. Each bar represents the amount of new information that according to the concepts relates to user acceptance.</p><p>Perceived model competence evaluates whether the user thinks the AI model can perform as expected. The Cognitive load measures the cognitive effort the user makes to understand the explanations.</p><p>The last two properties measure the fit between the explanation and the situational context. Relevance to the task measures whether the explanation provides insights that help to perform the task better. An explanation has to be relevant to be useful for the task the user has to perform; otherwise, she will not exploit it. For example, in a medical context, this would measure whether the explanations are actionable in the patient's state. Alignment with situational context evaluates whether the provided explanation is appropriate for the usage context. For instance, a complex visualisation cannot be used correctly in a time-constrained context. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>AI Model performance</head><p>The accomplishment level the AI model has with respect to the task for which it was trained.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>AI Model certainty</head><p>The confidence the AI model has in its prediction. <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b55">49]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Certainty</head><p>The confidence the XAI method has in the explanation.</p><p>[ The XAI method should return different explanations for different instances.</p><p>[8]</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Consistency</head><p>The degree to which different runs of the XAI method yield similar XAI functions. <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b36">32,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b53">47,</ref><ref type="bibr" target="#b55">49]</ref> Explanation aspects</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Necessity</head><p>Measures whether the explanation method selected the causes that are responsible for the prediction.</p><p>If the necessary causes change, then the prediction will also change. <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b39">35,</ref><ref type="bibr" target="#b43">39]</ref> Sufficiency Measures whether the explanation method did not select causes that do not affect the prediction. If non-selected causes change, the prediction would still hold, and thus the explanation should not change.</p><p>[ </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Perceived model competence</head><p>Measures the user's impression of the model competence for the task at hand <ref type="bibr" target="#b11">[11]</ref> Cognitive Load Refers to the cognitive effort the user has to do to achieve the task. <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b55">49]</ref> Relevance to the task Level of explanation usefulness to the user's task. <ref type="bibr" target="#b22">[21,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b39">35,</ref><ref type="bibr" target="#b42">38,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b53">47,</ref><ref type="bibr" target="#b55">49,</ref><ref type="bibr" target="#b60">52]</ref> Table <ref type="table" target="#tab_1">1</ref> -continued from previous page Property Definition References Alignment with situational context Level of appropriateness of the explanation to the usage context <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b48">43,</ref><ref type="bibr" target="#b53">47]</ref> User experience</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Curiosity</head><p>Measures whether the user is intrinsically motivated to understand the explanation. If the user is curious, she will be more attentive to the task and, therefore, more engaged with the system. <ref type="bibr" target="#b21">[20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b55">49]</ref> Satisfaction Refers to the level of fulfilment the user gets while interacting with the system. This satisfaction is always measured at the communication level because it is for the users to decide whether they feel good about the overall system interaction.</p><p>[20, 21, 46,</p><p>Trust We use the definition by Tintarev et al. <ref type="bibr" target="#b51">[46]</ref>: "perceived confidence in a system's competence" <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b11">11,</ref><ref type="bibr" target="#b21">20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b51">46,</ref><ref type="bibr" target="#b53">47,</ref><ref type="bibr" target="#b60">52</ref>] Understanding Refers to the ability of the user to interpret the system's output correctly. The user fails to understand when she cannot interpret or incorrectly interprets the system's explanation and prediction. This involves the creation of the user's mental model and how that aligns with the system's functionality. <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b21">20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b36">32,</ref><ref type="bibr" target="#b38">34,</ref><ref type="bibr" target="#b55">49,</ref><ref type="bibr" target="#b60">52]</ref> Usefulness Measures whether the explanation helps the user to understand the AI prediction. <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b51">46,</ref><ref type="bibr" target="#b55">49,</ref><ref type="bibr" target="#b60">52]</ref> Controllability Measures whether the user perceives she has some level of control over the system. This could manifest as the ability to reverse actions, correct the system, filter or zoom the explanation, or ask questions to clarify the explanation or prediction. <ref type="bibr" target="#b21">[20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b32">30,</ref><ref type="bibr" target="#b43">39,</ref><ref type="bibr" target="#b48">43,</ref><ref type="bibr" target="#b51">46,</ref><ref type="bibr" target="#b55">49]</ref> Interaction</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Efficiency</head><p>Measures the speed at which a task can be performed. <ref type="bibr" target="#b51">[46,</ref><ref type="bibr" target="#b55">49]</ref> Performance Measures how well the user can do the task while using the system (prediction+explanations). <ref type="bibr" target="#b21">[20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b36">32]</ref> Reliance Measures whether the user is willing to provide control to the machine for the given task. <ref type="bibr" target="#b21">[20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b51">46,</ref><ref type="bibr" target="#b55">49]</ref> User experience. The User experience factors evaluate what the user encounters when interacting with the system <ref type="bibr" target="#b27">[25]</ref>. The analysis did not find surprising aspects because all but Curiosity, have been studied in recommender systems. The aspects found are Satisfaction, Trust, Understanding, Usefulness, Controllability and Curiosity. This last one was highlighted as extremely relevant in the case of explanations because the search for an explanation is modulated by the user's curiosity <ref type="bibr" target="#b22">[21]</ref>. Moreover, the motivation to ask or explore an explanation is determined by the user's curiosity <ref type="bibr" target="#b21">[20]</ref>.</p><p>Interaction. Interaction factors measure aspects related to the possible adoption of the system. Three properties were found to be relevant: Efficiency, Performance and Reliance. Efficiency measures how fast the user can perform the task. Performance evaluates the level of achievement the user reaches while using the system. Finally, Reliance measures to which extent the user is willing to provide control to the AI model to perform the task.  Explanation properties are related to each other in intricate ways <ref type="bibr" target="#b27">[25]</ref>. As stated in Section 3.2, by scanning past research, we identified such relationships and linked the properties in our framework as described in the literature; for instance, explanation size affects user curiosity <ref type="bibr" target="#b21">[20]</ref>. In this way, we mapped out relations proposed in the literature and relations inferred from the properties' definitions. Table <ref type="table" target="#tab_5">2</ref> describes the relations found for each property and Figure <ref type="figure" target="#fig_1">5</ref> displays a visual summary of the interactions. These relations help theorise the expected causal effects between the properties. In practical terms, they serve as hypotheses for the Structural Equation Model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Relations Between Properties</head><p>Table <ref type="table" target="#tab_5">2</ref>: Relations between properties. Relations without reference were hypothesised based on the properties' definitions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanation Property</head><p>Relations with other properties</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Objective system aspects</head><p>Model performance The performance of the AI will affect the level of Trust the users can achieve <ref type="bibr" target="#b18">[17,</ref><ref type="bibr" target="#b51">46]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model certainty</head><p>If the AI model is uncertain of the predictions, the XAI method will have more difficulties obtaining consistent explanations, which will affect the XAI method's certainty. This confidence will also affect the satisfaction with the system because, as Tintarev et al. <ref type="bibr" target="#b51">[46]</ref> explains, a user might be more forgiving if the system admits it is not confident about a prediction. Certainty If the explanation shows its limitations, the user may not relay or trust the system <ref type="bibr" target="#b21">[20,</ref><ref type="bibr" target="#b32">30]</ref>. Low certainty will affect the correctness of the explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Continuity</head><p>Higher continuity increases the understanding of the model because the similarity of explanations helps to learn from the model. It also helps to produce contrastive and representative explanations. Ultimately, high continuity can also increase Trust <ref type="bibr" target="#b53">[47]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Separability</head><p>Higher separability increases the understanding of the model and the contrastivity of the explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Consistency</head><p>Low consistency may decrease user satisfaction <ref type="bibr" target="#b22">[21]</ref> and correctness <ref type="bibr" target="#b32">[30]</ref> Explanation Aspects Necessity Affects the explanation power <ref type="bibr" target="#b32">[30]</ref>. Additionally, if the necessary causes are selected, then the correctness will be high. Sufficiency Affects the explanation power. Moreover, if the sufficient causes are selected the completeness of the explanation will increase. Correctness An explanation with high correctness will faithfully reflect the decision process of the AI model. This could increase Trust in the explanation and AI model Completeness</p><p>The explanation size is related to completeness: the bigger the explanation, the more complete it will be <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b32">30]</ref>. However, bigger explanations might decrease curiosity <ref type="bibr" target="#b22">[21]</ref>. Contrastivity High contrastivity will increase the explanation power. Additionally, this property will affect understanding because the people expect explanations to be contrastive <ref type="bibr" target="#b39">[35]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Size</head><p>The amount of information affects curiosity in an inverted Ushaped pattern: little or excessive information reduces curiosity <ref type="bibr" target="#b22">[21]</ref>. The size of the explanation also affects how easily a user can understand the explanation <ref type="bibr" target="#b32">[30,</ref><ref type="bibr" target="#b38">34]</ref>. This last effect could be mediated by the Cognitive Load. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Relations with other properties</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Structure</head><p>The design of the information that will be shown affects its trustworthiness <ref type="bibr" target="#b51">[46]</ref>, curiosity <ref type="bibr" target="#b22">[21]</ref> and ultimately how easy they can be understood <ref type="bibr" target="#b38">[34,</ref><ref type="bibr" target="#b48">43]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Representativeness</head><p>This property affects understanding, cognitive load and efficiency because the user can understand an explanation more quickly if it is similar to those she has seen before.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Subjective System Aspects</head><p>Explanation power The quality of the selected causes will help increase understanding.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Form of cognitive chunks</head><p>It affects understanding because this property measures how interpretable are the information pieces the user receives <ref type="bibr" target="#b7">[8]</ref> Information expectedness If the information is coherent with the user's beliefs, they will be more likely to understand it <ref type="bibr" target="#b48">[43]</ref>. However, if the information does not add anything new to their existing knowledge, they are less likely to be curious <ref type="bibr" target="#b48">[43]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Perceived model competence</head><p>When the users perceive the AI model can perform, they are more likely to trust it and eventually to rely on it <ref type="bibr" target="#b11">[11]</ref>. Cognitive Load An explanation with low cognitive load will be easier to understand <ref type="bibr" target="#b32">[30]</ref>. Relevance to the task If the explanations help the development of the task, the user is more likely to rely on the AI advice. Alignment with situational context Trust in the system is context-dependent. If the system is aligned with the situation the user has to perform, she will be more likely to trust it. <ref type="bibr" target="#b21">[20]</ref>. Additionally, this could build up until the user starts to rely on the AI agent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>User experience</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Curiosity</head><p>Mental model formation, which is the final goal of understanding, is modulated by Curiosity <ref type="bibr" target="#b22">[21]</ref>. Additionally, Curiosity encourages users to explore and interact with the system <ref type="bibr" target="#b22">[21]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Satisfaction Trust</head><p>Reliance is an outcome of appropriate trust <ref type="bibr" target="#b11">[11,</ref><ref type="bibr" target="#b21">20,</ref><ref type="bibr" target="#b22">21,</ref><ref type="bibr" target="#b51">46]</ref>. Mental model formation is also modulated by Trust in the system <ref type="bibr" target="#b22">[21]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Understanding</head><p>If users cannot understand the behaviour, Trust will be lost <ref type="bibr" target="#b22">[21]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Usefulness</head><p>If the user finds the explanations helpful, they are more likely to increase the user performance with the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Controllability</head><p>The possibility of interaction increases Trust in the system <ref type="bibr" target="#b51">[46]</ref>. Good interaction with the system can increase the performance of the users <ref type="bibr" target="#b22">[21]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Measurements</head><p>As explained in Section 3.3, we classified measurements of properties with three criteria: property they measure, explanation element in which they are applied and Abstraction</p><formula xml:id="formula_1">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 Format 1 1 1 Communication 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</formula><p>Fig. <ref type="figure">6</ref>. Existence of a measurement procedure for each property in each explanation element. Each coloured rectangle indicates that a measurement has been defined for the tuple (property, explanation element) type of procedure. The explanations elements allow us to capture the complexity of the explanations: they are not simply an object we show to users; a model has generated them and then transformed them to be shown to users in a specific situational context. The four elements are:</p><p>-Generation element. Refers to the process that was conducted to select the causes that will be displayed in the explanation for a specific object. The measures of this element are applied to the XAI function and AI model. They check the function's parameters to obtain indicators. -Abstraction element. Represents the selected causes of the explanation without considering the format in which they will be displayed. For example, for feature importance, this could be a table with the features and their corresponding importance values. Measurements that are applied at this level look at the data that was selected by the XAI method as an explanation. -Format element. Refers to the manner in which the causes will be presented to the user. This could be as example-based, text, visualisation, etc. In this study, few measurements were found to be applicable at this level. However, each specific media type has its own measurements that could be modified to be applied. For instance, for visual explanations, the data-ink ratio could be applied to analyse whether the most important features use more ink in the visualisation. -Communication element. It refers to the process of interacting with the formatted explanation. During this process, information can be captured as interaction measurements, as well as self-reported information.</p><p>In Figure <ref type="figure">6</ref>, a coloured square is present if at least one measurement exists for that (property, element) tuple. It is noted that the User Experience and Interaction conceptual components are only measured at the communication level, i.e. only when the explanation is displayed to users. What stands out in this figure is the number of measurements at the abstraction level for the Subjective System Aspects component. In Knijnenburg's framework <ref type="bibr" target="#b27">[25]</ref>, these aspects were recommended to be measured with self-reporting questionnaires.</p><p>However, our analysis found that for some of them, metrics have been proposed at the Abstraction element, which means that some computational metric is applied to the abstract explanation to obtain a value.</p><p>The main advantage of decoupling the properties from the ways to measure them is that it allows researchers to select measurements considering the study constraints. For instance, if the study is conducted with users that do not have much time to answer questionnaires, and the researchers want to measure Explanation power , Form of cognitive chunks , Curiosity and Understanding , they may choose to measure the first two properties at the abstract level of the explanation and the last two at the communication level with questionnaires. In this way, they do not overwhelm the users with questions but still measure the required properties.</p><p>As pointed out before, we also classified the measurements by the type of procedure. In this analysis, only procedures that produce a quantitative value were considered. This means that qualitative interviews were not considered, nor were experiment tasks. The four types are:</p><p>-Quantitative interviews: closed-ended questions, usually in Likert scale.</p><p>-Computational metrics: mathematical functions that are applied to the explanations or XAI methods. -Behaviour metrics: indicators of user behaviour and interaction with a system. For example, the number of interactions within the system and the time to complete a task. -Objective Body Measurements: measurements taken from the user body.</p><p>The most common is eye-tracking. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Curiosity</head><p>Curiosity Checklist <ref type="bibr" target="#b21">[20]</ref>; Eye Movement Pattern [21] Satisfaction Explanation Satisfaction Scale <ref type="bibr" target="#b21">[20]</ref>; Eye Movement Pattern <ref type="bibr" target="#b22">[21]</ref>; Loyalty <ref type="bibr" target="#b51">[46]</ref>; Questionnaire <ref type="bibr" target="#b2">[3]</ref> </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Trust</head><p>Trust Scale <ref type="bibr" target="#b21">[20]</ref>; Questionnaire <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b11">11,</ref><ref type="bibr" target="#b44">40,</ref><ref type="bibr" target="#b56">50]</ref>  Questionnaires <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b11">11]</ref>; Willingness to accept AI agent advice <ref type="bibr" target="#b22">[21]</ref> The metrics for each (property, element) are listed in Table <ref type="table" target="#tab_7">3</ref>. This table was built under the following rules:</p><p>-Several measurements have been defined in multiple works. To avoid naming all of them in the tables, we built upon existing work by using the name proposed by Nauta et al. <ref type="bibr" target="#b43">[39]</ref> to summarise metrics every time a similar metric was defined in another work. This new work was added as a reference under the same name. -Some procedures were not described with a specific name in the paper. In those cases, an explanatory sentence was used to name them. -If asking questions was proposed as a procedure, but no measurement model or questions were provided, the measurement was not considered. -For a given property, questions proposed in different papers were joined together under the Questionnaire term.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Illustrative Example</head><p>In this section, we provide an illustrative example of how our framework can be used. Researchers have an AI model that predicts whether a patient will be readmitted to the emergency department within 30 days. SHAP <ref type="bibr" target="#b37">[33]</ref> is used to determine the feature importance on a patient level and this information is then visualised in a force plot <ref type="bibr" target="#b37">[33]</ref>. Finally, medical staff analyses the prediction and visual explanation to decide whether they discharge a patient. In this context, assessing the explanation requires several steps. First, researchers have to decide which properties to measure. This is a decision support system, so according to <ref type="bibr" target="#b32">[30]</ref>, the most relevant properties would be Trust , Controllability , and Understanding . The researchers conjecture that Reliance and Performance will be good indicators of adoption. Second, they have to select explanation properties that relate to these five properties. Following the theoretical causal relations in Table <ref type="table" target="#tab_5">2 and Figure</ref>  Finally, to assess all selected properties, researchers pick appropriate metrics from Table <ref type="table" target="#tab_7">3</ref>. The metrics' scores applied to the elements abstraction and format are averaged over the single explanations, and the questionnaires are applied at the end of the experience. This data is then analysed using structural equation modelling.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusion and Future Work</head><p>In this work, we have presented a user-centric evaluation framework for XAI inspired by research on recommender systems allowing researchers to conduct systematic user experience evaluations in the context of XAI-based systems. Our proposal integrates the current state of the art in XAI evaluation but also allows to easily incorporate new properties or metrics that might become relevant for new applications. By decoupling the aspects of explanations and the procedures to measure them, this framework provides researchers with more tools to choose what and how to measure, and why it is necessary to do it, with the ultimate goal of evaluating the user experience under these new XAI scenarios.</p><p>For future work, we plan to validate the framework with user studies. We aim at validating metrics, properties, as well as mediation and causal effects between them. Additionally, we could include experimental designs that compare different explanations, for instance, by comparing the user experience under two different visualisations for explanations generated with SHAP. Furthermore, we did not analyse how specific situational and personal characteristics affect the properties. This area has been explored <ref type="bibr" target="#b15">[15,</ref><ref type="bibr" target="#b34">31,</ref><ref type="bibr" target="#b50">45]</ref>, but more work is needed to connect those findings to explanation properties. Another area of improvement is proposing a standardised report of results to increase fair comparison with previous studies. Lastly, there is no comprehensive survey on the maturity of each of the measurements and on the relations between the properties. Such a survey would help researchers and practitioners to understand the maturity of each property and measurement to help them plan their studies based on current evidence.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 2</head><label>2</label><figDesc>displays the new definitions and the relation to Miller's definitions.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 5 .</head><label>5</label><figDesc>Fig. 5. Relations between properties. The relations are directed: horizontal properties are the source, and vertical properties receive the effect. High saturation squares indicate that the relationship has been described in the literature, and low saturation squares indicate the relation was inferred from the definitions.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>5, such properties are: -AI Model performance , Certainty , Continuity -Size , Structure , Representativeness -Form of cognitive chunks , Information expecteness , Cogntive load , Perceived model competence , Aligment with situational context -Curiosity</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>Table of all explanation properties and their definitions based on the reviewed literature.</figDesc><table><row><cell>Property</cell><cell>Definition</cell><cell>References</cell></row><row><cell cols="2">Objective system aspects</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 2 -</head><label>2</label><figDesc>continued from previous page Explanation Property</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 3 :</head><label>3</label><figDesc>Measurements of properties</figDesc><table><row><cell>Explanation Property</cell><cell>Measurement</cell></row><row><cell>Generation</cell><cell></cell></row><row><cell>AI Model performance</cell><cell>Measured by the model type appropriate metrics: accuracy,</cell></row><row><cell></cell><cell>f-score, precision, recall and others.</cell></row><row><cell>AI Model certainty</cell><cell>This property can be measured for each individual predic-</cell></row><row><cell></cell><cell>tion and the global model. If it is measured globally, it</cell></row><row><cell></cell><cell>should be measured over a dataset similar to the data the</cell></row><row><cell></cell><cell>real system will face. [16]</cell></row><row><cell>Consistency</cell><cell>Implementation invariance: check whether the XAI func-</cell></row><row><cell></cell><cell>tion parameters are the same after different runs of the</cell></row><row><cell></cell><cell>XAI method creation [8, 49]</cell></row><row><cell>Correctness</cell><cell>Translucency [8]</cell></row><row><cell>Abstraction</cell><cell></cell></row><row><cell>Certainty</cell><cell>Confidence Accuracy [39]</cell></row><row><cell>Continuity</cell><cell>Connectedness [39] also in [7, 19, 37, 38, 42, 49]; Stability</cell></row><row><cell></cell><cell>for Slight Variations [39]; Fidelity for Slight Variations</cell></row><row><cell></cell><cell>[39]</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 3</head><label>3</label><figDesc></figDesc><table><row><cell></cell><cell>-continued from previous page</cell></row><row><cell>Explanation Property</cell><cell>Measurement</cell></row><row><cell>Understanding</cell><cell>Questionnaires [3, 46, 50]</cell></row><row><cell>Helpfulness</cell><cell>Questionnaires [46, 50]; Evaluate user action before and</cell></row><row><cell></cell><cell>after explanation [46]</cell></row><row><cell>Controllability</cell><cell>Concept-level feedback Satisfaction Ratio [13]; The extent</cell></row><row><cell></cell><cell>to which a user can produce certain outcomes [20]</cell></row><row><cell>Efficiency</cell><cell>Interaction time and number of interactions to perform a</cell></row><row><cell></cell><cell>task [46]</cell></row><row><cell>Performance</cell><cell>Performance metrics with respect to the primary goal [20]</cell></row><row><cell>Reliance</cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgements</head><p>This work was partially funded by ANID Chile, Millennium Science Initiative Program, codes ICN2021 004 (iHealth) and ICN17 002 (IMFD), by Basal Funds for Center of Excellence FB210017 (CENIA), the Research Foundation Flanders (FWO, grant G0A3319N) and KU Leuven (grant C14/21/072). In addition, we thank Fondecyt grant 1231724. The research of Ivania Donoso-Guzmán was supported by the doctoral scholarship of ANID Chile.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abdar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Pourpanah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hussain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Rezazadegan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ghavamzadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fieguth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khosravi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><forename type="middle">R</forename><surname>Acharya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Makarenkov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Nahavandi</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.inffus.2021.05.008</idno>
+		<ptr target="https://doi.org/10.1016/j.inffus.2021.05.008" />
+		<title level="m">A review of uncertainty quantification in deep learning: Techniques, applications and challenges</title>
+				<imprint>
+			<date type="published" when="2021">12 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">OpenXAI: Towards a Transparent Evaluation of Model Explanations</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Krishna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Saxena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pawelczyk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Johnson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Puri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zitnik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lakkaraju</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arxiv.2206.11104</idno>
+		<ptr target="https://arxiv.org/abs/2206.11104v2" />
+		<imprint>
+			<date type="published" when="2022">6 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ashoori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Weisz</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1912.02675" />
+		<title level="m">AI We Trust? Factors That Influence Trustworthiness of AI-infused Decision-Making Processes</title>
+				<imprint>
+			<date type="published" when="2019">12 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Measuring Recommendation Explanation Quality</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Radlinski</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3397271.3401032</idno>
+		<ptr target="https://dl.acm.org/doi/10.1145/3397271.3401032" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2020">7 2020</date>
+			<biblScope unit="page" from="329" to="338" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">A Quantitative Human-Grounded Evaluation Process for Explainable Machine Learning</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Beckh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Müller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rüping</surname></persName>
+		</author>
+		<ptr target="http://ceur-ws.org" />
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Tech. rep.</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Proxy tasks and subjective measures can be misleading in evaluating explainable AI systems</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Buçinca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">Z</forename><surname>Gajos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>Glassman</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3377325.3377498</idno>
+		<ptr target="https://doi.org/10.1145/3377325.3377498" />
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Intelligent User Interfaces, Proceedings IUI pp</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="454" to="464" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Counterfactual Building and Evaluation via eXplainable Support Vector Data Description</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Carlevaro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lenatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Paglialonga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mongelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ACCESS.2022.3180026</idno>
+		<ptr target="https://doi.org/10.1109/ACCESS.2022.3180026" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="60849" to="60861" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">V</forename><surname>Carvalho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">M</forename><surname>Pereira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Cardoso</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Machine Learning Interpretability: A Survey on Methods and Metrics. Electronics</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page">832</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.3390/electronics8080832</idno>
+		<ptr target="https://www.mdpi.com/2079-9292/8/8/832" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Constructing Grounded Theory: A Practical Guide through Qualitative Analysis</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Charmaz</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<pubPlace>Sage, Londo</pubPlace>
+		</imprint>
+	</monogr>
+	<note>second edn.</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Tan</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2202.04092" />
+		<title level="m">Machine Explanations and Human Understanding</title>
+				<imprint>
+			<date type="published" when="2022">2 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Trust building in recommender agents</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+		<ptr target="https://www.researchgate.net/publication/229020498" />
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Tech. rep.</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Understanding the Role of Human Intuition on Reliance in Human-AI Decision-Making with Explanations</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">W</forename><surname>Vaughan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bansal</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2301.07255" />
+		<imprint>
+			<date type="published" when="2023">1 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Towards Explainable Conversational Recommendation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Parsana</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Soni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<ptr target="https://concept.research.microsoft.com/" />
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Tech. rep.</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">A Study of Automatic Metrics for the Evaluation of Natural Language Explanations</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Clinciu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Eshghi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hastie</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2021.eacl-main.202</idno>
+		<ptr target="https://aclanthology.org/2021.eacl-main.202" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume</title>
+				<meeting>the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume<address><addrLine>Stroudsburg, PA, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2376" to="2387" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Toward personalized XAI: A case study in intelligent tutoring systems</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Conati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Barral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Putnam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Rieger</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/J.ARTINT.2021.103503</idno>
+		<ptr target="https://doi.org/10.1016/J.ARTINT.2021.103503" />
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">298</biblScope>
+			<biblScope unit="page">103503</biblScope>
+			<date type="published" when="2021-09">9 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Evaluation Metrics in Explainable Artificial Intelligence (XAI)</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Coroama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Groza</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Communications in Computer and Information Science</title>
+		<imprint>
+			<biblScope unit="volume">1675</biblScope>
+			<biblScope unit="page" from="401" to="413" />
+			<date type="published" when="2022">2022</date>
+			<publisher>Springer Science and Business Media Deutschland GmbH</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1007/978-3-031-20319-0{_}30</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">The effect of explanations and algorithmic accuracy on visual recommender systems of artistic images</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Dominguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Donoso-Guzmán</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Messina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3301275.3302274</idno>
+		<ptr target="https://doi.org/10.1145/3301275.3302274" />
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Intelligent User Interfaces, Proceedings IUI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">1476</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Doshi-Velez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Kim</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1702.08608" />
+		<title level="m">Towards A Rigorous Science of Interpretable Machine Learning. Arxiv pp</title>
+				<imprint>
+			<date type="published" when="2017">2 2017</date>
+			<biblScope unit="page" from="1" to="13" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2109.01962" />
+		<title level="m">Counterfactual Evaluation for Explainable AI</title>
+				<imprint>
+			<date type="published" when="2021-09">9 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Hoffman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">T</forename><surname>Mueller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Klein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Litman</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1812.04608" />
+		<title level="m">Metrics for Explainable AI: Challenges and Prospects</title>
+				<imprint>
+			<date type="published" when="2018">12 2018</date>
+			<biblScope unit="page" from="1" to="50" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H W</forename><surname>Hsiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">H T</forename><surname>Ngai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Cao</surname></persName>
+		</author>
+		<title level="m">Roadmap of Designing Cognitive Metrics for Explainable Artificial Intelligence (XAI)</title>
+				<imprint>
+			<date type="published" when="2021">7 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.48550/arxiv.2108.01737</idno>
+		<ptr target="https://arxiv.org/abs/2108.01737v1" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Johs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Agosto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">O</forename><surname>Weber</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2011.07130" />
+		<title level="m">Qualitative Investigation in Explainable Artificial Intelligence: A Bit More Insight from Social Science. In: Association for the Advancement of Artificial Intelligence</title>
+				<imprint>
+			<biblScope unit="volume">11</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Explainable artificial intelligence and social science: Further insights for qualitative investigation</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Johs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Agosto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">O</forename><surname>Weber</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/ail2.64</idno>
+		<ptr target="https://doi.org/10.1002/ail2.64" />
+	</analytic>
+	<monogr>
+		<title level="j">Applied AI Letters</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2022">2 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Principles and practice of structural equation modeling</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">B</forename><surname>Kline</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<publisher>Guilford publications</publisher>
+		</imprint>
+	</monogr>
+	<note>5th edition edn.</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Evaluating Recommender Systems with User Experiments</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Knijnenburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Willemsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-1-4899-7637-6_9</idno>
+		<ptr target="https://link.springer.com/10.1007/978-1-4899-7637-69" />
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<meeting><address><addrLine>Boston, MA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer US</publisher>
+			<date type="published" when="2015">1 2015</date>
+			<biblScope unit="page" from="309" to="352" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">What do we want from Explainable Artificial Intelligence (XAI)? -A stakeholder perspective on XAI and a conceptual model guiding interdisciplinary XAI research</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Langer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Speith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hermanns</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kästner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Schmidt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sesing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Baum</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/J.ARTINT.2021.103473</idno>
+		<ptr target="https://doi.org/10.1016/J.ARTINT.2021.103473" />
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">296</biblScope>
+			<biblScope unit="page">103473</biblScope>
+			<date type="published" when="2021">7 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Chen</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2207.12599" />
+		<title level="m">Survey of Explainable Graph Neural Networks: Taxonomy and Evaluation Metrics</title>
+				<imprint>
+			<date type="published" when="2022">7 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Question-Driven Design Process for</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pribić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sow</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2104.03483" />
+	</analytic>
+	<monogr>
+		<title level="j">Explainable AI User Experiences</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="23" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Human-Centered Explainable AI (XAI): From Algorithms to User Experiences</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Varshney</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2110.10790" />
+		<imprint>
+			<date type="published" when="2021">10 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Connecting Algorithmic Research and Usage Contexts: A Perspective of Contextualized Evaluation for Explainable AI</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Luss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Doshi-Velez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dhurandhar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Human Computation and Crowdsourcing</title>
+				<meeting>the AAAI Conference on Human Computation and Crowdsourcing</meeting>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="147" to="159" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1609/hcomp.v10i1.21995</idno>
+		<ptr target="https://ojs.aaai.org/index.php/HCOMP/article/view/21995" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Why and why not explanations improve the intelligibility of context-aware intelligent systems</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Lim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Dey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Avrahami</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference on Human Factors in Computing Systems -Proceedings pp</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="2119" to="2128" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1145/1518701.1519023</idno>
+		<ptr target="https://dl.acm.org/doi/10.1145/1518701.1519023" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">A Meta Survey of Quality Evaluation Criteria in Explanation Methods</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Löfström</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hammar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Johansson</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2203.13929" />
+		<imprint>
+			<date type="published" when="2022">3 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Explainable machine-learning predictions for the prevention of hypoxaemia during surgery</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Vavilala</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Horibe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Eisses</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Adams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Liston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K W</forename><surname>Low</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">F</forename><surname>Newman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">I</forename><surname>Lee</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41551-018-0304-0</idno>
+		<ptr target="https://doi.org/10.1038/s41551-018-0304-0" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature Biomedical Engineering</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="749" to="760" />
+			<date type="published" when="2018">10 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">The role of explainability in creating trustworthy artificial intelligence for health care: a comprehensive survey of the terminology, design choices, and evaluation strategies</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">F</forename><surname>Markus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Kors</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">R</forename><surname>Rijnbeek</surname></persName>
+		</author>
+		<idno type="DOI">http://arxiv.org/abs/2007.1591110.1016/j.jbi.2020.103655</idno>
+		<ptr target="http://arxiv.org/abs/2007.15911http://dx.doi.org/10.1016/j.jbi.2020.103655" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Biomedical Informatics</title>
+		<imprint>
+			<biblScope unit="volume">113</biblScope>
+			<biblScope unit="page">103655</biblScope>
+			<date type="published" when="2020">7 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Explanation in artificial intelligence: Insights from the social sciences</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Miller</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.artint.2018.07.007</idno>
+		<ptr target="https://linkinghub.elsevier.com/retrieve/pii/S0004370218305988" />
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">267</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="2019">2 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">A Multidisciplinary Survey and Framework for Design and Evaluation of Explainable AI Systems</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mohseni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Zarei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">D</forename><surname>Ragan</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3387166</idno>
+		<ptr target="http://arxiv.org/abs/1811.11839" />
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Interactive Intelligent Systems</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">3-4</biblScope>
+			<biblScope unit="page" from="1" to="45" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">Causal Interpretability for Machine Learning-Problems, Methods and Evaluation</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Moraffah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Karami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Raglin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note type="report_type">Tech. rep</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<title level="m" type="main">Benchmarking Counterfactual Algorithms for XAI: From White Box to Black Box</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Moreira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">L</forename><surname>Chou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hsieh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jorge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Pereira</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2203.02399" />
+		<imprint>
+			<date type="published" when="2022">3 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nauta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Trienes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pathak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Peters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Schmitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schlötterer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Van Keulen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Seifert</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2201.08164" />
+	</analytic>
+	<monogr>
+		<title level="j">From Anecdotal Evidence to Quantitative Evaluation Methods: A Systematic Review on Evaluating Explainable AI</title>
+		<imprint>
+			<date type="published" when="2022">1 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Trust-inspiring explanation interfaces for recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge-Based Systems</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="542" to="556" />
+			<date type="published" when="2007">8 2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1016/j.knosys.2007.04.004</idno>
+		<ptr target="https://doi.org/10.1016/j.knosys.2007.04.004" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Rong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Leemann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">T</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Fiedler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Qian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Unhelkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Seidel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Kasneci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Kasneci</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2210.11584" />
+		<title level="m">Towards Human-centered Explainable AI: User Studies for Model Explanations</title>
+				<imprint>
+			<date type="published" when="2022">10 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Explainability Metrics and Properties for Counterfactual Explanation Methods</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Cyras</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Inam</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-031-15565-9{_}10</idno>
+		<ptr target="https://doi.org/10.1007/978-3-031-15565-910" />
+	</analytic>
+	<monogr>
+		<title level="s">Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">13283</biblScope>
+			<biblScope unit="page" from="155" to="172" />
+			<date type="published" when="2022">2022</date>
+			<publisher>Springer Science and Business Media Deutschland GmbH</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Explainability fact sheets: A framework for systematic assessment of explainable approaches</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sokol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Flach</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3351095.3372870</idno>
+		<ptr target="https://doi.org/10.1145/3351095.3372870" />
+	</analytic>
+	<monogr>
+		<title level="m">FAT* 2020 -Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency</title>
+				<imprint>
+			<publisher>Association for Computing Machinery, Inc</publisher>
+			<date type="published" when="2020">1 2020</date>
+			<biblScope unit="page" from="56" to="67" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Beyond Expertise and Roles: A Framework to Characterize the Stakeholders of Interpretable Machine Learning and their Needs</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Suresh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">K</forename><surname>Nam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Satyanarayan</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3411764.3445088</idno>
+		<ptr target="https://dl.acm.org/doi/10.1145/3411764.3445088" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems</title>
+				<meeting>the 2021 CHI Conference on Human Factors in Computing Systems<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2021">5 2021</date>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="1" to="16" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<title level="m" type="main">Explaining health recommendations to lay users: The dos and don&apos;ts</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Szymanski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">V</forename><surname>Abeele</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+		<ptr target="http://ceur-ws.org" />
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Tech. rep.</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Explaining Recommendations: Design and Evaluation</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<meeting><address><addrLine>Boston, MA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="353" to="382" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1007/978-1-4899-7637-6_10</idno>
+		<ptr target="https://link.springer.com/10.1007/978-1-4899-7637-610" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">What Clinicians Want: Contextualizing Explainable Machine Learning for Clinical End Use</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tonekaboni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Mccradden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Goldenberg</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1905.05134" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of Machine Learning Research</title>
+				<meeting>Machine Learning Research</meeting>
+		<imprint>
+			<date type="published" when="2019">5 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<monogr>
+		<title level="m" type="main">Developing a Fidelity Evaluation Approach for Interpretable Machine Learning</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Velmurugan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Moreira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sindhgatta</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2106.08492" />
+		<imprint>
+			<date type="published" when="2021">6 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Notions of explainability and evaluation approaches for explainable artificial intelligence</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Vilone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Longo</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/J.INFFUS.2021.05.009</idno>
+		<ptr target="https://doi.org/10.1016/J.INFFUS.2021.05.009" />
+	</analytic>
+	<monogr>
+		<title level="j">Information Fusion</title>
+		<imprint>
+			<biblScope unit="volume">76</biblScope>
+			<biblScope unit="page" from="89" to="106" />
+			<date type="published" when="2021">12 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">A Novel Human-Centred Evaluation Approach and an Argument-Based Method for Explainable Artificial Intelligence</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Vilone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Longo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IFIP Advances in Information and Communication Technology</title>
+				<imprint>
+			<publisher>Springer Science and Business Media Deutschland GmbH</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">646</biblScope>
+			<biblScope unit="page" from="447" to="460" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1007/978-3-031-08333-4{_}36</idno>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Designing theory-driven usercentric explainable AI</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Abdul</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Lim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference on Human Factors in Computing Systems -Proceedings</title>
+				<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2019">5 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1145/3290605.3300831</idno>
+		<ptr target="https://doi.org/10.1145/3290605.3300831" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">A social evaluation of the perceived goodness of explainability in machine learning</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wanner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">V</forename><surname>Herm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Heinrich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Janiesch</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/2573234X.2021.1952913</idno>
+		<ptr target="https://doi.org/10.1080/2573234X.2021.1952913" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Business Analytics</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="29" to="50" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

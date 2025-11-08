@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">XRec: Large Language Models for Explainable Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-09-22">22 Sep 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Qiyao</forename><surname>Ma</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">University of Hong Kong</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xubin</forename><surname>Ren</surname></persName>
+							<email>xubinrencs@gmail.com</email>
+							<affiliation key="aff0">
+								<orgName type="institution">University of Hong Kong</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chao</forename><surname>Huang</surname></persName>
+							<email>chaohuang75@gmail.com</email>
+							<affiliation key="aff0">
+								<orgName type="institution">University of Hong Kong</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">XRec: Large Language Models for Explainable Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-09-22">22 Sep 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">C141FA2B5AAEC6DF9CA0C3DAAD8F876C</idno>
+					<idno type="arXiv">arXiv:2406.02377v2[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:56+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recommender systems help users navigate information overload by providing personalized recommendations aligned with their preferences. Collaborative Filtering (CF) is a widely adopted approach, but while advanced techniques like graph neural networks (GNNs) and self-supervised learning (SSL) have enhanced CF models for better user representations, they often lack the ability to provide explanations for the recommended items. Explainable recommendations aim to address this gap by offering transparency and insights into the recommendation decision-making process, enhancing users' understanding. This work leverages the language capabilities of Large Language Models (LLMs) to push the boundaries of explainable recommender systems. We introduce a model-agnostic framework called XRec, which enables LLMs to provide comprehensive explanations for user behaviors in recommender systems. By integrating collaborative signals and designing a lightweight collaborative adaptor, the framework empowers LLMs to understand complex patterns in user-item interactions and gain a deeper understanding of user preferences. Our extensive experiments demonstrate the effectiveness of XRec, showcasing its ability to generate comprehensive and meaningful explanations that outperform baseline approaches in explainable recommender systems. We open-source our model implementation at: https://github.com/HKUDS/XRec.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>With the overwhelming abundance of content and products available in online platforms, users frequently encounter the daunting challenge of information overload. In response, recommender systems emerge as indispensable tools that aim to alleviate this burden. These systems effectively filter through the vast array of options and present users with tailored recommendations that are both relevant and personalized, aligning with their unique preferences and interests <ref type="bibr">(Zhang et al., 2019b)</ref>.</p><p>Among the diverse range of recommendation techniques available, Collaborative Filtering (CF) framework emerges as a prominent and widely embraced approach within the field of recommender systems. CF operates on the fundamental premise that users who have demonstrated similar preferences in the past, such as common item ratings or similar purchase histories, are likely to exhibit comparable preferences when it comes to future recommendations <ref type="bibr" target="#b0">(Chen et al., 2021)</ref>.</p><p>In recent years, the field of collaborative filtering algorithms has undergone a remarkable revolution with the emergence of deep learning techniques. This transformative wave has brought about the integration of diverse neural network architectures, including Attention mechanisms <ref type="bibr" target="#b1">(Chen et al., 2017)</ref>, Graph Neural Networks (GNNs) <ref type="bibr" target="#b3">(He et al., 2020)</ref>, and Self-Supervised Learning (SSL) <ref type="bibr">(Xia et al., 2023)</ref>. Notably, the incorporation of GNNs in collaborative filtering models has yielded significant advancements by effectively capturing complex relational information and enhancing recommendation performance while preserving highorder collaborative dependencies. Moreover, selfsupervised recommender systems have emerged as a promising solution to address the challenge of data sparsity. These systems leverage selfsupervised learning signals to augment the available data, aiming to enhance recommendations.</p><p>While existing collaborative filtering models excel at providing accurate recommendation results, there remains a critical aspect that has not received adequate attention: understanding the underlying reasons behind observed user-item interactions. Explainable recommendations aim to address this gap by providing transparency to users, offering insights into the decision-making process behind recommendations. This not only enhances users' understanding of their own preferences, but also fosters trust in recommendation algorithms.</p><p>Several research studies have dedicated their focus to generating explanations for user-item interactions. Notably, Att2Seq <ref type="bibr" target="#b2">(Dong et al., 2017)</ref> and NRT <ref type="bibr" target="#b2">(Li et al., 2017)</ref> employ attention mechanisms and recurrent neural networks (RNNs) to generate textual explanations. Recent advancements have further explored the utilization of Transformer <ref type="bibr" target="#b0">(Li et al., 2021)</ref> and GPT2 <ref type="bibr">(Li et al., 2023)</ref> for text generation, providing valuable insights into recommendation results. However, these approaches face a common challenge arising from the limited availability of explanation data, which hinders their ability to generate high-quality explanations. It is also important to emphasize that ID-based methods heavily rely on ID embeddings, resulting in limited generalization capabilities and difficulties when adapting to unseen users and items in a zeroshot recommendation scenario.</p><p>Presented Work. In light of the recent advancements in Large Language Models (LLMs), our primary objective is to push the boundaries of explainable recommender systems by harnessing the exceptional language capabilities of LLMs. To this end, we introduce model-agnostic XRec, a groundbreaking collaborative instruction-tuning framework that enables large language models to provide comprehensive explanations for user behaviors within recommender systems. Within our XRec framework, we equip LLMs with the unique ability to comprehend the intricate patterns of useritem interactions through the integration of collaborative signals via a collaborative instruction-tuning paradigm. In order to bridge the representation space of collaborative relationships and the language semantic space, we design a lightweight collaborative adaptor that incorporates behavior-aware collaborative signals into the LLMs, facilitating a deeper understanding of user preferences.</p><p>We conducted a series of thorough experiments to validate the effectiveness and superior performance of our proposed framework, XRec, in generating comprehensive and meaningful explanations within recommender systems. In addition to that, we conducted ablation studies and investigated the robustness of our model, providing further evidence of its effectiveness.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Preliminaries</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Explainable Recommendation</head><p>Explainable Recommendation is essential in recommender systems as it clarifies the underlying rea-sons for user-item interactions. Our primary goal is to create clear textual explanations that allow us to understand the rationale behind each recommendation. Specifically, for each interaction between a user u and an item i, the explanations generated can be described as follows:</p><formula xml:id="formula_0">explanation(u, i) = generate(u, i, X u , X i , τ ) (1)</formula><p>In this context, X u and X i represent the interaction histories of user u and item i, respectively. The symbol τ denotes any additional side information related to both the users and the items.</p><p>Building upon recent advancements in textbased profile generation <ref type="bibr" target="#b11">(Ren et al., 2024;</ref><ref type="bibr" target="#b16">Xi et al., 2023)</ref>, we enhance the explanation generation paradigm in recommender systems. Our method involves incorporating textual information into the generation of item profiles, utilizing a predefined item prompt (P I ) and item description (D).</p><formula xml:id="formula_1">I = LLMs(P I , D)<label>(2)</label></formula><p>In addition to item descriptions, we extend our approach to user profiles by considering their interactions with previously profiled items. This is achieved by sampling the items that the user has interacted with, resulting in a more comprehensive representation of their preferences and interests.</p><formula xml:id="formula_2">U = LLMs(P U , {I i : i ∈ N u })<label>(3)</label></formula><p>We denote the set of items interacted with by user u as N u , and use P U as the user profile prompt.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Graph Collaborative Filtering</head><p>Graph Neural Networks (GNNs) have proven to be effective frameworks for capturing collaborative relationships between users and items, taking into account high-order dependencies. Through multiple rounds of message passing, nodes in the user-item interaction graph assimilate information and generate embeddings that capture these collaborative relationships <ref type="bibr" target="#b15">(Wang et al., 2019)</ref>. To encode the user-item interaction graph G using L layers of GNNs, the l th layer embedding of a user node u or an item node i is computed as follows:</p><formula xml:id="formula_3">e (l) u = AGG e (l−1) u , {e (l−1) i | i ∈ N u }<label>(4)</label></formula><p>In the context of graph collaborative filtering, N u refers to the neighborhood of node u, while AGG(•) is the aggregation function, which can vary across different models. By utilizing L layers of propagation, graph neural networks (GNNs) generate L + 1 distinct embeddings for each node, namely (e (0) , e (1) , . . . , e (L) ). These embeddings are then concatenated to form the final node embedding. The embeddings of users and items are generated with the objective of maximizing the probability, considering the historical user interactions:</p><formula xml:id="formula_4">p(e|X ) ∝ p(X |e)p(e)<label>(5)</label></formula><p>For each user in the set U = u 1 , u 2 , . . . , u m and each item in the set I = i 1 , i 2 , . . . , i n , where X represents the historical interactions between users and items. The predictive scoring function, which is determined by the inner product of the user and item embeddings, can be defined as:</p><formula xml:id="formula_5">ŷui = e T u • e i<label>(6)</label></formula><p>Assuming normalization, the range of ŷui is between 0 and 1, representing the predicted likelihood of user u interacting with item i.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methodology</head><p>In this section, we provide a comprehensive overview of our XRec, which is specifically designed to generate explanations for user-item interactions. The goal of our model is to uncover the underlying reasons behind these interactions and shed light on the factors influencing user behavior. By unifying graph collaborative filtering and large language models, our XRec aims to provide insightful explanations which help users understand why certain interactions occur and enhance the transparency of the recommendation process.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Collaborative Relation Tokenizer</head><p>To efficiently capture the collaborative relationships between a large number of users and items and reflect their interaction patterns, natural language falls short, but representations offer a powerful alternative. In our XRec, we harness the capabilities of graph neural networks as the tokenizer to encode the high-order collaborative relational information into a latent embedding space, enabling effective modeling of complex user preference.</p><p>Graph-based Message Passing. The collaborative graph tokenizer in our approach utilizes message passing mechanisms to propagate and aggregate information across the user-item interaction graph, facilitating the learning of representations for user and item nodes. In our framework, we employ LightGCN <ref type="bibr" target="#b3">(He et al., 2020)</ref> as the backbone for effective collaborative information aggregation.</p><formula xml:id="formula_6">e (l+1) u = i∈Nu 1 |N u | |N i | e (l)</formula><p>i , e</p><formula xml:id="formula_7">= u∈N i 1 |N i | |N u | e (l) u (7)<label>(l+1) i</label></formula><p>The user and item final embeddings are computed by averaging all layer embeddings.</p><formula xml:id="formula_8">e u = K k=0 1 K + 1 e (k) u , e i = K k=0 1 K + 1 e (k) i</formula><p>(8) Tokenizer Optimization with CF signals. To optimize our collaborative graph tokenizer using implicit feedback signals from user interactions, we utilize the Bayesian Personalized Ranking (BPR) loss as a supervision signal to guide the generation of user and item embeddings, which is defined as:</p><formula xml:id="formula_9">L BP R = − m u=1 i∈Nu j / ∈Nu ln σ(ŷ u,i − ŷu,j ) (9)</formula><p>ŷu,i denotes the prediction score (inner product) between user u and item i, and σ denotes the sigmoid function. Additionally, we include a regularization loss to maintain the norm of the embeddings:</p><formula xml:id="formula_10">L reg = λ(∥e (0) u ∥ 2 + ∥e (0) i ∥ 2 ) (10)</formula><p>By combining these terms, our joint optimization loss function is formulated as:</p><formula xml:id="formula_11">L = L BP R + L reg (11)</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Collaborative Instruction Tuning for Large Language Models (LLMs)</head><p>To enable LLMs to understand collaborative information among users and items, we introduce a collaborative instruction tuning paradigm. This approach aligns behavior-level information with language-level semantics, thereby incorporating user preferences into the knowledge within LLMs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1">Collaborative Information Adapter</head><p>Given the potentially divergent semantic representation spaces between the behavior-level collaborative information and the textual semantics associated with users and items, our XRec is equipped with a lightweight yet effective adapter. This adapter serves to align these different modalities, enabling our model to effectively leverage both the collaborative signals and the textual semantics.</p><p>To bridge the semantic gap between the input of large language models (LLMs) and our behavioraware collaborative relation tokens, and to enhance the model's generalization capabilities, we apply a Mixture of Experts (MoE) approach <ref type="bibr" target="#b4">(Hou et al., 2022)</ref> for embedding space adaptation. In this Mixture of Experts architecture, each expert is represented by a linear layer that captures different semantic dimensions, and these experts are then integrated using a learnable gating router mechanism. This allows the model to adaptively combine the different semantic representations encoded by the various experts, effectively bridging the gap between the behavior-aware collaborative relation tokens and textual language tokens.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2">Unifying CF with LLM</head><p>With the newly adapted embeddings, we are now ready to infuse collaborative information into LLMs. We introduce special tokens to reserve space in the input prompt, and after transforming the prompt into token embeddings, we inject the adapted embeddings into these reserved positions.</p><p>However, a challenge arises as each node embedding is represented by only a single token in the input prompt. As the input length increases, the attention weight allocated to each embedding token inevitably diminishes, leading to a potential loss of collaborative information. To address this dilution of influence, we take inspiration from <ref type="bibr" target="#b10">(Qin et al., 2023)</ref> and extend the injection of adapted embeddings beyond the initial input prompt. Specifically, we incorporate them into every layer of the LLM at reserved positions. To facilitate this, we modify the key, query, and value projection functions of every layer within the LLMs as follows:</p><formula xml:id="formula_12">f {q,k,v} (x i ) + = W {q,k,v} • a i<label>(12)</label></formula><p>Let's denote the projection matrices for the query, key, and value as W q,k,v , and a i as the adapted embedding. Our approach ensures that the large language models (LLMs) continuously access and integrate the collaborative information throughout their entire structure, not just at the input stage. By injecting the graph-based knowledge into all layers of the LLMs, we not only maintain a robust representation of the collaborative context, but also enable more effective gradient flow directly back to the Mixture of Experts (MoE) module. This innovative integration of language modeling and graph representation learning allows our model to leverage the deep contextual insights provided by the LLMs, while benefiting from the structural patterns recognized by the Graph Neural Networks.</p><p>Structured Prompt Embedding. We employ a structured prompt, illustrated in Figure <ref type="figure">2</ref>, which integrates various data elements. This process involves tokenizing the prompt and converting it into an embedding space representation. To ensure the special tokens within the prompt are recognized as unique entities, we incorporate them into the tokenizer of the LLM. These specialized tokens are then replaced by their corresponding adapted embeddings in the transformed token embeddings. Specifically, we define the input prompt as which is further used as input of LLMs.</p><p>To improve the ability of large language models (LLMs) to generate contextually and syntactically coherent explanations, we aim to minimize the loss between the predicted probabilities of next tokens and the actual next tokens in the sequences. We utilize the negative log-likelihood (NLL) as our training loss, calculated as follows:</p><formula xml:id="formula_13">L = − 1 N N i=1 C i c=1 y ic • log(ŷ ic ) (13)</formula><p>Here, N is the number of explanations, C i is the character count in each explanation, and y i,c and ŷi,c represent the actual and predicted tokens, respectively. To minimize training complexity, we freeze all parameters within the LLMs, excluding any interactions with the GNN training procedure.</p><p>The only trainable parameters are those within the Mixture-of-Experts (MoE) model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.3">Ground Truth Explanation Generation</head><p>Prior research has directly used user reviews as ground truth explanations for recommender systems <ref type="bibr" target="#b0">(Li et al., 2021)</ref>. However, these reviews tend to be subjective and may only implicitly convey the user's intentions or sentiments. To address this limitation and improve the quality of ground truth explanations, the application of Large Language Models (LLMs) has been proposed to distill explicit user intentions from their raw reviews.</p><formula xml:id="formula_14">explanation(u, i) = LLMs(P, r u,i )<label>(14)</label></formula><p>where r u,i is the review of item i given by user u.</p><p>An example case is shown in the Appendix.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Evaluation 4.1 Experimental Settings</head><p>Datasets. To evaluate XRec, we utilize three prominent public datasets that offer distinct perspectives on user-item interactions: Amazon <ref type="bibr" target="#b9">(Ni et al., 2019)</ref>: This dataset aggregates the purchasing behaviors of users within Amazon's books category. It includes not only user ratings but also the textual reviews they provide after making a purchase. Yelp: This dataset captures the interactions between users and businesses, with a focus on the service industry.</p><p>It contains both user ratings and reviews. Google <ref type="bibr">(Li et al., 2022;</ref><ref type="bibr" target="#b18">Yan et al., 2023)</ref>: Centered on user interactions recorded through Google Maps, this dataset incorporates the metadata of businesses as well as the feedback provided by users. Detailed statistics of these datasets can be found in Table <ref type="table" target="#tab_1">2</ref>. Evaluation Metrics. When evaluating our XRec, we employ a suite of metrics designed to capture the semantic explainability and stability of the generated explanations. Traditional n-gram based metrics like BLEU and ROUGE prove unsuitable, as they fail to grasp the underlying semantic meaning. For instance, "the weather is cold" and "it's freezing" convey the same meaning, yet would score poorly due to a lack of n-gram overlap. Instead, we employ advanced metrics that incorporate semantic understanding: GPTScore <ref type="bibr">(Wang et al., 2023)</ref> aligns with human judgment by comparing the semantic similarity between generated and ground truth explanations. BERTScore <ref type="bibr" target="#b3">(Zhang et al., 2020)</ref> utilizes contextual embeddings from BERT to compute token-level cosine similarity. BARTScore <ref type="bibr">(Yuan et al., 2021</ref>) leverages the BART model, conceptualizing evaluation as a text generation task that assigns scores based on the probability of regenerating reference texts. BLEURT <ref type="bibr" target="#b13">(Sellam et al., 2020)</ref> employs a novel pre-training approach with synthetic data to enhance generalization. USR <ref type="bibr" target="#b0">(Li et al., 2021)</ref> (Unique Sentence Ratio) measures the uniqueness of generated explanations by calculating the ratio of unique to total sentences.</p><p>To further assess quality stability, we analyze the standard deviations of these scores, with lower values indicating more consistent performance. The overall results are shown in Table <ref type="table" target="#tab_0">1</ref>. Compared Methods. We compare our model's performance against the following baselines: • Att2Seq <ref type="bibr" target="#b2">(Dong et al., 2017)</ref>: Utilizes an attention-based attribute-to-sequence model to generate reviews based on attribute information. • NRT <ref type="bibr" target="#b2">(Li et al., 2017)</ref>: Predicts ratings and generates abstractive tips for recommendations using multi-task learning to optimize parameters.</p><p>• PETER <ref type="bibr" target="#b0">(Li et al., 2021)</ref>: PETER is a personalized transformer model for explainable recommendation. It maps user and item IDs to the generated explanation text, connecting the IDs and words. Since the datasets lack word features, PETER is used instead of PETER+, which incorporates additional features.</p><p>• PEPLER <ref type="bibr">(Li et al., 2023)</ref>: PEPLER leverages pretrained transformer to generate explainable recommendations based on prompts that incorporate user and item ID vectors. To bridge the gap between these prompts and the pretrained model, the approach proposes sequential tuning and recommendation as regularization strategies.</p><p>There are several variants of the PEPLER, and in this case, the researchers have opted to use the continuous prompt learning version.</p><p>• Ours (w/o profile): For a fair comparison across all the models, we remove the user and item profiles from the input to our model, as the other baselines do not have access to this information.</p><p>Implementation Details. When generating the graph embeddings, we configure the embedding dimension to 64 and use a batch size of 1024. To optimize the training process, we implement an early stopping mechanism based on Recall@20, allowing for up to 10 patience steps. In our Mixture of Experts (MoE) setup, we utilize 8 experts and incorporate a dropout rate of 0.2, with an additional noise factor of 0.01 at the gating router.</p><p>The LLM we use is built upon the LLaMA2-7B architecture. Additionally, we employ the gpt-3.5turbo model for generating datasets and for computing the GPTScore. For the explanations, we ensure they are no longer than 50 words for both the ground truth and the generated explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Performance Comparison</head><p>To demonstrate the superiority of our model in explainability and stability, we conduct comparative analyses against four baseline methods across three datasets. The results are summarized in Table <ref type="table" target="#tab_0">1</ref> and reveal several key findings:</p><p>• Our model consistently outperforms the baselines. Even after removing user and item profiles, the Ours (w/o profile) variant still demonstrates significant superiority. This success can be attributed to two key factors: i) Our model effectively captures collaborative information, enhancing the representation of rich semantics from user interaction behaviors, going beyond just textual information. ii) The model achieves strong alignment between the behavior-level collaborative information and text-level semantics.</p><p>• A standout feature of our model is its Unique Sentence Ratio (USR), which is nearly 1. This indicates that XRec generates truly unique explanations for each distinct user-item interaction. This remarkable level of uniqueness in the generated explanations represents a significant breakthrough. No previous work has achieved such a high degree of personalization in model outputs.</p><p>Our model enhances learning efficacy and boosts overall performance by strategically exploiting the synergistic strengths across domains.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Ablation Study</head><p>In this section, we conduct ablation studies to explore the impact of two pivotal components in our model: user/item profiles and the injection of collaborative information. We compare four model variants -i) our complete model with all features (Ours); ii) Ours (w/o profile) which omits user and item profiles; iii) Ours (w/o injection) which retains aligned embeddings in the prompts but does not inject them into the LLM layers, and iv) Ours (w/o profile &amp; injection) lacking both profiles and embedding injection. To rigorously assess explainability and stability, we evaluate these variants using GPTScore and BERTScore on the Amazonbooks and Google-reviews datasets, including their standard deviations, which sheds light on the critical role each of these elements plays in driving the model's performance and capabilities.</p><p>The results in Figure <ref type="figure">3</ref> show our complete model (Ours) outperforms other variants in explainability and stability, highlighting its superior capability. i) While Ours (w/o profile) declines only slightly, it exhibits a significant reduction in stability compared to Ours, underscoring the critical importance of user/item profiles for explanation stability. ii) Similarly, Ours (w/o injection) re- ports much lower scores, emphasizing the value of incorporating neighborhood knowledge to improve performance. iii) Notably, Ours (w/o profile &amp; injection) exhibits the lowest scores, confirming the synergistic combination of user/item profiles and knowledge injection is crucial for optimal performance. These findings underscore the complementary and synergistic contribution of these two critical components in driving the superior capabilities of our complete model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Model Robustness against Data Sparsity</head><p>To evaluate our model's generalization capabilities, we conducted experiments across datasets with varying data sparsity. We segmented the testing data into five subsets (tst1 to tst5) based on the frequency of user appearances in the training data. This allowed us to systematically examine the model's effectiveness across a spectrum of user familiarity, from rare to frequent users. Additionally, we introduced a zero-shot testing dataset consisting solely of users not encountered during training, which tested the model's ability to address the coldstart problem. The evaluation results, summarized in Figure <ref type="figure" target="#fig_0">1</ref>, highlight several key findings:</p><p>• The model demonstrates robust performance across all subsets, with noticeably better results as user frequency decreases. This trend suggests our model effectively leverages collaborative information, even with limited user interactions.</p><p>• In the zero-shot scenario, lacking any prior user data, our model not only outperforms baselines but also performs comparably to the other subsets, from tst1 to tst5. This capability is valuable for new user recommendations, highlighting the practical utility of our approach in real-world applications with incomplete user data.</p><p>These findings underscore the efficacy of our model in scenarios that traditionally challenge recommender systems, such as those involving new or infrequent users. The model's success in the zeroshot learning confirms its robust generalization capabilities and highlights its potential to mitigate the cold-start problem, where new users or items lack historical interaction data. By maintaining high levels of explainability and stability across diverse scenarios, the model proves its suitability for deployment in dynamic environments where user behaviors and item catalogs frequently change.</p><p>5 Related Work</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Explainable Recommendation</head><p>Explainable recommender systems have attracted considerable attention due to their ability to enhance user satisfaction and provide transparency in recommendation processes. Early approaches primarily relied on extracting attributes from users and items' side information to generate explanations, employing techniques such as attention mechanisms <ref type="bibr" target="#b2">(Dong et al., 2017)</ref> and recurrent neural networks (RNNs) <ref type="bibr" target="#b2">(Li et al., 2017)</ref>. In recent studies, researchers have further explored the application of advanced models like Transformer <ref type="bibr" target="#b0">(Li et al., 2021)</ref> and GPT2 <ref type="bibr">(Li et al., 2023)</ref> for offering explanations regarding user behaviors in recommender systems. However, a predominant issue with most existing solutions for explainable recommendations is their heavy reliance on ID-based approaches. This dependency significantly restricts their generalization ability, especially when confronted with challenges such as data sparsity and zero-shot recommendation scenarios. Furthermore, the scarcity of explanatory data presents additional obstacles, as it poses challenges for existing methods to deliver explanations of high quality and comprehensiveness. Given the aforementioned obstacles, we propose the development of a novel large language model as an explainer for recommender systems. This model not only uncovers the underlying reasons behind user-item interactions, but also demonstrates robust generalization capabilities, even in zero-shot recommendation scenarios.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">GNNs for Recommendation</head><p>Graph Neural Networks (GNNs) have become a core part of improving collaborative filtering models. They offer an effective way to capture the complex high-level interactions in recommendation systems <ref type="bibr">(Ying et al., 2018;</ref><ref type="bibr" target="#b12">Ren et al., 2023)</ref>. These networks leverage the natural relational structure of data, enabling a sophisticated understanding of the intricate dependencies that define user-item interactions. Recommender systems like LightGCN <ref type="bibr" target="#b3">(He et al., 2020)</ref> and <ref type="bibr">Star-GCN (Zhang et al., 2019a)</ref> have set the standard, using iterative message passing to model and enhance collaborative relationships. To address the challenge of data sparsity, researchers have integrated self-supervised learning with the graph-based collaborative filtering approach. This introduces new methods to enrich the learning process and improve recommendation quality <ref type="bibr">(Yang et al., 2023a,b;</ref><ref type="bibr">Yao et al., 2021)</ref>.</p><p>Drawing inspiration from the aforementioned research endeavors that emphasize GNN-enhanced recommender systems, we have successfully developed our advanced language model, XRec. By incorporating GNN as the collaborative relation encoders, our model excels at capturing intricate user dependencies at higher orders. Through our collaborative instruction-tuning framework, we equip LLMs with the ability to recognize and leverage collaborative signals among users, effectively aligning behavior-level user preferences with the language semantic space. This enables our model to provide comprehensive textual explanations that correspond to user interaction behaviors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusion</head><p>This work presents a novel framework, XRec, that seamlessly integrates the graph-based collaborative filtering paradigm with the capabilities of Large Language Models (LLMs) to generate comprehensive and insightful explanations for recommendation outputs. By leveraging the inherent collaborative relationships encoded within the user-item interaction graph, XRec is able to effectively capture the high-order dependencies that underlie user preferences and item associations. XRec introduces a specialized collaborative information adaptor, which serves as the critical bridge for establishing a strong connection between the collaborative signals and the rich textual semantics encoded within the LLM. Through extensive experiments, the study's findings underscore the significant advantages of the XRec framework. Not only does it enhance the explainability of the recommendation process, but it also ensures robustness, particularly in challenging zero-shot scenarios where the framework demonstrates strong generalization capabilities across unseen users and items.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Limitation</head><p>While XRec demonstrates promising advancements in explainable recommender systems, it also exhibits limitations in terms of data modality diversity. Currently, our approach is constrained to textual and graph-based data, excluding visual inputs such as images and videos. These visual modalities can provide extensive contextual information. For instance, images and videos can reveal aesthetic preferences, cultural trends, and emotional responses, capturing subtle cues that textual data might miss. They also help identify visual patterns that correspond to user behavior and preferences, such as color schemes, styles, and settings, which are crucial for personalization. Recognizing these limitations, future work could explore the integration of multimodal data processing techniques. This approach may potentially enhance the system's predictive accuracy and improve its ability to personalize recommendation explanations, by incorporating advanced image and video analysis to better understand and respond to user preferences. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Appendix</head><p>The supplementary materials accompanying this work offer a comprehensive and meticulous exploration of the methodologies and techniques utilized in crafting the ground truth explanations and developing the detailed user/item profiles.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1 Generating Ground Truth Explanations</head><p>Figure <ref type="figure" target="#fig_3">5</ref> provides an illustrative example of the ground truth explanation generation process as applied to the Yelp dataset. To maintain a consistent approach across diverse user-item interactions, the instructions given to the language models remain uniform, guiding them to extract the most relevant information that accurately reflects the user's underlying intentions. Notably, the prompt used in this process consists solely of the user's review text, deliberately omitting any additional data about the user or the item being reviewed. This strategic decision helps to minimize the influence of extraneous information, allowing the language model to focus exclusively on discerning and articulating the implicit intentions behind the user's interaction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Item Profile Generation</head><p>Figure <ref type="figure" target="#fig_4">6</ref> illustrates the item profile generation process using the Yelp data. LLMs are fed metadata about the item, such as its name, location, and category, as well as user reviews. This approach allows</p><p>You will serve as an assistant to help me explain why the user would enjoy the business.</p><p>I will provide you with information about the user and the business, as well as review of the business written by the user. Here are the instructions: 1. The basic information will be described in JSON format, with the following attributes: { "review": "review of the business written by the user" } Requirements:</p><p>1. Please provide your answer in STRING format in one line.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2.</head><p>Please ensure the answer is no longer than 50 words.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>System Instruction</head><p>{ "review": "Went here for a date night with my fiancé. The service was a bit slow at first as it took a while to get our drinks, but once the dinner rush seemed to pass our waiter was able to devote more time to us and things were delivered much more timely. The drinks were great: my fiancé tried the Mexican mule and loved it. The food was amazing. Will definitely be returning for future date nights!" }</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Input Prompt</head><p>{ "The user would enjoy the business for its delicious food, great drinks, and cozy atmosphere, making it a perfect spot for future date nights." } the LLMs to gain a deeper understanding of the types of users who favor the business. By processing this multifaceted information, the LLMs generate comprehensive profiles that summarize the key characteristics of users inclined towards the item. For instance, the case study profiles capture insights into the preferences of users drawn to beerrelated businesses. This granular understanding represents a significant advancement in modeling user-item interactions and preferences.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Generated Explanation</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 User Profile Generation</head><p>Figure <ref type="figure" target="#fig_5">7</ref> explores user profile generation on the Yelp dataset. Unlike items, users often lack extensive metadata, presenting a unique challenge. To deduce user preferences, the approach relies on Large Language Models (LLMs) to analyze the user's historical interactions. Crucially, the LLMs leverage item descriptions derived from previously generated profiles, refined to better characterize the items. This methodology, incorporating metadata like item titles and reviews, empowers the LLMs to identify the specific types of items a user prefers. By leveraging this multifaceted information, the system develops nuanced user profiles to enable personalized recommendations.</p><p>You will serve as an assistant to help me summarize which types of users would enjoy a specific business. I will provide you with the basic information (name, city and category) of that business and also some feedback of users for it. Here are the instructions: 1. The basic information will be described in JSON format, with the following attributes: { "name": "the name of the business", "city": "city where the company is located", "categories": "several tags describing the business" } 2. Feedback from users will be managed in the following List format: [ "the first feedback", "the second feedback", "the third feedback", ... ] The information I will give you: BASIC INFORMATION: a JSON string describing the basic information about the business. USER FEEDBACK: a List object containing some feedback from users about the business.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Requirements:</head><p>1. Please provide your answer in JSON format, following this structure: { "summarization": "A summarization of what types of users would enjoy this business" } 2. Please ensure that the "summarization" is no longer than 50 words.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>System Instruction</head><p>BASIC INFORMATION: { "name": "Restaurant Rebirth", "city": "New Orleans", "categories": "Cajun/Creole, Soup, Seafood, Restaurants, Steakhouses, Southern"} USER FEEDBACK: [ "Can't wait to get back to this place once restaurants reopen. Amazing casual but boujee ambiance on their breezy outdoor terrace ...", "We ordered in for Sunday brunch this past weekend and for the most part, it hit the spot. We tried …", "Absolutely zero shame in this ThankyouThursday post. This place is admittedly only a few blocks from my apartment, so convenience …" ]</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Input Prompt</head><p>{ "summarization": "Craft beer enthusiasts, casual beer drinkers, and those looking for a lively brewery experience with events, tastings, and a variety of beers to try would enjoy Sun King Brewery in Indianapolis." } You will serve as an assistant to help me determine which types of business a specific user is likely to enjoy. I will provide you with information about businesses that the user has interacted, as well as his or her reviews of those businesses. Here are the instructions: 1. Each interacted business will be described in DICTIONARY format, with the following attributes: { "title": "the name of the business", "description": "a description of what types of users will like this business", "review": "the user's review on the business" } The information I will give you: PURCHASED BUSINESSES: a list of DICTIONARIES describing the businesses that the user has interacted.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Generated Item Profile</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Requirements:</head><p>1. Please provide your answer in JSON format, following this structure: { "summarization": "A summarization of what types of business this user is likely to enjoy"} 2. Please ensure that the "summarization" is no longer than 50 words.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>System Instruction</head><p>PURCHASED BUSINESSES: [ { "title": "Hub Coffee Roasters", "description": "Craft beer enthusiasts, casual beer drinkers, and those looking for a lively brewery experience with … ", "review": "Great little coffee shop. Love the back room. There's so much light there and … "}, { "title": "1, 2, Tea", "description": "1, 2, Tea in Reno is recommended for those who enjoy simple, reliable bubble tea with friendly service and … ", "review": "I go here at least once a week if not more often. They have amazing drinks! Having lived in ... " }, { "title": "Chicago's Pizza With A Twist -Reno, NV", "description": "Those who enjoy unique pizza flavors like Indian-inspired toppings, fresh ingredients, and friendly service would love … ", "review": "Indian food+pizza!!! It was love at first sight. And what's even more amazing is they have a gluten free crust … "} ]</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Input Prompt</head><p>{ "summarization": "This user is likely to enjoy businesses with cozy atmospheres, quality beverages, friendly service, unique experiences like tea tastings, and activities that are both fun and interactive."} } </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Generated User Profile</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: The overall architecture of our XRec. (i). Collaborative Relation Tokenizer: Transforms complex user-item relationships into latent embeddings using GNNs; (ii) Collaborative Information Adapter: A lightweight adapter that integrates collaborative signals into LLMs. (iii) Unifying CF with LLM: Integrates collaborative filtering insights directly into large language models, enabling them to generate insightful explanations.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>Figure 2: A depiction of model prompt instruction.P = [p 1 , . . . , p u , . . . , p i , . . . , p e , . . . , p l ], where each element p represents one input token. The tokens p u , p i , p e denote &lt;USER_EMBED&gt;, &lt;ITEM_EMBED&gt;, &lt;EXPLAIN_POS&gt; respectively. After processing through the positional embedding layer, we denote the output as E = [ϵ 1 , . . . , ϵ u , . . . , ϵ i , . . . , ϵ e , . . . , ϵ l ], where each ϵ is the token embedding of its corresponding token. Subsequently, ϵ u and ϵ i are replaced by the adapted embeddings a u and a i , to form the final embedding layer E ′ = [ϵ 1 , . . . , a u , . . . , a i , . . . , ϵ e , . . . , ϵ l ], which is further used as input of LLMs.To improve the ability of large language models (LLMs) to generate contextually and syntactically coherent explanations, we aim to minimize the loss between the predicted probabilities of next tokens and the actual next tokens in the sequences. We utilize the negative log-likelihood (NLL) as our training loss, calculated as follows:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Experiments of different data sparsity.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Case study on the generation of ground truth explanations for recommender systems on Yelp dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Case study of item profile generation on Yelp dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Case study of user profile generation on Yelp dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Overall Comparison in Terms of Explainability and Stability. The superscripts P, R, and F1 indicate Precision, Recall, and F1-Score, respectively. The subscript std denotes the standard deviation of each score. The best performances are highlighted in bold, and the second-best are underlined.</figDesc><table><row><cell>Metrics</cell><cell cols="7">Explainability ↑ GPTScore BERTScore P BERTScore R BERTScore F 1 BARTScore BLEURT USR</cell><cell cols="2">GPTstd BERT P std</cell><cell cols="2">Stability ↓ BERT R std BERT F 1 std</cell><cell cols="2">BARTstd BLEURTstd</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Amazon-books</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Att2Seq</cell><cell>76.08</cell><cell>0.3746</cell><cell>0.3624</cell><cell>0.3687</cell><cell>-3.9440</cell><cell>-0.3302</cell><cell cols="2">0.7757 12.56</cell><cell>0.1691</cell><cell>0.1051</cell><cell>0.1275</cell><cell>0.5080</cell><cell>0.299</cell></row><row><cell>NRT</cell><cell>75.63</cell><cell>0.3444</cell><cell>0.3440</cell><cell>0.3443</cell><cell>-3.9806</cell><cell>-0.4073</cell><cell cols="2">0.5413 12.82</cell><cell>0.1804</cell><cell>0.1035</cell><cell>0.1321</cell><cell>0.5101</cell><cell>0.3104</cell></row><row><cell>PETER</cell><cell>77.65</cell><cell>0.4279</cell><cell>0.3799</cell><cell>0.4043</cell><cell>-3.8968</cell><cell>-0.2937</cell><cell cols="2">0.8480 11.21</cell><cell>0.1334</cell><cell>0.1035</cell><cell>0.1098</cell><cell>0.5144</cell><cell>0.2667</cell></row><row><cell>PEPLER</cell><cell>78.77</cell><cell>0.3506</cell><cell>0.3569</cell><cell>0.3543</cell><cell>-3.9142</cell><cell>-0.2950</cell><cell cols="2">0.9563 11.38</cell><cell>0.1105</cell><cell>0.0935</cell><cell>0.0893</cell><cell>0.5064</cell><cell>0.2195</cell></row><row><cell cols="2">Ours (w/o profile) 81.77</cell><cell>0.4194</cell><cell>0.4004</cell><cell>0.4106</cell><cell>-3.8218</cell><cell>-0.1294</cell><cell cols="2">1.0000 9.60</cell><cell>0.0819</cell><cell>0.0955</cell><cell>0.0786</cell><cell>0.4799</cell><cell>0.1803</cell></row><row><cell>Ours</cell><cell>82.57</cell><cell>0.4193</cell><cell>0.4038</cell><cell>0.4122</cell><cell>-3.8035</cell><cell>-0.1061</cell><cell cols="2">1.0000 9.60</cell><cell>0.0836</cell><cell>0.0920</cell><cell>0.0800</cell><cell>0.4832</cell><cell>0.1780</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Yelp</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Att2Seq</cell><cell>63.91</cell><cell>0.2099</cell><cell>0.2658</cell><cell>0.2379</cell><cell>-4.5316</cell><cell>-0.6707</cell><cell cols="2">0.7583 15.62</cell><cell>0.1583</cell><cell>0.1074</cell><cell>0.1147</cell><cell>0.5616</cell><cell>0.247</cell></row><row><cell>NRT</cell><cell>61.94</cell><cell>0.0795</cell><cell>0.2225</cell><cell>0.1495</cell><cell>-4.6142</cell><cell>-0.7913</cell><cell cols="2">0.2677 16.81</cell><cell>0.2293</cell><cell>0.1134</cell><cell>0.1581</cell><cell>0.5612</cell><cell>0.2728</cell></row><row><cell>PETER</cell><cell>67.00</cell><cell>0.2102</cell><cell>0.2983</cell><cell>0.2513</cell><cell>-4.4100</cell><cell>-0.5816</cell><cell cols="2">0.8750 15.57</cell><cell>0.3315</cell><cell>0.1298</cell><cell>0.2230</cell><cell>0.5800</cell><cell>0.3555</cell></row><row><cell>PEPLER</cell><cell>67.54</cell><cell>0.2920</cell><cell>0.3183</cell><cell>0.3052</cell><cell>-4.4563</cell><cell>-0.3354</cell><cell cols="2">0.9143 14.18</cell><cell>0.1476</cell><cell>0.1044</cell><cell>0.1050</cell><cell>0.5777</cell><cell>0.2524</cell></row><row><cell cols="2">Ours (w/o profile) 71.81</cell><cell>0.3879</cell><cell>0.3427</cell><cell>0.3657</cell><cell>-4.4035</cell><cell>-0.2486</cell><cell cols="2">1.0000 12.71</cell><cell>0.1087</cell><cell>0.1072</cell><cell>0.0919</cell><cell>0.5717</cell><cell>0.2272</cell></row><row><cell>Ours</cell><cell>74.53</cell><cell>0.3946</cell><cell>0.3506</cell><cell>0.3730</cell><cell>-4.3911</cell><cell>-0.2287</cell><cell cols="2">1.0000 11.45</cell><cell>0.0969</cell><cell>0.1048</cell><cell>0.0852</cell><cell>0.5770</cell><cell>0.2322</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Google-reviews</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>Att2Seq</cell><cell>61.31</cell><cell>0.3619</cell><cell>0.3653</cell><cell>0.3636</cell><cell>-4.2627</cell><cell>-0.4671</cell><cell cols="2">0.5070 17.47</cell><cell>0.1855</cell><cell>0.1247</cell><cell>0.1403</cell><cell>0.6663</cell><cell>0.3198</cell></row><row><cell>NRT</cell><cell>58.27</cell><cell>0.3509</cell><cell>0.3495</cell><cell>0.3496</cell><cell>-4.2915</cell><cell>-0.4838</cell><cell cols="2">0.2533 19.16</cell><cell>0.2176</cell><cell>0.1267</cell><cell>0.1571</cell><cell>0.6620</cell><cell>0.3118</cell></row><row><cell>PETER</cell><cell>65.16</cell><cell>0.3892</cell><cell>0.3905</cell><cell>0.3881</cell><cell>-4.1527</cell><cell>-0.3375</cell><cell cols="2">0.4757 17.00</cell><cell>0.2819</cell><cell>0.1356</cell><cell>0.2005</cell><cell>0.6701</cell><cell>0.3272</cell></row><row><cell>PEPLER</cell><cell>61.58</cell><cell>0.3373</cell><cell>0.3711</cell><cell>0.3546</cell><cell>-4.1744</cell><cell>-0.2892</cell><cell cols="2">0.8660 17.17</cell><cell>0.1134</cell><cell>0.1161</cell><cell>0.0999</cell><cell>0.6752</cell><cell>0.2484</cell></row><row><cell cols="2">Ours (w/o profile) 69.71</cell><cell>0.4427</cell><cell>0.4187</cell><cell>0.4310</cell><cell>-4.1142</cell><cell>-0.2026</cell><cell cols="2">0.9997 14.09</cell><cell>0.1180</cell><cell>0.1171</cell><cell>0.1034</cell><cell>0.6465</cell><cell>0.2439</cell></row><row><cell>Ours</cell><cell>69.12</cell><cell>0.4546</cell><cell>0.4069</cell><cell>0.4311</cell><cell>-4.1647</cell><cell>-0.2437</cell><cell cols="2">0.9993 14.24</cell><cell>0.0972</cell><cell>0.1163</cell><cell>0.0938</cell><cell>0.6591</cell><cell>0.2452</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Statistics of the experimental datasets.</figDesc><table><row><cell>Dataset</cell><cell cols="2">#Users #Items #Interactions</cell></row><row><cell cols="2">Amazon 15,349 15,247</cell><cell>360,839</cell></row><row><cell>Yelp</cell><cell>15,942 14,085</cell><cell>393,680</cell></row><row><cell>Google</cell><cell>22,582 16,557</cell><cell>411,840</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>Tiansheng Yao, Xinyang Yi, Derek Zhiyuan Cheng, Felix Yu, Ting Chen, Aditya Menon, Lichan Hong, Ed H Chi, Steve Tjoa, Jieqi Kang, et al. 2021. Selfsupervised learning for large-scale item recommendations. In CIKM, pages 4321-4330.</figDesc><table><row><cell>Rex Ying, Ruining He, Kaifeng Chen, Pong Eksombat-</cell></row><row><cell>chai, William L Hamilton, and Jure Leskovec. 2018.</cell></row><row><cell>Graph convolutional neural networks for web-scale</cell></row><row><cell>recommender systems. In KDD, pages 974-983.</cell></row><row><cell>Weizhe Yuan, Graham Neubig, and Pengfei Liu. 2021.</cell></row><row><cell>Bartscore: Evaluating generated text as text genera-</cell></row><row><cell>tion. In NeurIPS, volume 34, pages 27263-27277.</cell></row><row><cell>Jiani Zhang, Xingjian Shi, Shenglin Zhao, and Irwin</cell></row><row><cell>King. 2019a. Star-gcn: Stacked and reconstructed</cell></row><row><cell>graph convolutional networks for recommender sys-</cell></row><row><cell>tems. In IJCAI.</cell></row><row><cell>Shuai Zhang, Lina Yao, Aixin Sun, and Yi Tay. 2019b.</cell></row><row><cell>Deep learning based recommender system: A sur-</cell></row><row><cell>vey and new perspectives. ACM Computing Surveys</cell></row><row><cell>(CSUR), 52(1):1-38.</cell></row><row><cell>Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q Wein-</cell></row><row><cell>berger, and Yoav Artzi. 2020. Bertscore: Evaluating</cell></row><row><cell>text generation with bert. In ICLR.</cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Neural collaborative reasoning</title>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoyun</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunqi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1516" to="1527" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Attentive collaborative filtering: Multimedia recommendation with item-and component-level attention</title>
+		<author>
+			<persName><forename type="first">Jingyuan</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="335" to="344" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Learning to generate product reviews from attributes</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaohan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Furu</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirella</forename><surname>Lapata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EACL</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="623" to="632" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Lightgcn: Simplifying and powering graph convolution network for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kuan</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongdong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Towards universal sequence representation learning for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yupeng</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shanlei</forename><surname>Mu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yaliang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bolin</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="585" to="593" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingbo</forename><surname>Shang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2202.13469</idno>
+		<title level="m">Uctopic: Unsupervised contrastive learning for phrase representations and topic mining</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">2021. Personalized transformer for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Personalized prompt learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Transactions on Information Systems (TOIS)</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="1" to="26" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Neural rating regression with abstractive tips generation for recommendation</title>
+		<author>
+			<persName><forename type="first">Piji</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lidong</forename><surname>Bing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wai</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SI-GIR</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="345" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Justifying recommendations using distantly-labeled reviews and fine-grained aspects</title>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="188" to="197" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Disentangled representation learning with large language models for text-attributed graphs</title>
+		<author>
+			<persName><forename type="first">Yijian</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziwei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Zhu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.18152</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Representation learning with large language models for recommendation</title>
+		<author>
+			<persName><forename type="first">Xubin</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lianghao</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lixin</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suqi</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junfeng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawei</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="3464" to="3475" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Disentangled contrastive collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Lianghao</forename><surname>Xubin Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiashu</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawei</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1137" to="1146" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Bleurt: Learning robust metrics for text generation</title>
+		<author>
+			<persName><forename type="first">Thibault</forename><surname>Sellam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dipanjan</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ankur P</forename><surname>Parikh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Is chatgpt a good nlg evaluator? a preliminary study</title>
+		<author>
+			<persName><forename type="first">Jiaan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunlong</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fandong</forename><surname>Meng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zengkui</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haoxiang</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Neural graph collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="165" to="174" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Towards open-world recommendation with knowledge augmentation from large language models</title>
+		<author>
+			<persName><forename type="first">Yunjia</forename><surname>Xi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiwen</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianghao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jieming</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruiming</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weinan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.10933</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Automated selfsupervised learning for recommendation</title>
+		<author>
+			<persName><forename type="first">Lianghao</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chunzhen</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kangyi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ben</forename><surname>Kao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="992" to="1002" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Personalized showcases: Generating multi-modal explanations for recommendations</title>
+		<author>
+			<persName><forename type="first">An</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhankui</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianyang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="2251" to="2255" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Generative-contrastive graph learning for recommendation</title>
+		<author>
+			<persName><forename type="first">Yonghui</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhengwei</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kun</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richang</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiqiang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2023">2023a</date>
+			<biblScope unit="page" from="1117" to="1126" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Knowledge graph self-supervised rationalization for recommendation</title>
+		<author>
+			<persName><forename type="first">Yuhao</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lianghao</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chunzhen</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2023">2023b</date>
+			<biblScope unit="page" from="3046" to="3056" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

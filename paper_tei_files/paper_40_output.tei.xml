@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Recommendations via Attentive Multi-Persona Collaborative Filtering</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2020-09-26">26 Sep 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yonatan</forename><surname>Fuchs</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Avi</forename><surname>Caciularu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Ariel University</orgName>
+								<address>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Electrical Engineering</orgName>
+								<orgName type="institution">Tel Aviv University</orgName>
+								<address>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Bar-Ilan University</orgName>
+								<address>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">Department of Industrial Engineering</orgName>
+								<orgName type="institution">Tel Aviv University</orgName>
+								<address>
+									<country key="IL">Israel</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explainable Recommendations via Attentive Multi-Persona Collaborative Filtering</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-09-26">26 Sep 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">69DF41AD78C39E1932581C80D2F9BC83</idno>
+					<idno type="DOI">10.1145/3383313.3412226</idno>
+					<idno type="arXiv">arXiv:2010.07042v1[cs.IR]</idno>
+					<note type="submission">Manuscript submitted to ACM</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS Concepts:</term>
+					<term>Computing methodologies → Learning latent representations;</term>
+					<term>Information systems → Collaborative filtering Recommender Systems, Representation Learning, Attention Models</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Two main challenges in recommender systems are modeling users with heterogeneous taste, and providing explainable recommendations. In this paper, we propose the neural Attentive Multi-Persona Collaborative Filtering (AMP-CF) model as a unified solution for both problems. AMP-CF breaks down the user to several latent 'personas' (profiles) that identify and discern the different tastes and inclinations of the user. Then, the revealed personas are used to generate and explain the final recommendation list for the user.</p><p>AMP-CF models users as an attentive mixture of personas, enabling a dynamic user representation that changes based on the item under consideration. We demonstrate AMP-CF on five collaborative filtering datasets from the domains of movies, music, video games and social networks. As an additional contribution, we propose a novel evaluation scheme for comparing the different items in a recommendation list based on the distance from the underlying distribution of "tastes" in the user's historical items. Experimental results show that AMP-CF is competitive with other state-of-the-art models. Finally, we provide qualitative results to showcase the ability of AMP-CF to explain its recommendations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Collaborative Filtering (CF) methods model users' taste and inclinations based on user-item interactions. Often, a user is represented by a single latent vector that encodes all of the user's different interests. For example, suppose the user likes both horror movies as well as comedies, the latent user representation should represent a positive inclination towards movies of both genres. At prediction time, both comedies and horror movies will receive high scores, but there is no easy way to distinguish between items from each genre, or explain the reason for each item recommendation.</p><p>Moreover, in some cases, the more dominant genre may overtake the entire recommendation list. To mitigate this, additional diversity enhancing mechanisms are often added on top of the original CF model in order to ensure that both types of movies are properly represented within the list of recommendations <ref type="bibr" target="#b25">[26]</ref>.</p><p>In the example above, we have used known movie genres (Comedy and Horror) to indicate two groups of user tastes or "personas". In the general case, a user can have multiple latent personas that could not always be labeled as distinct genres. However, we assume that user interests are not monolithic and should be represented by several distinct personas, each corresponding to a different taste. This concept is somewhat related to a well-known dilemma in recommendations literature known as the accuracy-vs-diversity tradeoff <ref type="bibr" target="#b32">[33]</ref>. However, "diversity" implies that the items in the recommendation lists should be different from each other (diversified). In this work, on the other hand, we wish to identify and discern the users' different tastes and inclinations. Our goal is to learn the correct distribution of tastes per user and the contribution or importance of each persona when different items are considered. Then, when generating a recommendation list for the user, each recommendation is associated with the user persona that best explains it.</p><p>We present Attentive Multi-Persona Collaborative Filtering (AMP-CF). AMP-CF is an explainable recommender system that models a user via an attentive mixture of personas that discerns and captures the user's different inclinations, and explain each recommendation in the final recommendation list. Using a novel attention mechanism, the distinct user personas are dynamically weighted and combined to generate a single attentive user representation that depends on the candidate item (the item under consideration). When considering a specific item, some user personas may be indifferent to the item, while other personas may have more distinct positive or negative affinities. The attention mechanism in AMP-CF determines the "importance" of each persona w.r.t. the specific item and the attentive user representation dynamically updates accordingly. Thus, the AMP-CF model facilitates a type of contextual user representation: while the user personas are static at prediction time, the resulting user representation dynamically changes based on the item under consideration. Arguably, this approach better emulates the way human beings actually assess items -different characteristic components of our taste profile contribute differently in reaction to different items under consideration. Moreover, the dominant characteristics are the ones that best explain our final choices.</p><p>It is true that "traditional" single-persona user representations have the ability to encode multiple tastes through the use of orthogonal latent dimensions. However, there is no easy way to distinguish and identify the distinct tastes. In this work, we separate the traditional user representation into several latent personas, each representing a different inclination. As an additional contribution, we introduce a new evaluation procedure named Taste Distribution Distance (TDD). TDD compares the distribution of "tastes" in a recommendation list with that of the user's interests based on her historical items. Importantly, TDD is different than diversity. While diversity concerns with how different the recommended items are from one another, TDD measures the ability of the recommendation list to proportionally match the user's full range of interests.</p><p>We present extensive experimental results that demonstrate the effectiveness of AMP-CF on five different CF datasets in the domains of movies, music, video games, and social networks. We show that AMP-CF outperforms state-of-the-art models both in terms of accuracy as well as in terms of TDD. Finally, we provide qualitative results that demonstrate the ability of AMP-CF to explain each recommended item based on the most relevant persona.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORK</head><p>Early CF models have focused on explicit ratings, where a user actively rates the items (e.g., on a 1-5 star scale) <ref type="bibr" target="#b37">[38]</ref>.</p><p>Notably, learning user and item embeddings via Matrix Factorization (MF) techniques <ref type="bibr" target="#b24">[25]</ref> have gained much attention following the seminal Netflix Prize competition <ref type="bibr" target="#b8">[9]</ref>. Over the years, research have shifted towards implicit datasets, where indirect user preferences are modeled (e.g., clicks or a purchase) <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b29">30]</ref>.</p><p>Neural embedding research <ref type="bibr">[2, 3, 5-8, 12, 29, 31]</ref> has been a catalyst for new approaches in recommender systems. Salakhutdinov et al. <ref type="bibr" target="#b33">[34]</ref> have pioneered Restricted Boltzman Machines (RBMs) for CF. In More recently, autoencoders have been popularized for recommender systems <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b38">39]</ref>. He et al. <ref type="bibr" target="#b20">[21]</ref> proposed the popular Neural Collaborative Filtering model (NCF, also termed NeuMF). NCF employs a fusion between Generalized Matrix Factorization (GMF) and Multilayer Perceptron (MLP) for predicting the user-item relations. This model was also shown to outperform many strong CF baselines such as eALS <ref type="bibr" target="#b21">[22]</ref>, BPR <ref type="bibr" target="#b31">[32]</ref>, ItemKNN <ref type="bibr" target="#b37">[38]</ref>, and recently even memory-network models such as CMN <ref type="bibr" target="#b16">[17]</ref>.</p><p>Attentive recommendation models have been described in several earlier works such as Attentive CF <ref type="bibr" target="#b12">[13]</ref>, Neural Attentive Multiview Machines <ref type="bibr" target="#b3">[4]</ref>, DeepICF <ref type="bibr" target="#b39">[40]</ref>, and Attentive Item2vec <ref type="bibr" target="#b2">[3]</ref>. These works model users as a set of item vectors. In contrast, a unique property of AMP-CF is its ability to represent a user by a unique set of personas. The user personas are weighted w.r.t to the specific target item under consideration in order to dynamically produce the final user representation.</p><p>Additional line of research is concerned with learning a sequence of user activities. For example, Convolutional Sequence Embedding Recommendation (Caser) <ref type="bibr" target="#b35">[36]</ref> is an algorithm for modelling user sessions. In other cases, temporal data is utilized to predict the next item based on recent activity. For example, Distance Based Memory Recommender (SDMR) <ref type="bibr" target="#b36">[37]</ref> is not a sequential model, but it does utilize recent activities as contextual side-information. The contribution and the focus of this work is different from these models, as AMP-CF does not utilize any temporal information. Hence, we do not evaluate against these models and leave the entire question of temporal data for future work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ATTENTIVE MULTI-PERSONA COLLABORATIVE FILTERING</head><p>In this section, we describe the AMP-CF model in detail. Let I = {i} N u i=1 and J = {j} N v j=1 be the sets of identifiers corresponding to the users and items, respectively. An item j is represented by a latent vector v j ∈ R d . A user i is represented by a multi-persona matrix U i ∈ R r ×d . The k-th row in U i , denoted by u i k , represents the k-th persona of user i.</p><p>Let A u ∈ R d ×d a and A v ∈ R d a ×d be linear mappings from the user and item original feature space to the user-item attention space, and denote ψ i k ≜ u i k A u and ϕ j ≜ A v , and v j as the user persona and item representations in the attention space, respectively. In this space, the affinities between each of the user personas and an item are computed via a general similarity function s a : R d a × R d a → R. We denote the affinity between the k-th persona of user i and the item j by s ik j a ≜ s a (ψ i k , ϕ j ). These affinities are used to form an attentive user-item vector x i j , which is a convex combination of the user's personas as follows:</p><formula xml:id="formula_0">x i j = U i a i j = r k =1 a i j k u i k , with a i j k = exp(s ik j a ) r m=1 exp(s im j a )</formula><p>. Finally, the attentive user-item similarity score y i j is computed as follows:</p><formula xml:id="formula_1">y i j = s i j + b j ,<label>(1)</label></formula><p>where s : R d × R d → R is a general similarity function, s i j ≜ s(x i j , v j ), and b j is the bias for the item j. The AMP-CF model is depicted in Fig. <ref type="figure" target="#fig_0">1</ref>. For simplicity, in our implementation, we set both s and s a to the dot-product. Alternatively, these similarity functions can be set to small neural networks with non-linear activations <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b22">23]</ref>. However in our experimentation, this failed to yield any additional improvement, while increasing training times. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">AMP-CF Training and Inference</head><p>AMP-CF is trained using a dataset of implicit user-item relations. We assume that for each user we have a set of items that she consumed. We treat these user-item pairs as positive relations and they define the training set D = {(i, j)| user i consumed item j}. We also denote N ⊂ J -a subset of items that are sampled (stochastically, during the training phase, for each positive pair (i, j) ∈ D) from J according to the unigram item distribution raised to the power of 0.5 <ref type="bibr" target="#b0">[1]</ref>. The items in N are treated as negative target items w.r.t. the user i. In order to encourage each persona to acquire a different taste, we calculate the entropy of the attentive scores on both the positive and negative samples and incorporate them into the objective function. That is, for each user-item interaction (i, j) our loss L consists of the weighted sum of the negative log-likelihood loss L i j D , and the entropy based loss L i j H as follows:</p><formula xml:id="formula_2">L = (i, j)∈D α L i j D + (1 − α)L i j H ,<label>(2)</label></formula><p>where</p><formula xml:id="formula_3">L i j D = − log p(j |i) = −y i j + log[ n ∈N∪{j } exp(y in )], L i j H =λ p H i j p − λ n H i j n ,<label>and</label></formula><formula xml:id="formula_4">H i j p = − r k =1 a i j k log a i j k , H i j n = − n ∈N r k =1</formula><p>a in k log a in k . The objective in Eq. 2 can be optimized via any stochastic gradient descent method. The entropy loss L i j</p><p>H ensures that the resulting user personas are different from each other and efficiently utilized to capture the users' distinct tastes and inclinations. The minimization of the positive entropy H i j p causes the model to shift the full attention to only one persona for each positive example, thus helping it to acquire a specific taste. On the other hand, the the negative examples are randomly sampled and should not be attributed to any specific persona in particular. Hence, the minimization of negative entropy −H i j n is required in order to ensure that all personas take an equal part in scoring the negative examples. α is a hyperparameter that controls the tradeoff between L i j H and L i j D . Finally, at the inference phase, AMP-CF uses y i j (Eq. 1) to score the similarity between user i and item j.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">EXPERIMENT SETUP AND RESULTS</head><p>In this section, we describe the evaluation process, the datasets, data preparation, hyperparameter configuration, and present the results.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Datasets and Data Preparation</head><p>Five public datasets are considered. Dataset statistics are presented in Tab. 1. We filtered and processed these datasets as follows:</p><p>MovieLens 100K (ML100K): This is a small version of the MovieLens 20M dataset <ref type="bibr" target="#b18">[19]</ref> containing 100K user-movie ratings using a 5-star scale (0.5 -5.0). We considered all items as positive examples and filtered users with less than two items.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MovieLens 1M (ML1M):</head><p>This is another version of the MovieLens 20M dataset <ref type="bibr" target="#b18">[19]</ref> containing 1M user-item ratings.</p><p>The preprocessing of this dataset was done in the same manner as the ML100K dataset.</p><p>Pinterest: This implicit feedback dataset <ref type="bibr" target="#b17">[18]</ref> was constructed by <ref type="bibr" target="#b20">[21]</ref> for evaluating content-based image recommendation. We followed <ref type="bibr" target="#b20">[21]</ref> and constructed the training set such that each user has at least 20 positive interactions.</p><p>Amazon Video Games: This dataset <ref type="bibr" target="#b19">[20]</ref> contains Amazon video games ratings on a 5-star scale (1.0 -5.0). The preparation of the data was done in the same manner as the ML100K dataset.</p><p>Yahoo! Music: This dataset <ref type="bibr" target="#b14">[15]</ref> contains user-artist ratings on a 100-score integer scale (0 -100), with a special score of 255 given to songs that were extremely disliked. The preparation of the data was done in the same manner as the ML100K dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Evaluation Measures and Protocols</head><p>The first part of our evaluations share a similar experimental setup as in previous works <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b20">21]</ref>: We reserve the last item of each user for the test set, and the rest of the items are used for training the user personas and item representations.</p><p>We compute and report the Hit Ratio at 10 (HR@10) and Normalized Discounted Cumulative Gain at 10 (NDCG@10) measures <ref type="bibr" target="#b32">[33]</ref> averaged across users.</p><p>In the second part of our evaluation, we care about identifying users' distinct tastes and inclinations. To this end, we introduce a new evaluation procedure named Taste Distribution Distance (TDD). The idea behind TDD is to generate a "neutral" similarity space, independent of any of the evaluated models. Based on this similarity space, we wish to encode each user's different tastes as a distribution induced by the user's historical items and compare it to a distribution induced by the recommendation lists generated by each model under evaluation. Ideally, the distribution of tastes in the recommendation list will match the one induced by the user's historical items.</p><p>Let n and m be the number of users and items, respectively. In order to compute TDD, we first form a binary interaction matrix R ∈ R m×n , where each entry R i j is equal to 1 if the user i consumed the item j otherwise 0. Hence, the columns of R represent items based on the users that consumed them. Next, we apply Principal Component Analysis (PCA) to reduce the dimension of the item vectors to 100, s.t. each item j ∈ J is represented by a PCA vector r j ∈ R 100 . Next, we applied K-Means clustering to group the items into K = 50 different clusters representing 50 distinct latent tastes. The TDD metric is calculated as follows: First, for each user i we compute a list of the top 30 item recommendations produced by the model. Then, for each item j from i's recommendation list, a vector d i j ∈ R 50 is calculated by taking the cosine distance between the item and each of the 50 clusters' means. We average the d i j vectors across user i's recommendation list and apply a softmax function to produce a distribution vector d i . Hence, d i represents the distribution of tastes induced by i's recommendation list over the 50-dimensional taste space. Next, the same process is applied to user i's historical items to produce the distribution vector t i . Hence, t i represents a distribution over i's different tastes induced by her historical items. Finally, the difference between d i and t i is measured based on the Jensen-Shannon divergence and the Hellinger distance, defined respectively as follows:</p><formula xml:id="formula_5">JS d i , t i = D K L ( d i ∥m i )+D K L ( t i ∥m i ) 2</formula><p>, and</p><formula xml:id="formula_6">Hel d i , t i = 1 √ 2 d i − t i 2</formula><p>, where m i is the pointwise mean of d i and t i , and D K L is the Kullback-Leibler divergence.</p><p>Importantly, the TDD procedure is different than simply measuring the diversity in the recommendation list. While simple diversity measures the extent in which the different items in the recommendation list are different from each other, the goal of TDD is to measure the extent in which the recommendation list corresponds with the different user tastes as reflected by the user's historical items. For a user with multiple distinct tastes, TDD requires that the user's recommendation list will cover all her tastes at the same proportions as in her historical items. On the other hand, for a user with a single taste, TDD prohibits diversification and requires that all recommendations will follow her one single interest. We consider TDD as an additional contribution of this work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evaluated Models</head><p>The following models participate in the evaluation:</p><p>AMP: The proposed model from Sec. 3. We consider several versions of AMP-CF varying by the number of personasr ∈ 2, 4, 8, e.g., for r = 2, we denote AMP-2. We set d = d a = 64 for all AMP-CF variants.</p><p>DeepICF+a: Deep Item Collaborative Filtering <ref type="bibr" target="#b39">[40]</ref>. This state-of-the-art model uses a deep neural network to learn higher-order interactions and assign attention weights to the target items according to every item in a user's training history. Following <ref type="bibr" target="#b39">[40]</ref>, we used the pretraining regime using FISM, and a latent dimension of d = 64.NCF:</p><p>Neural Collaborative Filtering (NCF) <ref type="bibr" target="#b20">[21]</ref> is a well-known model that was shown to significantly outperform strong baselines such as BPR <ref type="bibr" target="#b31">[32]</ref>, eALS <ref type="bibr" target="#b21">[22]</ref> and ItemKNN <ref type="bibr" target="#b37">[38]</ref>, and recently even memory based networks such as CMN <ref type="bibr" target="#b16">[17]</ref>.</p><p>Therefore, and due to scope limitations, we do not further report results for these models and compare our model to NCF. Following <ref type="bibr" target="#b20">[21]</ref>, we used a latent feature dimension of d=64 that was shown to produce the best results (we further tried 8, 16, 32, 64, and 128).</p><p>ConvNCF: Convolutional Neural Collaborative Filtering (ConvNCF) <ref type="bibr" target="#b15">[16]</ref> is a state-of-the-art multi-layer convolutional neural network model which uses an outer product to explicitly model the pairwise correlations between the dimensions of the embedding space. The resulting interaction map is passed through a convolutional neural network and trained with BPR loss. In accordance with <ref type="bibr" target="#b15">[16]</ref>, we trained the network with d = 64 for the users and items embeddings and six layers in the neural network.</p><p>DiRec: DiRec <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b10">11]</ref> is a novel technique for diversifying recommendations. Items are clustered together in prioritymedoids and cover-trees are used to declaratively capture a desired balance between predicted rating and diversity. In <ref type="bibr" target="#b2">[3]</ref>, DiRec was compared to other algorithms such as Greedy and Swap <ref type="bibr" target="#b40">[41]</ref> and showed to significantly outperformed them on several evaluation metrics.</p><p>AISP: Considering the TDD evaluation defined above, one may wonder whether it will suffice to cluster the PCA vectors from the TDD space directly in order to maximize the TDD metrics. In order to disproof this proposition and to further showcase the contribution of our model, we propose the Attentive Interaction-Space Personas (AISP) baseline. In AISP, PCA item vectors are extracted according to the description in Sec. 4.2. Then, for each user, we compute K-Means over her training items to produce K=p means that serve as an alternative to the user personas. At inference, we use the AMP-CF pipeline (Sec. 3) to produce attentive user-item scores. However, in AISP, both A u and A v , and s and s a , are not learned. Instead, we set s and s a to be simple dot-product and set</p><formula xml:id="formula_7">A u = A v = I .</formula><p>For AMP-CF, NCF and ConvNCF we used negative sampling parameter |N | = 4 (when applied) -other values (10, 20, 100) were found to perform worse. AMP-CF and NCF Models were optimized using Adam <ref type="bibr" target="#b23">[24]</ref> with learning rate 0.001 and minibatch size of 256, which is the best configuration from <ref type="bibr" target="#b20">[21]</ref>. ConvNCF was optimized according to the process described in <ref type="bibr" target="#b15">[16]</ref>. Optimization proceeds until a saturation in HR@10 and NDCG@10 is reached over the validation set (early stopping procedure).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Results</head><p>Table <ref type="table" target="#tab_1">2</ref> presents the HR@10 and NDCG@10 for all combinations of models and datasets. Similarly, Tab. 3 presents the Jensen-Shannon Divergence and Hellinger Distance TDD metrics respectively. We see that the attribute this to the fact that in more complex domains such as Music or Pinterest images, people are more likely to have multiple distinct interests. In these cases, AMP-CF better accommodates the distance between item-vectors, as the entropy-loss pushes personas at different directions during training. On the other hand, the Amazon dataset demonstrates relatively low TDD gains. With very fewer items per user (see the statistics in Tab. 1), this dataset is less likely to have users with diversified taste.</p><p>Next, we turn to the AISP baseline. Recall, this baseline is based on the same PCA vectors that were used for TDD.</p><p>Nevertheless, the AMP-CF model outperforms the AISP baseline in both TDD metrics. This serves to disproof the notion that clustering the raw PCA vectors will suffice to accurately discern the users interests and achieve good TDD measures. Moreover, it showcases the ability of AMP-CF to emulate the correct taste distribution at the recommendation phase even when compared to a competitive baseline such as AISP. Finally, Fig. <ref type="figure" target="#fig_1">2</ref> showcases the ability of AMP-CF to learn distinctive personas in terms of the user's tastes. To this end, we chose a random user and inspected her training items, final recommendations list, and per-persona recommendations produced using a four-persona model (AMP-4). The recommendations of each individual persona were produced by choosing the top items w.r.t. to each persona vector in separate. As can be seen, three of the personas acquired three distinct tastes (marked by three different colors) whilst the fourth converged somewhere in the middle between the others, hence, it is marked by two colors: red for recommendations that overlaps with persona 1, and blue for the rest.</p><p>Each training item was colored according to the persona which produced the highest attentive score for that item. The final recommendation list is a mixture based on each persona's list, sorted by overall score . This qualitative example demonstrates the ability of AMP-CF to learn latent personas that reveal the different user's tastes and explain the recommendations in the final recommendation list. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">CONCLUSION</head><p>This paper presents AMP-CF -a neural attentive model that represents each user as an attentive mixture of personas.</p><p>AMP-CF discerns user interests into separate personas and facilitates a novel attention mechanism to determine the importance of each persona w.r.t. the item under consideration. Then, AMP-CF dynamically produces an attentive user-item representation that represents the user inclinations when considering the specific item. The learned personas serve as a source of explanation for the items that appear in the final recommendation list for the user. In addition, we proposed the taste distribution distance (TDD) analysis that provides a sensitive framework for assessing the ability of recommendations algorithms to emulate users' taste distribution. Extensive experimental results on five different datasets demonstrate the effectiveness of AMP-CF when compared to different state-of-the-art baselines. Last but not least, our qualitative analysis showcases the ability of AMP-CF to reveal the user's latent personas and facilitate an explainable recommender system.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. The AMP-CF model architecture. See Sec. 3 for details.</figDesc><graphic coords="4,110.16,95.04,428.38,203.26" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 .</head><label>2</label><figDesc>Fig.2. Explainable recommendations using AMP-CF. The figure presents the historical (training) items of a randomly selected user, and the recommendations list together with a breakdown into four personas, produced by AMP-CF (AMP-4). Personas 1, 2, and 3 are marked in red, yellow and green, respectively. Persona 4, which converged quite similar to Persona 1, is marked in both red (overlapping items with persona 1) and blue. The final recommendation list is a mixture of the internal recommendations of the different personas, where each item recommendation is explained by a specific persona. The items in the training items list are color-coded according to the persona which had the highest attentive score for the item at the end of the training phase.</figDesc><graphic coords="9,73.44,142.43,428.40,413.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Dataset Statistics</figDesc><table><row><cell cols="5">Dataset # Users # Items # Training Examples Sparsity</cell><cell cols="3"># Ratings Per User</cell><cell cols="3"># Ratings Per Item</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="6">Mean Std Med Mean Std Med</cell></row><row><cell>ML-100k</cell><cell>610</cell><cell>6278</cell><cell>96683</cell><cell>0.975</cell><cell cols="2">158.6 250.9</cell><cell>69</cell><cell>15.4</cell><cell>26.2</cell><cell>6</cell></row><row><cell>ML-1M</cell><cell>6040</cell><cell>3592</cell><cell>993060</cell><cell>0.954</cell><cell cols="2">164.5 192.7</cell><cell>95</cell><cell cols="3">276.7 384.1 130</cell></row><row><cell>Yahoo!</cell><cell>14990</cell><cell>5394</cell><cell>397733</cell><cell>0.995</cell><cell>26.5</cell><cell>30.5</cell><cell>17</cell><cell cols="2">73.8 259.5</cell><cell>6</cell></row><row><cell>Amazon</cell><cell>7868</cell><cell>12802</cell><cell>98421</cell><cell>0.999</cell><cell>12.5</cell><cell>11.8</cell><cell>9</cell><cell>7.6</cell><cell>12.8</cell><cell>4</cell></row><row><cell cols="2">Pinterest 15001</cell><cell>9175</cell><cell>374017</cell><cell>0.997</cell><cell>24.9</cell><cell>7.3</cell><cell>23</cell><cell>40.8</cell><cell>40.6</cell><cell>29</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 .</head><label>2</label><figDesc>HR@10 and NDCG@10 for all models and datasets.</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell>HR@10</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>NDCG@10</cell><cell></cell><cell></cell></row><row><cell></cell><cell cols="10">ML100K ML1M Pinterest Yahoo! Amazon ML100K ML1M Pinterest Yahoo! Amazon</cell></row><row><cell>DeepICF+a</cell><cell>0.7314</cell><cell>0.7342</cell><cell>0.7952</cell><cell>0.9218</cell><cell>0.5608</cell><cell>0.4801</cell><cell>0.4690</cell><cell>0.5011</cell><cell>0.6985</cell><cell>0.3748</cell></row><row><cell>NCF</cell><cell>0.7317</cell><cell>0.7313</cell><cell>0.7948</cell><cell>0.9174</cell><cell>0.5657</cell><cell>0.4786</cell><cell>0.4694</cell><cell>0.5026</cell><cell>0.6984</cell><cell>0.3750</cell></row><row><cell>ConvNCF</cell><cell>0.7138</cell><cell>0.7129</cell><cell>0.6487</cell><cell>0.8917</cell><cell>0.3456</cell><cell>0.4532</cell><cell>0.4470</cell><cell>0.3911</cell><cell>0.6312</cell><cell>0.1946</cell></row><row><cell>DiRec</cell><cell>0.6132</cell><cell>0.5516</cell><cell>0.7767</cell><cell>0.9091</cell><cell>0.5512</cell><cell>0.4122</cell><cell>0.3434</cell><cell>0.4891</cell><cell>0.6754</cell><cell>0.3694</cell></row><row><cell>AISP-2</cell><cell>0.6895</cell><cell>0.6189</cell><cell>0.7937</cell><cell>0.9211</cell><cell>0.5752</cell><cell>0.4620</cell><cell>0.3742</cell><cell>0.5030</cell><cell>0.7001</cell><cell>0.3824</cell></row><row><cell>AISP-3</cell><cell>0.6896</cell><cell>0.6207</cell><cell>0.7814</cell><cell>0.9111</cell><cell>0.5713</cell><cell>0.4588</cell><cell>0.3750</cell><cell>0.4996</cell><cell>0.6974</cell><cell>0.3829</cell></row><row><cell>AISP-4</cell><cell>0.6908</cell><cell>0.6219</cell><cell>0.777</cell><cell>0.9176</cell><cell>0.5708</cell><cell>0.4598</cell><cell>0.3754</cell><cell>0.4928</cell><cell>0.6844</cell><cell>0.4058</cell></row><row><cell>AMP-2</cell><cell cols="2">0.7376 0.7358</cell><cell>0.7966</cell><cell>0.9236</cell><cell>0.5751</cell><cell cols="2">0.4935 0.4706</cell><cell>0.5031</cell><cell>0.6988</cell><cell>0.3888</cell></row><row><cell>AMP-3</cell><cell>0.7244</cell><cell>0.7316</cell><cell>0.7893</cell><cell>0.9229</cell><cell>0.5788</cell><cell>0.4813</cell><cell>0.4653</cell><cell>0.4972</cell><cell>0.7005</cell><cell>0.3858</cell></row><row><cell>AMP-4</cell><cell>0.7302</cell><cell>0.7280</cell><cell>0.7963</cell><cell>0.9235</cell><cell>0.5750</cell><cell>0.4855</cell><cell>0.4601</cell><cell>0.5017</cell><cell>0.6997</cell><cell>0.3855</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 .</head><label>3</label><figDesc>JS Divergence and Hellinger Distance for all models and datasets.</figDesc><table><row><cell></cell><cell></cell><cell>JS Divergence</cell><cell></cell><cell></cell><cell cols="2">Hellinger Distance</cell></row><row><cell></cell><cell cols="6">ML100K ML1M Pinterest Yahoo! Amazon ML100K ML1M Pinterest Yahoo! Amazon</cell></row><row><cell cols="2">DeepICF+a 1.2641</cell><cell>1.1089 1.4526</cell><cell>1.5001 1.7892</cell><cell>0.0243</cell><cell>0.0203 0.0551</cell><cell>0.0416 0.0686</cell></row><row><cell>NCF</cell><cell>1.3939</cell><cell>1.1568 1.5749</cell><cell>1.5728 1.9596</cell><cell>0.0332</cell><cell>0.0206 0.0531</cell><cell>0.0447 0.0711</cell></row><row><cell>ConvNCF</cell><cell>2.2429</cell><cell>1.2977 1.8289</cell><cell>2.0377 2.6290</cell><cell>0.0818</cell><cell>0.0266 0.0806</cell><cell>0.0773 0.1577</cell></row><row><cell>DiRec</cell><cell>1.7340</cell><cell>1.2687 2.0426</cell><cell>1.8531 2.1731</cell><cell>0.0493</cell><cell>0.0212 0.1050</cell><cell>0.0519 0.0895</cell></row><row><cell>AISP-2</cell><cell>2.2308</cell><cell>1.5839 1.5458</cell><cell>1.5755 1.6305</cell><cell>0.0776</cell><cell>0.0389 0.0496</cell><cell>0.0414 0.0496</cell></row><row><cell>AISP-3</cell><cell>2.1929</cell><cell>1.5645 1.6825</cell><cell>1.5611 1.6401</cell><cell>0.0747</cell><cell>0.0380 0.0605</cell><cell>0.0454 0.0487</cell></row><row><cell>AISP-4</cell><cell>2.1834</cell><cell>1.5558 1.8033</cell><cell>1.5609 1.6487</cell><cell>0.0740</cell><cell>0.0375 0.0716</cell><cell>0.0413 0.0493</cell></row><row><cell>AMP-2</cell><cell>1.2390</cell><cell>1.1085 1.3800</cell><cell>1.4520 1.5825</cell><cell>0.0265</cell><cell>0.0191 0.0399</cell><cell>0.0407 0.0452</cell></row><row><cell>AMP-3</cell><cell>1.1611</cell><cell>1.0930 1.4114</cell><cell>1.4279 1.6450</cell><cell>0.0231</cell><cell>0.0186 0.0403</cell><cell>0.0388 0.0480</cell></row><row><cell>AMP-4</cell><cell>1.1062</cell><cell>1.1169 1.3305</cell><cell>1.4446 1.6007</cell><cell>0.0213</cell><cell>0.0194 0.0365</cell><cell>0.0400 0.0437</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head><p>This research was supported by the ISRAEL SCIENCE FOUNDATION (grant No. 2243/20)   </p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Bayesian Neural Word Embedding</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Artificial Intelligence (AAAI)</title>
+				<meeting>the International Conference on Artificial Intelligence (AAAI)</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Modelling Session Activity with Neural Embedding</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yael</forename><surname>Brumer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Poster Proceedings of the ACM Conference on Recommender Systems (RecSys)</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Attentive Item2vec: Neural Attentive User Representations</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avi</forename><surname>Caciularu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ori</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE International Conference on Acoustics, Speech and Signal Processing</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note>ICASSP</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Neural Attentive Multiview Machines</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ori</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE International Conference on Acoustics, Speech and Signal Processing</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note>ICASSP</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Item2vec: neural item embedding for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">the IEEE International Workshop on Machine Learning for Signal Processing</title>
+				<imprint>
+			<publisher>MLSP</publisher>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">CB2CF: A Neural Multiview Content-to-Collaborative Filtering Model for Completely Cold Item Recommendations</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eylon</forename><surname>Yogev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ori</forename><surname>Katz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM Conference on Recommender Systems (RecSys)</title>
+				<meeting>the ACM Conference on Recommender Systems (RecSys)</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Scalable Attentive Sentence Pair Modeling via Distilled Sentence Embedding</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Razin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Itzik</forename><surname>Malkiel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ori</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avi</forename><surname>Caciularu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Artificial Intelligence (AAAI)</title>
+				<meeting>the International Conference on Artificial Intelligence (AAAI)</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Bayesian Hierarchical Words Representation Learning</title>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Idan</forename><surname>Rejwan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avi</forename><surname>Caciularu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL)</title>
+				<meeting>the Annual Meeting of the Association for Computational Linguistics (ACL)</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Lessons from the Netflix Prize Challenge</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Robert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">SIGKDD Explor. Newsl</title>
+		<imprint>
+			<biblScope unit="page" from="75" to="79" />
+			<date type="published" when="2007">2007. 2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">DiRec: Diversified Recommendations for Semantic-Less Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Rubi</forename><surname>Boim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tova</forename><surname>Milo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Slava</forename><surname>Novgorodov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE International Conference on Data Engineering (ICDE)</title>
+				<meeting>the IEEE International Conference on Data Engineering (ICDE)</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Diversification and Refinement in Collaborative Filtering Recommender</title>
+		<author>
+			<persName><forename type="first">Rubi</forename><surname>Boim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tova</forename><surname>Milo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Slava</forename><surname>Novgorodov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM International Conference on Information and Knowledge Management (CIKM)</title>
+				<meeting>the ACM International Conference on Information and Knowledge Management (CIKM)</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Predicting Relevance Scores for Triples from Type-Like Relations using Neural Embedding-The Cabbage Triple Scorer at WSDM Cup</title>
+		<author>
+			<persName><forename type="first">Yael</forename><surname>Brumer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bracha</forename><surname>Shapira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lior</forename><surname>Rokach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oren</forename><surname>Barkan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1712.08359</idno>
+		<imprint>
+			<date type="published" when="2017">2017. 2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Attentive Collaborative Filtering: Multimedia Recommendation with Item-and Component-Level Attention</title>
+		<author>
+			<persName><forename type="first">Jingyuan</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</title>
+				<meeting>the International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Fast and accurate deep network learning by exponential linear units (elus)</title>
+		<author>
+			<persName><forename type="first">Djork-Arné</forename><surname>Clevert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thomas</forename><surname>Unterthiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sepp</forename><surname>Hochreiter</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1511.07289</idno>
+		<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">The Yahoo! Music Dataset and KDD-Cup&apos;11</title>
+		<author>
+			<persName><forename type="first">Gideon</forename><surname>Dror</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Koenigstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Weimer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of KDD Cup</title>
+				<meeting>KDD Cup</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Modeling Embedding Dimension Correlations via Convolutional Neural Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Xiaoyu</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fajie</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinhui</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiguang</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Inf. Syst</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page">4</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Collaborative Memory Network for Recommendation Systems</title>
+		<author>
+			<persName><forename type="first">Travis</forename><surname>Ebesu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Fang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">One of a Kind: User Profiling by Social Curation</title>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huanbo</forename><surname>Luan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM International Conference on Multimedia (MM)</title>
+				<meeting>the ACM International Conference on Multimedia (MM)</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maxwell</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<title level="m">The MovieLens Datasets: History and Context. ACM transactions on interactive intelligent systems (TIIS)</title>
+				<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">4</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Ups and Downs: Modeling the Visual Evolution of Fashion Trends with One-Class Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on World Wide Web</title>
+				<meeting>the International Conference on World Wide Web</meeting>
+		<imprint>
+			<publisher>WWW</publisher>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Neural Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on World Wide Web</title>
+				<meeting>the International Conference on World Wide Web</meeting>
+		<imprint>
+			<publisher>WWW</publisher>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Fast matrix factorization for online recommendation with implicit feedback</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min-Yen</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International ACM SIGIR conference on Research and Development in Information Retrieval (SIGIR)</title>
+				<meeting>the International ACM SIGIR conference on Research and Development in Information Retrieval (SIGIR)</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Hendrycks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kevin</forename><surname>Gimpel</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1606.08415</idno>
+		<title level="m">Gaussian error linear units (gelus)</title>
+				<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Adam: A Method for Stochastic Optimization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Diederik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ba</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations (ICLR)</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Matrix Factorization Techniques for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Diversity in Recommender Systems A Survey. Know.-Based Syst</title>
+		<author>
+			<persName><forename type="first">Matev</forename><surname>Kunaver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Toma</forename><surname>Porl</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+			<biblScope unit="page" from="154" to="162" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Collaborative Variational Autoencoder for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Xiaopeng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>She</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)</title>
+				<meeting>the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Personalized News Recommendation Based on Click Behavior</title>
+		<author>
+			<persName><forename type="first">Jiahui</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Dolan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Elin</forename><forename type="middle">Rønby</forename><surname>Pedersen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Intelligent User Interfaces (IUI)</title>
+				<meeting>the International Conference on Intelligent User Interfaces (IUI)</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Distributed Representations of Words and Phrases and Their Compositionality</title>
+		<author>
+			<persName><forename type="first">Tomas</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilya</forename><surname>Sutskever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Dean</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Neural Information Processing Systems (NIPS)</title>
+				<meeting>the International Conference on Neural Information Processing Systems (NIPS)</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">A Case Study in a Recommender System Based on Purchase Data</title>
+		<author>
+			<persName><forename type="first">Bruno</forename><surname>Pradel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Savaneary</forename><surname>Sean</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julien</forename><surname>Delporte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sébastien</forename><surname>Guérif</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Céline</forename><surname>Rouveirol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicolas</forename><surname>Usunier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Françoise</forename><surname>Fogelman-Soulié</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Frédéric Dufau-Joel</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)</title>
+				<meeting>the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Tomer Raviv, Jacob Goldberger, and Yair Be&apos;ery. 2020. perm2vec: Graph Permutation Selection for Decoding of Error Correction Codes using Self-Attention</title>
+		<author>
+			<persName><forename type="first">Nir</forename><surname>Raviv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avi</forename><surname>Caciularu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2002.02315</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">BPR: Bayesian Personalized Ranking from Implicit Feedback</title>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeno</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lars</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Conference on Uncertainty in Artificial Intelligence (UAI)</title>
+				<meeting>the Conference on Uncertainty in Artificial Intelligence (UAI)</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Introduction to recommender systems handbook</title>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Ricci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lior</forename><surname>Rokach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bracha</forename><surname>Shapira</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="1" to="35" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Restricted Boltzmann Machines for Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Ruslan</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andriy</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Machine Learning (ICML)</title>
+				<meeting>the International Conference on Machine Learning (ICML)</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Hybrid Recommender System Based on Autoencoders</title>
+		<author>
+			<persName><forename type="first">Florian</forename><surname>Strub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Romaric</forename><surname>Gaudel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jérémie</forename><surname>Mary</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Deep Learning for Recommender Systems (DLRS)</title>
+				<meeting>the Workshop on Deep Learning for Recommender Systems (DLRS)</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding</title>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM International Conference on Web Search and Data Mining (WSDM)</title>
+				<meeting>the ACM International Conference on Web Search and Data Mining (WSDM)</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Signed Distance-Based Deep Memory Recommender</title>
+		<author>
+			<persName><forename type="first">Thanh</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyue</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kyumin</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>Kong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on World Wide Web</title>
+				<meeting>the International Conference on World Wide Web</meeting>
+		<imprint>
+			<publisher>WWW</publisher>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Unifying User-Based and Item-Based Collaborative Filtering Approaches by Similarity Fusion</title>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Arjen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marcel</forename><forename type="middle">J T</forename><surname>De Vries</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Reinders</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Annual International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</title>
+				<meeting>the Annual International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</meeting>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Collaborative Denoising Auto-Encoders for Top-N Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Dubois</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alice</forename><forename type="middle">X</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ester</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM International Conference on Web Search and Data Mining (WSDM)</title>
+				<meeting>the ACM International Conference on Web Search and Data Mining (WSDM)</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Deep Item-Based Collaborative Filtering for Top-N Recommendation</title>
+		<author>
+			<persName><forename type="first">Feng</forename><surname>Xue</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiandong</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richang</forename><surname>Hong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems (TOIS)</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page">3</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">It Takes Variety to Make a World: Diversification in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Cong</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laks</forename><surname>Lakshmanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sihem</forename><surname>Amer-Yahia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International Conference on Extending Database Technology (EDBT)</title>
+				<meeting>the International Conference on Extending Database Technology (EDBT)</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

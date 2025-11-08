@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Measuring &quot;Why&quot; in Recommender Systems: a Comprehensive Survey on the Evaluation of Explainable Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2022-02-14">14 Feb 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+							<email>xu.chen@ruc.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department">Beijing Key Laboratory of Big Data Management and Analysis Methods</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Gaoling School of Artificial Intelligence</orgName>
+								<orgName type="institution">Renmin University of China</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+							<email>yongfeng.zhang@rutgers.edu</email>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+							<email>jrwen@ruc.edu.cn</email>
+							<affiliation key="aff0">
+								<orgName type="department">Beijing Key Laboratory of Big Data Management and Analysis Methods</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Gaoling School of Artificial Intelligence</orgName>
+								<orgName type="institution">Renmin University of China</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Measuring &quot;Why&quot; in Recommender Systems: a Comprehensive Survey on the Evaluation of Explainable Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-02-14">14 Feb 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">BD5F1D29DA0CBAEEA21CE9DD3DF63378</idno>
+					<idno type="arXiv">arXiv:2202.06466v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Explainable recommendation has shown its great advantages for improving recommendation persuasiveness, user satisfaction, system transparency and among others. A fundamental problem of explainable recommendation is how to evaluate the explanations. In the past few years, various evaluation strategies have been proposed. However, they are scattered in different papers, and there lacks a systematic and detailed comparison between them. To bridge this gap, in this paper, we comprehensively review the previous work, and provide different taxonomies according to the evaluation perspectives and evaluation methods. Beyond summarization, we also analyze the (dis)advantages of existing evaluation methods, and provide a series of guidelines on how to select them. The contents of this survey are concluded from more than 100 papers from top-tier conferences like IJCAI, AAAI, TheWebConf, Recsys, UMAP and IUI, and the complete comparisons are presented at https://shimo.im/sheets/VKrpYTcwVH6KXgdy/MO DOC/. With this survey, we finally aim to provide a clear and comprehensive review on the evaluation of explainable recommendation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Artificial intelligence (AI) has deeply revolutionized people's daily life and production, bringing effectiveness, efficiency, reliability, automation and etc. Among different AI tasks, many are purely objective, where the ground truths are irrelevant with subjective factors. Computer vision (CV) is a typical domain falling into this category. For example, in the task of image classification, the models are built to accurately predict the labels like a cat or a dog. These labels are objective facts, which do not change with human feelings. In many other domains, the tasks are more subjective, where there is no rigid ground truth, and the target is to improve the utilities of certain stakeholders. Recommender system is a typical subjective AI task, where the stakeholder utilities not only include the recommendation accuracy, but also contain a lot of beyond-accuracy aspects, among which explainability is a significant and widely studied one.</p><p>Basically, explainable recommendation solves the problem of "why", that is, why the items are recommended. By providing explanations, people can make more informed decisions, and the recommendation persuasiveness and algorithm transparency can be improved. In the field of explainable recommendation, evaluation is a fundamental problem, which judges the model availability and helps to make model selections. Comparing with the other evaluation tasks, evaluating recommendation explanations is much more difficult because the ground truth is hard to obtain and human feelings are not easy to approximate. To alleviate these difficulties, the past few decades have witnessed a lot of promising evaluation strategies. However, these strategies are independently proposed in different papers, and has various prerequisites and implementation characters. There lacks a systematic comparison between them, which may hinder the evaluation standardization and be not friendly to the newcomers to this domain.</p><p>To bridge the above gap, in this paper, we thoroughly conclude the previous work, and present a clear summarization on existing evaluation strategies. In specific, recommendation explanations may serve for different targets, for example, the users, providers and model designers. For different targets, the evaluation perspectives are also various, and we summarize four major evaluation perspectives from the previous work, that is, the explanation effectiveness, transparency, persuasiveness and scrutability. For evaluating the explanations from the above perspectives, there exists a lot of evaluation methods. We conclude these methods into four categories including the case studies, quantitative metrics, crowdsourcing and online experiments. For each method, we detail its main characters, and analysis its advantages and shortcomings, At last, we propose a series of guidelines on how to select these evaluation methods in real-world problems. The main contributions of this paper are summarized as follows:</p><p>• We provide a systematic and comprehensive survey on the evaluation of explainable recommendation, which to the best of our knowledge, is the first survey on this topic.</p><p>• We propose different taxonomies for existing papers according to the evaluation perspectives and evaluation methods.</p><p>The references cover more than 100 papers from top tier conferences like IJ-CAI, AAAI, TheWebConf, Recsys, UMAP and IUI, and their complete summarization is presented at https://shimo.im/sheets/VKrpYTcwVH6KXgdy/MODOC/.</p><p>• We analysis the advantages and shortcomings of existing evaluation methods and propose several guidelines on how to choose them in different scenarios.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Survey</head><p>Recommender system is becoming increasingly important, with dozens of papers published each years on top tier conferences/journals. For better summarizing and comparing these work, people have conducted many promising survey studies. For general recommendation, early surveys mainly focus on shallow architectures like matrix factorization or heuristic methods <ref type="bibr" target="#b0">[Adomavicius, 2004]</ref>. Later on, with the ever prospering of deep neural networks, people have designed a large amount of neural recommender models. Correspondingly, many comprehensive surveys on deep recommender algorithms are proposed <ref type="bibr" target="#b25">[Zhang, 2019;</ref><ref type="bibr" target="#b29">Wu, 2021;</ref><ref type="bibr" target="#b7">Fang, 2020]</ref>. Beyond concluding recommender models from the architecture perspective, many surveys focus on how to leverage the side information. For example, <ref type="bibr" target="#b2">[Bouraga, 2014]</ref> summarizes the models on incorporating knowledge graph into recommender systems. <ref type="bibr" target="#b2">[Chen, 2013]</ref> reviews the algorithms on social recommendation. <ref type="bibr" target="#b14">[Kanwal, 2021]</ref> focuses on the combination between the text information and recommender models. <ref type="bibr" target="#b13">[Ji, 2017]</ref> summarizes the models on image based recommendation. In addition, people also conduct surveys according to different recommendation domains. For example, <ref type="bibr" target="#b25">[Song, 2012]</ref> summarizes the algorithms in music recommendation. <ref type="bibr" target="#b9">[Goyani, 2020]</ref> focus more on the movie recommender models. <ref type="bibr" target="#b28">[Wei, 2007]</ref> is tailored for the algorithms in e-commerce. <ref type="bibr" target="#b32">[Yu, 2015]</ref> is a comprehensive survey on point-of-interest (POI) recommendation. We have also noticed that there are some surveys on recommendation evaluations <ref type="bibr" target="#b10">[Gunawardana, 2009;</ref><ref type="bibr" target="#b23">Silveira, 2019]</ref>. However, they focus more on the metrics like accuracy, novelty, serendipity and coverage, which differs from our target on explanation evaluation. In the past, we have published a survey on explainable recommender models <ref type="bibr" target="#b33">[Zhang, 2018]</ref>, but it aims to summarize this field in a general sense. However, in this paper, we focus on the evaluation part, and include many latest studies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Evaluation Perspectives</head><p>Recommendation explanations may serve for different purposes, e.g., providing more recommendation details, so that people can make more informed decisions, or improving recommendation persuasiveness, so that the providers can obtain more profit. For different purposes, the explanations should be evaluated from different perspectives. In the literature, the following evaluation perspectives are usually considered.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Effectiveness</head><p>Effectiveness aims to evaluate "whether the explanations are useful for the users to make more accurate/faster decisions <ref type="bibr" target="#b0">[Balog and Radlinski, 2020]</ref>?" or sometimes "whether the users are more satisfied with the explanations <ref type="bibr" target="#b31">[Xian, 2021]</ref>?" It is targeted at improving the utilities of the users, that is, better serving the users with the explanations. By enhancing the effectiveness, the user expe-rience can be improved, which may consequently increase the user conversion rate and stickiness. Here, we use the term "effectiveness" in a broad sense, which covers the concepts of efficiency, satisfaction and trust in many literature <ref type="bibr" target="#b0">[Balog and Radlinski, 2020]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Transparency</head><p>Transparency aims to evaluate "whether the explanations can reveal the internal working principles of the recommender models <ref type="bibr" target="#b25">[Tai, 2021;</ref><ref type="bibr" target="#b24">Sonboli, 2021;</ref><ref type="bibr" target="#b18">Li, 2021b]</ref>?" It encourages the algorithms to produce explanations which can open the "black box" of the recommender models. With better transparency, the model designers can know more about how the recommendations are generated, and better debug the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Persuasiveness</head><p>Persuasiveness aims to evaluate "whether the explanations can increase the interaction probability of the users on the items <ref type="bibr" target="#b27">[Tsukuda, 2020;</ref><ref type="bibr" target="#b0">Balog and Radlinski, 2020;</ref><ref type="bibr" target="#b22">Musto et al., 2019]</ref>?" In general, persuasiveness aims to enhance the utilities of the providers (e.g., sellers on the ecommerce websites, content creators on the micro video applications). Comparing with transparency, persuasiveness does not care about whether the explanations can honestly reflect the model principles. It focuses more on whether the explanations can persuade users to interact with the recommendations, so that the business goals can be achieved.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Scrutability</head><p>Scrutability aims to evaluate "whether the explanations can exactly correspond to the recommendation results?" <ref type="bibr" target="#b5">[Cheng et al., 2019;</ref><ref type="bibr" target="#b26">Tsai and Brusilovsky, 2019;</ref><ref type="bibr" target="#b12">He et al., 2015]</ref>. In other words, if the explanations are different, then whether and how the recommendation list is altered. This perspective is closely related with transparency yet one does not imply the other. Transparency pays more attention to the details inside the model, aiming to whiten the working mechanisms. Scrutability cares more about the relations between the explanations and outputs, which can be model agnostic.</p><p>We summarize the above evaluation perspectives in Table <ref type="table" target="#tab_0">1</ref>. We can see, recommendation explanations mainly serve for three types of stakeholders, that is, the users, providers and model designers. For different stakeholders, the evaluation perspectives are different: effectiveness cares more about the utilities of the users, persuasiveness is more tailored for the providers, and transparency and scrutability serve more for the model designers. If one compares the explanations in recommender systems and general machine learning, she may find that the latter mainly focus on the transparency and scrutability, since it is not related with the users and provides. In this sense, explainable recommendation can be more complex, since it needs to trade-off different stakeholders.</p><p>Remark. (1) The above four perspectives are not always independent, they may have both overlaps and contradictions. For example, the explanations for improving transparency </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evaluation perspective</head><p>Evaluation problem Representative papers Serving target</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Effectiveness</head><p>Whether the explanations are useful for the users to make more accurate/faster decisions? <ref type="bibr" target="#b11">[Hada, 2021;</ref><ref type="bibr">Guesmi, 2021;</ref><ref type="bibr">Wang, 2020;</ref><ref type="bibr" target="#b8">Gao et al., 2019;</ref><ref type="bibr" target="#b2">Chen et al., 2013]</ref> Users Transparency Whether the explanations can reveal the internal working principles of the recommender models? <ref type="bibr">[Chen, 2021a;</ref><ref type="bibr" target="#b24">Sonboli, 2021;</ref><ref type="bibr" target="#b19">Li, 2021c;</ref><ref type="bibr" target="#b17">Li, 2020c;</ref><ref type="bibr" target="#b8">Fu, 2020]</ref> Model designers</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Persuasiveness</head><p>Whether the explanations can increase the click/purchase rate of the users on the items?</p><p>[ <ref type="bibr" target="#b22">Musto et al., 2019;</ref><ref type="bibr" target="#b26">Tsai and Brusilovsky, 2019;</ref><ref type="bibr" target="#b0">Balog and Radlinski, 2020;</ref><ref type="bibr" target="#b27">Tsukuda, 2020;</ref><ref type="bibr" target="#b2">Chen and Wang, 2014]</ref> Providers Scrutability Whether the explanations can exactly correspond to the recommendation results? <ref type="bibr" target="#b12">[He et al., 2015;</ref><ref type="bibr" target="#b26">Tsai and Brusilovsky, 2019;</ref><ref type="bibr" target="#b5">Cheng et al., 2019;</ref><ref type="bibr" target="#b0">Balog et al., 2019;</ref><ref type="bibr" target="#b22">Liu, 2020]</ref> Model designers may satisfy the curiosities of some users on how the recommender models work, and therefore the explanation effectiveness can be enhanced. In another example, to persuade users to purchase more items (i.e., persuasiveness), the explanations may not accurately reveal the model working mechanism (i.e., transparency), but have to highlight the features which can promote sales. When designing and evaluating explainable recommender models, it is necessary to predetermine which perspectives to focus on, and how much we can sacrifice on the other perspectives.</p><p>(2) We have noticed there are many other evaluation perspectives, such as the fluency of the explanation <ref type="bibr" target="#b5">[Chen, 2021b]</ref> or whether a user-item pair is explainable <ref type="bibr" target="#b22">[Liu et al., 2019]</ref>. However, these perspectives are not common, only appearing in a small amount of papers. Thus we do not elaborate them in this survey.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Evaluation Methods</head><p>To evaluate recommendation explanations from the above perspectives, people have designed quite a lot of evaluation methods. By going over the previous papers, we find that there are mainly four categories, that is: case studies, quantitative metrics, crowdsourcing and online experiments. In the following, we elaborate these methods more in detail.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Evaluation with Case Studies</head><p>In this category, people usually present some examples to illustrate how the recommender model works and whether the generated explanations are aligned with human intuitions. Usually, the recommender models are firstly learned based on the training set, and then the examples are generated based on the intermediate or final outputs by feeding the testing samples into the optimized model. More specifically, the examples can be both positive and negative <ref type="bibr" target="#b5">[Chen et al., 2019]</ref>. By the positive examples, the effectiveness of the model can be demonstrated, while by the negative ones, the readers can understand when and why the model fails.</p><p>The most popular case studies are conducted by visualizing the attention weights <ref type="bibr" target="#b18">[Li, 2021b;</ref><ref type="bibr" target="#b19">Li, 2021c;</ref><ref type="bibr" target="#b5">Chen et al., 2019]</ref>. For example, in fashion recommendation, <ref type="bibr" target="#b18">[Li, 2021b]</ref> presents the matching degree between the tops and bottoms across different attributes. In image recommendation, <ref type="bibr" target="#b2">[Chen, 2017]</ref> visualizes the importances of different user previously interacted images as well as the regions in each image. In graph based recommendation, <ref type="bibr" target="#b19">[Li, 2021c]</ref> illustrates which neighbors, attributes and structure contexts are more important for the current user-item interaction prediction.</p><p>In many studies, people present template-based or fully generated natural language explanations as case studies. For example, <ref type="bibr">[Chen, 2020;</ref><ref type="bibr">Zhang et al., 2014]</ref> show the explanations by assembling the model predicted attributes and the pre-defined templates. <ref type="bibr" target="#b16">[Li, 2020b;</ref><ref type="bibr">Li, 2021a]</ref> present the explanations which are completely generated from the models.</p><p>When evaluating knowledge-based recommender models, people usually conduct case studies by showing the reasoning paths between the users and items. For example, in <ref type="bibr">[Wang et al., 2019]</ref>, the authors present the importances of different paths for a given user-item pair. In <ref type="bibr" target="#b30">[Xian, 2020;</ref><ref type="bibr" target="#b8">Fu, 2020]</ref>, the authors present examples to reveal the model routing process from the users to the items.</p><p>In many papers, the explanation items/features are presented as intuitive case studies. For example, <ref type="bibr" target="#b22">[Liu, 2020;</ref><ref type="bibr" target="#b17">Li, 2020c]</ref> highlights the items which are significant for the current model prediction. <ref type="bibr" target="#b31">[Yang et al., 2019]</ref> shows important feature combinations to reveal the model working principles.</p><p>In aspect-based recommender models, the case studies are usually conducted by presenting the learned aspects for the users/items. For example, in <ref type="bibr" target="#b25">[Tan et al., 2016]</ref>, the authors show the top words in the learned aspects to demonstrate the effectiveness of the model in capturing user preference.</p><p>The major advantage of case studies lies in its intuitiveness, which makes the readers easily understand how the explanations look like. However, there are many significant weaknesses. To begin with, it can be biased, since one cannot evaluate and present all the samples. And then, due to the lack of quantitative scores, it is difficult to compare different models and make accurate model selections.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Evaluation with Quantitative Metrics</head><p>In order to more precisely evaluate the explanations, people have designed many quantitative metrics. Basically, this category of methods assumes that the stakeholder utilities can be approximated and evaluated via parameterized functions. In the following, we elaborate the representative metrics.</p><p>Intuitively, if the explanations can accurately reflect the user preferences on the items, then the user satisfaction can be improved. As a result, many papers <ref type="bibr">[Li, 2021a;</ref><ref type="bibr" target="#b11">Hada, 2021;</ref><ref type="bibr" target="#b15">Li, 2020a</ref>] leverage the user reviews, which pool comprehensive user preferences, as the explanation ground truth. In these studies, the explainable recommendation problem is regarded as a natural language generation (NLG) task, where the goal is to accurately predict the user reviews. Under this formulation, the following metrics are usually leveraged to evaluate the explanation qualities.</p><p>• BLEU and ROUGE scores. BLEU <ref type="bibr" target="#b22">[Papineni, 2002]</ref> and ROUGE <ref type="bibr" target="#b20">[Lin, 2004]</ref> scores are commonly used metrics for natural language generation, where the key insight is to count the world (or n-gram) level overlaps between the model predicted and real user reviews.</p><p>• Unique Sentence Ratio (USR), Feature Coverage Ratio (FCR) and Feature Diversity (FD). These metrics aim to evaluate the diversity of the generated reviews <ref type="bibr" target="#b15">[Li, 2020a]</ref>. USR evaluates the diversity on the sentence level. In specific, suppose the set of unique reviews is S, and the total number of reviews is N, then this metric is computed as USR = |S| N . FCR and FD compute the diversity on the feature level. In the former metric, suppose the number of distinct features in all the generated reviews is M , and the total number of features is N f , than FCR = M N f . For the latter one, suppose the feature set in the generated review for user-item pair (u, i) is</p><formula xml:id="formula_0">F u,i , then FD = 1 N (N −1) (u,i) =(u ′ ,i ′ ) |F u,i ∩ F u ′ ,i ′ |,</formula><p>where N is the total number of different user-item pairs.</p><p>• Feature-level Precision (FP), Recall (FR) and F 1 (FF) In many papers <ref type="bibr" target="#b25">[Tan, 2021;</ref><ref type="bibr" target="#b25">Tai, 2021]</ref>, the explanation quality is evaluated by comparing the features in the predicted and real user reviews. For each user-item pair (u, i), suppose the predicted and real feature sets are S u,i and T u,i , respectively. Then the feature-level precision, recall and F 1 for this user-item pair are computed as FP </p><formula xml:id="formula_1">, FP = 1 N u,i FP u,i , FR = 1 N u,i FR u,i and FF = 1 N u,i FF u,i</formula><p>, where N is the number of user-item pairs.</p><p>• Feature Matching Ratio (FMR). In <ref type="bibr" target="#b15">[Li, 2020a]</ref>, the reviews are generated under the control of a feature. FMR evaluates whether this feature can successfully appear in the predicted results. It is formally computed as FMR = 1 N u,i 1(f u,i ∈ S u,i ), where f u,i is the input feature, S u,i is the predicted review, N is the number of user-item pairs, and 1 is the indicator function.</p><p>In counterfactual explainable recommendation [Tan, 2021], the following two metrics are usually leveraged to evaluate how the model prediction changes when the key features/items (which are used as the explanations) are altered.</p><p>• Probability of Necessity (PN). This metric aims to evaluate "if the explanation features of an item had been ignored, whether this item will be removed from the recommendation list?" Formally, Suppose A ij is the explanation feature set of item j when being recommended to user i, let PN ij = 1, if item j no longer exists in the recommendation list when one ignores the features in A ij , otherwise PN ij = 0. The final PN score is computed as i,j PNij 1(|Aij|&gt;0) .</p><p>• Probability of Sufficiency (PS). This metric aims to evaluate "if only the explanation features of an item are remained, whether this item will be still in the recommendation list?" Let PS ij = 1, if item j exists in the recommendation list when one only remains the features in A ij , otherwise PS ij = 0. The final PS score is computed as i,j PSij 1(|Aij|&gt;0) . Similar evaluation metric is also leveraged in <ref type="bibr" target="#b22">[Liu, 2020]</ref>, which measures the explanation quality based on the performance change before and after the key history items/entities are removed from the model input. The key intuition is that if the explanations are the key history items/entities underlying the recommendations, then removing them should greatly change the recommendation performance. The formal definition is as follows:</p><p>• Performance Shift (PS). Suppose the original recommendation performance is r, after removing the key history items/entities, the performance is changed to r ′ , then RS = r−r ′ r . Here the performance can be evaluated with different metrics, such as precision, recall, NDCG and so on.</p><p>In <ref type="bibr" target="#b0">[Abdollahi and Nasraoui, 2017]</ref>, the authors firstly define which items can be explained based on the user-item interaction graph, and then the following two metrics are proposed to evaluate the explainability of the recommendations.</p><p>• Mean Explainability Precision (MEP) and Mean Explainability Recall (MER). For a user u, suppose the set of items which can be explained is N u , the recommended item set is M u , then MEP = |Nu∩Mu| |Mu| and MEP = |Nu∩Mu| |Nu| . Based on the above quantitative metrics, different models can be compared, which is important for model selection and benchmarking this field. In addition, quantitative metrics are usually very efficient, since most of them can be computed in a short time. As for the shortcomings, quantitative metrics are sometimes not fully aligned with the evaluation goals. For example, BLUE score only evaluates the word-level overlaps between the generated and real explanations, but it does not directly tell whether the explanations are reasonable or not. What's more, when the stakeholder utilities are too complicated, existing quantitative metrics, which are heuristically designed by a small amount of people, may have the risk of misleading the evaluation results.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evaluation with Crowdsourcing</head><p>As mentioned before, recommender system is a subjective AI task, thus involving human feelings into the evaluation process is a direct and natural idea. Such evaluation methods are called crowdsourcing, and there are mainly three strategies, which are elaborated as follows.</p><p>• Crowdsourcing with public datasets. In this method, the recommender models are trained based on the public datasets. And then, many annotators are recruited to evaluate the model generated explanations based on a series of questions. There are two key points in the evaluation process.</p><p>(i) Annotation quality control. In order to accurately evaluate the explanations, controlling the annotation quality is a necessary step. In the previous work, there are two major strategies: one is based the voting mechanism, for example, in <ref type="bibr" target="#b5">[Chen et al., 2019]</ref>, there are three annotators for each labeling task, and the final result is available only when more than two annotators have the same judgment. The other strategy is based on computing certain statistical quantities. For example, in <ref type="bibr" target="#b2">[Chen et al., 2018</ref>], Cohen's Weighted κ <ref type="bibr" target="#b6">[Cohen, 1968]</ref> is leveraged to assess the inter-annotator agreements and remove the outlier annotations.</p><p>(ii) Annotation question designs. We find that the annotation questions in different papers are quite diverse. In general, they can be classified into three categories. The first category are "model-agnostic" questions, where the problems do not dependent on any specific model. In <ref type="bibr" target="#b5">[Chen et al., 2019]</ref>, the annotators are required to simulate themselves as the real users, and then label out the ideal explanations from all the possible ones. Then the labeled explanations are regarded as the ground truth, and the proposed model and baselines are evaluated by comparing their predicted explanations with the ground truth. The second category are "single-model" questions, where the problems focus on only one explainable model. In <ref type="bibr" target="#b18">[Li, 2021b]</ref>, the annotators are asked to upvote or down-vote the explanations generated from the designed model and the baseline, respectively. In <ref type="bibr" target="#b31">[Xian, 2021;</ref><ref type="bibr" target="#b16">Li, 2020b]</ref>, the annotators have to evaluate whether the proposed model can help users make better purchase decision. In <ref type="bibr" target="#b5">[Chen, 2021b]</ref>, the authors ask the annotators to label whether the explanations produced from the designed model are fluent and useful. In <ref type="bibr" target="#b25">[Tao et al., 2019;</ref><ref type="bibr">Wang et al., 2018]</ref>, the annotators are required to answer whether they are satisfied with the generated explanations, whether the explanations can really match their preferences and whether the explanations can provide more information for users to make a decision. The third category are "pair-model" questions, where the problems focus on the comparison between a pair of explainable models. In <ref type="bibr" target="#b16">[Li, 2020b]</ref>, the annotators need to answer which explanations produced from the designed model and baseline are more closer to the ground truth. In <ref type="bibr" target="#b25">[Tao et al., 2019]</ref>, the annotation questions are: between A and B, whose explanations do you think can better help you understand the recommendations? and whose explanations can better help you make a more informed decision? In <ref type="bibr" target="#b2">[Chen et al., 2018]</ref>, the annotators are asked to compare the usefulness of the explanations generated from the proposed model and the baselines.</p><p>In the above questions, the first category is the most difficult, since the annotators have to make decisions from a large amount of candidates. However, the labeled datasets are model-agnostic, which can be reused for different models and experiments. In the second and third categories, the annotators only have to answer yes or no, or select from a small amount of candidate answers, but the annotations cannot be reused, which is costly and not scalable.</p><p>• Crowdsourcing by injecting annotator data into public dataset. A major problem in the above method is that the annotator preferences may deviate from the real users', which may introduce noises into the evaluation. As a remedy for this problem, <ref type="bibr" target="#b8">[Gao et al., 2019]</ref> designs a novel crowdsourcing method by combining the annotator generated data with the public dataset. In specific, the evaluations are conducted based on the Yelp dataset 1 , which is collected from yelp.com. The authors recruit 20 annotators, and require each annotator to write at least 15 reviews on yelp.com. Then, the reviews written by the annotators are infused into the original Yelp dataset, and the explainable models are trained based on the augmented dataset. In the evaluation process, the annotators are required to score from 1 to 5 on the explanations according to their usefulness. Since the data generated by the annotators is also incorporated into the model training process, the feedback from the annotators are exactly the real user feedback.</p><p>• Crowdsourcing with fully constructed datasets. In this category, the datasets are fully constructed by the annotators. In general, there are four steps in the evaluation process, that is, (i) recruiting annotators with different background (e.g., age, sex, nationality and etc.), (ii) collecting annotator preferences, (iii) generating recommendations and explanations for the annotators, and (iv) evaluating the explanations by asking questions on different evaluation perspectives. Usually, The number of annotators in this category is much larger than above two methods, and the experiment settings and studied problems are quite diverse. For example, in <ref type="bibr" target="#b22">[Musto et al., 2019]</ref>, there are 286 annotators (with 76.3% males, and 48.4% PhDs), and they are asked to evaluate the explanation transparency and effectiveness. In <ref type="bibr" target="#b22">[Naveed, 2020]</ref>, the authors aim to study whether featurebased collaborative filtering (CF) models can lead to better explanations than the conventional CF's. There are 20 annotators, among which 14 are females with the age ranges from 21 to 40. In <ref type="bibr" target="#b12">[Hernandez-Bocanegra, 2020]</ref>, the authors investigate whether the type and justification level of the explanations influence the user perceptions. To achieve this goal, 152 annotators are recruited, where there are 87 females, and the average age is 39.84. In <ref type="bibr" target="#b0">[Balog and Radlinski, 2020]</ref>, the authors recruit 240 annotators to study the relations between the explanation effectiveness, transparency, persuasiveness and scrutability. In <ref type="bibr" target="#b27">[Tsukuda, 2020]</ref>, the authors recruit 622 annotators to evaluate the influence of the explanation styles on the explanation persuasiveness.</p><p>In the above three types of crowdsourcing methods, the  <ref type="bibr">Zhang et al., 2014;</ref><ref type="bibr" target="#b31">Xian, 2021]</ref> Effectiveness; Persuasiveness first one is fully based on the public datasets, the second one is based on the combination between the annotator generated data and the public dataset, and the last one is completely based on the annotator generated data. Comparing with the case studies and quantitative metrics, crowdsourcing is directly based on real human feelings. However, it can be much more expensive due to the cost of recruiting annotators.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Evaluation with Online Experiments</head><p>In the previous work, we also find a few papers, which evaluate recommendation explanations with online experiments. In specific, in <ref type="bibr">[Zhang et al., 2014]</ref>, the online users are split into three groups. For the users in the first group, the explanations are generated from the proposed model. For the second group users, the explanations are produced from the baseline. For the last group, there is no explanations. After running the system for a short time, the authors compute the click through rate (CTR) in each group to evaluate whether the explanations are useful. Similar method are also leveraged in <ref type="bibr" target="#b31">[Xian, 2021]</ref>, where the conversion and revenue are compared before and after presenting the explanations to the users. We believe online experiments can be more reliable. However, its cost is very high, since it may disturb the real production environments, and impact user experiences. We summarize the above evaluation methods in Table <ref type="table" target="#tab_2">2</ref>, where we can see: for different evaluation methods, they are usually leveraged to evaluate different perspectives. For example, case studies are mainly used to evaluate explanation effectiveness and transparency, while crowdsourcing can be leveraged to evaluate all the perspectives defined in section 3, since it can flexibly design questions for the annotators. From the second and third columns, we can see different evaluation methods have their own strengths and shortcomings, and no one method can take all the advantages.</p><p>Guidelines for selecting the evaluation methods. Based on different characters of the evaluation methods, we propose several guidelines on using them in real-world applications. (i) If the recommender models serve for high-stake tasks such as health caring and finance, then more reliable evaluation methods should be selected, since the cost of mis-explaining a recommendation, so that the users fail to make correct decisions can be much larger than that of conducting the evaluations. (ii) For general recommendation tasks, if the evaluation budget is limited, one has to trade-off the strengths and shortcomings of different evaluation methods. (iii) From Table <ref type="table" target="#tab_2">2</ref>, we can see the same perspective can be evaluated using different methods, thus one can simultaneously using these methods to take their different advantages. For example, when the model is not well optimized, we can use case studies to roughly evaluate the explanation effectiveness. Once the model has been tuned better, quantitative metrics can be leveraged to demonstrate whether the explanations are indeed effective.</p><p>stakeholder utilities, one can automatically learn the metric functions, where one can incorporate a small amount of human labeled data as the ground truth. And then, for benchmarking this field, one can build a large scale dataset, which incorporates the ground truth on the user effectiveness, recommendation persuasiveness and so on. At last, existing methods mostly evaluate the explanations within a specific task. However, we believe human intrinsic preferences should be stable and robust across different tasks. Thus, in order to evaluate whether the derived explanations can indeed reveal such human intrinsic preferences, developing task-agnostic evaluation methods should be an interesting research direction.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Summarization of the evaluation perspectives.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>u,i =</figDesc><table><row><cell></cell><cell></cell><cell>|Su,i∩Tu,i| |Su,i|</cell><cell>,</cell></row><row><cell>FR u,i =</cell><cell>|Su,i∩Tu,i| |Tu,i|</cell><cell cols="2">and FF u,i = 2•FP•FR FP+FR , respectively. The</cell></row><row><cell cols="4">final results are averaged across all the user-item pairs, that</cell></row><row><cell>is</cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Summarization of the evaluation methods. In the second and third column, we present the most significant strengths and shortcomings of different evaluation methods. In the last column, we present the perspectives that a method is usually leveraged to evaluate.</figDesc><table><row><cell>Evaluation methods</cell><cell>Strengths</cell><cell>Shortcomings</cell><cell>Representative papers</cell><cell>Evaluation perspectives</cell></row><row><cell></cell><cell></cell><cell></cell><cell>[Xian, 2020;</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>Xian, 2020;</cell><cell></cell></row><row><cell>Case studies</cell><cell>Better intuitiveness</cell><cell>Bias; Cannot make comparisons</cell><cell>Fu, 2020; Liu, 2020;</cell><cell>Effectiveness; Transparency</cell></row><row><cell></cell><cell></cell><cell></cell><cell>Barkan, 2020;</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell>Li, 2020c]</cell><cell></cell></row><row><cell>Quantitative metrics</cell><cell>Quantitative evaluation; Easy to benchmark; High efficiency</cell><cell>Deviating from the explanation goals; Less effective approximation</cell><cell>[Li, 2021a; Tai, 2021] Hada, 2021; Li, 2020a; Tan, 2021;</cell><cell>Effectiveness; Scrutability</cell></row><row><cell>Crowdsourcing</cell><cell>Based on real human feelings</cell><cell>High cost</cell><cell>[Li, 2021b; Xian, 2021; Li, 2020b; Chen, 2021b; Wang et al., 2018]</cell><cell>Effectiveness; Scrutability; Transparency; Persuasiveness</cell></row><row><cell>Online experiments</cell><cell>High reliable</cell><cell>High cost</cell><cell>[</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://www.yelp.com/dataset</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">Conclusion and OutlooksIn this paper, we summarize existing explainable recommendation papers with a focus on the explanation evaluation. In specific, we introduce the main evaluation perspectives and methods in the previous work. For each evaluation method, we detail its characters, representative papers, and also highlight its strengths and shortcomings. At last, we propose several guidelines for better selecting the evaluation methods in real-world applications.By this survey, we would like to provide a clear summarization on the evaluation strategies of explainable recommendation. We believe there is still much room left for improvements. To begin with, since the heuristically designed quantitative metrics can be incompetent for evaluating the complex</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Krisztian Balog, Filip Radlinski, and Shushan Arakelyan. Transparent, scrutable and explainable user models for personalized recommendation</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><surname>Gediminas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2004">2017. 2004. 2004. 2020. 2019</date>
+			<biblScope unit="page" from="265" to="274" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of the Eleventh ACM Conference on Recommender Systems</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Explainable recommendations via attentive multi-persona collaborative filtering</title>
+		<author>
+			<persName><surname>Barkan ; Oren</surname></persName>
+		</author>
+		<editor>Recsys</editor>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Yixin Cao, Zheng Qin, and Hongyuan Zha. Personalized fashion recommendation with visual explanations based on multimodal attention network: Towards visually explainable recommendation</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Bouraga</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sarah</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th international ACM SIGIR conference on Research and development in information retrieval</title>
+				<editor>
+			<persName><surname>Icsc</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Ieee</surname></persName>
+		</editor>
+		<meeting>the 36th international ACM SIGIR conference on Research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2013">2014. 2014. 2014. 2014. 2013. 2013. 2018. 2018. 2018. 2019. 2019. 2013. 2013. 2017. 2017</date>
+			<biblScope unit="page" from="765" to="774" />
+		</imprint>
+		<respStmt>
+			<orgName>IJIIT</orgName>
+		</respStmt>
+	</monogr>
+	<note>SIGIR</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Try this instead: Personalized and interpretable substitute recommendation</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SI-GIR</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Temporal meta-path guided explainable recommendation</title>
+		<author>
+			<persName><surname>Hongxu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Incorporating interpretability into latent factor models via fast influence analysis</title>
+		<author>
+			<persName><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhongxia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2019">2021. 2019. 2019</date>
+			<biblScope unit="page" from="885" to="893" />
+		</imprint>
+	</monogr>
+	<note>IJCAI</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Weighted kappa: nominal scale agreement provision for scaled disagreement or partial credit</title>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Cohen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Psychological bulletin</title>
+		<imprint>
+			<date type="published" when="1968">1968. 1968</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Deep learning for sequential recommendation: Algorithms, influential factors, and evaluations</title>
+		<author>
+			<persName><surname>Hui</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<publisher>TOIS</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation through attentive multi-view learning</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zuohui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2019">2020. 2020. 2019. 2019</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="3622" to="3629" />
+		</imprint>
+	</monogr>
+	<note>SIGIR</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">On-demand personalized explanation for transparent recommendation</title>
+		<author>
+			<persName><forename type="first">Mahesh</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">UMAP</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+	<note>ELCVIA: electronic letters on computer vision and image analysis</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">A survey of accuracy evaluation metrics of recommendation tasks</title>
+		<author>
+			<persName><surname>Asela</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+			<publisher>JMLR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Rexplug: Explainable recommendation using plug-and-play language model</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Hada</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Effects of argumentative explanation types on the perception of review-based recommendations</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM International on Conference on Information and Knowledge Management</title>
+				<meeting>the 24th ACM International on Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2015">2015. 2015. 2020</date>
+			<biblScope unit="page" from="1661" to="1670" />
+		</imprint>
+	</monogr>
+	<note>UMAP</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">A survey of personalised image retrieval and recommendation</title>
+		<author>
+			<persName><surname>Ji ; Zhenyan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">National Conference of Theoretical Computer Science</title>
+				<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">A review of text-based recommendation systems</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Kanwal</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Safia</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Generate neural template explanations for recommendation</title>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Towards controllable explanation generation for recommender systems via neural template</title>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">TheWebConf</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Directional and explainable serendipity recommendation</title>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xueqi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2105.11601</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Personalized transformer for explainable recommendation</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>TheWebConf</note>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Attribute-aware explainable complementary clothing recommendation. World Wide Web</title>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Yang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">You are what and where you are: Graph enhanced attention network for explainable poi recommendation</title>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zeyu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Rouge: A package for automatic evaluation of summaries</title>
+		<author>
+			<persName><forename type="first">Lin ; Chin-Yew</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Text summarization branches out</title>
+				<imprint>
+			<date type="published" when="2004">2004. 2004</date>
+			<biblScope unit="page" from="74" to="81" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">In2rec: Influence-based interpretable recommendation</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM International Conference on Information and Knowledge Management</title>
+				<meeting>the 28th ACM International Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="page" from="1803" to="1812" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">On the use of featurebased collaborative explanations: An empirical comparison of explanation styles</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ninghao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th ACM Conference on User Modeling, Adaptation and Personalization</title>
+				<meeting>the 27th ACM Conference on User Modeling, Adaptation and Personalization</meeting>
+		<imprint>
+			<date type="published" when="2002">2020. 2020. 2019. 2019. 2002</date>
+			<biblScope unit="page" from="311" to="318" />
+		</imprint>
+	</monogr>
+	<note>ACL</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">How good your recommender system is? a survey on evaluations in recommendation</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Silveira</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Thiago</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<publisher>IJMRC</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Fairness and transparency in recommendation: The users&apos; perspective</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Sonboli</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Nasim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">UMAP</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Rating-boosted latent topics: Understanding users and items with ratings and reviews</title>
+		<author>
+			<persName><forename type="first">Yading</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2012">2012. 2012. 2021. 2016. 2016. 2021. 2019</date>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="295" to="304" />
+		</imprint>
+	</monogr>
+	<note>SIGIR</note>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Evaluating visual explanations for similarity-based recommendations: User perception and performance</title>
+		<author>
+			<persName><forename type="first">Brusilovsky ; Chun-Hua</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Brusilovsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th ACM Conference on User Modeling, Adaptation and Personalization</title>
+				<meeting>the 27th ACM Conference on User Modeling, Adaptation and Personalization</meeting>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="page" from="22" to="30" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Xiangnan He, Yixin Cao, and Tat-Seng Chua. Explainable reasoning over knowledge graphs for recommendation</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Tsukuda</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kosetsu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 41st International ACM SIGIR Conference on Research &amp; Development in Information Retrieval</title>
+				<imprint>
+			<date type="published" when="2018">2020. 2020. 2018. 2018. 2019. 2019. 2020</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="5329" to="5336" />
+		</imprint>
+	</monogr>
+	<note>TheWebConf</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">A survey of e-commerce recommender systems</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kangning</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICSSM</title>
+				<imprint>
+			<date type="published" when="2007">2007. 2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<author>
+			<persName><surname>Wu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2104.13030</idno>
+		<title level="m">Le. A survey on neural recommendation: From collaborative filtering to content and context enriched recommendation</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Cafe: Coarse-to-fine neural symbolic reasoning for explainable recommendation</title>
+		<author>
+			<persName><surname>Xian ; Yikun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Ex3: Explainable attributeaware item-set recommendations</title>
+		<author>
+			<persName><forename type="first">Yikun</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2021. 2019. 2019</date>
+			<biblScope unit="page" from="775" to="784" />
+		</imprint>
+	</monogr>
+	<note>Recsys</note>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">A survey of point-of-interest recommendation in location-based social networks</title>
+		<author>
+			<persName><surname>Yu ; Yonghong</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+			<publisher>AAAIW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">[</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1804.11192</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<publisher>Zhang</publisher>
+			<date type="published" when="2014">2014. 2014. 2018. 2018</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>Explainable recommendation: A survey and new perspectives</note>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Deep learning based recommender system: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">;</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Shuai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys (CSUR)</title>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

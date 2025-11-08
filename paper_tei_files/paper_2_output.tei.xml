@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Knowledge-aware Autoencoders for Explainable Recommender Sytems</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2018-07-17">17 Jul 2018</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Vito</forename><surname>Bellini</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Angelo</forename><surname>Schiavone</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Tommaso</forename><surname>Di</surname></persName>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Azzurra</forename><surname>Ragone</surname></persName>
+							<email>azzurra.ragone@gmail.com</email>
+							<affiliation key="aff1">
+								<orgName type="department">Independent Researcher</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Eugenio</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Noia</forename><forename type="middle">⋆</forename><surname>Azzurra</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Independent Researcher</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Eugenio</forename><surname>Di</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">⋆ Polytechnic University of Bari Bari</orgName>
+								<address>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Knowledge-aware Autoencoders for Explainable Recommender Sytems</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2018-07-17">17 Jul 2018</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D8C37EFD22CE3210F04951E05A46E4DD</idno>
+					<idno type="DOI">10.1145/nnnnnnn.nnnnnnn</idno>
+					<idno type="arXiv">arXiv:1807.06300v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:49+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Explanation</term>
+					<term>Explainable Models</term>
+					<term>Recommender Systems</term>
+					<term>Deep Learning</term>
+					<term>Autoencoder Neural Networks</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recommender Systems have been widely used to help users in finding what they are looking for thus tackling the information overload problem. After several years of research and industrial findings looking after better algorithms to improve accuracy and diversity metrics, explanation services for recommendation are gaining momentum as a tool to provide a human-understandable feedback to results computed, in most of the cases, by black-box machine learning techniques. As a matter of fact, explanations may guarantee users satisfaction, trust, and loyalty in a system. In this paper, we evaluate how different information encoded in a Knowledge Graph are perceived by users when they are adopted to show them an explanation. More precisely, we compare how the use of categorical information, factual one or a mixture of them both in building explanations, affect explanatory criteria for a recommender system. Experimental results are validated through an A/B testing platform which uses a recommendation engine based on a Semantics-Aware Autoencoder to build users profiles which are in turn exploited to compute recommendation lists and to provide an explanation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Language Processing and, very recently, few attempts have also been made to solve the Recommendation problem. Deep Learning techniques have proven their strength thus gaining the attention of both researchers and companies and being widely deployed in nowadays recommender systems. While research has mainly focused on improving accuracy metrics in recommenders, under the hood, their algorithms are becoming more and more complex thus making extremely hard to understand the reasons behind model predictions for a particular input. This recently led both researchers and companies to pay more attention to explainable models. Indeed, it has been proven that showing to users an explanation for the provided recommendation leads to better interaction with the recommender system. Moreover, when users understand how the system works, they can refine their preferences in order to get a better recommendation according to their tastes. However, in many popular recommenders such as Amazon or Netflix, the explanation provided is still very poor, as it is essentially based on popularity basis: it just tells that users with similar tastes have enjoyed the suggested items. It turns out that this kind of explanation is not perceived as a valid justification of why the system is recommending certain items and it hardly improves users loyalty in the system. On the other hand, a content-based explanation turns out to be more engaging from the user's point of view because it makes users aware about item's attributes that might be relevant for them.</p><p>Furnishing a content-based explanation seems to be much more difficult because item descriptions are not always available and they are not easy to maintain. Thus, some attempts have been made in order to exploit Knowledge Graphs as data source for items' content description. Generally, KGs such as DBpedia 1 or Wikidata 2 , provides huge information of different types and then finding what works better to build an explanation is a difficult task for computer agents.</p><p>In this paper we propose to exploit a Semantics-Aware Autoencoders (SemAuto) <ref type="bibr" target="#b1">[2]</ref> to compute explainable recommendations. Originally developed to cope with the cold start problem, in SemAuto the structure of the DBpedia KG is injected within an Autoencoder Neural Network, whose structure is built by mimicking the existing connections in the KG. Then, after feeding such a network with user ratings, weights associated to the hidden neurons are extracted and eventually used to build knowledge-aware user profiles which are eventually used to compute recommendations. In <ref type="bibr" target="#b2">[3]</ref> we prove that SemAuto can also be effectively used to compute recommendations in non-cold situations reaching very competitive results in terms of accuracy and diversity.</p><p>Here we show how the model built by SemAuto can also be adopted to compute content-based explanations to recommended items. We evaluated the effectiveness of our approach through an A/B testing platform with 892 volunteers and compared its results to two baselines. We tested both a pointwise and a pairwise explanation style by exploiting different kinds of information on DBpedia (categorical and factual), in order to investigate how the effectiveness of the proposed explanation changes according to the selected properties. The main research questions we address in this paper are then:</p><p>RQ1 Can we assume that the information encoded in the hidden layer of the SemAuto autoencoder is representative of user preferences? RQ2 Given a content-based explanation built upon the SemAuto model, is a pairwise explanation better than a simple pointwise one for the user?</p><p>The remainder of the paper is structured as follows: in the next section we recap the most prominent works related to the explanation in the recommendation scenario. In Sections 3 we provide an overview of Knowledge Graphs and Semantics-Aware Autoencoders. We describe how our experiments were conducted in Section 4 and discuss the results in Section 5. Conclusion and future work close the paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORKS</head><p>Making a Recommender System (RS) transparent to users is getting more and more relevance since it may lead to users retain <ref type="bibr" target="#b7">[8]</ref>. Different studies <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b17">18]</ref> have pointed out that introducing transparency in the recommendation process may have lots of advantages because users appear to be more satisfied with the recommendation if they are aware of the reasons why certain items are suggested. Furthermore, the provided explanation may also convince users to try items they would have normally ignored, thus improving users confidence in the system. Since the explanation may be decoupled from the recommendation process, a distinction between transparency and justification has to be made <ref type="bibr" target="#b19">[20]</ref>. The explanation brings transparency to the system if it makes users aware about how the recommender engine works, explaining somehow the underlying algorithm behind the proposed suggestions. This is usually the case of those explanations computed along with the recommendation. On the other hand, justification implies an explanation which is not directly related to the recommendation algorithm, thus it can be generated in a more freely way. Such kind of explanations may be preferred to transparency because of algorithms that are difficult to explain or have not to be spread.</p><p>The main advantages users may get from the explanation are described in <ref type="bibr" target="#b16">[17]</ref> and they include: transparency, scrutability, trust, effectiveness, persuasiveness, efficiency and satisfaction. In <ref type="bibr" target="#b18">[19]</ref>, the authors show how they can be exploited as evaluation metrics for explanatory services. However, providing effective explanations is not always a trivial task; RSs have surely proven to be very accurate in accomplishing their tasks, but they usually work just as black boxes, being not transparent at all. In order to overcome this issue, new methods have been developed in order to generate an explainable recommendation ( <ref type="bibr" target="#b17">[18]</ref> provides an overview of the most successful approaches proposed over the years) such as MoviExplain <ref type="bibr" target="#b15">[16]</ref>, which exploits movies metadata to justify its recommendation lists. Other interesting works include: a RS based on Restricted Boltzmann Machines which looks at the rating distribution to identify the most explainable items <ref type="bibr" target="#b0">[1]</ref>, a Latent Factor Model leveraging users reviews to compute more transparent recommendations <ref type="bibr" target="#b22">[23]</ref> and, finally, a novel approach based on movies information encoded in the Linked Open Data cloud which generates natural language explanation for the computed recommendation presented in <ref type="bibr" target="#b9">[10]</ref>. Looking at the last mentioned method, it is worth noticing how Knowledge Graphs (KG) are recently being used in lots of applications; they freely offer a large amount of structured data which turned out to be very useful also in recommendation scenarios <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b11">12]</ref>. In particular, in <ref type="bibr" target="#b1">[2]</ref>, the authors introduce the idea of a Semantics-Aware Autoencoder which paves the way to compute explanation by leveraging deep learning techniques.</p><p>As a matter of fact, all the approaches based on deep learning models that have been proposed over the years, turned out to barely leverage on latent factors to which no meaning can be attached to. Among them, Autoencoder Neural Networks have proven their effectiveness in CF settings as shown in <ref type="bibr" target="#b13">[14]</ref>, in which the authors use an Autoencoder fed with user ratings in order to predict missing value for users' unseen items. In other works such as <ref type="bibr" target="#b21">[22]</ref> a stacked architecture made of Autoencoders is proposed to perform a generalization over higher set of latent features that every stacked autoencoder is able to learn. More recently, in <ref type="bibr" target="#b20">[21]</ref> the authors propose an hybrid architecture for Autoencoders in order to incorporate both users' feedbacks and content description about items. A similar approach has been proposed in <ref type="bibr" target="#b5">[6]</ref>, in which they exploit side information in a CF setting by using Stacked Autoencoders in order to overcome the cold start problem and data sparsity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">BACKGROUND TECHNOLOGIES</head><p>Our approach relies on two main technologies: Knowledge Graphs and Autoencoder Neural Networks. The proposed method shows how to use the former to map KG's connections to the topology of the latter, in order to give an explicit meaning to the connections in the NN.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Knowledge Graphs</head><p>In the past few years, we have assisted to the publication of freely ontological data on the Web, thanks to diverse communities that began to develop Knowledge Graphs as well-structured graph data encoding the human knowledge. KGs are oriented graphs in which nodes identify resource entities and edges provide labeled relationships between them. Some prominent examples of KGs are DBpedia and Wikidata, which are community driven projects that leverage on Wikipedia pages to automatically parse structured data. Mainly, two kind of information exist in DBpedia: semantics-aware and factual one. The former can be divided into categorical and ontological data. Categorical information is encoded through the dct:subject predicate and represents items categories parsed from Wikipedia infoboxes, such as Vigilante films or Cyborg films. Categories in Wikipedia are collaboratively maintained by community's editors thus leading to a rich set of categories that reflects a human classification by encoding knowledge about classes attributes and other semantic relations <ref type="bibr" target="#b10">[11]</ref>. On the other hand, ontological data basically captures entities types (classes) and their hierarchy; it does not only represent their taxonomy but extends it by using restrictions on its relationships to other classes or on the properties a particular class is allowed to posses. Finally, factual knowledge is merely made of facts; it identifies items' attributes, as it can be in the movies domain that the actor Will Smith starred in the movie I, Robot, as depicted in Figure <ref type="figure" target="#fig_0">1</ref>. Differently from categorical information, factual one is identified via different attributes/predicates connecting an item to different entities as for the case of director, starring, etc.. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Semantics-Aware Autoencoders</head><p>Neural Networks model are generally made by one input layer, one or more hidden layers and an output layer. Every layer contains neurons, and every neuron of layer i is connected to all neurons of layer i + 1. In particular, Autoencoders are a special kind of unsupervised learning Neural Networks that learn a function able to reconstruct the original data available at the output layer. In the training phase, autoencoders learn how to reconstruct the input vector x through a latent representation encoded in the hidden layers.</p><p>In a semantics-aware autoencoder, the hidden layers and their connections are substituted by the knowledge graph thus having an explicit representation on the meaning associated both to hidden nodes and to their mutual connections <ref type="bibr" target="#b1">[2]</ref>. This means that each neuron represents an entity in the adopted KG and the edge between two autoencoder nodes exist if the corresponding KG entities are connected with a predicate (labeled edge).</p><p>In our implementation, we adopted three different configurations based on a single hidden layer semantics-aware autoencoder (see Figure <ref type="figure" target="#fig_1">2</ref>) which exploits one of the following sets of information available in DBpedia: (i) semantic data, or rather categorical attributes of items; (ii) factual data, specific items properties (such as actors and directors in the movie domain); (iii) semantic and factual information, a mixture of the previous ones.</p><p>Hence, the resulting autoencoder has three layers: input layer, hidden layer and output layer where the input and output layers represent items in the catalog while the middle hidden layer contains their DBpedia categories and/or properties.</p><p>As previously said, in the training phase, an autoencoder learns how to reconstruct the input vector (in our case user ratings) using the latent representation encoded in the hidden layer. As we train an autoencoder per user, once the model converges, in a semanticsaware autoencoder, for each user we have a latent representation of item's features which, actually, result to be no more latent because every neuron corresponds to an entity in the KG. It turns out that features belonging to positively rated items tend to have a higher weight, differently from those of negatively rated items. This behavior is quite understandable considering that a rating feeding an input node (representing an item in the catalog) flows throughout the neural network by crossing only features/nodes connected to it in the KG. We want to stress here that, although each autoencoder is trained over a not huge number of samples, in <ref type="bibr" target="#b2">[3]</ref> we prove that recommendation results have very good performance in terms of accuracy and diversity also compared to state-of-the-art algorithms 3   To train such a kind of autoencoder, we inhibit the feedforward and backpropagation step for those neurons which result to be not connected in the KG by using a masking multiplier matrix M where rows and columns represent respectively items and features.</p><formula xml:id="formula_0">M m,n = a 1,1 a 1,2 • • • a 1,n . . . . . . . . . . . . a m,1 a m,2 • • • a m,n<label>(1)</label></formula><p>3 The code implementing SemAuto has been developed by using TensorFlow and is available at https://github.com/sisinflab/SEMAUTO-2.0.</p><p>The matrix in Equation ( <ref type="formula" target="#formula_0">1</ref>) represents the adjacency matrix of the KG where a generic entry is a binary value indicating whether a connection among entities exists in it. In other words, we have</p><formula xml:id="formula_1">a i, j ∈ M m,n = 1, if item i is connected to feature j 0, otherwise</formula><p>Hence, hidden (h) and output (o) layers are computed by the following two equations:</p><formula xml:id="formula_2">h = д(X × (W 1 • M)) o = д(h × (W 2 • M T ))</formula><p>During the backpropagation step, gradients are computed as usually for W 2 and W 1 with respect to a mean squared error loss</p><formula xml:id="formula_3">E = 1 2 i ∥ x i − y i ∥ 2 being</formula><p>x i and y i the elements of the input and output vector respectively.</p><p>The weights update step in SGD (Stochastic Gradient Descent) backpropagation has been modified according to Equations (2) in order to take into account the masking matrix:</p><formula xml:id="formula_4">W 1 = (W 1 • M) − r • ∂E ∂W 1 W 2 = (W 2 • M T ) − r • ∂E ∂W 2 (<label>2</label></formula><formula xml:id="formula_5">)</formula><p>Where E is the mean squared error loss while W 1 and W 2 represent the weight matrices for the connections between the input and hidden layer (W 1 ) and between the hidden layer and the output layer (W 2 ). They are both initialized randomly using Xavier initialization <ref type="bibr" target="#b6">[7]</ref>. In our experiments, we trained the model for 1000 epochs with a learning rate r = 0.03 and we used the well-known sigmoid σ (z) = 1 1+e −z as activation function. Since we train one autoencoder per user and we want it to overfit on user ratings, we did not use any form of regularization. Computing user profiles. After training the autoencoder for each user u, we extract the weights of the hidden neurons and use them to build a user profile P(u): P(u) = {⟨f u1 , w u1 ⟩, . . . , ⟨f um , w um ⟩} being f u the label associated to the neuron and w u its corresponding weight for u. Indeed, as each hidden neuron represents an entity in DBpedia, we may assume that its weight after the training is an indicator of the importance of the corresponding entity for u.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">COMPUTING SEMANTICS-AWARE EXPLANATIONS</head><p>As previously said, in this paper we explore the adoption of a semantic autoencoder to provide an explanation for top-N recommendations. In our experimental setting aimed at evaluating the explainability of the trained model, while building the structure of the SemAuto autoencoder we used those KG entities reachable through the predicate dct:subject as item categories, while we used the approach originally proposed in <ref type="bibr" target="#b12">[13]</ref> to select the top-3 factual movie properties: dct:starring, dct:director, dct:writer 4 .</p><p>In order to formulate a human-understandable explanation for the provided results, we rely on the weights associated to features in the user profile, which also appear in the description of the recommended items. In particular, given a user u and a recommendation list rec(u) = [⟨i 1 , ru 1 ⟩, . . . , ⟨i n , ru n ⟩], with ru k being a score/rating computed for the item i k by a recommendation engine, we may compute a pointwise and a pairwise personalized explanation. pointwise personalized. Given an item i = { f 1i , f 2i , . . . , f ni } described by a set of features f i , the pointwise explanation e1 k (i) is computed by considering the set of top-k highest weighted features in P(u) which also appear in i. pairwise personalized. Given two items i and j such that ru i &gt; ru j , the pairwise explanation e2 k (i, j) is computed by evaluating both e1 k (i) and e1 k (j). In case m features are in common between e1 k (i) and e1 k (j), we compute e1 k +m (j) and leave them only in e1 k (i) thus avoiding any overlap between the explanation for i and that for j.</p><p>To verify that the explanation generated through a Semantics-Aware Autoencoder is able to satisfy the main explanatory criteria of transparency, persuasiveness, effectiveness, trust and satisfaction, we built a web platform 5 that returns the top-5 recommendations and then asks for users' feedback about the provided explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Explanation styles</head><p>We provided our platform with four different explanation styles: as in <ref type="bibr" target="#b9">[10]</ref>, we used a popularity-based explanation and a non-personalized one as baselines <ref type="bibr" target="#b18">[19]</ref>. As a third style we propose our pairwise approach. During the usage of the platform by a user, we randomly select one of the three styles and show the associated explanation, which is generated for the top-2 recommended items in a pairwise fashion. Hence, the user may receive one of the following explanations: popularity-based We suggest these items since they are very popular among people who like the same movies as you. (non-/pointwise) personalized We guess you would like to watch i and j since they are about fu1 , . . . fuk (Example 4.1) pairwise personalized We guess you would like to watch i more than j because you may prefer e1 k (i) over e1 k+m (j) (Example 4.1)</p><p>Example 4.1. In order to show the difference between a pointwise and a pairwise personalized explanation, hereafter we report the two explanation styles with reference to a recommendation having Terminator 2: Judgment Day and Transformers: Revenge of the fallen as the first two items in the recommendation list. The pointwise personalized explanation may look like: The popularity-based explanation may be considered as the less meaningful, since it justifies recommender choices by just leveraging the popularity of suggested items among the users with similar tastes of the active user u. The non-personalized explanation, instead, tries to explain the provided recommendation by using additional information about the suggested items. In our experiments, we randomly select k = 5 features from the set</p><formula xml:id="formula_6">F i j = F i ∪ F j = { f 1i , f 2i , . . . , f ni } ∪ { f 1j , f 2j , . . . , f n ′ j }.</formula><p>In a similar manner, in a pointwise personalized explanation we selected the top-5 features from each set F i and F j . The value k = 5 has been selected also to compute e2 k (i, j) in the pairwise personalized explanation.</p><p>Please notice that the considered set of features per item varies according to the different configuration adopted for the SemAuto autoencoder; it may include just item categories, factual data or both of them.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Evaluation Protocol</head><p>During the online A/B testing phase, we fixed a sequence of steps in order to measure the aforementioned explanatory criteria.</p><p>Steps 1-3. At the beginning of the experiment, the user u selects at least 15 movies she has watched among the ones randomly listed by the platform. The movies belong to the well-known MovieLens 20M dataset 6 . Then, she is invited to rate each selected movie on a five-stars rating scale; data so gathered are exploited to get both the user profile computed with the semantic autoencoder and a top-5 recommendation list.</p><p>Step 4. Once the recommendation has been generated, the user is asked to rate the suggested items, even if no explanation has been 6 https://grouplens.org/datasets/movielens/20m/ (a) Step 4. The user is asked to rate the recommended items, even if she has not watched them.</p><p>(b) Step 5. The user is asked to read the explanation and after that to rate again the top-2 recommended items. shown yet: these ratings will be relevant to determine the impact the explanation has on the user (persuasiveness).</p><p>Step 5. The next step consists of showing to u one of the three randomly selected explanation styles deployed within the application. After enjoying the explanation, the user has to re-rate the top-2 recommended items, letting us measure how different is the items evaluation before and after the explanation has been provided.</p><p>Step 6. Similarly, in the last part of the experiment, the user is asked to re-rate the recommended movies after watching the related trailers. This phase allows u to emulate the items consumption, and makes her more aware about the topics of the suggested movies. In this way we can evaluate how much effective the selected explanation style was (effectiveness).</p><p>Step 7. Finally, the user fills a questionnaire, aimed at measuring the explanation transparency, trust and satisfaction (see Table <ref type="table">1</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Metrics</head><p>When evaluating an explanation system, the main characteristics to evaluate are <ref type="bibr" target="#b17">[18]</ref>:</p><p>• transparency, which refers to the capability of the explanation to make users aware of how the system works;</p><p>• trust, or rather the confidence users have in the system;</p><p>• satisfaction, if users have an enjoyable experience in the usage of the system;</p><p>• persuasiveness, which evaluates how much convincing is the proposed explanation;</p><p>• effectiveness: the explanation is said to be effective if it helps users to correctly estimate items relevance before the consumption.</p><p>The first three characteristics are evaluated by collecting answers from users after filling the questionnaire at Step 7. As a final score for the first and the second metric we used the percentage of users that answered positively to the questions, while we exploited the average score assigned by users to quantify the overall satisfaction.</p><p>In order to evaluate the persuasiveness of the proposed explanation, we asked users to rate each recommended item before and after showing them the explanation: if the rating provided after looking at the explanation is higher than the original one, then the explanation has been able to persuade the user to try the suggested item. More formally we measure persuasiveness as <ref type="bibr" target="#b17">[18]</ref>:</p><formula xml:id="formula_7">persuasiveness = 1 |U | • u ∈U 1 N • i ∈I u N (r e ui − r ui )</formula><p>where U stands for the collection of users; I u N represents the set of top-N recommended items for u; r ui and r e ui are, respectively, the ratings u assigns to i just before and after the explanation is provided.</p><p>Analogously, we evaluated the effectiveness as the difference between two ratings (see Equation (4.3) <ref type="bibr" target="#b17">[18]</ref>), where r t ui represents the rating the user gives to the suggested movie after watching the related trailer (r t ui ).</p><formula xml:id="formula_8">effectiveness = 1 |U | • u ∈U 1 N • i ∈I u N ||r e ui − r t ui ||</formula><p>The lower this value, the more effective the explanation, since it implies that users have rated each item with very similar values before and after the explanation has been provided.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>METRIC QUESTION</head><p>transparency I understood the reason why the two movies have been ranked in the proposed order. trust</p><p>The explanation increased my trust in the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>satisfaction</head><p>The provided explanation: really captures my tastes. partially captures my tastes.</p><p>does not capture my tastes.</p><p>Table <ref type="table">1</ref>: The final questionnaire.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">RESULTS DISCUSSION</head><p>We conducted our experiment with the help of 892 volunteers, with at least 73 subjects for each of the implemented settings. As stated in <ref type="bibr" target="#b8">[9]</ref>, 73 has to be considered as the minimum acceptable sample size for such kind of experiments. This assures the significance of our experimental results. Furthermore, we verified the statistical significance of our experiment by using Wilcoxon Rank-Sum Test, getting p ≪ 0.01. As shown in Figure <ref type="figure">4</ref>, a content-based explanation is always preferred by users, since the popularity-based style gets the worst results in all the considered explanatory criteria. The only exception is represented by persuasiveness: quite interestingly, the nonpersonalized explanation leveraging semantic/categorical information gets negative values, as it happens when users rate items with lower values after looking at the explanation than before, being not convinced to consume the suggested items at all. Hence, users overestimate their interest in the recommended items or underestimate it because of the provided explanation; this may be interpreted as users dissatisfaction for the shown categories, since they are chosen randomly without taking into account users interests. As a matter of fact, the personalized approach, which computes the explanation by leveraging users preferences, outperforms all its competitors, even with the pairwise approach. Furthermore, it is worth noticing how convincing the categories are: by looking at the results, if the personalized style exploits categorical features, then it performs very well in terms of persuasiveness if compared to others. It is worth noticing that when categorical features are combined with factual information, they lead to a better persuasiveness, in particular the pairwise approach gets better results than the pointwise one. This may be explained by considering that we simulate item consumptions through their associated trailers: in our experiments, users provide a certain rating to a movie by just considering a few scenes, that are those shown in the trailer. Therefore, users may get information about the movie topics, subjects and how good or interesting an actor's or a director's performances are. This condition may influence the way the explanation is perceived by users, who demonstrated to find more convincing an explanation involving both categorical and factual information rather than an explanation based on item factual properties only.</p><p>On the other hand, still considering the pairwise personalized approach, factual properties turn out to be more effective as concerning satisfaction, trust and effectiveness; we suppose that users feel more confident in specific information such as actors or directors rather than just a set of movie categories. This trend is already confirmed by the pointwise approach, and the pairwise one gets even higher score with those metrics. As a matter of fact, the system transparency has the highest values when both semantic and factual properties are exploited; as these values are very close to those achieved by just using factual properties, we can claim that it is the factual information itself that improves the measured performances. Analogously, richer items descriptions make more effective the explanation: when the system leverages both categories and factual attributes, the effectiveness achieves its best results. Hence, providing more information about the suggested items surely lets users better evaluate them before their consumption. By considering the non-personalized style, it is quite interesting that by using both categorical and factual attributes, the gathered results for all the adopted criteria are usually the best, far from the performances measured by the other settings based on the KG. Once again, as discussed above, this may depend on the random aspect behind it: e.g., users may be more or less satisfied with the provided explanation according to the randomly shown features, which they may like or dislike, know or ignore. Summing up, from the experimental results, we may argue that the pairwise approach with factual information gets better performance in users' satisfaction, effectiveness and trust, while it outperforms the pointwise one in persuasiveness and transparency when both factual and categorical information are exploited.</p><p>To provide an answer to RQ1, examining the results, it turns out that our SemAuto provides reliable users' descriptions as evidenced in the effectiveness metric which gets the lowest value by using a pairwise explanation. This can be interpreted as a strong signal that the information encoded in the autoencoder hidden layer is representative of the users' preferences because the users is less prone to change her ratings after she read the explanation.</p><p>As for RQ2, we can assert that the pairwise approach outperforms the pointwise one in all metrics especially in transparency because it provides a better justification on how the system ranks items according to the importance of the features in the user profile. This lets the user to better understand how her preferences are involved in the recommendation process. In fact, this has an impact especially for the persuasiveness metric where the pairwise approach has a higher score with respect to the pointwise explanation, thus leading users in consuming an item after they have read the provided explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">CONCLUSION AND FUTURE WORK</head><p>In this paper we present results on the capability for a semanticsaware autoencoder <ref type="bibr" target="#b1">[2]</ref> to generate explanation to recommendation lists via the exploitation of data coming from the DBpedia knowledge graph. Online experimental results show that a content based explanation is preferred by users, as it outperforms other baselines in terms of transparency, trust, satisfaction, persuasiveness and effectiveness. As we can see in the satisfaction, effectiveness and trust plots for both pointwise and pairwise approaches, an interesting point is that, in order to build an explanation, factual data works better than the semantic/categorical one, achieving the same results as when both semantic and factual data are exploited. A possible reason for this behavior is that the probability for a user to know factual data and accepts it as explanation is higher if compared to categorical one. Very interestingly, a pairwise approach has the same trends for all the evaluation metrics of the pointwise one but it outperforms the latter.</p><p>As future work it would be interesting to investigate about the system's scrutability, by allowing users to correct the recommender engine reasoning. Explanations here should be part of a continuous cycle where the user understands how the system is working under the hood and takes control over the type of recommendations made by the engine. This continuous loop could pave the way to a new kind of conversational recommender systems in which the user is allowed to explore and move in the feature space by knowing which features relevant to her are involved in the recommendation process. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Part of a KG related to the movie domain.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Architecture of a semantic autoencoder.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>We guess you would like to watch Terminator 2: Judgment Day (1991) and Transformers: Revenge of the Fallen (2009) because you may prefer: • (subject) 1990s science fiction films • (subject) Science fiction adventure films • (subject) Drone films 5 Available at http://sisinflab.poliba.it/semanticweb/lod/recsys/ explanation • (subject) Cyberpunk films and: • (subject) Science fiction adventure films • (subject) Films set in Egypt • (subject) Robot films • (subject) Films shot in Arizona • (subject) Ancient astronauts in fiction while the pairwise version (see also Figure 3b) is a bit different: We guess you would like to watch Terminator 2: Judgment Day (1991) more than Transformers: Revenge of the Fallen (2009) because you may prefer: • (subject) 1990s science fiction films • (subject) Science fiction adventure films • (subject) Drone films • (subject) Cyberpunk films over: • (subject) Films set in Egypt • (subject) Robot films • (subject) Films shot in Arizona • (subject) Ancient astronauts in fiction • (subject) IMAX films</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Screenshots of the A/B testing platform.</figDesc><graphic coords="5,318.75,311.20,250.74,261.78" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>p o i n t w i s e p e r s o n a l i z e d p a i r w i s e p e r s o n a l i z e d 1 p o i n t w i s e p e r s o n a l i z e d p a i r w i s e p e r s o n a l i z eFigure 4 :</head><label>14</label><figDesc>Figure 4: Results comparison.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head></head><label></label><figDesc>.</figDesc><table><row><cell></cell><cell></cell><cell>su bj ec t</cell><cell>Cyborg films</cell><cell>su bj ec t</cell><cell></cell><cell></cell></row><row><cell>5.0</cell><cell>RoboCop</cell><cell>sta rrin g</cell><cell></cell><cell>sta rrin g</cell><cell>RoboCop</cell><cell>5.0</cell></row><row><cell></cell><cell></cell><cell>s u b je c t</cell><cell>Peter Weller</cell><cell>s u b je c t</cell><cell></cell><cell></cell></row><row><cell>4.0</cell><cell>I, Robot (film)</cell><cell>sub jec t</cell><cell></cell><cell>sub jec t</cell><cell>I, Robot (film)</cell><cell>4.0</cell></row><row><cell></cell><cell></cell><cell>su bj ec t</cell><cell>Dystopian films</cell><cell>su bj ec t</cell><cell></cell><cell></cell></row><row><cell>2.0</cell><cell>Watchmen (film)</cell><cell>dir ect or</cell><cell>Snyder Zack</cell><cell>dir ect or</cell><cell>Watchmen (film)</cell><cell>2.0</cell></row><row><cell></cell><cell>Input Layer</cell><cell></cell><cell>Hidden Layer</cell><cell></cell><cell>Output Layer</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">http://dbpedia.org 2 https://wikidata.org</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">We selected only the top-3 properties to reduce the dimension of the feature space and then minimize the noise in the provided explanation. Finding the best number of properties to compute explanations is not in the scope of this paper and is part of our future work.</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Explainable Restricted Boltzmann Machines for Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<idno>abs/1606.07129</idno>
+		<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Auto-Encoding User Ratings via Knowledge Graphs in Recommendation Scenarios</title>
+		<author>
+			<persName><forename type="first">Vito</forename><surname>Bellini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vito</forename><forename type="middle">Walter</forename><surname>Anelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tommaso</forename><surname>Di Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eugenio</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2nd Workshop on Deep Learning for Recommender Systems</title>
+				<meeting>the 2nd Workshop on Deep Learning for Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="60" to="66" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Computing recommendations via a Knowledge Graph-aware Autoencoder</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Bellini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schiavone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Di</forename><surname>Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ragone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+		</author>
+		<idno>arXiv:cs.IR/1807.05006</idno>
+		<imprint>
+			<date type="published" when="2018-07">2018. July 2018</date>
+		</imprint>
+	</monogr>
+	<note>ArXiv e-prints</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Semantics-Aware Content-Based Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Pasquale</forename><surname>Marco De Gemmis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cataldo</forename><surname>Lops</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fedelucio</forename><surname>Musto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Giovanni</forename><surname>Narducci</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Semeraro</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="119" to="159" />
+			<pubPlace>Boston, MA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Linked open data to support content-based recommender systems</title>
+		<author>
+			<persName><forename type="first">Tommaso</forename><surname>Di Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Roberto</forename><surname>Mirizzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vito</forename><forename type="middle">Claudio</forename><surname>Ostuni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Davide</forename><surname>Romito</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Markus</forename><surname>Zanker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th International Conference on Semantic Systems</title>
+				<meeting>the 8th International Conference on Semantic Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A Hybrid Collaborative Filtering Model with Deep Structure for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhonghuo</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuxia</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lingfeng</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fangxi</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1309" to="1315" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Understanding the difficulty of training deep feedforward neural networks</title>
+		<author>
+			<persName><forename type="first">Xavier</forename><surname>Glorot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the thirteenth international conference on artificial intelligence and statistics</title>
+				<meeting>the thirteenth international conference on artificial intelligence and statistics</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="249" to="256" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Explaining Collaborative Filtering Recommendations</title>
+		<author>
+			<persName><forename type="first">Jonathan</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM Conference on Computer Supported Cooperative Work (CSCW &apos;00)</title>
+				<meeting>the 2000 ACM Conference on Computer Supported Cooperative Work (CSCW &apos;00)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Evaluating Recommender Systems with User Experiments</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martijn</forename><forename type="middle">C</forename><surname>Knijnenburg</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Willemsen</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="309" to="352" />
+			<pubPlace>Boston, MA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">ExpLOD: A Framework for Explaining Recommendations Based on the Linked Open Data Cloud</title>
+		<author>
+			<persName><forename type="first">Cataldo</forename><surname>Musto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fedelucio</forename><surname>Narducci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pasquale</forename><surname>Lops</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Giovanni</forename><surname>Marco De Gemmis</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Semeraro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th ACM Conference on Recommender Systems (RecSys &apos;16)</title>
+				<meeting>the 10th ACM Conference on Recommender Systems (RecSys &apos;16)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="151" to="154" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Decoding Wikipedia Categories for Knowledge Acquisition</title>
+		<author>
+			<persName><forename type="first">Vivi</forename><surname>Nastase</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Strube</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="1219" to="1224" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Sound and Music Recommendation with Knowledge Graphs</title>
+		<author>
+			<persName><forename type="first">Sergio</forename><surname>Oramas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vito</forename><forename type="middle">Claudio</forename><surname>Ostuni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tommaso</forename><forename type="middle">Di</forename><surname>Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xavier</forename><surname>Serra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eugenio</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Intell. Syst. Technol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">21</biblScope>
+			<date type="published" when="2016-10">2016. Oct. 2016</date>
+		</imprint>
+	</monogr>
+	<note>21 pages</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Schema-summarization in Linked-data-based Feature Selection for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Azzurra</forename><surname>Ragone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paolo</forename><surname>Tomeo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Corrado</forename><surname>Magarelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tommaso</forename><surname>Di Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matteo</forename><surname>Palmonari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Maurino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eugenio</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Symposium on Applied Computing (SAC &apos;17)</title>
+				<meeting>the Symposium on Applied Computing (SAC &apos;17)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="330" to="335" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">AutoRec: Autoencoders Meet Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Suvash</forename><surname>Sedhain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditya</forename><forename type="middle">Krishna</forename><surname>Menon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Scott</forename><surname>Sanner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lexing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th International Conference on World Wide Web</title>
+				<meeting>the 24th International Conference on World Wide Web<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="111" to="112" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">The Role of Transparency in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Rashmi</forename><surname>Sinha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kirsten</forename><surname>Swearingen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CHI &apos;02 Extended Abstracts on Human Factors in Computing Systems (CHI EA &apos;02)</title>
+				<meeting><address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="830" to="831" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">MoviExplain: A Recommender System with Explanations</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Third ACM Conference on Recommender Systems (RecSys &apos;09)</title>
+				<meeting>the Third ACM Conference on Recommender Systems (RecSys &apos;09)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="317" to="320" />
+		</imprint>
+	</monogr>
+	<note>Panagiotis Symeonidis</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">A Survey of Explanations in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2007 IEEE 23rd International Conference on Data Engineering Workshop (ICDEW &apos;07)</title>
+				<meeting>the 2007 IEEE 23rd International Conference on Data Engineering Workshop (ICDEW &apos;07)<address><addrLine>Washington, DC, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="801" to="810" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Designing and Evaluating Explanations for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="479" to="510" />
+			<pubPlace>Boston, MA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Evaluating the Effectiveness of Explanations for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="399" to="439" />
+			<date type="published" when="2012-10">2012. Oct. 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: Explaining Recommendations Using Tags</title>
+		<author>
+			<persName><forename type="first">Jesse</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shilad</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th International Conference on Intelligent User Interfaces (IUI &apos;09)</title>
+				<meeting>the 14th International Conference on Intelligent User Interfaces (IUI &apos;09)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="47" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Collaborative Recurrent Autoencoder: Recommend while Learning to Fill in the Blanks</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shi</forename><surname>Xingjian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dit-Yan</forename><surname>Yeung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+				<editor>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Sugiyama</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">U</forename><forename type="middle">V</forename><surname>Luxburg</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">I</forename><surname>Guyon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="415" to="423" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Collaborative Deep Learning for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Naiyan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dit-Yan</forename><surname>Yeung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD &apos;15)</title>
+				<meeting>the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD &apos;15)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1235" to="1244" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Explicit Factor Models for Explainable Recommendation Based on Phrase-level Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th International ACM SIGIR Conference on Research &amp;#38; Development in Information Retrieval (SIGIR &apos;14)</title>
+				<meeting>the 37th International ACM SIGIR Conference on Research &amp;#38; Development in Information Retrieval (SIGIR &apos;14)<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

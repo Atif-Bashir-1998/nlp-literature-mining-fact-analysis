@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">TriRank: Review-aware Explainable Recommendation by Modeling Aspects *</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+							<email>xiangnan@comp.nus.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computing</orgName>
+								<orgName type="institution">National University of Singapore</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Tao</forename><surname>Chen</surname></persName>
+							<email>taochen@comp.nus.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computing</orgName>
+								<orgName type="institution">National University of Singapore</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Min-Yen</forename><surname>Kan</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computing</orgName>
+								<orgName type="institution">National University of Singapore</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiao</forename><surname>Chen</surname></persName>
+							<email>chenxiao3310@ict.ac.cn</email>
+							<affiliation key="aff1">
+								<orgName type="department">Institute of Computing Technology</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">TriRank: Review-aware Explainable Recommendation by Modeling Aspects *</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">17F02E88BFEB54631E0C26AAB527E9CB</idno>
+					<idno type="DOI">10.1145/2806416.2806504</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>H.3.3 [Information Storage and Retrieval]: Information Search and Retrieval -information filtering Reviews</term>
+					<term>Aspects</term>
+					<term>Explanable Recommendation</term>
+					<term>Top-N Recommendation</term>
+					<term>Tripartite Graph Ranking</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Most existing collaborative filtering techniques have focused on modeling the binary relation of users to items by extracting from user ratings. Aside from users' ratings, their affiliated reviews often provide the rationale for their ratings and identify what aspects of the item they cared most about. We explore the rich evidence source of aspects in user reviews to improve top-N recommendation. By extracting aspects (i.e., the specific properties of items) from textual reviews, we enrich the user-item binary relation to a useritem-aspect ternary relation. We model the ternary relation as a heterogeneous tripartite graph, casting the recommendation task as one of vertex ranking. We devise a generic algorithm for ranking on tripartite graphs -TriRank -and specialize it for personalized recommendation. Experiments on two public review datasets show that it consistently outperforms state-of-the-art methods. Most importantly, Tri-Rank endows the recommender system with a higher degree of explainability and transparency by modeling aspects in reviews. It allows users to interact with the system through their aspect preferences, assisting users in making informed decisions.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>Recommender systems serve to help users discover choice products to consume, matching users to items of potential interest (e.g., products, businesses, movies, etc.). Among the various recommendation techniques, collaborative filtering (CF) is widely used, due to its effectiveness in providing personalized recommendation based on the wisdom of the crowds. By and large, existing CF techniques have focused on modeling user-item relations, such as ratings. As a single rating only indicates a user's overall satisfaction for the item, it is hard to infer the actual rationale of the rating. Different users may care about different aspects of the same item. For example, in the restaurant domain, one user may give a 5-star rating for food quality, while another user may give the same rating, but due to favorable ambiance. Since existing CF techniques largely lack such fine-grained analysis, they can fail to accurately model a target user's interests.</p><p>Aside from ratings, most Web 2.0 systems also give users the opportunity to leave reviews on the provided items. These reviews often justify a user's rating, offering the underlying reasons for the rating by discussing the specific properties of the item. Thus they are well-suited as a complementary data source for collaborative filtering. In this work, we leverage on this key observation to address the task of top-N recommendation; that is, to produce an ordered list of N items that will be most appealing to a user.</p><p>Leveraging user reviews (or interchangably, "comments") is non-trivial for systems, as these reviews are written by users freestyle, exhibiting noise and irrelevant content. Recent research <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b18">19]</ref> have largely modeled reviews at the word level, distilling them into latent topics to combine with the latent factor model. Although these methods achieve good prediction accuracy, the recommendation process is not transparent and the generated recommendations are not explainable to users, a well-known drawback of the latent factor model <ref type="bibr" target="#b13">[14]</ref>. To improve users' experience and trust, transparency and explainability become increasingly important for practical recommender systems <ref type="bibr" target="#b26">[27]</ref>. Moreover, improvements in rating prediction (a lower error rate) may not directly translate into improvements in top-N recommendation <ref type="bibr" target="#b2">[3]</ref>. As systems usually make only their top suggestions visible, targeting improvement at the top ranks is most beneficial for recommendation in practice.</p><p>Instead of modeling reviews at the word level, we propose to model reviews in the level of distilled aspects, which are the specific properties of items and expressed in reviews as noun words or phrases <ref type="bibr" target="#b30">[31]</ref>. For example, battery and screen are aspects of digital products, food quality and ambiance are aspects of restaurants. Given the aspects extracted from reviews, we first model the user-item-aspect relation as a tripartite graph. Then we devise TriRank, a generic al-gorithm based on the graph regularization framework <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b35">36]</ref> for ranking in tripartite graphs. TriRank ranks vertices by accounting for both the structural smoothness (encoding collaborative filtering and aspect filtering effects) and fitting constraints (encoding personalized preferences). Besides TriRank's superior performance, there are two key properties making it suitable in practice: first, the recommendation process is transparent by explaining its recommendations with respect to aspects, allowing users to customize their recommendations to fit their preferences (i.e., scrutability <ref type="bibr" target="#b26">[27]</ref>). Second, TriRank is tolerant of noisy aspects, common in automated aspect extraction, such that porting to new domains can be done without manual effort.</p><p>It is instructive to clarify that this work solely relies on the automatically detected item aspects in user reviews, and not any other additional information, such as sentiment (a separate area of study). We believe regardless of a user's sentiment on a reviewed aspect, its mention at least reflects the user's interest in the aspect. We believe by mining such item aspects latent in reviews, we can infer user preference at a finer granularity, thus providing better personalized recommendation.</p><p>This paper is organized as follows. In Section 2, we discuss the process of aspect extraction from reviews. We detail our TriRank method in Section 3, and conduct experiments and empirical studies on aspects in Section 4. We review related work in Section 5, before concluding the paper in Section 6.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">ASPECT EXTRACTION</head><p>Aspect extraction, also termed as feature or attribute extraction, has a long history in review mining (see <ref type="bibr" target="#b30">[31]</ref>). Aspects can be seen as the components, attributes, or properties of an item. Early seminal work <ref type="bibr" target="#b11">[12]</ref> proposed several language rules to extract product features from reviews. The rules have been widely used and extended by later work, e.g., <ref type="bibr" target="#b31">[32]</ref> considered specific phrase patterns and sentence patterns. Aside from the unsupervised rule-based methods, supervised sequence labeling techniques such as the Conditional Random Field have been adopted to learn aspects <ref type="bibr" target="#b12">[13]</ref>.</p><p>As our focus is to leverage aspects from user reviews, we do not contribute to aspect extraction, but instead seek to maximally exploit technologies that can perform it. As such, we apply an existing state-of-the-art aspect extraction toolkit <ref type="bibr" target="#b32">[33]</ref> that constructs a sentiment lexicon from user reviews. It creates entries that are feature-opinion word pairs with an associated sentiment polarity, represented as (F, O, S). For example, an entry such as (service, excellent, positive) might be extracted from a restaurant review. The key feature extraction part of the tool is a rule-based system, mainly adopting and extending the rules proposed by <ref type="bibr" target="#b11">[12]</ref>. As each feature is a noun word or phrase, representing the item's property that a user comments on, we can directly use it as an aspect.</p><p>We apply the tool with its default settings, extracting 6, 025 and 1, 617 distinct features (i.e., aspects) from our datasets culled from Yelp and Amazon Electronics, respectively (datasets described later in Section 4). Table <ref type="table" target="#tab_0">1</ref> shows top features extracted from the two datasets, ranked by their tf × idf score. We notice that the tool produces some features that are good but also many noisy features, such as "ive" ("I've"), "picturesmy", "l50", which are quirks of the corpus. Also, some top features are domain-specific stop words (e.g., "food", "restaurant", "product"), which do not  represent the specific properties of items. Despite this significant level of noise, we do not perform any post filtering on the extracted aspects to test the robustness of our proposed method to noise. Note that in terms of manifestation, aspects and tags (in social tagging systems) look alike -they are both usually short noun phrases. However, they differ fundamentally in nature and hence utility. Tags are simple keywords that are directly annotated by users to categorize and manage items. Aspects, on the other hand, describe specific attributes of items, and are implicitly extracted from free-text reviews.</p><p>Table <ref type="table" target="#tab_1">2</ref> summarizes the statistics of extracted aspects on the two datasets. We note that the densities of the useraspect and item-aspect matrix are much higher than that of the user-item rating matrix (usually less than 1%, see Table <ref type="table" target="#tab_2">3</ref>); a good signal that the aspect matrices contain rich information useful for addressing the sparseness of the original rating matrix.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">PROPOSED METHOD</head><p>We now present our proposed method for review-aware recommendation, by introducing the tripartite graph to model the user-item-aspect ternary relation. We then devise the generic TriRank algorithm for ranking on tripartite graphs. Finally, we detail how to operationalize TriRank for personalized recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Data Model and Notation</head><p>Let G = (U ∪ P ∪ A, EUP ∪ EUA ∪ EP A) be a tripartite graph, where U, P and A are vertex sets that represent users, items and aspects, respectively. Let EUP , EUA and EP A be edges that represent user-item, user-aspect, item-aspect relations, respectively. Each input triple &lt;ui, pj, a k &gt; denotes that user ui has rated item pj with a review mentioning aspect a k , is then represented as a triangle with edges eij, e ik and e jk (as in Figure <ref type="figure" target="#fig_0">1</ref>). Each edge carries a weight to denote the strength of two connected vertices; edges with higher weight denote stronger more significant relations between vertices. For example, we can model user ui's rating on item pj as an edge with weight of eij. Without loss of generality, we use the symbol R, Y and X to denote the edge weight matrix of user-item, user-aspect and item-aspect relations, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Tripartite Graph Ranking (TriRank)</head><p>The goal for item recommendation is to devise a ranking function f : P → R, which maps each item in P to a real number such that the value reflects the target user u's (predicted) preference on the item. Then, sorting the resultant items by score yields u's personalized item ranking. Since TriRank induces scores for all vertices in the graph, it has the important side-affect of assigning scores to the aspect and user vertices: these denote u's interest on aspects and similarity with other users, respectively.</p><p>In a nutshell, TriRank assigns the ranking score of vertices by enforcing the structural smoothness and fitting constraints of the graph. By smoothness and fitting constraints, we adopt the same definitions as those common to the graph regularization framework <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b35">36]</ref>:</p><p>• Smoothness implies local consistency: that nearby vertices should not vary too much in their scores.</p><p>• Fitting encodes prior belief: that the ranking function should not cause much deviation from the observations. TriRank seeks to assign each vertex a score such that the graph is sufficiently smooth and the prior belief is retained.</p><p>In the following, we first illustrate how the two constraints in the tripartite graph capture the intuition for recommendation, before describing the TriRank algorithm.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1">Illustrating Regularization Constraints</head><p>Let us first see how the smoothness works by considering the example in Figure <ref type="figure" target="#fig_0">1</ref>. We decompose it into two subgraphs in Figure <ref type="figure" target="#fig_2">2</ref> for ease of exposition. The left subfigure gives the user-item structure, where edge weights denote ratings. Assume we want to recommend items to u1, who has only rated p1 with a score of 5. As p1 is connected more strongly to u2 than u3, u2 is given a higher score than u3. Finally, since the edge weights of &lt;u2,p2&gt; and &lt;u3,p3&gt; are identical, we infer that p2 should receive a higher score than p3. Such smoothness constraints on the user-item relation alone yields the traditional CF effect.</p><p>Considering aspects can provide additional evidence that influences the recommendation process. Let us continue to recommend for u1 but base our decision on item-aspect structure (Figure <ref type="figure" target="#fig_2">2(b)</ref>), where edge weight denotes the number of an item's reviews mentioning an aspect. As u1 only previously mentions aspect a1, enforcing smoothness would rank p3 higher than p2, as p3 is more strongly connected to a1, in contrast to p2. This example also shows that predicting based on CF and aspect filtering yield different results; and that the smoothness constraint on the whole graph to combine them may be beneficial.</p><p>The fitting constraint serves as a means to personalize the ranking for each user (cf. shaded vertices of Figure <ref type="figure" target="#fig_2">2</ref>). For a target user u, the past ratings and reviewed aspects indicate u's prior (known) preference on the vertices. It should guide the ranking process such that the resultant ranking function should be consistent with the prior belief.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2">Regularization on Tripartite Graph</head><p>We now define the regularization function to implement the two constraints for ranking vertices.</p><p>Smoothness. Similar to the previous work <ref type="bibr" target="#b8">[9]</ref> that defines a smoothness regularizer on bipartite graphs, we devise the regularizer on user-item structure as follows:</p><formula xml:id="formula_0">QUP (f ) = |U | i=1 |P | j=1 rij( f (ui) d u i − f (pj) d p j ) 2 ,<label>(1)</label></formula><p>where f (ui) and f (pj) denote the final ranking scores (i.e., parameters to learn); rij is the edge weight between ui and pj; d u i and d p j are the weighted degrees (sum of edge weights) of ui and pj, respectively, for normalization. The counterpart user-aspect and item-aspect smoothness regularizers for aspect filtering can be obtained similarly.</p><p>This smoothness regularizer can be seen as a graph kernel that measures the similarity of vertices. Although there are various kernels <ref type="bibr" target="#b24">[25]</ref>, we have purposefully chosen this one (originally introduced by <ref type="bibr" target="#b35">[36]</ref>) due to its effective encoding of the CF effect in bipartite graph scenarios. To see this, assume we recommend for the target user u. First, minimizing Eq. ( <ref type="formula" target="#formula_0">1</ref>) constrains a vertex's score based on its neighbors -if a user is strongly connected by many high-scoring items (e.g., rated items of u), the user will be given a high score (i.e., more similar with the u); likewise, if an item is strongly connected by many high-scoring users (i.e., similar users), it will have a high score. Second, the quadratic nature of the normalization suppresses the popularity of highly connected vertices; this property is essential to prevent a ranking from being dominated by popular vertices <ref type="bibr" target="#b0">[1]</ref>.</p><p>Fitting. Let the target user's prior preference on item pj be p 0 j ; then the regularizer to enforce the fitting constraint on items is defined as:</p><formula xml:id="formula_1">QP (f ) = |P | j=1 (f (pj) − p 0 j ) 2 . (<label>2</label></formula><formula xml:id="formula_2">)</formula><p>We can similarly achieve such fitting regularizers on users and aspects. This fitting regularizer corresponds to the squared error loss that is commonly used by machine learning models in recommendation. Different with the latent factor model <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b18">19]</ref> that only optimizes for rated items, Eq. ( <ref type="formula" target="#formula_1">2</ref>) also importantly takes unrated items into account (cf. summing over all items). This property is very desirable for the top-N task, as it aims at ranking unrated items <ref type="bibr" target="#b2">[3]</ref>. Another option for top-N recommendation is to optimize a rankingbased loss function, such as AUC used by Bayesian Personalized Ranking <ref type="bibr" target="#b22">[23]</ref>. This is an interesting extension to be explored in the future.</p><p>Regularization function. To account for the heterogeneous structure of the tripartite graph, we combine the smoothness regularizer on each relation type with the fitting regularizer using different weights for each vertex type:</p><formula xml:id="formula_3">Q(f ) = α i,j r ij ( f (u i ) d u i − f (p j ) d p j ) 2 + β j,k x jk ( f (p j ) d p j − f (a k ) d a k ) 2 + γ i,k y ik ( f (u i ) d u i − f (a k ) d a k ) 2 + η U i (f (u i ) − u 0 i ) 2 + η P j (f (p j ) − p 0 j ) 2 + η A k (f (a k ) − a 0 k ) 2 ,<label>(3)</label></formula><p>where α, β and γ denote the weight of smoothness on useritem, item-aspect and user-aspect relation, respectively; ηU , ηP and ηA denote the weight of fitting constraint on users, items and aspects, respectively (we discuss how to set the prior preference u 0 i , p 0 j and a 0 k later in Section 3.3).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.3">Optimizing the Regularization Function</head><p>We now minimize Eq. ( <ref type="formula" target="#formula_3">3</ref>) to derive the final ranking scores (i.e., model parameters). As the objective function is strictly convex, standard optimization techniques find a unique solution regardless of initialization. Two widely used techniques are stochastic gradient descent (SGD) and alternating least squares (ALS). SGD updates all parameters towards the negative gradients for each training instance, while ALS minimizes the objective function per parameter until a joint optimum is found (i.e., coordinate-wise descent). For this scenario, we adopt ALS over SGD as the objective function can be analytically solved for each parameter, and importantly, it does not need to set the learning rate, which is crucial to SGD's effectiveness. Additionally, it usually yields a faster convergence and is easier to parallelize than SGD.</p><p>By differentiating Q(f ) with respect to f (ui), f (pj) and f (a k ), respectively, and letting the derivatives be 0, we obtain the iterative update rules. Let the ranking vector for items be p = [f (pj)] |P |×1 , and the prior preference vector for items be p0 = [p 0 j ] |P |×1 . Let similar definitions follow for u, u0 for users, and a, a0 for aspects. The equivalent update rules in matrix form are as follows:</p><formula xml:id="formula_4">u = α α + γ + η U S R • p + γ α + γ + η U S Y • a + η U α + γ + η U u 0 , p = α α + β + η P S T R • u + β α + β + η P S X • a + η P α + β + η P p 0 , a = γ γ + β + η A S T Y • u + β γ + β + η A S T X • p + η A γ + β + η A a 0 ,<label>(4)</label></formula><p>where SR is the symmetric normalized form of matrix R, defined as [</p><formula xml:id="formula_5">r ij √ d u i d p j</formula><p>] |U |×|P | ; SX and SY are defined similarly. We note that a closed-form solution can be obtained analytically, but omit them due to space limitations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Personalized Recommendation</head><p>Given the general TriRank algorithm, we need to cover how we obtain the initial graph (specifically, edge weights and the target user's prior preference) to concretize the generic algorithm for our review-based recommendation scenario.</p><p>Edge weights. User-item edge weights from relation R can be set as in traditional CF: in cases with explicit feedback, it can be the rating score; for implicit feedback, whether the user has interacted with or browsed the item Algorithm 1: TriRank for review-aware top-N item recommendation.</p><p>Input: User-Item interactions R and reviews.</p><p>Offline Training (for all users):</p><p>1. Extract aspects from reviews (Section 2). 2. Build item-aspect matrix X and user-aspect matrix Y . 3. TF term weighting: X = X.tf (); Y = Y.tf (). 4. Build symmetric normalized matrices S R , S X , S Y .</p><p>Online Recommendation (for target user u i ): 5. Build u i 's prior preference vectors p 0 , a 0 and u 0 . 6. L 1 norm on p 0 , a 0 and u 0 . 7. Randomly initialize ranking vectors p, a and u. 8. Iteratively run update rules Eq. ( <ref type="formula" target="#formula_4">4</ref>), until convergence. 9. Recommend top ranked items to u i , and explain the recommendation using top ranked aspects.</p><p>(measured as either a binary yes/no, or an integer view count). Our datasets provide explicit user ratings, so we use these ratings as-is.</p><p>For the user-aspect relation Y and the item-aspect relation X, edge weights connote the degree of user interest (item speciality) with respect to the aspect. Once aspects are identified in reviews, we can use either the actual count (number of mentions) within all a user's (item's) reviews, or the review frequency (number of reviews that mention the aspects). As reviews vary in length, an aspect may occur multiple times in long reviews, but may not imply that the user pays more attention to the aspect 1 . As such, we use review frequency in our experiments. As in general IR, we take the logarithm of the review frequency, to dampen the effect of aspects that appear very frequently.</p><p>Prior preference. We need to set the prior preference vectors for the three vertex types, with respect to the target user ui for personalization.</p><p>For items, the item prior preference vector p0 takes a positive value if the target user has interacted with the item, otherwise, 0. Thus we adopt the i th row vector of R as the p0 for the target user ui. Similarly, for aspects, the aspect preference vector a0 is set as the row vector of user-aspect matrix Y . As the smoothness part of Eq. ( <ref type="formula" target="#formula_3">3</ref>) normalizes the edge weight by a vertex's degree, we also apply the L1 norm on p0 and a0 for meaningful combination.</p><p>The user preference vector u0 should denote the target user's similarity with other users. We can set u0 based on a user's social network when it is available. We can also adopt standard user-based CF, and set u0 by measuring user similarity from the rating matrix R. In this work, we adopt the most basic approach, simply setting the target user herself as 1, and all other users as 0. Note that this variable does not directly reflect user's preference on aspects or items, so its design is beyond the scope of this work.</p><p>TriRank works by enforcing the collaborative filtering and aspect filtering effects, and is summarized in Algorithm 1. For convergence, one can monitor Q(f )'s value until it stabilizes or set a maximum number of iterations.</p><p>The iterative solution Eq. ( <ref type="formula" target="#formula_4">4</ref>) presents a more transparent view on the ranking process. The scores of items, users and aspects mutually reinforce each other -a score increase in an item will increase the score of its connected users and aspects; similarly, for users and aspects. The overall solution can be seen as a semi-supervised learning process <ref type="bibr" target="#b35">[36]</ref> on graphs -with the prior preference as labeled data, the algorithm propagates the labels to other unlabeled vertices.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Discussion</head><p>There are three properties of TriRank that merit a more detailed discussion: explainability, insensitivity to noisy aspects, and structural ambiguity.</p><p>Explainability. As TriRank ranks items in an easily explainable way, it provides users more transparency in understanding the system behavior. We can attribute recommendations to the top-ranked aspects matching the target user and recommended item. Figure <ref type="figure" target="#fig_3">3</ref> shows a mock-up interface for explaining recommendation based on aspects, inspired by tag-based explanation <ref type="bibr" target="#b27">[28]</ref>. Aspects are sorted by item's speciality by default, but a user can sort according to her predicted preference. This property makes the system scrutable <ref type="bibr" target="#b26">[27]</ref>, allowing a user to control how the system utilizes her reviews. For example, if a user dislikes a recommendation due to inaccurately-captured aspects or she has updated preference not captured in her reviews, she can edit her aspect preference. TriRank can then encode the new aspect query vector (i.e., a0) and return the revised recommendations (shown later in Section 4.3). This is a major advantage over the recent solutions <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b33">34]</ref> which integrate reviews using a latent factor model (LFM). Such LFM methods only provide single-shot recommendation where the rationale for the recommendation is opaque. In contrast, the scrutability provided by our method easily allows recommendation to become a cyclical process -a user can iteratively interact with the recommender system, where her actions improve the system's recommendations in turn. This iterative and scrutable nature are becoming increasingly important for real-world recommender systems <ref type="bibr" target="#b26">[27]</ref>.</p><p>Insensitivity to noisy aspects. As mentioned in Section 2, extracted aspects are noisy. For noisy aspects which are outliers (e.g., "picturemy", "150"), they usually occur less frequently in reviews as compared with those from normal aspects. As such, they will have smaller edge weights in the tripartite graph, thus exerting less impact on the ranking (see x jk and y ik of Eq. ( <ref type="formula" target="#formula_3">3</ref>)). For noisy aspects which are domain-specific stop words, although they have high frequency in reviews, they actually distribute evenly for all users and items (i.e., column vector of SX and SY of Eq. ( <ref type="formula" target="#formula_4">4</ref>)). As a result, they will contribute evenly across all items' ranking scores, hence not changing the relative ranking among items. As such, TriRank is relatively insensitive to noisy aspects (either outliers or stop words).</p><p>Structural ambiguity. Given a list of triples as inputs, we can uniquely represent them as a tripartite graph, but not vice versa. This is because in the tripartite graph, we cannot attribute a specific edge to an input tuple, as the conversion to the tripartite graph does not represent tuple association. More specifically, let the reviewed aspects of user ui and item pj be Ai and Aj, respectively. Assume ui interacts with pj, then the tripartite structure can not differentiate the aspects in Ai ∩ Aj for the interaction rij. When such ambiguities occur, they can act like unseen additional inputs, which can complement the actual observed data in a manner similar to transitive reasoning.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">EXPERIMENTS</head><p>We first introduce our experimental settings, and then compare its performance with other methods. We then study the utility of aspects in depth. Finally, we perform a few case studies of TriRank's recommendation output.</p><p>Datasets. We experiment with two publicly accessible datasets: Yelp 2 and Amazon Electronics <ref type="bibr" target="#b18">[19]</ref>.</p><p>1. Yelp. This is the Yelp Challenge dataset published on April 2013. It includes 11,537 items, 229,907 reviews and 45,981 users. The dataset is very sparse -49.6% of users only made one review, making it difficult for evaluation.</p><p>2. Amazon. This dataset contains user ratings and reviews on Amazon products of Electronics category, published by <ref type="bibr" target="#b18">[19]</ref>. The original dataset contains over 800K users, 80K items and 1.3M reviews. It is more sparse than the Yelp dataset -with 77.9% of users making only one review.</p><p>Following the common practice by other works <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b33">34]</ref> in evaluating recommender algorithms, we filter out the items and users having fewer than 10 reviews. Table <ref type="table" target="#tab_2">3</ref> summarizes the statistics of the filtered datasets. We split each dataset into three parts for training, validation and testing by time. For each user, we sort her reviews in chronological order. The first 80% are used for training, and the remaining most recent 20% are randomly split as validation set (for parameter tuning only) and test set (for evaluation).</p><p>Evaluation Metrics. Given a user, each algorithm produces a ranked list of items. To assess the ranked list with the ground-truth item set (GT), we adopt Hit Ratio (HR), which has been commonly used in top-N evaluation <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b28">29]</ref>. If a test item appears in the recommended list, it is deemed a hit. HR is calculated as:</p><formula xml:id="formula_6">HR@K = N umber of Hits @K |GT | . (<label>5</label></formula><formula xml:id="formula_7">)</formula><p>As the HR is recall-based metric, it does not reflect the accuracy of getting top ranks correct, which is crucial in many real-world applications. To address this, we also adopt Normalized Discounted Cumulative Gain (NDCG), which assigns higher importance to results at top ranks, scoring successively lower ranks with marginal fractional utility: where ZK is the normalizer to ensure the perfect ranking has a value of 1; ri is the graded relevance of item at position i.</p><formula xml:id="formula_8">N DCG@K = Z K K i=1 2 r i − 1 log 2 (i + 1) ,<label>(6)</label></formula><p>We use the simple binary relevance for our work: ri = 1 if the item is in the test set, and 0 otherwise. For both metrics, larger values indicate better performance. In the evaluation, we calculate both metrics for each user in the test set, and report the average score.</p><p>Baselines. We compare TriRank with the following commonly used and competitive methods in top-N evaluation:</p><p>1. Item Popularity (ItemPop). Items are ranked by their popularity judged by number of ratings. Although it is not personalized, it is surprisingly competitive in top-N evaluation <ref type="bibr" target="#b2">[3]</ref>, as users tend to consume popular items.</p><p>2. ItemKNN <ref type="bibr" target="#b23">[24]</ref>. This is standard item-based CF, and has been used commercially by Amazon <ref type="bibr" target="#b15">[16]</ref> and Movie-Lens <ref type="bibr" target="#b27">[28]</ref>. We adopt cosine similarity to measure the similarity among items. We test the method with different number of neighbors, finding that using all neighbors works best.</p><p>3. PureSVD <ref type="bibr" target="#b2">[3]</ref>. A state-of-the-art for top-N recommendation, which performs Singular Value Decomposition on the whole matrix, thus directly considering all instances. unlike other latent factor methods that optimize against error only on rated instances. This property is important when applying matrix factorization models for top-N evaluation. We follow the implementation in <ref type="bibr" target="#b2">[3]</ref>, using the package SVDLIBC 3 , tuning the number of latent features from 10 to 200, finding the best performance at 30. 4. Personalized PageRank <ref type="bibr" target="#b7">[8]</ref>. This is a widely used graph method for top-N recommendation, e.g., by <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b28">29]</ref>. We perform Personalized PageRank on the user-item graph 4 , and set the personalized vector same with TriRank's prior item vector p0. The damping parameter (i.e., weight of the personalized vector) was respectively optimized to 0.9 and 0.3, for Yelp and Amazon datasets.</p><p>5. ItemRank <ref type="bibr" target="#b5">[6]</ref>. This is another graph based method that recommends based on the item-item correlation graph. Similar to Personalized PageRank, we set the personalized vector identically as p0 and tune the damping factor.</p><p>6. TagRW <ref type="bibr" target="#b34">[35]</ref>. This is the state-of-the-art method to model tags for top-N item recommendation. As we have mentioned that aspects are similar with tags in terms of format, we need to compare with such a method to study how tag-aware methods perform on the task of modeling aspects. TagRW enhances ItemRank <ref type="bibr" target="#b5">[6]</ref> by incorporating tags into building the item-item graph and performing an additional random walk on user-user graph. We feed aspects (all the same settings with TriRank) as tags into the method, and tune the five parameters of the method in a sequential way, as suggested by their paper.</p><p>As the existing review-aware methods <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b33">34]</ref> are optimized for predicting observed ratings, it is unfair to compare with them for top-N evaluation. We validate this by evaluating the Hidden Factors and Topics model <ref type="bibr" target="#b18">[19]</ref>, which is state-of-the-art for review-aware rating prediction. It achieves poor top-N performance in our settings, worse than Item Popularity. Thus we do not further compare with other methods designed for rating prediction.</p><p>TriRank has six regularization parameters to tune -three for the traditional collaborative filtering effect (α, ηU , ηI ) and three for the aspect filtering effect (β, γ, ηA). As performing grid-search on all six parameters simultaneously is time-consuming, we separately tune those for CF and those for aspects -first fixing β, γ, ηA as 0, searching for α, ηU , ηI ; then performing the reverse with the optimal α, ηU , ηI . Performance was stable across many parameter settings, thus we report results for a selected set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Performance Study</head><p>Figure <ref type="figure">4</ref> plots the performance when K ranges from 10 to 50, and Table <ref type="table">4</ref> shows the concrete scores obtained at position 10 and 50. We first focus on results of the Yelp dataset. From Figure <ref type="figure">4</ref>(a) and (b), we see that both metrics exhibit the same trend: TriRank performs best, outperforming all other methods with a large margin; followed by PageRank and ItemKNN, where PageRank performs slightly better than ItemKNN. PureSVD, ItemRank and TagRW obtain similar HR scores, while NDCG tells the quality of ranking: PureSVD ranks correct items higher than ItemRank and TagRW. Item Popularity performs the worst, indicating the importance of modeling users' personalized preferences, rather than just recommending popular items. Surprisingly, TagRW does not always outperform Item-Rank, although it utilizes additional aspect information. It shows that their method for integrating tags into recommendation may not be effective for aspects. Analyzing the results, we believe that there are two reasons responsible for TagRW's inferior performance. First, they integrate aspects by transforming to the item-item and user-user similarity graph, which may lead to signal loss. Second, noisy aspects may have an adverse impact on their method, and the impact is highly dependent on the similarity measure they use. Our proposed TriRank mitigates both of these nega-Table <ref type="table">4</ref>: Performance of compared methods and TriRank at rank 10 and 50. Dataset Yelp Amazon Metric(%) HR@10 NDCG@10 HR@50 NDCG@50 HR@10 NDCG@10 HR@50 NDCG@50 ItemPop 3.06 With respect to the Amazon dataset, TriRank again achieves the best performance on both metrics (p &lt; 0.01 in most cases). Focusing on Figure <ref type="figure">4(c</ref>) that shows the HR scores, TriRank is followed by PageRank and TagRW, which significantly outperform other methods. When K is set to 30-40, the HR differences between TriRank and PageRank and TagRW are small, but the NDCG reveals significant gaps among the three methods, indicating that TriRank successfully orders the correct items more effectively than the other two. Meanwhile, TagRW and ItemRank better PureSVD, as evaluated by HR (K ≥ 15), but not by NDCG, which indicates the matches of TagRW and ItemRank actually occur at lower ranks. This reinforces our point that a good recall score does not necessarily translate to a high-quality ranking, hence the necessity to evaluate by ranking based measures, such as NDCG. ItemKNN performs worst among all the non-trivial personalized methods. ItemPop performed very weak, and as such, was entirely omitted in the figure to better highlight the performance of the other methods.</p><p>Looking at the interesting performance variations across the two datasets, we first notice that ItemPop only performs well on the Yelp dataset. We believe this is caused by consumption behavior differences across the two domainspeople may visit popular restaurants or businesses rated in Yelp, but only purchase certain products on demand from Amazon. Similarly, ItemKNN performs strongly on the Yelp dataset (better than PureSVD), but poorly on the Amazon. One possible reason comes from data sparsity: as in Table <ref type="table" target="#tab_2">3</ref>, each item of the Amazon dataset only has 3.9 reviews on average. In such cases, the similarity measure fails in neighbor-based CF. An interesting finding is that PageRank consistently outperforms ItemRank, although both rely on Personalized PageRank with the same personalized vector. We believe the explanation is due to the fact that ItemRank ranks based on the transformed item-item correlation graph. Transforming the user-item graph to an item-item correlation graph will lose signal especially when the data is sparse, e.g., when two items have no common users reviewing them. In such cases, it is more beneficial to directly rank from the user-item graph. Finally, TagRW betters ItemRank only on the Amazon dataset, indicating that the tag-based method to integrate aspects does not lead to consistent improvement. Our proposed TriRank achieves the best performance on the two datasets evaluated by both metrics, demonstrating its superiority in providing personalized item ranking to users by mining aspects in reviews. There are natural issues about aspects that we also wish to address:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Utility of Aspects</head><p>1. How do the aspect-related components (e.g., itemaspect and user-aspect) contribute to the performance?</p><p>2. How does the quality of aspects impact the performance? Can TriRank handle the inherent noise in automatically extracted aspects well?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.1">Aspect Importance Study</head><p>As TriRank is modular, with parameters for each type of vertices and edges, it is easy to answer the first question by varying the aspect-related parameters: β and γ to control the smoothness for the item-aspect and user-aspect relation, respectively, and ηA for the aspect query vector. Setting a parameter to 0 removes the corresponding effect.</p><p>Table <ref type="table" target="#tab_4">5</ref> shows TriRank's performance with different parameter settings, evaluated at rank 50. In both datasets, when item-aspect smoothness is eliminated by setting β = 0 (Row 1), performance drops significantly. This indicates the importance of item-aspect relation, and validates our motivation that modeling user preference via decomposed aspects can yield more fidelity over modeling user-item ratings only. In contrast, when user-aspect smoothness is removed (Row 2), the performance remains unchanged. This shows that user-aspect smoothness contributes substantially less to TriRank's performance; however, we note that at least the target user's portion of the user-aspect relation can not be removed in recommendation, as the rated aspects of a user form her aspect query vector needed for recommendation. Row 3, which exhibits low performance, validates this point, as here we have removed the aspect query vector by setting ηA as 0. If we remove the modeling of aspects in its entirety (Row 4), TriRank degrades to the Bipartite User-  Item Ranking algorithm <ref type="bibr" target="#b8">[9]</ref> on the user-item graph, and performs even worse. This further reveals the importance of modeling aspects for quality recommendation.</p><p>To round out our study, Row 5 shows the performance of removing user-item smoothness, which encodes standard CF in the terminology of our regularization approach. The resulting performance is worst among all settings. The useritem relation is still fundamental to model and is most important, followed by the importance of the item-aspect smoothness; user-aspect smoothness contributes least and may be removed. However, the reviewed aspects of a particular target user are still critical for capturing her personalized preference.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.2">Aspect Quality Study</head><p>For the second question, we first rank aspects by their tf×idf score in the item-aspect matrix, and then select top scoring aspects to build the tripartite graph and inspect Tri-Rank's performance.</p><p>Figure <ref type="figure" target="#fig_6">5</ref> shows TriRank's performance with respect to percentage of top aspects selected. As we can see, both datasets show the same trend: when the filtering ratio is moderate, performance remains largely unchanged. The filtering inflection point for both datasets is around 30%. When we filter out aspects beyond this point, performance starts to drop significantly. This indicates that the aspects with tf × idf play a dominant role in modeling users' preference for quality recommendation. We further validate this conclusion by filtering in the reverse direction (not shown; i.e., dropping the top x% aspects ranked by tf ×idf ), finding that even a small amount of filtering (1%) leads to significant degradation. We conclude that one can safely filter out the low tf × idf scoring aspects for efficiency, as they contribute less to recommendation performance.</p><p>Interestingly, TriRank's performance does not improve when only high tf × idf aspects are utilized. Although slight improvements can be obtained with tuning, they are not statistically significant. We further evaluate TriRank with the 124 high-quality aspects selected in <ref type="bibr" target="#b33">[34]</ref>'s work on the same Yelp Challenge dataset. Even after all parameters are re-tuned, test performance is not improved. This validates the nice property of TriRank of being relatively insensitive to noisy aspects, which are also expected to have less impact in the ranking outputs as previously explained (Section 3.4). Tri-Rank can effectively utilize the merits in the automatically extracted aspects, without the need to filter out noisy aspects manually. Compared to the Explicit Factor Model <ref type="bibr" target="#b33">[34]</ref> that integrates only high-quality aspects into a matrix factorization model and then generates recommendations by optimizing the predicted ratings in an opaque manner, Tri- Rank is more transparent in leveraging aspects and also is more tolerant of low-quality aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Case Studies</head><p>While macro-level empirical analysis are useful, it is also instructive to examine actual results to better understand the outputs of TriRank. To this end, we give two case studies drawn from the Yelp dataset to demonstrate its explainability and scrutability.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.1">Explainability</head><p>Figure <ref type="figure" target="#fig_7">6</ref> shows four training reviews of a sampled user 5 . From the first two reviews, we can see the user is interested in "chicken", although she gives low ratings to the two businesses. In the heldout test set, she reviews the business Chick-Fil-A with a comment "I love Chick-Fil-A... the spicy chicken sandwhiches [sic], the lemonade, the soup, the brownies", which further validates her preference for "chicken". As expected, TriRank ranks Chick-Fil-A highly (6 th position), mainly due to chicken being a top aspect of this business (3 of its 7 training reviews mentioned "chicken"). Examining the top items returned by PageRank, none have "chicken" as a top aspect, and most of them are popular items with more than 100 reviews. This is because random walk models are easily biased to popular items, as reported by <ref type="bibr" target="#b0">[1]</ref>. Moreover, the third and fourth reviews show that the user is also interested in "shrimp". As a result, TriRank ranks the seafood restaurant Red Lobster highly in the 3 rd position. Although it is evaluated as a loss as the test set does not contain the item, when we checked her complete history in Yelp.com, we found she actually reviewed this restaurant later (outside of the dates in the Yelp Challenge dataset), mentioning "shrimp". Again, the recommended Red Lobster is not a popular item with only 7 training reviews. This case study demonstrates TriRank's capability of recommending more relevant and personalized items (not just popular items) according to a user's reviewed aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.2">Scrutability</head><p>Another key property of our TriRank instantiation is the encoding of aspect query vector a0, serving as the gateway to edit a target user's preference. We simulate the process on a sampled user 6 .</p><p>For this user, 9 of the 14 training reviews mentioned "service", which is the top aspect, followed by "beer". However in the test set, he reviews the business "Total Wine &amp; More", whose top aspects are "wine" and "liquor". In this case, both TriRank and PageRank fail to recommend the correct item, and all top items returned do not have wine as a specialty. We simulate user feedback by editing the aspect query vector to set "wine" to a higher value, and re-run TriRank with all other parameters unchanged. In the updated ranked list, 8 of the top-10 items have "wine" as the top aspect, and the correct item "Total Wine &amp; More" is ranked in 2 nd position.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">RELATED WORK</head><p>While collaborative filtering systems perform well in general, their performance suffers when the amount of user feedback is insufficient (i.e., in cold-start). Another important shortcoming is that they do not capture the rationale for user's rating, and thus can not accurately capture a target user's preference. To overcome these weaknesses, various forms of side information have been incorporated into CF, including tags <ref type="bibr" target="#b34">[35]</ref>, geo-location <ref type="bibr" target="#b10">[11]</ref> and user reviews <ref type="bibr" target="#b18">[19]</ref>. In this section, we first study the area of review-aware methods, and then examine graph-based recommendation techniques as TriRank falls into this category.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Review-aware Recommendation</head><p>User reviews have been utilized to assist recommender systems in many domains, for movies <ref type="bibr" target="#b3">[4]</ref>, hotels <ref type="bibr" target="#b19">[20]</ref>, restaurants <ref type="bibr" target="#b4">[5]</ref> and e-commerce <ref type="bibr" target="#b18">[19]</ref>. Regardless of domain, we can categorize the approaches based on how reviews are integrated into the recommender: 1) word-based, 2) sentimentbased, and 3) aspect-based methods.</p><p>Word-based. These approaches directly factorize the review words into CF. <ref type="bibr" target="#b25">[26]</ref> used words to measure similarity, whereas <ref type="bibr" target="#b10">[11]</ref> modeled each word as a latent vector within the latent factor model. As the original word space is large and sparse, dimension reduction techniques have been adopted. McAuley and Leskovec <ref type="bibr" target="#b18">[19]</ref> employed Latent Dirichlet Allocation (LDA) <ref type="bibr" target="#b1">[2]</ref> to winnow down the word space, and combined with the standard latent factor model. Subsequently, <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b29">30]</ref> adopted a full Bayesian treatment to combine topics and latent factors for rating prediction.</p><p>Sentiment-based. These approaches utilize the user's explicitly mentioned opinions on items. <ref type="bibr" target="#b20">[21]</ref> proposed to fill in the missing ratings with a predicted sentiment score before applying neighbor-based CF. <ref type="bibr" target="#b21">[22]</ref> built a user-item opinion matrix, where each entry was the aggregated sentiment score of a review, and then applied traditional CF on the opinion matrix. More recently, <ref type="bibr" target="#b3">[4]</ref> proposed an integrated graphical model to jointly model the sentiment and ratings for movie recommendation.</p><p>Aspect-based. Our work falls into this category. Early work <ref type="bibr" target="#b4">[5]</ref> along this line manually annotated six aspects in the restaurant domain (e.g., service, ambiance, etc.), and classified sentences with respect to these aspects. Their regression method validated the usefulness of aspects for rating prediction. Musat et al. <ref type="bibr" target="#b19">[20]</ref> built topical profiles of users and items from reviews, and predicted ratings at the topic level. They tested two ways to extract topics -LDA and opinion word frequency -finding the latter produced higher quality topics. Recently, Zhang et al. <ref type="bibr" target="#b33">[34]</ref> jointly factorized the user-item rating matrix by inserting aspects, decomposing it into item-aspect and user-aspect matrices, where the aspects were automatically extracted.</p><p>Several hybrid methods have also integrated aspect and sentiment <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b33">34]</ref> as they are closely related. In contrast, our work focuses on integrating aspect into CF for explainable recommendations, thus we forgo incorporating sentiment, to minimize the reliance on sentiment analysis accuracy. Compared to the above review-aware works, our method explores a graph model to integrate aspects, which has not been previously been investigated. Moreover, our proposed TriRank affords the recommender a finer degree of user interaction -aspect preference -allowing for both more accurate and transparent recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Graph-based Recommendation</head><p>Graphs form a natural representation for modeling the relationship among data objects. In recommender systems, graph models have been used widely and commercially (e.g., by Twitter <ref type="bibr" target="#b6">[7]</ref> and YouTube <ref type="bibr" target="#b0">[1]</ref>), due to their good interpretability in generating recommendations. A typical workflow is first representing items as vertices of a graph, and then admitting recommendation as a vertex-ranking problem. For example, in YouTube video recommendation, <ref type="bibr" target="#b0">[1]</ref> built a user-video co-view graph for video items, adopting label propagation for selecting important videos.</p><p>Besides directly working on the heterogeneous user-item graph, another family of approaches <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b34">35]</ref> projects the user-item graph to an item-item graph (as the ranking target is item), and then applies homogeneous graph ranking techniques, such as personalized PageRank <ref type="bibr" target="#b7">[8]</ref>. Specifically, <ref type="bibr" target="#b5">[6]</ref> recommended based on an item correlation graph, where entries denoted the likelihood that two items are co-rated. <ref type="bibr" target="#b17">[18]</ref> proposed an item preference graph, where entries denoted the strength that users prefer one item over another.</p><p>We point out that a key advantage of retaining the useritem structure is that additional information can be easily incorporated by adding new types of vertices. However, existing ranking algorithms do not cater to heterogeneous structures, as they have primarily focused on homogeneous graphs <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b35">36]</ref> or bipartite graphs <ref type="bibr" target="#b8">[9]</ref>. Thus, a corresponding algorithm must be devised to suit the specific heterogeneous graph and ranking purpose. For example, <ref type="bibr" target="#b28">[29]</ref> modeled longterm and short-term user preference by introducing session nodes, ranking vertices by propagating user preference via Breadth-First-Search; <ref type="bibr" target="#b14">[15]</ref> incorporated contexts (e.g., location, time) as vertices in the user's side, and adjusted PageRank for ranking in such a mixed bipartite graph. Similar to above works, our method retains the user-item structure, extending it to a user-item-aspect tripartite graph for modeling aspects. One major difference is that we specifically consider the ternary relationship between user, item and aspect, which has not been studied before.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">CONCLUSION</head><p>We have studied how to utilize item aspects in user reviews for top-N recommendation. We model the user-itemaspect relation as a tripartite graph, and propose TriRank, a generic algorithm for ranking the vertices of tripartite graph by regularizing the smoothness and fitting constraints. We employ TriRank for review-aware recommendation, where the ranking constraints directly model the collaborative and aspect filtering, and also personalization. TriRank achieves state-of-the-art performance over two public review datasets, even with automatically extracted aspects that have significant noise. We validate TriRank as being largely insensitive to low-quality aspects, a desirable property when porting to other domains as it avoids manual efforts in filtering out noisy aspects. Most importantly, TriRank's incorporation of aspects provides users with more transparency into the recommender system behavior and affords user interaction to further improve recommendations.</p><p>Our introduction to TriRank is in its basic form, which has already shown significant utility. TriRank can be further extended in many ways, for example by adopting a more suitable loss function, or by extending to more general n-partite graphs. We hope to extend TriRank to such cases, by jointly modeling the additional information latent in user reviews that may be useful for recommendation: temporal factors <ref type="bibr" target="#b8">[9]</ref>, category taxonomies <ref type="bibr" target="#b9">[10]</ref> and sentiment <ref type="bibr" target="#b20">[21]</ref>. Another open issue is in optimal parameter settings. Our current work reports results when the regularization parameters are set uniformly for all users; however in some exploratory work, we found that a specific parameter setting for a subset of users improves performance. This reveals the potential for improvement by setting parameters individually or for groups of similar users based on their preference on aspects.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: An example tripartite structure of the given inputs (the dashed line illustrates the additional input &lt;u1, p3, a2 &gt;).</figDesc><graphic coords="3,75.90,61.91,50.21,72.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>(a) User-Item structure (b) Item-Aspect structure</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Smoothness constraints on decomposed graphs from Figure 1. Assume u1 previously rated item p1 with mentioning aspect a1 (shaded vertices).</figDesc><graphic coords="3,442.88,58.24,100.43,73.99" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Mock user interface for showing the rationale behind recommending Chick-Fil-A to a user.</figDesc><graphic coords="5,96.50,53.80,150.64,98.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>( a )Figure 4 :</head><label>a4</label><figDesc>Figure 4: Performance evaluated by Hit Ratio and NDCG from position 10 to 50 (i.e., K).</figDesc><graphic coords="6,55.48,53.80,125.53,100.55" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>( a )</head><label>a</label><figDesc>Hit Ratio versus Aspects (b) NDCG versus Aspects</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: TriRank performance with respect to percentage of top aspects selected.</figDesc><graphic coords="8,53.80,53.80,120.51,90.52" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Training reviews of a sampled Yelp user.</figDesc><graphic coords="8,334.41,53.80,200.83,113.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Top automatically extracted aspects.</figDesc><table><row><cell>Yelp</cell><cell>bar, salad, menu, chicken, sauce, restaurant, rice, cheese, fries, bread, sandwich, drinks, patio</cell></row><row><cell>Amazon</cell><cell>camera, quality, sound, price, product, battery, pictures, features, screen, size, memory, lens</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Statistics of aspects extracted from reviews.</figDesc><table><row><cell></cell><cell></cell><cell cols="2">User-Aspect</cell><cell cols="2">Item-Aspect</cell></row><row><cell>Dataset</cell><cell># of</cell><cell>Avg. # of</cell><cell>Dens-</cell><cell>Avg. # of</cell><cell>Dens-</cell></row><row><cell></cell><cell>Aspects</cell><cell>A / User</cell><cell>ity</cell><cell>A / Item</cell><cell>ity</cell></row><row><cell>Yelp</cell><cell>6,025</cell><cell>183.8</cell><cell>3.05%</cell><cell>138.0</cell><cell>2.29%</cell></row><row><cell>Amazon</cell><cell>1,617</cell><cell>61.4</cell><cell>3.80%</cell><cell>23.2</cell><cell>1.44%</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Statistics of datasets in evaluation.</figDesc><table><row><cell cols="6">Dataset Review# Item# User# Avg Density</cell></row><row><cell>Yelp</cell><cell>114,316</cell><cell>4,043</cell><cell>3,835</cell><cell>29.8</cell><cell>0.74%</cell></row><row><cell>Amazon</cell><cell>55,677</cell><cell>14,370</cell><cell>2,933</cell><cell>19.0</cell><cell>0.13%</cell></row></table><note>"Avg" denotes the average number of reviews per user.</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 5 :</head><label>5</label><figDesc>Performance of TriRank with different parameter settings at rank 50.</figDesc><table><row><cell>Dataset</cell><cell></cell><cell>Yelp</cell><cell cols="2">Amazon</cell></row><row><cell>Settings</cell><cell>HR</cell><cell>NDCG</cell><cell>HR</cell><cell>NDCG</cell></row><row><cell>0. All set</cell><cell>18.58</cell><cell>7.69</cell><cell>18.44</cell><cell>12.36</cell></row><row><cell>1. β = 0 (no item-aspect)</cell><cell>17.05</cell><cell>6.91</cell><cell>16.23</cell><cell>11.31</cell></row><row><cell>2. γ = 0 (no user-aspect)</cell><cell>18.52</cell><cell>7.68</cell><cell>18.40</cell><cell>12.36</cell></row><row><cell>3. η A = 0 (no aspect query)</cell><cell>18.21</cell><cell>7.51</cell><cell>17.62</cell><cell>12.10</cell></row><row><cell>4. β, γ, η A = 0 (no aspects)</cell><cell>17.00</cell><cell>6.90</cell><cell>15.97</cell><cell>11.16</cell></row><row><cell>5. α = 0 (no user-item)</cell><cell>11.67</cell><cell>4.84</cell><cell>10.32</cell><cell>5.08</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">Note that this is the same argument for the analogous document frequency over collection frequency, in general IR.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">http://www.yelp.com/dataset_challenge</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">http://tedlab.mit.edu/~dr/SVDLIBC<ref type="bibr" target="#b3">4</ref> We also evaluated Personalized PageRank on the useritem-aspect tripartite graph. Even with optimal tuning of each edge and vertex type, performance did not improve; thus we only report Personalized PageRank's performance on the standard user-item graph.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">User ID "8fTTvS499XCz4oP49kxq8A". Only part of each review is shown as the original is long.<ref type="bibr" target="#b5">6</ref> User ID "omoEjYFKVV7e-DtnezeUOw ".</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgement</head><p>We thank Yongfeng Zhang, Haochen Zhang and the Tsinghua Information Retrieval group for developing and sharing their aspect extraction tool. We would also like to thank the anonymous reviewers for their valuable comments.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Video suggestion and discovery for Youtube: Taking random walks through the view graph</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Baluja</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Seth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sivakumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW &apos;08</title>
+				<meeting>of WWW &apos;08</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="895" to="904" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Latent dirichlet allocation</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Y</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">I</forename><surname>Jordan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J. Mach. Learn. Res</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="993" to="1022" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Performance of recommender algorithms on top-n recommendation tasks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cremonesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of RecSys &apos;10</title>
+				<meeting>of RecSys &apos;10</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="39" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Jointly modeling aspects, ratings and sentiments for movie recommendation (jmars)</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Diao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD &apos;14</title>
+				<meeting>of KDD &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="193" to="202" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Beyond the stars: Improving rating predictions using review text content</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ganu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Elhadad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WebDB &apos;09</title>
+				<meeting>of WebDB &apos;09</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Itemrank: A random-walk based scoring algorithm for recommender engines</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pucci</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of IJCAI &apos;07</title>
+				<meeting>of IJCAI &apos;07</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="2766" to="2771" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Wtf: The who to follow service at twitter</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Goel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zadeh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW &apos;13</title>
+				<meeting>of WWW &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="505" to="514" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Topic-sensitive PageRank</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">H</forename><surname>Haveliwala</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW &apos;02</title>
+				<meeting>of WWW &apos;02</meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="517" to="526" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Predicting the popularity of web 2.0 items based on user comments</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sugiyama</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. SIGIR &apos;14</title>
+				<meeting>SIGIR &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="233" to="242" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Comment-based multi-view clustering of web 2.0 items</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW &apos;14</title>
+				<meeting>of WWW &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="771" to="782" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Your neighbors affect your ratings: On geographical neighborhood influence to rating prediction</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR &apos;14</title>
+				<meeting>of SIGIR &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="345" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Mining and summarizing customer reviews</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD &apos;04</title>
+				<meeting>of KDD &apos;04</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="168" to="177" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A novel lexicalized hmm-based learning framework for web opinion mining</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">H</forename><surname>Ho</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ICML &apos;09</title>
+				<meeting>of ICML &apos;09</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="465" to="472" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Advances in collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<publisher>Springer US</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="145" to="186" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Random walk based entity ranking on graph for multidimensional recommendation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kahng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-G</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of RecSys &apos;11</title>
+				<meeting>of RecSys &apos;11</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="93" to="100" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Amazon.com recommendations: item-to-item collaborative filtering</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Linden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>York</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Internet Computing</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="76" to="80" />
+			<date type="published" when="2003-01">Jan 2003</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Ratings meet reviews, a combined approach to recommend</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Lyu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of RecSys &apos;14</title>
+				<meeting>of RecSys &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="105" to="112" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Eigenrank: A ranking-oriented approach to collaborative filtering</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">N</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR &apos;08</title>
+				<meeting>of SIGIR &apos;08</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="83" to="90" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: Understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of RecSys&apos;13</title>
+				<meeting>of RecSys&apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Recommendation using textual opinions</title>
+		<author>
+			<persName><forename type="first">C.-C</forename><surname>Musat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Faltings</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of IJCAI &apos;13</title>
+				<meeting>of IJCAI &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="2684" to="2690" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Sentiment analysis of user comments for one-class collaborative filtering over ted talks</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Pappas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Popescu-Belis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR &apos;13</title>
+				<meeting>of SIGIR &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="773" to="776" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Opinion-driven matrix factorization for rating prediction</title>
+		<author>
+			<persName><forename type="first">Š</forename><surname>Pero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Horváth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of UMAP &apos;13</title>
+				<meeting>of UMAP &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="1" to="13" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Bpr: Bayesian personalized ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Schmidt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of UAI &apos;09</title>
+				<meeting>of UAI &apos;09</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW &apos;01</title>
+				<meeting>of WWW &apos;01</meeting>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="285" to="295" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Kernels and regularization on graphs</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kondor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Learning Theory and Kernel Machines</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="volume">2777</biblScope>
+			<biblScope unit="page" from="144" to="158" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Text-based user-knn: Measuring user similarity based on text reviews</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Terzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rowe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-A</forename><surname>Ferrario</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Whittle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of UMAP &apos;14</title>
+				<meeting>of UMAP &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="195" to="206" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Designing and evaluating explanations for recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<publisher>Springer US</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="479" to="510" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: Explaining recommendations using tags</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of IUI &apos;09</title>
+				<meeting>of IUI &apos;09</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="47" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Temporal recommendation on graphs via longand short-term preference fusion</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD &apos;10</title>
+				<meeting>of KDD &apos;10</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="723" to="732" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering incorporating review text and co-clusters of hidden user communities and item groups</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of CIKM &apos;14</title>
+				<meeting>of CIKM &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="251" to="260" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Aspect and entity extraction for opinion mining</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Data Mining and Knowledge Discovery for Big Data</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="1" to="40" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Extracting and ranking product features in opinion documents</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">H</forename><surname>Lim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>O'brien</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of COLING &apos;10</title>
+				<meeting>of COLING &apos;10</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1462" to="1470" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Do users rate or review?: Boost phrase-level sentiment labeling with review-level sentiment classification</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR &apos;14</title>
+				<meeting>of SIGIR &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1027" to="1030" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR &apos;14</title>
+				<meeting>of SIGIR &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A random walk model for item recommendation in social tagging systems</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Abbasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Management Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="1" to="24" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Learning with local and global consistency</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Bousquet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">N</forename><surname>Lal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Schölkopf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="321" to="328" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

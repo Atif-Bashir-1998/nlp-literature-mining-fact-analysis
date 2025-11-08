@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">INTERPRETABILITY IS NOT EXPLAINABILITY: NEW QUANTITATIVE XAI APPROACH WITH A FOCUS ON RECOMMENDER SYSTEMS IN EDUCATION</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Riccardo</forename><surname>Porcedda</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Universita degli Studi di Milano-Bicocca</orgName>
+								<address>
+									<settlement>Milan</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">Porcedda Bachelor&apos;s degree in Physics from</orgName>
+								<orgName type="institution">Universita di Pisa</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">INTERPRETABILITY IS NOT EXPLAINABILITY: NEW QUANTITATIVE XAI APPROACH WITH A FOCUS ON RECOMMENDER SYSTEMS IN EDUCATION</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">A39FC971ABE12FB08EE59D085B80925D</idno>
+					<idno type="DOI">10.5121/csit.2023.131612</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:56+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>XAI</term>
+					<term>Explainability</term>
+					<term>Interpretability</term>
+					<term>Recommender Systems</term>
+					<term>Machine Learning</term>
+					<term>Education</term>
+					<term>SHAP</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The field of eXplainable Artificial Intelligence faces challenges due to the absence of a widely accepted taxonomy that facilitates the quantitative evaluation of explainability in Machine Learning algorithms.</p><p>In this paper, we propose a novel taxonomy that addresses the current gap in the literature by providing a clear and unambiguous understanding of the key concepts and relationships in XAI. Our approach is rooted in a systematic analysis of existing definitions and frameworks, with a focus on transparency, interpretability, completeness, complexity and understandability as essential dimensions of explainability. This comprehensive taxonomy aims to establish a shared vocabulary for future research.</p><p>To demonstrate the utility of our proposed taxonomy, we examine a case study of a Recommender System designed to curate and recommend the most suitable online resources from MERLOT. By employing the SHAP package, we quantify and enhance the explainability of the RS within the context of our newly developed taxonomy.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="595.2" lry="841.92"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>The growing prominence of Artificial Intelligence in various domains, including education, has led to an increased focus on building reliable and human-centered applications. In parallel, the challenge of explainability in Machine Learning algorithms remains an open problem. Despite a burgeoning body of research in the XAI field, proposed solutions often lack clarity, sufficiency, or efficiency, with results frequently based on user tests related to multiple and often correlated concepts such as trust, transferability, and informativeness <ref type="bibr" target="#b0">[1]</ref>. Moreover, the current scientific literature does not provide a consensus on the distinction between explainable and interpretable systems, with only a limited number of papers addressing this issue.</p><p>Gilpin, Leilani H. et al. <ref type="bibr" target="#b1">[2]</ref> attempt to address this problem by focusing on the concepts of interpretability and completeness as essential components of explainability:</p><p>-Interpretability refers to a system's ability to describe its inner workings in a manner intelligible to humans; -Completeness entails accurately describing a system's operations.</p><p>For instance, an explanation is deemed complete if users can understand it well enough to predict the behavior of the system described. A naive solution might involve presenting the entire set of operations performed by the system; however, users could become overwhelmed by the complexity of the inner mechanism, losing interpretability.</p><p>Consequently, Gilpin et al. <ref type="bibr" target="#b1">[2]</ref> view explainability as a trade-off between interpretability and completeness.</p><p>Nevertheless, Herman <ref type="bibr" target="#b2">[3]</ref> cautions that adopting such an anthropocentric taxonomy may be hazardous, as human evaluation can harbor biases that turn any persuasive system into an explainable one, regardless of the truth-value of the explanations provided. Despite these challenges, explainability necessitates a human-in-the-loop process, as the human user is the ultimate recipient of explanations. In this paper, we propose a taxonomic classification of explainability-related concepts that minimizes, yet preserves, the essential involvement of the human user. This approach enables the construction of a pipeline for implementing this framework in AI applications, such as intelligent information systems and soft computing techniques. We then demonstrate the practical application of this pipeline in a case study of a Recommender System, which takes resources and relative ratings datasets from MERLOT, user metadata preferences, and produces binary classification outputs of the items (recommended/not recommended). This example underscores the relevance and potential impact of our proposed taxonomy on the development and understanding of AI systems across various domains.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RESEARCH METHODOLOGY</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">A New Taxonomy Proposal</head><p>We now propose a new XAI taxonomy to tackle the issue presented above, and we begin by unraveling the notions of interpretability and explainability into more specific definitions of transparency, interpretability, explanation, completeness, complexity, understandability, and explainability. This is necessary to provide a formal mathematical framework and use it to create quantitative measures.</p><p>Transparency is the cornerstone of explainability: it tells us how much opaque is a model and, from that, it is possible to decide how to explain it. Lipton <ref type="bibr" target="#b3">[4]</ref> highlights three key aspects of transparency: simulatability, decomposability, and algorithmic transparency. Informally, transparency is the opposite of opacity or black-box-ness, indicating an understanding of the mechanism by which the model works. Simulatability In the strictest sense, a model can be considered transparent if a person can contemplate the entire model at once. This definition suggests that an interpretable model is a simple model, allowing humans to grasp its decision-making process more easily.</p><p>Decomposability A second notion of transparency is decomposability, which means that each part of the model -each input, parameter, and calculation -admits an intuitive explanation. This aspect of transparency allows users to understand the model's components and how they contribute to the overall decision-making process.</p><p>Algorithmic Transparency A final notion of transparency might apply at the level of the learning algorithm itself. Algorithmic transparency refers to the understandability of the algorithm used to train the model, allowing users to comprehend the rationale behind the model's development and behavior.</p><p>In our taxonomy, we define transparency in the following way: Definition 1 (Transparency). A system is transparent if its inner mechanism is accessible. By inner mechanism, we mean:</p><p>-</p><p>The definition of the algorithm that makes the system work; -</p><p>The reconstruction, given an output of the system, of all operations executed by the algorithm itself.</p><p>A system with maximum transparency is called a white-box. A system with zero transparency is called a black-box.</p><p>This definition encompasses the aspects of simulatability, decomposability, and algorithmic transparency discussed by Lipton <ref type="bibr" target="#b3">[4]</ref>.</p><p>Before the work of Gilpin et al. <ref type="bibr" target="#b1">[2]</ref>, Doshi-Velez, F. and Kim, B. <ref type="bibr" target="#b4">[5]</ref> emphasize the need for a rigorous science of interpretability in machine learning and propose a taxonomy of interpretability methods. They defined interpretability as the ability to explain or to present in understandable terms to a human. But, as the authors themselves stated, a formal definition of explanation remained elusive. Furthermore, they run in a cyclic definition where interpretability, an ingredient of explainability, needs the definition of explanation to work.</p><p>In this paper, we follow the pathway shown by Gilpin et al. <ref type="bibr" target="#b1">[2]</ref> to get the following definition: Definition 2 (Interpretability). A system is interpretable if it is possible to identify a statistical or functional relation R between inputs and outputs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The relation can be represented as a mathematical function, a transformation, a rule, or a set of rules in the IF-THEN form.</head><p>By definition, a white-box system has maximum interpretability, and a black-box has zero interpretability. It is possible for black-box systems to be approximated by white-box systems. In that case, the interpretability I(R ), which can be thought of as a real value in the interval [0,1], should depend on these two features:</p><p>-</p><p>The approximation method (global or local); -</p><p>The fidelity measure, which is how well the white-box system approximates the blackbox.</p><p>The definition of explanation given by the Cambridge Dictionary of English Language is "the details or reasons that someone gives to make something clear or easy to understand". Adapting this definition to our purpose Definition 3 (Explanation). An explanation X is a reason or justification given for one or more outputs of a system. The explanation can be given in any preferred form <ref type="bibr">(textual, graphical, etc.)</ref>, but it must be intelligible.</p><p>Definition 4 (Completeness). The completeness C(X) of an explanation X measures its adherence to the interpretation R .</p><p>For instance, if a given classifier provides the classification rules as explanations, we have maximum completeness. Miller <ref type="bibr" target="#b5">[6]</ref> highlights the importance of completeness in explanations, stating that a complete explanation should provide all the necessary information to understand a model's decision-making process.</p><p>To define understandability later, we introduce the concept of Complexity. Definition 5 (Complexity). The complexity ω(X) of an explanation X measures the effort required to understand it. This linear function of the number of IF-THEN clauses satisfies the requirements. For a set of rules, the total complexity could be the sum or the average of individual complexities. R. Guidotti et al. <ref type="bibr" target="#b6">[7]</ref> repeatedly emphasize how important it is to have understandable explanation in order to obtain interpretable algorithms. To address the definition of Understandability, we refer to the work of Arrieta, A. B. et al. <ref type="bibr" target="#b7">[8]</ref>: it denotes the characteristic of a model to make a human understand its functionhow the model workswithout any need for explaining its internal structure or the algorithmic means by which the model processes data internally. We synthesize and insert this definition in our framework by stating the following: Definition 6 (Understandability). UnderstandabilityU of an explanation X represents the user's capacity to reproduce the system's behavior as described by the explanation itself.</p><p>This definition introduces subjectivity, as different users might have varying levels of understanding.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The understandability depends on two factors:</head><p>-Complexity of the explanation ω(X) -Tolerable complexity ωb for the user</p><p>We desire a function that meets the following conditions:</p><p>-Has domain [0,+∞) and range (0</p><formula xml:id="formula_0">,1] - U(ω = ωb;ωb) ≃ 0.9 - U(0;ωb) = 1 - limω→∞U(ω;ωb) = 0</formula><p>Additionally, we desire a "sigmoidal" behaviour, with:</p><p>We propose two candidate functions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Gaussian decline SHT (Squared Hyperbolic Tangent) decline</head><p>Both functions satisfy the desired properties listed above, and their difference lies in how aggressive the decline is (how negative the derivative is for intermediate values of</p><p>Lipton <ref type="bibr" target="#b3">[4]</ref> discusses the trade-off between complexity and understandability in machine learning models, arguing that the ideal explanation should balance these aspects. By incorporating these two factors, our definitions of completeness, complexity, and understandability aim to provide a more comprehensive framework for evaluating the quality of explanations in the context of machine learning.</p><p>Additionally, Arrieta, A. B. et al. <ref type="bibr" target="#b7">[8]</ref> state that explainability is associated with the notion of explanation as an interface between humans and a decision maker that is, at the same time, both an accurate proxy of the decision maker and comprehensible to humans. Putting everything together, we get to the following definition: Definition 7 (Explainability).</p><p>A system is explainable if it is capable of providing explanations of its inner mechanism which are both complete and understandable.</p><p>Operationally, the Explainability E(R ,X) of a system is here intended as the product of its Interpretability I(R ), the CompletenessC(X) and the UnderstandabilityU(X) of the explanations:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">How to improve the Explainability of a Machine Learning model</head><p>If an explanation is not considered sufficient by the user, there is only one way to improve it: providing additional explanations.</p><p>We should have a measure of the Total Explainability for a given number of explanations Xi with Explainability Ei.</p><p>Total Explainability of Two Explanations First, we begin by defining the desired properties of the Total Explainability Tot(E1,E2) of two explanations:</p><formula xml:id="formula_1">1. Tot(E1,E2) = Tot(E2,E1) (Symmetry) 2. max(E1,E2) ≤ Tot(E1,E2) ≤ 1 ∀E1,E2 ∈ [0,1] 3. Tot(E1,0) = E1 ∀E1 ∈ [0,1] 4. Let be E1,E2,E3 ∈ [0,1] such that E1 ≤ E2 ≤ E3, then Tot(E1,E2) ≤ Tot(E2,E3) (Monotony)</formula><p>For the symmetry axiom,</p><formula xml:id="formula_2">Tot(E1,E2) = Tot(E2,E3) if and only if E1 = E3.</formula><p>We propose the candidate solution:</p><formula xml:id="formula_3">Tot(E1,E2) = max(E1,E2)+[1−max(E1,E2)]min(E1,E2)<label>(5)</label></formula><p>It is trivial to demonstrate that properties 1, 2, and 3 are satisfied. Here, we attach the proof for property 4.</p><p>Theorem 1. Equation 5 satisfies Property 4.</p><p>Proof. Let be E1,E2,E3 ∈ [0,1] such that E1 ≤ E2 ≤ E3 and we define a variable</p><formula xml:id="formula_4">S = Tot(E2,E3)−Tot(E1,E2). If Property 4 is satisfied, S ≥ 0. S = max(E2,E3)+[1−max(E2,E3)]min(E2,E3)−max(E1,E2)+[1−max(E1,E2)]min(E1,E2) = = E3+(1−E3)E2−E2−(1−E2)E1 = = E3−E2E3−E1+E1E2 = = (E1−E3)(E2−1) But E2 ∈ [0,1] and E1 ≤ E3, hence S = (E1−E3)(E2−1) ≥ 0</formula><p>Recursive Definition of Total Explainability for k Explanations Once we defined the Total Explainability of two explanations, we can write a recursive definition for a set of k explanations: the idea behind this is that, for any k, the Total Explainability can be computed on Ek and the set of E{k−1} explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.">Choice of Explainability-Augmentation Method and Related Metrics</head><p>After evaluating the pros and cons of the most promising methods found in the literature, such as SHAP, LIME, and counterfactuals, we have chosen to adopt the SHAP approach. This decision is based on its ease of implementation, computational efficiency, and the provision of intuitive graphical explanations.</p><p>Shapley values, a concept borrowed from Game Theory, are designed to represent rewards assigned to players in a coalition based on their marginal contribution to the total coalition payoff <ref type="bibr" target="#b8">[9]</ref>. In this context, the game represents our machine learning model's classification task, the players are the features used, and the total coalition payoff is the classification value. The Shapley value of a feature is defined as follows:</p><p>Here, val is a characteristic function that expresses the utility for any subset S of the p features of the model. For a given instance x, the value is calculated as: Z</p><p>This represents the prediction for feature values in S, marginalized over features not in S.</p><p>The innovation of SHAP (SHapley Additive exPlanations) <ref type="bibr" target="#b9">[10]</ref> lies in its use of Shapley values to build an explanation model g that is additive with respect to the features of the original model:</p><p>The steps of the SHAP method are as follows:</p><p>1. Sample coalition vectors z ′ (binary vectors indicating the presence/absence of a feature)</p><p>2. Convert vectors z ′ to the original feature space and obtain predictions from the original model; for features with a zero-value in the coalition vector, the conversion to the feature space is performed by substituting a random value from the data 3. Compute the weight of each coalition vector using the SHAP kernel 4. Fit model g and return the coefficient values (which are, in fact, the Shapley values) To conduct an offline evaluation, we require a quantitative explainability measure based on Shapley values. A list of mask-based and resample-based metrics is proposed by Lundberg et al <ref type="bibr" target="#b10">[11]</ref>.</p><p>Mask-based metrics Mask-based metrics allow observation of the model's output changes when features are masked with their mean value. For instance, the Keep-positive (mask) metric retains features with the most positive Shapley values, masking the others (features with negative Shapley values are always masked) for each instance and for an increasing fraction of features. Plotting the fraction of features kept versus the model output produces a curve that measures how well the local explanation method has identified features that increase the model's output for this prediction. Higher valued curves represent better explanations (an example is shown here in Figure <ref type="figure" target="#fig_1">1</ref>). Keep-absolute (resample) In our classification task, we are interested in both positive and negative Shapley-valued features, so we need a single metric that captures the quality of the explanations provided considering the overall feature importance.</p><p>The Keep Absolute metric measures the explanation method's ability to find the features most important for the model's accuracy. It operates similarly to the Keep Positive metric, but keeps the most important features according to the absolute value of the associated Shapley values. Since removing features based on their absolute effect on the model does not specifically push the model's output higher or lower, we measure not the change in the model's output, but rather the change in the model's accuracy. Good explanations will enable the model to achieve high accuracy with only a few important features.</p><p>As a proxy for Explainability, we can rely on the Area Under Curve (AUC) of the curve plotted. This allows us to quantitatively assess the quality of our explanations and make improvements where necessary.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">IMPLEMENTATION EXAMPLE ON IRIS DATASET WITH SVM MODEL</head><p>To easily show the results of our approach, we first implement it on a toy dataset and, after that, we show the result on our RS.</p><p>Using the sklearn Python library, we train a Support Vector Machine (SVM) Classifier on the Iris Dataset.</p><p>We then extract classification rules with the SVM+Prototype algorithm <ref type="bibr" target="#b12">[13]</ref>. The algorithm works as follows:</p><p>1. Train an SVM classifier on the dataset.</p><p>2. Identify the support vectors, which are the critical data points that define the decision boundarybetween classes.</p><p>3. For each support vector, find its closest prototype (representative) from the same class.</p><p>Aprototype can be a centroid or medoid of the class, or another representative point.</p><p>4. Define hyper-rectangles or ellipsoids around each support vector and its associated prototype.These geometric shapes are used to form the rules. The decision boundary of the SVM is approximated by the union of these shapes.</p><p>5. Extract the rules from the geometric shapes (see Figure <ref type="figure" target="#fig_2">2</ref>). For hyper-rectangles, the rulesare formed as conjunctions of intervals for each feature, while for ellipsoids, the rules are represented as quadratic equations.</p><p>Let us consider an example of rule extraction on the Iris dataset using the SVM+Prototype algorithm. The Iris dataset has four features: Sepal Length, Sepal Width, Petal Length, and Petal Width. We will focus on extracting rules for distinguishing between the Iris Setosa and Iris Versicolor classes.</p><p>Assume that we have trained an SVM on the Iris dataset and identified the support vectors. Suppose we find the following support vector and its closest prototype for Iris Setosa:</p><p>-Support Vector: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">THEN Iris Setosa</head><p>The same process is applied to other support vectors and their prototypes, generating multiple rules for each class.</p><p>The average complexity of the generated rules are calculated with Eq.1 and its value is ω = 3.</p><p>To get the Explainability of this model, we should first notice that a SVM is a white-box model (therefore, maximally interpretable) and, if we provide the generated rules as explanations, it yields total completeness. All of this means that Eq.4 is simplified as Because in this paper we do not estimate the parameter ωb, we show how the SVM Explainability changes as a function of the same parameter.</p><formula xml:id="formula_5">E(X) =U(X)<label>(10)</label></formula><p>It is possible to see (as desired when we defined the properties of the Understandability measure), that E(X) ≃ 0.9 when ω = ωb. Now we improve this result adding explanations with SHAP (Kernel Explainer). In Figure <ref type="figure" target="#fig_5">4</ref> the user can already get some valuable insights:</p><p>-Petal Length is the most important feature; -Sepal Width is the least important feature; -</p><p>The contributions of Sepal Width, Sepal Length and Petal Width to the classification of the Iris setosa are close to zero.</p><p>Proceeding with the quantitative evaluation of the Explainability with the new results from SHAP, we compute and show the Keep Absolute (resample) metric. The AUC of the above curve is equal to 0.69. Now it is possible to compute and show the Total Explainability of the SVM using the methods illustrated in section 3. The difference between Figure <ref type="figure" target="#fig_6">5</ref> and Figure <ref type="figure" target="#fig_7">6</ref> is that the curve in the latter plot starts from a total Explainability equal to the AUC of the Keep absolute metric curve: the Explainability has been greatly increased, even for low values of the bearable complexity ωb.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">IMPLEMENTATION ON MERLOT DATASET WITH RECOMMENDER SYSTEM</head><p>After a brief illustration of the potential of our augmentation methods on a toy dataset, we proceed with the evaluation and augmentation of the Explainability of the Recommender System with a detailed description of every step.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Data</head><p>Before discussing the implementation details, let us briefly introduce the MERLOT dataset. The MERLOT dataset is a collection of educational resources and user ratings, widely used in the context of Recommender Systems for online learning. It contains metadata about various courses and user-generated reviews and ratings, making it a valuable source of information for building personalized recommendations in the educational domain.</p><p>We work with two MERLOT datasets: resources (Table <ref type="table" target="#tab_1">2</ref>) and ratings (Table <ref type="table" target="#tab_0">1</ref>).</p><p>The first dataframe contains all metadata regarding the courses, while the second contains all reviews and ratings submitted by users (in both tables, only useful features are shown). The resource column in this last dataframe corresponds to the id column in the first one.</p><p>Then, to create the starting point of the dataset on which our RS is trained, we merge the datasets by right-join on resource = id.</p><p>We then simulate a user with the following preferences: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Feature Correlation</head><p>Before proceeding to the explanation through KernelSHAP, we must check for feature correlation: this could lead to unreliable computations of Shapley values.</p><p>Since we are working with both numerical and text data, we compute the correlation matrix using Pearson correlation for numerical features and Cramer's V for categorical features.</p><p>Pearson correlation measures the linear relationship between two continuous variables, while Cramer's V measures the strength of association between two categorical variables.</p><p>In Figure <ref type="figure" target="#fig_8">7</ref> we can notice a correlation cluster corresponding to the discipline levels, with significantly high value (V = 0.96 for discipline levels 0 and 1).</p><p>To mitigate this problem, we aggregate disciplines levels and, to get the Shapley values, we will only consider the resultant feature disciplines.  There are still a few notable correlations, but the highest value does not go beyond 0.67. The idea behind grouping and ungrouping discipline levels is to manage the feature correlation by aggregating them into a single feature. By doing so, we can compute Shapley values for the aggregated feature disciplines (which are called Owen values). This approach helps in mitigating the high correlation between discipline levels, which could lead to unreliable Shapley value computations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Predict Function and Encoding</head><p>Kernel Explainer needs basically two things: the model and a background dataset for integrating out features.</p><p>For the first one, we could easily use a predict function already implemented in the RS algorithm.</p><p>As background dataset, we use a sample of the training dataset: using the entire training set could result in a really slow computation of Shapley values.</p><p>In order to have an average prediction which does not depend on the sample, we use stratified sampling to maintain the proportion of positive and negative classifications.</p><p>Going back to the feature correlation problem, we would like to compute Shapley values for partitions of the coalition and, in particular, we would like to aggregate the discipline levels. The SHAP package includes a PartitionExplainer which computes Owen values, but it is still in development and, therefore, not useful for our research.</p><p>To address this issue, we decide to use a workaround with the KernelExplainer by providing it with datasets in which discipline levels are grouped. This allows us to compute Shapley values for the aggregated disciplines feature while mitigating the high correlation between discipline levels.</p><p>Then, we modify the predict function so that it ungroups the discipline levels to use all features required by our model.</p><p>The SHAP package is most compatible with scikit-learn models and, for the same reason, it requires One-Hot Encoding to work with categorical data.</p><p>In this case, this type of encoding is not useful, since our model works with categorical features without any type of encoding required.</p><p>To overcome this problem, we create a factorized version of both the training set and the dataset of items to explain: this way, we do not have to create a dummy variable for every value of every nonnumeric feature, but we maintain the same number of features and we assign an integer for every value in the non-numeric features. When we encode the training set, we save the "encoding rules" to use the same on other datasets. The following pseudocodes illustrates how the implemented encoding and decoding work.</p><p>After that, we can define the new_predict function.</p><p>We proceed by computing the Shapley values of 100 items from the resource dataset, showing the Feature Importance Plot and evaluating the Explainability with the Keep Absolute (resample) metric.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">RESULTS</head><p>First, we show the importance of our model's features: As can be seen in Figure <ref type="figure" target="#fig_10">9</ref> (and as expected), disciplines is by far the most important feature. What makes SHAP's Feature Importance Plot more desirable than classic permutation-based methods is that the importance does not depend on the goodness of the model, but on the magnitude of feature attributions (weighted average of the absolute value of the Shapley values). The result curve in Figure <ref type="figure" target="#fig_11">10</ref> demonstrates that, with just the first two most important features unmasked, the accuracy reaches 0.90. As the Feature Importance Plot in Figure <ref type="figure" target="#fig_10">9</ref> highlights that disciplines, type, and difficulty are the features with the highest mean of absolute Shapley values, this implies that over 90% of items are accurately recommended or not recommended based on preferences for only these features.</p><p>The area under the curve (AUC) for the plotted curve is 0.81, which we denote as ξ.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Total Explainability of Our Recommender System</head><p>We calculate the complexity of our model and we obtain an average complexity ωm = 4.06. And finally, given the value of ξ, we can plot how Total Explainability Tot(U,ξ) evolves as a function of ωb, considering for U both Eq. 2 and 3. The pipeline presented made the RS explainable with an explainability value that, depending on ωb, is in the range [0.81,1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">CONCLUSIONS</head><p>In this paper, we presented a new quantitative approach to explainable AI (XAI) by evaluating and augmenting the explainability of a Recommender System (RS) in the E-Learning field. We introduced a formal taxonomy to establish a framework for our case study. It is important to note that explainability is not the same as interpretability, which means that even white-box models can benefit from XAI research.</p><p>Future research should delve deeper into the applicability of XAI techniques to white-box models and their potential benefits.</p><p>There are several potential avenues for future work, including: -Conducting studies in Human-Computer Interaction (HCI) to better understand how users manage complexity and, consequently, develop improved understandability functions.</p><p>-Considering user saturation by setting limits on the number of explanations provided, as this could enhance the overall explainability of the system.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>For instance, considering IF-THEN classification rules as explanations, we propose a measure for their complexity. It should satisfy these requirements: 1. The effort to understand a classification rule increases with the number of IF-THEN clauses; 2. Rules with more than one IF-THEN clause on the same feature are more complex; 3. A rule with only one IF-THEN clause has the lowest complexity (0). We propose the following formula for the complexity of the i-th rule Ri: where: -||Ri|| is the length of the i-th rule Ri (number of IF-THEN clauses concatenated with an AND); -K is the set of features used in the model; -Si is the subset of features on which IF-THEN clauses of the rule Ri are executed.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Illustrative example of the Keep-positive metric [12].</figDesc><graphic coords="8,197.15,267.08,202.20,142.15" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Ellipsoids for equation rules and Hyper-rectangles for interval rules (Illustrative example of the SVM+Prototype Algorithm).</figDesc><graphic coords="9,197.70,219.93,201.15,80.55" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>3 ]</head><label>3</label><figDesc>define a hyper-rectangle around the support vector and its prototype:The extracted rule from this hyper-rectangle is: IF 5.0 ≤ Sepal Length ≤ 5.1 AND 3.4 ≤ Sepal Width ≤ 3.5 AND 1.4 ≤ Petal Length ≤ 1.5 AND 0.2 ≤ Petal Width ≤ 0.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Model Explainability as a function of ωb.</figDesc><graphic coords="10,198.88,356.44,198.80,127.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Importance plot of Iris features.</figDesc><graphic coords="10,193.20,622.28,210.11,79.90" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Keep absolute (resample) metric on SVM model for Iris dataset.</figDesc><graphic coords="11,201.78,217.10,193.00,131.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Total Explainability of the SVM model as a function of ωb.</figDesc><graphic coords="11,197.48,486.09,201.60,127.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Correlation matrix of training set.</figDesc><graphic coords="13,139.28,293.53,318.00,303.50" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: Correlation matrix of the background dataset.</figDesc><graphic coords="14,184.08,90.00,228.40,228.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 9 :</head><label>9</label><figDesc>Figure 9: Feature Importance computed using Shapley values.</figDesc><graphic coords="16,195.50,514.53,205.51,115.10" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 10 :</head><label>10</label><figDesc>Figure 10: Keep absolute (resample) metric.</figDesc><graphic coords="17,201.78,90.00,193.00,131.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 11 :</head><label>11</label><figDesc>Figure 11: Total Explainability as a function of ωb.</figDesc><graphic coords="17,196.28,436.03,204.00,127.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="15,104.55,536.31,388.95,162.74" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>First rows of MERLOT ratings dataframe</figDesc><table><row><cell>Id</cell><cell cols="2">rating resource</cell></row><row><cell>0</cell><cell>4</cell><cell>0</cell></row><row><cell>1</cell><cell>3</cell><cell>0</cell></row><row><cell>2</cell><cell>5</cell><cell>0</cell></row><row><cell>3</cell><cell>3</cell><cell>1</cell></row><row><cell>4</cell><cell>5</cell><cell>1</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>First rows of MERLOT resources dataframe.</figDesc><table /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">Computer Science &amp; Information Technology (CS &amp; IT)</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">© 2023 By AIRCC Publishing Corporation. This article is published under the Creative Commons Attribution (CC BY) license.</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">A Survey on the Explainability of Supervised Machine Learning</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Burkart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Huber</surname></persName>
+		</author>
+		<idno type="DOI">10.1613/jair.1.12228</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of ArtificialIntelligence Research</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="page" from="245" to="317" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Explaining explanations: An overview ofinterpretability of machine learning</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Gilpin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Z</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bajwa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Specter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kagal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE 5th International Conference on Data Science and Advanced Analytics (DSAA)</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="80" to="89" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">The Promise and Peril of Human Evaluation for Model Interpretability</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Herman</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1711.07414</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">C</forename><surname>Lipton</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1606.03490</idno>
+		<title level="m">The Mythos of Model Interpretability</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Doshi-Velez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Kim</surname></persName>
+		</author>
+		<idno type="arXiv">arXivpreprintarXiv:1702.08608</idno>
+		<title level="m">Towards A Rigorous Science of Interpretable Machine Learning</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Explanation in artificial intelligence: Insights from the social sciences</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Miller</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.artint.2018.07.007</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">267</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A Survey of Methods for ExplainingBlack Box Models</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Guidotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Monreale</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ruggieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Turini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Giannotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Pedreschi</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3236009</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barredo Arrieta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>D´ıaz-Rodr´ıguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bennetot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tabik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barbado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Garcia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gil-Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Molina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Benjamins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Chatila</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Herrera</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.inffus.2019.12.012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Information Fusion</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page" from="82" to="115" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">A Value for N-Person Games</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">S</forename><surname>Shapley</surname></persName>
+		</author>
+		<idno type="DOI">10.7249/P0295</idno>
+		<imprint>
+			<publisher>RAND Corporation</publisher>
+			<biblScope unit="page">1952</biblScope>
+			<pubPlace>Santa Monica, CA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-I</forename><surname>Lee</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1705.07874</idno>
+		<title level="m">A Unified Approach to Interpreting Model Predictions</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">From local explanations to global understanding with explainable AI for trees</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Erion</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Degrave</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Prutkin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Nair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Katz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Himmelfarb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Bansal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">I</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature machine intelligence</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Resource Reservation in Sliced Networks</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Barnard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Macaluso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Marchetti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Pereira Da</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Silva</forename></persName>
+		</author>
+		<idno type="DOI">10.36227/techrxiv.16702798.v1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AnExplainable Artificial Intelligence (XAI) Approach. TechRxiv</title>
+		<imprint>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Rule extraction from support vector machines</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Nunez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Angulo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Catal˜</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the European` Symposium on Artificial Neural Networks</title>
+				<meeting>the European` Symposium on Artificial Neural Networks</meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="107" to="112" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

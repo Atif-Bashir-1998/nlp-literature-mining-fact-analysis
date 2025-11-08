@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">EXPLORE -Explainable Song Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Abhinav</forename><surname>Arun</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Mehul</forename><surname>Soni</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Palash</forename><surname>Choudhary</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Saksham</forename><surname>Arora</surname></persName>
+						</author>
+						<title level="a" type="main">EXPLORE -Explainable Song Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">A6A163904F4ECF43AB9B4DF4CBEC0268</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:04+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract/>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>We are conducting our project on building a music recommendation product with key focus on new song discovery and explainability. The system is an attempt to generate a playlist by suggesting songs heard by users having similar preferences. The product will take Spotify user-id of the user as an input and will generate a music recommendation playlist. The UI will also have toggles to select a mood to update the recommended playlist and will also have an explanation window for why a song was recommended. We plan to use a hybrid approach-a combination of collaborative filtering and content-based filtering-to develop our recommendation system. The user data will be procured from Spotify for Developers' Web API and the user-song data is taken from subset of MLHD <ref type="bibr" target="#b5">[6]</ref> dataset. The Spotify API provides access to multi-level data such as user's playlist data, song's attribute data, artist data etc and the MLHD data has user and song interaction data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">PROBLEM DEFINITION</head><p>There are state of the art song recommendation systems available such as Spotify, Apple Music, Amazon Music etc. but they lack in 2 key areas: 1) They fail to provide any explainability on why a particular song was recommended. 2) These recommendation system do not provide users with tools to control the recommendations . Through our product, we aim to address these challenges.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">LITERATURE REVIEW</head><p>Several research papers have been published over the years on recommendation systems, and visualization in the context of song recommendation. A few of them are discussed below.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Single User Recommendation</head><p>Recommendation systems are widely used applications of machine learning. They provide suggestions for items that may be useful to the customer and help users avoid selection paralysis. As suggested in <ref type="bibr" target="#b13">[13]</ref> and <ref type="bibr" target="#b1">[2]</ref>, recommendation systems majorly use two approaches: i) Collaborative filtering i.e. assumption that people with similar preferences in past are likely to prefer same items in the future, and ii) content-based filtering i.e. recommendation based on the item's features.</p><p>Although novel techniques for recommendation have been used in the domain of Deep Learning <ref type="bibr" target="#b9">[9]</ref>, <ref type="bibr" target="#b6">[7]</ref>, they lack in explainability and in performance with respect to sparse matrices. Recommendations can be made explainable by using a variant of matrix factorization algorithm (AMCF -&gt; Attentive Multitask Collaborative filtering) <ref type="bibr" target="#b0">[1]</ref> that accounts for explainable recommendations <ref type="bibr" target="#b3">[4]</ref>. The model will learn to map the difficult-tointerpret latent features onto the space of interpretable input features space using an attention mechanism as used in <ref type="bibr" target="#b15">[15]</ref>. Sparse autoencoders <ref type="bibr" target="#b2">[3]</ref> can also be used with a similar setup to provide better personalized recommendations. We plan to perform user studies for evaluation as conducted in <ref type="bibr" target="#b16">[16]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Group Recommendation*</head><p>A key aspect is to identify how to make a recommendation for the group. <ref type="bibr" target="#b13">[13]</ref> suggests two methodologies: i) developing recommendations for individuals and aggregating it for a group, and ii) aggregating individual preferences into a group and using this group to make recommendations. Combining individual ratings of users we can aggregate them using different metrics such as Plurality Voting, Average, Least Misery, Most Pleasure and feed into the single user recommendation model.</p><p>Designing explanations for group recommendations is another challenge <ref type="bibr" target="#b4">[5]</ref> This paper, in the case of Collaborative Filtering talks about providing explanations based on based on the ratings of the nearest neighbors. Simplistic strategies have also been suggested for content-based recommendation systems.</p><p>Few considerations while designing group recommendation systems is handling fairness, this paper <ref type="bibr" target="#b4">[5]</ref> talks about how including at least x items for each user can be one such way. Building Consensus is another nuance. It can be measured by checking the amount of disagreement between ratings of users. arXiv:2401.00353v1 [cs.IR] 30 Dec 2023</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Visualization</head><p>We surveyed papers to identify effective method of user engagement through interaction. <ref type="bibr" target="#b7">[8]</ref> inspected the relationship between musicology and visualization. It's extensive task based analysis on previous existing visualizations provided insight towards our proposed visual interface. <ref type="bibr" target="#b14">[14]</ref> discussed multiple algorithms to visualize network graphs such as forced directed network graph, network matrix etc.</p><p>Second, we look at the <ref type="bibr" target="#b10">[10]</ref>, which attempted to tackle the problem of music exploration. A subsequent work <ref type="bibr" target="#b11">[11]</ref> implemented a comparative study on the visualization experience of the previous paper and their own; the visualizations with user control helped justify recommendations. Therefore, we plan to incorporate mood control similar to <ref type="bibr" target="#b11">[11]</ref> Additionally, giving the users control over recommendations can be incorporated by providing mood based toggles <ref type="bibr" target="#b12">[12]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">METHODOLOGY</head><p>The design of the product is discussed in below sections:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Data Preparation</head><p>We are using MLHD data set for building our recommendation system. The dataset has user-song interaction information of 992 users for 1083471 songs. Although the data set has records from 2006-2013, it is sparsely populated from 2009-2013 and thus we will only use 2006-2008 data for training our model. This data contains time based user-song interaction information. We will utilize this information to create a user-song interaction rating matrix. Rating is a score in range 1-5 that suggests how much a user likes the song. We developed this rating by calculating monthly song frequency and inverse song frequency. Monthly song frequency(TF) is defined as the number of times a user has listened to a song in a month and inverse song frequency(IDF) is defined as a function of the number of users who have listened to that song in that particular month. So overall, the rating for that month is given as:</p><formula xml:id="formula_0">Rating = TF Mt * IDF Mt</formula><p>where,</p><formula xml:id="formula_1">IDF Mt = log( N 1 + df )</formula><p>N : Total Number of users df : Number of users who have listened to that song in that particular month This is done so that we capture niche user tastes in our song recommendation and songs that are listened by relatively less users is given higher weightage. Further, to capture temporal relationship, we give relatively higher weightage to recent songs i.e. most recent month is given weight as 1, second recent month is given weight as (23/24) and so on. Further, we extracted following data-sets from Spotify's Web API: 1) New user's song data, 2) MLHD Song's attributes, and 3) Top 500 songs of 2022 and Top 500 songs of All time playlist's songs and their attributes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Recommendation Algorithms</head><p>We will be using the following set of algorithms for forking out recommendations to the end users :</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Collaborative Filtering</head><p>In this technique, we can base our algorithm either on user-user or on song-song similarity. We identify a set of closest neighbors for a given user i (identified through the Pearson correlation coefficient) based on their ratings for common songs. Then, we take the weighted average of the ratings that these neighboring users give to a song j in order to come up with a predicted rating r(i,j) for a given user i for the song j. Also , to account for user bias, we compute the same on deviations of ratings around the mean for a given user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Matrix Factorization Algorithm</head><p>This algorithm uses the concept of singular value decomposition technique to express users and songs in terms of latent factors (k-dimensional latent feature space). We can then use cosine distance to identify the songs with the highest similarity to a given user's liking.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explainable Matrix Factorization Algorithm</head><p>This algorithm is a variant of the above-mentioned matrix factorization algorithm wherein we also provide as input , external metadata in the form of interpretable song features which could be used to help explain recommendations. For each item latent factor j, we train a predictor 𝑓 𝑗 ≈ 𝑖 𝑖 𝑗 in terms of the known interpretable attributes for a song i. Thus, we would get a mapping from the interpretable feature to latent feature set .</p><p>This mapping would help us understand which of the interpretable features are driving the individual latent factors.</p><p>Now, given that a song (s) was recommended to a user (u) , it means that the feature vectors of the song and user in latent space were similar. Using this, we can identify the latent dimension in which the feature vectors had the highest similarity. Given this latent dimension, we can use the above-computed mapper to get the corresponding interpretable song feature.</p><p>Thus, we would be able to back our recommendations in terms of simple interpretable song features. Out of the above algorithms, we went through with Collaborative Filtering. Our tests with matrix factorization were not promising due to the size of our dataset. We were unable to improve on the large computation time needed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Data Workflow</head><p>The process involved taking the spotify user id as input and getting data output for developing tableau dashboard. It can be divided into the following steps: 1) Taking user Spotify user-id and pulling all their playlists and extracting all songs 2) Mapping user genre affinity.</p><p>3) Identify genre representative songs. 4) Creating user song matrix for a new user that is used as an input for collaborative filtering algorithm. 5) Generating personalised playlist using recommendation engine. 6) Generating recommendations from "Top 500 songs of 2022" and "Top 500 songs of All Time" playlists by mapping ranked output to the mentioned playlist using cosine similarity. As user has intrinsic preferences towards a type of song, we exploited this assumption to map recommended songs to out of corpus songs using content based similarity. The data pipeline produces 3 output files that are used as an input for Tableau dashboard. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Visualization and Product Features</head><p>The final product is a Tableau dashboard that uses Data workflow output. It shows the personalised recommended playlist and graphical representation of music attributes. Further, it provide tools to control the recommendations and dynamically update the playlist as per user's mood.   The "How recommendation works?" button showcases the explainability aspect of the product. It visually explains the concept of collaborative filtering and visualizes user-neighbour interactions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5">Innovations</head><p>Summarizing the above sections, we introduced following innovation through our product : 1) Defining rating matrix using song listening history of users. 2) Explainability aspect to recommendation i.e. explaining the attributes of the recommended playlist. 3) Interactive Mood controls giving users control over their recommendations. 4) Toggle to recommend songs from "Top 500 songs of 2022" and "Top 500 songs of All Time" playlists i.e. out of corpus recommendations. 5) Functionality to recommend songs to new users i.e. Spotify users not part of MLHD dataset 5) Visualizing working of recommendation algorithm using user-neighbour interactions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EVALUATION</head><p>We conduct following evaluation process for our recommendation system.</p><p>(1) Train-Test Validation: In this step, we evaluate the recommendation system algorithm using train-test validation. We use the train data to develop our model using the above mentioned methodology and use it to predict the user rating for songs in test data. We use RMSE (root mean square error) metric to evaluate the performance.</p><formula xml:id="formula_2">RMSE = √︂ 1 𝑛 ∑︁ 𝑁 𝑛=1 (𝜖 𝑖 − ε) 2</formula><p>(2) User Validation: We conducted a user study where we asked a few users to share their spotify user-id and our product generated a playlist recommendation. We then asked the user to rate the recommendation as good or bad. We defined the performance on the basis of the accuracy of recommendations.</p><p>Accuracy = Total Good Recommendations * 100 Total Recommendation The results were as follows:</p><p>Ranking Based Evaluations Although we can evaluate our recommendation systems through the above 2 methods, it is important thing when making out recommendations is the order in which recommendations are made . Thus, we will use the 2 below mentioned metrics for evaluating the output of our recommendation system .</p><p>Ranking Evaluation Metrics: 1. Mean Average Precision@K: This metric measures how many of the recommended results are relevant and are showing at the top. Precision@K is the fraction of relevant items in the top K recommended results. The mean average precision@K measures the average precision@K averaged over all queries in the dataset. 𝑁 𝐷𝐶𝐺@𝐾 = 𝐷𝐶𝐺@𝐾 𝐼 𝐷𝐶𝐺@𝐾 , where</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>𝐴𝑃@𝑘</head><formula xml:id="formula_3">𝐷𝐶𝐺@𝐾 = 𝐾 ∑︁ 𝑖=1 𝐺 𝑖 𝑙𝑜𝑔 2 (𝑖 + 1)</formula><p>and</p><formula xml:id="formula_4">𝐼 𝐷𝐶𝐺@𝐾 = 𝐾 𝑖 ∑︁ 𝑖=1 𝐺 𝑖 𝑙𝑜𝑔 2 (𝑖 + 1)</formula><p>, where 𝐾 𝑖 is K(ideal) and 𝐺 𝑖 is G (relevance score of each recommended item).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results:</head><p>We followed two different approaches to sample our dataset into 80%-20% train-test split. The first approach takes a stratified sampling route where for each user the split is done randomly into 80-20 split. The second approach does an overall random shuffling and we obtain the train (80%) and test (20%). The ranking metrics (MAPK for k = 3 : 0.773, Mean NDCG: 0.873) and the RMSE values show that our collaborative filtering algorithm does a good job in the prediction of ratings as well as generating relevant song recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">EXPERIMENTS</head><p>We conducted user survey to seek feedback on our product. We got 17 responses and the overall response was positive. One promising observation has been a strong positive response for "Explainability Visualization" from respondents who did not care about explainability in the first place. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">CONCLUSION AND FUTURE SCOPE</head><p>Through our final product, the team was able to address all the key challenges mentioned in the "Problem Definition" section. Following milestones were achieved: 1) Product to generate personalised playlists. 2) Incorporate explainability aspect to recommendations. 3) Adding tools for users to control and dynamically update recommendations. However, there are shortcomings which we would like to work in future. 1) The product might face challenges with scalability due to a) dependency on Spotify API to fetch songs and b) recommendation algorithm latency 2) Recommendation is based on old data and on the assumption that music tastes are purely based on song characteristics.</p><p>Although we are answering a few existing challenges in state-of-the-art recommendation systems, there is potential to improve on the following aspects in future: 1) Making recommendations for a group. 2) Incorporating user feedback for recommended songs in UI( Like/Dislike button) and using their responses to improve the recommendation.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Data Integration Flow Chart</figDesc><graphic coords="3,324.69,83.68,226.75,158.69" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Product User Interface</figDesc><graphic coords="3,317.96,406.57,240.25,131.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Mood Control Bar</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: User Neighbour Interaction View</figDesc><graphic coords="4,53.80,322.89,240.25,120.19" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>= 1 𝑟 2 .</head><label>12</label><figDesc>𝑘 𝑘 ∑︁ 𝑘=1 𝑠 𝑘 * 𝑟𝑒𝑙 (𝑘)/𝑘, where 𝑠 𝑘 is the number of relevant songs in top k results, rel(k) = 1 if kth songs are relevant and 0 otherwise 𝒎𝑨𝑷 @𝒌 = 1 𝑵 Normalized Discounted Cumulative Gain: Gain refers to the relevance score for each item (song in this case) recommended. Cumulative gain at K is the sum of gains of the first K items recommended. Discounted cumulative gain (DCG) weighs each relevance score based on its position, with a higher weight to the recommendations at the top.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: RMSE-MSE Evaluation</figDesc><graphic coords="5,53.80,504.97,240.25,59.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: User Survey Evaluation</figDesc><graphic coords="5,317.96,279.39,240.26,213.49" type="bitmap" /></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Using Explainability for Constrained Matrix Factorization</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3109859.3109913</idno>
+		<ptr target="https://doi.org/10.1145/3109859.3109913" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM Conference on Recommender Systems</title>
+				<meeting>the Eleventh ACM Conference on Recommender Systems<address><addrLine>Como, Italy; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="79" to="83" />
+		</imprint>
+	</monogr>
+	<note>RecSys &apos;17). Association for Computing Machinery</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Music Recommender System Based on Genre using Convolutional Recurrent Neural Networks</title>
+		<author>
+			<persName><forename type="first">Alexander A S</forename><surname>Adiyansjah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Derwin</forename><surname>Gunawan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Suhartono</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.procs.2019.08.146</idno>
+		<ptr target="https://doi.org/10.1016/j.procs.2019.08" />
+	</analytic>
+	<monogr>
+		<title level="m">146 The 4th International Conference on Computer Science and Computational Intelligence (ICCSCI 2019) : Enabling Collaboration to Escalate Impact of Research Results for Society</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="volume">157</biblScope>
+			<biblScope unit="page" from="99" to="109" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A reliable deep representation learning to improve trust-aware recommendation systems</title>
+		<author>
+			<persName><forename type="first">Milad</forename><surname>Ahmadian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mahmood</forename><surname>Ahmadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sajad</forename><surname>Ahmadian</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.eswa.2022.116697</idno>
+		<ptr target="https://doi.org/10.1016/j.eswa.2022.116697" />
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">197</biblScope>
+			<biblScope unit="page">116697</biblScope>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Latent Factor Interpretations for Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Anupam</forename><surname>Datta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sophia</forename><surname>Kovaleva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Mardziel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shayak</forename><surname>Sen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1711.10816</idno>
+		<ptr target="http://arxiv.org/abs/1711.10816" />
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">Designing Explanations for Group Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Felfernig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thi</forename><forename type="middle">Ngoc</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Trang</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Stettinger</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2102.12413</idno>
+		<ptr target="https://arxiv.org/abs/2102.12413" />
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">The Music Listening Histories Dataset (MLHD)</title>
+		<idno>ISMIR 2017</idno>
+		<ptr target="https://archives.ismir.net/ismir2017/paper/000180.pdf" />
+		<imprint>
+			<date>Nov 06</date>
+		</imprint>
+	</monogr>
+	<note>Retrieved</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Advanced Recommendation Systems Through Deep Learning</title>
+		<author>
+			<persName><forename type="first">Mohamed</forename><surname>Khoali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Abdelhak</forename><surname>Tali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yassin</forename><surname>Laaziz</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3386723.3387870</idno>
+		<ptr target="https://doi.org/10.1145/3386723.3387870" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 3rd International Conference on Networking, Information Systems &amp;; Security</title>
+				<meeting>the 3rd International Conference on Networking, Information Systems &amp;; Security<address><addrLine>Marrakech, Morocco; New York, NY, USA, Article</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">51</biblScope>
+		</imprint>
+	</monogr>
+	<note>) (NISS2020)</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">2020. A Survey on Visualizations for Musical Data</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Khulusi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kusnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Meinecke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gillmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Focht</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jänicke</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/cgf.13905</idno>
+		<ptr target="https://doi.org/10.1111/cgf.13905" />
+	</analytic>
+	<monogr>
+		<title level="j">Computer Graphics Forum</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="82" to="110" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1111/cgf.13905</idno>
+		<ptr target="https://onlinelibrary.wiley.com/doi/pdf/10.1111/cgf.13905" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Deep learning based recommender system using cross convolutional filters. Information</title>
+		<author>
+			<persName><forename type="first">Seungyeon</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dohyun</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sciences</title>
+		<imprint>
+			<biblScope unit="volume">592</biblScope>
+			<biblScope unit="page" from="112" to="122" />
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Personalized Recommendations for Music Genre Exploration</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Martijn</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Willemsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3320435.3320455</idno>
+		<ptr target="https://doi.org/10.1145/3320435.3320455" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th ACM Conference on User Modeling, Adaptation and Personalization</title>
+				<meeting>the 27th ACM Conference on User Modeling, Adaptation and Personalization<address><addrLine>Larnaca, Cyprus; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="276" to="284" />
+		</imprint>
+	</monogr>
+	<note>UMAP &apos;19). Association for Computing Machinery</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Interactive Music Genre Exploration with Visualization and Mood Control</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Martijn</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Willemsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3397481.3450700</idno>
+		<ptr target="https://doi.org/10.1145/3397481.3450700" />
+	</analytic>
+	<monogr>
+		<title level="m">26th International Conference on Intelligent User Interfaces</title>
+				<meeting><address><addrLine>College Station, TX, USA; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="175" to="185" />
+		</imprint>
+	</monogr>
+	<note>IUI &apos;21). Association for Computing Machinery</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Knowing Me, Knowing You&quot;: Personalized Explanations for a Music Recommender System</title>
+		<author>
+			<persName><forename type="first">Millecamp</forename><surname>Martijn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cristina</forename><surname>Conati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Katrien</forename><surname>Verbert</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s11257-021-09304-9</idno>
+		<ptr target="https://doi.org/10.1007/s11257-021-09304-9" />
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="215" to="252" />
+			<date type="published" when="2022-04">2022. apr 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Group Recommender Systems: Combining Individual Models</title>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-0-387-85820-3_21</idno>
+		<ptr target="https://doi.org/10.1007/978-0-387-85820-3_21" />
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>Springer US</publisher>
+			<biblScope unit="page" from="677" to="702" />
+			<pubPlace>Boston, MA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Simple algorithms for network visualization: A tutorial</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Michael</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mcguffin</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TST.2012.6297585</idno>
+		<ptr target="https://doi.org/10.1109/TST.2012.6297585" />
+	</analytic>
+	<monogr>
+		<title level="j">Tsinghua Science and Technology</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="383" to="398" />
+			<date type="published" when="2012">2012. 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation via Interpretable Feature Mapping and Evaluation of Explainability</title>
+		<author>
+			<persName><forename type="first">Xiangrui</forename><surname>Deng Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongxiao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-Ninth International Joint Conference on Artificial Intelligence</title>
+				<meeting>the Twenty-Ninth International Joint Conference on Artificial Intelligence<address><addrLine>Yokohama, Yokohama, Japan</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note>IJCAI&apos;20). Article 373, 7 pages</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

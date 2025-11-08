@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Reinforcement Knowledge Graph Reasoning for Explainable Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2019-06-12">12 Jun 2019</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+							<email>zuohui.fu@rutgers.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Muthukrishnan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Gerard</forename><surname>De Melo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yongfeng</forename><forename type="middle">2019</forename><surname>Zhang</surname></persName>
+							<email>yongfeng.zhang@rutgers.edu</email>
+						</author>
+						<author>
+							<persName><surname>Reinforcement</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Rutgers University</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Reinforcement Knowledge Graph Reasoning for Explainable Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2019-06-12">12 Jun 2019</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">81CD9F4B2AA5E5046FA20895756CF45C</idno>
+					<idno type="DOI">10.1145/3331184.3331203</idno>
+					<idno type="arXiv">arXiv:1906.05237v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:02+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>• Information systems → Collaborative filtering</term>
+					<term>Recommender systems</term>
+					<term>• Computing methodologies → Machine learning Recommendation System</term>
+					<term>Reinforcement Learning</term>
+					<term>Knowledge Graphs</term>
+					<term>Explainability</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recent advances in personalized recommendation have sparked great interest in the exploitation of rich structured information provided by knowledge graphs. Unlike most existing approaches that only focus on leveraging knowledge graphs for more accurate recommendation, we perform explicit reasoning with knowledge for decision making so that the recommendations are generated and supported by an interpretable causal inference procedure. To this end, we propose a method called Policy-Guided Path Reasoning (PGPR), which couples recommendation and interpretability by providing actual paths in a knowledge graph. Our contributions include four aspects. We first highlight the significance of incorporating knowledge graphs into recommendation to formally define and interpret the reasoning process. Second, we propose a reinforcement learning (RL) approach featuring an innovative soft reward strategy, user-conditional action pruning and a multi-hop scoring function. Third, we design a policy-guided graph search algorithm to efficiently and effectively sample reasoning paths for recommendation. Finally, we extensively evaluate our method on several large-scale real-world benchmark datasets, obtaining favorable results compared with state-of-the-art methods.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Equipping recommendation systems with the ability to leverage knowledge graphs (KG) not only facilitates better exploitation of various structured information to improve the recommendation performance, but also enhances the explainability of recommendation models due to the intuitive ease of understanding relationships between entities <ref type="bibr" target="#b32">[33]</ref>. Recently, researchers have explored the potential of knowledge graph reasoning in personalized recommendation. One line of research focuses on making recommendations using knowledge graph embedding models, such as TransE <ref type="bibr" target="#b1">[2]</ref> and node2vec <ref type="bibr" target="#b4">[5]</ref>. These approaches align the knowledge graph in a regularized vector space and uncover the similarity between entities by calculating their representation distance <ref type="bibr" target="#b29">[30]</ref>. However, pure KG embedding methods lack the ability to discover multi-hop relational paths. Ai et al. <ref type="bibr" target="#b0">[1]</ref> proposed to enhance the collaborative filtering (CF) method over KG embedding for personalized recommendation, followed by a soft matching algorithm to find explanation paths between users and items. However, one issue of this strategy is that the explanations are not produced according to the reasoning process, but instead are later generated by an empirical similarity matching between the user and item embeddings. Hence, their explanation component is merely trying to find a post-hoc explanation for the already chosen recommendations.</p><p>Another line of research investigates path-based recommendation. For example, Gao et al. <ref type="bibr" target="#b3">[4]</ref> proposed the notion of meta-paths to reason over KGs. However, the approach has difficulty in coping with numerous types of relations and entities in large real-world KGs, and hence it is incapable of exploring relationships between unconnected entities. Wang et al. <ref type="bibr" target="#b27">[28]</ref> first developed a path embedding approach for recommendation over KGs that enumerates all the qualified paths between every user-item pair, and then trained a sequential RNN model from the extracted paths to predict the ranking score for the pairs. The recommendation performance is further improved, but it is not practical to fully explore all the paths for each user-item pair in large-scale KGs.</p><p>We believe that an intelligent recommendation agent should have the ability to conduct explicit reasoning over knowledge graphs to make decisions, rather than merely embed the graph as latent vectors for similarity matching. In this paper, we consider knowledge graphs as a versatile structure to maintain the agent's knowledge about users, items, other entities and their relationships. The agent starts from a user and conducts explicit multi-step path reasoning over the graph, so as to discover suitable items in the graph for recommendation to the target user. The underlying idea is that if the agent draws its conclusion based on an explicit reasoning path, it will be easy to interpret the reasoning process that leads to each recommendation. Thus, the system can provide causal evidence in support of the recommended items. Accordingly, our goal is not only to select a set of candidate items for recommendation, but also to provide the corresponding reasoning paths in the graph as interpretable evidence for why a given recommendation is made. As an example illustrated in Figure <ref type="figure" target="#fig_0">1</ref>, given user A, the algorithm is expected to find candidate items B and F , along with their reasoning paths in the graph, e.g., {User A → Item A → Brand A → Item B} and {User A → Feature B → Item F }.</p><p>In this paper, we propose an approach that overcomes the shortcomings of previous work. Specifically, we cast the recommendation problem as a deterministic Markov Decision Process (MDP) over the knowledge graph. We adopt a Reinforcement Learning (RL) approach, in which an agent starts from a given user, and learns to navigate to the potential items of interest, such that the path history can serve as a genuine explanation for why the item is recommended to the user.</p><p>The main challenges are threefold. First, it is non-trivial to measure the correctness of an item for a user, so careful consideration is needed regarding the terminal conditions and RL rewards. To solve the problem, we design a soft reward strategy based on a multi-hop scoring function that leverages the rich heterogeneous information in the knowledge graph. Second, the size of the action space depends on the out-degrees in the graph, which can be very large for some nodes, so it is important to conduct an efficient exploration to find promising reasoning paths in the graph. In this regard, we propose a user-conditional action pruning strategy to decrease the size of the action spaces while guaranteeing the recommendation performance. Third, the diversity of both items and paths must be preserved when the agent is exploring the graph for recommendation, so as to avoid being trapped in limited regions of items. To achieve this, we design a policy-guided search algorithm to sample reasoning paths for recommendation in the inference phase. We conduct several case studies on the reasoning paths to qualitatively evaluate the diversity of explainations for recommendation.</p><p>The major contributions of this paper can be outlined as follows.</p><p>(1) We highlight the significance of incorporating rich heterogeneous information into the recommendation problem to formally define and interpret the reasoning process. <ref type="bibr" target="#b1">(2)</ref> We propose an RL-based approach to solve the problem, driven by our soft reward strategy, user-conditional action pruning, and a multi-hop scoring strategy. (3) We design a beam search-based algorithm guided by the policy network to efficiently sample diverse reasoning paths and candidate item sets for recommendation. (4) We extensively evaluate the effectiveness of our method on several Amazon e-commerce domains, obtaining strong results as well as explainable reasoning paths.</p><p>The source code is available online.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORK 2.1 Collaborative Filtering</head><p>Collaborative Filtering (CF) has been one of the most fundamental approaches for recommendation. Early approaches to CF consider the user-item rating matrix and predict ratings via user-based <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b20">21]</ref> or item-based <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b21">22]</ref> collaborative filtering methods. With the development of dimension reduction methods, latent factor models such as matrix factorization gained widespread adoption in recommender systems. Specific techniques include singular value decomposition <ref type="bibr" target="#b11">[12]</ref>, non-negative matrix factorization <ref type="bibr" target="#b12">[13]</ref> and probabilistic matrix factorization <ref type="bibr" target="#b17">[18]</ref>. For each user and item, these approaches essentially learn a latent factor representation to calculate the matching score of the user-item pairs. Recently, deep learning and neural models have further extended collaborative filtering. These are broadly classified into two sub-categories: the similarity learning approach and the representation learning approach. Similarity learning adopts fairly simple user/item embeddings (e.g., one-hot vectors) and learns a complex prediction network as a similarity function to compute user-item matching scores <ref type="bibr" target="#b8">[9]</ref>. In contrast, the representation learning approach learns much richer user/item representations but adopts a simple similarity function (e.g., inner product) for score matching <ref type="bibr" target="#b31">[32]</ref>. However, researchers have noticed the difficulty of explaining the recommendation results in latent factor or latent representation models, making explainable recommendation <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b33">34]</ref> an important research problem for the community.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Recommendation with Knowledge Graphs</head><p>Some previous efforts have made recommendations to users with the help of knowledge graph embeddings <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b18">19]</ref>. One research direction leverages knowledge graph embeddings as rich content information to enhance the recommendation performance. For example, Zhang et al. <ref type="bibr" target="#b29">[30]</ref> adopted knowledge base embeddings to generate user and item representations for recommendation, while Huang et al. <ref type="bibr" target="#b9">[10]</ref> employed memory networks over knowledge graph entity embeddings for recommendation. Wang et al. <ref type="bibr" target="#b25">[26]</ref> proposed a ripple network approach for embedding-guided multi-hop KG-based recommendation. Another research direction attempts to leverage the entity and path information in the knowledge graph to make explainable decisions. For example, Ai et al. <ref type="bibr" target="#b0">[1]</ref> incorporated the learning of knowledge graph embeddings for explainable recommendation. However, their explanation paths are essentially post-hoc explanations, as they are generated by soft matching after </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Reinforcement Learning</head><p>Reinforcement Learning has attracted substantial interest in the research community. In recent years, there have been a series of widely noted successful applications of deep RL approaches (e.g., AlphaGo <ref type="bibr" target="#b22">[23]</ref>), demonstrating their ability to better understand the environment, and enabling them to infer high-level causal relationships. There have been attempts to invoke RL in recommender systems in a non-KG setting, such as for ads recommendation <ref type="bibr" target="#b24">[25]</ref>, news recommendation <ref type="bibr" target="#b34">[35]</ref> and post-hoc explainable recommendation <ref type="bibr" target="#b26">[27]</ref>. At the same time, researchers have also explored RL in KG settings for other tasks such as question answering (QA) <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b28">29]</ref>, which formulates multi-hop reasoning as a sequential decision making problem. For example, Xiong et al. <ref type="bibr" target="#b28">[29]</ref> leveraged reinforcement learning for path-finding, and Das et al. <ref type="bibr" target="#b2">[3]</ref> proposed a system called MINERVA that trains a model for multi-hop KG question answering. Lin et al. <ref type="bibr" target="#b13">[14]</ref> proposed models for end-to-end RL-based KG question answering with reward shaping and action dropout. However, to the best of our knowledge, there is no previous work utilizing RL in KGs for the task of recommendation, especially when the KG has an extremely large action space for each entity node as the number of path hops grow.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">METHODOLOGY</head><p>In this section, we first formalize a new recommendation problem called Knowledge Graph Reasoning for Explainable Recommendation.</p><p>Then we present our approach based on reinforcement learning over knowledge graphs to solve the problem. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Problem Formulation</head><formula xml:id="formula_0">(e 0 , e k ) = e 0 r 1 ← → e 1 r 2 ← → • • • r k ← → e k , where e i−1 r i ← → e i represents either (e i−1 , r i , e i ) ∈ G R or (e i , r i , e i−1 ) ∈ G R , i ∈ [k].</formula><p>Now, the problem of Knowledge Graph Reasoning for Explainable Recommendation (KGRE-Rec) can be formalized as below. Definition 3.2. (KGRE-Rec Problem) Given a knowledge graph G R , user u ∈ U and integers K and N , the goal is to find a recommendation set of items {i n } n ∈[N ] ⊆ I such that each pair (u, i n ) is associated with one reasoning path p k (u, i n ) (2 ≤ k ≤ K), and N is the number of recommendations.</p><p>In order to simultaneously conduct item recommendation and path finding, we consider three aspects that result in a good solution to the problem. First, we do not have pre-defined targeted items for any user, so it is not applicable to use a binary reward indicating whether the user interacts with the item or not. A better design of the reward function is to incorporate the uncertainty of how an item is relevant to a user based on the rich heterogeneous information given by the knowledge graph. Second, out-degrees of some entities may be very large, which degrades the efficiency of finding paths from users to potential item entities. Enumeration of all possible paths between each user and all items is unfeasible on very large graphs. Thus, the key challenge is how to effectively perform edge pruning and efficiently search relevant paths towards potential items using the reward as a heuristic. Third, for every user, the diversity of reasoning paths for recommended items should be guaranteed. It is not reasonable to always stick to a specific type of reasoning path to provide explainable recommendations. One naive solution is post-hoc recommendation, which first generates candidate items according to some similarity measure, followed by a separate path finding procedure from the user to candidate items within the graph. The major downsides of this are that the recommendation process fails to leverage the rich heterogeneous meta-data in the knowledge graph, and that the generated paths are detached from the actual decision-making process adopted by the recommendation algorithm, which remains uninterpretable.</p><p>In the following sections, we introduce our Policy-Guided Path Reasoning method (PGPR) for explainable recommendation over knowledge graphs. It solves the problem through reinforcement learning by making recommendations while simultaneously searching for paths in the context of rich heterogeneous information in the KG. As illustrated in Figure <ref type="figure">2</ref>, the main idea is to train an RL agent that learns to navigate to potentially "good" items conditioned on the starting user in the knowledge graph environment. The agent is then exploited to efficiently sample reasoning paths for each user leading to the recommended items. These sampled paths naturally serve as the explanations for the recommended items.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Formulation as Markov Decision Process</head><p>The starting point of our method is to formalize the KGRE-Rec problem as a Markov Decision Process (MDP) <ref type="bibr" target="#b23">[24]</ref>. In order to guarantee path connectivity, we add two special kinds of edges to the graph G R . The first one are reverse edges, i.e., if (e, r , e ′ ) ∈ G R , then (e ′ , r , e) ∈ G R , which are used for our path definition. The second are self-loop edges, associated with the no operation (NO-OP) relation, i.e., if e ∈ E, then (e, r noop , e) ∈ G R .</p><p>State. The state s t at step t is defined as a tuple (u, e t , h t ), where u ∈ U is the starting user entity, e t is the entity the agent has reached at step t, and h t is the history prior to step t. We define the k-step history as the combination of all entities and relations in the past k steps, i.e., {e t −k , r t −k +1 , . . . , e t −1 , r t }. Conditioned on some user u, the initial state is represented as s 0 = (u, u, ). Given some fixed horizon T , the terminal state is s T = (u, e T , h T ).</p><p>Action. The complete action space A t of state s t is defined as all possible outgoing edges of entity e t excluding history entities and relations. Formally, A t = {(r , e) | (e t , r , e) ∈ G R , e {e 0 , . . . , e t −1 }}. Since the out-degree follows a long-tail distribution, some nodes have much larger out-degrees compared with the rest of nodes. It is fairly space-inefficient to maintain the size of the action space based on the largest out-degree. Thus, we introduce a user-conditional action pruning strategy that effectively keeps the promising edges conditioned on the starting user based on a scoring function. Specifically, the scoring function f ((r , e) | u) maps any edge (r , e) (∀r ∈ R, ∀e ∈ E) to a real-valued score conditioned on user u. Then, the user-conditional pruned action space of state s t , denoted by Ãt (u), is defined as:</p><formula xml:id="formula_1">Ãt (u) = {(r, e) | rank(f ((r, e) | u)) ≤ α, (r, e) ∈ A t },<label>(1)</label></formula><p>where α is a pre-defined integer that upper-bounds the size of the action space. The details of this scoring function f ((r , e) | u) will be discussed in the next section.</p><p>Reward. Given any user, there is no pre-known targeted item in the KGRE-Rec problem, so it is unfeasible to consider binary rewards indicating whether the agent has reached a target or not. Instead, the agent is encouraged to explore as many "good" paths as possible. Intuitively, in the context of recommendations, a "good" path is one that leads to an item that a user will interact with, with high probability. To this end, we consider to give a soft reward only for the terminal state s T = (u, e T , h T ) based on another scoring function f (u, i). The terminal reward R T is defined as</p><formula xml:id="formula_2">R T = max 0, f (u,e T ) max i ∈I f (u,i) , if e T ∈ I 0, otherwise,<label>(2)</label></formula><p>where the value of R T is normalized to the range of [0, 1]. f (u, i) is also introduced in the next section.</p><p>Transition. Due to the graph properties, a state is determined by the position of the entity. Given a state s t = (u, e t , h t ) and an action a t = (r t +1 , e t +1 ), the transition to the next state s t +1 is:</p><formula xml:id="formula_3">P [s t +1 = (u, e t +1 , h t +1 )|s t = (u, e t , h t ), a t = (r t +1 , e t +1 )] = 1 (3)</formula><p>One exception is that the initial state s 0 = (u, u, ) is stochastic, which is determined by the starting user entity. For simplicity, we assume the prior distribution of users follows a uniform distribution so that each user is equally sampled at the beginning.</p><p>Optimization. Based on our MDP formulation, our goal is to learn a stochastic policy π that maximizes the expected cumulative reward for any initial user u:</p><formula xml:id="formula_4">J (θ ) = E π T −1 t =0 γ t R t +1 s 0 = (u, u, ) .<label>(4)</label></formula><p>We solve the problem through REINFORCE with baseline <ref type="bibr" target="#b23">[24]</ref> by designing a policy network and a value network that share the same feature layers. The policy network π (•|s, Ãu ) takes as input the state vector s and binarized vector Ãu of pruned action space Ã(u) and emits the probability of each action, with zero probability for actions not in Ã(u). The value network v(s) maps the state vector s to a real value, which is used as the baseline in REINFORCE. The structures of the two networks are defined as follows:</p><formula xml:id="formula_5">x = dropout(σ (dropout(σ (sW 1 ))W 2 ))<label>(5)</label></formula><formula xml:id="formula_6">π (•|s, Ãu ) = softmax( Ãu ⊙ (xW p )) (6) v(s) = xW v<label>(7)</label></formula><p>Here, x ∈ R d f are the learned hidden features of the state, ⊙ is the Hadamard product, which is used to mask invalid actions here, and σ is a non-linear activation function, for which we use an Exponential Linear Unit (ELU). State vectors s ∈ R d s are represented as the concatenation of the embeddings u, e t and history h t . For the binarized pruned action space Ãu ∈ {0, 1} d A , we set the maximum size d A among all pruned action spaces. The model parameters for both networks are denoted as</p><formula xml:id="formula_7">Θ = {W 1 , W 2 , W p , W v }.</formula><p>Additionally, we add a regularization term H (π ) that maximizes the entropy of the policy in order to encourage the agent to explore more diverse paths. Finally, the policy gradient ∇ Θ J (Θ) is defined as:</p><formula xml:id="formula_8">∇ Θ J (Θ) = E π ∇ Θ log π Θ (•|s, Ãu ) (G − v(s)) , (<label>8</label></formula><formula xml:id="formula_9">)</formula><p>where G is the discounted cumulative reward from state s to the terminal state s T .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Multi-Hop Scoring Function</head><p>Now we present the scoring function for the action pruning strategy and the reward function. We start with some relevant concepts. One property of the knowledge graph G R is that given the type of a head entity and a valid relation, the type of tail entity is determined. We can extend this property by creating a chain rule of entity and relation types: {e 0 , r 1 , e 1 , r 2 , . . . , r k , e k }. If the types of entity e 0 and all relations r 1 , . . . , r k are given, the types of all other entities e 1 , . . . , e k are uniquely determined. According to this rule, we introduce the concept of patterns as follows.</p><p>Definition 3.3. (k-hop pattern) A sequence of k relations rk = {r 1 , . . . , r k } is called a valid k-hop pattern for two entities (e 0 , e k ) if there exists a set of entities {e 1 , . . . , e k −1 } whose types are uniquely determined such that {e 0</p><formula xml:id="formula_10">r 1 ← → e 1 r 2 ← → • • • r k −1 ← −− → e k −1 r k ← → e k } forms a valid k-hop path over G R .</formula><p>One caveat with pattern is the direction of each relation, provided that we allow reverse edges in the path. For entities e, e </p><p>where ⟨•, •⟩ is the dot product operation, e, r ∈ R d are d-dimensional vector representations of the entity e and relation r , and b e ∈ R is the bias for entity e. When k = 0, j = 0, the scoring function simply computes the cosine similarity between two vectors:</p><formula xml:id="formula_12">f (e 0 , e k | r0,0 ) = ⟨e 0 , e k ⟩ + b e k . (<label>10</label></formula><formula xml:id="formula_13">)</formula><p>When k = 1,j = 1, the scoring function computes the similarity between two entities via translational embeddings <ref type="bibr" target="#b1">[2]</ref>:</p><formula xml:id="formula_14">f (e 0 , e k | r 1,1 ) = ⟨e 0 + r 1 , e k ⟩ + b e k<label>(11)</label></formula><p>For k ≥ 1, 1 ≤ j ≤ k, the scoring function in Equation 9 quantifies the similarity of two entities based on a 1-reverse k-hop pattern.</p><p>Scoring Function for Action Pruning. We assume that for user entity u and another entity e of other type, there exists only one 1-reverse k-hop pattern rk, j for some integer k. For entity e U, we denote k e as the smallest k such that rk, j is a valid pattern for entities (u, e). Therefore, the scoring function for action pruning is defined as f ((r , e) | u) = f (u, e | rk e , j ). Scoring Function for Reward. We simply use the 1-hop pattern between user entity and item entity, i.e., (u, r ui , i) ∈ G R . The scoring function for reward design is defined as f (u, i) = f (u, i | r1,1 ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Algorithm 1: Policy-Guided Path Reasoning</head><formula xml:id="formula_15">Input :u, π (•|s, Ãu ), T , {K 1 , . . . , K T } Output : path set P T , probability set Q T , reward set R T 1 Initialize P 0 ← {{u}}, Q 0 ← {1}, R 0 ← {0}; 2 for t ← 1 to T do 3 Initialize P t ← , Q t ← , R t ← ; 4 forall p ∈ P t −1 , q ∈ Q t −1 , r ∈ R t −1 do 5 £ path p {u,</formula><p>Learning Scoring Function. A natural question that arises is how to train the embeddings for each entity and relation. For any pair of entities (e, e ′ ) with valid k-hop pattern rk, j , we seek to maximize the conditional probability of P(e ′ | e, rk, j ), which is defined as</p><formula xml:id="formula_16">P(e ′ | e, rk, j ) = exp f (e, e ′ | rk, j ) e ′′ ∈E exp f (e, e ′′ | rk, j ) . (<label>12</label></formula><formula xml:id="formula_17">)</formula><p>However, due to the huge size of the entity set E, we adopt a negative sampling technique <ref type="bibr" target="#b16">[17]</ref> to approximate log P(e ′ | e, rk, j ):</p><p>log P(e |e ′ , rk, j ) ≈ log σ f (e, e ′ | rk, j )</p><formula xml:id="formula_18">+ mE e ′′ log σ −f (e, e ′′ | rk, j )<label>(13)</label></formula><p>The goal is to maximize the objective function J (G R ), defined as:</p><formula xml:id="formula_19">J (G R ) = e,e ′ ∈E K k =1</formula><p>1{(e, rk, j , e ′ )} log P(e ′ |e, rk, j ),</p><p>where 1{(e, rk, j , e ′ )} is 1 if rk, j is a valid pattern for entities (e, e ′ ) and 0 otherwise.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Policy-Guided Path Reasoning</head><p>The final step is to solve our recommendation problem over the knowledge graph guided by the trained policy network. Recall that given a user u, the goal is to find a set of candidate items {i n } and the corresponding reasoning paths {p n (u, i n )}. One straightforward way is to sample n paths for each user u according to the policy network π (•|s, Ãu ). However, this method cannot guarantee the diversity of paths, because the agent guided by the policy network is likely to repeatedly search the same path with the largest cumulative rewards. Therefore, we propose to employ beam search guided by the action probability and reward to explore the candidate paths as well as the recommended items for each user. The process is described as Algorithm 1. It takes as input the given user u, the policy network π (•|s, Ãu ), horizon T , and predefined sampling sizes at each step, denoted by K 1 , . . . , K T . As output, it delivers a candidate set of T -hop paths P T for the user with corresponding path generative probabilities Q T and path rewards R T . Note that each path p T (u, i n ) ∈ P T ends with an item entity associated with a path generative probability and a path reward.</p><p>For the acquired candidate paths, there may exist multiple paths between the user u and item i n . Thus, for each pair of (u, i n ) in the candidate set, we select the path from P T with the highest generative probability based on Q T as the one to interpret the reasoning process of why item i n is recommended to u. Finally, we rank the selected interpretable paths according to the path reward in R T and recommend the corresponding items to the user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">EXPERIMENTS</head><p>In this section, we extensively evaluate the performance of our PGPR method on real-world datasets. We first introduce the benchmarks for our experiments and the corresponding experimental settings. Then we quantitatively compare the effectiveness of our model with other state-of-the-art approaches, followed by ablation studies to show how parameter variations influence our model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Data Description</head><p>All experiments are conducted on the Amazon e-commerce datasets collection <ref type="bibr" target="#b6">[7]</ref>, consisting of product reviews and meta information from Amazon.com. The datasets include four categories: CDs and Vinyl, Clothing, Cell Phones and Beauty. Each category is considered as an individual benchmark that constitutes a knowledge graph containing 5 types of entities and 7 types of relations. The description and statistics of each entity and relation can be found in Table <ref type="table" target="#tab_5">1</ref>. Note that once the type of head entity and relation are provided, the type of tail entity is uniquely determined. In addition, as shown in Table <ref type="table" target="#tab_5">1</ref>, we find that Mention and Described_by account for a very large proportion among all relations. These two relations are both connected to the Feature entity, which may contain redundant and less meaningful words. We thus adopt TF-IDF to eliminate less salient features in the preprocessing stage: For each dataset, we keep the frequency of feature words less than 5,000 with TF-IDF score &gt; 0.1. We adopt the same data split rule as in previous work <ref type="bibr" target="#b31">[32]</ref>, which randomly sampled 70% of user purchases as the training data and took the rest 30% as test. The objective in the KGRE-Rec problem is to recommend items purchased by users in the test set together with reasoning paths for each user-item pair.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Experimental Setup</head><p>Baselines &amp; Metrics. We compare our results against previous state-of-the-art methods. BPR <ref type="bibr" target="#b19">[20]</ref> is a Bayesian personalized ranking model that learns latent embeddings of users and items. BPR-HFT <ref type="bibr" target="#b15">[16]</ref> is a Hidden Factors and Topics (HFT) model that incorporates topic distributions to learn latent factors from reviews of users or items. VBPR <ref type="bibr" target="#b7">[8]</ref> is the Visual Bayesian Personalized Ranking method that builds upon the BPR model but incorporates visual product knowledge. TransRec <ref type="bibr" target="#b5">[6]</ref> invokes translation-based embeddings for sequential recommendation. It learns to map both user and item representations in a shared embedding space through personalized translation vectors. DeepCoNN or Deep Cooperative Neural Networks <ref type="bibr" target="#b35">[36]</ref> are a review-based convolutional recommendation model that learns to encode both users and products with reviews assisting in rating prediction. CKE or Collaborative Knowledge base Embedding <ref type="bibr" target="#b30">[31]</ref> is a modern neural recommender system based on a joint model integrating matrix factorization and heterogeneous data formats, including textual contents, visual information and a structural knowledge base to infer the top-N recommendations results. JRL <ref type="bibr" target="#b31">[32]</ref> is a start-of-the-art joint representation learning model for top-N recommendation that utilizes  <ref type="table">2</ref>: Overall recommendation effectiveness of our method compared to other baselines on four Amazon datasets. The results are reported in percentage (%) and are calculated based on the top-10 predictions in the test set. The best results are highlighted in bold and the best baseline results are marked with a star ( * ). multimodal information including images, text and ratings into a neural network. Note that we did not include <ref type="bibr" target="#b27">[28]</ref> as a baseline because we are unable to enumerate all the possible paths between user-item pairs due to the large scale of our datasets.</p><p>All models are evaluated in terms of four representative top-N recommendation measures: Normalized Discounted Cumulative Gain (NDCG), Recall, Hit Ratio (HR) and Precision (Prec.). These ranking metrics are computed based on the top-10 predictions for every user in the test set.</p><p>Implementation Details. The default parameter settings across all experiments are as follows. For the KGRE-Rec problem, we set the maximum path length to 3 based on the assumption that shorter paths are more reliable for users to interpret the reasons of recommendation. For models' latent representations, the embeddings of all entities and relations are trained based on the 1-hop scoring function defined in Equation <ref type="formula" target="#formula_14">11</ref>, and the embedding size is set to 100. On the RL side, the history vector h t is represented by the concatenation of embeddings of e t −1 and r t , so the state vector s t = (u, e t , e t−1 , r t ) is of size 400. The maximum size of the pruned action space is set to 250, i.e., there are at most 250 actions for any state. To encourage the diversity of paths, we further adopt action dropout on the pruned action space with a rate of 0.5. The discount factor γ is 0.99. For the policy/value network,</p><formula xml:id="formula_21">W 1 ∈ R 400×512 , W 2 ∈ R 512×256 , W p ∈ R 256×250 and W v ∈ R 256×1 .</formula><p>For all four datasets, our model is trained for 50 epochs using Adam optimization. We set a learning rate of 0.001 and a batch size of 64 for the CDs &amp; Vinyl dataset, and a learning rate of 0.0001 and batch size of 32 for the other datasets. The weight of the entropy loss is 0.001. In the path reasoning phase, we set the sampling sizes at each step to K 1 = 20, K 2 = 10, K 3 = 1 for CDs &amp; Vinyl, and K 1 = 25, K 2 = 5, K 3 = 1 for the other three datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Quantitative Analysis</head><p>In this experiment, we quantitatively evaluate the performance of our model on the recommendation problem compared to other baselines on all four Amazon datasets. We follow the default setting as described in the previous section.</p><p>The results are reported in Table <ref type="table">2</ref>. Overall, our PGPR method consistently outperforms all other baselines on all datasets in terms of NDCG, Hit Rate, Recall and Precision. For example, it obtains a 3.94% NDCG improvement over the best baseline (JRL) on the CDs &amp; Vinyl dataset, a significant improvement of 64.73% on Clothing, <ref type="bibr" target="#b14">15</ref>  can be observed for Recall, Hit Rate and Precision on all datasets. This shows that searching for reasoning paths over the knowledge graph provides substantial benefits for product recommendation and hence-even in the absence of interpretability concerns-is a promising technique for recommendation over graphs. Our path reasoning process is guided by the learned policy network that incorporates rich heterogeneous information from knowledge graphs and captures multi-hop interactions among entities (e.g., user mentions feature, feature is described by item, item belongs to category, etc.). This also largely contributes to the promising recommendation performance of our method. Besides, we notice that directly applying TransE for recommendation <ref type="bibr" target="#b0">[1]</ref> slightly outperforms ours. It can be regarded as a single-hop latent matching method, but the post-hoc explanations do not necessarily reflect the true reason of generating a recommendation. In contrast, our methods generate recommendations through an explicit path reasoning process over knowledge graphs, so that the explanations directly reflect how the decisions are generated, which makes the system transparent. Furthermore, we examine the efficiency of our method in finding valid reasoning paths. A path is deemed valid if it starts from a user and ends at an item entity within three hops (i.e., at most four entities in a path). As shown in Table <ref type="table" target="#tab_8">3</ref>, we respectively report the average number of valid paths per user, the average number of unique items per user, and the average number of supportive paths per item. We observe two interesting facts. First, the success rate of our method to find valid paths is around 50%, which is calculated as the number of valid paths out of all sampled paths (200 paths for CDs &amp; Vinyl dataset and 125 for others). Especially for the Cell Phone dataset, almost all paths are valid. Considering that the number of all possible paths from each user to items is very large and the difficulty of our recommendation problem is particularly high, these results suggest that our method performs very well in regard to path finding properties. Second, each recommended item is associated with around 1.6 reasoning paths. This implies that there are multiple reasoning paths that can serve as supportive evidence for each   recommendation. One could hence consider providing more than one of these if users request further details.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Influence of Action Pruning Strategy</head><p>In this experiment, we evaluate how the performance of our model varies with different sizes of pruned action spaces.</p><p>Recall that conditioned on the starting user, the action space is pruned according to the scoring function defined in Equation <ref type="formula" target="#formula_11">9</ref>, where actions with larger scores are more likely to be preserved. In other words, larger action spaces contain more actions that are less relevant to the user. This experiment aims to show whether larger action spaces are helpful in exploring more reasoning paths to find potential items. We experiment on two selected datasets, Beauty and Clothing, and follow the default setting from the previous section, except that the size of the pruned action space is varied from 100 to 500 with a step size of 50. The results on two datasets are plotted in Figures <ref type="figure" target="#fig_3">3 and 4</ref>, respectively. The best baseline method JRL is also reported in the figures for comparison. Its performance does not depend on the action space.</p><p>There are two interesting observations in the results. First, our model outperforms JRL under most choices of pruned action space sizes. Take the Clothing dataset as an example. As shown in Figure <ref type="figure" target="#fig_2">3</ref>, for any metric among NDCG, Recall, Hit Rate and Precision, the blue curve of our method is consistently above the red curve of JRL by a large margin for all sizes ranging from 100 to 500. The results further demonstrate the effectiveness of our method compared to other baselines. Second, the performance of our model is slightly influenced by the size of the pruned action space. As shown in both figures, the common trend is that a smaller pruned action space leads to better performance. This means that the scoring function is a good indicator for filtering proper actions conditioned on the starting user. Another possible reason is that larger action spaces  require more exploration in RL, but for fair comparison, we set the same parameters such as learning rate and training steps across all different choices of action space, which may lead to suboptimal solutions in cases of larger action spaces.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5">Multi-Hop Scoring Function</head><p>Besides action pruning and the reward definition, the scoring function is also used as a part of the objective function in training the knowledge graph representation. By default, we employ a 1-hop scoring function for representation learning. In this experiment, we explore whether multi-hop scoring functions can further improve the recommendation performance of our method.</p><p>In particular, the 2-hop scoring function from Equation 9 is: f (e 0 , e 2 | r2,2 ) = ⟨e 0 + r 1 + r 2 , e 2 ⟩ + b e 2 for any valid 2-hop pattern r2,2 = {r 1 , r 2 } between entities e 0 and e 2 . This function is plugged into the objective function in Equation <ref type="formula" target="#formula_20">14</ref>for training entity and relation embeddings. All further settings are adopted from the previous action space experiment. We also plot the results in Figures 3   </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.6">Sampling Size in Path Reasoning</head><p>In this experiment, we study how the sampling size for path reasoning influences the recommendation performance of our method. We carefully design 9 different combinations of sampling sizes given a path length of 3. As listed in the first column of Table <ref type="table" target="#tab_10">4</ref>, each tuple (K 1 , K 2 , K 3 ) means that the we sample top K t actions at step t as described in Algorithm 1. For fair comparison, the total number of sampling paths (= K 1 × K 2 × K 3 ) is fixed to 120 (except for the first case). We experiment on the Clothing and Beauty datasets and follow the default settings of other parameters. The recommendation results in terms of NDCG, Recall, Hit Rate and Precision are reported in Table <ref type="table" target="#tab_10">4</ref>. Interestingly, we observe that the first two levels of sampling sizes play a more significant role in finding good paths. For example, in the of (25, 5, 1), (20, 6, 1), (15, 8, 1), (12, 10, 1), (10, 12, 1), our model performs much better than in rest of cases. One explanation is that the first two selections of actions largely determine what kinds of items can be reached. After the first two steps are determined, the policy network tends to converge to selecting the optimal action leading to a good item. On the other hand, our model is quite stable if the sample sizes at the first two levels are large, which offers a good guidance for parameter tuning. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.7">History Representations</head><p>Finally, we examine how different representations of state history influence our method. We consider three alternatives for h t : no history (0-step), last entity e t −1 with relation r t (1-step), and last two entities e t −2 , e t −1 with relations r t −1 , r t (2-step). Other settings are the same as in the previous experiments. As shown in Table <ref type="table" target="#tab_12">5</ref>, we find that the worst results are obtained in the 0-step case, which suggests that a state representation without history cannot provide sufficient information for the RL agent to learn a good policy. Apart from this, the performance of using 2-step history is slightly worse than that of 1-step history. One possible reason is that additional history information is redundant and even misleads the algorithm in the decision-making process.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">CASE STUDY ON PATH REASONING</head><p>To intuitively understand how our model interprets the recommendation, we give a case study here based on the results generated in the previous experiments. We first study the path patterns discovered by our model during the reasoning process, followed by various cases for recommendation.</p><p>Path patterns. For a fixed path length of 3, we find that our method managed to discover 15 different path patterns, which are plotted in an aggregated form in Figure <ref type="figure" target="#fig_4">5</ref>. Interestingly, the pattern Case study. As shown in Figure <ref type="figure" target="#fig_5">6</ref>, we provide several real-world examples of the reasoning paths generated by our method to illustrate how to interpret recommendations through paths.</p><p>The first example (Case 1) comes from the Beauty dataset, where a user purchased an item "shampoo" that was described by two feature words "nourish" and "lightening". Meanwhile, another item "conditioner" also contained these two features in some review. Therefore, our model recommended "conditioner" to this user. In the second example (Case 2), there are two users who both mentioned the feature words "run" and "comfort" in their reviews, so our method made a decision based on the purchase history of one user, by recommending the item "running shoes" purchased by the user to the other user. In the third example (Case 3), a user bought an item "iPhone" and also viewed another item "charger line". Considering that other users who purchased "phone case" would also buy "charger line", our method accordingly recommended "iPhone case" to the user. The last example (Case 4) depicts that one user purchased an item "neck chain", which belonged to the category of "Hello Kitty". Thus, our method recommended the user another item "key chain" that was also in the same category "Hello Kitty". We conclude that our PGPR method not only achieves promising recommendation results, but also is able to efficiently find diverse reasoning paths for the recommendations.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>1 −</head><label>1</label><figDesc>′ and relation r , e r ← → e ′ represents either e r − → e ′ or e r ← − e ′ in the path. We refer to the relation r as a forward one if (e, r, e ′ ) ∈ G R and e r − → e ′ , or as a backward one if (e ′ , r , e) ∈ G R and e r ← − e ′ .In order to define the scoring functions for action pruning and reward, we consider a special case of patterns with both forward and backward relations. Definition 3.4. (1-reverse k-hop pattern) A k-hop pattern is 1reverse, denoted by rk, j = {r 1 , . . . , r j , r j+1 , . . . , r k } (j ∈ [0, k]), if r 1 , . . . , r j are forward and r j+1 . . . r k are backward.In other words, paths with a 1-reverse k-hop pattern have the form of e 0 r e k . Note that the pattern contains all backward relations when j = 0, and all forward relations when j = k. Now we define a general multi-hop scoring function f (e 0 , e k | rk, j ) of two entities e 0 , e k given 1-reverse k-hop pattern r k, j as follows.f (e 0 , e k | r k, j ) = e 0 +j s=1 r s , e k + k s=j+1 r s + b e k ,</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Recommendation effectiveness of our model under different sizes of pruned action spaces on the Clothing dataset. The results using multi-hop scoring function are also reported.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Recommendation effectiveness of our model under different sizes of pruned action spaces on the Beauty dataset. The results using multi-hop scoring function are also reported.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: All 3-hop path patterns found in the results.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Real cases of recommendation reasoning paths.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head></head><label></label><figDesc>−−−−−− → item pur chase ← −−−−−−−− − user pur chase − −−−−−−−− → item is one kind of collaborative filtering.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head></head><label></label><figDesc>KG Environment: 𝑠𝑠 𝑡𝑡+1 , 𝑅𝑅 𝑡𝑡 ∼ 𝑃𝑃(𝑠𝑠 𝑡𝑡 , 𝑎𝑎 𝑡𝑡 )</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">Policy/Value Network</cell><cell cols="4">Policy-Guided Path Reasoning</cell></row><row><cell>u start</cell><cell cols="2">t=1</cell><cell>i</cell><cell></cell><cell>f</cell><cell>u t=2</cell><cell></cell><cell></cell><cell>i</cell><cell>i</cell><cell>𝐺𝐺 𝑅𝑅</cell><cell>Input State 𝑠𝑠 𝑡𝑡 Pruned action space Ã𝐴𝑡𝑡 (𝑢𝑢)</cell><cell>FC 𝐬𝐬 𝑡𝑡</cell><cell>� 𝐀𝐀 𝑢𝑢,𝑡𝑡</cell><cell cols="3">𝜋𝜋(𝑎𝑎 𝑡𝑡 |𝐬𝐬 𝑡𝑡 , � 𝐀𝐀 𝑢𝑢,𝑡𝑡 ) 𝐺𝐺 𝑅𝑅</cell><cell>Path Reasoning Predict</cell></row><row><cell>i</cell><cell></cell><cell>f</cell><cell></cell><cell></cell><cell>i</cell><cell>b</cell><cell cols="2">t=3</cell><cell></cell><cell>f</cell><cell></cell><cell>Action 𝑎𝑎 𝑡𝑡 Interact</cell><cell>FC</cell><cell>Predict</cell><cell></cell><cell>f</cell><cell></cell><cell>i</cell></row><row><cell></cell><cell>c</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>i</cell><cell cols="2">?</cell><cell></cell><cell></cell><cell>Reward 𝑅𝑅 𝑡𝑡</cell><cell>FC</cell><cell>FC</cell><cell>u</cell><cell>i</cell><cell>i</cell><cell>u b</cell><cell>i</cell><cell>i</cell></row><row><cell cols="2">〈 Score function 𝑓𝑓 𝑢𝑢, 𝑖𝑖 =</cell><cell cols="2">𝑢𝑢</cell><cell>+</cell><cell cols="2">+ 𝑟𝑟 1 ⃗ ⃗ 𝑟𝑟 2</cell><cell>,</cell><cell>⃗ 𝑟𝑟 3</cell><cell>+</cell><cell>⃗ 𝚤𝚤</cell><cell>〉</cell><cell>Feedback</cell><cell>� 𝑣𝑣(𝐬𝐬 𝑡𝑡 )</cell><cell>𝜋𝜋(𝑎𝑎 𝑡𝑡 |𝐬𝐬 𝑡𝑡 , � 𝐀𝐀 𝑢𝑢,𝑡𝑡 )</cell><cell>i</cell><cell></cell><cell>i</cell><cell>i</cell><cell>c</cell><cell>i</cell><cell>i</cell></row><row><cell cols="19">Figure 2: Pipeline of our Policy-Guided Path Reasoning method for recommendation. The algorithm aims to learn a policy</cell></row><row><cell cols="19">that navigates from a user to potential items of interest by interacting with the knowledge graph environment. The trained</cell></row><row><cell cols="15">policy is then adopted for the path reasoning phase to make recommendations to the user.</cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="13">the corresponding items have been chosen. Wang et al. [28] pro-</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="13">posed an RNN based model to reason over KGs for recommendation.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="13">However, it requires enumerating all the possible paths between</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="13">each user-item pair for model training and prediction, which can</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="13">be impractical for large-scale knowledge graphs.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>In general, a knowledge graph G with entity set E and relation set R is defined as G = {(e, r , e ′ ) | e, e ′ ∈ E, r ∈ R}, where each triplet (e, r , e ′ ) represents a fact of the relation r from head entity e to tail entity e ′ . In this paper, we consider a special type of knowledge graph for explainable recommendation, denoted by G R . It contains a subset of a User entities U and a subset of Item entities I, where U, I ⊆ E and U ∩I = . These two kinds of entities are connected through relations r ui . We give a relaxed definition of k-hop paths over the graph G R as follows.</figDesc><table><row><cell>Definition 3.1. (k-hop path) A k-hop path from entity e 0 to entity</cell></row><row><cell>e k is defined as a sequence of k + 1 entities connected by k relations,</cell></row><row><cell>denoted by p k</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head></head><label></label><figDesc>r 1 , . . . , r t −1 , e t −1 };Set s t −1 ← (u, e t −1 , h t −1 );Get user-conditional pruned action space Ãt−1 (u) from environment given state s t −1 ;</figDesc><table><row><cell>7</cell><cell></cell></row><row><cell>15</cell><cell>end</cell></row><row><cell>16</cell><cell>end</cell></row><row><cell cols="2">17 end</cell></row></table><note>6 8 £ p(a) π (a | s t −1 , Ãu,t−1 ) and a (r t , e t ); 9 Actions A t ← a | rank(p(a)) ≤ K t , ∀a ∈ Ãt−1 (u) ; 10 forall a ∈ A t do 11 Get s t , R t +1 from environment given action a; 12 Save new path p ∪ {r t , e t } to P t ; 13 Save new probability p(a) q to Q t ; 14 Save new reward R t +1 + r to R t ; 18 Save ∀ p ∈ P T if the path p ends with an item; 19 return filtered P T , Q T , R T ;</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 1 :</head><label>1</label><figDesc>Descriptions and statistics of four Amazon e-commerce datasets: CDs &amp; Vinyl, Clothing, Cell Phones and Beauty.</figDesc><table><row><cell>CDs &amp; Vinyl</cell><cell>Clothing</cell><cell>Cell Phones</cell><cell>Beauty</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head></head><label></label><figDesc>7.545 * 16.774 * 2.085 * 1.735 * 2.989 * 4.634 * 0.442 * 4.364 * 7.510 * 10.940 * 1.096 * 4.396 * 6.949 * 12.776 * 1.546 * PGPR (Ours) 5.590 7.569 16.886 2.157 2.858 4.834 7.020 0.728 5.042 8.416 11.904 1.274 5.449 8.324 14.401 1.707</figDesc><table><row><cell>Dataset</cell><cell>CDs &amp; Vinyl</cell><cell></cell><cell>Clothing</cell><cell></cell><cell>Cell Phones</cell><cell></cell><cell>Beauty</cell></row><row><cell cols="2">Measures (%) NDCG Recall HR</cell><cell>Prec.</cell><cell>NDCG Recall HR</cell><cell>Prec.</cell><cell>NDCG Recall HR</cell><cell>Prec.</cell><cell>NDCG Recall HR</cell><cell>Prec.</cell></row><row><cell>BPR</cell><cell cols="2">2.009 2.679 8.554 1.085</cell><cell cols="2">0.601 1.046 1.767 0.185</cell><cell cols="2">1.998 3.258 5.273 0.595</cell><cell cols="2">2.753 4.241 8.241 1.143</cell></row><row><cell>BPR-HFT</cell><cell cols="2">2.661 3.570 9.926 1.268</cell><cell cols="2">1.067 1.819 2.872 0.297</cell><cell cols="2">3.151 5.307 8.125 0.860</cell><cell cols="2">2.934 4.459 8.268 1.132</cell></row><row><cell>VBPR</cell><cell cols="2">0.631 0.845 2.930 0.328</cell><cell cols="2">0.560 0.968 1.557 0.166</cell><cell cols="2">1.797 3.489 5.002 0.507</cell><cell cols="2">1.901 2.786 5.961 0.902</cell></row><row><cell>TransRec</cell><cell cols="2">3.372 5.283 11.956 1.837</cell><cell cols="2">1.245 2.078 3.116 0.312</cell><cell cols="2">3.361 6.279 8.725 0.962</cell><cell cols="2">3.218 4.853 0.867 1.285</cell></row><row><cell>DeepCoNN</cell><cell cols="2">4.218 6.001 13.857 1.681</cell><cell cols="2">1.310 2.332 3.286 0.229</cell><cell cols="2">3.636 6.353 9.913 0.999</cell><cell cols="2">3.359 5.429 9.807 1.200</cell></row><row><cell>CKE</cell><cell cols="2">4.620 6.483 14.541 1.779</cell><cell cols="2">1.502 2.509 4.275 0.388</cell><cell cols="2">3.995 7.005 10.809 1.070</cell><cell cols="2">3.717 5.938 11.043 1.371</cell></row><row><cell cols="2">JRL 5.378  Table</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table><note>*  </note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head></head><label></label><figDesc>.53% on Cell Phone, and 23.95% on Beauty. Similar trends</figDesc><table><row><cell>Dataset</cell><cell># Valid Paths/User</cell><cell># Items/User</cell><cell># Paths/Item</cell></row><row><cell>CDs &amp; Vinyl</cell><cell>173.38 ± 29.63</cell><cell>120.53 ± 25.04</cell><cell>1.44 ± 1.12</cell></row><row><cell>Clothing</cell><cell>60.78 ± 7.00</cell><cell>37.21 ± 7.23</cell><cell>1.63 ± 1.25</cell></row><row><cell>Cell Phone</cell><cell>117.22 ± 13.12</cell><cell>57.99 ± 14.29</cell><cell>2.02 ± 2.34</cell></row><row><cell>Beauty</cell><cell>59.95 ± 6.28</cell><cell>36.91 ± 7.24</cell><cell>1.62 ± 1.25</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 3 :</head><label>3</label><figDesc>Results of number of valid paths per user, number of unique items per user and number of paths per item.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>Table 4 :</head><label>4</label><figDesc>Influence of sampling sizes at each level on the recommendation quality. The best results are highlighted in bold and the results under the default setting are underlined. All numbers in the table are given in percentage (%).</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_11"><head></head><label></label><figDesc>.117 4.492 0.462 3.236 4.407 8.026 0.888 1-step 2.858 4.834 7.020 0.728 5.449 8.324 14.401 1.707 2-step 2.786 4.702 6.865 0.710 5.342 8.181 14.168 1.669</figDesc><table><row><cell>Dataset</cell><cell>Clothing</cell><cell>Beauty</cell></row><row><cell cols="2">History NDCG Recall HR</cell><cell>Prec. NDCG Recall HR</cell><cell>Prec.</cell></row><row><cell>0-step</cell><cell>1.972 3</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_12"><head>Table 5 :</head><label>5</label><figDesc>Results for different history representations of state. All numbers in the table are given in percentage (%).</figDesc><table /></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">CONCLUSIONS AND FUTURE WORK</head><p>We believe that future intelligent agents should have the ability to perform explicit reasoning over knowledge for decision making. In this paper, we propose RL-based reasoning over knowledge graphs for recommendation with interpretation. To achieve this, we develop a method called Policy-Guided Path Reasoning (PGPR). Based on our proposed soft reward strategy, user-conditional action pruning strategy, and a multi-hop scoring approach, our RL-based PGPR algorithm is not only capable of reaching outstanding recommendation results, but also exposes its reasoning procedure for explainability. We conduct extensive experiments to verify the performance of our approach compared with several state-of-art baselines. It should be noted that our PGPR approach is a flexible graph reasoning framework and can be extended to many other graph-based tasks such as product search and social recommendation, which will be explored in the future. We can also extend our PGPR approach to model time-evolving graphs so as to provide dynamic decision support.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Learning Heterogeneous Knowledge Base Embeddings for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Qingyao</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vahid</forename><surname>Azizi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Algorithms</title>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Translating embeddings for modeling multi-relational data</title>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Bordes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicolas</forename><surname>Usunier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alberto</forename><surname>Garcia-Duran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oksana</forename><surname>Yakhnenko</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="2787" to="2795" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Go for a Walk and Arrive at the Answer: Reasoning Over Paths in Knowledge Bases with Reinforcement Learning</title>
+		<author>
+			<persName><forename type="first">Rajarshi</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shehzaad</forename><surname>Dhuliawala</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Manzil</forename><surname>Zaheer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luke</forename><surname>Vilnis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ishan</forename><surname>Durugkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Akshay</forename><surname>Krishnamurthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>Mccallum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS-17 Workshop on Automatic Knowledge-Base Construction</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Recommendation with multi-source heterogeneous information</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuan</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weixue</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence</title>
+				<meeting>the Twenty-Seventh International Joint Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">node2vec: Scalable feature learning for networks</title>
+		<author>
+			<persName><forename type="first">Aditya</forename><surname>Grover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining</title>
+				<meeting>the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="855" to="864" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Translation-based recommendation</title>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM Conference on Recommender Systems</title>
+				<meeting>the Eleventh ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="161" to="169" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">proceedings of the 25th international conference on World Wide Web</title>
+				<meeting>the 25th international conference on World Wide Web</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="507" to="517" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">VBPR: Visual Bayesian Personalized Ranking from Implicit Feedback</title>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neural Collaborative Filtering. In WWW</title>
+		<imprint>
+			<biblScope unit="page" from="173" to="182" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Improving sequential recommendation with knowledge-enhanced memory networks</title>
+		<author>
+			<persName><forename type="first">Jin</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongjian</forename><surname>Dou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edward Y</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 41st International ACM SIGIR Conference on Research &amp; Development in Information Retrieval</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="505" to="514" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">GroupLens: applying collaborative filtering to Usenet news</title>
+		<author>
+			<persName><surname>Joseph A Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Bradley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jonathan</forename><forename type="middle">L</forename><surname>Maltz</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Lee R Gordon</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Commun. ACM</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="77" to="87" />
+			<date type="published" when="1997">1997. 1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Algorithms for non-negative matrix factorization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Daniel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sebastian Seung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="556" to="562" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Multi-Hop Knowledge Graph Reasoning with Reward Shaping</title>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Xi Victoria Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Caiming</forename><surname>Socher</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>the 2018 Conference on Empirical Methods in Natural Language Processing<address><addrLine>Brussels, Belgium</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018-10-31">2018. 2018. October 31-November 4, 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Amazon.com recommendations: Item-to-item collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Linden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brent</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeremy</forename><surname>York</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Internet computing</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="76" to="80" />
+			<date type="published" when="2003">2003. 2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM conference on Recommender systems</title>
+				<meeting>the 7th ACM conference on Recommender systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Distributed representations of words and phrases and their compositionality</title>
+		<author>
+			<persName><forename type="first">Tomas</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilya</forename><surname>Sutskever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><forename type="middle">S</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeff</forename><surname>Dean</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="3111" to="3119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Probabilistic matrix factorization</title>
+		<author>
+			<persName><forename type="first">Andriy</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ruslan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Salakhutdinov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="1257" to="1264" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">A Three-Way Model for Collective Learning on Multi-Relational Data</title>
+		<author>
+			<persName><forename type="first">Maximilian</forename><surname>Nickel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hans-Peter</forename><surname>Volker Tresp</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kriegel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="809" to="816" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">BPR: Bayesian personalized ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeno</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lars</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th conference on uncertainty in artificial intelligence</title>
+				<meeting>the 25th conference on uncertainty in artificial intelligence</meeting>
+		<imprint>
+			<publisher>AUAI Press</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">GroupLens: an open architecture for collaborative filtering of netnews</title>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Resnick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neophytos</forename><surname>Iacovou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mitesh</forename><surname>Suchak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Bergstrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 1994 ACM conference on Computer supported cooperative work</title>
+				<meeting>the 1994 ACM conference on Computer supported cooperative work</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1994">1994</date>
+			<biblScope unit="page" from="175" to="186" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">Badrul</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th international conference on World Wide Web</title>
+				<meeting>the 10th international conference on World Wide Web</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="285" to="295" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Mastering the game of Go with deep neural networks and tree search</title>
+		<author>
+			<persName><forename type="first">David</forename><surname>Silver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aja</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><forename type="middle">J</forename><surname>Maddison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arthur</forename><surname>Guez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laurent</forename><surname>Sifre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Van Den</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Driessche</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ioannis</forename><surname>Schrittwieser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Veda</forename><surname>Antonoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marc</forename><surname>Panneershelvam</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lanctot</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">nature</title>
+		<imprint>
+			<biblScope unit="volume">529</biblScope>
+			<biblScope unit="page">484</biblScope>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Reinforcement learning: An introduction</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Richard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">G</forename><surname>Sutton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Barto</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>MIT press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Personalized Ad Recommendation Systems for Life-Time Value Optimization with Guarantees</title>
+		<author>
+			<persName><forename type="first">Georgios</forename><surname>Theocharous</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Philip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ghavamzadeh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1806" to="1812" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Ripplenet: Propagating user preferences on the knowledge graph for recommender systems</title>
+		<author>
+			<persName><forename type="first">Hongwei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jialin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minyi</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM. ACM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="417" to="426" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A Reinforcement Learning Framework for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiru</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhengtao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2018 IEEE International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="587" to="596" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title level="m" type="main">Explainable Reasoning over Knowledge Graphs for Recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dingxian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Canran</forename><surname>Xu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<publisher>AAAI</publisher>
+		</imprint>
+	</monogr>
+	<note>Xiangnan He, Yixin Cao, and Tat-Seng Chua</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Deeppath: A reinforcement learning method for knowledge graph reasoning</title>
+		<author>
+			<persName><forename type="first">Wenhan</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thien</forename><surname>Hoang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">William</forename><forename type="middle">Yang</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+			<biblScope unit="page" from="564" to="573" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Collaborative Knowledge Base Embedding for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><forename type="middle">Jing</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Defu</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Ying</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Collaborative Multi-Level Embedding Learning from Reviews for Rating Prediction</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quan</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianyong</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Joint representation learning for top-n recommendation with heterogeneous information sources</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingyao</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W Bruce</forename><surname>Croft</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2017 ACM on Conference on Information</title>
+				<meeting>the 2017 ACM on Conference on Information</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1449" to="1458" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1804.11192</idno>
+		<title level="m">Explainable Recommendation: A Survey and New Perspectives</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Explicit Factor Models for Explainable Recommendation based on Phrase-level Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">SIGIR</title>
+		<imprint>
+			<biblScope unit="page" from="83" to="92" />
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">DRN: A Deep Reinforcement Learning Framework for News Recommendation</title>
+		<author>
+			<persName><forename type="first">Guanjie</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihan</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Xiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><forename type="middle">Jing</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenhui</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 World Wide Web Conference on World Wide Web. International World Wide Web Conferences Steering Committee</title>
+				<meeting>the 2018 World Wide Web Conference on World Wide Web. International World Wide Web Conferences Steering Committee</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="167" to="176" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Joint deep modeling of users and items using reviews for recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vahid</forename><surname>Noroozi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philip</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

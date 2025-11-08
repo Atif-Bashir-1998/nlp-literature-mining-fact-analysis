@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Recommendation via Interpretable Feature Mapping and Evaluation of Explainability *</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Deng</forename><surname>Pan</surname></persName>
+							<email>pan.deng@wayne.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Wayne State University</orgName>
+								<address>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xiangrui</forename><surname>Li</surname></persName>
+							<email>xiangruili@wayne.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Wayne State University</orgName>
+								<address>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xin</forename><surname>Li</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Wayne State University</orgName>
+								<address>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Dongxiao</forename><surname>Zhu</surname></persName>
+							<email>dzhu@wayne.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Computer Science</orgName>
+								<orgName type="institution">Wayne State University</orgName>
+								<address>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explainable Recommendation via Interpretable Feature Mapping and Evaluation of Explainability *</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">36AB1216B3571D784E3FCCFEB5FF4325</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:01+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Latent factor collaborative filtering (CF) has been a widely used technique for recommender system by learning the semantic representations of users and items. Recently, explainable recommendation has attracted much attention from research community. However, trade-off exists between explainability and performance of the recommendation where metadata is often needed to alleviate the dilemma. We present a novel feature mapping approach that maps the uninterpretable general features onto the interpretable aspect features, achieving both satisfactory accuracy and explainability in the recommendations by simultaneous minimization of rating prediction loss and interpretation loss. To evaluate the explainability, we propose two new evaluation metrics specifically designed for aspect-level explanation using surrogate ground truth. Experimental results demonstrate a strong performance in both recommendation and explaining explanation, eliminating the need for metadata. Code is available from https://github.com/pd90506/AMCF.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Since the inception of the Netflix Prize competition, latent factor collaborative filtering (CF) has been continuously adopted by various recommendation tasks due to its strong performance over other methods <ref type="bibr">[Koren et al., 2009]</ref>, which essentially employs a latent factor model such as matrix factorization and/or neural networks to learn user or item feature representations for rendering recommendations. Despite much success, latent factor CF approaches often suffer from the lack of interpretability [Zhang and <ref type="bibr" target="#b2">Chen, 2018]</ref>. In a contemporary recommender system, explaining why a user likes an item can be as important as the accuracy of the rating prediction itself <ref type="bibr" target="#b1">[Zhang and Chen, 2018]</ref>.</p><p>Explainable recommendation can improve transparency, persuasiveness and trustworthiness of the system <ref type="bibr">[Zhang et al., 2019]</ref>. To make intuitive explanation for recommendations, recent efforts have been focused on using metadata such as user defined tags and topics from user review texts or item descriptions <ref type="bibr" target="#b3">[Lu et al., 2018;</ref><ref type="bibr">Chen et al., 2018]</ref> to illuminate users preferences. Other works such as <ref type="bibr" target="#b2">[Hou et al., 2019;</ref><ref type="bibr" target="#b2">He et al., 2015;</ref><ref type="bibr" target="#b3">Zhang et al., 2014]</ref> use aspects to explain recommendations. Although these approaches can explain recommendation using external metadata, the interpretability of the models themselves and the interpretable features enabling the explainable recommendations have still not been systematically studied and thus, are poorly understood. It is also worth mentioning that the challenges in explainable recommendation not only lie in the modeling itself, but also in the lack of a gold standard for evaluation of explainability.</p><p>Here we propose a novel feature mapping strategy that not only enjoys the advantages of strong performance in latent factor models but also is capable of providing explainability via interpretable features. The main idea is that by mapping the general features learned using a base latent factor model onto interpretable aspect features, one could explain the outputs using the aspect features without compromising the recommendation performance of the base latent factor model. We also propose two new metrics for evaluating the quality of explanations in terms of a user's general preference over all items and the aspect preference to a specific item. Simply put, we formulate the problem as: 1) how to find the interpretable aspect basis; 2) how to perform interpretable feature mapping; and 3) how to evaluate explanations.</p><p>We summarize our main contributions as follows: 1) We propose a novel feature mapping approach to map the general uninterpretable features to interpretable aspect features, enabling explainability of the traditional latent factor models without metadata; 2) Borrowing strength across aspects, our approach is capable of alleviating the trade-off between recommendation performance and explainability; and 3) We propose new schemes for evaluating the quality of explanations in terms of both general user preference and specific user preference.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Work</head><p>There are varieties of strategies for rendering explainable recommendations. We first review methods that give explanations in light of aspects, which are closely related to our arXiv:2007.06133v1 [cs.LG] 12 Jul 2020 work. We then discuss other recent explainable recommendation works using metadata and knowledge in lieu of aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Aspect Based Explainable Recommendation</head><p>Aspects can be viewed as explicit features of an item that could provide useful information in recommender systems. An array of approaches have been developed to render explainable recommendations at the aspect level using metadata such as user reviews. These approaches mostly fall into three categories: 1) Graph-based approaches: they incorporate aspects as additional nodes in the user-item bipartite graph. For example, <ref type="bibr">TriRank [He et al., 2015]</ref> extract aspects from user reviews and form a user-item-aspect tripartite graph with smoothness constraints, achieving a review-aware top-N recommendation. <ref type="bibr">ReEL [Baral et al., 2018]</ref> calculate useraspect bipartite from location-aspect bipartite graphs, which infer user preferences. 2) Approaches with aspects as regularizations or priors: they use the extracted aspects as additional regularizations for the factorization models. For example, AMF <ref type="bibr" target="#b2">[Hou et al., 2019]</ref> construct an additional useraspect matrix and an item-aspect matrix from review texts, as regularizations for the original matrix factorization models. JMARS <ref type="bibr" target="#b2">[Diao et al., 2014]</ref> generalize probabilistic matrix factorization by incorporating user-aspect and movie-aspect priors, enhancing recommendation quality by jointly modeling aspects, ratings and sentiments from review texts. 3) Approaches with aspects as explicit factors: other than regularizing the factorization models, aspects can also be used as factors themselves. <ref type="bibr" target="#b3">[Zhang et al., 2014]</ref> propose an explicit factor model (EMF) that factorizes a rating matrix in terms of both predefined explicit features (i.e. aspects) as well as implicit features, rendering aspect-based explanations. Similarly, <ref type="bibr">[Chen et al., 2016]</ref> extend EMF by applying tensor factorization on a more complex user-item-feature tensor.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Beyond Aspect Explanation</head><p>There are also other approaches that don't utilize aspects to explain recommendations. For example, <ref type="bibr" target="#b3">[Lee and Jung, 2018]</ref> give explanations in light of the movie similarities defined using movie characters and their interactions; <ref type="bibr">[Wang et al., 2019]</ref> propose explainable recommendations by exploiting knowledge graphs where paths are used to infer the underlying rationale of user-item interactions. With the increasingly available textual data from users and merchants, more approaches have been developed for explainable recommendation using metadata. For example, <ref type="bibr" target="#b1">[Chen et al., 2019b;</ref><ref type="bibr" target="#b2">Costa et al., 2018;</ref><ref type="bibr" target="#b3">Lu et al., 2018]</ref> attempt to generate textual explanations directly whereas <ref type="bibr">[Wu et al., 2019;</ref><ref type="bibr" target="#b1">Chen et al., 2019a]</ref> give explanations by highlighting the most important words/phrases in the original reviews.</p><p>Overall, most of the approaches discussed in this section rely on metadata and/or external knowledge to give explanations without interpreting the model itself. In contrast, our Attentive Multitask Collaborative Filtering (AMCF) approach maps uninterpretable general features to interpretable aspect features using an existing aspect definition, as such it not only gives explanations for users, but also learns interpretable features for the modelers. Moreover, it is possible to adopt any latent factor models as the base model to derive the general features for the proposed feature mapping approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">The Proposed AMCF Model</head><p>In this section, we first introduce the problem formulation and the underlying assumptions. We then present our AMCF approach for explainable recommendations. AMCF incorporates aspect information and maps the latent features of items to the aspect feature space using an attention mechanism. With this mapping, we can explain recommendations of AMCF from the aspect perspective. An Aspect s <ref type="bibr">[Bauman et al., 2017]</ref> is an attribute that characterizes an item. Assuming there are totally m aspects in consideration, if an item has aspects s i1 , ..., s i k simultaneously, an item can then be described by I i = {s i1 , s i2 , ..., s i k }, k ≤ m. We say that an item i has aspect s j , if s j ∈ I i .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Problem Formulation</head><p>Inputs: The inputs consist of 3 parts: the set of users U , the set of items V , and the set of corresponding multi-hot aspect vectors for items, denoted by S. Outputs: Given the user-item-aspect triplet, e.g. user i, item j, and aspect multi-hot vector s j for item j, our model not only predicts the review rating, but also the user general preference over all items and the user specific preference on item j in terms of aspects, i.e., which aspects of the item j that the user i is mostly interested in.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Rationale</head><p>The trade-off between model interpretability and performance states that we can either achieve high interpretability with simpler models or high performance with more complex models that are generally harder to interpret [Zhang and <ref type="bibr" target="#b2">Chen, 2018]</ref>. Recent works [Zhang and <ref type="bibr" target="#b2">Chen, 2018;</ref><ref type="bibr" target="#b2">He et al., 2015;</ref><ref type="bibr" target="#b3">Zhang et al., 2014]</ref> have shown that with adequate metadata and knowledge, it is possible to achieve both explainability and high accuracy in the same model. However, those approaches mainly focus on explanation of the recommendation, rather than exploiting the interpretability of the models and features, and hence are still not interpretable from modeling perspective. Explainability and interpretability refer to "why" and "how" a recommendation is made, respectively. Many above-referenced works only answer the "why" question via constraints from external knowledge without addressing "how". Whereas our proposed AMCF model answers both "why" and "how" questions, i.e., our recommendations are made based on the attention weights (why) and the weights are learned by interpretable feature decomposition (how). To achieve this, we assume that an interpretable aspect feature representation can be mathematically derived from the corresponding general feature representation. More formally: Assumption 1. Assume there are two representations for the same prediction task: u in complex feature space U (i.e. general embedding space including item embedding and aspect embedding), and v in simpler feature space V (i.e. space spanned by aspect embeddings), and V ⊂ U. We say that v is the projection of u from space U to space V, and there exists a mapping M (•, θ), such that v = M (u, θ), with θ as a hyper-parameter.</p><p>This assumption is based on the widely accepted notion that a simple local approximation can give good interpretation of a complex model in that particular neighborhood <ref type="bibr" target="#b3">[Ribeiro et al., 2016]</ref>. Instead of selecting surrogate interpretable simple models (such as linear models), we map the general complex features to the simpler interpretable aspect features, then render recommendation based on those general complex features. We give explanations using interpretable aspect features, achieving the best of both worlds in keeping the high performance of the complex model as well as gaining the interpretability of the simpler model. In this work, the interpretable simple features are obtained based on aspects, hence we call the corresponding feature space as aspect space. To map the complex general features onto the interpretable aspect space, we define the aspect projection.</p><p>Definition 1. (Aspect Projection) Given Assumption 1, we say v is an aspect projection of u from general feature space U to aspect feature space V (Figure <ref type="figure" target="#fig_0">1</ref>).</p><p>To achieve good interpretability and performance in the same model, from Definition 1 and Assumption 1, we need to find the mapping M (•, θ). Here we first use a latent factor model as the base model for explicit rating prediction, which learns general features, as shown in Figure <ref type="figure" target="#fig_1">2</ref> (left, L pred ), where we call the item embedding u as the general complex feature learned by the base model. Then the remaining problem is to derive the mapping from the non-interpretable general features to the interpretable aspect features.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Aspect Embedding</head><p>To design a simple interpretable model, its features should be well aligned to our interest, e.g. the aspects is a reasonable choice. Taking movie genre as an example: if we use 4 genres (Romance, Comedy, Thriller, Fantasy) as 4 aspects, the movie Titanic's aspect should be represented by (1, 0, 0, 0) because it's romance genre, and the movie Cinderella's aspect is (1, 0, 0, 1) because it's genre falls into both romance and fantasy.</p><p>From Assumption 1 and Definition 1, to make the feature mapping from a general feature u to an aspect feature v, we need to first define the aspect space V. Assuming there are m aspects in consideration, we represent the m aspects by m latent vectors in general space U, and use these m aspect vectors as the basis that spans the aspect space V ⊂ U. These aspects' latent vectors can be learned by neural embedding or other feature learning methods, with each aspect corresponding to an individual latent feature vector. Our model uses embedding approach to extract m aspect latent vectors of ndimension, where n is the dimension of space U. In Figure <ref type="figure" target="#fig_1">2</ref>, the vertical columns in red (ψ 1 , ..., ψ m ) represent m aspect embeddings in the general space U, which is obtained by embedding the aspect multi-hot vectors from input.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Aspect Projection of Item Embedding</head><p>In Assumption 1, u is the general feature representation (i.e. the item embedding) in space U, and v is the interpretable  aspect feature representation in space V. The orthogonal projection from the general space U to the aspect space V is denoted by M , i.e. v = M (u).</p><p>From the perspective of learning disentangled representations, the item embedding u can be disentangled as u = v+b (Figure <ref type="figure" target="#fig_0">1</ref>), where v encodes the aspect information of an item and b is the item-unique information. For example, movies from the same genre share similar artistic style (v) yet each movie has its own unique characteristics (b). With this disentanglement of item embeddings, we can explain recommendation via capturing user's preference in terms of aspects.</p><p>Let's assume that we have m linearly independent and normalized aspect vectors (ψ 1 , ..., ψ m ) in space U, which span subspace V. For any vector v = M (u) in space V, there exists an unique decomposition such that v = m i=1 v i ψ i . The coefficients can be directly calculated by v i = v •ψ i = u•ψ i , (i = 1, ..., m, ψ i is normalized). Note that the second equality comes from the fact that v is the orthogonal projection of u on space V.</p><p>Generally speaking, however, (ψ 1 , ..., ψ m ) are not orthogonal. In this case, as long as they are linearly independent, we can perform Gram-Schmidt orthogonalization process to obtain the corresponding orthogonal basis. The procedure can be simply described as follows: ψ1 = ψ 1 ; and ψi = ψ i − i−1 j=1 ψ i , ψj ψj , where ψ i , ψj denotes inner product. We can then calculate the unique decomposition as in the orthogonal cases. Assume the resulting decomposition is v = m i=1 ṽi ψi , the coefficients corresponding to the original basis (ψ 1 , ..., ψ m ) can then be calculated by: v i = ṽi − m j=i+1 ψ i , ψj ; and v m = ṽm . Hence, after the aspect feature projection and decomposition, regardless of orthogonal or not, we have the following unique decomposition in space</p><formula xml:id="formula_0">V: v = m i=1 v i ψ i .</formula><p>Aspect Projection via Attention: As described above, any interpretable aspect feature v can be uniquely decomposed as v = m i=1 v i ψ i , which is similar to the form of attention mechanism. Therefore, instead of using Gram-Schmidt orthogonalization process, we utilize attention mechanism to reconstruct v directly. Assume we can obtain an attention vector a = (a 1 , ..., a m ), which can be used to calculate v = m i=1 a i ψ i , with the fact that the decomposition is unique, our goal is then to minimize the distance ||v − v|| 2 to ensure that a i ≈ v i .</p><p>However, as the interpretable aspect feature v is not available, we cannot minimize ||v − v|| 2 directly. Fortunately, the general feature u is available (obtained from a base latent factor model), with the fact that v is the projection of u, i.e. v = M (u), we have the following lemma: Lemma 1. Provided that v is the projection of u from space U to space V, where V ⊂ U, we have Note that b is perpendicular to v and v, the hand side can then be written as</p><formula xml:id="formula_1">arg min a ||v − v − b|| 2 = arg min a (||v − v|| 2 2 + ||b|| 2 2 ),</formula><p>as b is not parameterized by a, we then get arg min a ||v − v|| 2 = arg min a ||v − u|| 2 .</p><p>From the above proof, we know that attention mechanism is sufficient to reconstruct v ≈ v = m i=1 a i ψ i by minimizing ||v − u|| 2 . Note that from the perspective of disentanglement u = v + b, the information in b, i.e., the item specific characteristics, is not explained in our model. Intuitively, the item specific characteristics are learned from the metadata associated with the item.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">The Loss Function</head><p>The loss function for finding the feature mapping M (•) to achieve both interpretability and performance of the recommender model has 2 components:</p><p>• L pred prediction loss in rating predictions, corresponding to the loss function for the base latent factor model. • L int interpretation loss to the general feature u. This loss is to quantify ||v − u|| 2 .</p><p>We calculate the rating prediction loss component using RMSE:</p><formula xml:id="formula_2">L pred = 1 N (i,j)∈Observed (r ij − rij ) 2</formula><p>, where rij represents the predicted item ratings. We then calculate the interpretation loss component as the average distance between u and v: L int = 1 N (i,j)∈Observed ||v − u|| 2 . The loss component L int encourages the interpretable feature ṽ obtained from the attentive neural network to be a good approximation of the aspect feature representation v (Lemma 1). Hence the overall loss function is L = L pred + λL int , where λ is a tuning parameter to leverage importance between the two loss components. Gradient Shielding Trick: To ensure that interpretation doesn't compromise the prediction accuracy, we allow forward propagation to both L int and L pred but refrain the backpropagation from L int to the item embedding u. In other words, when learning the model parameters based on backpropagation gradients, the item embedding u is updated only via the gradients from L pred .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.6">User Preference Prediction</head><p>Thus far we attempt to optimize the ability to predict user preference via aspect feature mapping. We call the user overall preference as general preference, and the user preference on a specific item as specific preference. General preference: Figure <ref type="figure" target="#fig_3">3</ref> illustrates how to make prediction on user general preference. Here we define a virtual item vk , which is a linear combination of aspect embeddings. For general preference, we let vk = ψ k to simulate a pure aspect k movie, the resulting debiased (discarded all bias terms) rating prediction pk indicates the user's preference on such specific aspect (e.g., positive for 'like', negative for 'dislike'). Formally: pk = f (q, vk ), where q is the user embedding, vk = ψ k is the aspect k's embedding, and f (•) is the corresponding base latent factor model without bias terms. Specific preference: Figure 3 also shows our model's ability to predict user preference on a specific item, as long as we can find how to represent them in terms of aspect embeddings. Fortunately, the attention mechanism is able to help us find the constitution of any item in terms of aspect embeddings using the attention weights. That is, for any item, it is possible to rewrite the latent representation u as a linear combination of aspect embeddings: u = v + b = k a k ψ k + b, where a k and ψ k are the k-th attention weight and the k-th aspect feature, respectively. The term b reflects interpretation loss. For aspect k of an item, we use vk = a k ψ k to represent the embedding of a virtual item which represents the aspect k property of the specific item. Hence, the output pk indicates the specific preference on aspect k of a specific item. Model Interpretability: From specific preference, a learned latent general feature can be decomposed into the linear combination of interpretable aspect features, which would help interpret models in a more explicit and systematic manner. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experiments and Discussion</head><p>We design and perform experiments to demonstrate two advantages of our AMCF approach: 1) comparable rating predictions; 2) good explanations on why a user likes/dislikes an item. To demonstrate the first advantage we compare the rating prediction performance with baseline approaches of rating prediction only methods. The demonstration of the second advantage, however, is not a trivial task since currently no gold standard for evaluating explanation of recommendations except for using real customer feedback <ref type="bibr" target="#b1">[Chen et al., 2019b;</ref><ref type="bibr" target="#b2">Gao et al., 2019]</ref>. Hence it's necessary to develop new schemes to evaluate the quality of explainability for both general and specific user preferences.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Datasets</head><p>MovieLens Datasets This data set <ref type="bibr" target="#b2">[Harper and Konstan, 2016]</ref> offers very complete movie genre information, which provides a perfect foundation for genre (aspect) preference prediction, i.e. determining which genre a user likes most. We consider the 18 movie genres as aspects.</p><p>Yahoo Movies Dataset This data set from Yahoo Lab contains usual user-movie ratings as well as metadata such as movie's title, release date, genre, directors and actors. We use the 29 movie genres as the aspects for movie recommendation and explanation. Summary statistics are shown in Table <ref type="table" target="#tab_0">1</ref>.</p><p>Pre-processing: We use multi-hot encoding to represent genres of each movie or book, where 1 indicates the movie is of that genre, 0 otherwise. However, there are still plenty of movies with missing genre information, in such cases, we simply set them as none of any listed genre, i.e., all zeros in the aspect multi-hot vector: (0, 0, ..., 0).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Results of Prediction Accuracy</head><p>We select several strong baseline models to compare rating prediction accuracy, including non-interpretable models, such as SVD <ref type="bibr">[Koren et al., 2009]</ref>, Neural Collaborative Filtering (NCF) <ref type="bibr" target="#b2">[He et al., 2017]</ref> and Factorization Machine (FM) <ref type="bibr">[Rendle, 2010]</ref>, and an interpretable linear regression model (LR). Here the LR model is implemented by using aspects as inputs and learning separate parameter sets for different individual users. In comparison, our AMCF approaches also include SVD, NCF or FM as the base model to demonstrate that the interpretation module doesn't compromise the prediction accuracy. Note that since regular NCF and FM are designed for implicit ratings (1 and 0), we replace their last sigmoid output layers with fully connected layers in order to output explicit ratings.</p><p>In terms of robustness, we set the dimension of latent factors in the base models to 20, 80, and 120. The regularization tuning parameter λ is set to 0.05, which demonstrated better performance compared to other selections. It is worth noting that the tuning parameters of the base model of our AMCF approach are directly inherited from the corresponding non-interpretable model. We compare our AMCF models with baseline models as shown in Table <ref type="table" target="#tab_2">2</ref>. It is clear that AMCF achieves comparable prediction accuracy to their noninterpretable counterparts, and significantly outperforms the interpretable LR model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Evaluation of Explainability</head><p>Despite the recent efforts have been made to evaluate the quality of explanation by defining explainability precision (EP) and explainability recall (ER) <ref type="bibr" target="#b3">[Peake and Wang, 2018;</ref><ref type="bibr" target="#b0">Abdollahi and Nasraoui, 2016]</ref>, the scarcity of ground truth such as a user's true preference remains a significant obstacle for explainable recommendation. <ref type="bibr" target="#b2">[Gao et al., 2019</ref>] make an initial effort in collecting ground truth by surveying real customers, however, the labor intense, time consuming and sampling bias may prevent its large-scale applications in a variety of contexts. Other text-based approaches <ref type="bibr" target="#b2">[Costa et al., 2018;</ref><ref type="bibr" target="#b3">Lu et al., 2018]</ref> can also use natural language processing (NLP) metrics such as Automated Readability Index (ARI) and Flesch Reading Ease (FRE). As we don't use metadata such as text reviews in our AMCF model, user review based explanation and evaluation could be a potential future extension to our model.</p><p>Here we develop novel quantitative evaluation schemes to assess our model's explanation quality in terms of general preferences and specific preferences, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>General Preference</head><p>Let's denote the ground truth of user general preferences as p i for user i, and the model's predicted preference for user i is pi , we propose measures inspired by Recall@K in recommendation evaluations.</p><p>Top M recall at K (TM@K): Given the M most preferred aspects of a user i from p i , top M recall at K is defined as the ratio of the M aspects located in the top K highest valued aspects in pi . For example, if p i indicates that user i's top 3 preferred aspects are Adventure, Drama, and Thriller, while the predicted pi shows that the top 5 are Adventure, Comedy, Children, Drama, Crime, the top 3 recalls at 5 (T3@5) is then 2/3 whereas top 1 recall at 3 (T1@3) is 1.</p><p>Bottom M recall at K (BM@K): Similarly defined as above, except that it measures the most disliked aspects.</p><p>As the ground truth of user preferences are usually not available, some reasonable approximations are needed. Hence we propose a method to calculate the so-called surrogate ground truth. First we define the weights </p><formula xml:id="formula_3">w ij = (r ij − b u i − b v j − r)/A,</formula><formula xml:id="formula_4">v j = ( 1 |Uj | i∈Uj r ij ) − r.</formula><p>Here V i represents the sets of items rated by user i, and U j represents the sets of users that have rated item j. With the weights we calculate user i's preference on aspect t using the following formula: p t i = j∈Vi w ij s t j , where s t j = 1 if item j has aspect t, 0 otherwise. Hence a user i's overall preference can be represented by an l 1 normalized vector p i = (p   <ref type="bibr">20,</ref><ref type="bibr">80,</ref><ref type="bibr">120]</ref> indicate the dimension of the latent factors for the models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Dataset</head><p>Model T1@3 B1@3 T3@5 B3@5 score s Here AMCF takes SVD with 120 latent factors as the base model.</p><p>As our model can output a user preference vector directly, we evaluate the explainability by calculating the average of TM@K and BM@K. The evaluation results are reported in Table <ref type="table" target="#tab_3">3</ref>. We observe that the explainability of AMCF is significantly better than random interpretation, and is comparable to the strong interpretable baseline LR model with much better prediction accuracy. Thus our AMCF model successfully integrates the strong prediction performance of a latent factor model and the strong interpretability of a LR model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Specific Preference</head><p>Our approach is also capable of predicting a user's preference on a specific item, i.e. pij , showing which aspects of item j are liked/disliked by the user i. Compared to user general preference across all items, the problem of which aspect of an item attracts the user most (specific preference) is more interesting and more challenging. There is no widely accepted strategy to evaluate the quality of single item preference prediction (except for direct customer survey). Here we propose a simple yet effective evaluation scheme to illustrate the quality of our model's explanation on user specific preference. With the overall preference p i of user i given above, and assuming s j is the multi-hot vector represents the aspects of item j, we say the element-wise product p ij = p i s j reflects the user's specific preference on item j. Note that we should not use the TM@K/BM@K scheme as in general preference evaluation, both p ij and predicted pij 's entries are mostly zeros, since each movie is only categorized into a few genres. Hence the quality of specific preference prediction is expressed using a similarity measure. We use s(p ij , pij ) to represent the cosine similarity between p ij and pij , and the score for specific preference prediction is defined by averaging over all user-item pairs in the test set: score s = 1 N ij s(p ij , pij ). We report the results of specific user preferences in the score s column of Table <ref type="table" target="#tab_3">3</ref>. As the LR cannot give specific user preferences directly, we simply apply pij = pi s j where pi represents the general preference predicted by LR.</p><p>An insight: Assume that for a specific user i, our AMCF model can be simply written as rij = f i (u j ) to predict the rating for item j. Note that our AMCF model can decompose the item in terms of aspects. Lets denote these aspects as {ψ 1 , ...ψ m }. Then the prediction can be approximated by rij ≈ f i ( m k=1 a jk ψ k ), where a jk denote the k-th attention weights for item j. In the case of LR, the rating is obtained by rij = g i ( m k=1 b k x k ), where g i is the LR model for user i, b k is the k-th coefficient of it, and x k represents the indicator of aspect k, x k = 1 when the item has aspect k, x k = 0 otherwise. The similarity between AMCF formula and LR formula listed above indicates that the coefficients of LR and the preference output of AMCF share the same intrinsic meaning, i.e., both indicate the importance of aspects.</p><p>An example: For specific explanation, given a user i and an item j, our AMCF model predicts a vector p, representing the user i's specific preference on an item j in terms of all predefined aspects. Specifically, the magnitude of each entry of p (i.e. |p i |) represents the impact of a specific aspect on whether an item liked by a user or not. For example, in Figure <ref type="figure" target="#fig_5">4</ref>, the movie 120 is high-rated by both users 65 and 74, however, with differential explanations: the former user preference is more on the Action genre whereas the latter is more on Sci-Fi and War. On the other hand, the same movie is low-rated by user 67 mainly due to the dislike of Action genre.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Conclusion</head><p>Modelers tend to better appreciate the interpretable recommender systems whereas users are more likely to accept the explainable recommendations. In this paper, we proposed a novel interpretable feature mapping strategy attempting to achieve both goals: systems interpretability and recommendation explainability. Using extensive experiments and tailormade evaluation schemes, our AMCF method demonstrates strong performance in both recommendation and explanation.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: An illustration of interpretable feature mapping. u is an uninterpretable feature in general space U, and v is the interpretable projection of u in the interpretable aspect space V. Here b indicates the difference between u and v.</figDesc><graphic coords="3,317.36,168.08,238.29,112.94" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The training phase: explainable recommendation via interpretable feature mapping.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>arg min a ||v − v|| 2 = arg min a ||v − u|| 2 , where v = m i=1 a i ψ i , a = (a 1 , ..., a m ), and || • || 2 denotes l 2 norm. Proof. Refer to the illustration in Figure 1, and denote the difference between u and v as b, i.e. u = v + b. Hence arg min a ||v − u|| 2 = arg min a ||v − v − b|| 2 .</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: The explanation phase: a virtual item vector vk is calculated to represent a specific aspect.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>where the weight w ij is calculated by nullifying user bias b u i , item bias b v j , and global average r, and A is a constant indicating the maximum rating (e.g. A = 5 for most datasets). Note that user bias b u i and item bias b v j can be easily calculated by b u i = ( 1 |Vi| j∈Vi r ij ) − r, and b</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Examples of explainable recommendations. We l1normalize the preference vector p to make the comparison fair.</figDesc><graphic coords="6,316.19,146.51,240.63,75.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Summary statistics of the data sets.</figDesc><table><row><cell>Dataset</cell><cell cols="4"># of ratings # of items # of users # of genres</cell></row><row><cell>MovieLens 1M</cell><cell>1,000,209</cell><cell>3,706</cell><cell>6,040</cell><cell>18</cell></row><row><cell>MovieLens 100k</cell><cell>100,000</cell><cell>1,682</cell><cell>943</cell><cell>18</cell></row><row><cell>Yahoo Movie</cell><cell>211,333</cell><cell>11,915</cell><cell>7,642</cell><cell>29</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>1 i , ..., p t i , ..., p T i )/||p i || 1 . .018 0.908 0.908 0.907 0.907 0.909 0.907 0.939 0.939 0.936 0.937 0.939 0.934 0.937 0.933 0.929 0.940 0.936 0.931 ML1M 1.032 0.861 0.860 0.853 0.860 0.858 0.851 0.900 0.895 0.892 0.902 0.889 0.889 0.915 0.914 0.913 0.915 0.914 0.915 Yahoo 1.119 1.022 1.021 1.014 1.022 1.022 1.010 1.028 1.027 1.028 1.027 1.026 1.025 1.042 1.042 1.039 1.044 1.042 1.041</figDesc><table><row><cell>Dataset</cell><cell>LR</cell><cell>20</cell><cell>SVD 80</cell><cell>120</cell><cell>AMCF(SVD) 20 80</cell><cell>120</cell><cell>20</cell><cell>NCF 80</cell><cell>120</cell><cell>AMCF(NCF) 20 80</cell><cell>120</cell><cell>20</cell><cell>FM 80</cell><cell>120</cell><cell>AMCF(FM) 20 80</cell><cell>120</cell></row><row><cell>ML100K 1</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Performance comparison of rating prediction using different data sets in terms of RMSE. Texts in the parentheses indicate the base CF models that we choose for AMCF; and the numbers [</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Preferences outputs: TM@K/BM@K represent Top/ Bottom M recall at K, and scores represents the specific preference. The Rand rows show the theoretical random preference outputs.</figDesc><table><row><cell></cell><cell cols="2">AMCF 0.500</cell><cell>0.481</cell><cell>0.538</cell><cell>0.553</cell><cell>0.378</cell></row><row><cell>ML100K</cell><cell>LR</cell><cell>0.628</cell><cell>0.668</cell><cell>0.637</cell><cell>0.675</cell><cell>0.371</cell></row><row><cell></cell><cell>Rand</cell><cell>0.167</cell><cell>0.167</cell><cell>0.278</cell><cell>0.278</cell><cell>0</cell></row><row><cell></cell><cell cols="2">AMCF 0.461</cell><cell>0.403</cell><cell>0.513</cell><cell>0.489</cell><cell>0.353</cell></row><row><cell>ML1M</cell><cell>LR</cell><cell>0.572</cell><cell>0.565</cell><cell>0.598</cell><cell>0.620</cell><cell>0.322</cell></row><row><cell></cell><cell>Rand</cell><cell>0.167</cell><cell>0.167</cell><cell>0.278</cell><cell>0.278</cell><cell>0</cell></row><row><cell></cell><cell cols="2">AMCF 0.413</cell><cell>0.409</cell><cell>0.422</cell><cell>0.440</cell><cell>0.224</cell></row><row><cell>Yahoo</cell><cell>LR</cell><cell>0.630</cell><cell>0.648</cell><cell>0.628</cell><cell>0.565</cell><cell>0.235</cell></row><row><cell></cell><cell>Rand</cell><cell>0.103</cell><cell>0.103</cell><cell>0.172</cell><cell>0.172</cell><cell>0</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Acknowledgement</head><p>This work is supported by the National Science Foundation under grant no. IIS-1724227.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Aspect based recommendations: Recommending items with the most valuable aspects based on user reviews</title>
+		<author>
+			<persName><forename type="first">Nasraoui ; Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><surname>Baral</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th Conference on User Modeling, Adaptation and Personalization</title>
+				<editor>
+			<persName><surname>Bauman</surname></persName>
+		</editor>
+		<meeting>the 26th Conference on User Modeling, Adaptation and Personalization</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016. 2016. 2018. 2018. 2017</date>
+			<biblScope unit="page" from="717" to="725" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of the 23rd ACM SIGKDD</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Learning to rank features for recommendation over multiple categories</title>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016. 2016. 2018. 2018. 2019a. 2019. 2019b. June 2019</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="53" to="60" />
+		</imprint>
+	</monogr>
+	<note>IJCAI</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Jointly modeling aspects, ratings and sentiments for movie recommendation (jmars)</title>
+		<author>
+			<persName><forename type="first">Costa</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM International on Conference on Information and Knowledge Management</title>
+				<editor>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</editor>
+		<meeting>the 24th ACM International on Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<publisher>WWW</publisher>
+			<date type="published" when="2009">2018. 2018. 2014. 2014. 2019. March 2019. 2016. 2016. 2015. 2015. 2017. 2017. 2019. 2009</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+		</imprint>
+	</monogr>
+	<note>Computer</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Xiangnan He, Yixin Cao, and Tat-Seng Chua. Explainable reasoning over knowledge graphs for recommendation</title>
+		<author>
+			<persName><forename type="first">Jung ; O-Joun</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jason J Jung ;</forename><surname>Lu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1804.11192</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM Conference on Recommender Systems</title>
+				<editor>
+			<persName><forename type="first">Guokun</forename><surname>Zhang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Min</forename><surname>Lai</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Yiqun</forename><surname>Zhang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Shaoping</forename><surname>Liu</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Ma</surname></persName>
+		</editor>
+		<meeting>the 12th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2010">2018. 2018. 2018. 2018. 2018. 2018. 2010. 2016. 2019. 2019. 2019. 2018. 2018. 2014. 2014. 2019</date>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="1330" to="1331" />
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>Companion Proceedings of WWW</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

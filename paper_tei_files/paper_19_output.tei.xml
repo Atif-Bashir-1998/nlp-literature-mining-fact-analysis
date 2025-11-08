@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">A Co-design Study for Multi-Stakeholder Job Recommender System Explanations</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-09-11">11 Sep 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Roan</forename><surname>Schellingerhout</surname></persName>
+							<email>roan.schellingerhout@maastrichtuniversity.nl</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Advanced Computing Sciences</orgName>
+								<orgName type="institution">Maastricht University</orgName>
+								<address>
+									<settlement>Maastricht</settlement>
+									<country key="NL">The Netherlands</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Francesco</forename><surname>Barile</surname></persName>
+							<email>f.barile@maastrichtuniversity.nl</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Advanced Computing Sciences</orgName>
+								<orgName type="institution">Maastricht University</orgName>
+								<address>
+									<settlement>Maastricht</settlement>
+									<country key="NL">The Netherlands</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+							<email>n.tintarev@maastrichtuniversity.nl</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Advanced Computing Sciences</orgName>
+								<orgName type="institution">Maastricht University</orgName>
+								<address>
+									<settlement>Maastricht</settlement>
+									<country key="NL">The Netherlands</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">A Co-design Study for Multi-Stakeholder Job Recommender System Explanations</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-09-11">11 Sep 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">B35290971BAADDF6D13DCB399EB7BE9B</idno>
+					<idno type="arXiv">arXiv:2309.05507v1[cs.HC]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:56+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Explainable AI</term>
+					<term>Job Recommender Systems</term>
+					<term>User Studies</term>
+					<term>Grounded Theory</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recent legislation proposals have significantly increased the demand for eXplainable Artificial Intelligence (XAI) in many businesses, especially in so-called 'high-risk' domains, such as recruitment. Within recruitment, AI has become commonplace, mainly in the form of job recommender systems (JRSs), which try to match candidates to vacancies, and vice versa. However, common XAI techniques often fall short in this domain due to the different levels and types of expertise of the individuals involved, making explanations difficult to generalize. To determine the explanation preferences of the different stakeholder typescandidates, recruiters, and companies -we created and validated a semistructured interview guide. Using grounded theory, we structurally analyzed the results of these interviews and found that different stakeholder types indeed have strongly differing explanation preferences. Candidates indicated a preference for brief, textual explanations that allow them to quickly judge potential matches. On the other hand, hiring managers preferred visual graph-based explanations that provide a more technical and comprehensive overview at a glance. Recruiters found more exhaustive textual explanations preferable, as those provided them with more talking points to convince both parties of the match. Based on these findings, we describe guidelines on how to design an explanation interface that fulfills the requirements of all three stakeholder types. Furthermore, we provide the validated interview guide, which can assist future research in determining the explanation preferences of different stakeholder types.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Within the emerging field of explainable artificial intelligence (XAI), a substantial amount of research has attempted to make the inner workings of AI models more transparent <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b17">18]</ref>. While such information can assist developers in understanding their model (e.g., by allowing the detection of bugs and biases, understanding feature importance), it is often complicated and requires considerable a priori knowledge of AI to interpret. However, the use of AI has become commonplace in user-controlled environments, such as the recommender systems used by different commercial platforms (e.g., YouTube, TikTok, Amazon). In such environments, explanations cannot assume AI knowledge, as the majority of explainees are lay users. Moreover, different types of users interact with such systems -the stakeholders. These stakeholders consist of every individual or group who affects, or is affected by, the delivery of recommendations to users <ref type="bibr" target="#b0">[1]</ref>. Stakeholders can be strongly diverse, coming from different backgrounds and having distinct expertise. As such, the way in which an explanation is conveyed to each stakeholder individually should be fine-tuned to their specific needs.</p><p>One field where such fine-tuned explanations are especially crucial is recruitment. Recruitment is inherently a multi-stakeholder domain, as users (candidates) need to be linked to vacancies (provided by companies) by recruiters. These three main stakeholders all rely on the same recommendations but can require widely different explanations. For example, telling a candidate that a vacancy is relevant for them as it comes with a high salary can be an acceptable explanation. However, the same explanation will be useless for the company, as that salary will be provided to every other potential candidate. Furthermore, a candidate and a recruiter might only look at a handful of recommendations per session, while a company could receive hundreds of applicants for a single vacancy. Therefore, the explanation requirements of each stakeholder are unique and require a tailored design. This paper attempts to determine the explanation preferences of the stakeholders of a job recommender system: job seekers, companies, and recruiters. This is done through the execution of a co-design study, which allows stakeholder representatives to manually indicate how they prefer an explanation to be presented to them. Therefore, this research aims to answer the following research question:</p><p>RQ: What are the explanation preferences of recruiters, candidates, and company representatives for job recommender systems?</p><p>Our results show interesting differences in the preferences of the different stakeholders. Regarding the preferred types of explanations, candidates preferred brief written explanations, as their main interest is to be able to quickly judge the potential matches proposed by the system. On the contrary, company's hiring managers preferred visual, graph-based explanations, as these allow a comprehensive overview at a glance. Finally, recruiters preferred more exhaustive textual explanations, as those provided them with more talking points to convince both parties of the match. These results allow us to provide design guidelines for an interface that fulfills the requirements of all three stakeholder types. Furthermore, the co-design study allowed us to validate and improve the used interview guide.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related work</head><p>Within the field of explainable AI, there is no single agreed-upon method to provide explanations <ref type="bibr" target="#b1">[2]</ref>. Different use cases require different approaches, each with their own strengths and weaknesses.</p><p>One of the most common methods of providing explanations is through text <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b4">5]</ref>. Textual explanations consist of brief sections of text that explain the rationale of the XAI model. Such texts often contain information on the impact different features had on the prediction and how those features interacted with each other. There are multiple ways to generate such texts, e.g., through the use of large language models (LLMs) <ref type="bibr" target="#b18">[19]</ref> or predefined templates <ref type="bibr" target="#b35">[36]</ref>.</p><p>Another popular approach is the use of feature attribution maps: visualizations that show the importance of different features to the prediction <ref type="bibr" target="#b22">[23]</ref>. Such maps can take different forms, depending on the specific task and data involved. When using tabular data, bar charts are often used to show the contribution of each different feature type to the prediction. When using multi-dimensional data, such as images or time series, are used, heatmaps can provide an overview of the importance of the different dimensions interacting with each other <ref type="bibr" target="#b8">[9]</ref>.</p><p>A further explanation type that has been gaining popularity recently, is the knowledge graph-based explanation <ref type="bibr" target="#b30">[31]</ref>. These explanations depend on the connections within a knowledge graph to explain the rationale behind a prediction. This is usually done by highlighting important nodes and edges within the graph, which provide 'paths' from the subject to the recommended item, accompanied by their importance to the model's prediction <ref type="bibr" target="#b34">[35]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Challenges in multi-stakeholder explainability</head><p>In multi-stakeholder environments, explanations need to meet additional requirements <ref type="bibr" target="#b0">[1]</ref>. An explanation that is sufficient for a developer, is not necessarily understandable for a user or provider, and vice versa <ref type="bibr" target="#b29">[30]</ref>. There are multiple strategies to deal with this discrepancy, each with its own strengths and weaknesses. The most obvious solution is to create individual explanations for the different stakeholders <ref type="bibr" target="#b36">[37]</ref>. Although this leads to the most fine-tuned explanations, it introduces an additional layer of complexity to the system as a whole. Another approach would be to simply use a single explanation, but to present it differently based on the stakeholders' level of expertise <ref type="bibr" target="#b0">[1]</ref>. Unfortunately, it can be difficult to incorporate the different stakeholder perspectives simultaneously -some facts could be confidential or sensitive for a specific stakeholder, making it challenging to incorporate them in the explanation, even when they are relevant. Similarly, a highly specific overview of how the model came to the prediction might be useful for a developer, but will be too confusing for a lay user or provider.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Explainability in job recommender systems</head><p>Explaining reciprocal recommendations, such as job recommendations, tends to be more difficult than standard recommendations, as the preferences of both parties need to be considered. Kleinerman et al. <ref type="bibr" target="#b12">[13]</ref> looked at explainability for recommender systems in online dating and found that explanations that consider both parties outperform one-sided explanations in high-cost scenarios (such as recruitment). In particular, explanations based on specific feature values are useful, although only a few features should be included to prevent information overload. In high-cost scenarios, explanations should not stay limited to personal preferences (e.g. 'you should apply for this job because you want a company that has X attributes'), but should also incorporate an explanation of why the other party is likely to agree (e.g. 'they are likely to accept you, because they are looking for a candidate with Y skills').</p><p>In job recommender systems (JRSs) specifically, explainability has largely gone unexplored. While some previous work has incorporated some degree of explainability within their JRSs, the explanations are often limited and seem to have been included as an afterthought <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b36">37]</ref>. Even when explainability has been included, authors usually fail to consider all stakeholders, tailoring the explanations to developers only. Furthermore, explanations are often solely evaluated anecdotally, leaving their quality up for debate <ref type="bibr" target="#b20">[21]</ref>. One could argue that reciprocal, easy-to-understand explainability should be at the core of the models' design in a high-risk, high-impact domain such as recruitment. Where previous research mainly falls short, is in the understandability of their explanations: while their models can technically explain some part of their predictions, the explanations tend to be unintuitive and/or limited, either staying too vague <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b31">32]</ref> or being hard to understand <ref type="bibr" target="#b36">[37]</ref>. In previous work, we found that, when dealing with users with limited AI knowledge, such as recruiters, job seekers, and most company representatives, having clear, straightforward explanations is crucial <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b29">30]</ref>. To accomplish this, structured requirements engineering needs to be conducted in order to determine the preferences of all stakeholders, after which explainable JRSs will need to be designed with those requirements as a starting point.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Determining stakeholder preferences</head><p>In order to determine the explanation preferences of different stakeholders, their requirements, struggles, and level of expertise need to be documented. To accomplish this, multiple approaches exist; for example, whenever the preferences of a stakeholder are already largely known (e.g., through previous research) questionnaires can be used in combination with different alterations of some explanation type <ref type="bibr" target="#b29">[30]</ref>. The results of these questionnaires could then be used to 'fine-tune' the already-known explanation type to better fit the exact stakeholders. However, within job recommendation, stakeholder preferences (beyond candidates) are mostly unknown <ref type="bibr" target="#b26">[27]</ref>. Therefore, it is better to determine the stakeholder preferences from the ground up, allowing them to assist in shaping the explanations themselves. Thus, (semi-structured) interviews are highly useful, as they give stakeholders the freedom to indicate their exact preferences and requirements regarding explanations <ref type="bibr" target="#b15">[16]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4">Contributions</head><p>Explainability within multi-stakeholder environments has largely gone unexplored. Research that has touched upon this topic, has often stuck to offline methods of evaluation, which fall short in high-impact domains, such as recruitment and healthcare. Therefore, this paper aims to lay the foundation for future research on explainable multi-stakeholder recommendation. We do so firstly by providing a validated interview guide that can be used to extract the explanation preferences of different stakeholder types. Furthermore, we extend the current literature on explainable job recommender systems by not just focusing on a single stakeholder, but providing guidelines on how explanations should be designed for all stakeholders involved.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methodology</head><p>In order to discover the preferences of different stakeholders, semi-structured interviews were conducted using example explanations <ref type="bibr" target="#b9">[10]</ref>. During these semistructured interviews, the participants were asked to answer substantive questions based on the provided explanations, as well as questions to indicate what aspects of different explanations they prefer. These substantive questions were used to gauge their understanding of the explanations. This is important, as previous research found that preference and understanding do not necessarily go hand in hand <ref type="bibr" target="#b29">[30]</ref>. In our study, we are interested in particular in highlighting the specific explanation preferences of the specific stakeholders. Hence, we decompose our main research question into the following three sub-questions: SQ1: What type of explanation is most suited for the different stakeholders? SQ2: What aspects of explanations make them more suited for each stakeholder? SQ3: In what way can different explanation types be combined to make them useful for each stakeholder?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Hypotheses</head><p>In this study, we consider three different explanation types (see Section 3.4): (i) graph-based explanations; (ii) Textual explanations; and (iii) Feature attribution explanations. While the graph-based explanations will most likely be best suited for individuals with a fair amount of prior AI knowledge, the general lay users will probably gravitate towards the textual explanations, as those are both expressive and fairly easy to process <ref type="bibr" target="#b25">[26]</ref>. Considering the graph-based explanations contain the most information, but are expected to be the hardest to read, and the opposite holds for the feature attributions, the textual explanations are likely to strike a good balance between the two. These considerations lead us to formulate two hypotheses related to the SQ1:</p><p>• H1a: The graph-based explanation will be best suited for individuals with prior AI knowledge.</p><p>• H1b: The textual explanations will be best suited for individuals without prior AI knowledge.</p><p>Furthermore, we considered that feature attribution maps are usually the easiest and fastest way to get an overview of the model's rationale, but at the same time, they have a fairly limited extent <ref type="bibr" target="#b29">[30]</ref>. The textual explanation will be more complex and take more time to process, but will provide a more comprehensive explanation in return. Lastly, the graph-based explanations will take the longest to process and might be difficult to interpret by themselves, but will contain the most complete explanation as a result. We then expect differences among the stakeholders, and formulate the following hypothesis related to the SQ2:</p><p>• H2: The different stakeholders (candidates, companies, and recruiters) will have different preferences related to the explanation types.</p><p>Finally, we considered that explanations consisting of a single type may be either too limited in their content, or too difficult to interpret. This problem can be addressed by incorporating aspects from different types into a single explanation type <ref type="bibr" target="#b29">[30]</ref>. For example, textual explanations can help in assisting the stakeholders in how to read the graph-based explanation. Furthermore, the feature attribution map can be useful when the stakeholder prefers to get a good (albeit limited) overview at a glance <ref type="bibr" target="#b27">[28]</ref>. We further hypothesize then that also regarding the preferences in terms of combining basic explanations into hybrid strategies, the stakeholders will have differences. Hence, we formulated the following hypothesis related to the SQ3:</p><p>• H3: The different stakeholders (candidates, companies, and recruiters) will have different preferences on how to combine explanation types to obtain a hybrid explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Semi-structured interview guide</head><p>A comprehensive guide was created to conduct the semi-structured interviews (Appendix B). However, this guide is susceptible to possible biases, ambiguities, incorrect assumptions about prior knowledge, etc. Thus, during the interviews, we dedicated time specifically to determining the quality of the questions in order to update, and eventually validate them. The questions in the interview guide were based upon previous works <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b24">25]</ref>, but required validation for a multistakeholder scenario. In addition to validating the interview guide, the interviews also allowed the stakeholders to co-design the explanation representations to fit their needs. The interviews were conducted with a small sample of the different stakeholders (n = 2 for each stakeholder type) to verify the adequacy of the explanations and the guide for each group individually. Considering the fact that each participant was interviewed three times (once for each explanation type), we collected a large amount of data per participant. Due to the richness of this data, the relatively small sample size still allowed us to perform an indepth analysis for each stakeholder type. Previous works also indicates that a small sample can be sufficient in qualitative analysis, as long as the data itself is of high enough quality <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b19">20]</ref>. Note that the user study was approved by the ethical committee of our institution. 1</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Data &amp; model</head><p>The explanations used for the interviews were generated using a job recommendation dataset provided by Zhaopin. 2 This dataset contains information on 4.78 million vacancies, 4.5 thousand candidates, and 700 thousand recorded interactions between the two. For candidates, the dataset stores information such as their degree(s), location, current and desired industry, skill set, and experience.</p><p>For vacancies, features such as the job description, job title, salary, (sub-)type, required education, location, and starting date were recorded. The interactions between candidates and vacancies consist of four stages: no interaction, browsed, delivered, and satisfied. Considering the data in the dataset was exclusively in Mandarin Chinese, all unstructured data was automatically translated to English using deep-translator. 3  These three different tables were combined together into a single knowledge graph, wherein candidates, vacancies, and categorical features formed the set of nodes. The edges consisted of relations between these nodes, such as candidates interacting with vacancies or vacancies being of a specific (sub-)type. This single, large knowledge graph was then converted to individual sub-graphs between candidates and vacancies that had interacted (positives), and between those who had not interacted (negatives) using the k random walks algorithm <ref type="bibr" target="#b16">[17]</ref>. Each of these sub-graphs therefore could be given a score from 0 (no interaction), to 3 (satisfied), which allowed us to treat the task as a ranking problem based on sub-graph prediction.</p><p>The explainable model was based on the graph attention network (GAT) <ref type="bibr" target="#b32">[33]</ref>, implemented using PyTorch geometric. 4 Considering performance was not the goal of this research, we opted for a straightforward architecture consisting of a single GATv2Conv-layer, followed by two separate GATv2Conv-layers -one for the company-side prediction and explanation, and one for the candidateside prediction and explanation. Both these layers were followed by their own respective fully-connected layer, which provided the company-and candidateside prediction score. The harmonic mean of these two scores was then considered the final 'matching score'. Optimization was done using the Adam optimizer <ref type="bibr" target="#b11">[12]</ref> (learning rate = 1 * 10 −3 ) with LambdaRank loss based on normalized Discounted Cumulative Gain @ 10 (nDCG@10) <ref type="bibr" target="#b3">[4]</ref>. Hyperparameter tuning was done using grid search going over different configurations of hyperparameters <ref type="bibr" target="#b14">[15]</ref>. Since our aim was not to get state-of-the-art performance, the number of different configurations tested was fairly limited. Even so, the optimal configuration led to an nDCG@10 of 0.2638 (Appendix A).</p><p>Considering the goal of our research was not to evaluate the explanation quality of the specific model, but rather to investigate stakeholder preferences in general, the examples used during the interviews were manually selected based on the following criteria: graph size, perceived sensibility, and accessibility of the industry for evaluation. By sticking to seemingly sensible explanations that did not require knowledge of the specific industry at hand, we aimed to make the stakeholders' evaluation dependent solely on the representation of the explanation, rather than the quality of the model's explanations in general.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Explanation types</head><p>The explanation types that were examined in this study were the following:</p><p>Graph: a visualization of paths in a knowledge graph. In our case, this consists of (a sub-set of) the paths within the candidate-vacancy sub-graph, weighted by the importance ascribed to them by the model (Figure <ref type="figure">1</ref>); Textual: a short text that explains which features contributed to the recommendation in what way. The textual explanations are generated using a large language model (LLM) (in this case, ChatGPT February 13 version <ref type="bibr" target="#b21">[22]</ref>), which is given the full graph explanation as input, and tasked to summarize it in an easy-to-read way (Figure <ref type="figure">2</ref>); Feature attribution: a visualization (such as a bar chart) that shows which features were most important to the model when creating the explanation (Figure <ref type="figure">3</ref>). This bar chart is also based on the paths within the knowledge graph -the sizes of the bars are calculated using the sum of incoming edge weights, similar to PageRank <ref type="bibr" target="#b2">[3]</ref>.</p><p>Fig. <ref type="figure">1</ref>: An example of knowledge graph paths being used as an explanation for a recommendation. Fig. <ref type="figure">2</ref>: An example of a textual explanation used as an explanation for a recommendation</p><p>The XAI model has analyzed various connections between jobs and users to determine if a particular user (user 4119) would be a good fit for a specific job (job 147542). The model looked at the relationships between different jobs and users, as well as the importance of these relationships, to make its prediction.</p><p>In this case, the model found that user 4119 has a strong connection to the role of Administrative Commissioner, and this connection is considered to be very important for explaining why user 4119 would be a good match for job 147542. Additionally, the model found that job 147542 has a connection to the role of secretary, which is also considered important.</p><p>The model also found that the Administrative Commissioner role has a connection to the assistant role, which in turn has a connection to the secretary role and job 147542.</p><p>In summary, the XAI model determined that user 4119 would be a good fit for job 147542 based on the strong connection between user 4119 and the Administrative Commissioner role, as well as the connections between the Administrative Commissioner role, the assistant role, the secretary role, and job 147542.</p><p>Fig. <ref type="figure">3</ref>: An example of a feature attribution map used as an explanation for a recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Analysis</head><p>The answers provided by the participants were analyzed using grounded theory (GT) <ref type="bibr" target="#b33">[34]</ref> using Atlas.ti 5 . This process was done separately for each stakeholder type, in order to create distinct results for each type. We started by assigning manually-generated codes to individual statements made by the participants (open coding). These codes were then grouped together into distinct categories using axial coding to provide a higher-level overview of the complaints and preferences of each stakeholder type. Lastly, selective coding was conducted to combine each stakeholder type's categories into a single theory. The higher-level categories, as well as the theories, were then used to improve the prototypical explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.6">Participant demographics</head><p>The participants were recruited through personal connections in collaboration with Randstad Groep Nederland 6 , the largest recruitment agency in the Netherlands. The sample consisted of 4 women and 2 men, of various ages (µ = 39.2, SD = 11.3, l = 23, h = 53), with various backgrounds (tech, finance, healthcare, marketing, etc.). The participants had largely different levels of expertise w.r.t. AI, ranging from no knowledge whatsoever to a Bachelor's degree in a related field. Each interview took approximately one hour, and candidates were paid e11,50 for their time.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Results</head><p>Based on the answers given by the different stakeholder representatives, the interview guide has been updated, and the preliminary preferences of each stakeholder type have been determined. The full transcripts of each interview are available on GitHub.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Interview guide</head><p>The interview guide (Table <ref type="table" target="#tab_1">2</ref>) has been validated based on responses from the participants. While the interview guide was largely proven to be adequate for determining the explanation preferences of different stakeholders, some changes have been made based on the feedback we received. Firstly, we added an additional question to the section on usefulness: 'how could you see yourself using the explanation in your daily work/task? ' Even when some of the participants could see that an explanation was sensible, or could be helpful in making a decision, they mentioned that they would personally stick to using another approach (e.g., a different type of explanation, or doing things manually). Although this is likely to come up using the current interview guide already, we decided to also explicitly ask the question -after all, the goal of creating an explainable model is that users end up actually using the explanations to assist them in their decision-making.</p><p>We additionally added a new question to the correct interpretation section of the guide: "how would you put the model's explanation into your own words? " While the participants often managed to quickly identify the most/least important features and components of the explanation, that did not necessarily indicate they properly understood the entire rationale. For example, some participants correctly identified the importance of the different job types to the explanation, but they could not properly connect all the dots, causing them to be unable to view the explanation as a single whole. By explicitly asking them to define the explanation in their own words, it becomes clear whether they adequately understand the entire explanation, or are still grasping at straws.</p><p>Lastly, we changed one of the questions in the section on transparency: "can you think of anything that would further improve your understanding?" has been changed to "what information is missing that could allow you to get a better understanding of the model's recommendation?". The previous phrasing of the question was too general, making it difficult for participants to answer it on the spot. By directly asking them for information that is missing, it should be easier for them to come up with an answer, albeit a more indirect one.</p><p>The updated, validated interview guide can be seen in Table <ref type="table" target="#tab_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Stakeholder preferences.</head><p>Each of the transcripts has been analyzed, and the analyses have been grouped based on stakeholder type. An overview of the generated codes, categories, theories, and relevant quotes can be found in Appendix C.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.1">Candidates.</head><p>In line with our hypothesis, the textual explanation was well-received by the candidates. Although the candidates did receive the explanations favorably, they indicated some issues that should be addressed. For one, the specific language used in the explanation made it more difficult for the candidates to parse it correctly. Candidates also sometimes wound up losing track of the essence of the explanation, specifically when multiple trains of thought were addressed in a single paragraph, or whenever points were reiterated multiple times ("it's a bit more clear, but I don't know... I still can't follow it completely. I find it very hard to read", P2, Q1.1). However, the candidates still managed to correctly identify the main arguments on which the recommendation was based.</p><p>They did indicate that they would prefer to be able to evaluate the text at a glance, i.e., by putting crucial information clearly at the top of the text (''Information like the city, and what the salary is, or things of the sorts, are currently not included", P1, Q4.2). They did not fully trust the model, but found it to be a nice 'brain-storming partner', which could support them in their decision ("if I had any doubts, the explanation would take those away", P2, Q3.2), and provide them with some interesting vacancies to explore on their own. Furthermore, the explanation contained the full ID of candidates and vacancies relevant to the recommendation. Considering the candidates have no access to the actual database, these IDs turned out to be of little value, and actually overwhelmed the candidates. Additionally, while multiple different vacancies were mentioned in the explanation, these were not directly accessible to the candidates -something they considered to be unintuitive.</p><p>The graph-based explanation turned out to be difficult to use for the candidates without receiving some additional help on how to interpret it. Especially the full, unsimplified version of the graph, in which all of the different paths were visible, turned out to be too overwhelming and complex to be useful (after being corrected on their interpretation: "Now I get that the thin lines were kind of like side tracks that weren't successful", P2, Q2.1). However, with some additional guidance on how it was structured, and by considering the simplified view of the graph, the candidates eventually correctly understood its content. Still, the amount of information contained within the graph was more confusing than helpful -for example, the types and values of the edges were constantly visible, meaning there was a lot of text present at all times. Considering the candidates did not necessarily understand the meaning of the edge types and values, they did not get any benefit from them. While the graph was indicated to give them a better understanding of the model's actual rationale, it also made them question the adequacy of the recommendation to an extent. Because vacancies different from the one being recommended were included in the graph as well, sometimes at locations seemingly 'closer' to the candidate, they were unsure why those vacancies were not recommended to them ("It feels quite strange, that the path passes through different relevant vacancies, but we just ignore those", P1, Q1.1). Therefore, providing candidates with information on why alternative vacancies were not recommended could be helpful.</p><p>The current implementation of the feature attribution chart turned out to be close to useless for providing an explanation to the candidates. Since it ascribed importance to different vacancies and candidates (i.e., similar vacancies and candidates, which were included to allow for collaborative filtering <ref type="bibr" target="#b28">[29]</ref>), which they were not familiar with, it did not contribute to their understanding of the model's prediction. However, they did indicate how feature attribution could be made useful: for the bar chart to relate to their individual skills, so the candidates could understand which of their own skills were considered most important for the recommendation at a glance ("That it shows what is important for the match, for example, that your experience with Excel matters, but that your ability to be a truck driver wasn't important", P1, Q1.1). This would allow them to quickly verify and scrutinize recommendations. For example, if they saw a specific skill they possess was attributed a lot of importance by the model, even though they would not enjoy performing it as their job. Thus, the feature attribution chart should stick only to the personal, actionable features of the candidates. To still include previous vacancies fulfilled by the candidate, they could alternatively be grouped by job type, so that they could be represented as a single bar relating to their experience in that field ("the function types make sense to me, but the individual vacancies and candidates do not", P1, Q3.1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.2">Recruiters.</head><p>As was hypothesized, the recruiters found the textual explanations to be informative and useful. Although they found the texts to indicate some redundancy, as well as some tricky language, they considered them to be rather useful regardless. They immediately understood the main message of the text, but found that some information was reiterated too often ("It keeps beating around the bush with the same words", P3, Q2.1). The recruiters explicitly stated that they would not blindly trust the model, even when accompanied by a sensible explanation -they would always want to be able to manually verify its recommendation by reading the CV and vacancy text ("Very little is told about the candidate, and the vacancy, but I just have to trust that ... it would be nice to check if it's actually right", P3, Q2.1). However, as long as they considered that the explanation made sense, they would "move that CV and vacancy to the top of their list". Furthermore, being able to quickly rule out specific candidates or vacancies was something they considered highly important. As a result, they strongly preferred to have the most crucial information, such as commuting time, and whether some minimum requirements were met, to be at the top of the explanation. The recruiters internally disagreed on how long the text should be ("it doesn't need to be brief. It's nice to have things to talk about", P3, Q5.2; "Three paragraphs of three sentences would be fine" P4, Q5.1). One argument for having a longer text, was that it would provide the recruiter with more subject matter to discuss when trying to convince a candidate or company of the match's aptitude. On the other hand, having a shorter text that only focuses on the main arguments provided by the model would make it quicker for recruiters to compare different recommendations, after which they could come up with further arguments for the best one themselves.</p><p>Although the recruiters managed to correctly interpret the graph, they found it to add little value for the most part ("I understand it, but it means little to me", P4, Q1.1). While they indicated that it could be useful in some specific scenarios, such as texts with a high level of complexity, or when having to support their final decision to a supervisor, they generally did not consider it to add any benefit compared to the textual explanation. Despite the fact that they developed a better understanding of the models' actual rationale, they doubted that they would use it much in their day-to-day tasks ("If I would have to use this for every vacancy, or every candidate, it would become a problem", P4, Q1.1). In the scenarios where they would consider it to be beneficial, they gravitated strongly toward the simplified version of the graph, considering the connections deemed unimportant by the model to be counterproductive in understanding the explanation. Only when a candidate or company would ask specifically about whether a specific skill, or past job, was taken into account, would they make use of the full version of the graph.</p><p>Similarly to the candidates, the feature attribution chart in its current form did not assist the recruiters in correctly understanding the explanation. Again, though, did they indicate that a different type of bar chart could be useful in some scenarios. One use case for a bar chart the recruiters considered useful, was for it to be a central 'hub' of sorts, where all possible vacancies for a candidate (and vice versa) were displayed, sorted by their matching score ("No, I would personally go for something like a top 10, for example", P3, Q2.1). This would allow the recruiters to quickly determine which potential matches are feasible enough to explore further. However, as an actual method of explaining the prediction, they indicated that the text, sometimes combined with the graph, would already be sufficient, causing the feature attribution chart to be largely irrelevant.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.3">Company representatives.</head><p>As opposed to the candidates and recruiters, the company representatives were less positive about the textual explanation. Considering the company-side explanation contained a higher level of abstraction, it took the company representatives multiple iterations before they properly understood the explanation ("Now that I read it again, I see that it goes from person A, to B, to C.", P5, Q3.2). They also found it difficult to take the explanation at face value, being wary of terms such as 'relevant experience'rather opting to manually verify whether the mentioned experience was actually relevant for the vacancy ("But judging how relevant the experience is for this vacancy, isn't possible based on this explanation", P5, Q1.2). Although a more detailed explanation could alleviate some of this hesitance, it would also lead to an even more complex explanation, possibly worsening the understandability further.</p><p>On the other hand, the company representatives were considerably more positive about the graph explanation. Specifically, the simplified view of the graph allowed them to grasp the prediction at a glance. Where the textual explanation required some puzzling before the relations between different candidates, vacancies, and job types became clear, the company representatives quickly managed to detect the relevant relations in the graph ("This adds everything I need ... For me it's simply a matter of checking why the model made its decision -that being the line at the bottom, and that would be all", P6, Q2.1). As a result, the graph explanation also improved their trust in the model; one recruiter even mentioned that, given a high-enough performance of the model, they would simply use the simplified graph as a sanity check, fully trusting the model if the explanation seemed somewhat reasonable ("If the model does what it says it does, I would simply trust it", P6, Q3.2).</p><p>The feature attribution map was again received poorly. The company representatives indicated that it did not help them get a better understanding of the model's reasoning compared to the graph ("It's usable, but it doesn't clarify why we ended up with the recommended candidate", P5, Q2.1). However, the company representatives did consider the feature attribution chart to be useful in a different scenario -to verify the model paid no attention to irrelevant details. With some tweaks, such as changing vacancy IDs into actual titles, the bar chart would allow company representatives to make sure the model did not pay attention to something that the company determined to be irrelevant to the position. Furthermore, an aggregated version of the feature attribution chart, which displays which types of features were considered most by the model, could help the company representatives parse the textual explanation more easily, allowing them to direct most of their attention to the more important information ("This is what I was looking for while reading the text. I tried to determine these values in my head, but I kept getting distracted", P5, Q2.1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Discussion</head><p>We discuss our results in relation to the three sub-research questions, for each type of stakeholder: which type of explanation is most suited, what makes these explanations most suitable, and can different explanation types be meaningfully combined. We discuss each research question in turn.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">SQ1:</head><p>What type of explanation is most suited for the different stakeholders?</p><p>When analyzing the results regarding preferences for the different stakeholders, we notice that candidates prefer short, clearly structured, straightforward texts, which allow them to quickly browse and judge the vacancies. These texts should include what they consider the most important information: features like travel distance, salary, and minimum requirements. This information should be central and easy to identify, preferably in bullets. Recruiters also prefer texts, but disagree on the amount of text that is required. Thus, a short text, that centrally mentions potential 'deal-breakers' and gives the main few arguments to motivate why a match was made should be the default. However, recruiters also prefer to have access to a more exhaustive text, which can provide them with more material that could be used to convince both parties (candidate and company) to agree with the match. On the contrary, company representatives prefer graph-based explanations, as those assist them in quickly getting an overview of even more complex explanations at a glance. Such a representation also allows them to quickly scan different information, while reading would require more time and effort. These results are somewhat in line with our hypotheses H1a and H1b, but not entirely. While one of the candidates did have a lot of knowledge of AI, she still preferred the textual explanation. On the other hand, both company representatives did not have a strong background in AI, but preferred the graph-based explanations. We argue that it is not the AI knowledge per se that makes the graph preferable, but the amount of experience with, and affinity towards, reading graphs and charts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">SQ2</head><p>: What aspects of explanations make them more suited for each stakeholder?</p><p>We also looked more specifically at the motivation for why certain stakeholders prefer certain explanations. For candidates, the textual explanations were largely preferred due to their simplicity, and because they felt more 'personal'. In particular, they preferred texts using simple language, that is clearly structured and not longer than a few short paragraphs. Recruiters also preferred the textual explanations, due to their simplicity compared to the graph-and feature-based explanations. In particular, they struggled to interpret the visualizations and felt quite overwhelmed due to their 'math-heavy' nature. Furthermore, the text directly assists them in their day-to-day tasks, as they can almost use some of the paragraphs verbatim to try and convince companies and candidates of the adequacy of a match. Finally, for company representatives, the graph-based explanations were preferred, largely due to their ability to make more complex, high-level connections, within the data visible at a glance. Within the textual explanations, it became difficult for them to figure out the full line of reasoning of the model, due to there being a lot of 'steps' from the vacancy to the candidate, which made it hard to process. The bar chart also made the text more accessible, but the graph-based explanation was considered a better option.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">SQ3:</head><p>In what way can different explanation types be combined to make them useful for each stakeholder?</p><p>Finally, we evaluated the stakeholders' preferences in terms of hybrid explanations, indicating how to combine different explanations together. Our results highlight how the feature-based explanation was poorly received by all stakeholders; however, they also indicated it to have potential, in case it is used to support one of the other explanation types. The unanimous aversion to the feature-based explanation was likely due to their failure to find a niche, either being too general to be useful in the simplified version, or too specific (and thus overwhelming) in the full version. For both candidates and recruiters, the textual explanations should be the center of the explanation, by default in its simplified form. The user should then have the possibility to access additional information, using a toggle to get a more descriptive version of the text. Considering the difficulty of conveying relative importance levels within a text, the feature attribution map can be linked (i.e., through matching color coding) to clarify the text. The graph-based explanation can then be used as an optional addition, in case the text itself is not clear enough, or if the user wants even more evidence for a specific suggestion. On the contrary, company representatives prefer the simplified graph to be central, supported by a textual explanation. Within the graph, most details (e.g., exact values) should be made optional, so that it is not overwhelming: they mainly want to be able to quickly parse the most critical paths in the graph, and only look at details when necessary. Additionally, a bar chart indicating how important different feature types were, could be used to complement the text, in order to help them focus their attention on the paragraphs touching on those feature types.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Limitations and future work</head><p>A key limitation to acknowledge is the relatively small sample size we used. Considering we only interviewed two individuals from each stakeholder type, it is possible that some of our results are based on their personal biases, which may not be representative of the entire population. We attempted to minimize these biases through careful selection of participants, making sure to include individuals from different backgrounds, both in terms of their expertise and personal characteristics. This limited sample did allow us to focus on the quality of the data we collected; due to the limited number of participants, it was feasible to interview them for longer periods of time. Considering the large amount of data gathered through the interviews, we believe that this limitation does not deteriorate the quality of the findings. Furthermore, the aim of this paper was to lay the groundwork for future research on explainable job recommender systems through the creation of a reusable interview guide, as well as determining general stakeholder preferences and differences. I.e., our aim was not to conclusively determine the exact, ultimate preferences of the stakeholders, but rather to allow for future research to have a solid foundation for more specific research. Regardless, future research should aim to make use of the validated interview guide with a larger sample. By making use of the guidelines we provided on how to represent automatically-generated explanations, it should be possible to design a single, hybrid explanation, that can be evaluated more quickly. As a result, interviews will take less time, making it more practical to use a larger sample size.</p><p>Furthermore, we acknowledge room to improve the model we used to generate explanations, and that it may therefore not have generated the most sensible explanations. To counteract this behavior, we manually selected explanations that seemed suitable for the interviews. Future work could therefore use the provided interview guide to evaluate and compare explanations generated using a number of different techniques (e.g., attention mechanisms, saliency, post hoc methods). Different model architectures could also be compared in order to determine which architectures generate better explanations (either for a specific evaluation objective, or as a whole).</p><p>Lastly, another venue for future research could be to evaluate the textual explanations generated through different means. Although the explanations generated by ChatGPT were sufficient for our study, comparing them to differentlygenerated explanations (e.g., by different LLMs, people with varying levels of expertise) could lead to interesting insights.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">Conclusion</head><p>In this paper, we aimed to develop and validate an interview guide for determining the explanation preferences of different stakeholder types. Additionally, we aimed to establish guidelines for creating XAI-generated explanations for different stakeholders within the field of job recommendation. The interview guide was largely proven to be adequate for determining the preferences of different stakeholders; a few minor changes were made to it in order to attain more concrete responses from the participants. Through the use of the interview guide, we found that candidates prefer explanations to take the shape of a short, clearly-structured text, that centrally contains the most crucial information. Recruiters, on the other hand, also preferred textual explanations, but were less strict on it having to be brief -indicating that longer texts could be useful in some scenarios. Company representatives indicated a preference towards graphbased explanations, as those allowed them to get a comprehensive overview of even more complex explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Appendix</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Hyperparameter tuning</head><p>The optimal hyperparameter configuration we found, is the following:</p><formula xml:id="formula_0">• hidden dimensions=10 • output dimensions=100 • number of layers=2 • attention heads=5 • dp rate=0.01 • learning rate=0.001 • epochs=1</formula><p>An overview of all configurations we tested, can be found on GitHub Theory (based on Table <ref type="table" target="#tab_2">3</ref>): Candidates want to be able to determine whether or not a vacancy is relevant at a glance. To do so, the explanation needs to be brief and straight to the point. Once the candidate has found a potentially interesting vacancy, they should be able to explore the explanation in more detail.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B Preliminary interview guide</head><p>Considering their difficulty in parsing both the graph and feature attribution explanation, the textual explanation should always be central, with the other two merely functioning as further support. The explanation should be useable as evidence while justifying a match to a client "if you want to back up your decision during a meeting, where they expect reports and whatnot, it would be very nice"</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.2 Recruiters</head><p>The graph can provide a more 'objective' explanation "if the first paragraph is about their skills, the second about their experience, and the third about their interests, a longer text would still be nice" Recruiters first want to discuss the match with both sides before accepting it</p><p>Theory (based on Table <ref type="table" target="#tab_3">4</ref>): Recruiters prefer the model to act mainly as a supportive tool. This means that the strongest arguments the model puts forward should be front and center. This allows them to use the explanations when defending their decision, be it to their supervisor or a client. They will always want to manually verify the claims made by the model, but due to the explanation, they are likely to consider predicted matches before all else. The exact details of how the model came to its prediction will oftentimes be irrelevant, but are nice to have accessible in case additional evidence should be provided. Theory (based on Table <ref type="table" target="#tab_5">5</ref>): Company representatives want the explanations to assist them as quickly as possible. Due to their generally higher level of experience in reading charts and graphs, the graph explanations actually help the most with this. However, even though the graph can give them an explanation at a glance, they still want to be able to explore further, in case the graph comes across as surprising or unintuitive. In such a scenario, they either want to study the explanation in more detail, e.g., through additionally reading the textual explanation, or they want to manually look into alternative candidates. The feature attribution map could easily be converted into a 'hub' for them, where they can get an overview of alternative candidates for a vacancy.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.3 Company representatives</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>(a) Candidate-side graph (b) Company-side graph</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>The validated, updated interview guide.</figDesc><table><row><cell cols="2">Evaluation</cell><cell cols="2">Objective</cell><cell></cell><cell>Questions</cell><cell>Probing questions</cell></row><row><cell cols="2">Objective</cell><cell cols="3">Description</cell></row><row><cell cols="2">1. Correct in-</cell><cell>To</cell><cell cols="2">assess</cell></row><row><cell cols="2">terpretation</cell><cell cols="2">whether</cell><cell>or</cell><cell>1.1 What</cell><cell>1.1.1 What did you look at to come</cell></row><row><cell></cell><cell></cell><cell cols="3">not the stake-</cell><cell>information/features do</cell><cell>to that conclusion?</cell></row><row><cell></cell><cell></cell><cell>holder</cell><cell></cell><cell>can</cell><cell>you think were most</cell></row><row><cell></cell><cell></cell><cell cols="2">correctly</cell><cell>in-</cell><cell>important for this</cell></row><row><cell></cell><cell></cell><cell cols="2">terpret</cell><cell>the</cell><cell>prediction?</cell></row><row><cell></cell><cell></cell><cell cols="3">explanation.</cell><cell>1.2 What was the least</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>important?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>1.3 How would you put the</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>model's explanation into</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>your own words?</cell></row><row><cell>2.</cell><cell>Trans-</cell><cell cols="3">To determine</cell></row><row><cell>parency</cell><cell></cell><cell>the</cell><cell cols="2">explana-</cell><cell>2.1 Does the explanation</cell><cell>2.1.1 What components help you</cell></row><row><cell></cell><cell></cell><cell cols="3">tion's effect on</cell><cell>help you comprehend</cell><cell>specifically?</cell></row><row><cell></cell><cell></cell><cell cols="3">understanding</cell><cell>why the system gave the</cell><cell>2.1.2 What information is missing</cell></row><row><cell></cell><cell></cell><cell cols="3">the model's in-</cell><cell>recommendation?</cell><cell>that could allow you to get a</cell></row><row><cell></cell><cell></cell><cell cols="3">ner workings.</cell><cell>better understanding of the</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>model's recommendation</cell></row><row><cell cols="3">3. Usefulness To</cell><cell cols="2">evaluate</cell></row><row><cell></cell><cell></cell><cell cols="3">how useful the</cell><cell>3.1 Does the explanation</cell><cell>3.1.1 What do you consider sensible</cell></row><row><cell></cell><cell></cell><cell cols="3">explanations</cell><cell>make sense to you?</cell><cell>(e.g., focus on specific</cell></row><row><cell></cell><cell></cell><cell cols="3">are considered</cell><cell>3.2 Does the explanation</cell><cell>features)?</cell></row><row><cell></cell><cell></cell><cell>to be.</cell><cell></cell><cell></cell><cell>help you make a</cell><cell>3.1.2 What do you consider</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>decision?</cell><cell>insensible?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>3.3 How could you see</cell><cell>3.2.1 Would you prefer a model with</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>yourself using the</cell><cell>explanations over one without?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>explanation in your daily</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>work/task?</cell></row><row><cell>4. Trust</cell><cell></cell><cell cols="3">To gauge the</cell></row><row><cell></cell><cell></cell><cell cols="3">explanation's</cell><cell>4.1 Do you think the</cell><cell>4.2.1 Anything specific that makes</cell></row><row><cell></cell><cell></cell><cell cols="3">impact on the</cell><cell>prediction made by the</cell><cell>you say that (e.g., something</cell></row><row><cell></cell><cell></cell><cell cols="3">model's trust-</cell><cell>model is reliable?</cell><cell>makes no sense, or is very</cell></row><row><cell></cell><cell></cell><cell cols="2">worthiness.</cell><cell></cell><cell>4.2 If this recommendation</cell><cell>similar to how you look at</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>was made for you, would</cell><cell>things)?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>you trust the model to</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>have made the right</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>decision?</cell></row><row><cell cols="5">5. Preference To figure out</cell></row><row><cell></cell><cell></cell><cell>the</cell><cell cols="2">personal</cell><cell>5.1 What would you like to</cell><cell>5.1.1 Any specific information that is</cell></row><row><cell></cell><cell></cell><cell cols="2">preference</cell><cell></cell><cell>see added to the current</cell><cell>missing?</cell></row><row><cell></cell><cell></cell><cell cols="3">of the stake-</cell><cell>explanation?</cell><cell>5.1.2 Any functionality that could be</cell></row><row><cell></cell><cell></cell><cell cols="2">holder.</cell><cell></cell><cell>5.2 What would you consider</cell><cell>useful?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>to be redundant within</cell><cell>5.2.1 Anything that should be</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>this explanation?</cell><cell>removed?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>5.2.2 Or be made less prevalent?</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>The preliminary interview guide.</figDesc><table><row><cell>Evaluation</cell><cell>Ob-</cell><cell cols="3">Objective</cell><cell>De-</cell><cell>Questions</cell><cell>Probing questions</cell></row><row><cell>jective</cell><cell></cell><cell cols="3">scription</cell><cell></cell></row><row><cell cols="2">1. Correct inter-</cell><cell cols="4">To assess whether</cell></row><row><cell>pretation</cell><cell></cell><cell cols="4">or not the stake-</cell><cell>1.1 What information/features</cell><cell>1.1.1 What did you look at to come to</cell></row><row><cell></cell><cell></cell><cell cols="2">holder</cell><cell>can</cell><cell>cor-</cell><cell>do you think were most</cell><cell>that conclusion?</cell></row><row><cell></cell><cell></cell><cell cols="2">rectly</cell><cell cols="2">interpret</cell><cell>important for this</cell></row><row><cell></cell><cell></cell><cell cols="4">the explanation.</cell><cell>prediction?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>1.2 What was the least</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>important?</cell></row><row><cell cols="2">2. Transparency</cell><cell>To</cell><cell></cell><cell cols="2">determine</cell></row><row><cell></cell><cell></cell><cell cols="4">the explanation's</cell><cell>2.1 Does the explanation help</cell><cell>2.1.1 What components help you</cell></row><row><cell></cell><cell></cell><cell cols="2">effect</cell><cell>on</cell><cell>un-</cell><cell>you comprehend why the</cell><cell>specifically?</cell></row><row><cell></cell><cell></cell><cell cols="3">derstanding</cell><cell>the</cell><cell>system gave the</cell><cell>2.1.2 Can you think of anything that</cell></row><row><cell></cell><cell></cell><cell cols="2">model's</cell><cell></cell><cell>inner</cell><cell>recommendation?</cell><cell>would further improve your</cell></row><row><cell></cell><cell></cell><cell cols="3">workings.</cell><cell></cell><cell>understanding?</cell></row><row><cell>3. Usefulness</cell><cell></cell><cell cols="4">To evaluate how</cell></row><row><cell></cell><cell></cell><cell cols="4">useful the expla-</cell><cell>3.1 Does the explanation make</cell><cell>3.1.1 What do you consider sensible (e.g.,</cell></row><row><cell></cell><cell></cell><cell cols="4">nations are consid-</cell><cell>sense to you?</cell><cell>focus on specific features)?</cell></row><row><cell></cell><cell></cell><cell cols="3">ered to be.</cell><cell></cell><cell>3.2 Does the explanation help</cell><cell>3.1.2 What do you consider insensible?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>you make a decision?</cell><cell>3.2.1 Would you prefer a model with</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>explanations over one without?</cell></row><row><cell>4. Trust</cell><cell></cell><cell cols="4">To gauge the ex-</cell></row><row><cell></cell><cell></cell><cell cols="4">planation's impact</cell><cell>4.1 Do you think the</cell><cell>4.2.1 Anything specific that makes you</cell></row><row><cell></cell><cell></cell><cell>on</cell><cell>the</cell><cell cols="2">model's</cell><cell>prediction made by the</cell><cell>say that (e.g., something makes no</cell></row><row><cell></cell><cell></cell><cell cols="4">trustworthiness.</cell><cell>model is reliable?</cell><cell>sense, or is very similar to how you</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>4.2 If this recommendation was</cell><cell>look at things)?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>made for you, would you</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>trust the model to have</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>made the right decision?</cell></row><row><cell>5. Preference</cell><cell></cell><cell cols="4">To figure out the</cell></row><row><cell></cell><cell></cell><cell cols="2">personal</cell><cell></cell><cell>pref-</cell><cell>5.1 What would you like to see</cell><cell>5.1.1 Any specific information that is</cell></row><row><cell></cell><cell></cell><cell cols="2">erence</cell><cell>of</cell><cell>the</cell><cell>added to the current</cell><cell>missing?</cell></row><row><cell></cell><cell></cell><cell cols="3">stakeholder.</cell><cell></cell><cell>explanation?</cell><cell>5.1.2 Any functionality that could be</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>5.2 What would you consider</cell><cell>useful?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>to be redundant within</cell><cell>5.2.1 Anything that should be removed?</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>this explanation?</cell><cell>5.2.2 Or be made less prevalent?</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>The quotes, open codes, and categories discovered by using grounded theory for the candidates' responses.</figDesc><table><row><cell>Quotes</cell><cell>Open codes</cell><cell>Category</cell></row><row><cell>"You should separate the recommended</cell><cell>Different instances of the same group</cell><cell>Don't mix different types of</cell></row><row><cell>and supporting vacancies"</cell><cell>should be easily distinguishable</cell><cell>information</cell></row><row><cell>"I find it very difficult that the vacan-</cell><cell>Having different feature types in the</cell><cell></cell></row><row><cell>cies, candidates, and vacancy types or</cell><cell>same bar chart is confusing</cell><cell></cell></row><row><cell>on the same axis ... I don't understand</cell><cell></cell><cell></cell></row><row><cell>it anymore"</cell><cell></cell><cell></cell></row><row><cell>"if this was important for me as a can-</cell><cell>The bar chart should refer only to per-</cell><cell></cell></row><row><cell>didate, I would want to know"</cell><cell>sonal information</cell><cell></cell></row><row><cell>"It could be that the system is missing</cell><cell>Make 'deal-breakers' extremely clear</cell><cell>An explanation should very</cell></row><row><cell>some information about you ... like that</cell><cell></cell><cell>quickly allow for verification and</cell></row><row><cell>you want to work from home ... which</cell><cell></cell><cell>scrutiny</cell></row><row><cell>would allow you to cross it off the list</cell><cell></cell><cell></cell></row><row><cell>immediately"</cell><cell></cell><cell></cell></row><row><cell>"A candidate would not want to spend</cell><cell>Having to extract information carefully</cell><cell></cell></row><row><cell>all of their time dissecting a graph"</cell><cell>is a bother</cell><cell></cell></row><row><cell>"I would definitely want to look at the</cell><cell>Manual follow-up should be easy</cell><cell></cell></row><row><cell>vacancy"</cell><cell></cell><cell></cell></row><row><cell>"And that those small lines, for us, as</cell><cell>Only include supporting arguments</cell><cell>Make all non-crucial information</cell></row><row><cell>people looking for a vacancy, are not</cell><cell></cell><cell>optional</cell></row><row><cell>very useful"</cell><cell></cell><cell></cell></row><row><cell>"Yes, because this is some pretty diffi-</cell><cell>Specific values lead to overwhelm</cell><cell></cell></row><row><cell>cult use of language ... and those values</cell><cell></cell><cell></cell></row><row><cell>are not clear to me at all to be honest"</cell><cell></cell><cell></cell></row><row><cell>"Now it's saying the same thing for the</cell><cell>Only repeat information when summa-</cell><cell></cell></row><row><cell>third time in a row already"</cell><cell>rizing</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 :</head><label>4</label><figDesc>The quotes, open codes, and categories discovered by using grounded theory for the recruiters' responses.</figDesc><table><row><cell>Quotes</cell><cell>Open codes</cell><cell>Category</cell></row><row><cell>"It's nice when there's more text to talk</cell><cell>A lot of text can help in having enough</cell><cell></cell></row><row><cell>about on the phone, as long as it's not</cell><cell>subject matter while talking to clients</cell><cell></cell></row><row><cell>the same thing over and over again"</cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head></head><label></label><figDesc>There's a few things that are crucial when making a match ... and if those are not in order, I don't even need to see the prediction" Possible points of contention should already have been considered "I don't want to know anything I don't need to know ... there's no use in that" The simple version of explanations is usually sufficient "you simply get told that this is the correct match ... and if you can look at the vacancy, you can check if it's correct" Recruiters should be able to easily verify the model's claims Recruiters should always feel like they have the final say "I would never blindly set up a meeting; I would always want to speak to the candidate beforehand of course"</figDesc><table><row><cell></cell><cell>Each paragraph of the text should ad-</cell><cell></cell></row><row><cell></cell><cell>dress a different aspect</cell><cell></cell></row><row><cell>"I don't think this is required to actually</cell><cell>Knowing the general rationale is enough</cell><cell>The exact details of the</cell></row><row><cell>start calling; it's more of a convenience</cell><cell>to take action already</cell><cell>prediction are irrelevant most of</cell></row><row><cell>when you want to understand the rea-</cell><cell></cell><cell>the time</cell></row><row><cell>soning"</cell><cell></cell><cell></cell></row><row><cell>"</cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 5 :</head><label>5</label><figDesc>The quotes, open codes, and categories discovered by using grounded theory for the company representatives' responses. point you understand how it works ... and then you won't even look at the text anymore, the graph will be all you need"The graph is quick and easy to use once it's understood "the complex graph should be banned" The general idea of the explanation should be clear at a glance "that's why I would rather pick that one, over the recommended one, because that one seems closer to the vacancy."Alternative candidates should also receive explanations Exploring alternatives should be integrated in the system "it could be a close call, you know? So then you can make your own assessment, and verify if the model got it right" Having an overview of all possible candidates is useful to verify and scrutinize "if we want someone for 0.8 FTE, but their motivation letter says 0.6 FTE, it already becomes a no-go" Human factors, such as candidates' motivation letters, are hard to integrate into a prediction "if the model has been designed in such a manner that I know it has checked everything, there's no need for me to manually check everything as well"</figDesc><table><row><cell>Quotes</cell><cell>Open codes</cell><cell>Category</cell></row><row><cell>"this is what I had, after reading the</cell><cell>The textual explanation can require</cell><cell>Complex relations should still be</cell></row><row><cell>text four times, this path is generally</cell><cell>multiple iterations to become clear</cell><cell>easy to grasp</cell></row><row><cell>what I had understood"</cell><cell></cell><cell></cell></row><row><cell cols="2">"at one Given high enough performance, the ex-</cell><cell>Explanations are mainly useful</cell></row><row><cell></cell><cell>planation merely becomes a sanity check</cell><cell>for surprising results</cell></row><row><cell>"you already have an expectation of</cell><cell>Detail only matters when the recommen-</cell><cell></cell></row><row><cell>what the outcome will be. You're only</cell><cell>dation is unintuitive</cell><cell></cell></row><row><cell>going to start interrogating the model</cell><cell></cell><cell></cell></row><row><cell>once the prediction doesn't match your</cell><cell></cell><cell></cell></row><row><cell>expectation"</cell><cell></cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">Ethical Review Committee Inner City faculties (Maastricht University) 2 https://tianchi.aliyun.com/dataset/31623/ 3 https://pypi.org/project/deep-translator/ 4 https://www.pyg.org/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">https://atlasti.com/ 6 https://www.randstad.nl/</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Multistakeholder recommendation: Survey and research directions</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Adomavicius</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Burke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Guy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kamishima</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Krasnodebski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Pizzato</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="127" to="158" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">V</forename><surname>Arya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Bellamy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dhurandhar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hind</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">C</forename><surname>Hoffman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Houde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Luss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mojsilović</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1909.03012</idno>
+		<title level="m">One explanation does not fit all: A toolkit and taxonomy of ai explainability techniques</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Inside pagerank</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bianchini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Scarselli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Internet Technology (TOIT)</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="92" to="128" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Learning to rank with nonsmooth cost functions</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Burges</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ragno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in neural information processing systems</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A survey on xai and natural language explanations</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Cambria</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Malandri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Mercorio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mezzanzanica</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Nobani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing &amp; Management</title>
+		<imprint>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">103111</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Trust building in recommender agents</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Web Personalization, Recommender Systems and Intelligent User Interfaces at the 2nd International Conference on E-Business and Telecommunication Networks</title>
+				<meeting>the Workshop on Web Personalization, Recommender Systems and Intelligent User Interfaces at the 2nd International Conference on E-Business and Telecommunication Networks</meeting>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="page" from="135" to="145" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">The effects of transparency on trust in and acceptance of a content-based art recommender</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cramer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Evers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ramlal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Van Someren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Rutledge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Stash</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Aroyo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wielinga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-adapted interaction</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="455" to="496" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Dworkin</surname></persName>
+		</author>
+		<title level="m">Sample size policy for qualitative studies using in-depth interviews</title>
+				<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Xcm: An explainable convolutional neural network for multivariate time series classification</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Fauvel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Masson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">É</forename><surname>Fromont</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Termier</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematics</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">23</biblScope>
+			<biblScope unit="page">3137</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Mixed methods for evaluating user satisfaction</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Garcia-Gathright</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hosey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Carterette</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Diaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM conference on recommender systems</title>
+				<meeting>the 12th ACM conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="541" to="542" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Toward human-understandable, explainable ai</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hagras</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="28" to="36" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ba</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.6980</idno>
+		<title level="m">Adam: A method for stochastic optimization</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Providing explanations for recommendations in reciprocal environments</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kleinerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rosenfeld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kraus</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM conference on recommender systems</title>
+				<meeting>the 12th ACM conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="22" to="30" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Yan</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3357384.3357949</idno>
+		<ptr target="https://doi.org/10.1145/3357384.3357949" />
+		<title level="m">Towards effective and interpretable person-job fitting. International Conference on Information and Knowledge Management, Proceedings pp</title>
+				<imprint>
+			<date type="published" when="2019">11 2019</date>
+			<biblScope unit="page" from="1883" to="1892" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Liashchynskyi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Liashchynskyi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1912.06059</idno>
+		<title level="m">Grid search, random search, genetic algorithm: a big comparison for nas</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><surname>Longhurst</surname></persName>
+		</author>
+		<title level="m">Semi-structured interviews and focus groups. Key methods in geography</title>
+				<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="143" to="156" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Random walks on graphs</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lovász</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Paul erdos is eighty</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">1-46</biblScope>
+			<biblScope unit="page">4</biblScope>
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+	<note>Combinatorics</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Saxon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">C</forename><surname>Lipton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2303.05500</idno>
+		<title level="m">Users are the north star for ai transparency</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Menon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Vondrick</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2210.07183</idno>
+		<title level="m">Visual classification via description from large language models</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Determining sample size</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Morse</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Nauta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Trienes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pathak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Peters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Schmitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schlötterer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Van Keulen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Seifert</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2201.08164</idno>
+		<title level="m">From anecdotal evidence to quantitative evaluation methods: A systematic review on evaluating explainable ai</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">OpenAI: Chatgpt: Optimizing language models for dialogue</title>
+		<ptr target="https://openai.com/blog/chatgpt/(2022" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Xai handbook: towards a unified framework for explainable ai</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Palacio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lucieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Munir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hees</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Dengel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE/CVF International Conference on Computer Vision</title>
+				<meeting>the IEEE/CVF International Conference on Computer Vision</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="3766" to="3775" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Generation of textual explanations in xai: The case of semantic annotation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Poli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ouerdane</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pierrard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2021 IEEE International Conference on Fuzzy Systems</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">A user-centric evaluation framework for recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fifth ACM conference on Recommender systems</title>
+				<meeting>the fifth ACM conference on Recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="157" to="164" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Evaluating explainable interfaces for a knowledge graph-based recommender system</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Purificato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Manikandan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">V</forename><surname>Karanam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">V</forename><surname>Pattadkal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">W</forename><surname>De Luca</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IntRS@ RecSys</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="73" to="88" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>De Ruijt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bhulai</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2111.13576</idno>
+		<title level="m">Job recommender systems: A review</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title level="m" type="main">Explainable career path predictions using neural models</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schellingerhout</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Medentsiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Marx</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">A survey of collaborative filtering techniques. Advances in artificial intelligence</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Khoshgoftaar</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Visual, textual or hybrid: the effect of user expertise on different explanations</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Szymanski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millecamp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">26th International Conference on Intelligent User Interfaces</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="109" to="119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Knowledge graphs as tools for explainable machine learning: A survey</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Tiddi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schlobach</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">302</biblScope>
+			<biblScope unit="page">103627</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Explainable job-posting recommendations using knowledge graphs and named entity recognition</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Upadhyay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Abu-Rasheed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Weber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Fathi</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/SMC52423.2021.9658757</idno>
+		<ptr target="https://doi.org/10.1109/SMC52423.2021.9658757" />
+	</analytic>
+	<monogr>
+		<title level="m">Conference Proceedings -IEEE International Conference on Systems, Man and Cybernetics</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="3291" to="3296" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Veličković</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cucurull</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Casanova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Romero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1710.10903</idno>
+		<title level="m">Graph attention networks</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Grounded theory: An exploration of process and procedure</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Walker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Myrick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Qualitative health research</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="547" to="559" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Kgat: Knowledge graph attention network for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th ACM SIGKDD international conference on knowledge discovery &amp; data mining</title>
+				<meeting>the 25th ACM SIGKDD international conference on knowledge discovery &amp; data mining</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="950" to="958" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Linguistic summaries as explanation mechanism for classification problems</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wrede</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Winands</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Wilbik</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 34rd Benelux Conference on Artificial Intelligence and the 31th Belgian Dutch Conference on Machine Learning</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">bideepfm: A multi-objective deep factorization machine for reciprocal recommendation. Engineering Science and Technology</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yıldırım</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Azad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">¸ G</forename><surname>Ögüdücü</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">an International Journal</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1467" to="1477" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

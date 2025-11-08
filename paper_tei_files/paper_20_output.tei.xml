@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">ProReco: A Process Discovery Recommender System</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2025-02-14">14 Feb 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Tsung-Hao</forename><surname>Huang</surname></persName>
+							<email>tsunghao.huang@pads.rwth-aachen.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Process and Data Science (PADS)</orgName>
+								<orgName type="institution">RWTH Aachen University</orgName>
+								<address>
+									<settlement>Aachen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Tarek</forename><surname>Junied</surname></persName>
+							<email>tarekjunied@icloud.com</email>
+							<affiliation key="aff1">
+								<orgName type="institution">RWTH Aachen University</orgName>
+								<address>
+									<settlement>Aachen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Marco</forename><surname>Pegoraro</surname></persName>
+							<email>pegoraro@pads.rwth-aachen.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Process and Data Science (PADS)</orgName>
+								<orgName type="institution">RWTH Aachen University</orgName>
+								<address>
+									<settlement>Aachen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Wil</forename><forename type="middle">M P</forename><surname>Van Der Aalst</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Process and Data Science (PADS)</orgName>
+								<orgName type="institution">RWTH Aachen University</orgName>
+								<address>
+									<settlement>Aachen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">ProReco: A Process Discovery Recommender System</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-02-14">14 Feb 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">AA07A33D2C12E3D4BD3C1CC26A3D22FB</idno>
+					<idno type="arXiv">arXiv:2502.10230v1[cs.LG]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:57+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Process Mining</term>
+					<term>Process Discovery</term>
+					<term>Recommender System</term>
+					<term>Explainable Recommendations</term>
+					<term>Explainable AI</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Process discovery aims to automatically derive process models from historical execution data (event logs). While various process discovery algorithms have been proposed in the last 25 years, there is no consensus on a dominating discovery algorithm. Selecting the most suitable discovery algorithm remains a challenge due to competing quality measures and diverse user requirements. Manually selecting the most suitable process discovery algorithm from a range of options for a given event log is a time-consuming and error-prone task. This paper introduces ProReco, a Process discovery Recommender system designed to recommend the most appropriate algorithm based on user preferences and event log characteristics. ProReco incorporates state-of-the-art discovery algorithms, extends the feature pools from previous work, and utilizes eXplainable AI (XAI) techniques to provide explanations for its recommendations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Process discovery <ref type="bibr" target="#b0">[1]</ref> is a discipline that aims to automatically obtain formal representation through models of the operating mechanisms in a process. The input of such methods is a collection of data related to the historical execution of a process, often in the form of discrete events. Discovery algorithms read events and their attributes from a dataset (often called an event log), and output a process model, to provide a representation as close as possible to the real process operations.</p><p>Since the inception of the discipline in the early 2000s, many discovery algorithms have been proposed <ref type="bibr" target="#b1">[2]</ref>, as well as numerous metrics to assess their desirability and quality. Nevertheless, the systematic review and benchmark <ref type="bibr" target="#b2">[3]</ref> show no algorithm dominating all other methods in terms of model quality measures. Moreover, producing a satisfactory process model is still an open challenge, although there exists extensive literature dedicated to measuring the quality of models obtained through discovery. This is because (i) some of the most widely adopted quality measures are competing (i.e., there exist trade-offs between them), and (ii) depending on the final use of the discovered model, different (and sometimes opposite) characteristics are desirable. Under such a circumstance, users are left with the task of manually selecting the most prominent process discovery algorithm for the event log at hand. The procedure is time-consuming and error-prone even for process mining experts, let alone inexperienced users.</p><p>To address the aforementioned problems and to assist process mining users, previous works <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7]</ref> proposed using recommender systems for process discovery. The approaches <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7]</ref> abstract from the actual values of model quality by calculating the final score based on the rankings. Also, the approach in <ref type="bibr" target="#b6">[7]</ref> does not incorporate user preferences for the recommendation, assuming every user wants to maximize all measures simultaneously. Lastly, the recommendations offered by both works lack accompanying explanations. Intransparent recommendations could hamper the acceptance of a recommender system <ref type="bibr" target="#b8">[9]</ref>. This paper proposes ProReco, a Process discovery Recommender system. Given an event log and user preferences regarding model quality measures, ProReco recommends the most appropriate process discovery algorithm tailored to the users' needs. Internally, ProReco utilizes machine learning models to predict the values for each quality measure before computing the weighted (user preferences) sum of the final score. The scores are then used to rank and recommend the discovery algorithm. ProReco not only expands the features pool from previous work but also includes state-of-the-art process discovery algorithms. Last but not least, for every recommendation made by ProReco, explanations are available to the user thanks to the incorporation of the eXplainable AI (XAI) technique <ref type="bibr" target="#b4">[5]</ref> in ProReco.</p><p>The remainder of the paper is structured as follows. Section 2 illustrates some preliminary notions. Section 3 describes the components and mechanics of ProReco. Lastly, Section 4 concludes the paper and indicates directions for future research.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Preliminary Concepts</head><p>In this section, we introduce the necessary concepts before presenting ProReco in Sec. 3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Event log</head><p>The starting point of process mining is the event log where each event refers to a case (an instance of the process), an activity, and a point in time. The existence of these three attributes is the minimal requirement for an event log, whereas more attributes can be recorded and/or extracted. Event data can be extracted from various sources such as a database, a transaction log, a business suite/ERP system, etc. An event log can be seen as a collection of cases, whereas a case is a trace/sequence of events. Fig. <ref type="figure" target="#fig_0">1a</ref> shows a synthetic event log for the purchasing process of an online retail site. Each row corresponds to an event.  Process model A process model is a structured representation of the activities and their relationships within a business process. It plays a crucial role in understanding, analyzing, and improving organizational workflows. Various process modeling notations exist such as Petri nets, BPMNs, BPEL models, or UML Activity Diagrams <ref type="bibr" target="#b0">[1]</ref>. In ProReco, we focus on Petri net since it is one of the simplest formalisms that explicitly model concurrency. Moreover, it is trivial to convert process models in other notations into Petri nets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Case</head><p>Fig. <ref type="figure" target="#fig_0">1b</ref> shows the corresponding process model (in the form of a Petri net) for the event log in Fig. <ref type="figure" target="#fig_0">1a</ref>. The process starts with the activity "place order" followed by the concurrent executions of activity "pay" and "send invoice", where activity "pay" is optional. Then, the process might be either "cancel" or followed by a delivery procedure.</p><p>Process discovery Process discovery aims at constructing process models to describe the observed behaviors of information systems from event logs. In general, the problem of process discovery can be defined as follows: A process discovery algorithm is a function that maps an event log L onto a process model N such that the model N is representative of the behaviors seen in the log L. Despite the development of process discovery algorithms, manually finding the most appropriate algorithm is a challenging and error-prone task. To assist users with identifying the most prominent discovery algorithm, we present ProReco in the next section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ProReco: A Process Discovery Recommender System</head><p>The backend of ProReco is developed in Python, to leverage the capabilities of the PM4py 3 package. The package provides a comprehensive suite of algorithms and tools for process mining. The source code for ProReco can be found on a GitHub repository 4 , which provides detailed instruction for installation. In the following, we introduce the structure and the main functions of ProReco. Additionally, a demo video of ProReco is available 5 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Structure</head><p>The overall structure of ProReco is shown in Fig. <ref type="figure" target="#fig_1">2</ref>. To recommend the most prominent discovery algorithm for event log L, ProReco takes a vector of weights W representing the importance of different measures in addition to L. The weights (within the interval [0,100]) are given by the users and will be used to calculate the final score of the algorithm. The output of ProReco is a ranking for each discovery algorithm in our portfolio, as well as the corresponding score calculated based on the weighted sum of the quality measures. The higher the score, the better the algorithm adapts to the users' preferences. In the following, we briefly describe the target quality dimensions used in ProReco.</p><p>As we aim to quantify the most common quality measures of a process model, the four primary quality measures <ref type="bibr" target="#b0">[1]</ref> (fitness, simplicity, precision, and generalization) are used. A model with good fitness represents (and can replay) behavior seen in the log. The simplicity dimension refers to the complexity of the model. In the context of process mining, this means that a simpler model is advantageous, as long as it can explain the behaviors seen in the log. A precise process model does not allow too much unseen behavior, as it is trivial to create a model that allows any behavior (the flower model <ref type="bibr" target="#b0">[1]</ref>). Lastly, a model with good generalization can represent behavior unseen in the event log. Since the four quality dimensions compete with each other, a single ideal model often does not exist <ref type="bibr" target="#b0">[1]</ref>. The ideal model highly depends on the use case of the users. This motivates the use of weights to incorporate the user preferences w.r.t. the importance of the four quality measures.</p><p>Next, we introduce each component (the feature extractor and the machine learning predictor) in more detail.</p><p>Feature Extractor Based on previous work <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b7">8]</ref>, we extract an initial pool of various features. Moreover, the initial pool is filtered considering two criteria. First, we remove the computationally expensive features. As efficiency is one of the motivations for developing such a recommender system, using features that are expensive to compute does counteract the benefit. Second, we remove redundant features. Features are considered redundant if there is already another feature representing the same concept. For instance, the feature representing the number of trace variants is implemented as n_unique_traces in <ref type="bibr" target="#b6">[7]</ref> and as "Number of distinct traces" in <ref type="bibr" target="#b5">[6]</ref>. These redundancies lead to higher execution time and adversely affect the performance of some machine learning models. Thus, we remove such redundancies using the Pearson correlation coefficient. Lastly, we add ten Directly-Follows Graph (DFG)-and footprint matrix-based features. In the end, 162 features were extracted. The introduction to all features is out of scope. The corresponding function (called Featurer ) providing insight for all features is available in ProReco and introduced in Sec. 3.2 in more detail.</p><p>Machine Learning Predictor As shown in Fig. <ref type="figure">3a</ref>, the machine learning predictor consists of a score predictor for each algorithm in the algorithm portfolio, which consists of Alpha Miner, Alpha-Plus Miner, Heuristics Miner, Inductive Miner (classic, infrequent, direct), ILP Miner, and Split Miner. The structure for an algorithm score predictor is shown in Fig. <ref type="figure">3b</ref> using Alpha Miner as an instance. The Score Predictor consists of individual predictors for each of the four measures (fitness, precision, generalization, and simplicity). Each measure predictor accepts a feature vector derived from the event log as input and forecasts the value of the corresponding measure for the process model that would have been generated based on the provided event log. The measure weights W provided by the user are then used for the final computation of the overall score for a discovery algorithm. During this computation, each predicted measure value is multiplied by its corresponding measure weight and subsequently aggregated.</p><p>The choice of the predictor to predict the measure values for each algorithm is of little importance here, as it is flexible to switch among different predictors whenever suitable. In ProReco, we adopt the xgboost <ref type="bibr" target="#b3">[4]</ref> regressor as an instantiation for the predictor. To train the predictors, we included 12 real-life event logs from the 4TU repository 6 and 785 synthetic event logs generated by the PLG tool 7 . The data is available for download 8 . We used 5-fold cross-validation for each experiment with an 80/20 training/test split.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">ProReco's Functions</head><p>In this section, we introduce the main functions of ProReco.</p><p>Recommendation As a recommender system for process discovery, ProReco recommends the most prominent algorithm for the user according to the predicted weighted sum of the four quality measures discussed in Sec. 3.1. The inputs are an event log L and the user preferences w.r.t. measure weights W .</p><p>To initiate the recommendation, users have to upload an event log (.xes format) as input. Then, they are redirected to a page where they have to provide the weights for each of the four quality measures. Once the measure weights are submitted, users are redirected to the recommendation page, where a ranking of the algorithm portfolio, the score for each algorithm, and the predicted measure values for each algorithm and measure are available. Additionally, ProReco provides users the possibility to mine a process model with the recommended process discovery algorithms. The discovered process model is then displayed through an interactive Petri net viewer.</p><p>Feature Insights ProReco offers insights into the features extracted from event logs. The "Featurer" (shown in Fig. <ref type="figure" target="#fig_3">4</ref>) is accessible through the navigation bar. Featurer provides the user with detailed information about the features. By searching for a specific feature name, users can access the following information, as shown in Fig. <ref type="figure" target="#fig_3">4:</ref> -Description: a brief description of the feature.</p><p>-From: the source of the feature.</p><p>-Used in: the number of regressors that use this feature.</p><p>-Most important for: the regressor that gains the most advantage from the feature. -Ranking: the importance of the feature among all features.</p><p>-Feature Score: a metric used to determine the feature's ranking.  Explainable Recommendation As recommendations without explanations can hinder the transparency, trustworthiness, and satisfaction of a recommender system <ref type="bibr" target="#b8">[9]</ref>, ProReco incorporates techniques from explainable AI (XAI) to provide explanations for individual predictions made by the regressors. Users can access the explanations by clicking on "Explain the Predictions" on the resulting recommendation page. Then, users will be redirected to an interactive plot based on SHAP values <ref type="bibr" target="#b4">[5]</ref>. The plot begins at the bottom, displaying the expected measure for the selected algorithm. As each feature is added, its effect on the prediction is shown. A shift to the left indicates a decrease in the measure, while a shift to the right indicates an increase. The interactive plot offers insights and explanations for the recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Conclusion and Future Work</head><p>Process discovery aims to automatically generate process models representing the underlying information system from event logs. Despite the development of various discovery algorithms and quality metrics, no single algorithm dominates in terms of model quality measures <ref type="bibr" target="#b2">[3]</ref>. Consequently, users often face the challenge of manually selecting suitable discovery algorithms, a process that is time-consuming and error-prone, even for experts in process mining. In response, this paper introduces ProReco, a process discovery recommender system designed to recommend the most appropriate process discovery algorithm based on user preferences and event log characteristics. ProReco expands upon previous work by incorporating state-of-the-art algorithms and providing transparent explanations for its recommendations.</p><p>As future work, several directions can be investigated. First, we plan to explore various parameter settings for the discovery algorithms. Due to the vast search space, the challenge is finding an efficient method to determine the best value per technique. Additionally, we would like to include additional measures for optimization such as runtime. Last but not least, we plan to conduct user studies to understand the effectiveness and usability of ProReco as well as to validate the benefits. For example, the understandability of the provided explanation could be evaluated by a dedicated user study.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 :</head><label>1</label><figDesc>Fig.1: An example of an event log and the corresponding process model.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 :</head><label>2</label><figDesc>Fig. 2: General structure of ProReco</figDesc><graphic coords="4,169.35,248.78,276.65,72.01" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>( a )Fig. 3 :</head><label>a3</label><figDesc>Fig. 3: Machine learning predictor and its sub-components: score predictors.</figDesc><graphic coords="5,152.06,454.63,311.22,107.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4 :</head><label>4</label><figDesc>Fig. 4: The user interface for the feature insights.</figDesc><graphic coords="7,152.06,115.84,311.22,157.39" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 5 :</head><label>5</label><figDesc>Fig. 5: The user interface for explaining an individual recommendation.</figDesc><graphic coords="7,152.06,309.63,311.24,195.08" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">https://pm4py.fit.fraunhofer.de/ 4 https://github.com/TarekJunied/ProReco</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">https://bit.ly/prorecodemo</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6">https://data.4tu.nl/ 7 https://plg.processmining.it/ 8 http://bit.ly/allEventLogsProReco</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Acknowledgements. We thank the Alexander von Humboldt (AvH) Stiftung for supporting our research.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">M P</forename><surname>Van Der Aalst</surname></persName>
+		</author>
+		<title level="m">Process Mining -Data Science in Action</title>
+				<meeting>ess Mining -Data Science in Action</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note>Second Edition</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Advanced process discovery techniques</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Augusto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Carmona</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Verbeek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Process Mining Handbook</title>
+		<title level="s">Lecture Notes in Business Information Processing</title>
+		<editor>
+			<persName><forename type="first">W</forename><forename type="middle">M P</forename><surname>Van Der Aalst</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Carmona</surname></persName>
+		</editor>
+		<meeting>ess Mining Handbook</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">448</biblScope>
+			<biblScope unit="page" from="76" to="107" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Automated discovery of process models from event logs: Review and benchmark</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Augusto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Conforti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Dumas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Rosa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">M</forename><surname>Maggi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marrella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mecella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Soo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Knowl. Data Eng</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="686" to="705" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Xgboost: A scalable tree boosting system</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Guestrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<biblScope unit="page" from="785" to="794" />
+			<date type="published" when="2016">2016</date>
+			<publisher>ACM</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A unified approach to interpreting model predictions</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Lundberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NIPS</title>
+		<imprint>
+			<biblScope unit="page" from="4765" to="4774" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A recommender system for process discovery</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ribeiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Carmona</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Misir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sebag</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BPM</title>
+		<imprint>
+			<biblScope unit="volume">8659</biblScope>
+			<biblScope unit="page" from="67" to="83" />
+			<date type="published" when="2014">2014</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Automating process discovery through meta-learning</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Tavares</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Junior</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Damiani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CoopIS. Lecture Notes in Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">13591</biblScope>
+			<biblScope unit="page" from="205" to="222" />
+			<date type="published" when="2022">2022</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Fig4pm: A library for calculating event log measures</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zandkarimi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Decker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Rehse</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note>extended abstract</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Found. Trends Inf. Retr</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

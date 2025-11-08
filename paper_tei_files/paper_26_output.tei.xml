@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">DISCO: A Hierarchical Disentangled Cognitive Diagnosis Framework for Interpretable Job Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-10-15">15 Oct 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Xiaoshan</forename><surname>Yu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">School of Artificial Intelligence</orgName>
+								<orgName type="institution">Anhui University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chuan</forename><surname>Qin</surname></persName>
+							<email>chuanqin0426@gmail.com</email>
+							<affiliation key="aff1">
+								<orgName type="department">Artifcial Intelligence Thrust</orgName>
+								<orgName type="institution">The Hong Kong University of Science and Technology (Guangzhou)</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Qi</forename><surname>Zhang</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Shanghai Artificial Intelligence Laboratory</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chen</forename><surname>Zhu</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">School of Management</orgName>
+								<orgName type="institution">University of Science and Technology of China</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Haiping</forename><surname>Ma</surname></persName>
+							<email>hpma@ahu.edu.cn</email>
+							<affiliation key="aff4">
+								<orgName type="department">Institutes of Physical Science and Information Technology</orgName>
+								<orgName type="laboratory">Information Materials and Intelligent Sensing Laboratory of Anhui Province</orgName>
+								<orgName type="institution">Anhui University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Xingyi</forename><surname>Zhang</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">School of Computer Science and Technology</orgName>
+								<orgName type="institution">Anhui University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Hengshu</forename><surname>Zhu</surname></persName>
+							<email>zhuhengshu@gmail.com</email>
+							<affiliation key="aff6">
+								<orgName type="department">Computer Network Information Center</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">DISCO: A Hierarchical Disentangled Cognitive Diagnosis Framework for Interpretable Job Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-10-15">15 Oct 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">2D33E2DA8EF899A8572C76C4496EEB8C</idno>
+					<idno type="arXiv">arXiv:2410.07671v2[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:00+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract/>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Abstract-The rapid development of online recruitment platforms has created unprecedented opportunities for job seekers while concurrently posing the significant challenge of quickly and accurately pinpointing positions that align with their skills and preferences. Job recommendation systems have significantly alleviated the extensive search burden for job seekers by optimizing user engagement metrics, such as clicks and applications, thus achieving notable success. In recent years, a substantial amount of research has been devoted to developing effective job recommendation models, primarily focusing on text-matching based and behavior modeling based methods. While these approaches have realized impressive outcomes, it is imperative to note that research on the explainability of recruitment recommendations remains profoundly unexplored. To this end, in this paper, we propose DISCO, a hierarchical Disentanglement based Cognitive diagnosis framework, aimed at flexibly accommodating the underlying representation learning model for effective and interpretable job recommendations. Specifically, we first design a hierarchical representation disentangling module to explicitly mine the hierarchical skill-related factors implied in hidden representations of job seekers and jobs. Subsequently, we propose level-aware association modeling to enhance information communication and robust representation learning both inter-and intra-level, which consists of the interlevel knowledge influence module and the level-wise contrastive learning. Finally, we devise an interaction diagnosis module incorporating a neural diagnosis function for effectively modeling the multi-level recruitment interaction process between job seekers and jobs, which introduces the cognitive measurement theory. Extensive experiments on two real-world recruitment recommendation datasets and an educational recommendation dataset clearly demonstrate the effectiveness and interpretability of our proposed DISCO framework. Our codes are available at https://github.com/LabyrinthineLeo/DISCO. Index Terms-Online recruitment, job recommendation, cognitive diagnosis, disentangled learning </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>With the rapid development of Internet technology, various online recruitment platforms have emerged and become prevalent, such as LinkedIn and Glassdoor, which have significantly revolutionized the job-seeking process by establishing a digital bridge between job seekers and potential employers worldwide <ref type="bibr" target="#b0">[1]</ref>, <ref type="bibr" target="#b1">[2]</ref>. Under this online paradigm of recruitment, it is crucial to develop a trustworthy job recommender system capable of accurately suggesting positions that align with job seekers' preferences and capabilities, which can assist them in efficiently finding the most suitable and credible positions <ref type="bibr" target="#b2">[3]</ref>.</p><p>In the literature, there are many recent studies dominated by text-matching based methods <ref type="bibr" target="#b3">[4]</ref>, <ref type="bibr" target="#b4">[5]</ref>, these job recommender systems parsed through vast textual data from resumes and job postings to identify matches based on textual similarity <ref type="bibr" target="#b5">[6]</ref>- <ref type="bibr" target="#b7">[8]</ref>, offering tailored job suggestions to users. In recent years, another category of interaction behavior based job recommendation methods <ref type="bibr" target="#b8">[9]</ref>- <ref type="bibr" target="#b12">[13]</ref> has received increasing research attention, which mainly explores users' personalized preferences and intentions by modeling the interaction behaviors between job seekers and recruiters. For example, DPGNN <ref type="bibr" target="#b8">[9]</ref> introduces a dual-perspective graph representation learning framework, specifically designed to model the directed interactions (such as job application and resume review) between job seekers and recruiters. However, previous approaches have markedly enhanced the recommendation performance primarily by using end-to-end network models, there remains a notable deficiency in exploring the interpretability, particularly regarding the explainable abilities of job seekers and the variances in job requirements. As shown in Figure <ref type="figure" target="#fig_0">1</ref>, the job seeker c is presented with two positions (i.e., j 1 and j 2 ) by the recommender system that appears indistinguishable in terms of skills (indeed the two are extremely different with respect to the competencies matched to this user), which is a common issue in traditional job recommendation approaches. The lack of reasons for recommendations often makes it difficult for users to choose from recommendations, and they are more susceptible to position bias, ignoring the match between personal abilities and the needs of the position. This kind of recommender system may lead job seekers to pursue positions misaligned with their abilities or career aspirations, hindering their job search success.</p><p>To this end, in this paper, we propose a hierarchical Disentanglement based Cognitive diagnosis framework (DISCO), aimed at flexibly accommodating the underlying representation learning model for effective and interpretable job recommendations. DISCO re-examines the recruitment recommendation process from a hierarchical disentanglement based cognitive diagnosis perspective, i.e., by viewing the process of job seekers interacting with the recruiter of the positions in the job search process as the process of exercisesolving by the learner <ref type="bibr" target="#b13">[14]</ref>- <ref type="bibr" target="#b16">[17]</ref>. Such a modeling approach facilitates the evaluation of the diverse skill demands of various job positions within the labor market and the current competitive standing of candidates. As illustrated in Figure <ref type="figure" target="#fig_0">1</ref>, the competency level of candidate c is explicitly depicted, alongside the skill requirement of jobs j 1 and j 2 . This enhanced clarity enables candidates to better understand the differences in skill demands between various positions, allowing them to align their applications more precisely with jobs that match their capabilities and professional aspirations.</p><p>However, this task is non-trivial and presents several crucial technical challenges: (1) How to map representations of users and jobs to specific skill dimensions to obtain interpretable content with tangible meanings? Indeed, existing text-based and behavioral modeling job recommendation methods are primarily designed to learn effective representation vectors, which are high-order and abstract, failing to provide employers and job seekers with intuitive information, such as the degree of specificity of a job's skill requirements. (2) How to hierarchize the competency level of candidates and the degree of skill required for jobs? In recruitment interactions, the skills required for a job are usually multi-granular, and similarly, the level of competence possessed by job seekers is often hierarchical. Modeling these aspects in a coarse-grained manner fails to effectively capture their intrinsic characteristics. (3) How to mitigate instability caused by interaction bias during the job search process? In real-world scenarios, the interaction between job seekers and jobs during the job search process can be influenced by various biases, such as cognitive bias and popularity bias, which often leads to unstable profiling of the job seekers' abilities and job requirements.</p><p>To address these challenges, we initially developed a hierarchical representation disentangling module to effectively extract and clarify the hierarchical skill-related factors embedded in the hidden representations of job seekers and jobs. Subsequently, we design a level-aware self-attention network to explore the intrinsic associations between inter-level skill prototypes. Following that, a noise perturbation based levelwise contrastive module is proposed to enhance the robust representation learning. Finally, we devise an interaction diagnosis module is introduced that integrates a neural diagnosis function, aimed at effectively capturing the multi-level recruitment interaction process between job seekers and jobs. This module incorporates the cognitive measurement theory to enhance its explainability. Extensive experiments on two realworld recruitment recommendation datasets and an educational recommendation dataset clearly demonstrate the effectiveness and interpretability of the proposed DISCO framework in the job recommendation task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. RELATED WORK A. Job Recommendation</head><p>With the burgeoning of online recruitment platforms, job recommendation <ref type="bibr" target="#b17">[18]</ref>- <ref type="bibr" target="#b20">[21]</ref> has emerged as a pivotal task and garnered extensive research attention, attributable to its potential to accurately match job seekers with suitable job positions. Existing job recommendation approaches are mainly classified into two categories, respectively, text-matching based methods and interaction behavior based methods. The first category of methods <ref type="bibr" target="#b3">[4]</ref>, <ref type="bibr" target="#b4">[5]</ref>, <ref type="bibr" target="#b21">[22]</ref> focuses on matching the textual content of the applicants' resumes and job descriptions by utilizing text-matching strategies or text enhancement techniques <ref type="bibr" target="#b22">[23]</ref>, <ref type="bibr" target="#b23">[24]</ref>, so as to predict the suitability of both. For example, APJFNN <ref type="bibr" target="#b3">[4]</ref> employs a RNN to acquire word-level semantic representations and designs a hierarchical ability-aware attention strategy to measure the matching degree. Another category of methods <ref type="bibr" target="#b8">[9]</ref>, <ref type="bibr" target="#b9">[10]</ref> mainly explores users' personalized preferences and intentions by modeling the interaction behaviors between person (job seekers) and jobs (recruiters). For instance, SHPJF <ref type="bibr" target="#b9">[10]</ref> explicitly models the users' search histories in addition to learning semantic information from text content for comprehensive mining of underlying job intents. Despite the impressive outcomes achieved by these methods, a significant shortfall is evident in the interpretable exploration of matching job seekers with job positions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Cognitive Diagnosis</head><p>Cognitive diagnosis (CD) <ref type="bibr" target="#b24">[25]</ref>, <ref type="bibr" target="#b25">[26]</ref> is a classical methodology for assessing ability in educational psychology, aimed at portraying learners' proficiency profile by analyzing their learning behaviors <ref type="bibr" target="#b26">[27]</ref>, <ref type="bibr" target="#b27">[28]</ref>. Over the past decades, numerous effective CD models have been developed. Within these, traditional psychometric-based CD approaches hold a crucial role, being designed on the basis of psychological theories to depict student knowledge state through latent factors <ref type="bibr" target="#b24">[25]</ref>, <ref type="bibr" target="#b28">[29]</ref>. For instance, The Deterministic Inputs, Noisy And gate (DINA) <ref type="bibr" target="#b28">[29]</ref> model characterizes each student with a binary vector that indicates mastery of the knowledge concepts associated with the exercises, requiring all relevant skills for the highest positive response probability. In recent years, the swift development of deep learning has propelled neural network (NN)-based CD approaches <ref type="bibr" target="#b29">[30]</ref>- <ref type="bibr" target="#b31">[32]</ref> to the forefront. These methods effectively diagnose learners' mastery attributes by incorporating neural networks to model complex interactions among learning elements (e.g., students, exercises, and knowledge concepts). For example, NeuralCD <ref type="bibr" target="#b29">[30]</ref>, a notable neural CDM, employs multidimensional parameters for detailed depiction of students' knowledge level and exercise attributes, and incorporates MLP to model complex interactions between students and exercises. RDGT <ref type="bibr" target="#b30">[31]</ref> proposes an effective group cognitive diagnosis method by designing a relationguided dual-side graph transformer model to mine potential associations both between learners and between exercises. However, a gap remains in the skillful application of cognitive diagnostics to effectively model the job recommendation task.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Disentangled Learning</head><p>Disentangled learning aims to identify and disentangle the underlying explanatory factors of the observed complicated data, enhancing the efficiency and interpretability of the model in the learning process <ref type="bibr" target="#b32">[33]</ref>, <ref type="bibr" target="#b33">[34]</ref>. Initially, disentangled learning received extensive research attention in the field of computer vision due to its effectiveness <ref type="bibr" target="#b33">[34]</ref>. Recently, a variety of approaches have introduced disentangled learning to model graph-structured data <ref type="bibr" target="#b34">[35]</ref>, <ref type="bibr" target="#b35">[36]</ref>. For instance, DGCL <ref type="bibr" target="#b35">[36]</ref> employs contrastive learning to uncover latent factors within the graph and subsequently extracts disentangled representations of the graph. DisenGCN <ref type="bibr" target="#b34">[35]</ref> proposes a unique neighborhood routing mechanism for disentangling node representation in graph networks, enabling dynamic identification of latent factors and improved performance in complex data scenarios. Moreover, learning disentangled representations of user latent intents from interaction feedback has been a popular topic in the recommendation domain <ref type="bibr" target="#b36">[37]</ref>- <ref type="bibr" target="#b38">[39]</ref>. For example, Macrid-VAE <ref type="bibr" target="#b36">[37]</ref> proposes a macro-micro disentangled variational auto-encoder to learn disentangled representations based on user behavior across multiple geometric spaces. However, learning disentangled competency representations of applicants in the cognitive diagnostic perspective is unexplored.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. PRELIMINARIES</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A. Problem Formulation</head><p>In this section, we introduce the problem definition of job recommendation. Let C = {c 1 , c 2 , . . . , c N } be the set of N job seekers, J = {j 1 , j 2 , . . . , j M } be the set of M jobs, S = ∪ L l=1 S l be the set of K skills with L different granularity levels, where S L is the atomic skill level and</p><formula xml:id="formula_0">K = L l=1 |S l |.</formula><p>Each job seeker and job are associated with textual documents describing the resumes and the job requirements. The relationship between jobs and skills is represented by a Q-matrix Q = {q uv } M ×K , where q uv = 1 if job j u requires skill s v and 0 otherwise. Besides, the interaction matrix between the job seekers and jobs is denoted as R = {r uv } N ×M , where r uv ∈ {0, 1, 2, 3} corresponds to the four kinds of interaction behaviors between the candidate c u and the job j v , i.e., Browse, Click, Chat and Match, respectively, and they reflect different levels of matching. Particularly, r uv = 3 means both the job seeker and the recruiter are satisfied with each other and this pair is matched.</p><p>In this paper, our goal is to recommend the appropriate jobs to job seekers. To achieve this, we aim to predict the compatibility between jobs and candidates by learning a matching function f (c u , j v ) based on the interaction records R, the relationship matrix between jobs and skills Q, and the documents describing the resume and job requirements, and then realize the top-K job recommendation based on the predicted degree of matching between candidates and jobs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Base Embedding Model</head><p>The goal of DISCO is primarily to efficiently and interpretably model the interaction patterns between users and jobs, thus enabling a flexible framework applicable to existing representation learning recommendation models. In this section, we mainly introduce the base embedding model to output embedding representations of users and jobs. Specifically, the base embedding model M(C, J , R) aims to encode job seekers C and jobs J with d-dimensional trainable matrices C ∈ R N ×d and J ∈ R M ×d , respectively. Here N and M are the numbers of job seekers and jobs in the recruitment interaction records, respectively, and d is the embedding dimension. Notably, the process of acquiring embedding representations: M(C, J , R) → (C, J), varies across different base models (as shown in the left part of Figure <ref type="figure" target="#fig_2">2</ref>), with the essential purpose being to learn effective high-dimensional characterizations. Specifically, we deploy MF <ref type="bibr" target="#b39">[40]</ref> to consider collaborative information, NGCF/LightGCN <ref type="bibr" target="#b40">[41]</ref>, <ref type="bibr" target="#b41">[42]</ref> to extract higher-order connectivity, and DPGNN <ref type="bibr" target="#b8">[9]</ref> to embed textual content. Here, we take the example of NGCF <ref type="bibr" target="#b40">[41]</ref>, which utilizes the useritem interaction graph to propagate high-order information and thus achieve embedding learning:</p><formula xml:id="formula_1">           c (k+1) u = σ W 1 c (k) u + v∈Nu 1 |Nu||Nv| (W 1 j (k) v + W 2 (j (k) v ⊙ c (k) u )) , j (k+1) v = σ W 1 j (k) v + u∈Nv 1 |Nu||Nv| (W 1 c (k) u + W 2 (c (k) u ⊙ j (k) v )) ,<label>(1)</label></formula><p>where c  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IV. METHODOLOGY</head><p>In this section, we present the DISCO framework in detail. As illustrated in Figure <ref type="figure" target="#fig_2">2</ref>, the architecture of DISCO consists of four main components, including the hierarchical skill-aware representation disentangling, the level-aware selfattention network, level-wise contrastive learning, and the interaction diagnosis module.</p><p>A. Hierarchical Representation Disentangling 1) Modeling Latent Skill Factors.: In the job recommendation task, the main goal is to predict the matching degree between a job seeker and a job given their observed interactions. During the real recruitment process, when a candidate interacts with a job, the outcome is often influenced by skillrelated factors, such as the candidate's level of skill mastery and the difficulty of the skills required by the job <ref type="bibr" target="#b42">[43]</ref>. To capture these skill factors, we formally define our prediction objective about job seeker-job matching as follows:</p><formula xml:id="formula_2">p θ (y|X) = E p θ (zc|X)p θ (zj |X) [p θ (y|X, z c , z j )],<label>(2)</label></formula><p>where X = (c u , j v , s jv ) denotes the candidate, the job, and the skills involved in the job description, respectively, y is the learned matching score. Hence the optimization objective of the predictive model is as follows:</p><formula xml:id="formula_3">θ * = arg max θ |R| i=1 log p θ (y i |X i ), = arg min θ |R| i=1 −log E p θ (zc|Xi)p θ (zj |Xi) [p θ (y i |X i , z c , z j )],<label>(3)</label></formula><p>where |R| denotes the number of observed samples, and z c and z j are the skill factors for candidates and jobs, respectively. We use g(•) to denote the prediction function over the encoded skill factors. Referring to previous work <ref type="bibr" target="#b43">[44]</ref>, we approximate our prediction objective as follows:</p><formula xml:id="formula_4">E p θ (zc|X i )p θ (z j |X i ) [g(zc, zj)] ≈ g(E p θ (zc|X i ) [zc], E p θ (z j |X i ) [zj]).<label>(4)</label></formula><p>Considering the above inference, the approximation error can be effectively constrained within our prediction function g(•).</p><p>2) Hierarchical Skill-Aware Disentangling.: In the recruitment recommendation process, skill-related factors (e.g., skill proficiency and skill demand) are the primary determinants of the interaction outcome between the job seeker and the job position <ref type="bibr" target="#b17">[18]</ref>. Explicitly disentangling these factors from the embedding representations of the candidates and the jobs is quite important, which facilitates understanding of the job seeker's mastery of the skill and the job's requirement of the skill, thus enhancing interpretability. Indeed, the skills involved in a job may be at different levels of granularity <ref type="bibr" target="#b42">[43]</ref>, which tend to encompass relationships (as shown in Figure <ref type="figure" target="#fig_2">2</ref>). Towards this end, we propose to disentangle hierarchical skill characteristics from the high-dimensional and abstract representations of users and jobs that incorporate interaction information. Specifically, for the embeddings c u ∈ C and j v ∈ J of user c u and job j v obtained from the base model (as mentioned before), we first construct L-layer mappers to project them into different hierarchical skill spaces, respectively, as follows:</p><formula xml:id="formula_5">c h u,l = c u W c l , j h v,l = j v W j l , 1 ≤ l ≤ L,<label>(5)</label></formula><p>where c h u,l ∈ R d h and j h v,l ∈ R d h denotes the mapped hidden representations of user c u and job j v at l-th skill layer, respectively, W c l , W j l ∈ R d×d h are the trainable matrices, and d h is the hidden dimension. Here, L represents the number of skill layers at different levels of granularity, which is a fixed parameter that comes with the dataset (as mentioned in Section 3.1). Subsequently, we build multi-level encoders for users and jobs respectively to learn L ability prototypes {c z u,l ∈ R dz } L l=1 and L skill difficulty prototypes {j z v,l ∈ R dz } L l=1 for the hierarchical skill space as follows:</p><formula xml:id="formula_6">c z u,l = Encoder c l (c h u,l ), j z v,l = Encoder j l (j h v,l ), 1 ≤ l ≤ L,<label>(6)</label></formula><p>where Encoder c l and Encoder j l denote the l-th layer disentangled encoder for the users and jobs, respectively. Similar to previous work <ref type="bibr" target="#b35">[36]</ref>, a multilayer perceptron network (MLP) is used here. Notably, our goal is to disentangle the various levels of competencies possessed by job seekers as well as the distinct tiers of skill levels required by job positions. In particular, d z = |S L | denotes the number of atomic skills, thereby facilitating the explicit alignment of the dimensions of both representation vectors with the skill size. B. Level-Aware Association Modeling 1) Inter-Level Knowledge Influence: While it is desirable for the disentangled prototypes to effectively characterize users and jobs at different skill levels, in reality, these interlevel skill representations are often influenced by underlying knowledge. For example, a job seeker's mastery of the coarsegrained skills is usually affected by their proficiency in finergrained skills, and conversely, the same principle applies. To further explore the intrinsic associations between inter-level skill prototypes, we design a level-aware self-attention network for enhancing learning as follows:</p><formula xml:id="formula_7">           cz u,l = Self Att(Q c , K c , V c ), Q c = c z u,l , K c = {c z u,1 , . . . , c z u,L }, V c = {j z v,1 , . . . , j z v,L }, jz v,l = Self Att(Q j , K j , V j ), Q j = j z v,l , K j = {j z v,1 , . . . , j z v,L }, V j = {j z v,1 , . . . , j z v,L }.<label>(7)</label></formula><p>where cz u,l , jz v,l ∈ R dz are enhanced l-level skill aware representaitons incorporating correlated information, Q c ,K c ,V c and Q j ,K j ,V j denote the query, key and value vectors for the user and job, respectively, and Self Att(•) indicate the Self-Attention module <ref type="bibr" target="#b44">[45]</ref>.</p><p>2) Level-Wise Contrastive Learning: In real-world scenarios, the interaction between job seekers and jobs during the job search process can be influenced by various biases <ref type="bibr" target="#b4">[5]</ref>, <ref type="bibr" target="#b45">[46]</ref>, such as cognitive bias and popularity bias. This often leads to unstable profiling of the job seekers' abilities and the job's requirements, particularly in the context of disentangled representations, resulting in sub-optimal performance as well as inaccurate interpretations. Taking inspiration from recent developments in contrastive learning, we attempt to enhance the robustness of skill-aware disentangled representations by exploring self-supervised signals. Different from previous work that constructs contrastive tasks from instance dimensions <ref type="bibr" target="#b43">[44]</ref>, we propose a level-wise contrastive learning for modeling between skill representations at different granularities. Specifically, we formalize the level-wise contrastive learning loss (from the job seeker side) as follows:</p><formula xml:id="formula_8">L CL c = 1 L |C| u=1 L l=1 −log p θ (c ′ u |c u , z c,l ),<label>(8)</label></formula><p>where p θ (c ′ u |c u , z c,l ) denotes the candidate ability contrastive learning subtask under l-th skill level, and z c,l is the l-th level latent skill factor of the job seeker (i.e., ability). We aim to learn the optimal L ability prototypes which are able to maximize the expectation of L subtasks, and the contrastive learning subtask for the l-level ability is defined as follows:</p><formula xml:id="formula_9">p θ (c ′ u |c u , z c,l ) = exp(ϕ(c z u,l , cz+ u,l )/τ ) L l ′ =1 exp(ϕ(c z u,l ′ , cz+ u,l ′ )/τ ) ,<label>(9)</label></formula><p>where cz u,l and cz+ u,l are the user positive pair of the llevel ability, τ is a temperature parameter, ϕ(•) denotes the similarity function, and we use the cosine similarity function here:</p><formula xml:id="formula_10">ϕ(c z u,l , cz+ u,l ) = cz u,l T cz+ u,l ∥c z u,l ∥ 2 ∥c z+ u,l ∥ 2 . (<label>10</label></formula><formula xml:id="formula_11">)</formula><p>In particular, cz+ u,l here is the augmented l-level ability representation of the job seeker c u . Inspired by <ref type="bibr" target="#b46">[47]</ref>, we implement an efficient and effective skill-level augmentation by directly adding random noises to the ability representation as follows:</p><formula xml:id="formula_12">cz+ u,l = cz u,l + ∆ ′ u,l ,<label>(11)</label></formula><p>where the added noise vectors ∆ ′ u,l is subject to ∥∆∥ 2 = ϵ and ∆ = ∆ ⊙ sign(c z u,l ), ∆ ∈ R dz ∼ U (0, 1), and sign(•) denotes the sign function and U (0, 1) represents the uniform distribution. The first constraint regulates the magnitude of ∆, which is numerically akin to coordinates on a hypersphere with the radius ϵ. The second constraint ensures that cz u,l and ∆ u,l remain within the same hyperoctant to avoid significant deviations in cz u,l when noise is added, thereby maintaining the validity of positive samples. Notably, the modeling process for the job side is the same as above.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Interaction Diagnosis Module</head><p>In this section, we present an interaction diagnosis module designed to model the nuanced interactions between job seekers and jobs at multiple granularity skill levels from a cognitive measurement perspective by introducing cognitive diagnosis theory <ref type="bibr" target="#b24">[25]</ref>, <ref type="bibr" target="#b47">[48]</ref>, <ref type="bibr" target="#b48">[49]</ref>.</p><p>1) Neural Diagnosis Interaction: Indeed, in cognitive diagnosis assessments <ref type="bibr" target="#b28">[29]</ref>, <ref type="bibr" target="#b29">[30]</ref>, the key research focus is how to effectively measure a tester's ability level by modeling their ability representations against the difficulty representations of exercises across different knowledge concepts. In our DISCO framework, the already disentangled multi-level skill characteristics of job seekers and jobs, which are explicitly mapped to skill dimensions, facilitate the interaction modeling using diagnosis functions. Similar to <ref type="bibr" target="#b29">[30]</ref>, we adopt the neural diagnosis function in our framework. It can seamlessly integrate with non-linear neural network layers, and its capability to model high-dimensional interactive elements enables the acquisition of extensive knowledge and the presentation of interpretable information. It is formalized as follows (taking as an example the disentangled l-level skill representations of c u and j v ):</p><formula xml:id="formula_13">T (c z u,l , jz v,l ) = Q l jv ⊙ (σ(c z u,l ) − σ( jz v,l )),<label>(12)</label></formula><p>where the cz u,l ∈ R dz and jz v,l ∈ R dz denote the l-level skill representations of the job seeker c u and the job j v , respectively (mentioned above), σ(•) is the activation function (here is the Sigmoid function), ⊙ refers to the element-wise multiply operator, and Q l jv indicates the skill attribute corresponding to j v originates from the Q-matrix Q. Thus, we obtain the matching distance in the l-level skill space between c u and j v : h l u,v = T (c z u,l , jz v,l ) ∈ R dz , which reflects the degree of matching between the two at the l-th skill level from a diagnosis perspective.</p><p>2) Hierarchical Diagnosis Prediction: To further aggregate the hierarchical competency matching distances between candidates and jobs and assess them comprehensively, we conduct a hierarchical diagnostic prediction. Specifically, we first concatenate the obtained L-layer matching distance representations as follows:</p><formula xml:id="formula_14">h u,v = L || l=1 h l u,v ,<label>(13)</label></formula><p>where || denotes the concatenation operation, and h u,v ∈ R L•dz is the aggregated interaction vector, which serves to comprehensively account for the hierarchical effects of different skill levels. Subsequently, we utilize the full connection layers to model the high-order interaction features, as follows:</p><formula xml:id="formula_15">h ′ u,v = σ(h u,v W 1 + b 1 ), y u,v = σ(h ′ u,v W 2 + b 2 ),<label>(14)</label></formula><p>where</p><formula xml:id="formula_16">W 1 ∈ R dz×d h , b 1 ∈ R d h , W 2 ∈ R d h ×d cls and b 2 ∈ R d cls</formula><p>are trainable parameters, d h and d cls are the hidden dimensions and the number of interaction categories, and y u,v denotes the predicted probabilities of the different interaction categories between job seek c u and job j v .</p><p>3) Loss Function: In the training phase, we update the model parameters mainly by predicting the job seeker-job interaction categories. Specifically, for each interaction record (c u , j v , r uv ), we utilize the multi-class cross-entropy loss function for the prediction:</p><formula xml:id="formula_17">L main = − 1 |R| (cu,jv,ru,v)∈R d cls i=1 r i u,v log y i u,v ,<label>(15)</label></formula><p>where d cls is the number of interaction categories. It is worth noting that r u,v ∈ {0, 1} d cls is a category-dependent one-hot vector originating from r uv . To optimize the self-supervised subtask, we construct the complete contrastive learning loss as follows:</p><formula xml:id="formula_18">L cl = L CL c + L CL j .<label>(16)</label></formula><p>Finally, we obtain the complete optimization objective function by summing the loss functions of the above two objectives:</p><formula xml:id="formula_19">L = L main + λ • L cl , (<label>17</label></formula><formula xml:id="formula_20">)</formula><p>where λ is the weight coefficient to control the influence of contrastive signals. We can then train the whole model and optimize the model parameters utilizing gradient descent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>V. EXPERIMENTS</head><p>In this section, we conduct extensive experiments on three real-world datasets to validate the effectiveness and interpretability of the proposed DISCO framework.</p><p>A. Experiment Setups 1) Dataset Description and Preparation.: In this paper, the real-world job recommendation datasets utilized for experiments were provided by an online recruitment platform. Specifically, it contains four kinds of behaviors: Browse, Click, Chat and Match. The behavior Match is considered as the positive sample otherwise the negative sample (as mentioned in Section 3). To ensure reasonableness, we filtered out the job seekers with fewer than ten Match interaction logs and jobs with fewer than five records. In particular, the dataset does not contain any sensitive information, and all IDs have been remapped by the provider to ensure they do not correspond to the original identifiers from the platform. Since the size of the entire interaction data is extremely tremendous, we selected two subsets based on the taxonomy of career clusters for our experiments: technology and service. In addition, to verify the availability and generalization of our model for other recommendation tasks, we also specifically selected a public educational dataset Edu-Rec <ref type="bibr" target="#b49">[50]</ref> for our experiments. For each dataset, we randomly split the job seeker-job position interaction data into three parts in the ratio of 7:1:2, serving as the training set, validation set, and testing set, respectively. The detailed statistical information is shown in Table <ref type="table" target="#tab_0">I</ref>.</p><p>2) Baseline Approaches.: Four widely used recommendation methods for basic representation learning are selected as the base models to obtain the representations of job seekers and job positions: MF <ref type="bibr" target="#b39">[40]</ref>, NGCF <ref type="bibr" target="#b40">[41]</ref>, LightGCN <ref type="bibr" target="#b41">[42]</ref>, and DPGNN <ref type="bibr" target="#b8">[9]</ref>. To evaluate the effectiveness of interaction modeling between job seekers and job positions, we incorporate three different interaction modeling methods into these TABLE II: Performance of DISCO embedded in four base models and baselines on two recruitment recommendation datasets on job recommendation. " * " denotes the statistically significant improvement of DISCO model compared to the best baseline method (i.e., two-sided t-test with p&lt;0.05). Bold: the best, Underline: the runner-up.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Datasets Technology Service</head><p>Base Model Method AUC HR@5 NDCG@5 HR@10 NDCG@10 AUC HR@5 NDCG@5 HR@10 NDCG@10  base models, thereby constructing the complete baselines: NCF <ref type="bibr" target="#b50">[51]</ref>, AutoInt <ref type="bibr" target="#b51">[52]</ref> and FINAL <ref type="bibr" target="#b52">[53]</ref>. In addition, we also select two state-of-the-art methods SHPJF <ref type="bibr" target="#b9">[10]</ref>, and ECF <ref type="bibr" target="#b53">[54]</ref> for job recommendation and interpretable recommendation, respectively, to further validate the superiority of our DISCO.</p><p>3) Evaluation Protocols and Implementation Details.: To evaluate the performance of DISCO and all baseline methods, we employ three widely used metrics including the Area Under the ROC Curve (AUC), Hit Ratio (HR@k) and Normalized Discounted Cumulative Gain (NDCG@k). We empirically set k to 5 and 10, and utilize these metrics to do the evaluation for the job recommendation task, i.e., predicting the matching probability and ranking jobs for candidates, which is more in line with the real online recruitment scenarios. Specifically, for each positive instance, we randomly sample 25 jobs for candidates as negative instances.</p><p>We implemented all models with Pytorch by Python and conducted our experiments on a Linux server with eight Nvidia A800 GPUs. We conducted each of the experiments 5 times and used the average value as the final result. The t-test was used to identify the significant differences between the performances of DISCO and the baselines. To perform the training process, we initialized all network parameters with Xavier initialization. Each parameter is sampled from U − 2/(n in + n out ), 2/(n in + n out ) , where n in and n out denote the numbers of neurons feeding in and feeding out, respectively. The dimension size of hidden representations (i.e., d and d h ) was set as 256. We use the Adam optimizer, where the learning rate was searched in {5e-5, 8e-5, 1e-4, 2e-4, 5e-4}. The coefficient λ of contrastive loss was set to 1e-3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Performance Comparison</head><p>Table <ref type="table" target="#tab_0">II</ref> shows the experimental results of the proposed framework's job recommendation performance compared with the baselines on the two recruitment datasets. We highlighted the best results of all models in boldface and underlined the suboptimal results. According to the results, there are several observations: (1) Our DISCO framework embedded in the four underlying representational models presents significant advantages to all baselines. Specifically, our four models outperform the best baseline in terms of the AUC metric by an average of 0.65 and 0.64 on the two datasets, respectively. In particular, compared to the baseline based MF model, our model improves on average by 2.96 and 3.62 on both datasets with respect to the HR@5 and NDCG@5 metrics, respectively, which is considerably significant. (2) The models with the introduction of DISCO framework, show notably greater improvement in recommendation metrics than in classification metrics compared to all baselines, which further demonstrates our model's suitability for the job recommendation task.</p><p>(3) In the baseline models, those based on the FINAL and AutoInt methods significantly outperform the others, proving that modeling high-order user-item interactions is effective in enhancing performance within the same representation learning mode. (4) Job recommendations using the two base models, NGCF and LightGCN, tend to be more effective than other model types. This may be attributed to the highorder connectivity of job seekers and jobs, which enhances the delivery of pertinent information and performance in real recruitment recommendation interaction data. Meanwhile, Table III exhibits the experimental results on dataset Edu-Rec. It can be found that the proposed disco still holds a significant advantage over the compared interaction methods for the recommendation task on educational data, albeit with a drastic increase in the data size. This is further evidence that our approach is effective and generalizable for different recommendation tasks and not nearly limited to the domain of job recommendation. Furthermore, we also compared models specialized for job recommendation as well as interpretable recommendation models, respectively. As shown in Table <ref type="table" target="#tab_3">IV</ref>, our DISCO has a relative improvement of 2.25% and 3.20% over the SHPJF model with respect to the recommended metrics HR@5 and NDCG@5, respectively. In particular, the relative improvement of our DISCO over the interpretable recommendation model ECF is 31.81% and 52.36% for these two metrics, respectively, which is relatively significant. These results strongly demonstrate the effectiveness and superiority of the proposed DISCO framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Ablation Study</head><p>To answer RQ2, we conducted a comprehensive ablation experiment to investigate the effectiveness of each component in our DISCO framework. Specifically, we unfold the experiment with NGCF as the base model on the Technology dataset by defining the following variants: by defining the following variations: 1) w/o HD: removing the hierarchical skill-aware disentangling module and replacing it with a single granularity mapping; 2) w/o SA: removing the levelaware self-attention network; 3) w/o CL: removing the levelwise contrastive learning module; 4) w/o ID: removing the interaction diagnosis module and replace it with a normal prediction layer. As demonstrated in Figure <ref type="figure">3</ref>, the results reveal insightful observations: (1) Compared to NGCF-DISCO, all variations experience a relative decline in performance in the Technology dataset in terms of various evaluation metrics, highlighting the significant impact of the designed submodules on our proposed framework. (2) The model performance shows the most considerable drop after eliminating the hierarchical skill-aware disentangling module, indicating that the idea of hierarchical disentangling works. This also validates the effectiveness of our designed model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>D. Parameter Sensitivity Analysis</head><p>To answer RQ3, this section presents a parameter sensitivity analysis to explore the impacts of hyper-parameters, primarily focusing on the learning rate and the weight coefficient λ of the contrastive loss. Specifically, we conduct experiments with NGCF and DPGNN as the base models on the Technology dataset, and set the list of learning rates to be {5e-5, 8e-5, 1e-4, 2e-4, 5e-4}, as well as the λ values {1e-5, 5e-4, 1e-3, 5e-3, 1e-2}. As illustrated in Figure <ref type="figure">4</ref>, We observe that different learning rates bring significantly different results. In particular, 8e-5 and 1e-4 are the optimal learning rates for NGCF-DISCO and DPGNN-DISCO, respectively, and both have a tendency to increase before decreasing. As shown in Figure <ref type="figure">5</ref>, both models reach their best performance when the value of λ is 1e-3. An interesting phenomenon here is that the trends of the coefficients affecting the performance are different with respect to the three metrics as the λ value increments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>E. Case Study</head><p>To further explore the interpretability of our model, in particular the mining of job seekers' abilities and the difficulty of job skills, we conducted a case study. Specifically, we selected a pair of job seeker and position that achieved matching in the job search process and demonstrated interpretable content by outputting the hierarchical skill-associated representations from our model. As shown in Figure <ref type="figure" target="#fig_4">6</ref>, it demonstrates candidate c's mastery of each skill at the second and third levels (three level-2 skills and five level-3 skills are used here as examples, respectively), as well as the requirement values of the job for each skill. It can be observed that the candidate c's skill proficiency at the fine-grained level influences the corresponding skill level at the coarse-grained level (e.g., his higher proficiency in s 4 and s 5 skews the level of s 1 ). Meanwhile, the candidate c's proficiency level in each skill can be found to be generally compatible with the required level of the job j, which explains the pair's matching. The output from our model not only improves the interpretability of job recommendations, but also contributes to a deeper understanding of the job search process for both job seekers and recruiters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>VI. CONCLUSION</head><p>In this paper, we introduced a novel framework termed as DISCO (a hierarchical Disentangling based Cognitive diagnosis framework), which aims to flexibly accommodate the underlying representation learning model for job recommendations. Our approach comprises several key components. Initially, we designed a hierarchical representation disentangling module to mine the hierarchical skill-related factors embedded in the representations of job seekers and jobs. To further enhance information communication and robust representation learning, we proposed the level-aware association modeling, which consists of the inter-level knowledge influence module and level-wise contrastive learning. we devised an interaction diagnosis module is introduced that integrates a neural diagnosis function, aimed at effectively capturing the multi-level recruitment interaction process between job seekers and jobs. Finally, we developed an interaction diagnosis module incorporating a neural diagnosis function for effectively modeling the multi-level recruitment interaction process between job seekers and jobs, which introduces the cognitive measurement theory. Extensive experiments on two real-world recruitment recommendation datasets and an educational recommendation dataset clearly demonstrate the effectiveness and interpretability of our proposed DISCO framework.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 :</head><label>1</label><figDesc>Fig. 1: An illustrative example of the recruitment diagnosis and job recommendation process.</figDesc><graphic coords="1,313.23,313.56,248.55,74.38" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>u</head><label></label><figDesc>and j (k) v are the refined embedding of user c u and item j v after k layers propagation, respectively, σ denotes the nonlinear activation function, ⊙ refers to the element-wise multiply operator, N u and N v respectively represent the set of items interacted by user c u and the set of users interacted by item j v , and W 1 and W 2 are trainable weight matrix to conduct feature transformation in each layer. Finally, the representations of all the layers are concatenated to obtain the output embeddings, i.e., c u = L || l=0 c (l) u and j v = L || l=0 j (l) v , where c u ∈ C, j v ∈ J, and || denotes the concatenation operation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2 :</head><label>2</label><figDesc>Fig. 2: The overview architecture of our proposed DISCO framework.</figDesc><graphic coords="4,57.79,44.87,496.42,251.42" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 4 :Fig. 5 :</head><label>45</label><figDesc>Fig. 4: Sensitivity analysis of learning rate for NGCF-DISCO and DPGNN-DISCO on Technology dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 6 :</head><label>6</label><figDesc>Fig. 6: Case study of the interpretability of our DISCO.</figDesc><graphic coords="9,54.75,50.54,236.01,127.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>TABLE I :</head><label>I</label><figDesc>Statistics of all experimental datasets.</figDesc><table><row><cell>Statistics</cell><cell>Technology</cell><cell>Service</cell><cell>Edu-Rec</cell></row><row><cell>#Candidates</cell><cell>4,726</cell><cell>10,022</cell><cell>61,567</cell></row><row><cell>#Items</cell><cell>34,962</cell><cell>23,866</cell><cell>20,828</cell></row><row><cell>#Skills</cell><cell>986</cell><cell>3,241</cell><cell>384</cell></row><row><cell>#Interactions</cell><cell cols="3">616,504 866,065 2,200,731</cell></row><row><cell>Avg. interactions per user</cell><cell>130.45</cell><cell>86.41</cell><cell>35.74</cell></row><row><cell>Avg. skills per job/item</cell><cell>14.76</cell><cell>22.94</cell><cell>4.38</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>MF Normal 0.6755 ±0.0014 0.2518 ±0.0135 0.2394 ±0.0084 0.5835 ±0.0121 0.3428 ±0.0088 0.6479 ±0.0011 0.4831 ±0.0020 0.3015 ±0.0039 0.7511 ±0.0053 0.3879 ±0.0042 NCF 0.6997 ±0.0020 0.4457 ±0.0092 0.3090 ±0.0089 0.6261 ±0.0065 0.3671 ±0.0081 0.6742 ±0.0058 0.6119 ±0.0063 0.4572 ±0.0054 0.8306 ±0.0042 0.5414 ±0.0048 AutoInt 0.6940 ±0.0025 0.4342 ±0.0039 0.3094 ±0.0028 0.5995 ±0.0055 0.3626 ±0.0038 0.6629 ±0.0073 0.5892 ±0.0143 0.4088 ±0.0284 0.8158 ±0.0050 0.4826 ±0.0315 FINAL 0.6978 ±0.0005 0.4345 ±0.0035 0.3081 ±0.0055 0.6265 ±0.0037 0.3699 ±0.0055 0.6771 ±0.0012 0.5861 ±0.0081 0.4638 ±0.0041 0.8281 ±0.0027 0.5427 ±0.0024 ±0.0195 0.4705 ±0.0268 0.3377 ±0.0262 0.6144 ±0.0472 0.3840 ±0.0205 0.6772 ±0.0328 0.6523 ±0.0144 0.4650 ±0.0206 0.8258 ±0.0203 0.5213 ±0.0166 NCF 0.7245 ±0.0025 0.5118 ±0.0119 0.3601 ±0.0079 0.6978 ±0.0101 0.4203 ±0.0073 0.6856 ±0.0021 0.6547 ±0.0025 0.4716 ±0.0017 0.8375 ±0.0011 0.5326 ±0.0012 AutoInt 0.7366 ±0.0012 0.5263 ±0.0066 0.3675 ±0.0068 0.7113 ±0.0084 0.4291 ±0.0073 0.7179 ±0.0033 0.6559 ±0.0096 0.5029 ±0.0070 0.8359 ±0.0036 0.5563 ±0.0103 FINAL 0.7321 ±0.0018 0.5239 ±0.0063 0.3692 ±0.0061 0.7134 ±0.0054 0.4284 ±0.0051 0.7231 ±0.0023 0.6443 ±0.0027 0.5110 ±0.0066 0.8291 ±0.0008 0.5512 ±0.0074 ±0.0204 0.4741 ±0.0056 0.3112 ±0.0322 0.6364 ±0.0304 0.3637 ±0.0089 0.7051 ±0.0178 0.6285 ±0.0428 0.4273 ±0.0462 0.8356 ±0.0155 0.4943 ±0.0374 NCF 0.7150 ±0.0016 0.5007 ±0.0022 0.3513 ±0.0018 0.6945 ±0.0029 0.4106 ±0.0023 0.7223 ±0.0018 0.6661 ±0.0041 0.5087 ±0.0039 0.8229 ±0.0009 0.5469 ±0.0036 AutoInt 0.7124 ±0.0008 0.5115 ±0.0039 0.3683 ±0.0008 0.7023 ±0.0051 0.4218 ±0.0015 0.7279 ±0.0030 0.6717 ±0.0099 0.4905 ±0.0051 0.8340 ±0.0019 0.5513 ±0.0032 FINAL 0.7159 ±0.0029 0.5068 ±0.0015 0.3686 ±0.0022 0.7036 ±0.0037 0.4127 ±0.0024 0.7219 ±0.0025 0.6338 ±0.0056 0.5043 ±0.0016 0.8443 ±0.0029 0.5533 ±0.0022 ±0.0004 0.4986 ±0.0025 0.3348 ±0.0035 0.7018 ±0.0019 0.4005 ±0.0034 0.7089 ±0.0017 0.6665 ±0.0057 0.4664 ±0.0061 0.8543 ±0.0018 0.5274 ±0.0044 NCF 0.7186 ±0.0007 0.5015 ±0.0064 0.3542 ±0.0049 0.6954 ±0.0054 0.4168 ±0.0047 0.7127 ±0.0030 0.6669 ±0.0034 0.4908 ±0.0035 0.8503 ±0.0011 0.5479 ±0.0028 AutoInt 0.7144 ±0.0020 0.5037 ±0.0070 0.3506 ±0.0089 0.6976 ±0.0073 0.4131 ±0.0087 0.7213 ±0.0021 0.6533 ±0.0026 0.4825 ±0.0077 0.8514 ±0.0010 0.5403 ±0.0074 FINAL 0.7078 ±0.0028 0.5116 ±0.0040 0.3628 ±0.0019 0.7006 ±0.0032 0.4204 ±0.0012 0.7232 ±0.0014 0.6635 ±0.0042 0.4876 ±0.0066 0.8577 ±0.0029 0.5452 ±0.0061</figDesc><table><row><cell></cell><cell>DISCO 0.7040  *  ±0.0008 0.4641  *  ±0.0042 0.3411  *  ±0.0048 0.6337  *  ±0.0106 0.3891  *  ±0.0070 0.6892  *  ±0.0055 0.6527  *  ±0.0017 0.4701  *  ±0.0037 0.8414  *  ±0.0015 0.5516  *  ±0.0034</cell></row><row><cell>NGCF</cell><cell>Normal 0.7101 DISCO 0.7408  *  ±0.0013 0.5311  *  ±0.0016 0.3739  *  ±0.0031 0.7145  *  ±0.0042 0.4338  *  ±0.0041 0.7282  *  ±0.0010 0.6616  *  ±0.0112 0.5182  *  ±0.0086 0.8439  *  ±0.0036 0.5728  *  ±0.0095</cell></row><row><cell>LightGCN</cell><cell>Normal 0.7085 DISCO 0.7262  *  ±0.0033 0.5221  *  ±0.0020 0.3722  *  ±0.0042 0.7070  *  ±0.0075 0.4286  *  ±0.0030 0.7321  *  ±0.0053 0.6754  *  ±0.0061 0.5137  *  ±0.0081 0.8461  *  ±0.0021 0.5568  *  ±0.0149</cell></row><row><cell>DPGNN</cell><cell>Normal 0.7039 DISCO 0.7259  *  ±0.0016 0.5159  *  ±0.0033 0.3681  *  ±0.0015 0.7029  *  ±0.0084 0.4266  *  ±0.0029 0.7274  *  ±0.0056 0.6681  *  ±0.0148 0.4916  *  ±0.0192 0.8608  *  ±0.0065 0.5545  *  ±0.0212</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>TABLE III :</head><label>III</label><figDesc>Performance of DISCO and baselines on the Edu-Rec dataset. " * " denotes the statistically significant improvement where p&lt;0.05. Bold: the best, Underline: the runner-up.</figDesc><table><row><cell cols="2">Datasets</cell><cell></cell><cell></cell><cell>Edu-Rec</cell><cell></cell><cell></cell></row><row><cell>Base Model</cell><cell>Method</cell><cell>AUC</cell><cell>HR@5</cell><cell>NDCG@5</cell><cell>HR@10</cell><cell>NDCG@10</cell></row><row><cell></cell><cell cols="6">Normal 0.5805±0.0014 0.1847±0.0126 0.1210±0.0162 0.3849±0.0032 0.1846±0.0207</cell></row><row><cell></cell><cell cols="6">NCF 0.7085±0.0004 0.2458±0.0028 0.1680±0.0025 0.4654±0.0033 0.2381±0.0023</cell></row><row><cell>MF</cell><cell cols="6">AutoInt 0.7385±0.0060 0.2644±0.0017 0.1709±0.0045 0.4809±0.0032 0.2401±0.0057</cell></row><row><cell></cell><cell cols="6">FINAL 0.7421±0.0010 0.2616±0.0038 0.1799±0.0010 0.4844±0.0027 0.2509±0.0013</cell></row><row><cell></cell><cell cols="6">DISCO 0.7519  *  ±0.0008 0.2704  *  ±0.0015 0.1871  *  ±0.0010 0.4988  *  ±0.0006 0.2582  *  ±0.0012</cell></row><row><cell></cell><cell cols="6">Normal 0.7502±0.0149 0.2680±0.0085 0.1662±0.0062 0.4959±0.0055 0.2389±0.0053</cell></row><row><cell></cell><cell cols="6">NCF 0.7474±0.0009 0.2565±0.0033 0.1793±0.0007 0.4872±0.0033 0.2527±0.0006</cell></row><row><cell>NGCF</cell><cell cols="6">AutoInt 0.7501±0.0005 0.2655±0.0029 0.1800±0.0006 0.5007±0.0026 0.2549±0.0006</cell></row><row><cell></cell><cell cols="6">FINAL 0.7465±0.0011 0.2528±0.0025 0.1806±0.0007 0.4842±0.0028 0.2540±0.0010</cell></row><row><cell></cell><cell cols="6">DISCO 0.7641  *  ±0.0001 0.2778  *  ±0.0011 0.1887  *  ±0.0008 0.5033  *  ±0.0014 0.2615  *  ±0.0005</cell></row><row><cell></cell><cell cols="6">Normal 0.7422±0.0013 0.2393±0.0038 0.1796±0.0020 0.4644±0.0043 0.2509±0.0018</cell></row><row><cell></cell><cell cols="6">NCF 0.7456±0.0005 0.2467±0.0015 0.1799±0.0008 0.4755±0.0023 0.2522±0.0010</cell></row><row><cell>LightGCN</cell><cell cols="6">AutoInt 0.7544±0.0006 0.2642±0.0014 0.2026±0.0039 0.4940±0.0012 0.2761±0.0045</cell></row><row><cell></cell><cell cols="6">FINAL 0.7573±0.0006 0.2672±0.0013 0.1786±0.0031 0.4939±0.0011 0.2511±0.0037</cell></row><row><cell></cell><cell cols="6">DISCO 0.7657  *  ±0.0008 0.2764  *  ±0.0011 0.2085  *  ±0.0012 0.5052  *  ±0.0009 0.2829  *  ±0.0004</cell></row><row><cell></cell><cell cols="6">Normal 0.7596±0.0001 0.2883±0.0015 0.1820±0.0009 0.5026±0.0011 0.2506±0.0010</cell></row><row><cell></cell><cell cols="6">NCF 0.7600±0.0003 0.2772±0.0023 0.1807±0.0012 0.5019±0.0028 0.2525±0.0009</cell></row><row><cell>DPGNN</cell><cell cols="6">AutoInt 0.7602±0.0001 0.2803±0.0015 0.1761±0.0011 0.5029±0.0018 0.2472±0.0016</cell></row><row><cell></cell><cell cols="6">FINAL 0.7572±0.0003 0.2875±0.0015 0.1872±0.0014 0.5016±0.0012 0.2557±0.0019</cell></row><row><cell></cell><cell cols="6">DISCO 0.7676  *  ±0.0008 0.2945  *  ±0.0010 0.1949  *  ±0.0011 0.5063  *  ±0.0006 0.2618  *  ±0.0010</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>TABLE IV :</head><label>IV</label><figDesc>Performance of DISCO and recommendation methods on the Technology dataset. " * " denotes the statistically significant improvement where p&lt;0.05. Bold: the best, Underline: the runner-up.</figDesc><table><row><cell cols="2">Datasets</cell><cell></cell><cell></cell><cell></cell><cell cols="2">Technology</cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="2">Rec Model</cell><cell>AUC</cell><cell cols="2">HR@5</cell><cell cols="2">NDCG@5</cell><cell>HR@10</cell><cell cols="2">NDCG@10</cell></row><row><cell>MF</cell><cell></cell><cell cols="8">0.6755 ±0.0014 0.2518 ±0.0135 0.2394 ±0.0084 0.5835 ±0.0121 0.3428 ±0.0088</cell></row><row><cell>NGCF</cell><cell></cell><cell cols="8">0.7101 ±0.0195 0.4705 ±0.0268 0.3377 ±0.0262 0.6144 ±0.0472 0.3840 ±0.0205</cell></row><row><cell cols="10">LightGCN 0.7085 ±0.0204 0.4741 ±0.0056 0.3112 ±0.0322 0.6364 ±0.0304 0.3637 ±0.0089</cell></row><row><cell>DPGNN</cell><cell></cell><cell cols="8">0.7039 ±0.0004 0.4986 ±0.0025 0.3348 ±0.0035 0.7018 ±0.0019 0.4005 ±0.0034</cell></row><row><cell>SHPJF</cell><cell></cell><cell cols="8">0.7049 ±0.0048 0.5194 ±0.0140 0.3623 ±0.0110 0.6965 ±0.0133 0.4197 ±0.0090</cell></row><row><cell>ECF</cell><cell></cell><cell cols="8">0.7120 ±0.0013 0.4029 ±0.0043 0.2454 ±0.0032 0.6488 ±0.0052 0.3248 ±0.0040</cell></row><row><cell>DISCO</cell><cell cols="9">0.7408  *  ±0.0013 0.5311  *  ±0.0016 0.3739  *  ±0.0031 0.7145  *  ±0.0042 0.4338  *  ±0.0041</cell></row><row><cell></cell><cell cols="2">w/o HD</cell><cell>w/o SA</cell><cell></cell><cell>w/o CL</cell><cell></cell><cell>w/o ID</cell><cell></cell><cell>Ours</cell></row><row><cell>0.745</cell><cell></cell><cell>0.535</cell><cell></cell><cell>0.380</cell><cell></cell><cell>0.720</cell><cell></cell><cell>0.440</cell><cell></cell></row><row><cell>0.740</cell><cell></cell><cell>0.530</cell><cell></cell><cell>0.375</cell><cell></cell><cell>0.715</cell><cell></cell><cell>0.435</cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>0.370</cell><cell></cell><cell>0.710</cell><cell></cell><cell>0.430</cell><cell></cell></row><row><cell>0.735</cell><cell></cell><cell>0.525</cell><cell></cell><cell>0.365</cell><cell></cell><cell>0.705</cell><cell></cell><cell>0.425</cell><cell></cell></row><row><cell>0.730</cell><cell>AUC</cell><cell>0.520</cell><cell>HR@5</cell><cell>0.360</cell><cell>NDCG@5</cell><cell>0.700</cell><cell>HR@10</cell><cell>0.420</cell><cell>NDCG@10</cell></row><row><cell cols="10">Fig. 3: Results of ablation study conducted on Technology</cell></row><row><cell cols="10">dataset, where "w/o" means removing the target module.</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0" />
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">A comprehensive survey of artificial intelligence techniques for talent analytics</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2307.03195</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Knowledge enhanced person-job fit for talent recruitment</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE 38th International Conference on Data Engineering (ICDE)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="3467" to="3480" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Career mobility analysis with uncertainty-aware graph autoencoders: A job title transition perspective</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Computational Social Systems</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1205" to="1215" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Enhancing person-job fit for talent recruitment: An ability-aware neural network approach</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 41st international ACM SIGIR conference on research &amp; development in information retrieval</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="25" to="34" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Person-job fit: Adapting the right talent for the right job with joint representation learning</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Management Information Systems (TMIS)</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1" to="17" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Recruitpro: A pretrained language model with skill-aware prompt learning for intelligent recruitment</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="3991" to="4002" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Towards automatic job description generation with capability-aware neural networks</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="5341" to="5355" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Automatic skill-oriented question generation and recommendation for intelligent job interviews</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="32" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Modeling two-way selection preference for person-job fit</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-R</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">X</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th ACM Conference on Recommender Systems</title>
+				<meeting>the 16th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="102" to="112" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Leveraging search history for improving person-job fit</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">X</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-R</forename><surname>Wen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Database Systems for Advanced Applications</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="38" to="54" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Towards efficient resume understanding: A multi-granularity multi-modal pre-training approach</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2404.13067</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">An interactive neural network approach to keyphrase extraction in talent recruitment</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 30th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2383" to="2393" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Job-sdf: A multi-granularity dataset for job skill demand forecasting and benchmarking</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2406.11920</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Evolutionary multi-objective neural architecture search for generalized cognitive diagnosis models</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 5th International Conference on Data-driven Optimization of Complex Systems (DOCS)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1" to="10" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Evolutionary neural architecture search for transformer in knowledge tracing</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="volume">36</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Endowing interpretability for neural cognitive diagnosis by efficient kolmogorov-arnold networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2405.14399</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Relicd: A reliable cognitive diagnosis framework with confidence awareness</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="858" to="867" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Marketoriented job skill valuation with cooperative composition neural network</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature communications</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1992</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Large-scale online job search behaviors reveal labor market shifts amid covid-19</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Cities</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="150" to="163" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Discerning decision-making process of deep neural networks with hierarchical voting transformation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="17" to="221" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Exploiting connections among personality, job position, and work behavior: Evidence from joint bayesian learning</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Management Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1" to="20" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Learning effective representations for person-job fit by feature fusion</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Luo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 29th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2549" to="2556" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Hybrid architecture-based evolutionary robust neural architecture search</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Emerging Topics in Computational Intelligence</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Architecture entropy sampling-based evolutionary neural architecture search and its application in osteoporosis diagnosis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Complex &amp; Intelligent Systems</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="213" to="231" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Higher-order latent trait models for cognitive diagnosis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>De La Torre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Douglas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Psychometrika</title>
+		<imprint>
+			<biblScope unit="volume">69</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="333" to="353" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">An evolutionary multi-objective neural architecture search approach to advancing cognitive diagnosis in intelligent education</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Evolutionary Computation</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Hd-kt: Advancing robust knowledge tracing via anomalous learning interaction detection</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of The Web Conference 2024</title>
+				<meeting>The Web Conference 2024</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Rigl: A unified reciprocal approach for tracing the independent and group learning processes</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Dina model and parameter estimation: A didactic</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>De La Torre</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of educational and behavioral statistics</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="115" to="130" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Neural cognitive diagnosis for intelligent education systems</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="6153" to="6161" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Rdgt: Enhancing group cognitive diagnosis with relationguided dual-side graph transformer</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Dgcd: An adaptive denoising gnn for group-level cognitive diagnosis</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The 33rd International Joint Conference on Artificial Intelligence</title>
+				<imprint>
+			<biblScope unit="page">2024</biblScope>
+		</imprint>
+	</monogr>
+	<note>IJCAI-24</note>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Disentangled representation learning</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2211.11695</idno>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Disentangled representation learning gan for pose-invariant face recognition</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE conference on computer vision and pattern recognition</title>
+				<meeting>the IEEE conference on computer vision and pattern recognition</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1415" to="1424" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Disentangled graph convolutional networks</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning. PMLR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="4212" to="4221" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Disentangled contrastive learning on graphs</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="21" to="872" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Learning disentangled representations for recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">32</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Setrank: A setwise bayesian approach for collaborative ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the aaai conference on artificial intelligence</title>
+				<meeting>the aaai conference on artificial intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="6127" to="6136" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Handling oversmoothing and over-squashing in graph convolution with maximization operation</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE Transactions on Neural Networks and Learning Systems</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="30" to="37" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Neural graph collaborative filtering</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd international ACM SIGIR conference on Research and development in Information Retrieval</title>
+				<meeting>the 42nd international ACM SIGIR conference on Research and development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="165" to="174" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Lightgcn: Simplifying and powering graph convolution network for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval</title>
+				<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Duerquiz: A personalized question recommender system for intelligent job interview</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="2165" to="2173" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Huang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2305.02759</idno>
+		<title level="m">Disentangled contrastive collaborative filtering</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Attention is all you need</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ł</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Polosukhin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">30</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">An enhanced neural network approach to person-job fit in talent recruitment</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems (TOIS)</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="1" to="33" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Are graph augmentations necessary? simple graph contrastive learning for recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V H</forename><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 45th international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 45th international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1294" to="1303" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Homogeneous cohort-aware group cognitive diagnosis: A multi-grained modeling perspective</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 32nd ACM International Conference on Information and Knowledge Management</title>
+				<meeting>the 32nd ACM International Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="4094" to="4098" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Cognitive diagnosis-based personalized exercise group assembly via a multi-objective evolutionary algorithm</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Emerging Topics in Computational Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="829" to="844" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Instructions and guide for diagnostic questions: The neurips 2020 education challenge</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lamb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Saveliev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cameron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zaykov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Hernández-Lobato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Turner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">G</forename><surname>Baraniuk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Barton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">P</forename><surname>Jones</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2007.12061</idno>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th international conference on world wide web</title>
+				<meeting>the 26th international conference on world wide web</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Autoint: Automatic feature interaction learning via self-attentive neural networks</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM international conference on information and knowledge management</title>
+				<meeting>the 28th ACM international conference on information and knowledge management</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1161" to="1170" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Final: Factorized interaction layer for ctr prediction</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="2006" to="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Towards explainable collaborative filtering with taste clusters learning</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM Web Conference 2023</title>
+				<meeting>the ACM Web Conference 2023</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="3712" to="3722" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

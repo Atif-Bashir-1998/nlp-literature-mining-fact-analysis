@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Recommender with Geometric Information Bottleneck</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-01-05">5 Jan 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Hanqi</forename><surname>Yan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Lin</forename><surname>Gui</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Menghan</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Kun</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yulan</forename><surname>He</surname></persName>
+						</author>
+						<title level="a" type="main">Explainable Recommender with Geometric Information Bottleneck</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-01-05">5 Jan 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">ADFCA9C88D3EC0BAD2FCFAFE919831C0</idno>
+					<idno type="arXiv">arXiv:2305.05331v2[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:51+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Recommendation System</term>
+					<term>Interpretability</term>
+					<term>Information bottleneck</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Explainable recommender systems can explain their recommendation decisions, enhancing user trust in the systems. Most explainable recommender systems either rely on humanannotated rationales to train models for explanation generation or leverage the attention mechanism to extract important text spans from reviews as explanations. The extracted rationales are often confined to an individual review and may fail to identify the implicit features beyond the review text. To avoid the expensive human annotation process and to generate explanations beyond individual reviews, we propose to incorporate a geometric prior learnt from user-item interactions into a variational network which infers latent factors from useritem reviews. The latent factors from an individual user-item pair can be used for both recommendation and explanation generation, which naturally inherit the global characteristics encoded in the prior knowledge. Experimental results on three e-commerce datasets show that our model significantly improves the interpretability of a variational recommender using the Wasserstein distance while achieving performance comparable to existing content-based recommender systems in terms of recommendation behaviours. The code is publicly available at https://github.com/hanqi-qi/Explainable-Recommender-GIANT.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>I. INTRODUCTION</head><p>Typically, a recommender system compares users' preferences with item characteristics (e.g., item descriptions or itemassociated reviews) or studies user-item historical interactions (e.g., ratings, purchases or clicking behaviours) in order to identify items that are likely of interest to users. In addition to item recommendation, interpretable recommenders also generate the rationale behind the recommendation decision <ref type="bibr" target="#b0">[1]</ref>, <ref type="bibr" target="#b1">[2]</ref>. Most existing interpretable recommenders can either generate rationale or extract text spans from a given user-item review as explanations of model decisions. Rationale generation requires annotated data for training, e.g., short comments provided by users explaining their behaviours of interacting with items. The extractive explainable recommenders either rely on annotated sentiment-bearings aspect spans in reviews for training <ref type="bibr" target="#b2">[3]</ref>- <ref type="bibr" target="#b7">[7]</ref> or extract sentences from a target item's review as recommendation rationales based on attention weights <ref type="bibr" target="#b8">[8]</ref>- <ref type="bibr" target="#b15">[15]</ref>.</p><p>We argue that explanation generation models are often supervised by human-annotated rationales, which are labourintensive to obtain in practice. The explainable recommenders built on extractive approaches can only extract rationales from an individual user-item review document. They suffer from the following limitations. First, some reviews may be too general to explain the user rating, rendering them useless for explanation generation. For example, the review 'I really like the smartphone, will recommend it to my friends' does not provide any clue why the user likes the smartphone. Second, features directly extracted from a review document may fail to reflect some global properties which can only be identified from implicit user-item interactions. Meaningful insights could still be derived from reviews towards items that are not directly purchased/rated by a user but preferred by other like-minded users.</p><p>To address the aforementioned limitations, we propose a Geometric InformAtioN boTtleneck (GIANT) framework to incorporate the prior learned from a user-item interaction graph to refine the induced latent factors learnt from reviews. Essentially, we use the prior learned from one modality (i.e., the user-item interaction graph) to constrain the learning of latent factors in another modality (i.e., the review text). In this way, we naturally address the problem of the oversimplified Gaussian prior assumption in approaches built on the Variational Autoencoder (VAE) <ref type="bibr" target="#b16">[16]</ref>. More concretely, our prior is derived from the user/item clusters obtained from the user-item interaction graph. Each user or item has its soft cluster assignment represented as a probability distribution over clusters, which is in proportional to its distance to each cluster centroid. For this reason, we call our prior the geometric prior as it translates the geometric properties of users/items into their cluster-associated probability distributions. The prior is subsequently incorporated into the variational network for constraining the learning of latent factors from the review text. For a user-item pair, (u, i), we feed the user's past reviews and the item's associated reviews (excluding u's review on i) to the variational network for the inference of user-and item-associated latent factors, which are subsequently used for rating prediction and explanation generation.</p><p>Figure <ref type="figure">1</ref> illustrates how the proposed geometric prior can be used to develop the explainable recommender. To impose the prior on the latent variables of the variational framework taking the set of user reviews and item reviews as input, we apply the KL divergence to minimise the discrepancy between the posterior distribution of the user latent factor z u , and the item latent factor z i , learned from review text, and the geometric prior derived from the user-item interaction graph. The latent factors inferred by the variational network can be treated as topics summarising the key semantics of input reviews. For an input user-item pair, the most prominent dimension of the user (or item) latent factor is considered as the most important topic revealing the user preference (or item characteristic). As will be shown in the experiments section, Fig. <ref type="figure">1</ref>. The proposed geometric prior reflects the U-I distances in their interaction graph, frequently interacted users/items are assigned into the same cluster (illustrated in node colour). Existing extractive methods can only identify indicative words (shown in red) from the given review pair (x i , xu), while our method can extract sentence-level reviews written by other like-minded users or on similar items, which are assigned into the same latent dimension/cluster, i.e., we extract the sentences from the review by user u 3 which is in the same cluster as user u 2 , as the reviews of u 2 are too general to summarise the key features.</p><p>for each topic (i.e., a dimension of the latent factor), we can retrieve its top-k associated words as its representation. To generate sentence-level explanations, we identify sentences from reviews residing in the same user/item cluster which are most similar to the user-and item-topic representations. 1  Experimental results on the three commonly used benchmarking datasets show that the proposed method achieves performance comparable with several strong baselines in recommendation prediction. Moreover, both quantitative and qualitative analysis shows we can see clear and meaningful clusters distributed in the latent space regularised by the geometric prior, when compared with VAEs using the standard Gaussian prior or employing the Wasserstein distance. The user study demonstrates that our generated explanations are better in relevance, faithfulness and informativeness. Our contributions can be summarized below:</p><p>• We proposed a geometric prior derived from user-item interactions in order to incorporate the global features from similar users/items, allowing recommendation explanations to be generated beyond explicit user-item interactions.</p><p>• We give a proof that the geometric prior can be effectively incorporated into the variational framework with an upper bound in mutual information between the textual input and the latent representations regularized by the geometric prior. • Experimental results show the efficiency of our proposed method in both review rating prediction and explanation generation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>II. RELATED WORK</head><p>We review recommender systems, with particular attention to those built on VAE or offering explanations of recommendation decisions.</p><p>a) Recommender with VAE: Text data such as user reviews, item or brand descriptions could be important for developing a high-quality recommender system as they can be exploited to address the sparsity issue in user-item interactions. HFT <ref type="bibr" target="#b17">[17]</ref> and CTR <ref type="bibr" target="#b18">[18]</ref> adopted Latent Dirichlet Allocation (LDA) <ref type="bibr" target="#b19">[19]</ref> to extract latent topics from review text. VAE can also be used for text modeling due to its ability in extracting latent and interpretable features <ref type="bibr" target="#b20">[20]</ref>- <ref type="bibr" target="#b22">[22]</ref>. <ref type="bibr" target="#b21">[21]</ref> argued that the commonly used isotropic Gaussian in VAE is over-simplified and proposed BiVAE by introducing constrained adaptive prior for learning user-and item-dependent prior distributions. More recently, review information is used to disentangle the latent user intents at the finer granularity, for example, DisenGCN <ref type="bibr" target="#b23">[23]</ref> and DisenHan <ref type="bibr" target="#b22">[22]</ref> used the graph attention mechanism to differentiate multiple relations and features.</p><p>b) Explainable Recommender System: One popular interpretable method is to train a language generation model with the ground-truth explanations supplied, which can be the first sentence of a given review or human-annotated text spans in the review text <ref type="bibr" target="#b3">[4]</ref>, <ref type="bibr" target="#b24">[24]</ref>. Some of these approaches firstly extracted user-aspect-opinion and item-aspect-opinion tuples as ground truth, then modelled the interactions between the two tuples to derive the rating and the indicative features <ref type="bibr" target="#b25">[25]</ref>, <ref type="bibr" target="#b26">[26]</ref>. Retrieval-based (aka. extractive) solutions directly select representative text spans (rationales), i.e., words or sentences, from a target item's past reviews to explain the recommender behaviours. Attention-based methods are prevalent in reviewbased explainable recommenders <ref type="bibr" target="#b14">[14]</ref>, <ref type="bibr" target="#b15">[15]</ref>. Beyond leveraging attention weights to select rationales, <ref type="bibr" target="#b27">[27]</ref>, <ref type="bibr" target="#b28">[28]</ref> proposed different optimization objectives to refine the selection.</p><p>However, the aforementioned approaches suffer from two major issues. Some approaches require aspects to be extracted first in order to provide aspect-related predictive features as interpretations, thus heavily dependent on the quality of the aspect extractors employed; while others rely on humanannotated rationales to train supervised language generators for explanation generation. Our proposed approach can instead generate explanations with only supervision signals coming from review ratings.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>III. GEOMETRIC INFORMATION BOTTLENECK</head><p>To incorporate the global features from actively interacted users/items to explain the recommendation behaviour, we propose to incorporate the geometric prior derived from useritem interaction graphs to learn the latent factors of users and items from review text in a variational network. Although various work has been proposed to adopt richer priors to infer a more complex and realistic posterior in standard VAEs <ref type="bibr" target="#b29">[29]</ref>, <ref type="bibr" target="#b30">[30]</ref>, our solution is different from existing approaches as we need to impose the prior knowledge learned from the graph modality to constrain the variables in the text modality. In what follows, we show how this can be done under the theory of information bottleneck.</p><p>Based on the Information Bottleneck (IB ) theory <ref type="bibr" target="#b31">[31]</ref>, we can train an encoder-decoder architecture x encode − −−− → z decode − −−− → x, where x ∈ X, z ∈ Z, x ∈ X are the input, the hidden, and the reconstructed representations, respectively, in order to preserve the meaningful information about X in Z while maximally compress the information of X. We achieve this by maximising the following:</p><formula xml:id="formula_0">OIB = I( X; Z) − β • I(X; Z),<label>(1)</label></formula><p>where I(•) denotes the mutual information, β is a Lagrange multiplier. The second term is to maximally compress X, equivalent to minimising the mutual information between X and Z, denoted as I(X; Z) ≤ I c , I c is the upper bound. Intuitively, we assume the input has representations x t ∈ X t and x g ∈ X g under different modalities 2 satisfying the constraint, I(X t ; X g ) ≥ I x , since X t and X g are derived from the same input, they should be relevant. Then, two independent well-trained encoder-decoder architectures in the two modalities optimised by Eq. ( <ref type="formula" target="#formula_0">1</ref>) are constrained by I(X t ; Z t ) ≤ I c and I(X g ; Z g ) ≤ I c , respectively. We derive a new upper bound for the multi-modality IB as follows: 3</p><formula xml:id="formula_1">I(X t ; Z g ) ≤ H(X t ) − H(X g ) + H(X g |X t ) + Ic,<label>(2)</label></formula><p>where H(•) and H(•|•) are entropy and conditional entropy, respectively. Therefore, we can maximise the objective function using the input from the text modality, with a regularisation from another modality, 4</p><formula xml:id="formula_2">O t IB = I( Xt ; Z t ) − β • I(X t ; Z g ).<label>(3)</label></formula><p>According to <ref type="bibr" target="#b32">[32]</ref>, the above equation can be approximated by applying the reparameterisation trick <ref type="bibr" target="#b33">[33]</ref> with a random Gaussian noise ϵ:</p><formula xml:id="formula_3">O t IB = E x t ∼X t E ϵ∼p(ϵ) [− logq(x t |f (x t , ϵ)]</formula><p>Recons. term:</p><formula xml:id="formula_4">Q(x t ) + β • KL(p(Z t |x t , ϵ)|r(Z g )) KL−div. term: KL(Z t |Z g ) ,<label>(4)</label></formula><p>where x t is one training sample from input X t , xt is the reconstruction output, q(•) and p(•) are the posterior probabilities estimated by the decoder and the encoder, respectively, r(Z g ) is the estimated distribution from user-item interaction graph. Here, Eq. ( <ref type="formula" target="#formula_4">4</ref>) has a similar form as β-VAE which contains a reconstruction term Q(x t ) defined by the posterior probability and a KL-divergence term KL(Z t |Z g ) regularised by the prior from another modality Z g . However, two key challenges need to be addressed when incorporating the geometric prior into a variational network:</p><p>(1) How to derive prior r(Z g ) from the user-item interaction graph; (2) How to compute Q(x t ), which is defined as the log conditional probability of logq(x t |f (x t , ϵ)) in Eq. (4).</p><p>a) Geometric prior obtained from clustering with Gaussian kernel.: We now discuss how to derive the geometric prior from the user-item interaction graph, in which a node can be either a user or an item and the frequently interacted nodes are more likely to share similar preferences or characteristics. We can use a graph neural network to learn user/item node representations with review ratings as the supervision. Afterwards, similar users/items are naturally gathered into one of the K clusters, denoted as C k , k ∈ {1, 2, • • • , K}. 5  We next show how to define the geometric prior based on the clustering results. Here we use the Gaussian kernel to compute the distance ρ g k between a user or item and the centroid of its corresponding cluster C k as in Eq. ( <ref type="formula" target="#formula_5">5</ref>).</p><formula xml:id="formula_5">ρ g k = exp −∥e g − C k ∥ 2 /2α 2 K k ′ =1 exp −∥e g − C k ′ ∥ 2 /2α 2 , (<label>5</label></formula><formula xml:id="formula_6">)</formula><p>where e g is graph node embedding for user or item, C k is the corresponding k-th cluster centroid vector, α is a hyperparameter used to adjust the distribution according to the data density.</p><p>It can be easily shown that Σ k ρ g k = 1. That is, the distribution of { ρ g k } resides in a hyperspherical cap area on a uniform K-ball, weakly approximating to a Gaussian distribution when K is large <ref type="bibr" target="#b34">[34]</ref>. We use r(Z g ) to denote the user's or item's probability distribution over clusters obtained from the user-item interaction graph, i.e., r(Z g ) = {r(z g u ), r(z g i )}, where r(</p><formula xml:id="formula_7">z g u ) = [ρ g u1 , • • • , ρ g uK ] and r(z g i ) = [ρ g i1 , • • • , ρ g iK ]. b)</formula><p>Posterior over conditional probability.: The reconstruction term Q(x t ) in Eq. ( <ref type="formula" target="#formula_4">4</ref>) can be derived by the Nadaraya-Watson estimator <ref type="bibr" target="#b35">[35]</ref>:</p><formula xml:id="formula_8">Q(x t ) = log p(x t ϵ , x t ) p(x t ) = log 1 N N j=1 κ( x t −x t j h ) • κ( xt ϵ −x t j h ) 1 N N j=1 κ( x t −x t j h ) ,<label>(6)</label></formula><p>where κ(•) is a kernel function for density estimation, xt ϵ is the reconstructed x t with random noise ϵ, and x t j is the jth training sample. In practice, we choose the RBF kernel κ = exp(−||x − x ′ || 2 )) and ignore the denominator since the goal is to optimise the decoding of xt . Then we are able to obtain the following bound by the triangle inequality in the learned metric space as</p><formula xml:id="formula_9">Q(x t ) ∝ log(exp(−||x t ϵ − x t || 2 ))</formula><p>. By minimising the loss, we can preserve the key local similarity of nearby representations while ensuring different representations from different feature characteristics <ref type="bibr" target="#b36">[36]</ref>, <ref type="bibr" target="#b37">[37]</ref>.</p><p>Therefore, we are able to guarantee that the information bottleneck with our proposed geometric prior is:</p><p>• Transferable − According to Eq. ( <ref type="formula" target="#formula_1">2</ref>), the mutual information between textual input and the compressed latent variable regularized by geometric prior is still upper bounded by the global information bottleneck, i.e., we can take the bound from one modality to guide the training on the other. • Practicable − With our solution in Eq. ( <ref type="formula" target="#formula_5">5</ref>), we do not have to utilise a pre-defined prior or oversimplified prior, but instead use the Gaussian-kernel based distance distribution to regularize the latent space. The empirical recommendation results in Table <ref type="table" target="#tab_2">III</ref> shows the superiority of the geometric prior. • Interpretable − The alignment between representations from different modalities and their geometric space based probabilities makes it possible to use latent factors inferred from review text, i.e., the semantic clusters embedded in various latent dimensions as shown in Table <ref type="table" target="#tab_8">VII</ref>, to provide recommendation explanation.</p><p>IV. THE GIANT FRAMEWORK In this section, we provide a practical implementation of our geometric information bottleneck and use it to achieve item recommendation and explanation generation.</p><p>a) Clustering on Graph Node Embedding.: We construct a user-item interaction graph where nodes are users or items, and edges are created if the corresponding user's rating on the item is above the item's average rating. We then use LightGCN <ref type="bibr" target="#b39">[38]</ref> to obtain the user/item embeddings. This choice is motivated by its omission of feature transformation and nonlinear activation, making it a popular choice in recent successful recommenders, as demonstrated by studies such as <ref type="bibr" target="#b40">[39]</ref>- <ref type="bibr" target="#b42">[41]</ref>. Afterwards, we apply K-Means on the learned graph node embeddings to derive the cluster centroid vectors.</p><p>b) Textual Feature Extractor.: For a given user-item pair, (u, i), the input to our recommender is a set of reviews written by u and a set of reviews on i (excluding u's review on i). As each user or item is associated with multiple reviews, and some reviews might be very long, the Convolutional Neural Network (CNN) is used to encode reviews due to its efficiency in encoding long sequences, as has been studied in <ref type="bibr" target="#b8">[8]</ref>. We then aggregate multiple users/items reviews by the attention mechanism to derive the final textual vectors, denoted as x t u or x t i , respectively. Given the textual vectors, we employ two geometric regularised variational networks (i.e., the encoderdecoder structure) with shared weights to infer the latent factors, z t u and z t i , obtained from the user and item review text, respectively. 6  c) Minimising Distribution Discrepancy.: To minimise the KL-divergence in Eq. ( <ref type="formula" target="#formula_4">4</ref>), we need to project Z g and Z t to a metric space with the same size. Specially, we obtain the latent variables z t = f (x t , ϵ) by applying the reparameterisation trick <ref type="bibr" target="#b33">[33]</ref>. However, due to the randomness in initialisation, the learned factors Z t might not find its correspondence in Z g . Therefore, in our one-layer MLP based encoder, we propose a prior-centralisation trick which builds the connection between the clusters, obtained from the useritem interaction graph, and the encoder by making the encoder weights close to the cluster centroids C ∈ R d×k obtained from the graph:</p><formula xml:id="formula_10">R centroid = K k=1 W k en − C k 2 ,<label>(7)</label></formula><p>6</p><p>In what follows, we drop the subscript u and i for simplicity.</p><p>where W k en denotes the k-th column of the encoder weight matrix W en and C k denotes the representation of the kth cluster centroid vector. Note that R centroid will force the distribution of Z t approximate to the prior and ignore the input. Therefore, in practice, this regularisation is only deployed in the initial training epochs.</p><p>Once the connection between the encoder weights and cluster centroids is established, the learning of the text latent variable z t can be regarded as a soft assignment of the text representation x t to various clusters. Inspired by <ref type="bibr" target="#b43">[42]</ref>, a Student t-distribution is used to mitigate the crowding problem. Here, we use τ to adjust the distribution tail and map its values to the range of [0, 1]. The k-th dimension of a text latent variable z t k denotes the probability of the corresponding user or item being assigned to the k-th cluster:</p><formula xml:id="formula_11">η t k = 1 + e φ(z t k )/τ K k ′ =1 e φ(z t k ′ )/τ , (<label>8</label></formula><formula xml:id="formula_12">)</formula><p>where τ is the temperature in the softmax function, φ(z t ) is a linear transformation of z t . The KL divergence of the posterior distribution of Z t and the prior distribution of Z g is then defined by:</p><formula xml:id="formula_13">KL(p(Z t |x t , ϵ)|r(Z g )) = K k=1 η t k log η t k ρ g k (<label>9</label></formula><formula xml:id="formula_14">)</formula><p>where η is the derived cluster-based distribution defined in Eq. ( <ref type="formula" target="#formula_11">8</ref>), ρ is the prior distribution calculated from the user-item interaction graph, defined in Eq. ( <ref type="formula" target="#formula_5">5</ref>). d) Reconstruction Loss.: As discussed in Section III, the reconstruction term in Eq. ( <ref type="formula" target="#formula_4">4</ref>) has the property, Q(x t ) ∝ log(exp(−||x t ϵ − x t || 2 )). Therefore, it can be defined as the mean squared error function:</p><formula xml:id="formula_15">Q(x t ) = E x t ∼X t E ϵ∼p(ϵ) [||x t ϵ − x t || 2 ],<label>(10)</label></formula><p>where x t denotes the input user or the item representation, and xt ϵ denote the reconstructed representation. e) Rating Prediction and Final Objective Function.: After obtaining the regularised latent textual representations for user z t u and item z t i , we add their corresponding ID features to obtain the final user and item embeddings ζ u and ζ i for rating prediction,</p><formula xml:id="formula_16">ζ u = W u z t u + ϵ u , ζ i = W i z t i + ϵ i</formula><p>, where the ID features ϵ u and ϵ i are generated by feeding the user ID and item ID to an embedding layer. Inspired by the latent factor model in recommendation systems, we introduce the global biases for users and items in the final prediction layer as rui = f cls (ζ u , ζ i ) + b u + b i , where f cls combines the user and item features into a scalar, b u and b i are bias derived from ϵ u and ϵ i . The regression loss L r of the predicted rating is calculated as the MSE on the given user-item pair. Combining all the components above, we derive the training objective as follows:</p><formula xml:id="formula_17">L = L r + O t IB + R centroid<label>(11)</label></formula><p>f) Time Complexity and Scalability Analysis: In this subsection, we conduct a complexity analysis of both GIANT and LightGCN, which is our chosen base graph model. Suppose the number of user nodes is m, the number of item nodes is n, the data sparsity is defined as α, and edges in the user-item interaction graph are E = α • m • n. The average number of reviews for users and items are |D u | and |D i |, respectively. Let G denotes the number of GCN layers. d is the graph node embedding size, as well as the dimension of cluster centroid vector C. K u is the number of user clusters, K i is the number of item clusters, T is the maximum number of iterations for K-Means 7 . For simplicity, all the kernels in CNN are assumed having a uniform size of c, and there are a total of f kernels. The padding length for each review text is denoted as L.</p><p>We use the user and item embeddings obtained from welltrained LightGCN. Its complexity analysis results were reported in <ref type="bibr" target="#b44">[43]</ref>. The additional computations involve several steps, including K-means for user/item clustering, final rating prediction using a VAE framework with rate prediction loss L r , information bottleneck regularisation O t IB , and the centroid regularisation R centroid . For the textual feature extraction, all the reviews associated with a single user or item are aggregated into one, which is then fed into the CNN. This leads to an expected input channel size of m|D u | for users and n|D i | for items. Consequently, the expected total computational complexity can be expressed as O(m|D</p><formula xml:id="formula_18">u |Lc 2 f )+ O(n|D i |Lc 2 f ).</formula><p>For rate prediction, we only calculate the dot-product for all user-item interactions, resulting in a complexity of O(E). For the calculation of the KL divergence in Eq. ( <ref type="formula" target="#formula_13">9</ref>), the complexity is determined by (K u + K i ) for each user-item pair. Since the dimensions of the user and item latent variables are identical to K u and K i , respectively, the reconstruction complexity for each (u, i) pair is also</p><formula xml:id="formula_19">(K u + K i ) . Since the number of LightGCN Adjacency O(|E|) GCN O(|E| 2 Gd) BRP Loss O(|E|d) K-Means clustering O(KumT )+O(K i nT ) CNN Feature extractor O(m|Du|Lc 2 f ) + O(n|D i |Lc 2 f ) VAE Rate Prediction O(E) O IB O(EKu + EK i ) R centroid O(dEKu + dEK i ) TABLE I THE ANALYTICAL TIME COMPLEXITY OF GIANT.</formula><p>clusters is much smaller than the number of items or users, the expected increase in complexity primarily arises from the K-Means clustering, textual feature extraction, and rate prediction steps, roughly speaking:</p><formula xml:id="formula_20">O((K u T + |D u |Lc 2 f )m + (K i T + |D i |Lc 2 f )n)+ O((dK u + K u + dK i + K i + 1)E)<label>(12)</label></formula><p>In When comparing our cost to that of LightGCN, which is expressed as 2|E| 2 G, where G represents the number of GCN layers, we find that our time complexity becomes comparable to LightGCN only when the result of |D u |Lc 2 f m + 7mn approaches (αmn) 2 . In practical terms, in our experimental configurations, these two results are within the same level. Therefore, our time complexity is nearly equivalent to that of existing graph-based recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>V. SENTENCE-LEVEL EXPLANATION GENERATION</head><p>Our variational framework can identify the top-k words for each latent dimension. To make it easier for humans to understand the rationales behind model decisions, we extract the most relevant review sentences (see the extracted explanations in Figure <ref type="figure">1</ref> and examples in Figure <ref type="figure">3</ref>) from all the candidate reviews as interpretations for a specific user-item pair (u-i).</p><p>In particular, our GIANT model infers the latent factors z t . The most prominent dimension in the latent factor represents the assigned cluster for user u or item i. Recall that the number of clusters derived in the graph space equals to the number of latent dimensions. Based on that, we can identify the user candidate reviews as all the past reviews on item i written by the users assigned to the same cluster as u. Similarly, we identify item candidate reviews from the past reviews on the item i which have their most prominent topic the same as the item latent topic. Afterwards, we represent each topic by its top-associated 5 words and derive the topic representation by the aggregated word-level GloVe 8 word embeddings. 9 These words are selected based on the TFIDF on the reviews in the same topic cluster, with stop words filtered. The review sentence representations are also derived based on the aggregated constituent word GloVe embeddings. The most relevant sentences from user candidate reviews can then be extracted as a summary of the user u's preferences based on their cosine similarity with the user latent topic representation. Similarly, the most relevant sentences from item candidate reviews are extracted as a summary of item i's characteristics based on their cosine similarity with the item's latent topic representation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>VI. EXPERIMENTS RESULTS ON RECOMMENDATION</head><p>A. Experimental Setup a) Dataset and Data Processing: We choose three commonly used e-commerce datasets, including BeerAdvocate <ref type="bibr" target="#b45">[44]</ref> and two amazon review datasets, Digital Music and Office Products <ref type="bibr" target="#b46">[45]</ref>, which not only contain the interaction interactions between user and item but also the review texts. Amazon review data 10 is one of the popular datasets, consisting of 24 kinds of products. As our method derive the user/item mainly based on their reviews, we use the dense subset, 5core, of the amazon review dataset that extracts the user-item pairs, such that each of the remaining users and items have at least 5 reviews each. Table <ref type="table" target="#tab_2">II</ref> summarizes the statistics of the three datasets. In order to enhance the performance of our recommender system, we employ a filtering mechanism for entries (user/item) associated with either reviews of significant length or an exceptionally large number of reviews. This is done because both the length and the number of reviews follow a long-tail distribution, as described in <ref type="bibr" target="#b8">[8]</ref>. Specifically, we filter out users or items with over 100 reviews/interactions and truncate the reviews to lengths of <ref type="bibr">[200,</ref><ref type="bibr">400,</ref><ref type="bibr">300]</ref> for the three datasets, respectively. Additionally, we randomly select 80%, 10%, 10% as the train/validation/test sets.</p><p>b) Evaluation Metrics: We use Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) to evaluate the rating prediction accuracy. We also report the ranking-based evaluation results, i.e., Precision and Recall to measure the overlapping between the recommended items and the target items.  c) Baselines: We compare with several open-source recommenders, including HFT <ref type="bibr" target="#b17">[17]</ref>, DeepCoNN <ref type="bibr" target="#b47">[46]</ref>, and NARRE <ref type="bibr" target="#b8">[8]</ref>. HFT combines reviews with ratings and uses an exponential transformation function to link review text and the ratings. DeepCoNN uses a shared layer for interaction modeling the users and items, which is on top of the two encoders for the users and items, respectively. NARRE is an interpretable recommender, which introduces review-level attentions to select important reviews and incorporates the user and item IDs as discriminative features for rating prediction and uses the text spans with higher attention as recommender rationales. Our GIANT is also built on the NARRE, but with a proposed geometric prior in an encoder-decoder structure. More recently, a graph model called RGCL <ref type="bibr" target="#b48">[47]</ref> was introduced, which incorporates a contrastive loss and takes into account both user-item interactions and review semantics in its node features. Our model similarly emphasises the significance of user-item interactions in review-based recommender systems, but it introduces a novel regularisation technique based on clustering. Furthermore, we compare with several other encoder-decoder structures with different regularizes on top of NARRE to learn the latent variable as a baseline to highlight the difference with our proposed regularisation, i.e., AutoEncoder, StandPrior and WassersteinVAE and IndivPrior:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Datasets</head><p>• StandPrior (aka. StandVAE ) uses two VAEs for users and items respectively, each with the standard Gaussian distribution N (0, 1) as the prior.</p><p>• WassersteinVAE differs from the StandPrior in using the Wasserstein metric <ref type="bibr" target="#b49">[48]</ref> to calculate the distribution discrepancy between posterior η and prior ρ. • IndivPrior assigns a separate Gaussian prior to each user or item with its mean value calculated from the user's or item's corresponding representation derived from the useritem interaction graph, i.e., p(z t u ) = N (W u ξ u , I), p(z t i ) = N (W i ξ i , I), where ξ u ∈ R d , ξ i ∈ R d denote the user and item graph node, W u and W i are learnable parameters in a linear layer of size (d × d), and d is the dimension of graph node embeddings.</p><p>d) Training Procedure: We train the model by minimising the objective function defined in Eq. <ref type="bibr" target="#b11">(11)</ref>. The β for the KL divergence term is set to 0.01 and the L 2 regularisation is used for all the model parameters with the weight of 0.001. We only train the prior-centralisation term for 0.5 proportion to approximate the cluster centroids for the later training. The KL term in O IB should be introduced later until the encoder centroid is well trained. To do so, we follow a similar cyclical schedule <ref type="bibr" target="#b50">[49]</ref> to gradually adjust the anneal factor λ in each epoch. Specifically, we first train the model without the KL term for 0.5 proportion, then anneal it from 0.5 to 1 for 0.25 proportion, and finally fix λ = 1. 11</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Rating Prediction Results</head><p>The rating prediction results of our model in comparison with baselines on all datasets are given in Table <ref type="table" target="#tab_2">III</ref>. We have the following observations. (1) DeepCoNN built on the stack of non-linear neural networks for review semantic modeling outperforms HFT which leverages an exponential transformation function to link topic distributions in review text and latent factors derived from ratings. This shows the superiority of deep learning for feature extraction. (2) AutoEncoder gives slightly better performance than NARRE in BeerAdvocate, which shows its effectiveness of extracting key contextual information for rating prediction. (3) RGCL emerges as the leading baseline model and even manages to achieve competitive results on both the Beer and Music datasets when compared to our GIANT. However, when considering the Office dataset, its overall performance falls short of ours. The average RMSE/MAE values across the three datasets are 84.49/63.49 for RGCL and 84.18/62.87 forGIANT, indicating that our model outperforms RGCL. The results demonstrate the effectiveness and robustness of our proposed information bottleneck regularisation applied on the latent semantic space. By doing this, the users and items can be grouped into different clusters according to the interaction data, which is not the case in other baseline recommenders.</p><p>a) Effect of our proposed information bottleneck regularisation: We then study the effects of different information bottleneck, i.e., StandPrior, WassersteinVAE and IndivPrior. From the results in the last group of Table <ref type="table" target="#tab_2">III</ref>. It can be seen that WassersteinVAE and StandPrior demonstrate overall better results than IndivPrior and all the baselines in Table <ref type="table" target="#tab_2">III</ref>. The improvement can be explained by the nature of VAE, which is particularly beneficial when dealing with sparse data where few observations are available. However, IndivPrior, which imposes a separate Gaussian prior on individual user/item, shows worse performance compared to the other three variational frameworks, and is even worse than AutoEncoder. Our model benefits from a rich prior derived from user/item clusters, while avoiding using a global normal prior (StandPrior and WassersteinVAE ) or a separate instance-level prior for each user/item (IndivPrior). b) Ranking-based Results: In addition to the accuracybased metrics, i.e., MSE and MAE, we also evaluate models using the ranking-based metrics, i.e., HitRatio@10 and NDCG@10 for the two best baselines (Table <ref type="table" target="#tab_5">IV</ref>). Without evaluation on the whole item list, we followed the common practice in <ref type="bibr" target="#b51">[50]</ref>, <ref type="bibr" target="#b52">[51]</ref> that randomly samples negative 100 items that are not interacted by the user, ranking the test item among the 100 items. Then the ranked list is truncated at 10 for both HitRatio@10 and NDCG@10. The performance trends across different datasets diverge from those observed in accuracy-based metrics. RGCL demonstrates comparable performance on the Office dataset, whereas its performance on the BeerAdvocate dataset is much worse, achieving a HitRatio of 0.47 compared to 0.62 for GIANT. However, our GIANT still maintains an overall superior performance in rank-based metrics. Specifically, on the HitRatio@10 metric, our model achieves an score of 0.65, while RGCL achieves an score of 0.61. WasersteinVAE appears to be the second-best encoderdecoder model (the second group). The relative rank-based performances across the two groups in Table III are different, while the relative performances within encoder-decoder structured models are similar to accuracy-based metrics, i.e., MSE and GIANT in general achieves the best results on the two kinds of metrics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Models</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Contribution from Various Loss Terms</head><p>We study the effects of the three loss terms in rating prediction accuracy and Diversity of the latent variables. As variational networks could easily collapse into an unconditional generative model, i.e., in the extreme case, all the input will be mapped into the same latent code <ref type="bibr" target="#b53">[52]</ref>. We use the dimension index whose corresponding latent value is the maximum as the  We observe that the removal of Q(x t ) leads to the largest performance degradation. After removing R centroid , the latent variable diversity shrinks to near zero, indicating nearly all the latent variables fall into the same cluster. This highlights the capability of our prior-centralisation term in enabling the latent variables z t effectively reflect the soft cluster assignments. We also found that replacing the MSE in Q(x t ) with the cosine similarity (1 − cosine) reduces the latent variable diversity significantly. This can be partly explained by the fact that the cosine similarity focuses on measuring the angle between the input x t and the reconstructed output xt , ignoring the magnitude of the vectors which is however important in our case.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>VII. LATENT VARIABLE AND INTERPRETABILITY</head><p>EVALUATION In addition to the rating prediction, we design experiments to evaluate the generated latent variables and explore the improvement source. Firstly, we evaluate the generated latent clusters in terms of semantic coherence and separability. Then, we examine the effects of the identified important latent dimensions on rating prediction. Finally, we conduct a human evaluation to study the interpretability.</p><p>A. Cluster Coherence and Separability a) Semantic Coherence: To verify the capability of creating semantically coherent clusters, we propose to measure cluster coherence as the average cosine similarity between every review document pair within a cluster. We first obtain the document-level review representations by feeding the reviews from the test set to our pre-trained CNN encoder. We then calculate the average cosine similarity between the representations of each review pair in a cluster, and are further averaged across all clusters (Table <ref type="table" target="#tab_5">VI</ref>). We use the clusters generated via applying KMeans on learnt graph node embedding as a comparison, i.e., ρ in Eq. ( <ref type="formula" target="#formula_5">5</ref>). b) Cluster Separability: As each dimension of the latent variables z t corresponds to a cluster, for the k-th dimension, we can search for its relevant reviews which have the highest value in z t k and list the most frequent words in the review set as the representative topic words 12 Representative words in randomly selected three clusters on the three datasets are shown in Table <ref type="table" target="#tab_8">VII</ref>. For our model, the most prominent words are different across different clusters (thus being coloured), i.e., 'brown roasted', 'pine, caramel' and 'good flavour'. We identify 'ABBA' and their popular songs, computer peripherals such as 'network cable' and 'router' in Digital Music and Office Products datasets, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Models</head><p>We find it hard to see clear topic separations from the WassersteinVAE results. For example, Cluster 2 and 3 share the same 3 words, 'sweet', 'light' and 'malt' out of their top 4 words. In addition, 'carbonation' in Cluster 2 and 'whitehead' in Cluster 3 are both related to beer foam. The results show that with the incorporation of the priors derived from user/item clusters, our proposed approach is able to learn latent variables in the review semantic space which can produce better separable topic clusters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B. Comprehensiveness Evaluation by Perturbing on Latent Variables</head><p>To explore the importance of our identified clusters, i.e., the latent dimension with a larger value, we calculate the performance change before and after removing the specific dimension and define Comprehensiveness as:</p><formula xml:id="formula_21">N i r(z i )−r(z i \k ) 2 N</formula><p>, Where r(•) is the predicted rating, z i is the latent variable for i-th evaluated user-item pair, z i \k is to remove the identified top k latent dimensions from z i . To this end, we replace the values in the top-k dimensions with the average value of the latent variables according to <ref type="bibr" target="#b54">[53]</ref>. In the Figure <ref type="figure" target="#fig_0">2</ref> line chart, our model demonstrates a larger performance change as more important dimensions are removed. We further randomly delete k latent dimensions and calculate the relative performance change by subtracting the changes caused by random removal (Table <ref type="table">below</ref> Figure <ref type="figure" target="#fig_0">2</ref>). The relative changes in our model are most predominant, followed by WassersteinVAE , while relative changes of StandPrior are negative, showing that the random removal of latent dimensions can bring even larger changes to the predominant ones.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C. Human Evaluation of Generated Interpretations</head><p>We conduct a human evaluation to validate the interpretability of our proposed method. To make it easier for humans to understand the rationales behind model decisions, we extract the most relevant sentences from user/item reviews as interpretations for a specific user-item pair (user u and item i). Examples of generated interpretations are illustrated in Figure <ref type="figure">3</ref>, as well as the model's recommendation suggestion as will recommend if the model's predicted rating score is above the average predicted rating; or won't recommend, otherwise.</p><p>We propose three evaluation metrics, relevance, faithfulness and informativeness and ask three English-proficient human evaluators to give 1-5 score to the generated interpretations from WassersteinVAE, NARRE and GIANT on 120 randomly selected user-item pairs from each of the three datasets. The model identifiers are unknown to the evaluators.</p><p>• Relevance. Do the extracted sentences from user reviews and item reviews pertain to the relevant topic, aspect, or subject? An interpretation with greater overlap in aspects should receive a higher score. • Faithfulness. Do the sentences extracted from user reviews and item reviews influence the recommendation suggestions made by the model? You should consider both the sentiment and the aspects described. For example, if both the selected reviews from the user and the item express positive sentiments regarding the "prices" of the product, the faithfulness score should be rated as 5. Any discrepancies between the sentiment and aspects mentioned can lower this score. • Informativeness. Do the provided interpretations effectively reflect the user preferences and item characteristics? This criterion should remain separate from the previous ones, only focusing on the extent to which various aspects and their associated sentiments are discussed in the extracted reviews. A lower level of coverage of aspects results in a reduced Informativeness score, as exemplified by a statement like, "I really like this product!".</p><p>Our human evaluation results presented in Table <ref type="table" target="#tab_10">VIII</ref> shows that both WassersteinVAE and GIANT are better in relevance, which can be partly explained that they can extract sentences from reviews of like-minded users from the same user clustering results when the current reviews don't contain any key information. The superior performance over WassersteinVAE further shows the efficiency of our proposed geometric prior.    <ref type="table">:</ref> Relative performance changes after subtracting the changes caused by random removal.</p><p>Fig. <ref type="figure">3</ref>. Extracted interpretations from GIANT (upper) and WassersteinVAE (bottom) for the item, a tape. In the example generated by GIANT, both the reviews/rationales from the user and item side focus on the 'sturdy and strong', and reveal lots of important aspects for the recommendation. While the user reviews extracted by WassersteinVAE, e.g., 'go wrong' fail to capture the key factors, and the extracted item reviews are even contradictory, i.e., 'won't be using' to the recommended behaviour.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>VIII. CONCLUSION</head><p>In this paper, we leverage the user/item clusters sharing common interests/characteristics obtained from the user-item interaction graph to refine the review text latent factors via  our proposed geometric information bottleneck (GIANT). We empirically show that GIANT is better in learning a semantically coherent and interpretable latent space and the generated explanations are more faithful to the model decisions, while achieving comparable rating prediction accuracy on three commonly used datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>IX. ACKNOWLEDGEMENT</head><p>This work was funded by the UK Engineering and Physical Sciences Research Council (grant no. EP/T017112/1, EP/V048597/1, EP/X019063/1). HY receives the PhD scholarship funded jointly by the University of Warwick and the Chinese Scholarship Council. YH is supported by a Turing AI Fellowship funded by the UK Research and Innovation (grant no. EP/V020579/1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>APPENDIX A HYPER-PARAMETER SETTINGS</head><p>We use Adam for optimization with the initial learning rate set to 0.001. The batch size is set to 32, 64, and 32, and training epochs are 10, 10, and 15 for the three datasets, respectively. The adjacency matrix in the graph is binary: user-item entries with interacted ratings higher than the average corpus-wide rating is set to 1, and 0 otherwise. We stop training GCN when it reaches the best recall value in the validation set. The cluster centroid vectors are derived by K-means. The graph node feature dimension d is 64, and the number of clusters K are searched in <ref type="bibr" target="#b16">[16,</ref><ref type="bibr" target="#b32">32,</ref><ref type="bibr">64,</ref><ref type="bibr">128,</ref><ref type="bibr">256,</ref><ref type="bibr">512]</ref>. In CNN review encoding, the word embedding and ID embedding are both initialized by the uniform distribution (−0.1, 0.1), their dimensions are set to 300 and 64, respectively. We use two CNN kernels with size 2 and 3, and the dimension of 32 to encode the reviews. As such, the CNN-encoder outputs the review representations with dimension of 64 (i.e., 32×2). To combine multiple reviews for each user or item, we use the attention mechanism where the attention weights are derived through two consecutive linear transformation layers of 64 → 32 → 1.</p><p>In GIANT, the latent variable dimension is set to the same as the number of clusters K. The softmax temperature τ is searched in <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b8">8]</ref>. The non-linear activation function in both the encoder and decoder is ReLU. We use a linear layer with [K, 64] weights to map the latent variable z t to the same space of the ID features. For f cls used in rating prediction, we first apply the ReLU function on the result of element-wise multiplication of the user and the item features, then apply a linear layer with the shape of [64, 1] to transform the ReLU output to a rating scalar.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>APPENDIX B TRANSFERABLE INFORMATION BOTTLENECK</head><p>Theorem Suppose we use independent well-trained encoder-decoder based architectures to model the features for different modalities (e.g., graph and text), then a given input x n has representations x t n ∈ X t and x g n ∈ X g under different modalities with the constraint I(X t ; X g ) ≥ I x since X t and X g which are from the same input should be relevant. Also, assuming I(Z t ; X t ) ≤ I c and I(Z g ; X g ) ≤ I c , then the following property holds: I(X t ; Z g ) ≤ H(X t ) − H(X g ) + H(X g |X t ) + I c <ref type="bibr" target="#b13">(13)</ref> Proof: We first apply the chain rule twice in different orders for three sources X t , X g and Z g below: H(X t , X g , Z g ) = H(X g |X t , Z g ) + H(X t |Z g ) + H(Z g ), <ref type="bibr" target="#b14">(14)</ref> H(X t , X g , Z g ) = H(X t |X g , Z g ) + H(X g |Z g ) + H(Z g ). <ref type="bibr" target="#b15">(15)</ref> Since the right parts of the above two equations are the same, we have: H(X g |X t , Z g ) + H(X t |Z g ) + H(Z g ) = H(X t |X g , Z g ) + H(X g |Z g ) + H(Z g ) <ref type="bibr" target="#b16">(16)</ref> which can be simplified as:</p><formula xml:id="formula_22">H(X t |Z g ) = H(X g |Z g ) + H(X t |X g , Z g ) − H(X g |X t , Z g ).<label>(17)</label></formula><p>Since Z g , X t and X g are derived from the same set of samples but under different modalities or representations, they are obviously not independent. Hence, we have H(X g |X t , Z g ) ≤ H(X g |X t ) (as X g and Z g are dependent) and H(X t |X g , Z g ) ≥ 0 (as X t and X g are dependent). Thus, we can replace H(X g |X t , Z g ) with H(X g |X t ), and replace H(X t |X g , Z g ) with 0, to derive the following inequality:</p><formula xml:id="formula_23">H(X t |Z g ) ≥ H(X g |Z g ) − H(X g |X t )<label>(18)</label></formula><p>By applying the properties of conditional differential entropy, which yields H(X g |Z g ) = H(X g ) − I(X g ; Z g ), the above formula can be simplified as:</p><formula xml:id="formula_24">H(X t |Z g ) ≥ H(X g ) − I(X g ; Z g ) − H(X g |X t )<label>(19)</label></formula><p>Accordingly, we have:</p><formula xml:id="formula_25">I(X t ; Z g )= H(X t ) − H(X t |Z g ) ≤ H(X t ) − H(X g ) + I(X g ; Z g ) + H(X g |X t ) ≤ H(X t ) − H(X g ) + H(X g |X t ) + Ic<label>(20)</label></formula><p>□ Eq 20 shows that the lowest upper bound of the transferable information bottleneck is I(X t ; Z g ) ≤ Ic when the distribution of two modalities are the same, X t = X g , and the conditional entropy of H(X g |X t ) is 0. Let's take H = H(X g ) − H(X t ) + H(X t |X g ), then the Eq. ( <ref type="formula" target="#formula_25">20</ref>) can be simplified as I(X g ; Z t ) ≤ H +Ic, where Ic is the upper boundary of information bottleneck for both modalities.</p><p>Recall the Lagrange multiplier based objective function:</p><formula xml:id="formula_26">OIB = I( X; Z) − β • I(X; Z),<label>(21)</label></formula><p>which aims to optimise:</p><formula xml:id="formula_27">max θ I( X; Z) s.t. I(X; Z)) ≤ Ic.<label>(22)</label></formula><p>Now, let us focus on the optimisation on the encoder-decoder framework in text by denoting the variables with the t superscript. If we use the latent distribution learned from the graph modality, Z g , to impose constraints on Z t , the objective can be rewritten as: max θ I( Xt ; Z t ) s.t. I(X t ; Z g ) ≤ H + Ic.</p><p>(</p><formula xml:id="formula_28">)<label>23</label></formula><p>Since H = H(X g ) − H(X t ) + H(X t |X g ) is irrelevant with our optimisation, the Lagrange multiplier based objective function O t IB can be rewritten as:</p><formula xml:id="formula_29">O t IB = I( Xt ; Z t ) − β • I(X t ; Z g ),<label>(24)</label></formula><p>That is, there is no need to define the prior for the text modality. Instead, we can use the posterior distribution of the latent variable from the graph modality as the regularisation to guide the training on the text data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>APPENDIX C OPTIMISING OBJECTIVE OF TRANSFERABLE INFORMATION BOTTLENECK</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. Top: The Comprehensiveness values by removing the top k most important latent dimensions identified, k ∈ {3, 5, 10, 15, 20, 30}. Ous model uses the left y-axis, the two baselines use the right axis. Bottom Table:Relative performance changes after subtracting the changes caused by random removal.</figDesc><graphic coords="9,48.46,436.17,223.56,171.14" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="2,66.24,51.14,481.72,129.18" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head></head><label></label><figDesc>our highest configuration, we set d to 64, K u and K i to 64, |D u | and |D i | to 100, L to 32, kernel size to 3, and the number of kernels to 3. Consequently, the dominant terms are the second coefficient for m and n, approximately 86, 400 • m and 86, 400 • n. This allows us to simplify the computational complexity as O(|D u |Lc 2 f m+|D u |Lc 2 f n+(dK u +dK i )E). Taking into account the sparsity of our datasets, as shown in TableII, we can approximate E as (3.5e − 3)mn, the overall complexity is primarily determined by |D u |Lc 2 f m + |D i |Lc 2 f n + 14mn. This complexity scales linearly with the number of reviews for each user or item.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>TABLE II ALL</head><label>II</label><figDesc>THE DATASETS HAVE RATINGS IN THE RANGE OF 1-5. THE BEER</figDesc><table /><note>DATASET HAS THE SMALLEST SPARSITY.</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>TABLE III PERFORMANCE COMPARISON IN RMSE (%) AND MAE (%) FOR ALL METHODS. * DENOTES THE STATISTICAL SIGNIFICANCE FOR p &lt; 0.01, COMPARED TO THE BEST BASELINE. THE BEST RESULTS THROUGHOUT ALL THE ROWS ARE IN BOLD, THE BEST RESULTS IN EACH GROUP ARE UNDERLINED.</figDesc><table><row><cell></cell><cell cols="2">BeerAdvocate</cell><cell cols="2">Digital Music</cell><cell cols="2">Office Products</cell></row><row><cell></cell><cell>RMSE(↓)</cell><cell>MAE(↓)</cell><cell>RMSE(↓)</cell><cell>MAE(↓)</cell><cell cols="2">RMSE(↓) MAE(↓)</cell></row><row><cell>HFT</cell><cell>79.81</cell><cell>62.42</cell><cell>96.42</cell><cell>74.76</cell><cell>89.46</cell><cell>68.57</cell></row><row><cell>DeepCoNN</cell><cell>77.28</cell><cell>59.45</cell><cell>94.69</cell><cell>71.03</cell><cell>85.14</cell><cell>64.82</cell></row><row><cell>NARRE</cell><cell>76.80</cell><cell>58.94</cell><cell>93.69</cell><cell>69.30</cell><cell>84.40</cell><cell>63.40</cell></row><row><cell>RGCL</cell><cell>74.65</cell><cell>57.12</cell><cell>92.02</cell><cell>68.49</cell><cell>86.81</cell><cell>64.87</cell></row><row><cell>AutoEncoder</cell><cell>75.94</cell><cell>58.93</cell><cell>93.97</cell><cell>69.13</cell><cell>85.03</cell><cell>64.32</cell></row><row><cell>StandPrior</cell><cell>75.80</cell><cell>58.73</cell><cell>93.60</cell><cell>69.21</cell><cell>84.69</cell><cell>63.97</cell></row><row><cell>WassVAE</cell><cell>75.62</cell><cell>58.06</cell><cell>93.81</cell><cell>69.32</cell><cell>84.20</cell><cell>63.43</cell></row><row><cell>IndivPrior</cell><cell>76.43</cell><cell>59.88</cell><cell>94.57</cell><cell>70.51</cell><cell>85.33</cell><cell>65.05</cell></row><row><cell>GIANT</cell><cell>75.36  *</cell><cell>57.87  *</cell><cell>92.87  *</cell><cell>68.68  *</cell><cell>84.32</cell><cell>62.05  *</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head></head><label></label><figDesc>assignment ID. We then derive the cluster assignment results A ∈ R N ×K , where N is the number of test samples, K is the cluster number. The diversity is calculated based on entropy H(X) = − k∈K p(k) log(p(k))), where p(k) is the fraction of the number of samples falling into the k-th cluster among all the samples. A larger value means better diversity. We record the largest diversity between user and item latent variables. The results are shown in TableV.</figDesc><table><row><cell>Models</cell><cell cols="3">BeerAdvocate</cell><cell cols="2">Digital Music</cell><cell></cell><cell cols="3">Office Products</cell></row><row><cell></cell><cell cols="3">HitRatio NDCG</cell><cell cols="3">HitRatio NDCG</cell><cell cols="3">HitRatio NDCG</cell></row><row><cell>PureMF</cell><cell>0.43</cell><cell></cell><cell>0.23</cell><cell>0.78</cell><cell cols="2">0.52</cell><cell>0.61</cell><cell></cell><cell>0.33</cell></row><row><cell>SVD++</cell><cell>0.41</cell><cell></cell><cell>0.21</cell><cell>0.52</cell><cell cols="2">0.28</cell><cell>0.55</cell><cell></cell><cell>0.28</cell></row><row><cell>NeuMF</cell><cell>0.41</cell><cell></cell><cell>0.21</cell><cell>0.78</cell><cell cols="2">0.52</cell><cell>0.63</cell><cell></cell><cell>0.35</cell></row><row><cell>NARRE</cell><cell>0.61</cell><cell></cell><cell>0.52</cell><cell>0.65</cell><cell cols="2">0.59</cell><cell>0.59</cell><cell></cell><cell>0.64</cell></row><row><cell>RGCL</cell><cell>0.47</cell><cell></cell><cell>0.55</cell><cell>0.72</cell><cell cols="2">0.63</cell><cell>0.64</cell><cell></cell><cell>0.72</cell></row><row><cell>AutoEnc</cell><cell>0.52</cell><cell></cell><cell>0.49</cell><cell>0.62</cell><cell cols="2">0.60</cell><cell>0.61</cell><cell></cell><cell>0.62</cell></row><row><cell>StandPrior</cell><cell>0.55</cell><cell></cell><cell>0.54</cell><cell>0.68</cell><cell cols="2">0.63</cell><cell>0.61</cell><cell></cell><cell>0.62</cell></row><row><cell>WassVAE</cell><cell>0.55</cell><cell></cell><cell>0.54</cell><cell>0.69</cell><cell cols="2">0.65</cell><cell>0.61</cell><cell></cell><cell>0.60</cell></row><row><cell>GIANT</cell><cell>0.62</cell><cell></cell><cell>0.57</cell><cell>0.69</cell><cell cols="2">0.67</cell><cell>0.64</cell><cell></cell><cell>0.64</cell></row><row><cell></cell><cell></cell><cell></cell><cell cols="2">TABLE IV</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell cols="10">THE EVALUATION RESULTS BASED ON RANKING, NAMELY, HITRATIO@10</cell></row><row><cell cols="10">AND NDCG@10 FOR ALL THE BASELINE AND OUR PROPOSED GIANT.</cell></row><row><cell>Variants</cell><cell cols="2">BeerAdvocate</cell><cell></cell><cell cols="2">Digital Music</cell><cell></cell><cell cols="2">Office Products</cell><cell></cell></row><row><cell></cell><cell cols="3">NDCG RMSE Div</cell><cell cols="3">NDCG RMSE Div</cell><cell>NDCG</cell><cell cols="2">RMSE Div</cell></row><row><cell>Full Model</cell><cell>0.57</cell><cell>75.36</cell><cell>1.89</cell><cell>0.67</cell><cell>92.87</cell><cell>3.46</cell><cell>0.64</cell><cell>84.32</cell><cell>1.58</cell></row><row><cell>-w/oRcent</cell><cell>0.55</cell><cell>75.96</cell><cell>0.04</cell><cell>0.65</cell><cell>92.62</cell><cell>0.07</cell><cell>0.62</cell><cell>84.58</cell><cell>0.02</cell></row><row><cell>-w/o KL term</cell><cell>0.55</cell><cell>75.64</cell><cell>1.43</cell><cell>0.65</cell><cell>93.83</cell><cell>2.86</cell><cell>0.61</cell><cell>84.23</cell><cell>1.21</cell></row><row><cell>-w/o Q(x t )</cell><cell>0.52</cell><cell>76.02</cell><cell>1.04</cell><cell>0.61</cell><cell>93.95</cell><cell>3.10</cell><cell>0.59</cell><cell>84.94</cell><cell>0.93</cell></row><row><cell>Q(x t ) Cosine</cell><cell>0.56</cell><cell>75.35</cell><cell>0.11</cell><cell>0.67</cell><cell>92.85</cell><cell>1.76</cell><cell>0.63</cell><cell>84.97</cell><cell>0.07</cell></row></table><note>cluster</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>TABLE V RATING</head><label>V</label><figDesc>PREDICTION RESULTS, INCLUDING METRICS SUCH AS NDCG@10, RMSE(%) AND Diversity ACROSS MODEL VARIANTS. A LOWER DIVERSITY INDICATES THAT THE LEARNT LATENT VARIABLES FOR DIFFERENT SAMPLES TEND TO COLLAPSE INTO A SIMILAR LATENT CODE.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head></head><label></label><figDesc>color, brown, feel, roasted, malts, almost, moderate, coffee, dark light, color, malt, glass, poured, drink, sour, pour, mouthfeel, alcohol good, flavour, dark, better, brew, style, bad, Canadian, nose, drinking aroma, light, sweet, malt, white head, mouthfeel, nose, hint, brew, note pine, caramel, lacing, citrus, mouthfeel, hint, ipa, note, body, strong sweet, coffee, light, malt, aroma, carbonation, pour, mouthfeel, hint, color Music dr dre, prince, used known, west coast, mirrors, love, hate, westside story, jadekiss, always quot, album, Ask Rufus, song, funk, voice, music, band, soul, love bangles, vicki, vocal, place, live, hero, takes, fall, liverpool, beatles song, everglow, album, band, beautiful, track, lyrics, suspension, record, Christian, dancing queen, take chance, mamma mia, abba, greatest hit, money money, gimme gimme, super trouper, knowing knowing, gold record, album, song, band, track, time, sound, head heart, folk, live, love Office set , computer, wireless, network, cable, router, edit, pencil, ink scan, software, pencil, Mac OS, work, printer, small, printed, color, file photo, desk, laser, scanner, work, scan, epson, scaning, enough, easy easy use, dry erase, folder, mouse pad, office, ink cartridge, works, used, post note pencil, tape, ink, pen, anyway, pen, rubber, clip, pretty, eraser recommend, printer, folder, paper, easy use, boxes, feature, stapler, pencil, canon, color</figDesc><table><row><cell>GIANT</cell><cell>WassersteinVAE</cell></row><row><cell>pour,</cell><cell></cell></row><row><cell>Beer</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>TABLE VII THE</head><label>VII</label><figDesc>MOST PROMINENT WORDS (SORTED BY OCCURRENCE FREQUENCY) IN THREE RANDOMLY SELECTED CLUSTERS FROM GIANT AND WassersteinVAE ON Digital Music AND Office Products DATASETS. FOR EACH DATASET, WE HIGHLIGHT THE TOP 3 WORDS THAT ARE NOT FOUND IN THE OTHER TWO CLUSTERS. GIANT GENERATES BETTER SEPARABLE TOPICS WHILE WassersteinVAE FAIL TO GENERATE CLEAR TOPIC PATTERN.</figDesc><table><row><cell>Peformance Change</cell><cell cols="2">0 0.2 0.4 0.6 0.8 1 Ours</cell><cell>3</cell><cell>5 Ours StandPrior 10 WassersteinVAE BeerAdvocate 15 20</cell><cell>30</cell><cell>0.0E+00 1.0E-02 2.0E-02 3.0E-02 4.0E-02 Baselines</cell><cell cols="2">0 0.2 0.4 0.6 0.8 1 Ours Peformance Change</cell><cell>3</cell><cell>5 Ours StandPrior 10 WassersteinVAE Digital Music 15</cell><cell>20</cell><cell>0.0E+00 1.5E-02 3.0E-02 4.5E-02 6.0E-02 Baselines 30</cell><cell cols="2">0 0.2 0.4 0.6 0.8 1 Ours Peformance Change</cell><cell>3</cell><cell>5 StandPrior 10 WassersteinVAE Ours Office Products 15 20</cell><cell>30</cell><cell>0.0E+00 2.5E-02 5.0E-02 7.5E-02 1.0E-01 1.3E-01 Baselines</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>#Removed Latent Dimensions</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell cols="2">#Removed Latent Dimensions</cell><cell></cell><cell></cell><cell></cell><cell cols="2">#Removed Latent Dimensions</cell></row><row><cell cols="2">Our Model</cell><cell cols="5">2.34 5.92 18.51 6.69 2.11 0.04</cell><cell>Our Model</cell><cell cols="5">3.72 2.02 16.19 8.81 3.94 1.21</cell><cell>Our Model</cell><cell cols="3">3.18 4.48 21.05 5.90 1.97 0.24</cell></row><row><cell cols="2">Stand VAE</cell><cell cols="5">-0.95 -0.03 0.05 -0.87 0.12 -0.59</cell><cell>Stand VAE</cell><cell cols="5">0.49 -0.12 0.21 0.37 0.23 -0.35</cell><cell>Stand VAE</cell><cell cols="3">-0.71 0.31 0.54 -0.98 -0.25 -0.23</cell></row><row><cell cols="2">Wasst VAE</cell><cell cols="5">0.12 1.26 1.68 1.24 1.45 0.57</cell><cell>Wasst VAE</cell><cell cols="5">0.51 1.63 2.04 1.87 1.08 0.67</cell><cell>Wasst VAE</cell><cell cols="3">0.62 0.71 0.83 1.22 0.94 0.83</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>TABLE VIII HUMAN</head><label>VIII</label><figDesc>EVALUATION RESULTS ON relevance, faithfulness AND informativeness OF THE GENERATED INTERPRETATIONS, WHICH WERE ASSESSED FOR 120 RANDOMLY SELECTED USER-ITEM PAIRS FROM THE THREE DATASETS. THE COHEN'S KAPPA CO-EFFICIENT AMONG EACH PAIR OF ANNOTATORS FOR THE THREE METRICS ARE 0.42, 0.38, AND 0.47, RESPECTIVELY.</figDesc><table /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">Manuscript received March 23, 2023; revised November 07, 2023, accepted December 23, 2023.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">Details about how to extract sentence-level review as explanations can be found in §V: Explanation Generation.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">In the rest of the paper, we use superscript t for text and g for the graph.<ref type="bibr" target="#b2">3</ref> The proof is shown in the Appendix B.<ref type="bibr" target="#b3">4</ref> The proof is shown in the Appendix B.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">In the following, We omit the sbscript u, i for the user and item as they are processed in the same way.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="7">Noted that we use the K-Means package within Scikit-Learn for performing clustering, and the average computational complexity is recorded in the table.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="8">https://nlp.stanford.edu/projects/glove/<ref type="bibr" target="#b9">9</ref> We also experimented with more representative words but observed less discriminative topic clusters.<ref type="bibr" target="#b10">10</ref> https://jmcauley.ucsd.edu/data/amazon/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="11">Hyper-parameter settings are included in Appendix A.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="12">We exclude the stopwords and most frequent words appeared in all clusters.</note>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Information Bottleneck: Recall that the IB objective in this work has the form I(Z t ; Xt ) − β • I(X t ; Z g ), where</p><p>where p(•) is the true distribution which is not observed. According to the proof given by <ref type="bibr" target="#b32">[32]</ref>, we consider the posterior estimation q(xt|zt) in the decoder. According to Gibbs' inequality, we have:</p><p>13</p><p>Since the entropy of the decoding results H( Xt ) is independent of model optimisation, we only need to consider the posterior estimation based lower bound. According to <ref type="bibr" target="#b32">[32]</ref>, we have the following empirical approximation by reparameterisation trick:</p><p>For the Lagrange multiplied term I(X t , Z g ) which is different from the standard information bottleneck based β-VAE, we do consider the information bottleneck of I(X t , Z t ) first, because I(X t , Z g ) ≤ H + I(X t , Z t ) according to the proof given in section B. Here, we have the following bound by applying Gibbs' inequality:</p><p>(28) Since estimating the prior distribution of Zt might be difficult, based on the definition of transferable information bottleneck, we apply the Gibbs' inequality and have:</p><p>where r(z g ) is the posterior distribution from the graph-based latent representation, and H is decided by the prior of two modalities which is independent of model optimisation. By combining the two results, the above bound can be approximated by the reparameterisation trick <ref type="bibr" target="#b33">[33]</ref> with a Gaussian random variable ϵ:</p><p>Further discussion about the reconstruction term Q(x t ) In section II, we propose to use the Nadaraya-Watson estimator <ref type="bibr" target="#b35">[35]</ref> to approximate the conditional probability q(x t |f (x t , ϵ)]. The idea is to insert the decoding result xt to the space of training samples {x t }, and take the kernel density estimation method to approximate Q(x t ) by Bayesian rule:</p><p>Since the input feature for x t is fixed, we only care about the updating of reconstruction through encoder-decoder architecture. Thus we have:</p><p>To simplify the above estimation, we apply the RBF-kernel and triangle inequality in estimation and have:</p><p>Thus, we are able to optimise the Q(x t ) by mean square error if we choose the natural logarithm function:</p><p>Therefore, we can rewrite the lower boundary as well as the learning objective OIB by:</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>APPENDIX D ADDITIONAL EXPERIMENT RESULTS</head><p>We also compare with the generated clusters using StandPrior. The results are shown in Table <ref type="table">IX</ref>  </p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Prince: Provider-side interpretability with counterfactual explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ghazimatin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Balalau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">Saha</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Weikum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Web Search and Data Mining</title>
+				<meeting>the 13th International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="196" to="204" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2600428.2609579</idno>
+		<ptr target="https://doi.org/10.1145/2600428.2609579" />
+	</analytic>
+	<monogr>
+		<title level="m">The 37th International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR &apos;14</title>
+				<editor>
+			<persName><forename type="first">S</forename><surname>Geva</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Trotman</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><surname>Bruza</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">L A</forename><surname>Clarke</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><surname>Järvelin</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Gold Coast , QLD, Australia</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">July 06 -11, 2014. 2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Justifying recommendations using distantly-labeled reviews and fine-grained aspects</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/D19-1018</idno>
+		<ptr target="https://doi.org/10.18653/v1/D19-1018" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing</title>
+				<editor>
+			<persName><forename type="first">K</forename><surname>Inui</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Jiang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">V</forename><surname>Ng</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X</forename><surname>Wan</surname></persName>
+		</editor>
+		<meeting>the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing<address><addrLine>Hong Kong, China</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2019-11-03">2019. November 3-7, 2019. 2019</date>
+			<biblScope unit="page" from="188" to="197" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Co-attentive multi-task learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="DOI">10.24963/ijcai.2019/296</idno>
+		<ptr target="https://doi.org/10.24963/ijcai.2019/296" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence, IJCAI 2019</title>
+				<editor>
+			<persName><forename type="first">S</forename><surname>Kraus</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Ed</forename></persName>
+		</editor>
+		<meeting>the Twenty-Eighth International Joint Conference on Artificial Intelligence, IJCAI 2019<address><addrLine>Macao, China</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">August 10-16, 2019. 2019</date>
+			<biblScope unit="page" from="2137" to="2143" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Generate neural template explanations for recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ser. CIKM &apos;20</title>
+				<meeting><address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="755" to="764" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1145/3340531.3411992</idno>
+		<ptr target="https://doi.org/10.1145/3340531.3411992" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Counterfactual Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3459637.3482420</idno>
+		<ptr target="https://doi.org/10.1145/3459637.3482420" />
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<publisher>Association for Computing Machinery</publisher>
+			<biblScope unit="page" from="1784" to="1793" />
+			<pubPlace>New York, NY, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Neural attentional rating regression with review-level explanations</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3178876.3186070</idno>
+		<ptr target="https://doi.org/10.1145/3178876.3186070" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 World Wide Web Conference on World Wide Web</title>
+				<editor>
+			<persName><forename type="first">P</forename><surname>Champin</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Gandon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Lalmas</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><forename type="middle">G</forename><surname>Ipeirotis</surname></persName>
+		</editor>
+		<meeting>the 2018 World Wide Web Conference on World Wide Web<address><addrLine>Lyon, France</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2018-04-23">2018. April 23-27. 2018. 2018</date>
+			<biblScope unit="page" from="1583" to="1592" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Graph-based extractive explainer for recommendations</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3485447.3512168</idno>
+		<ptr target="https://doi.org/10.1145/3485447.3512168" />
+	</analytic>
+	<monogr>
+		<title level="m">WWW &apos;22: The ACM Web Conference 2022, Virtual Event</title>
+				<editor>
+			<persName><forename type="first">F</forename><surname>Laforest</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Troncy</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Simperl</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Agarwal</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Gionis</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">I</forename><surname>Herman</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">L</forename><surname>Médini</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Lyon, France</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2022">April 25 -29, 2022. 2022</date>
+			<biblScope unit="page" from="2163" to="2171" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Hierarchical user and item representation with three-tier attention for recommendation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Huang</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/n19-1180</idno>
+		<ptr target="https://doi.org/10.18653/v1/n19-1180" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT 2019</title>
+				<editor>
+			<persName><forename type="first">J</forename><surname>Burstein</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Doran</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">T</forename><surname>Solorio</surname></persName>
+		</editor>
+		<meeting>the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT 2019<address><addrLine>Minneapolis, MN, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2019">June 2-7, 2019. 2019</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="1818" to="1826" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Multi-pointer co-attention networks for recommendation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">T</forename><surname>Luu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">C</forename><surname>Hui</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3219819.3220086</idno>
+		<ptr target="https://doi.org/10.1145/3219819.3220086" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<editor>
+			<persName><forename type="first">Y</forename><surname>Guo</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Farooq</surname></persName>
+		</editor>
+		<meeting>the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining<address><addrLine>London, UK</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2018-08-19">2018. August 19-23, 2018. 2018</date>
+			<biblScope unit="page" from="2309" to="2318" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A capsule network for recommendation and explaining what you like and dislike</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Quan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3331184.3331216</idno>
+		<ptr target="https://doi.org/10.1145/3331184.3331216" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR 2019</title>
+				<editor>
+			<persName><forename type="first">B</forename><surname>Piwowarski</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Chevalier</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">É</forename><surname>Gaussier</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Maarek</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Nie</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Scholer</surname></persName>
+		</editor>
+		<meeting>the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval, SIGIR 2019<address><addrLine>Paris, France</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2019">July 21-25, 2019. 2019</date>
+			<biblScope unit="page" from="275" to="284" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Dynamic explainable recommendation based on neural attentive models</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Qin</surname></persName>
+		</author>
+		<idno type="DOI">10.1609/aaai.v33i01.330153</idno>
+		<ptr target="https://doi.org/10.1609/aaai.v33i01.330153" />
+	</analytic>
+	<monogr>
+		<title level="m">The Thirty-Third AAAI Conference on Artificial Intelligence, AAAI 2019, The Thirty-First Innovative Applications of Artificial Intelligence Conference, IAAI 2019</title>
+				<meeting><address><addrLine>Honolulu, Hawaii, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>AAAI Press</publisher>
+			<date type="published" when="2019-02-01">January 27 -February 1, 2019. 2019</date>
+			<biblScope unit="volume">2019</biblScope>
+			<biblScope unit="page" from="53" to="60" />
+		</imprint>
+	</monogr>
+	<note>The Ninth AAAI Symposium on Educational Advances in Artificial Intelligence</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Toward comprehensive user and item representations via three-tier attention network</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jiao</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3446341</idno>
+		<ptr target="https://doi.org/10.1145/3446341" />
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Inf. Syst</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1" to="25" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Aenar: An aspect-aware explainable neural attentional recommender model for rating predication</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Dong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">198</biblScope>
+			<biblScope unit="page">116717</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Auto-encoding variational bayes</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1312.6114" />
+	</analytic>
+	<monogr>
+		<title level="m">2nd International Conference on Learning Representations</title>
+				<editor>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Banff, AB, Canada</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2014-04-14">2014. April 14-16, 2014. 2014</date>
+		</imprint>
+	</monogr>
+	<note>Conference Track Proceedings</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: Understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2507157.2507163</idno>
+		<ptr target="https://doi.org/10.1145/2507157.2507163" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM Conference on Recommender Systems, ser. RecSys &apos;13</title>
+				<meeting>the 7th ACM Conference on Recommender Systems, ser. RecSys &apos;13<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Collaborative topic modeling for recommending scientific articles</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2020408.2020480</idno>
+		<ptr target="https://doi.org/10.1145/2020408.2020480" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+				<editor>
+			<persName><forename type="first">C</forename><surname>Apté</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Ghosh</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><surname>Smyth</surname></persName>
+		</editor>
+		<meeting>the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining<address><addrLine>San Diego, CA, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">August 21-24, 2011. 2011</date>
+			<biblScope unit="page" from="448" to="456" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Latent dirichlet allocation</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Y</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">I</forename><surname>Jordan</surname></persName>
+		</author>
+		<ptr target="http://jmlr.org/papers/v3/blei03a.html" />
+	</analytic>
+	<monogr>
+		<title level="j">J. Mach. Learn. Res</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="993" to="1022" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Latent target-opinion as prior for document-level sentiment classification: A variational approach from fine-grained perspective</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ji</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3442381.3449789</idno>
+		<ptr target="https://doi.org/10.1145/3442381.3449789" />
+	</analytic>
+	<monogr>
+		<title level="m">WWW &apos;21: The Web Conference 2021</title>
+				<editor>
+			<persName><surname>Acm / Iw3c2</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Ljubljana, Slovenia</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2021">April 19-23, 2021</date>
+			<biblScope unit="page" from="553" to="564" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Bilateral variational autoencoder for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Truong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Salah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">W</forename><surname>Lauw</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3437963.3441759</idno>
+		<ptr target="https://doi.org/10.1145/3437963.3441759" />
+	</analytic>
+	<monogr>
+		<title level="m">WSDM &apos;21, The Fourteenth ACM International Conference on Web Search and Data Mining</title>
+				<editor>
+			<persName><forename type="first">L</forename><surname>Lewin-Eytan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Carmel</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Yom-Tov</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Agichtein</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Gabrilovich</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2021">March 8-12, 2021. 2021</date>
+			<biblScope unit="page" from="292" to="300" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Disentangled graph collaborative filtering</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chua</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3397271.3401137</idno>
+		<ptr target="https://doi.org/10.1145/3397271.3401137" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event</title>
+				<editor>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Chang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Kamps</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">V</forename><surname>Murdock</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Wen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</editor>
+		<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event<address><addrLine>China</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2020">July 25-30, 2020. 2020</date>
+			<biblScope unit="page" from="1001" to="1010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Disentangled graph convolutional networks</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhu</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v97/ma19a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th International Conference on Machine Learning, ICML 2019</title>
+				<editor>
+			<persName><forename type="first">K</forename><surname>Research</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Chaudhuri</surname></persName>
+		</editor>
+		<editor>
+			<persName><surname>Salakhutdinov</surname></persName>
+		</editor>
+		<meeting>the 36th International Conference on Machine Learning, ICML 2019<address><addrLine>Long Beach, California, USA, ser</addrLine></address></meeting>
+		<imprint>
+			<publisher>PMLR</publisher>
+			<date type="published" when="2019-06-15">9-15 June 2019. 2019</date>
+			<biblScope unit="volume">97</biblScope>
+			<biblScope unit="page" from="4212" to="4221" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Personalized prompt learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<idno>abs/2202.07371</idno>
+		<ptr target="https://arxiv.org/abs/2202.07371" />
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Counterfactual explainable recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3459637.3482420</idno>
+		<ptr target="https://doi.org/10.1145/3459637.3482420" />
+	</analytic>
+	<monogr>
+		<title level="m">CIKM &apos;21: The 30th ACM International Conference on Information and Knowledge Management</title>
+				<editor>
+			<persName><forename type="first">G</forename><surname>Demartini</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">G</forename><surname>Zuccon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Culpepper</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">H</forename><surname>Tong</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Queensland, Australia</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2021">November 1 -5, 2021. 2021</date>
+			<biblScope unit="page" from="1784" to="1793" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Try this instead: Personalized and interpretable substitute recommendation</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3397271.3401042</idno>
+		<ptr target="https://doi.org/10.1145/3397271.3401042" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event</title>
+				<editor>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Chang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Kamps</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">V</forename><surname>Murdock</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Wen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</editor>
+		<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event<address><addrLine>China</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2020">July 25-30, 2020. 2020</date>
+			<biblScope unit="page" from="891" to="900" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Comparative explanations of recommendations</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3485447.3512031</idno>
+		<ptr target="https://doi.org/10.1145/3485447.3512031" />
+	</analytic>
+	<monogr>
+		<title level="m">WWW &apos;22: The ACM Web Conference 2022, Virtual Event</title>
+				<editor>
+			<persName><forename type="first">F</forename><surname>Laforest</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Troncy</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Simperl</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Agarwal</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Gionis</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">I</forename><surname>Herman</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">L</forename><surname>Médini</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Lyon, France</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2022">April 25 -29, 2022. 2022</date>
+			<biblScope unit="page" from="3113" to="3123" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Accurate and explainable recommendation via review rationalization</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACM Web Conference 2022</title>
+				<meeting>the ACM Web Conference 2022</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="3092" to="3101" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">VAE with a vampprior</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Tomczak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</author>
+		<idno>abs/1705.07120</idno>
+		<ptr target="http://arxiv.org/abs/1705.07120" />
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Adversarially regularized autoencoders for generating discrete structures</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Rush</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lecun</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1706.04223" />
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">Deep learning and the information bottleneck principle</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tishby</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Zaslavsky</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1503.02406" />
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Deep variational information bottleneck</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Alemi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">V</forename><surname>Dillon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Murphy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">5th International Conference on Learning Representations</title>
+				<meeting><address><addrLine>Toulon, France</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017-04-24">2017. April 24-26, 2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note>Conference Track Proceedings. OpenReview.net</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Auto-encoding variational bayes</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1312.6114" />
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A dozen de Finetti-style results in search of a theory</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Diaconis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Freedman</surname></persName>
+		</author>
+		<ptr target="http://www.numdam.org/item/AIHPB198723S23970/" />
+	</analytic>
+	<monogr>
+		<title level="j">Annales de l&apos;I.H.P. Probabilités et statistiques</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">S2</biblScope>
+			<biblScope unit="page" from="397" to="423" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Methods for estimating a conditional distribution function</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C L</forename><surname>Wolff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yao</surname></persName>
+		</author>
+		<ptr target="http://www.jstor.org/stable/2669691" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">94</biblScope>
+			<biblScope unit="issue">445</biblScope>
+			<biblScope unit="page" from="154" to="163" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">A loss function for generative neural networks based on watson&apos;s perceptual model</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Czolbe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Krause</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">J</forename><surname>Cox</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Igel</surname></persName>
+		</author>
+		<ptr target="https://proceedings.neurips.cc/paper/2020/hash/165a59f7cf3b5c4396ba65953d679f17-Abstract.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems 2020</title>
+				<editor>
+			<persName><forename type="first">H</forename><surname>Larochelle</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Ranzato</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Hadsell</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Balcan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">H</forename><surname>Lin</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2020">December 6-12, 2020. 2020</date>
+			<biblScope unit="volume">2020</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Image quality assessment: from error visibility to structural similarity</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">C</forename><surname>Bovik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">R</forename><surname>Sheikh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">P</forename><surname>Simoncelli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans. Image Process</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="600" to="612" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1109/TIP.2003.819861</idno>
+		<ptr target="https://doi.org/10.1109/TIP.2003.819861" />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Lightgcn: Simplifying and powering graph convolution network for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3397271.3401063</idno>
+		<ptr target="https://doi.org/10.1145/3397271.3401063" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event</title>
+				<editor>
+			<persName><forename type="first">J</forename><forename type="middle">X</forename><surname>Huang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Chang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X</forename><surname>Cheng</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Kamps</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">V</forename><surname>Murdock</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Wen</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</editor>
+		<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval, SIGIR 2020, Virtual Event<address><addrLine>China</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2020">July 25-30, 2020. 2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Ultragcn: ultra simplification of graph convolutional networks for recommendation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 30th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1253" to="1262" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Svd-gcn: A simplified graph convolution paradigm for recommendation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sugiyama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Mine</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 31st ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1625" to="1634" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">To see further: Knowledge graph-aware deep graph convolutional network for recommender systems</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhu</surname></persName>
+		</author>
+		<ptr target="https://www.sciencedirect.com/science/article/pii/S0020025523010502" />
+	</analytic>
+	<monogr>
+		<title level="j">Information Sciences</title>
+		<imprint>
+			<biblScope unit="volume">647</biblScope>
+			<biblScope unit="page">119465</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Visualizing data using t-sne</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Van Der Maaten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine learning research</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Selfsupervised graph learning for recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 44th international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="726" to="735" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Learning attitudes and attributes from multi-aspect reviews</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jurafsky</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICDM.2012.110</idno>
+		<ptr target="https://doi.org/10.1109/ICDM.2012.110" />
+	</analytic>
+	<monogr>
+		<title level="m">12th IEEE International Conference on Data Mining, ICDM 2012</title>
+				<editor>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Zaki</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Siebes</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><forename type="middle">X</forename><surname>Yu</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">B</forename><surname>Goethals</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">G</forename><forename type="middle">I</forename><surname>Webb</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">X</forename><surname>Wu</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Brussels, Belgium</addrLine></address></meeting>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2012">December 10-13, 2012. 2012</date>
+			<biblScope unit="page" from="1020" to="1025" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2872427.2883037</idno>
+		<ptr target="https://doi.org/10.1145/2872427.2883037" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th International Conference on World Wide Web</title>
+				<editor>
+			<persName><forename type="first">J</forename><surname>Bourdeau</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Hendler</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Nkambou</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">I</forename><surname>Horrocks</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Zhao</surname></persName>
+		</editor>
+		<meeting>the 25th International Conference on World Wide Web<address><addrLine>Montreal, Canada</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016-04-11">2016. April 11 -15, 2016. 2016</date>
+			<biblScope unit="page" from="507" to="517" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Joint deep modeling of users and items using reviews for recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Noroozi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3018661.3018665</idno>
+		<ptr target="https://doi.org/10.1145/3018661.3018665" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Tenth ACM International Conference on Web Search and Data Mining</title>
+				<editor>
+			<persName><forename type="first">M</forename><surname>De Rijke</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Shokouhi</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Tomkins</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</editor>
+		<meeting>the Tenth ACM International Conference on Web Search and Data Mining<address><addrLine>Cambridge, United Kingdom</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017-02-06">2017. February 6-10, 2017. 2017</date>
+			<biblScope unit="page" from="425" to="434" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">A review-aware graph contrastive learning framework for recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shuai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3477495.3531927</idno>
+		<ptr target="https://doi.org/10.1145/3477495.3531927" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval, ser. SIGIR &apos;22</title>
+				<meeting>the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval, ser. SIGIR &apos;22<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1283" to="1293" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Wasserstein auto-encoders</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">O</forename><surname>Tolstikhin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Bousquet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gelly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Schölkopf</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/1711.01558" />
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="1558">1711.01558, 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Cyclical annealing schedule: A simple approach to mitigating KL vanishing</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Celikyilmaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Carin</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/n19-1021</idno>
+		<ptr target="https://doi.org/10.18653/v1/n19-1021" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT 2019</title>
+				<editor>
+			<persName><forename type="first">J</forename><surname>Burstein</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Doran</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">T</forename><surname>Solorio</surname></persName>
+		</editor>
+		<meeting>the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT 2019<address><addrLine>Minneapolis, MN, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2019">June 2-7, 2019. 2019</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="240" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Republic and Canton of Geneva, CHE: International World Wide Web Conferences Steering Committee</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-S</forename><surname>Chua</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3038912.3052569</idno>
+		<ptr target="https://doi.org/10.1145/3038912.3052569" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th International Conference on World Wide Web, ser. WWW &apos;17</title>
+				<meeting>the 26th International Conference on World Wide Web, ser. WWW &apos;17</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+	<note>Neural collaborative filtering</note>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">A multi-view deep learning approach for cross domain user modeling in recommendation systems</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Elkahky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2736277.2741667</idno>
+		<ptr target="https://doi.org/10.1145/2736277.2741667" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th International Conference on World Wide Web</title>
+				<editor>
+			<persName><forename type="first">A</forename><surname>Gangemi</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Leonardi</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Panconesi</surname></persName>
+		</editor>
+		<meeting>the 24th International Conference on World Wide Web<address><addrLine>Florence, Italy</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015-05-18">2015. May 18-22, 2015. 2015</date>
+			<biblScope unit="page" from="278" to="288" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">MAE: mutual posterior-divergence regularization for variational autoencoders</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">H</forename><surname>Hovy</surname></persName>
+		</author>
+		<idno>ICLR 2019</idno>
+		<ptr target="https://openreview.net/forum?id=Hke4l2AcKQ" />
+	</analytic>
+	<monogr>
+		<title level="m">7th International Conference on Learning Representations</title>
+				<meeting><address><addrLine>New Orleans, LA, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">May 6-9, 2019. OpenReview.net, 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Interpretable explanations of black boxes by meaningful perturbation</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Fong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vedaldi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CoRR</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<ptr target="http://arxiv.org/abs/1704.03296" />
+		<title level="m">Available</title>
+				<imprint/>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

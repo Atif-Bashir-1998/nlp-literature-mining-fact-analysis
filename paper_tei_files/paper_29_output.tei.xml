@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Interpretable Contextual Team-aware Item Recommendation: Application in Multiplayer Online Battle Arena Games</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2020-07-30">30 Jul 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Andrés</forename><surname>Villa</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Vladimir</forename><surname>Araujo</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Also with Millennium Institute Foundational Research on Data</orgName>
+								<address>
+									<region>IMFD</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Francisca</forename><surname>Cattan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Also with Millennium Institute Foundational Research on Data</orgName>
+								<address>
+									<region>IMFD</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Ponti-ficia Universidad Católica de Chile</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Interpretable Contextual Team-aware Item Recommendation: Application in Multiplayer Online Battle Arena Games</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-07-30">30 Jul 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">2BF5CC91D9C269CB18721216636056F1</idno>
+					<idno type="DOI">10.1145/3383313.3412211</idno>
+					<idno type="arXiv">arXiv:2007.15236v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:01+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS Concepts:</term>
+					<term>Information systems → Recommender systems;</term>
+					<term>Computing methodologies → Machine learning Item Recommendation, Deep Learning, MOBA Games</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The video game industry has adopted recommendation systems to boost users interest with a focus on game sales. Other exciting applications within video games are those that help the player make decisions that would maximize their playing experience, which is a desirable feature in real-time strategy video games such as Multiplayer Online Battle Arena (MOBA) like as DotA and LoL. Among these tasks, the recommendation of items is challenging, given both the contextual nature of the game and how it exposes the dependence on the formation of each team. Existing works on this topic do not take advantage of all the available contextual match data and dismiss potentially valuable information. To address this problem we develop TTIR, a contextual recommender model derived from the Transformer neural architecture that suggests a set of items to every team member, based on the contexts of teams and roles that describe the match. TTIR outperforms several approaches and provides interpretable recommendations through visualization of attention weights.</p><p>Our evaluation indicates that both the Transformer architecture and the contextual information are essential to get the best results for this item recommendation task. Furthermore, a preliminary user survey indicates the usefulness of attention weights for explaining recommendations as well as ideas for future work. The code and dataset are available at: https://github.com/ojedaf/IC-TIR-Lol.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>The annual report of Newzoo shows that global e-sports revenues and its audience will grow to $1.1 billion and 495 million people in 2020, respectively <ref type="bibr">[16]</ref>. MOBA is one of the most significant social gaming genres contributing to that growth. An example of this phenomenon is the League of Legends World Championship, which was the biggest tournament of 2019 with more than 105 million hours live on Twitch and YouTube. This type of games can rise up to 64 million active players per month worldwide, with over a billion monthly gaming hours <ref type="bibr" target="#b23">[23]</ref>. Most of its popularity is due to social dynamics that motivate new players to engage in long-term commitment to the game <ref type="bibr" target="#b24">[24]</ref>. In this context, several studies have leveraged artificial intelligence to recommend videogames <ref type="bibr" target="#b8">[8]</ref>, as well as to improve the personal experience of players, in applications like difficulty adjustment <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b22">22]</ref>, intelligent agents <ref type="bibr" target="#b16">[17]</ref>, and in-game recommender systems <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b7">7]</ref>. Regarding recommender systems, one challenge is to suggest the users the most suitable set of items for their characters considering the context of a specific match. Existing approaches attempt to solve the problem simply by using character descriptors, thus ignoring relevant contextual information from matches. Also, they focus on recommending a single character. However, such recommendations do have a common goal and a group (team) recommendation may be appropriate.</p><p>In this paper, we focus on exploiting contextual information present in each match in order to generate richer representations of the characters, thus improving item recommendations for each participant in a team. Such information corresponds to the specific champion used, the role, and the team that each player belongs to. Inspired by the Transformer neural architecture <ref type="bibr" target="#b25">[25]</ref>, we propose to use its encoder layer to model the relationships between the descriptor vectors for each of the aforementioned features. Additionally, its multi-headed attention mechanism helps to acquire information that makes it possible to interpret what the model is focusing on. We extensively evaluate our system by conducting comparisons with state-of-the-art methods on a real and challenging dataset. We also conduct a preliminary user survey to gain insights about the recommendation performance and the usefulness of attention-based explanations.</p><p>The contributions of our work are: (i) Introducing the method TTIR (Team-aware Transformer-based Item Recommendation), which significantly outperforms existing works on several ranking metrics and provides support to the importance of the team and role contexts, (ii) Designing a visual explanation mechanism in order to help users understand and follow team-aware item recommendations, and (iii) Providing ideas for future work by conducting a preliminary user survey to gain insights from the quality of the recommendation and the explanations provided. The pace of the game is encouraged by an in-game currency reward system, which is used to buy items that increase the statistics and performance of the champion. This is one of the main ways for the players to increase their attack and defense power, thereby increasing their contribution to winning the game. Players can choose up to six items from approximately 233 available. However, several of the items can be combined to obtain a total of stronger 89 finished items, which we use in this work. Both the choice of champions and the items pose the challenge of the number of possible combinations, which users face making decisions based on experience. This is particularly complex for new players and presents interesting opportunities for in-game recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">MOBA GAMES: OVERVIEW AND RECOMMENDATION PROBLEM</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>VS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">RELATED WORK</head><p>In-game recommendation for MOBA games. In recent years, methods for in-game recommendations have received interest, where most works focused on character suggestion <ref type="bibr" target="#b7">[7,</ref><ref type="bibr" target="#b11">11,</ref><ref type="bibr" target="#b20">20]</ref>. However, there has been little work on item recommendation, recently showing two approaches based on data mining methods. One for the recommendation of the future item given an initial set of items <ref type="bibr" target="#b14">[14]</ref> and another for the recommendation of a fixed item set <ref type="bibr" target="#b2">[3]</ref>. We closely follow the methodology from <ref type="bibr" target="#b2">[3]</ref>; however, unlike their approach that uses only a few attributes of the data, we leverage meaningful contextual information about the game such as the allies, enemies, and the role of champions. Group recommendation. The increase in social networking increased the importance of group recommendations in various domains <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b15">15]</ref>. The most common systems are applied to recommendation of movies <ref type="bibr" target="#b21">[21]</ref>, music <ref type="bibr" target="#b10">[10]</ref>, and travel <ref type="bibr" target="#b6">[6]</ref>. All those systems attempt to recommend products or services to a group that has a common aim at a particular moment while increasing the individual satisfaction of each user. Another interesting domain is videogames, which is still an open issue. Recently, a multi-profile team-based recommender system for PvP games was proposed <ref type="bibr" target="#b12">[12]</ref> to help teams improve by suggesting play styles and weapons to use. That approach is not directly related to our proposal because it was applied for a MMOG game using user profile data. Instead, we focus on the MOBA genre with an approach that does not use information from the user but from the characters in the game for item recommendations.</p><p>Recommendation systems with Transformer. Recently, the Transformer <ref type="bibr" target="#b25">[25]</ref> has been a foundation for many competitive methods. This architecture has been shown to efficiently encode various types of information useful for recommendation systems <ref type="bibr" target="#b26">[26]</ref>. A personalized re-ranking model is proposed in <ref type="bibr" target="#b18">[19]</ref>, which captures in its encoding layer the interactions between users and items to produce an interpretable re-ranked recommendation list. Other works use this model, including the user's behavior sequence to learn more in-depth representations for each item in the sequence <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b4">5]</ref>.</p><p>Unlike previous works we apply it to in-game interpretable item recommendation with newer contexts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">MODEL ARCHITECTURE</head><p>Figure <ref type="figure" target="#fig_1">2</ref> shows the Transformer for Team-aware Item Recommendation architecture (TTIR). This model is made up of three major parts: the input representation layer, the encoder layer, and the output layer for recommendation. It takes as input the information of a match, which consists of the champions, their assigned role, and the team they belong to. Then it recommends a list of six items to each of them. The details of our architecture are in the following paragraphs.  Input Layer. The goal of the input representation layer is to prepare an unambiguous representation for each participant within the match, considering its champion, role and the team they belong to. To represent these features we take inspiration from the BERT language model <ref type="bibr" target="#b9">[9]</ref>. It represents sequences of words as sentences, adding to the representation of each word the information about its position and the sentence it belongs to. In the same spirit, we use three learned embeddings: the champion embedding E champ , the role embedding E r ol e and the team embedding E t eam . At last we add all of these embeddings to obtain the champion embedding E input , which has the model dimension d model as shown in the equation 1. The lower part of the Figure <ref type="figure" target="#fig_1">2</ref> shows a visual example of the input representation.</p><formula xml:id="formula_0">E sup E mid E top E bot E jng E jng E sup E bot E mid E top E Miss E Warwick E Garen E Sona E Syndra E Amumu E Teemo E Vayne E Soraka E Zed E blue E red E blue E blue E blue C Miss C Warwick C Garen C Sona C Syndra E red E red E red E red</formula><formula xml:id="formula_1">E input = E champ + E t eam + E r ol e , where E ∈ R d mod el<label>(1)</label></formula><p>Encoder Layer. This part of the model is a Transformer encoder based on the original implementation <ref type="bibr" target="#b25">[25]</ref>. We omit an exhaustive description of the Transformer architecture because its use has become ubiquitous in recent years. The goal of this encoder is to compute interactions between allied and enemy champions of the match with the self-attention mechanism. The output of this encoder are contextualized embeddings C of the input embeddings E input that captures complex relations between the champions. This architecture has two principal hyper-parameters, the number of layers l and number of heads h. The influence of these parameters is studied later in the ablation analysis.</p><formula xml:id="formula_2">C = Trans f ormerEncoder (E input ), where C ∈ R d mod el<label>(2)</label></formula><p>Output Layer (Item Recommendation). The purpose of the item recommendation layer is to generate a list of items for each champion of a team in a match. In order to do this, we feed each contextualized embedding C i of a team, where i denotes the champion, through a linear layer, followed by a sigmoid function. As it is shown in the equation 3, the final output are the probabilities that the champion selects each of the items in N it ems . Given that the champions can only use up to six items, the model recommends the six most probable items for each of the five players in a team (equation 4).</p><formula xml:id="formula_3">P i it ems = Siдmoid W r ec C i , W r ec ∈ R N i t ems ×d mod el , C i ∈ R d mod el , i ∈ [1, 5]<label>(3)</label></formula><formula xml:id="formula_4">Recommendation i = top P i it ems , 6<label>(4)</label></formula><p>Like <ref type="bibr" target="#b2">[3]</ref>, the model was supervised only with the items selected by each champion of the winning team. This way the likelihood of recommending the best items is maximised in order to win.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EXPERIMENTS</head><p>In this section, we describe the dataset used and the offline evaluation conducted on the final TTIR model. Along with the results, an ablation study is presented to better understand the behavior of the network. Dataset. In order to train and evaluate our model, we used a publicly available dataset provided by Kaggle 1 . This consists of 184,070 game sessions in the ranked category, a competitive alternative to the normal match. Although the dataset does not provide a specific structure for recommendation tasks, we adequate it for this purpose. The raw dataset includes several files with much information about each match, so we choose the most relevant for this work. Specifically, our final dataset contains a match per instance, consisting of the identifier of each of the 10 participants with their role, team, and items used. We filter the basic, advanced, and consumable items, as well as all the matches that did not belong to the LoL 7th season. The complete data was divided into two subsets for training and testing, taking into consideration that the least common champion must be present in both of them. The overview of the final dataset is shown in Table <ref type="table" target="#tab_1">1</ref>.</p><p>Training and Evaluation Settings. The best configuration of TTIR consists on 2 heads, 1 layer, an embedding size of 512 and dropout of 0,5. We trained the model using Adam optimizer with a learning rate of 3e-4 until convergence. For evaluation, we compare our model with decision tree (D-Tree), logistic regression (Logit) and shallow artificial neural network (ANN) baselines of <ref type="bibr" target="#b2">[3]</ref>. We also implemented an additional baseline based on Convolutional neural networks (CNN) for a stronger comparison. We used different evaluation metrics to measure the relevance and ranking of our recommender system: Precision@k, Recall@k, F1@k, and MAP@k, with k=1,6,10. While k=6 might seem a strange cut, it is the maximum number of items a player can use during a match. Likewise, k=10 shows how the six articles are distributed in the firsts ten positions of the list.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Results</head><p>Results are shown in Table <ref type="table" target="#tab_2">2a</ref>. Our model achieves consistent and statistically significant improvements compared to the best baseline CNN. The trend indicates that the biggest performance difference is observed in top rank positions (k=1,6)</p><p>and this difference decreases as the cut-off increases (k=10). This result is positive for TTIR, since it is difficult for a model to know when it has to recommend at least six items, as it normally depends on external factors like the game duration and the player expertise. The difference in performance between TTIR and other models is due to the ability of the Transformer to include relevant contextual information of the match into the representation of each champion. Ablation analysis. To understand the influence of contextual dimensions as well as several hyperparameters of the Transformer model, we conducted an ablation analysis which results are presented in Table <ref type="table" target="#tab_2">2b</ref>. The performance of TTIR does not increase with bigger numbers of attention heads (by default h = 2), but it declines when the heads decrease to h = 1. This confirms the importance of focusing on the different features of each champion. Increasing the number of layers (by default l = 1) to l = 2 or l = 3 has an almost negligible improvement, but with a bigger cost on the number of parameters. This suggests preserving the default number of layers. In terms of contextual dimensions, we notice that removing the E r ol e context has a slightly higher impact than the role of the E enemies context, but removing both</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Recommendations Red Team Blue Team</head><p>Garen Syndra Warwick Miss Sona Teemo Amumu Vayne Soraka Zed Fig. <ref type="figure" target="#fig_2">3</ref>. Visualization of the attention weights for each member of the Blue team on each member of both teams (bottom row).</p><p>contexts makes the model perform even worse than CNN with these contexts. These results indicate that it is not only the Transformer architecture of TTIR which makes a difference in performance, but the combined effect of both architecture and contextual information what makes TTIR work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">PRELIMINARY USER SURVEY</head><p>In order to get insights from LoL players about the relevance of our recommendations and the usefulness of the attention weights from TTIR to explain the suggestions, we designed a visualization to explain the recommendations. Based on this, we conducted a preliminary survey. The visual explanation of team-aware item recommendations. The survey procedure. The survey consisted of showing subjects four cases similar to the one displayed in Figure <ref type="figure" target="#fig_2">3</ref>.</p><p>Subjects were told that they belonged to the Blue team and that they were facing the Red team. Then they had to judge the quality of the recommendations for the Blue team and the usefulness of the explanations provided by the heatmap.</p><p>The survey was advertised in public Facebook group pages of college students who were LoL players. They replied their interest with an e-mail and we sent them back an online form where users had to agree with an informed consent about the study, and then answer the questions in Table <ref type="table" target="#tab_3">3</ref> in a scale of 1 to 10 (1: completely disagree, 10: completely agree) for each of four cases similar to the one in Figure <ref type="figure" target="#fig_2">3</ref>. We also asked open questions in order to get a less structured feedback from the participants: (Q4) If you do not find this visualization useful to explain the recommendation, tell us why, and (Q5) If you find this visualization useful to explain the recommendation, tell us why.</p><p>Results of the user survey. 16 people answered our survey. 25% identified as female, 68% as male and one subject did not disclose the gender. 13 out of 16 participants were between 20 and 30 years of age, one was between 18-20, the rest were older or did not disclose their age. Six subjects indicated that they started playing in the last 2-4 years, while the other 10 indicated having been playing for 6 years or more. Although we acknowledge having a small number of subjects (N=16), each one responded 4 cases of recommendations and their open comments provided evidence of paying deep attention to the user study. The results to questions Q1-Q3 are presented in Table <ref type="table" target="#tab_3">3</ref>. With respect to Q1, we observe that people have a fairly positive perception of recommendation relevance (M=7.98±1.22), but this perception seems to be more positive to less experienced users who started playing not before 2-5 years ago (M=8.46±1.3). In terms of Q2, we observe also a positive (M=7.4±1.42) and rather uniform impression among newer and experienced players, with respect to the perception of subjects towards influence of enemies and allies champions towards recommendation for the Blue team. Finally, in Q3 we notice that the perception of recommendation interpretability from the visualization is not as good as the perception of relevance (M=6.9±2.15), but again we observe a more positive impression from newer subjects (M=7.33±2.87) compared to the most experienced users. These results are consistent with previous studies indicating user expertise as a factor influencing perception about recommendations <ref type="bibr" target="#b13">[13,</ref><ref type="bibr" target="#b17">18]</ref>. To dig deeper into these results we analyzed the open user comments. Synthesis of user comments. On the positive side, we received comments of the usefulness of the explanations since they made sense to users based on their game experience: "useful build to prevent enemy ganking...", "you can see exactly the focus of each champion with respect to the main enemies on the facing team...", "...with this build, Vlad hinders the enemy, making Lucian suffer. Then Ezreal with that build can damage both Lux and Fizz". We also received critical comments which provide important ideas for future work, several of them require information not currently available in our dataset: "this explanation missed armor penetration and grievous wounds...", "it doesn't show with which item I need to start and the sequence to progress...", "recommendations do not show magic resistance...", "...in some cases, such as Soraka and Teemo, it would make more sense to show attention on the relationship with themselves".</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">CONCLUSIONS</head><p>In this work we introduced TTIR, a contextual recommendation model which provides team-aware item recommendations in MOBA games such as LoL. TTIR successfully models the complex contextual relationships present in the matches, and the attention weights allow us to provide explanations of suggested items. Furthermore, with a preliminary user study we had an initial idea of the perception of relevance of actual LoL players as well as important feedback towards the visual recommendations based on TTIR attention weights. Our initial analysis indicates that expert users require more details for understanding and following the recommendations, while less experienced users find them coherent and useful.</p><p>Among ideas for future work we consider providing further details in our recommendation explanations such as item statistics, as well as sequential item recommendation.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. Example of two teams matchup and item recommendations for the Bue team. Symbols on the bottom right corner of each champion represents their role.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. Network architecture of TTIR.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3</head><label>3</label><figDesc>shows an example of attention weights visualization to explain the model recommendations. It consists of: (i) two teams, of five players each, at the bottom, (ii) a heat map in the center, and (iii) one of the teams with its six recommended items by each player on the right side. The heat map uses different color intensities to show the relevance of each champion upon each recommendation list. Darker colors represent more relevance. In Figure3, the model pays more attention to the enemies since the items are used to beat them, and the model recommends by maximizing the chance of winning.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 .</head><label>1</label><figDesc>Overview of the dataset</figDesc><table><row><cell></cell><cell>LoL Ranked Matches 7th Season</cell></row><row><cell># Items</cell><cell>89</cell></row><row><cell># Champions</cell><cell>136</cell></row><row><cell># Matches</cell><cell>157,584</cell></row><row><cell>Roles</cell><cell>Top , Mid , Jungle , Support , Bot</cell></row><row><cell>Train / Test</cell><cell>1,261,280 / 314,560</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 .</head><label>2</label><figDesc>Experiment Results</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell cols="2">(b) Ablation study of TTIR</cell></row><row><cell></cell><cell>Method</cell><cell>T-test(d f = 314557)</cell><cell></cell><cell>P@6 R@6 MAP@6</cell></row><row><cell></cell><cell cols="2">D-Tree Logit ANN CNN TTIR p-Value (t-Stat)</cell><cell>Default (h=2, l=1)</cell><cell>0.492 0.756 0.805</cell></row><row><cell cols="3">Precision@1 0.516 0.672 0.771 0.790 0.803 5.30e-20 (9.158) Recall@1 0.135 0.178 0.205 0.209 0.214 9.54e-18 (8.580) F1@1 0.210 0.277 0.318 0.331 0.338 7.23e-20 (9.124) MAP@1 0.516 0.672 0.771 0.790 0.803 5.30e-20 (9.158) Precision@6 0.319 0.393 0.476 0.484 0.492 2.41e-22 (9.723)</cell><cell>Multiheads (h=1) Multiheads (h=4) Layers (l=2) Layers (l=3)</cell><cell>0.462 0.726 0.778 0.492 0.756 0.806 0.493 0.757 0.806 0.493 0.758 0.807</cell></row><row><cell>Recall@6</cell><cell cols="2">0.491 0.607 0.732 0.744 0.756 1.93e-27 (10.854)</cell><cell>w/o E enemies</cell><cell>0.487 0.749 0.798</cell></row><row><cell cols="3">F1@6 MAP@6 Precision@10 0.204 0.285 0.341 0.348 0.351 2.49e-11 (6.674) 0.379 0.468 0.566 0.586 0.596 2.57e-27 (10.828) 0.648 0.714 0.785 0.795 0.805 3.77e-30 (11.410) Recall@10 0.520 0.726 0.864 0.882 0.889 1.43e-24 (10.232)</cell><cell cols="2">0.484 0.742 0.794 0.479 0.736 0.787 CNN w/ E enemies , E r ol e 0.484 0.744 0.795 w/o E r ol e w/o E enemies , E r ol e</cell></row><row><cell>F1@10</cell><cell cols="2">0.289 0.403 0.481 0.499 0.503 3.34e-15 (7.878)</cell><cell></cell></row><row><cell>MAP@10</cell><cell cols="2">0.636 0.672 0.743 0.754 0.764 1.32e-34 (12.270)</cell><cell></cell></row></table><note>(a) Results for top @k recommendation. TTIR is significantly better than the second best method, CNN.</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 .</head><label>3</label><figDesc>Results of the preliminary user survey (N=16), ratings in range<ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b6">[6]</ref><ref type="bibr" target="#b7">[7]</ref><ref type="bibr" target="#b8">[8]</ref><ref type="bibr" target="#b9">[9]</ref><ref type="bibr" target="#b10">[10]</ref> </figDesc><table><row><cell cols="2">Subjects by year of first play</cell></row><row><cell>Global M±SD 2009-11</cell><cell>2012-14 2015-2017</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">www.kaggle.com/paololol/league-of-legends-ranked-matches</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Data Mining Methods for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Xavier</forename><surname>Amatriain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Josep</forename><forename type="middle">M</forename><surname>Pujol</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-1-4899-7637-6_7</idno>
+		<ptr target="https://doi.org/10.1007/978-1-4899-7637-6_7" />
+	</analytic>
+	<monogr>
+		<title level="m">Recommender Systems Handbook</title>
+				<imprint>
+			<publisher>Springer US</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="227" to="262" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Dynamic Difficulty Adjustment for a Memory Game</title>
+		<author>
+			<persName><forename type="first">Vladimir</forename><surname>Araujo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alejandra</forename><surname>Gonzalez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Diego</forename><surname>Mendez</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-030-05532-5_46</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="m">Communications in Computer and Information Science</title>
+				<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="605" to="616" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Data Mining for Item Recommendation in MOBA Games</title>
+		<author>
+			<persName><forename type="first">Vladimir</forename><surname>Araujo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felipe</forename><surname>Rios</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3298689.3346986</idno>
+		<ptr target="https://doi.org/10.1145/3298689.3346986" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 13th ACM Conference on Recommender Systems</title>
+				<meeting>of the 13th ACM Conference on Recommender Systems<address><addrLine>Copenhagen, Denmark; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="393" to="397" />
+		</imprint>
+	</monogr>
+	<note>RecSys &apos;19</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Behavior Sequence Transformer for E-Commerce Recommendation in Alibaba</title>
+		<author>
+			<persName><forename type="first">Qiwei</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huan</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pipei</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Ou</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3326937.3341261</idno>
+		<ptr target="https://doi.org/10.1145/3326937.3341261" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 1st International Workshop on Deep Learning Practice for High-Dimensional Sparse Data</title>
+				<meeting>the 1st International Workshop on Deep Learning Practice for High-Dimensional Sparse Data<address><addrLine>Anchorage, Alaska; New York, NY, USA, Article</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">12</biblScope>
+		</imprint>
+	</monogr>
+	<note>DLP-KDD â Ȃ Ź19)</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Wen</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pipei</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaming</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Pfadler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huan</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Binqiang</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">POG&amp;#</title>
+		<imprint>
+			<biblScope unit="page">58</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Personalized Outfit Generation for Fashion Recommendation at Alibaba iFashion</title>
+		<idno type="DOI">10.1145/3292500.3330652</idno>
+		<ptr target="https://doi.org/10.1145/3292500.3330652" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining<address><addrLine>Anchorage, AK, USA; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<biblScope unit="page" from="2662" to="2670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Travel Recommendation by Mining People Attributes and Travel Group Types From Community-Contributed Photos</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">H</forename><surname>Hsu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Multimedia</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="1283" to="1295" />
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">The art of drafting: A Team-Oriented Hero Recommendation System for Multiplayer Online Battle Arena Games</title>
+		<author>
+			<persName><forename type="first">Zhengxing</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuyu</forename><surname>Truong-Huy D Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Seth</forename><surname>Amato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yizhou</forename><surname>Cooper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Magy Seif</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><surname>El-Nasr</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3240323.3240345</idno>
+		<ptr target="https://doi.org/10.1145/3240323.3240345" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 12th ACM Conference on Recommender Systems -RecSys &apos;18</title>
+				<meeting>of the 12th ACM Conference on Recommender Systems -RecSys &apos;18</meeting>
+		<imprint>
+			<publisher>ACM Press</publisher>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Recommender systems for Online video game platforms: The case of STEAM</title>
+		<author>
+			<persName><forename type="first">Germán</forename><surname>Cheuque</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">José</forename><surname>Guzmán</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="763" to="771" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Devlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Wei</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kenton</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kristina</forename><surname>Toutanova</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/N19-1423</idno>
+		<ptr target="https://doi.org/10.18653/v1/N19-1423" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies</title>
+				<meeting>of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies<address><addrLine>Minneapolis, Minnesota</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="4171" to="4186" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Enhancing Memory-Based Collaborative Filtering for Group Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Sarik</forename><surname>Ghazarian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohammad</forename><forename type="middle">Ali</forename><surname>Nematbakhsh</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.eswa.2014.11.042</idno>
+		<ptr target="https://doi.org/10.1016/j.eswa.2014.11.042" />
+	</analytic>
+	<monogr>
+		<title level="m">3801â Ȃ Ş3812</title>
+				<imprint>
+			<date type="published" when="2015-05">2015. May 2015</date>
+			<biblScope unit="volume">42</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Discriminative neural network for hero selection in professional Heroes of the Storm and DOTA 2</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gourdeau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Archambault</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Games</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="1" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">A Team Based Player Versus Player Recommender Systems Framework For Player Improvement</title>
+		<author>
+			<persName><forename type="first">Rishabh</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Varun</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyue</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziwen</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yaser</forename><surname>Norouzzadeh Ravari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Diego</forename><surname>Klabjan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rafet</forename><surname>Sifa</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3290688.3290750</idno>
+		<ptr target="https://doi.org/10.1145/3290688.3290750" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Australasian Computer Science Week Multiconference</title>
+				<meeting>the Australasian Computer Science Week Multiconference<address><addrLine>Sydney, NSW, Australia; New York, NY, USA, Article</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="volume">45</biblScope>
+		</imprint>
+	</monogr>
+	<note>Azita Parsaeian, Anders Drachen, and Simon Demediuk</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Each to his own: how different users call for different interaction methods in recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bart</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Knijnenburg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Niels</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martijn C</forename><surname>Reijmer</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Willemsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fifth ACM conference on Recommender systems</title>
+				<meeting>the fifth ACM conference on Recommender systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="141" to="148" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Recommender System for Items in Dota 2</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Looi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Dhaliwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Alhajj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rokne</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TG.2018.2844121</idno>
+		<ptr target="https://doi.org/10.1109/TG.2018.2844121" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Games</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="1" />
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Group recommender systems: Combining individual models</title>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="677" to="702" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<author>
+			<persName><forename type="first">:</forename><surname>Openai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Berner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Brockman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brooke</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vicki</forename><surname>Cheung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Przemyså</forename><surname>Ćaw</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">Ä</forename><surname>Źbiak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christy</forename><surname>Dennison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Farhi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quirin</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shariq</forename><surname>Hashme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Hesse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rafal</forename><surname>Jãşzefowicz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Scott</forename><surname>Gray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Catherine</forename><surname>Olsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jakub</forename><surname>Pachocki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Petrov</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1912.06680</idno>
+		<title level="m">Dota 2 with Large Scale Deep Reinforcement Learning</title>
+				<editor>
+			<persName><forename type="first">Henrique</forename><surname>Pondãl</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">'</forename><surname>De Oliveira Pinto</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jonathan</forename><surname>Raiman</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Tim</forename><surname>Salimans</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jeremy</forename><surname>Schlatter</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jonas</forename><surname>Schneider</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Szymon</forename><surname>Sidor</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Ilya</forename><surname>Sutskever</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jie</forename><surname>Tang</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Filip</forename><surname>Wolski</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Susan</forename><surname>Zhang</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note>cs.LG</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">User-controllable personalization: A case study with SetFusion</title>
+		<author>
+			<persName><forename type="first">Denis</forename><surname>Parra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Brusilovsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Studies</title>
+		<imprint>
+			<biblScope unit="volume">78</biblScope>
+			<biblScope unit="page" from="43" to="67" />
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Personalized Re-ranking for Recommendation</title>
+		<author>
+			<persName><forename type="first">Changhua</forename><surname>Pei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanxiao</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junfeng</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Ou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dan</forename><surname>Pei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 13th ACM Conference on Recommender Systems</title>
+				<meeting>of the 13th ACM Conference on Recommender Systems<address><addrLine>Copenhagen, Denmark</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note>RecSys &apos;19</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1145/3298689.3347000</idno>
+		<ptr target="https://doi.org/10.1145/3298689.3347000" />
+		<imprint>
+			<publisher>ACM</publisher>
+			<biblScope unit="page" from="3" to="11" />
+			<pubPlace>New York, NY, USA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Machine Learning Approaches to Choose Heroes in Dota 2</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Porokhnenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Polezhaev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Shukhman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">24th Conference of Open Innovations Association (FRUCT)</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+			<biblScope unit="page" from="345" to="350" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">A Latent Group Model for Group Recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2015 IEEE International Conference on Mobile Services</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="233" to="238" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Dynamic difficulty adjustment on MOBA games</title>
+		<author>
+			<persName><forename type="first">Mirna</forename><forename type="middle">Paula</forename><surname>Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Victor</forename><surname>Do Nascimento</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luiz</forename><surname>Silva</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chaimowicz</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.entcom.2016.10.002</idno>
+		<ptr target="https://doi.org/10.1016/j.entcom.2016.10.002" />
+	</analytic>
+	<monogr>
+		<title level="j">Entertainment Computing</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="103" to="123" />
+			<date type="published" when="2017-01">2017. Jan. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Riotâ Ȃ Źs â ȂIJLeague of Legendsâ Ȃİ Reveals Astonishing 27 Million Daily Players, 67 Million Monthly</title>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Tassi</surname></persName>
+		</author>
+		<ptr target="http://www.forbes.com/sites/insertcoin/2014/01/27/riots-league-of-legends-reveals-astonishing-27-million-daily-players-67-million-monthly" />
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">The Appeal of MOBA Games: What Makes People Start, Stay, and Stop</title>
+		<author>
+			<persName><forename type="first">April</forename><surname>Tyack</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peta</forename><surname>Wyeth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Johnson</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2967934.2968098</idno>
+		<ptr target="https://doi.org/10.1145/2967934.2968098" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the 2016 Annual Symposium on Computer-Human Interaction in Play</title>
+				<meeting>of the 2016 Annual Symposium on Computer-Human Interaction in Play<address><addrLine>Austin, Texas, USA; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="313" to="325" />
+		</imprint>
+	</monogr>
+	<note>CHI PLAY &apos;16)</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Attention Is All You Need</title>
+		<author>
+			<persName><forename type="first">Ashish</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Noam</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Niki</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jakob</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Llion</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aidan</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lukasz</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Illia</forename><surname>Polosukhin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">31st Conference on Neural Information Processing Systems</title>
+				<meeting><address><addrLine>Long Beach, CA, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Recommending Themes for Ad Creative Design via Visual-Linguistic Representations</title>
+		<author>
+			<persName><forename type="first">Yichao</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaunak</forename><surname>Mishra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Manisha</forename><surname>Verma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Narayan</forename><surname>Bhamidipati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3366423.3380001</idno>
+		<ptr target="https://doi.org/10.1145/3366423.3380001" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of The Web Conference 2020</title>
+				<meeting>The Web Conference 2020</meeting>
+		<imprint>
+			<date type="published" when="2020-04">2020. Apr 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

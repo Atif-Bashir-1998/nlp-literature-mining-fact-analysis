@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Fairness-Aware Explainable Recommendation over Knowledge Graphs</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2020-06-28">28 Jun 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+							<email>zuohui.fu@rutgers.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ruoyuan</forename><surname>Gao</surname></persName>
+							<email>ruoyuan.gao@rutgers.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jieyu</forename><surname>Zhao</surname></persName>
+							<email>jyzhao@cs.ucla.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Qiaoying</forename><surname>Huang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shuyuan</forename><surname>Xu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chirag</forename><surname>Shah</surname></persName>
+							<email>chirags@uw.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+							<email>yongfeng.zhang@rutgers.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Gerard</forename><surname>De Melo</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Rutgers University ‡ University of California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Washington</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Shijie Geng</orgName>
+								<address>
+									<settlement>Chirag Shah, Yongfeng Zhang, Gerard de</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Fairness-Aware Explainable Recommendation over Knowledge Graphs</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-06-28">28 Jun 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">1729805B1365692BA1B1C5E8CD9F8F7B</idno>
+					<idno type="DOI">10.1145/3397271.3401051</idno>
+					<idno type="arXiv">arXiv:2006.02046v2[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:04+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Explainable Recommendation</term>
+					<term>Fairness</term>
+					<term>Knowledge Graphs</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>There has been growing attention on fairness considerations recently, especially in the context of intelligent decision making systems. Explainable recommendation systems, in particular, may suffer from both explanation bias and performance disparity. In this paper, we analyze different groups of users according to their level of activity, and find that bias exists in recommendation performance between different groups. We show that inactive users may be more susceptible to receiving unsatisfactory recommendations, due to insufficient training data for the inactive users, and that their recommendations may be biased by the training records of more active users, due to the nature of collaborative filtering, which leads to an unfair treatment by the system. We propose a fairness constrained approach via heuristic re-ranking to mitigate this unfairness problem in the context of explainable recommendation over knowledge graphs. We experiment on several real-world datasets with stateof-the-art knowledge graph-based explainable recommendation algorithms. The promising results show that our algorithm is not only able to provide high-quality explainable recommendations, but also reduces the recommendation unfairness in several respects.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Compared with traditional recommendation systems (RS), explainable recommendation is capable of not only providing high-quality recommendation results but also offering personalized and intuitive explanations <ref type="bibr" target="#b44">[45]</ref>, which are important for e-commerce and social media platforms. However, current explainable recommendation models leave two major concerns in terms of fairness. First, the model discriminates unfairly among the users in terms of recommendation performance. And second, the model may further discriminate between users in terms of explanation diversity. In this paper, we consider the fairness issues of both performance imbalance and explanation diversity in explainable recommendation, which arises from the fact that there may be groups of users who are less noticeable on a platform, e.g., due to inactivity, making them less visible to the learning algorithms.</p><p>One reason for this relates to the issue of data imbalance. Some users are disinclined to make a large number of purchases, which leads to insufficient historical user-item interactions. For instance, on e-commerce platforms such as Amazon, eBay, or Taobao, economically disadvantaged groups often make fewer purchases in light of their limited income and credit opportunities <ref type="bibr" target="#b19">[20]</ref>. Under such circumstances, when making recommendation decisions, explainable RS models will be subject to algorithmic bias. The lack of user-item interactions implies that the corresponding user preferences are barely captured, causing weak visibility of such users to the RS model. This leads to the risk of such users being treated unfairly in terms of both recommendation performance and explanation diversity. In this paper, we aim at alleviating such algorithmic bias and improving the fairness of explainable recommendations.</p><p>Unfortunately, it is challenging to study fairness in recommendation systems due to the lack of unifying definitions and means of quantifying unfairness. Farnadi et al. <ref type="bibr" target="#b16">[17]</ref> claim that no model can be fair in every aspect of metrics. Previous work has explored the fairness problem in recommendation from the perspective of selection aspects <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b34">35]</ref>, marketing bias <ref type="bibr" target="#b35">[36]</ref>, popularity bias <ref type="bibr" target="#b41">[42]</ref>, multiple stakeholders <ref type="bibr" target="#b4">[5]</ref> in terms of consumers and providers, among others. Existing research on fairness has shown that protected groups 1 , defined as the population of vulnerable individuals in terms of sensitive features such as gender, age, race, religion, etc., are easily treated in a discriminatory way. However, it is generally not easy to obtain access to such sensitive attributes, as users often prefer not to disclose such personal information. In this study, we instead consider a directly observable property, the visibility of the user to the explainable RS model, which relates to a user's level of activity on the platform, and may directly entail subpar treatment by the recommendation engine.</p><p>We are interested in solving the fairness problem on the user side specifically for knowledge graph (KG) enhanced explainable recommender systems. Since KGs preserve structured and relational knowledge, they make it easy to trace the reason for specific recommendations. KG-based approaches have thus grown substantially in popularity in explainable recommendation. Their explicit explanations take the form of reasoning paths, consisting of a sequence of relationships that start from a user and ultimately lead to a recommended item. State-of-the-art KG-based explainable RS methods <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b39">40,</ref><ref type="bibr" target="#b40">41,</ref><ref type="bibr" target="#b43">44]</ref> utilize rich entity and relation information within the KG to augment the modeling of user-item interactions 2 , so as to better understand the user preferences to make satisfactory recommendation decisions, accompanied by explainable reasoning paths. However, due to the fundamental nature of collaborative filtering, current KG-based explainable recommendation methods heavily rely on users' collective historical interactions for model learning, so the recommendations and corresponding explanations tend to be more consistent with the dominating historical user interactions. Because of this, current RS methods tend to neglect the user-item interactions of less visible, inactive users, since they are easily overwhelmed by more visible, active users.</p><p>Thus, we argue that it is critical for a RS to pay attention to inactive users as well, so that they can be served with high-quality recommendations and more diverse explanations. The connecting paths between users and recommended items are expected to be highly relevant and match past user interactions. Thus, a learning algorithm drawing on user-item path links is likely to yield better recommendation performance for users who have contributed more interactions. However, the remaining portion of users that are less visible to the model may end up not enjoying the same recommendation experience. In part, this can stem from a lack of a relevant user-item interaction history to accurately reveal the user preferences. However, even if a user is not entirely inactive, the model's training on input data dominated by the more visible users can easily lead to it being biased towards the interactions made by the most active and privileged users.</p><p>In this work, we capture user-item interactions at both the individual and group level in terms of user-item paths. We particularly seek to understand 1) how to verify our concerns about the unfairness problems in explainable recommender systems and quantify such unfairness; 2) how to alleviate any potential algorithmic bias so as to improve the recommendation quality, while providing diverse explanations, especially for disadvantaged users, 3) whether our fairness-aware method is able to consider both group-level fairness and individual-level fairness, and whether it possesses generalizability to multiple KG-enhanced explainable RS methods.</p><p>Based on these, our main contributions include:</p><p>• We study four e-commerce datasets from Amazon and conduct a data-driven observation analysis to assess their data imbalance characteristics. We identify unfairness owing to the difference 2 We interchangeably use "user interactions" and "user-item interactions" in the paper.</p><p>in historical user-item interactions, and argue that current KGbased explainable RS algorithms neglect the discrepancy of user preferences, which gives rise to unfair recommendations. Additionally, we devise the group fairness and individual fairness criteria with regard to recommendation performance and explanation diversity. • Since there are intrinsic differences in user preferences among the users due to data imbalance, our goal is not to pursue an absolute parity of recommendations and explanation diversity. Rather, we propose a fairness-aware algorithm so as to provide fair explainable diversity leading to potential items of interest for recommendations. Specifically, we formalize this as a 0-1 integer programming problem and invoke modern heuristic solving techniques to obtain feasible solutions. • Our algorithm is expected to improve the recommendation quality while narrowing the disparity between different groups of users. Through extensive experiments and case studies, the quantitative results suggest that our fairness-aware algorithm provides significant improvements in both recommendation and fairness evaluation, at both the group level and individual level.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORK</head><p>Fairness in Decision Making. Growing interest in fairness has arisen in several research domains. Most notably, for data-driven decision-making algorithms, there are concerns about biases in data and models affecting minority groups and individuals <ref type="bibr" target="#b12">[13]</ref>.</p><p>Group fairness, also known as demographic parity, requires that the protected groups be treated equally to advantaged groups or the general population <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b34">35]</ref>. In contrast, individual fairness requires that similar individuals with similar attributes be treated similarly <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b27">28]</ref>. Several prior works have sought to quantify unfairness both at the group and individual level <ref type="bibr" target="#b25">[26]</ref>. Model bias has in fact been shown to amplify biases in the original data <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b46">47]</ref>. For each specific domain, there is a need to design suitable metrics to quantify fairness and develop new debiasing methods to mitigate inequity for both groups and individuals.</p><p>Fairness-aware Ranking and Recommendation. In the field of recommendation systems, the concept of fairness has been extended to multiple stakeholders <ref type="bibr" target="#b4">[5]</ref>. Lin et al. <ref type="bibr" target="#b28">[29]</ref> defined fairness measures in recommendation and proposed a Pareto optimization framework for fair recommendation. Mehrotra et al. <ref type="bibr" target="#b29">[30]</ref> addresses the supplier fairness in two-sided marketplace platforms and proposed heuristic strategies to jointly optimize fairness and relevance. Different aspects of fairness have been explored. Beutel et al. <ref type="bibr" target="#b2">[3]</ref> investigated pairwise recommendation with fairness constraints. Celis et al. <ref type="bibr" target="#b5">[6]</ref> addressed the polarization in personalized recommendations, formalized as a multi-armed bandit problem. As for the fairness ranking, Zehlike et al. <ref type="bibr" target="#b42">[43]</ref> proposed a fair top-k ranking task that ensures that the proportion of protected groups in the top-k list remains above a given threshold. Singh and Joachims <ref type="bibr" target="#b34">[35]</ref> presented a conceptual and computational framework for fairness ranking that maximizes the utility for the user while satisfying specific fairness constraints. Geyik et al. <ref type="bibr" target="#b20">[21]</ref> developed a fairnessaware ranking framework that improves the fairness for individuals without affecting business metrics. Wu et al. <ref type="bibr" target="#b38">[39]</ref> draw on causal graphs to detect and remove both direct and indirect rank bias, and show that a casual graph approach outperforms statistical paritybased approaches in terms of the identification and mitigation of rank discrimination. In our work, we are particular interested in the disparity of user visibility to modern ranking algorithms in recommendation systems.</p><p>Explainable Recommendation with Knowledge Graphs. Explainable recommendation <ref type="bibr" target="#b44">[45]</ref> has been an important direction in recommender system research. Past work has considered explaining latent factor models <ref type="bibr" target="#b45">[46]</ref>, explainable deep models <ref type="bibr" target="#b18">[19]</ref>, social explainable recommendations <ref type="bibr" target="#b31">[32]</ref>, visual explanations <ref type="bibr" target="#b9">[10]</ref>, sequential explanations <ref type="bibr" target="#b10">[11]</ref>, and dynamic explanations <ref type="bibr" target="#b11">[12]</ref>. An important line of research leverages entities, relationships, and paths in knowledge graphs to make explainable decisions. Within this field, Ai et al. <ref type="bibr" target="#b0">[1]</ref> incorporated TransE-based knowledge graph representations for explainable recommendation. Wang et al. <ref type="bibr" target="#b37">[38]</ref> proposed an attention-based knowledge-aware model to infer user preferences over KGs for recommendation. Xian et al. <ref type="bibr" target="#b40">[41]</ref> adopted reinforcement learning for path inference in knowledge graphs. Chen et al. <ref type="bibr" target="#b6">[7]</ref> improved the efficiency of KG-based recommendation based on non-sampling learning. However, none of these works considered model bias, which may lead to both recommendations and explanations that fail to satisfy basic principles of fairness.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">PRELIMINARIES</head><p>In this section, we introduce the relevant concepts regarding explainable recommendation over knowledge graphs.</p><p>A knowledge graph is defined as a set of triples with G = {(e h , r, e t ) | e h , e t ∈ E, r ∈ R}, where E is a set of entities and R is a set of relations connecting two different entities. A relationship between a head entity e h and tail entity e t through relation r in the graph can be represented as the triple (e h , r , e t ). In standard recommendation scenarios, the subset U stands for the User entities, while V represents item entities (U ∩ V = ). Each relation r ∈ R uniquely determines the candidate sets for its head and tail entities. For example, a "purchase" in e-commerce recommendation, denoted by r up , always has (e, r up , e ′ ) ∈ G ⇒ e ∈ U, e ′ ∈ V.</p><p>A pattern</p><formula xml:id="formula_0">π of length |π | in G is defined as the sequential com- posite of |π | relations, π = {r 1 • r 2 • • • • • r |π | | r i ∈ R, i ∈ [|π |]},</formula><p>where "•" denotes the composition operator on relations. A path with respect to a pattern π , denoted by L π , is a sequence of entities and relations, defined as</p><formula xml:id="formula_1">L π = {e 0 , r 1 , e 1 , . . . , e |π |−1 , r |π | , e |π | | (e i−1 , r i , e i ) ∈ G, i ∈ [1, |π |]}.</formula><p>In the context of KG-based recommendation, we specifically consider user-item paths of path pattern π , denoted by L π uv as a connecting path from user u to item v, which satisfies that e 0 = u and e |π | = v.</p><p>We also define the user-item path distribution over user u and item set V, denoted by D u, V , to be D u,</p><formula xml:id="formula_2">V (π ) = N (π ) π ′ ∈Π N (π ′ )</formula><p>, where N (π ) denotes the occurrence frequency of user-item paths with respect to pattern π , i.e., |{L π uv | v ∈ V}|. The original problem of explainable recommendation over KGs is formally defined as: Definition 3.1. (Explainable Recommendation over KGs) Given an incomplete knowledge graph G, the goal is to recover missing facts {(u, r uv , v) | (u, r uv , v) G, u ∈ U, v ∈ V} such that each fact (u, r uv , v) is associated with a user-item path L π uv , where item v is the recommendation for user u and the path L π uv is the explanation for the recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">MOTIVATING FAIRNESS CONCERNS 4.1 Data Imbalance</head><p>The traditional unfairness problem arises based on sensitive intrinsic attributes that distinguish different demographic groups <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b15">16]</ref>. In this paper, we consider the visibility of users with regard to their activities in terms of user interactions. E.g, economically disadvantaged customers tend to make fewer purchases, leading to imbalanced data. Current explainable models remain oblivious of such disparities in user-item interaction data. Such imbalances, however, may lead to biased models that exhibit unfairness with respect to the recommendation quality and explanation diversity.</p><p>To assess the distribution empirically, we consider Amazon datasets for 4 item categories: CDs and Vinyl, Clothing, Cell Phones, and Beauty. Further details of this data are given in Sec. 7.</p><p>Table <ref type="table" target="#tab_0">1</ref> shows the distribution of the number of items purchased in the four datasets. We observe that although the most active users tend to purchase more items, the majority of consumers are inactive users who are easily disregarded by commercial recommendation engines. Therefore, it is indispensable to devise techniques to better serve such users, and it can indeed also make sense economically to serve higher-quality recommendations to them with the hope of enticing them to make further purchases.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Path Distributions as a Cause of Unfairness</head><p>Imbalanced data can easily lead to biased models. For explainable recommendation over KGs, the models generally consider paths along nodes in the KG as pertinent signals for recommendation <ref type="bibr" target="#b24">[25]</ref>. User-item paths in the KG can directly serve as explanations that provide the reason why an item is recommended <ref type="bibr" target="#b40">[41]</ref>. For instance, in Fig. <ref type="figure" target="#fig_0">1</ref>, in the first path pattern, Luna may wish to purchase the same bracelet as another user, since both have purchased the same key chain. Luna might also appreciate the twinkling hairpin, since its shiny feature overlaps with her review comment. Finally, Luna may consider purchasing a sweater because it matches the brand of a previous purchase, as in the 3rd path.</p><p>Instead of considering particular paths along specific nodes, we can also consider just the relations involved in the paths to observe which general relational structures are serving as explanations across different paths with similar semantics. The three specific paths in Fig. <ref type="figure" target="#fig_0">1</ref> can be viewed as instances of three different path patterns as defined in Section 3. Thus, the distribution of user-item paths with regard to different path patterns can shed light on the diversity of explanations. We claim that the divergence of user-item path distributions between two groups is an essential factor leading to unfair recommendation performance and a disparity in the diversity of explanations. To investigate this, we compute a series of statistics pertaining to the path distributions and recommendation quality on the aforementioned Amazon data as follows:</p><p>(1) Fig. <ref type="figure" target="#fig_1">2</ref> (a) plots the path distribution over the top-15 most frequent path patterns. We consider the top 5% of users with the largest number of purchases for each category in the training set as the active group, while the remaining users are considered inactive users. We observe divergent distributions between active and inactive users according to this group division. Although the inactive group constitutes the majority of users, their user-item path patterns lack diversity. We shall see that this can lead to unfair recommendation performance. (2) Table <ref type="table" target="#tab_1">2</ref>, described later in further detail, provides experimental results for a number of recommendation algorithms, with separate columns for active vs. inactive users. We observe that the inactive group obtains far lower scores compared to the active group, which consists of only 5% of users. Thus, the performance for the vast majority of users is sacrificed.</p><p>However, current KG-based recommendation approaches <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b40">41]</ref> neglect the distribution of paths connecting users and items. Their heuristic sampling strategy fits the overall path distribution, which is highly skewed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Quantifying Diversity</head><p>To better assess the difference in path distribution between two groups, we introduce Simpson's Index of Diversity (SID) <ref type="bibr" target="#b33">[34]</ref> as a metric that quantifies the unfairness. SID is often used to quantify the biodiversity of a habitat in ecological science, taking into account the number of types (e.g., species) present, as well as the abundance of each type. Specifically, the two main factors taken into account to measure diversity are richness and evenness. Richness is the number of different species present and evenness compares the similarity of the population size of each of the species present. A habitat or community dominated by one or two species is considered to be less diverse than one in which several different species are similarly abundant. Note that the alternative Shannon index is more sensitive to the size of species. Conversely, Simpson's index emphasizes the dominant species more compared to the Shannon index (also called Shannon entropy). In other words, Shannon entropy is a proper manifestation mainly for species richness, while SID takes into account both richness and evenness measuring both absolute diversity of species and relative abundance of species. We conduct the corresponding analysis of our Amazon data assuming each user represents a unique community, while the patterns of corresponding user-item paths denote the species within such a community. Formally, the SID measures the probability that two randomly selected individual user-item paths belong to the same user-item path pattern. The probability of obtaining the same pattern in two random draws is defined as 3 :</p><formula xml:id="formula_3">T uv (R, N ) = 1 − R i=1 n i (n i − 1) N (N − 1) ,<label>(1)</label></formula><p>where R represents the number of path patterns for the specified user u to the item v, n i denotes the number of such paths belonging to the i-th path pattern, and N is the total number of user-item paths originating from the user. The SID value T uv (R, N ) ranges between 0 and 1, with larger values indicating a greater path pattern diversity. In our setup, we compute T uv (R, N ) for each user based on sampling without replacement. The SID distribution plotted in Fig. <ref type="figure" target="#fig_1">2</ref> (b) shows that the inactive group of users have less diversity in their path patterns compared to the active users. We shall later invoke Simpson's Index of Diversity in our fairness algorithm.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">FAIRNESS OBJECTIVES</head><p>In this section, we formally define the problem of fairness-aware explainable recommendation, considering both group and individual level fairness. The group unfairness measurement over the entire population can be viewed as a between-group unfairness component. We approximate such parity across a divided set of subgroups of the population, e.g., in accordance with user visibility. The individual unfairness component is computed as an average sum of inequality in benefits received by individuals overall. We also formalize similar metrics in terms of individual-level fairness.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Group Unfairness Metrics</head><p>Group fairness holds when users from two groups maintain the same probability of a positive decision <ref type="bibr" target="#b14">[15]</ref>. In our setting, we consider a group of active users G 1 vs. a group of inactive users G 2 , defined according to the number of purchased items from historical records, such that</p><formula xml:id="formula_4">G 1 ∩ G 2 = .</formula><p>Suppose there are m users {u</p><formula xml:id="formula_5">1 , u 2 , • • • , u m } associated with top- N recommended items {v 1 , v 2 , • • • , v N | u i }.</formula><p>In the following part, we take {1 ≤ i ≤ m} and {1 ≤ j ≤ N } to index users and items. We use Q = [Q i j ] m×N , where Q i j ∈ {0, 1} denotes whether item j is selected for recommendation to user u i . Let</p><formula xml:id="formula_6">Q i = [Q i1 Q i2 • • • Q i N ] T</formula><p>represent the selection vector for the top-K recommendation list of user u i under the constraints N j=1 Q i j = K, K ≤ N . We use the notation F to refer to a metric that scores the recommendation quality such that F (Q i ) denotes the recommendation quality for user u i , invoking a metric such as N DCG@K or F 1 score.</p><p>The group recommendation unfairness is defined as follows:</p><p>Definition 5.1. Group Recommendation Unfairness:</p><formula xml:id="formula_7">GRU (G 1 , G 2 , Q) = 1 |G 1 | i ∈G 1 F (Q i ) − 1 |G 2 | i ∈G 2 F (Q i ) (2)</formula><p>As we have discussed in the previous section, it is the disparity in the diversity of the path distribution which leads to the performance disparity. In explainable recommendation over KGs, we also define group-level unfairness of the explanation path diversity by applying SimpsonâĂŹs Index of Diversity (SID) to the user-item path distribution. In this context, we define: Definition 5.2. Group Explanation Diversity Unfairness:</p><formula xml:id="formula_8">GEDU (G 1 , G 2 , Q) = 1 |G 1 | i ∈G 1 f (Q i ) − 1 |G 2 | i ∈G 2 f (Q i ) ,<label>(3)</label></formula><p>where f (Q i ) reflects the explanation fairness score in terms of the diversity of historical interactions of user u i with explainable paths (defined later in Eq. 10). We adopt the averaging strategy to represent the user-item explanation diversity of two groups.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Individual Unfairness Metrics</head><p>The concept of individual fairness was first introduced by Dwork et al. <ref type="bibr" target="#b13">[14]</ref> to address the inability of group fairness to reflect individual merits. The underlying notion is that similar individuals ought to be treated similarly. In our recommendation setting, it is not possible to meet the strict criteria of individual fairness, since we focus on solving the algorithm bias, not the inherent data imbalance. However, we can follow this idea to measure the individual unfairness with regard to both recommendation performance and explanation diversity.</p><p>For this, we invoke the Gini coefficient <ref type="bibr" target="#b21">[22]</ref>, which is commonly used in sociology and other fields to measure the inequality dispersion. It ranges from 0 to 1, where 1 represents maximal inequality in the sense that one single person has all the income or consumption, and all others have none, while 0 means perfect equality, where everyone has the same income value. In our setting, the Gini coefficient is adopted to quantify the individual recommendation performance unfairness as follows: Definition 5.3. Individual Recommendation Unfairness:</p><formula xml:id="formula_9">IRU (Q) = Q x ,Q y F (Q x ) − F (Q y ) 2m m i=1 F (Q i ) ,<label>(4)</label></formula><p>where x y denotes two random users. Similarly, considering the explanation diversity in terms of fairness, we also define a measure of explanation diversity disparity among different individual users:</p><p>Definition 5.4. Individual Explanation Diversity Unfairness:</p><formula xml:id="formula_10">IEDU (Q) = Q x ,Q y f (Q x ) − f (Q y ) 2m m i=1 f (Q i )<label>(5)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Problem Formulation</head><p>We can now proceed to formalize the problem of explainable recommendation under fairness constraints. The original KG-based explainable recommendation problem aims to recover missing useritem interactions from an incomplete KG along with a set of paths that serve as the corresponding explanations for the recommendations. Instead of imposing fairness constraints in the path-finding process, which would require substantial computational effort to retrain existing models, we seek a fairness-aware path reranking for explainable recommendation. Given a candidate set of user-item paths selected by an existing model, our goal is to rank the paths to obtain high-quality recommendations while satisfying fairness constraints. Formally, we define the problem as follows.</p><p>Definition 5.5. Group Fairness-aware Explainable Recommendation Given a set of users from different groups G 1 , G 2 , each user u having a set of user-item paths, and an integer K, the goal is to maximize the overall top K recommendation quality by ranking these paths for each user under the fairness con-</p><formula xml:id="formula_11">straints that GRU (G 1 , G 2 , Q) ≤ ε 1 and GEDU (G 1 , G 2 , Q) ≤ ε 2 ,</formula><p>where Q ∈ {0, 1} m×N and Qij = 1 implying the j-th candidate path is selected among top K outputs for the i-th user by the algorithm.</p><p>Similarly, we can define the task of individual fairness-aware explainable recommendation by treating each user as belonging to a group and using Eq. 5.3 and Eq. 5.4 in the fairness constraints. One important application is to quantify the unfairness of an algorithm, particularly assessing how different the outcomes are between different groups when using current state-of-the-art algorithms. Thus, we will attempt to minimize the unfairness while retaining the recommendation quality to the extent possible.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">FAIRNESS-AWARE ALGORITHM</head><p>In this paper, we propose a general fairness-aware ranking framework, which can be applied on top of several state-of-the-art explainable recommendation algorithms based on knowledge graphs. With an understanding of the fairness goals, the question that arises is: How could an explainable recommendation model be able to yield a fair recommendation list while maintaining explanation diversity? The original explainable paths provided by the original algorithms provide compelling arguments for why a given item is recommended based on historical user interactions. It would not make sense to completely ignore all of them. At the same time, fairness constraints raise path diversity as an additional concern. On the basis of this, our fairness-aware algorithm should consider both historical user interactions and the diversity of generated explainable paths.</p><p>We introduce two fairness scores: the path score S p and the diversity score S d . HeteroEmbed is proposed in <ref type="bibr" target="#b0">[1]</ref> and PGPR, KGAT come from <ref type="bibr" target="#b40">[41]</ref> and <ref type="bibr" target="#b37">[38]</ref>, repectively.</p><p>Path Score. The path score weights the quality of paths. According to the motivation of fairness concerns in Sec. 4, we wish to consider a more varied set of paths rather than just the kinds that dominate the historic user-item interaction data. Therefore, our path score incorporates an explicit debiasing weighting to adjust the bias of user-item path patterns in historical records:</p><formula xml:id="formula_12">S p (Q i ) = N j=1 π ∈Π Q i j Sπ (i, π ),<label>(6)</label></formula><p>where Q i is the vector of recommended items as defined in Sec. 5. For a path pattern π and a user u, we use S(u, π ) as the coefficient expressing the preference adjustment for the user u i .</p><formula xml:id="formula_13">S(u, π ) = w π D u, V (π ) L π uv ∈ L π uv ℓ path L π uv<label>(7)</label></formula><p>Here, L π uv is the set of all positive user-item paths starting from user u with respect to path pattern π to item v. </p><formula xml:id="formula_14">ℓ path (L π uv ) = |π | i=1 (ì e 0 + ì r i ) • ì e i (</formula><formula xml:id="formula_15">w π = log 2 + |L π uv | π ′ | L π ′ uv |<label>(8)</label></formula><p>Finally, D u, V (π ) is the weight of path pattern π in the training set defined in Sec. 3. On the one hand, we retain the existing weights of path scores as w π , while on the other hand striving to break the intrinsic explainable path patterns assigned to different groups of users. For the latter, D u, V (π ) serves as a regularization factor to minimize the path diversity bias between the groups.</p><p>Diversity Score. Additionally, we also consider the fairness with regard to explainable path diversity. For each user-item pair (u, v), we get access to the user-item path distribution based on the retrieved explainable paths of the original algorithm <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b40">41]</ref>, as</p><formula xml:id="formula_16">{|L π 1 uv |, |L π 2 uv |, . . . , |L π |Π| uv }.</formula><p>Let Π be a number of valid user-item path patterns in the KG. Then we are able to calculate Simpson's Index of Diversity of such (u, v) pairs as T uv (Π, N v ), as defined in Sec. 4.3, where N v denotes the total number of retrieved paths starting from user u and ending up at item v as π ′ | L π ′ uv |. We can then define our diversity score, which can be regarded as introducing regularization for explainable path diversity:</p><formula xml:id="formula_17">S d (Q i ) = N j=1 |π | Q i j T i j (Π, N j )<label>(9)</label></formula><p>Fairness score. By aggregating the personalization and diversity scores, we can calculate the fairness score for user u i defined as:</p><formula xml:id="formula_18">f i (Q i ) = αS p (Q i ) + (1 − α)λS d (Q i ),<label>(10)</label></formula><p>where α ∈ [0, 1] is the weighting factor of path score S p (Q i ), compared to the diversity score S d (Q i ). λ is a scaling factor so that S p and S d can be normalized onto the same scale.</p><p>Recommendation score. We follow the baseline method of calculating the preference score S(i, j) between user u i and item v j . Our goal becomes to find a selection strategy R rec (Q i ) = N j=1 Q i j S(i, j) for each user u i to recommend K items that meet the group fairness constraints. Therefore, we can formulate the optimization recommendation problem as follows: max</p><formula xml:id="formula_19">Q i j R = m i=1 R rec (Q i ) (11) s.t. N j=1 Q i j = K, Q i j ∈ {0, 1}<label>(12)</label></formula><formula xml:id="formula_20">GRU (G 1 , G 2 , Q) &lt; ε 1 (13) GREU (G 1 , G 2 , Q) &lt; ε 2 (14)</formula><p>Here, Eqs. 13 and 14 refer to the GRU and GEDU proposed in Def. 5.1 and 5.2, respectively, with ε 1 and ε 2 representing recommendation performance and fairness disparity of baselines, correspondingly. Moreover, the optimization could also be extended to individual fairness constraints. We are able to take the constraints of the Gini coefficient difference as proposed in Defs. 5.3 and 5.4. In this case, we replace Eqs. 13 and 14 with following:</p><formula xml:id="formula_21">IRU (Q) &lt; ε 3 (15) IREU (Q) &lt; ε 4 (<label>16</label></formula><formula xml:id="formula_22">)</formula><p>Here, ε 3 and ε 4 are the individual recommendation and fairness disparity of the corresponding baselines. The optimization of Eq. 11 can be cast as a 0-1 integer programming optimization problem. Although it is NP-complete, we can use fast heuristics 4 to find feasible solutions. While these may converge to a local optimum rather than a global one, our empirical findings show that the fairness-aware top-K selection obtained is superior enough compared to the baseline methods. Further details will be given in Sec. 7.</p><p>Ranking Score. After solving the optimization problem and selecting which items to recommend under fairness constraints for each user as Qi , we still need to rank the K items to determine in which order they are presented. This also allows us to better compare the results against the baseline methods. Specifically, we create a top-k recommendation list with items ranked in descending order by the optimized recommendation score and the fairness score, defined as:</p><formula xml:id="formula_23">R rank ( Qi ) = βγ f i ( Qi ) + (1 − β)R rec ( Qi ),<label>(17)</label></formula><p>where β ∈ [0, 1] is the weighting factor of the ranking fairness score. Similar to the λ above, we also add a factor γ , which achieves the scaling effect.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">EXPERIMENTS</head><p>In this section, we first briefly describe the four real-world e-commerce datasets used for experiments. Then, we evaluate our proposed fairness-aware algorithm on top of existing explainable recommendation approaches. A series of quantitative and qualitative analyses demonstrate the positive effects on both fairness metrics and the recommendation performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.1">Dataset and Experimental Setup</head><p>Datasets. All of our experiments are based on Amazon item ecommerce datasets <ref type="bibr" target="#b23">[24]</ref>. The collection consists of four different domains: CDs and Vinyl, Clothing, Cell Phones, and Beauty. It should 4 We use the Gurobi solver, https://www.gurobi.com/. be noted that each dataset is considered as an independent benchmark that constitutes a respective knowledge graph with entities and relations crawled from Amazon 5 . Thus, the evaluation results are not comparable over different domains. The statistical details and train/test split correspond exactly to those of previous work in this area <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b40">41]</ref>. Note that following Xian et al. <ref type="bibr" target="#b40">[41]</ref>, there is no constraint on possible path patterns, so any path between a user and the recommended item is considered to be valid. However, since shorter paths are more reliable for users as explanation for recommendation, we only consider user-item paths with a length of up to 3. We utilize the path patterns extracted from the KG dataset by the baselines for an equal comparison.</p><p>Experimental Setup. As a prior investigation to verify the rationality of the unfairness, we first study the user interaction difference in terms of path distribution and the recommendation performance disparity over three state-of-art explainable RSs over KGs <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b37">38,</ref><ref type="bibr" target="#b40">41]</ref>. They rank the recommendation list by calculating the relevance scores of user-item pairs. Ai et al. <ref type="bibr" target="#b0">[1]</ref> picks items using translational entity embeddings, while Xian et al. <ref type="bibr" target="#b40">[41]</ref> computes the score as a path reward via reinforcement learning. Wang et al. <ref type="bibr" target="#b37">[38]</ref> propose an attention-based collaborative knowledge graph method.</p><p>Following previous work, we consider as metrics the Normalized Discounted Cumulative Gain (NDCG) and F 1 scores, two popular metrics to evaluate the recommendation performance. F 1 scores provide the harmonic mean of precision and recall, while NDCG evaluates the ranking by considering the position of correctly recommended items. We evaluate the group fairness and individual fairness in terms of the recommendation quality and explanation diversity, with the metric defined in Sec. 5.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.2">Main Results</head><p>First, we show both the recommendation improvements and fairness effectiveness of our fairness-aware algorithm compared to state-of-the-art explainable RS models over KGs in terms of NDCG and F 1 scores as well as Group Recommendation Unfairness (GRU ) between active group users and inactive group users.   The main results on the four Amazon datasets are provided in Table <ref type="table" target="#tab_1">2</ref>. Note that the Difference is calculated by the GRU defined in Eq. 5.2 through abstraction of corresponding metric scores between inactive users and active users. The overall performance is calculated by the 95% of inactive users scores with the addition of 5% of active users scores, which matches the ratio of the group split. 6 Our method outperforms all the baseline approaches for recommendation by a large margin in all settings. All of our fairness-aware algorithms take uniform parameters with α = 0.75 and β = 0.5. The overall performance of both approaches with fairness constraints even got boosted, while shrinking the GRU fairness disparity between the groups. For example, on the Clothing dataset, our fairness-aware algorithm over PGPR achieves 3.101% in NDCG, which is higher than 2.856% of vanilla PGPR, and the group unfairness decreases to a great extent, from 1.410% to 0.233%. Similar trends can be observed for the other datasets. Although we sacrifice some of the performance for the most active users, we substantially boost the performance for the inactive users. The disparity between inactive and active users gets closed for group fairness.</p><p>It is fairly remarkable that after adopting the fairness-aware algorithm over two recent state-of-the-art baseline methods, we are able to retrieve substantially better recommendation results than the original methods. We conjecture that our algorithm better harnesses the potential of current explainable recommendation methods by adapting the path distribution so that more diverse reasoning paths can be served to the users. Since the inactive users undergo a prejudiced treatment due to the homogeneous user interactions with lower user visibility, they tend to benefit more under our fairness-aware algorithm.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.3">Ablation Study</head><p>Besides recommendation performance, we also study how different weights for the fairness scores influence the fairness results regarding to the diversity metrics in Def. 5.2 and the individual fairness metrics using the Gini coefficient defined in Defs. 5.3 and 5.4.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>7.</head><p>3.1 Study of fairness weight α. We first show how the choice of personalization weight α from Eq. 10 affects the recommendation performance, group fairness, and individual fairness. The results are plotted as (a-c) in Figs. <ref type="figure" target="#fig_4">3, 4</ref>, 5, and 6, including both our fairnessaware performance (red and purple curves) and the baselines (blue and green curves).</p><p>We observe that our model consistently outperforms vanilla HeteroEmbed and PGPR baselines under all settings of α in terms of Group Explainable Diversity Unfairness (GEDU ) and individual Recommendation Unfairness (IRU ), as shown in parts (a) and (c) of the aforementioned figures. The unfairness is minimized at the point of α = 1.0, i.e., when not accounting for historical path distributions, but focusing solely on debiasing the intrinsic user preferences, our model can achieve a high degree of fairness. However, with an apt choice of α, we can not only benefit the IRU in (b) figures, but also maintain the more reliable GEDU and IRU . 7.3.2 Study of ranking weight β. Next, we consider the effect of the ranking weight β from Eq. 17. Since we already obtain the K items from the filtered original top-N list, the β factor does not change the F 1 score. We provide results on the Cellphones and Beauty datasets, first fixing α = 0.75, which was shown to give strong results in the main results. Subfigures (d-f) in Figs. <ref type="figure" target="#fig_4">3, 4, 5</ref>, and 6 plot the results. We observe, first of all, that as the weight of β increases, our fairness-aware algorithm is able to consistently reduce the GEDU and IEDU . For β = 0, there is no external fairness weight incorporated into the overall ranking score, which obtains slightly better results than the baselines owing to the optimization process. In contrast, β = 1.0 represents only considering the fairness weights but ignoring the original recommendation scores. The optimal choice for minimizing the IRU is when β is around 0.2 for Fair HeteroEmbed, while for Fair PGPR, β = 1 obtains better results. This might be because the PGPR method prunes away some less salient word features via TF-IDF scoring. In such cases, paths containing the feature word will be eliminated. Also, some inactive users prefer making comments on items rather than purchasing them. Such preprocessing will make the inactive users hold even less interactions. Therefore, our fairness-aware explainable algorithm yields strong fairness improvements when β = 1 for the PGPR baseline.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.4">Study of Recommendation Quality under</head><p>Fairness-Aware Algorithm</p><p>After studying the fairness metrics, we next study how the recommendation quality is affected by the parameter choices. From Eqs. 10 and 17, we can infer that changes of β can exert more influence than α. As we fix the path fairness weight α = 0.75, the right side of Table <ref type="table">3</ref> indicates the recommendation performance of inactive users initially is boosted as β grows, and then the performance starts to drop as β approaches 1. Similar conclusions can be drawn: If there is less weight on the recommendation score Qi as a guide to create a proper ranking of recommended lists and balance the fairness effects, the role of generated explainable paths would gradually diminish, leading the model towards making inappropriate ranking decisions.</p><p>The left part of Table <ref type="table">3</ref> reflects the recommendation performance variance in terms of path fairness weight α. As we discussed before, α = 0 suggests the fairness-aware algorithm is no longer taking advantage of the user debiasing. As the ratio of α increases, the larger the effect of the self adjustment regularization, which leads to a decreasing GRU . However, when α = 1, both the recommendation performance and the GRU decrease at a small rate. We can conclude that the zero score of path diversity mean that the weight of the generated path diversity has been eliminated, which leads to fairness scores only coming from the path ranking component. Thus, the recommendation performance degrades to a small extent. The results appear reasonable because the model naturally will behave less intelligently if it either completely ignores the user's historical interactions or if it considers only the path debiasing. Any extreme regularization of one particular side may harm the recommendation performance. Therefore, it is indispensable to choose the proper hyper-parameters for robust performance.</p><p>Still, note that no matter how we change α or β, in Table <ref type="table">3</ref>, we can observe that the group unfairness metric GRU is always better than for the baselines.   the outputs of the original vanilla PGPR explainable RS method, which neglects path diversity. It is filled with "user-mention" paths connecting to the predicted items with only 4 items appearing in the top-k list. For comparison, after adding our fairness-aware algorithm, the model predicts 6 correct items that users are willing to purchase, associating them with diverse explainable paths. Hence, our approach is able to invoke more items, finding alternative kinds of user-item paths. At the same time, considering the "facial cleaner" example, our fairness-aware algorithm considers two further items connecting with it, so that the user is able to buy further related items. This shows how our fairness-aware method not only is capable of considering a more diverse and comprehensive set of explainable paths, but also ends up finding more correct recommendations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.5">Case study</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">CONCLUSIONS</head><p>In this work, we study the prominent problem of fairness in the context of state-of-the-art explainable recommendation algorithms over knowledge graphs. We first quantify unfairness at both the individual level and the group level. Based on this, we propose fairness metrics in terms of path diversity as well as the recommendation performance disparity. We then present a generalized fairnessaware algorithm that is capable not only of reducing the disparity but also of maintaining the recommendation quality. We extensively evaluate our model on several real-world datasets, and demonstrate that our approach reduces unfairness by providing diverse path patterns and strong explainable recommendation results. The source code of our work at https://github.com/zuohuif/FairKG4Rec is publicly available.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Path pattern example of user "Luna" where −1 means the reversed direction.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Statistics of Amazon Beauty dataset. The same trends are observed for the other three datasets.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>where e 0 = u and e |π | = v) is the score of a path L π uv = {u, r 1 , e 1 , r 2 , e 2 , . . . , e |π |−1 , r |π | , v}, which can easily be computed following the methods proposed for current KG-based explainable recommendation systems. w π represents the weight of the path pattern π in generated explainable paths:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Results of Fairness-aware HeteroEmbed on Beauty dataset when fix β = 0.5 (a-c) and fix α = 0.75 (d-f).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Results of Fairness-aware HeteroEmbed on Cell Phone dataset when fix β = 0.5 (a-c) and fix α = 0.75 (d-f).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 :Figure 6 :</head><label>56</label><figDesc>Figure 5: Results of Fairness-aware PGPR on Beauty dataset when fix β = 0.5 (a-c) and fix α = 0.75 (d-f).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7</head><label>7</label><figDesc>Figure7illustrates the real effects of our fairness-aware algorithm in terms of path diversity and the accuracy of predicted items. The example comes from the Beauty dataset. The upper part illustrates</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Table 3 :Figure 7 :</head><label>37</label><figDesc>Figure 7: Case study of real recommendation paths, before and after adding our fairness algorithm.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Number of users located at different purchase thresholds(as n represents) in the training split of four Amazon e-commerce datasets.</figDesc><table><row><cell>Dataset</cell><cell cols="4">CDs &amp; Vinyl Clothing Cell Phones Beauty</cell></row><row><cell>n &lt; 4</cell><cell>0</cell><cell>0</cell><cell>0</cell><cell>0</cell></row><row><cell>4 ≤ n &lt; 5</cell><cell>18.1K</cell><cell>15.3K</cell><cell>12.0K</cell><cell>7.1K</cell></row><row><cell>5 ≤ n &lt; 6</cell><cell>20.0K</cell><cell>13.6K</cell><cell>0.9K</cell><cell>6.9K</cell></row><row><cell>6 ≤ n &lt; 9</cell><cell>16.4K</cell><cell>7.3K</cell><cell>4.7K</cell><cell>4.7K</cell></row><row><cell>9 ≤ n &lt; 15</cell><cell>11.2K</cell><cell>2.3K</cell><cell>1.1K</cell><cell>2.5K</cell></row><row><cell cols="2">15 ≤ n &lt; 30 3.5K</cell><cell>445</cell><cell>267</cell><cell>886</cell></row><row><cell>n ≥ 30</cell><cell>2.1K</cell><cell>36</cell><cell>55</cell><cell>233</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Overall recommendation performance of inactive users and active users of our proposed fairness-aware algorithm on explainable recommendation approaches and corresponding baselines on four Amazon datasets. The results are reported in percentage (%) and are calculated based on the top-10 predictions in the test set. The best results are highlighted in bold.</figDesc><table><row><cell>Dataset</cell><cell></cell><cell cols="2">CDs &amp; Vinyl</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Clothing</cell><cell></cell></row><row><cell>Measures (%)</cell><cell>Overall NDCG F 1</cell><cell>Inactive Users NDCG F 1</cell><cell cols="2">Active Users NDCG F 1</cell><cell>GRU NDCG</cell><cell>F 1</cell><cell>Overall NDCG F 1</cell><cell>Inactive Users Active Users NDCG F 1 NDCG F 1</cell><cell>GRU NDCG</cell><cell>F 1</cell></row><row><cell>HeteroEmbed</cell><cell cols="4">6.992 3.576 6.526 3.373 15.843 7.429</cell><cell cols="6">9.317 4.056 3.221 1.404 3.121 1.348 5.130 2.461 2.009 1.113</cell></row><row><cell cols="11">Fair HeteroEmbed 8.094 4.019 7.674 3.820 16.074 7.801 8.400 3.981 3.494 1.536 3.484 1.482 3.691 2.556 0.207 1.074</cell></row><row><cell>PGPR</cell><cell cols="4">6.947 3.571 6.526 3.373 14.943 7.324</cell><cell cols="6">8.417 3.951 2.856 1.240 2.787 1.198 4.197 2.036 1.410 0.833</cell></row><row><cell>Fair PGPR</cell><cell cols="10">8.045 4.019 7.675 3.820 15.074 7.801 7.399 3.261 3.101 1.314 3.089 1.274 3.322 2.078 0.233 0.804</cell></row><row><cell>KGAT</cell><cell cols="4">5.411 3.357 5.038 3.162 12.498 7.046</cell><cell cols="6">7.460 3.884 3.021 1.305 2.931 1.254 4.741 2.259 1.810 1.005</cell></row><row><cell>Fair KGAT</cell><cell cols="10">5.640 3.492 5.295 3.318 12.366 6.791 7.081 3.473 3.206 1.393 3.119 1.347 4.843 2.262 1.724 0.915</cell></row><row><cell>Dataset</cell><cell></cell><cell cols="2">Beauty</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Cell Phones</cell><cell></cell></row><row><cell>Measures (%)</cell><cell>Overall NDCG F 1</cell><cell>Inactive Users NDCG F 1</cell><cell cols="2">Active Users NDCG F 1</cell><cell>GRU NDCG</cell><cell>F 1</cell><cell>Overall NDCG F 1</cell><cell>Inactive Users Active Users NDCG F 1 NDCG F 1</cell><cell>GRU NDCG</cell><cell>F 1</cell></row><row><cell>HeteroEmbed</cell><cell cols="10">6.371 3.125 6.078 2.756 11.933 10.132 5.855 7.376 5.833 2.537 5.645 2.311 9.395 6.829 3.750 4.518</cell></row><row><cell cols="11">Fair HeteroEmbed 6.740 3.181 6.451 2.924 12.229 9.853 5.778 6.929 6.199 2.678 6.037 2.466 9.284 6.648 3.247 4.182</cell></row><row><cell>PGPR</cell><cell cols="3">5.456 2.544 5.219 2.291 9.766</cell><cell>7.349</cell><cell cols="6">4.547 5.148 5.079 2.116 4.945 1.972 7.626 4.846 2.681 2.874</cell></row><row><cell>Fair PGPR</cell><cell cols="10">5.717 2.680 5.504 2.430 9.766 7.431 4.262 5.001 5.380 2.193 5.252 2.076 7.807 4.409 2.555 2.333</cell></row><row><cell>KGAT</cell><cell cols="10">6.108 3.169 5.863 2.761 10.763 10.929 4.900 8.168 5.111 2.265 4.958 2.100 8.026 5.391 3.068 3.297</cell></row><row><cell>Fair KGAT</cell><cell cols="10">6.241 3.228 6.001 2.832 10.785 10.752 4.784 7.920 5.304 2.391 5.159 2.240 8.057 5.256 2.898 3.016</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>NDCG NDCG NDCG (*) 6.075 2.756 11.930 10.132 5.855 7.376 5.645 9.395 3.75 0.0 6.317 2.916 12.088 9.765 5.771 6.949 5.658 8.821 3.163 0.125 6.354 2.926 12.088 9.790 5.734 6.864 5.782 8.888 3.106 0.25 6.407 2.930 12.089 9.800 5.682 6.870 5.924 8.999 3.075 0.375 6.459 2.933 12.206 9.802 5.747 6.869 6.033 9.254 3.221 0.5 6.470 2.935 12.232 9.808 5.762 6.873 6.037 9.284 3.247 0.625 6.462 2.928 12.230 9.834 5.768 6.906 5.974 9.216 3.242 0.75 6.451 2.924 12.229 9.853 5.778 6.929 5.782 9.093 3.211 0.875 6.398 2.872 12.191 9.776 5.793 6.904 5.479 8.667 3.188 1.0 6.368 2.836 12.145 9.732 5.777 6.891 5.217 8.373 3.156</figDesc><table><row><cell></cell><cell>Beauty</cell><cell></cell><cell cols="3">Cell Phones</cell></row><row><cell>Metric(%)</cell><cell>Inactive (IA) NDCG F 1 NDCG Active (A) F 1</cell><cell>GRU NDCG F 1</cell><cell>IA</cell><cell>A</cell><cell>GRU</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">If the size of dataset is very large, sampling without replacement provides approximately the same result, however, when the size of dataset is small, the difference can be substantial.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">https://www.amazon.com/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6">We report the results of the baselines with our own implementation. There is a slight discrepancy compared to original results.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="9">ACKNOWLEDGEMENT</head><p>The authors thank Dr. Longqi Yang for many enlightening conversations and the reviewers for the valuable comments and constructive suggestions. This work was supported in part by NSF IIS-1910154. Any opinions, findings, conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsors.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Learning Heterogeneous Knowledge Base Embeddings for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Qingyao</forename><surname>Ai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vahid</forename><surname>Azizi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Algorithms</title>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Big data&apos;s disparate impact</title>
+		<author>
+			<persName><forename type="first">Solon</forename><surname>Barocas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Andrew</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Selbst</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">California Law Review</title>
+		<imprint>
+			<biblScope unit="volume">104</biblScope>
+			<biblScope unit="page">671</biblScope>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Fairness in Recommendation Ranking through Pairwise Comparisons</title>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Beutel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jilin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tulsee</forename><surname>Doshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hai</forename><forename type="middle">Tao</forename><surname>Qian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><forename type="middle">Hao</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lukasz</forename><surname>Heldt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhe</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGKDD. 2212âĂŞ2220</title>
+				<editor>
+			<persName><forename type="first">Lichan</forename><surname>Hong</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Ed</forename><surname>Huai Hsin</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Chi</forename></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Cristos</forename><surname>Goodrow</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Equity of Attention: Amortizing Individual Fairness in Rankings</title>
+		<author>
+			<persName><forename type="first">Asia</forename><forename type="middle">J</forename><surname>Biega</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krishna</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerhard</forename><surname>Weikum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGIR. 405âĂŞ414</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">Multisided Fairness for Recommendation</title>
+		<author>
+			<persName><forename type="first">Robin</forename><forename type="middle">D</forename><surname>Burke</surname></persName>
+		</author>
+		<idno>abs/1707.00093</idno>
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Controlling Polarization in Personalization: An Algorithmic Framework</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">Elisa</forename><surname>Celis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sayash</forename><surname>Kapoor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Farnood</forename><surname>Salehi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nisheeth</forename><forename type="middle">K</forename><surname>Vishnoi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM Proceedings of the Conference on Fairness, Accountability, and Transparency. 160âĂŞ169</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Jointly Non-Sampling Learning for Knowledge Graph Enhanced Recommendation</title>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhi</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Fair lending needs explainable models for responsible recommendation</title>
+		<author>
+			<persName><forename type="first">Jiahao</forename><surname>Chen</surname></persName>
+		</author>
+		<idno>ArXiv abs/1809.04684</idno>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Fairness Under Unawareness: Assessing Disparity When Protected Class Is Unobserved</title>
+		<author>
+			<persName><forename type="first">Jiahao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nathan</forename><surname>Kallus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaojie</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffry</forename><surname>Svacha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Madeleine</forename><surname>Udell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">FAT*</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Personalized Fashion Recommendation with Visual Explanations based on Multimodal Attention Network: Towards Visually Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="765" to="774" />
+		</imprint>
+	</monogr>
+	<note>Yixin Cao, Zheng Qin, and Hongyuan Zha</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Sequential recommendation with user memory networks</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WSDM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="108" to="116" />
+		</imprint>
+	</monogr>
+	<note>Yixin Cao, Zheng Qin, and Hongyuan Zha</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Dynamic Explainable Recommendation based on Neural Attentive Models</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Qin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Algorithmic decision making and the cost of fairness</title>
+		<author>
+			<persName><forename type="first">Sam</forename><surname>Corbett-Davies</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emma</forename><surname>Pierson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Avi</forename><surname>Feller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sharad</forename><surname>Goel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aziz</forename><surname>Huq</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Fairness Through Awareness</title>
+		<author>
+			<persName><forename type="first">Cynthia</forename><surname>Dwork</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Moritz</forename><surname>Hardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Toniann</forename><surname>Pitassi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Omer</forename><surname>Reingold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Zemel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 3rd Innovations in Theoretical Computer Science Conference</title>
+				<meeting>the 3rd Innovations in Theoretical Computer Science Conference</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Group fairness under composition</title>
+		<author>
+			<persName><forename type="first">Cynthia</forename><surname>Dwork</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christina</forename><surname>Ilvento</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">FAT*</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">All the cool kids, how do they fit in?: Popularity and demographic biases in recommender evaluation and effectiveness</title>
+		<author>
+			<persName><forename type="first">Mucun</forename><surname>Michael D Ekstrand</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jennifer</forename><forename type="middle">D</forename><surname>Ion Madrazo Azpiazu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oghenemaro</forename><surname>Ekstrand</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Anuyah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">Soledad</forename><surname>Mcneill</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Pera</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">FAT*</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">A Fairness-aware Hybrid Recommender System</title>
+		<author>
+			<persName><forename type="first">Golnoosh</forename><surname>Farnadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pigi</forename><surname>Kouki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Spencer</forename><forename type="middle">K</forename><surname>Thompson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sriram</forename><surname>Srinivasan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lise</forename><surname>Getoor</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note>at the 2nd FATRec Workshop on Responsible Recommendation held at RecSys</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Certifying and removing disparate impact</title>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Feldman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sorelle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Friedler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Moeller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suresh</forename><surname>Scheidegger</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Venkatasubramanian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 21th ACM SIGKDD</title>
+				<meeting>the 21th ACM SIGKDD</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation through attentive multi-view learning</title>
+		<author>
+			<persName><forename type="first">Jingyue</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yasha</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI</title>
+				<meeting>the AAAI</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Learning Personalized Risk Preferences for Recommendation</title>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuchang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Fairness-Aware Ranking in Search &amp; Recommendation Systems with Application to LinkedIn Talent Search</title>
+		<author>
+			<persName><forename type="first">Stuart</forename><surname>Sahin Cem Geyik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krishnaram</forename><surname>Ambler</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kenthapadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Measurement of inequality of incomes</title>
+		<author>
+			<persName><forename type="first">Corrado</forename><surname>Gini</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Economic Journal</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="124" to="126" />
+			<date type="published" when="1921">1921. 1921</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Equality of Opportunity in Supervised Learning</title>
+		<author>
+			<persName><forename type="first">Moritz</forename><surname>Hardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Price</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nathan</forename><surname>Srebro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th NeurIPS</title>
+				<meeting>the 30th NeurIPS<address><addrLine>Barcelona, Spain</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Leveraging meta-path based context for top-n recommendation with a neural co-attention model</title>
+		<author>
+			<persName><forename type="first">Binbin</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuan</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Philip S</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGKDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Inherent Trade-Offs in the Fair Determination of Risk Scores</title>
+		<author>
+			<persName><forename type="first">Jon</forename><forename type="middle">M</forename><surname>Kleinberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sendhil</forename><surname>Mullainathan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Manish</forename><surname>Raghavan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ITCS</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Counterfactual Fairness</title>
+		<author>
+			<persName><forename type="first">Matt</forename><forename type="middle">J</forename><surname>Kusner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joshua</forename><forename type="middle">R</forename><surname>Loftus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Russell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ricardo</forename><surname>Silva</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st NeurIPS</title>
+				<meeting>the 31st NeurIPS</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">Preethi</forename><surname>Lahoti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerhard</forename><surname>Weikum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Krishna</forename><forename type="middle">P</forename><surname>Gummadi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1806.01059</idno>
+		<title level="m">iFair: Learning Individually Fair Data Representations for Algorithmic Decision Making</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Fairness-aware group recommendation with pareto-efficiency</title>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaoquan</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM Conference on Recommender Systems</title>
+				<meeting>the Eleventh ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="107" to="115" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Towards a Fair Marketplace: Counterfactual Evaluation of the Trade-off Between Relevance, Fairness &amp; Satisfaction in Recommendation Systems</title>
+		<author>
+			<persName><forename type="first">Rishabh</forename><surname>Mehrotra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>Mcinerney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hugues</forename><surname>Bouchard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mounia</forename><surname>Lalmas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fernando</forename><surname>Diaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th ACM CIKM</title>
+				<meeting>the 27th ACM CIKM<address><addrLine>Torino, Italy). New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="2243" to="2251" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Discrimination-aware Data Mining</title>
+		<author>
+			<persName><forename type="first">Dino</forename><surname>Pedreshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Salvatore</forename><surname>Ruggieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Franco</forename><surname>Turini</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th ACM SIGKDD</title>
+				<meeting>the 14th ACM SIGKDD<address><addrLine>Las Vegas, Nevada, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="560" to="568" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Social collaborative viewpoint regression with explainable recommendations</title>
+		<author>
+			<persName><forename type="first">Shangsong</forename><surname>Zhaochun Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piji</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuaiqiang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th ACM WSDM</title>
+				<meeting>the 10th ACM WSDM</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Recommendations as Treatments: Debiasing Learning and Evaluation</title>
+		<author>
+			<persName><forename type="first">Tobias</forename><surname>Schnabel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adith</forename><surname>Swaminathan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ashudeep</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Navin</forename><surname>Chandak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thorsten</forename><surname>Joachims</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Measurement of diversity</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Edward</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Simpson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">163</biblScope>
+			<biblScope unit="page">4148</biblScope>
+			<date type="published" when="1949">1949. 1949</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Fairness of Exposure in Rankings</title>
+		<author>
+			<persName><forename type="first">Ashudeep</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thorsten</forename><surname>Joachims</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGIR</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="2219" to="2228" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Addressing Marketing Bias in Product Recommendations</title>
+		<author>
+			<persName><forename type="first">Mengting</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishabh</forename><surname>Misra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><forename type="middle">J</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Ripplenet: Propagating user preferences on the knowledge graph for recommender systems</title>
+		<author>
+			<persName><forename type="first">Hongwei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jialin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minyi</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="417" to="426" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">KGAT: Knowledge Graph Attention Network for Recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yixin</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">On Discrimination Discovery and Removal in Ranked Data Using Causal Graph</title>
+		<author>
+			<persName><forename type="first">Yongkai</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xintao</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="2536" to="2544" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiaoying</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><surname>Muthukrishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<title level="m">Neural-Symbolic Reasoning over Knowledge Graph for Multi-Stage Explainable Recommendation. AAAI DLGMA Workshop</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Reinforcement knowledge graph reasoning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Muthukrishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerard</forename><surname>De Melo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd International ACM SIGIR</title>
+				<meeting>the 42nd International ACM SIGIR<address><addrLine>Paris, France</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Unbiased offline recommender evaluation for missing-not-atrandom implicit feedback</title>
+		<author>
+			<persName><forename type="first">Longqi</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yin</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan</forename><surname>Xuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenyang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Serge</forename><surname>Belongie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deborah</forename><surname>Estrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="279" to="287" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Mohamed Megahed, and Ricardo Baeza-Yates</title>
+		<author>
+			<persName><forename type="first">Meike</forename><surname>Zehlike</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Bonchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Castillo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sara</forename><surname>Hajian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2017 ACM on CIKM</title>
+				<meeting>the 2017 ACM on CIKM<address><addrLine>Singapore, Singapore</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1569" to="1578" />
+		</imprint>
+	</monogr>
+	<note>FA*IR: A Fair Top-k Ranking Algorithm</note>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Collaborative Multi-Level Embedding Learning from Reviews for Rating Prediction</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quan</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianyong</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Explainable Recommendation: A Survey and New Perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="DOI">10.1561/1500000066</idno>
+		<ptr target="https://doi.org/10.1561/1500000066" />
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and TrendsÂő in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Explicit Factor Models for Explainable Recommendation Based on Phraselevel Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM SIGIR</title>
+				<meeting><address><addrLine>Gold Coast, Queensland, Australia</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Men Also Like Shopping: Reducing Gender Bias Amplification using Corpus-level Constraints</title>
+		<author>
+			<persName><forename type="first">Jieyu</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianlu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Yatskar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vicente</forename><surname>Ordonez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai-Wei</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

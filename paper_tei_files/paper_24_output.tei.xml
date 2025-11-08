@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">NAIRS: A Neural Attentive Interpretable Recommendation System</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2019-02-20">20 Feb 2019</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Shuai</forename><surname>Yu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computer Science</orgName>
+								<orgName type="institution">Fudan University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yongbo</forename><surname>Wang</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Shenzhen Institutes of Advanced Technology</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Min</forename><surname>Yang</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Shenzhen Institutes of Advanced Technology</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Baocheng</forename><surname>Li</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Shenzhen Institutes of Advanced Technology</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><surname>Qiang Qu</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Shenzhen Institutes of Advanced Technology</orgName>
+								<orgName type="institution">Chinese Academy of Sciences</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Jialie</forename><surname>Shen</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">School of Electronics, Electrical Engineering and Computer Science</orgName>
+								<orgName type="institution">Queen&apos;s University Belfast</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">NAIRS: A Neural Attentive Interpretable Recommendation System</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2019-02-20">20 Feb 2019</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">1A972E201A85EEC408B935D4141D7322</idno>
+					<idno type="arXiv">arXiv:1902.07494v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:59+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Collaborative filtering</term>
+					<term>Self-attention network</term>
+					<term>Interpretable recommendation</term>
+					<term>Item-based recommendation</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>In this paper, we develop a neural attentive interpretable recommendation system, named NAIRS. A self-attention network, as a key component of the system, is designed to assign attention weights to interacted items of a user. This attention mechanism can distinguish the importance of the various interacted items in contributing to a user profile. Based on the user profiles obtained by the self-attention network, NAIRS offers personalized high-quality recommendation. Moreover, it develops visual cues to interpret recommendations. This demo application with the implementation of NAIRS enables users to interact with a recommendation system, and it persistently collects training data to improve the system. The demonstration and experimental results show the effectiveness of NAIRS.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>With the huge volumes of online information, attention has been continuously paid to recommender systems <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b24">25]</ref>. Item-based collaborative filtering (CF) is one of the most successful techniques in practice due to its simplicity, accuracy, and scalability <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b15">16]</ref>. It profiles a user with the historically interacted items and recommends similar items in terms of user profiles.</p><p>Most of the existing item-based CF methods utilize statistical measures (e.g., cosine similarity) to estimate item similarities. However, the assumption of equal weights is often applied for the items in the measurement <ref type="bibr" target="#b12">[13]</ref>. In other words, different items in the historical list are equally treated, which is not true for many of the real-world recommendation applications. On the other hand, interpretable recommendations are of increasing interest, which explain the underlying reasons for the potential user interest on the recommended items. Traditional methods often generate explanations from the textual data such as the content and reviews associated with the items <ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b1">2,</ref><ref type="bibr" target="#b3">4</ref>]. Yet, generating reasons of recommendation remains unsolvable when the texts are unavailable.</p><p>Inspired by the recent successes of attention-based neural networks <ref type="bibr" target="#b0">[1]</ref> in computer vision and natural language processing, this paper proposes a neural attentive interpretable recommendation system (NAIRS) to alleviate the aforementioned limitations. The key to the design of NAIRS is an self-attention network that computes the attention weights of the historical items in a user profile according to their intent importance associated with the user's preferences. With the learned attention weights, NAIRS provides a high-quality personalized recommendation to users according to their historical preferences. Meanwhile, it interprets the reasons of recommendation by visualizing the learned attention weights for the user's historical list. The function of personalized and interpretable recommendation assists users and manufacturer in identifying results of interest and exploring alternative choices more efficiently. In addition, NAIRS enables users to search for the users who have the similar results and search for the items which are similar to the chosen item. The two functions help the users to discover more potentially interesting items. Furthermore, NAIRS actively records users' interactive behaviors in the system, such as their input queries, liked items, and clicked results.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Work</head><p>Recommender system is an active research field. The authors of <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b14">15]</ref> described most of the existing techniques for recommender systems. In this section, we briefly review the following major approaches that are related to our work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Item-based Collaborative Filtering</head><p>Item-based collaborative filtering <ref type="bibr" target="#b19">[20]</ref> is one of the most successful techniques in the practice of recommendation due to its simplicity and attractive accuracy. The main idea behind item-based CF is that the prediction of a user u on a target item i depends on the similarity of i to all items the user u has interacted with in the past. In <ref type="bibr" target="#b16">[17]</ref>, the authors proposed a method named SLIM (short for Sparse Linear Method), which learned item similarities by optimizing a recommendation-aware objective function. SLIM minimized the loss between the original user-item interaction matrix and the reconstructed one from the item-based CF model. FISM <ref type="bibr" target="#b12">[13]</ref> was one of the most widely used collaborative filtering method, which achieved the state-of-the-art performance among the item-based methods. In its standard setting, the prediction of a user u to an item i is calculated by the inner product of the historical items and the target item. <ref type="bibr" target="#b23">[24]</ref> proposed an attention-based transaction embedding (ATEM) model. It was a shallow wide-in-wide-out neural network, which learned an attentive context embedding that is expected to be most relevant to the next choice over all the observed items in a transaction. <ref type="bibr" target="#b7">[8]</ref> leveraged historical items as attention source to calculate the relationship between the historical items and new-coming item. <ref type="bibr" target="#b28">[29]</ref> proposed an integrated network to combine non-linear transformation with latent factors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Deep Learning for Recommender Systems</head><p>These traditional MF methods for recommender systems are based on the assumption that the user interests and movie attributes are near static, which is however not consistent with reality. <ref type="bibr" target="#b13">[14]</ref> discussed the effect of temporal dynamics in recommender systems and proposed a temporal extension of the SVD++ (called TimeSVD++) to explicitly model the temporal bias in data. However, the features used in TimeSVD++ were hand-crafted and computationally expensive to obtain. Recently, there have been increasing interests in employing recurrent neural network to model temporal dynamic in recommender systems. For example, <ref type="bibr" target="#b10">[11]</ref> applied recurrent neural network (i.e. GRU) to session-based recommender systems. This work treated the first item a user clicked as the initial input of GRU. Each follow-up click of the user would then trigger a recommendation depending on all of the previous clicks. <ref type="bibr" target="#b25">[26]</ref> proposed a recurrent neural network to perform the time heterogeneous feedback recommendation. <ref type="bibr" target="#b26">[27]</ref> used LSTM autoregressive model for the user and movie dynamics and employed matrix factorization to model the stationary components that encode fixed properties.</p><p>To address the cold start problem in recommendation, <ref type="bibr" target="#b5">[6]</ref> presented a visual and textural recurrent neural network (VT-RNN), which simultaneously learned the sequential latent vectors of users' interest and captured the content-based representations that contributed to address the cold-start issues.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Attention Network For Recommendation</head><p>Attention mechanisms have recently become an essential part in deep neural networks, which equip a deep neural network with the ability to focus on a subset of its inputs (or features). Self-Attention Network <ref type="bibr" target="#b21">[22]</ref> is a special case of the attention mechanism, which uses a token embedding from the source input itself as the attention source to calculate the distributed representation of the input sequence. It relates elements at different positions from a single input sequence by computing the attention between each pair of tokens. Expressive performance have been achieved by self-attention mechanism for modeling both long-range and local dependencies of the input sequence. Recently, remarkable success has been achieved by self-attention in a variety of tasks, such as reading comprehension <ref type="bibr" target="#b11">[12]</ref> and neural machine translation <ref type="bibr" target="#b21">[22]</ref>. ATRank <ref type="bibr" target="#b30">[31]</ref> can model with heterogeneous user behaviors using only the attention model. Behaviors interactions are captured using self-attention in multiple semantic spaces. User preferences often evolve over time, thus modeling their temporal dynamics is essential for recommendation. <ref type="bibr" target="#b17">[18]</ref> proposed the Interacting Attention-gated Recurrent Network (IARN) <ref type="bibr" target="#b17">[18]</ref> to accommodate temporal context for better recommendation. IARN can not only accurately measure the relevance of individual time steps of user and item history for recommendation, but also capture the dependencies between user and item dynamics in shaping user-item interactions</p><p>The studies most similar to ours are proposed in <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b27">28,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b6">7]</ref>. <ref type="bibr" target="#b27">[28]</ref> proposed a novel two-layer hierarchical attention network (SHAN) to recommend the next item the user might be interested in. Specifically, the first attention layer learns user long-term preferences based on the representations of historical purchased items, and the second layer outputs final user representation through coupling user long-term and short-term preferences. <ref type="bibr" target="#b30">[31]</ref> proposed an attention based user behavior modeling framework (ATRank). Heterogeneous user behaviors are considered in the model that project all types of behaviors into multiple latent semantic spaces, where influence can be made among the behaviors via self-attention. <ref type="bibr" target="#b6">[7]</ref> employed an item-side interactive neural attention network (NAIS), which assigned different weights on historical items. Our model differs from NAIS in several aspects. First, we employ a self-attention mechanism to learn the representations of users, instead of calculating the attention scores with respect to specific items, as in <ref type="bibr" target="#b6">[7]</ref>. Second, in practice, we can recommend items based on the pre-computed representations of users in real-time, while <ref type="bibr" target="#b6">[7]</ref> needs to calculate attention weights every time. In addition, NAIRS can provide user profiles that play a crucial role in broad applications. More importantly, this demonstration paper provides the live demonstration and prototype of the interpretable recommendation system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Core Algorithm</head><p>We denote a user-item interaction matrix as R ∈ R M ×N , where M and N are the number of users and items, respectively. We use R = {(i, j)|R ij = 1} to denote the set of user-item pairs and use R + u to denote the set of items that user u has interacted with. As described in <ref type="bibr" target="#b12">[13]</ref>, each item has two embedding vectors p and q to distinguish its role of history item and prediction target. The FISM <ref type="bibr" target="#b12">[13]</ref> is one of the most widely used collaborative filtering method, which achieves the state-of-the-art performance among the item-based methods. In its standard setting, the prediction of a user u to an item i can be calculated as below:</p><formula xml:id="formula_0">rui = b u + b i + ( 1 |R + u | α j∈R + u p T j ) • q i ,<label>(1)</label></formula><p>where b u and b i denote the user and item biases, respectively. Despite the effectiveness of FISM, we argue that its performance is hindered by assigning equal weight to each interacted item. To address this limitation, we propose a neural attentive network to assign different weights to the items according to their intent importance. Mathematically, the prediction of user u to item i can be calculated as</p><formula xml:id="formula_1">rui = b u + b i + ( j∈R + u α uj p T j ) • q i ,<label>(2)</label></formula><p>where α uj is the attention weight of item j in contributing to user u's representation. Specifically, we exploit self-attention to learn the representation of user u, each of the historical items learns to align to each other. The weight α uj of each historical item j is computed by</p><formula xml:id="formula_2">α uj = exp(e(p j )) [ k∈R + u exp(e(p k ))] β ,<label>(3)</label></formula><formula xml:id="formula_3">e(p j ) = V T g(W • p j + b)<label>(4)</label></formula><p>where e(p j ) is an alignment model which scores the contribution of item j to the representation of user u. To form a proper probability distribution over the items, we normalize the scores across the items using softmax function and get attention score α uj . β is a smoothing hyper parameter that will be discussed later in this section. V and W are the weight matrices, and g(•) is the activation function.</p><p>In practice, the standard attention network fails to learn from users' historical data and perform accurate recommendation. By analyzing the attention weights outputted by the model, we reveal that the performance of the model is largely hindered by the softmax function, due to the large variances on the lengths of user histories. The attention weights of the items from long history list are largely decreased. To address this problem, we introduce a new symbol β to smooth the denominator of the original attention formula 4 . β can be set in a range of [0, 1]. If β = 1, then Eq. ( <ref type="formula" target="#formula_2">3</ref>) degenerates into the original softmax. One typically chooses the value of β between zero and one. This smooth setting leads to much better performance than standard softmax function.</p><p>Following the strategy in the previous work <ref type="bibr" target="#b8">[9]</ref>, we treat the observations as positive instances and randomly sample the unobserved items as negative instances. Cross entropy is adopted as the objective function, which minimizes the regularized log loss:</p><formula xml:id="formula_4">L = − 1 N   (u,i)∈R + u r ui log σ(r ui ) + (u,i)∈R − u (1 − r ui ) log(1 − σ(r ui ))   + λ θ 2</formula><p>(5) where N denotes the number of the training instances, θ denotes the parameters of the model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">System Architecture</head><p>The proposed NAIRS, overviewed in Figure <ref type="figure" target="#fig_0">1</ref>, consists of five main modules. <ref type="bibr" target="#b0">(1)</ref> The Data crawler module collects user interactive information from various websites such as Amazon, Jindong, and IMDB. (2) The Recommendation module produces recommendation results and interpretable partial scores of user-item pairs. (3) The Interpretation module visualizes the interpretable reasons of the recommendation by scoring user's historical list. (4) The Retrieval module enables the users to i) find people with similar preferences (with historical lists) and ii) explore the items that are similar to a user-specified item. This module effectively assists the users in finding more items in which they may be interested. <ref type="bibr" target="#b4">(5)</ref> The Logging module collects user behaviors from the system, such as chosen items. The logging information is utilized to further improve the recommender system. In the rest of this section, we elaborate each module of the above.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Data Crawler Module</head><p>The data crawler collects three types of user-item interactive data: (i) movie rating data from IMDB 5 ; (2) books rating data from Amazon 6 ; and (3) daily goods rating data from Jingdong 7 . For movie rating data, users are selected at random for inclusion. All selected users have rated at least one movie. For book rating data, we focus on the top 1000 popular books. We also collect six categories of daily goods including clothes, shoes, cosmetics, foods, toys, and smart phones. In this work, all user-sensitive information is removed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Recommendation Module</head><p>We implement the interpretable recommendation algorithm introduced in Section 2 to perform top-n item recommendation. Our recommendation model is implemented with the TensorFlow 8 library and trained on a NVIDIA Titan Xp GPU. After training, we can obtain the user and item representations for each user and item, which are then used to predict the rating scores and assign weights to items in user's historical list for interpretation. In addition, we can obtain the similar users and similar items results easily with the learned user and item representations. The results learned by Recommendation module can be directly used by the Interpretation module and the Retrieval module.</p><p>Note that during the bootstrap process NAIRS provides users a navigation page in which the users can choose the items that they are interested in. This process can alleviate the cold start problem in recommendation to some extent, especially for new users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Interpretation Module</head><p>Given a user u, the historical items R u , and a recommended item q i , the Interpretation module provides the top-n recommendation results and interprets the reasons of the recommendation by visualizing the attention scores of user u's historical list R u . In particular, we support the users to add interested movies into their profile list or delete the movies they do not like. NAIRS then demonstrates the recommendation results (on the right of the interface) and interprets the reason of each recommendation with a tag cloud (in the center of the interface), as shown in Figure <ref type="figure" target="#fig_1">2</ref>. The importance of each item in the user's historical list is shown with various font sizes. The larger the item names, the more important the items in contributing to the recommendation. For example, the movie Men in Black is recommended based on Nikata in the user's historical list which has the highest attention score. We show that these two movies both belong to the action movie category. On the other hand, the movie Escape from New York contributes little to recommend movie In the Army Now since they belong to different categories.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Retrieval Module</head><p>Similar Users The Similar Users module can assist end users to find users who have similar interests. This module plays an important role in helping the users who might not know exactly what they are looking for to discover potentially interesting items based on the observation that people who agree in the past are likely to agree again. In order to overcome the insensitive of average value, we calculate the similarity between users with adjusted cosine similarity as follows:</p><formula xml:id="formula_5">sim(u, u ) = 1 + k (u k − ū)•(u k − ūk ) (u k − ū) 2 (u k − ū ) 2 ,<label>(6)</label></formula><p>where ū and ū are the average values over the user's embedding dimensions. Note that we map the value space of the similarity from [-1, 1] to [0, 2] to provide positive similarity scores for better visualization. As shown in Figure <ref type="figure" target="#fig_1">2</ref>, we visualize the similar users with their historical lists. In addition, we provide the "like" and "dislike" buttons for users to select/filter the displayed items. These feedback information can be used to update our Recommendation module.</p><p>In NAIRS, the calculated similarities are cached after updating the model to speed up the results retrieval process.</p><p>Similar Items Intuitively, a user is likely to have similar level of interest for similar items. The Similar items module finds items similar to the items liked or chosen by the user. In particular, we provide the end user with a search window for searching any items in the system. Then the items whose similarities are above a threshold are returned as the search results. The similarity between items is calculated as follows:</p><formula xml:id="formula_6">sim(i, i ) = 1 + k (i k − ī)•(i k − īk ) (i k − ī) 2 (i k − ī ) 2 . (<label>7</label></formula><formula xml:id="formula_7">)</formula><p>Similar to the Similar Users component, the similarities between items are cached in the system. When the end user requests similar items, we can obtain the results in O(1) time.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">DEMOSTRATION</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Demonstration Setup</head><p>The NAIRS prototype has client and server ends. Clients can access the system by web, mainly for rendering recommendation, interpretation, search, and query results. The server is deployed on Apache Tomcat, which performs the recommendation algorithm and communicates with clients.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Walkthrough Example</head><p>The NAIRS demo consists of the following steps:</p><p>Step 1: The user can access to the system by web either on PCs or smart phones. After logging onto the system, the user can select a kind of recommendation service from three categories: movies, books, and daily goods.</p><p>Step 2: If the user is new to the system, a collection of randomly chosen items are presented, and the user is asked to choose some items in which the user is interested. After submitting the chosen items, the system offers the top-10 recommendation lists based the chosen items. Furthermore, the system shows tag cloud of the user profile, which reveals why the system recommends the specific items to the user. The user can click any item in the recommendation list, and the user profile tag cloud change accordingly.</p><p>Step 3: The user can query other users that have similar interests by clicking the "similar users" button. Then the similar users with their historical lists are returned to the user, and the user can choose to follow them and find the potentially interesting items via this function.</p><p>Step 4: The user can also search the items similar to the item inputed by the user. If our system has items for which the user search, similar items are returned; otherwise, a warning message is shown. Note that to enhance user experience, we implement an Auto-suggestion query box.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Quantitative Evaluation</head><p>In this section, we evaluate the performance of NAIRS quantitatively, then we investigate the interpretation of the proposed system. We conduct experiments on two widely used datasets: Movielens-1M and Pinterest, as the ones used in the study <ref type="bibr" target="#b8">[9]</ref>. The results are judged with hit ratio(HR) and Normalized Discounted Cumulative Gain(NDCG), which have been widely used in top-n recommendation <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b8">9]</ref>. NAIR is compared with several baseline methods including MF-BPR <ref type="bibr" target="#b18">[19]</ref>, MF-eALS <ref type="bibr" target="#b9">[10]</ref>, FISM <ref type="bibr" target="#b12">[13]</ref>, and MLP <ref type="bibr" target="#b8">[9]</ref>.</p><p>The experimental results are shown in Figure <ref type="figure" target="#fig_3">3</ref>. We observe that our method outperforms other competitive methods for both of the datasets, which shows the effectiveness of the proposed approach on top-n recommendation used in the demonstration.  </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 .</head><label>1</label><figDesc>Fig. 1. Architecture overview of NAIRS.</figDesc><graphic coords="4,255.17,507.01,103.97,123.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 .</head><label>2</label><figDesc>Fig. 2. The Neural Attentive Interpretable Recommendation System. The top part shows the Interpretable Recommendation module, the bottom part shows the Retrieval Module. The user's historical interacted movies are displayed in the tag cloud. When the user clicks a movie in the recommendation list, the related movies in the tag cloud will become bigger. The user can either search similar items in the query box or click the movie's name in the tag cloud. The user can also click the link bellow the user logo to explore the users who have similar interests to her/him.</figDesc><graphic coords="7,276.57,215.30,111.40,72.46" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3 .</head><label>3</label><figDesc>Fig. 3. Performance comparison.</figDesc></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">This smoothing method is similar to that in<ref type="bibr" target="#b6">[7]</ref>. However, we did this work independently and this work (which was initially submitted to SIGIR-18) was done before the publication of<ref type="bibr" target="#b6">[7]</ref>.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">https://www.imdb.com 6 https://www.amazon.com 7 https://www.jd.com</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="8">https://www.tensorflow.org/</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Neural machine translation by jointly learning to align and translate</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bahdanau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Cho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Bengio</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>ICLR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Aspect based recommendations: Recommending items with the most valuable aspects based on user reviews</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Bauman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tuzhilin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of SIGKDD</title>
+				<meeting>SIGKDD</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Recommender systems survey. Knowledge-based systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bobadilla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ortega</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hernando</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gutierrez</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="page" from="109" to="132" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Product recommendations enhanced with reviews</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chelliah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sarkar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of RecSys</title>
+				<meeting>RecSys</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Explaining recommendations based on feature sentiments in product reviews</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of IUI</title>
+				<meeting>IUI</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">A visual and textual recurrent neural network for sequential prediction</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1611.06668</idno>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Nais:neural attentive item similarity model for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhenguang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yu-Gang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TKDE</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Nais: Neural attentive item similarity model for recommendation</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">G</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Chua</surname></persName>
+		</author>
+		<title level="m">Neural collaborative filtering</title>
+				<imprint>
+			<publisher>WWW</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Fast matrix factorization for online recommendation with implicit feedback</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="549" to="558" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">Session-based recommendations with recurrent neural networks</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hidasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Karatzoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Baltrunas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tikk</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>ICLR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Reinforced mnemonic reader for machine comprehension</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Qiu</surname></persName>
+		</author>
+		<idno>abs/1705.02798</idno>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>CoRR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Fism: factored item similarity models for top-n recommender systems</title>
+		<author>
+			<persName><surname>Kabbur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="659" to="667" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering with temporal dynamics</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Communications of the ACM</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="89" to="97" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Recommender system application developments: a survey</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="page" from="12" to="32" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">SLIM: sparse linear methods for top-n recommender systems</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of ICDM</title>
+				<meeting>ICDM</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Slim: Sparse linear methods for top-n recommender systems</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ICDM</title>
+		<imprint>
+			<biblScope unit="page" from="497" to="506" />
+			<date type="published" when="2011">2011</date>
+			<publisher>IEEE</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Interacting attentiongated recurrent networks for recommendation</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Pei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bozzon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Tax</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CIKM</title>
+		<imprint>
+			<biblScope unit="page" from="1459" to="1468" />
+			<date type="published" when="2017">2017</date>
+			<publisher>ACM</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Bpr: Bayesian personalized ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<publisher>AUAI Press</publisher>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+			<publisher>ACM</publisher>
+			<biblScope unit="page" from="285" to="295" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Item-based collaborative filtering recommendation algorithms</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">M</forename><surname>Sarwar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Karypis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of WWW</title>
+				<meeting>WWW</meeting>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Attention is all you need</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vaswani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Shazeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Parmar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Uszkoreit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Gomez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Polosukhin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NIPS</title>
+		<imprint>
+			<biblScope unit="page" from="6000" to="6010" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Irgan: A minimax game for unifying generative and discriminative information retrieval models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of SIGIR</title>
+				<meeting>SIGIR</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Attention-based transactional context embedding for next-item recommendation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>AAAI</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Dynamic attention deep model for article recommendation by learning human editors&apos; demonstration</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Tao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of SIGKDD</title>
+				<meeting>SIGKDD</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Recurrent neural network based recommendation for time heterogeneous feedback</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge-Based Systems</title>
+		<imprint>
+			<biblScope unit="volume">109</biblScope>
+			<biblScope unit="page" from="90" to="103" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Recurrent recommender networks</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Beutel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Smola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Jing</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>ACM</publisher>
+			<biblScope unit="page" from="495" to="503" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Sequential recommender system based on hierarchical attention networks</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Neurec: On nonlinear transformation for personalized ranking</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Dong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<biblScope unit="page" from="3669" to="3675" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>ACM SIGIR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Atrank: An attention-based user behavior modeling framework for recommendation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gao</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>AAAI</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

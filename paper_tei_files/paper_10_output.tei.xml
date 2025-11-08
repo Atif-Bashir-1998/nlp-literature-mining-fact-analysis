@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">The Dark Side of Explanations: Poisoning Recommender Systems with Counterfactual Examples</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Ziheng</forename><surname>Chen</surname></persName>
+							<email>ziheng.chen@stonybrook.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+							<email>fsilvestri@diag.uniroma1.it</email>
+						</author>
+						<author>
+							<persName><forename type="first">Jia</forename><surname>Wang</surname></persName>
+							<email>jia.wang02@xjtlu.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+							<email>yongfeng.zhang@rutgers.edu</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Stony Brook University</orgName>
+								<address>
+									<region>NY</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department">Jia Wang</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Xi &apos;</orgName>
+								<address>
+									<settlement>Yongfeng Zhang</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">The Dark Side of Explanations: Poisoning Recommender Systems with Counterfactual Examples</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">B91F43EBF687A4027BA7948944A136C7</idno>
+					<idno type="DOI">10.1145/3539618.3592070</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:51+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Explainable recommender systems</term>
+					<term>Counterfactual explanations</term>
+					<term>Model poisoning attacks</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Deep learning-based recommender systems have become an integral part of several online platforms. However, their black-box nature emphasizes the need for explainable artificial intelligence (XAI) approaches to provide human-understandable reasons why a specific item gets recommended to a given user. One such method is counterfactual explanation (CF). While CFs can be highly beneficial for users and system designers, malicious actors may also exploit these explanations to undermine the system's security. In this work, we propose H-CARS, a novel strategy to poison recommender systems via CFs. Specifically, we first train a logicalreasoning-based surrogate model on training data derived from counterfactual explanations. By reversing the learning process of the recommendation model, we thus develop a proficient greedy algorithm to generate fabricated user profiles and their associated interaction records for the aforementioned surrogate model. Our experiments, which employ a well-known CF generation method and are conducted on two distinct datasets, show that H-CARS yields significant and successful attack performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>CCS CONCEPTS</head><p>• Information systems → Recommender systems; • Computing methodologies → Neural networks.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>The past few decades have witnessed the tremendous success of deep learning (DL) techniques in personalized recommender systems. Indeed, DL-based recommender systems overcome the obstacles of conventional models and achieve state-of-the-art performance <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b26">27]</ref>. Despite that, they suffer from a lack of transparency and explainability. This issue may limit their deployment, especially in some critical domains, considering the increasing demand for explainable artificial intelligence (XAI) worldwide <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b24">25]</ref>.</p><p>Recently, counterfactual explanation (CF) has emerged as a key tool to attach motivation behind items recommended to users. Concretely, CFs generate a minimal set of meaningful interactions, without which the recommended items will not end up in the list of suggestions for specific users. While much prior research shows how counterfactual explanations can enhance recommender systems' transparency, few studies investigate their potential security and privacy threats. Instead, several studies have shown possible hazards of CFs for the classification task <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b4">5,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b31">32]</ref>. For example, Aïvodji et al. <ref type="bibr" target="#b0">[1]</ref> demonstrate that a high-fidelity model could be extracted by detecting the information of decision boundaries embedded in CFs. This finding inspired DualCF <ref type="bibr" target="#b27">[28]</ref>, which leverages CFs and their counterfactual explanations to overcome decision boundary shift issues. Additionally, Pawelczyk et al. <ref type="bibr" target="#b20">[21]</ref> conduct the membership inference attacks by using the distance between the data instances and their corresponding CFs.</p><p>This work investigates possible risks induced by CFs for the recommendation task. Specifically, we demonstrate how an adversary can use CFs to conduct poisoning attacks on black-box recommender systems. Technically, we first train a logical reasoning model as a surrogate by exploiting CFs. Then, a limited number of controlled users with fake crafted interactions are designed by matching the optimal representation of a target recommended item via an optimization framework. We refer to our attack strategy as H-CARS (Horn-Clause Attacks to Recommender Systems).</p><p>Overall, the main contributions of our work are as follows:</p><p>• We unveil security issues of applying counterfactual explanations in recommender systems and provide the first study of poisoning attacks for recommendation via CFs. proposed to highlight the necessary items while mitigating spurious correlations. • We propose a novel poisoning attack for neural logical-based recommender systems. Specifically, inspired by <ref type="bibr" target="#b29">[30]</ref>, we reverse the traditional attacking optimization procedure where, instead of re-training the recommendation model, we start from computing the optimal item embeddings, which we leverage to find the fake user-item interactions. • We conduct experiments on two real datasets to analyze the attacking performance.</p><p>The remainder of this paper is organized as follows. We provide background and preliminaries in Section 2. In Section 3, we present the attack model and describe our proposed method H-CARS, in Section 4. We validate H-CARS in Section 5. Finally, we conclude our work in Section 6.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">BACKGROUND AND PRELIMINARIES</head><p>We consider the standard collaborative filtering recommendation task. Let U = {𝑢 1 , . . . , 𝑢 𝑚 } be a set of 𝑚 users, and I = {𝑖 1 , . . . , 𝑖 𝑛 } be a set of 𝑛 items. We represent the factual interactions between users and items with a binary user-item matrix Y ∈ {0, 1} 𝑚×𝑛 , where 𝑌 𝑢,𝑖 = 𝑦 𝑢,𝑖 = 1 indicates that user 𝑢 has interacted with item 𝑖, or 0 otherwise. Specifically, we denote the interaction history of a user 𝑢 as</p><formula xml:id="formula_0">I 𝑢 = {𝑖 ∈ I | 𝑦 𝑢,𝑖 = 1}.</formula><p>We assume there exists a recommendation model 𝑓 that can estimate the value ŷ𝑢,𝑖 for each 𝑢 ∈ U and each 𝑖 ∈ I, such that 𝑖 ∉ I 𝑢 , as ŷ𝑢,𝑖 = 𝑓 (𝒉 𝑢 , 𝒉 𝑖 ), where 𝒉 𝑢 , 𝒉 𝑖 ∈ R 𝑑 are suitable user and item representations, respectively, and 𝑓 : R 𝑑 × R 𝑑 ↦ → [0, 1] is a function that measures the preference score for user 𝑢 on item 𝑖. 1  The score computed with 𝑓 is used to rank items to populate a list Î𝑘 𝑢 ⊆ I \ I 𝑢 of the top-𝑘 recommended items for user 𝑢, i.e., the list of 𝑘 unrated items most likely relevant to user 𝑢 according to 𝑓 .</p><p>Thus, given a target item 𝑡 recommended to a user 𝑢 by 𝑓 (i.e., 𝑡 ∈ Î𝑘 𝑢 ), its counterfactual explanations are the minimal subset of 𝑢's historical item interactions I 𝑢 whose removal results in evicting 𝑡 from the top-𝑘 list of recommendations Î𝑘 𝑢 , namely I 𝐶𝐹 𝑢,𝑡 ⊂ I 𝑢 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ATTACK MODEL</head><p>Our strategy involves poisoning attacks that aim to promote target items to legitimate users by manipulating interactions of controlled users. Formally, let T ⊆ I denote the set of target items, U and U ′ denote the set of legitimate users and users controlled by the attacker, respectively. Accordingly, Y and Y ′ denote the factual and fake interactions. In practice, online recommender systems limit access to the full user-item interaction data. Our attack model assumes that the factual interaction matrix Y can only be partially observed.</p><p>Recommender systems are also typically considered "black-boxes, " with the model's internals being inaccessible to attackers. However, recommender systems often have a public API that can be queried to generate a top-𝑘 list of suggestions for a user 𝑢, which an attacker can use. Additionally, an explanation API for the recommendation model can be exploited to produce CFs for any user and target item pair (𝑢, 𝑡).</p><p>1 A similar reasoning would apply if we instead considered explicit ratings, i.e., 𝑓 :  To quantify the power of the attack <ref type="bibr" target="#b5">[6]</ref>, we define its success rate 𝐻𝑅(𝑡) -the hit ratio of item 𝑡 ∈ T -as the probability that 𝑡 appears in the top-𝑘 list of recommended items for an actual user, i.e., P({𝑡 ∈ Î𝑘 𝑢 | 𝑢 ∈ U}). The attacker aims to create fake interactions Y ′ for U ′ , with the objective of maximizing the hit ratio of the target items. To formalize this problem, we follow prior work <ref type="bibr" target="#b29">[30]</ref>[8] <ref type="bibr" target="#b16">[17]</ref> and present a bi-level optimization formulation:</p><formula xml:id="formula_1">R 𝑑 × R 𝑑 ↦ → R.</formula><formula xml:id="formula_2">max ∑︁ 𝑡 ∈T 𝐻𝑅(𝑡) subject to: 𝜽 * = arg min 𝜽 L 𝑡𝑟𝑎𝑖𝑛 (Y, Ŷ𝜽 ) + L 𝑡𝑟𝑎𝑖𝑛 (Y ′ , Ŷ′ 𝜽 ) ,<label>(1)</label></formula><p>where 𝜽 denotes the model parameters, and </p><formula xml:id="formula_3">L</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">PROPOSED METHOD: H-CARS</head><p>This section describes H-CARS (Horn-Clause Attacks to Recommender Systems), our poisoning method for recommender systems, via counterfactual explanations, depicted in Fig. <ref type="figure" target="#fig_1">1</ref>. The attacker generally cannot access the target model's internals, so it cannot optimize (1) directly. A common practice in black-box scenarios is first training a surrogate model f ≈ 𝑓 to generate fake user-item interactions that can be used to poison the target system 𝑓 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Extracting Logical Reasoning Models with Counterfactual Explanations</head><p>To build a surrogate model that effectively utilizes the API of CF reasoning, it is crucial to capture the inherent logic of the targeted black-box recommender system. To this end, we adopt the Neural Collaborative Reasoning (NCR) framework as the surrogate recommendation model in this study. NCR encapsulates logical reasoning into a dynamic neural architecture in Horn clause form (hence the name of our method). More specifically, NCR encodes a user-item interaction (𝑢, 𝑗) into an event vector:</p><formula xml:id="formula_4">𝒆 𝑢,𝑗 = 𝑾 2 𝜙 (𝑾 1 (𝑢, 𝑗) + 𝑏 1 ) + 𝑏 2 ,<label>(2)</label></formula><p>where 𝑗 ∈ I 𝑢 and, with a slight abuse of notation, we refer to 𝑢 and 𝑗 as their corresponding embedding vectors (𝒉 𝑢 and 𝒉 𝑗 , respectively). Moreover, 𝑾 1 , 𝑾 2 , 𝑏 1 and 𝑏 2 are event parameters that need to be learned, whereas 𝜙 is the well-known ReLU activation function.</p><p>To transform the user-item interactions into a logical expression, basic neural logical modules, AND(∧), OR(∨), NOT(¬), are introduced. Ideally, predicting if an item 𝑥 is to be recommended to user 𝑢 based on the interaction history is equal to deciding whether the following Horn clause is true or false:</p><formula xml:id="formula_5">𝒆 𝑢,1 ∧ 𝒆 𝑢,2 ∧ • • • ∧ 𝒆 𝑢,𝑗 ⇒ 𝒆 𝑢,𝑥 ,<label>(3)</label></formula><p>where 𝑖 ∈ I 𝑢 ∀𝑖 ∈ {1, 2, . . . , 𝑗 }. Based on the definition of material implication, the above statement is equivalent to the following logic expression vector:</p><formula xml:id="formula_6">𝒄 + 𝑢,𝑥 = (¬𝒆 𝑢,1 ∨ ¬𝒆 𝑢,2 ∨ • • • ∨ ¬𝒆 𝑢,𝑗 ) ∨ 𝒆 𝑢,𝑥 .<label>(4)</label></formula><p>The recommendation score of 𝑥 is calculated based on the similarity between the logic expression vector 𝒄 + 𝑢,𝑥 and the constant true vector denoted by 1. We adopt the pair-wise learning algorithm for the factual interaction for model training. Specifically, we construct negative expression:</p><formula xml:id="formula_7">𝒄 − 𝑢,𝑧 = (¬𝒆 𝑢,1 ∨ ¬𝒆 𝑢,2 ∨ • • • ∨ ¬𝒆 𝑢,𝑗 ) ∨ 𝒆 𝑢,𝑧 ,<label>(5)</label></formula><p>by sampling an item 𝑧 ∈ I \ I 𝑢 that 𝑢 did not interact with. Then, we opt for the Bayesian Personalized Ranking (BPR) loss:</p><formula xml:id="formula_8">L 𝑓 𝑎 = − ∑︁ 𝑢 ∈U ∑︁ 𝑥 ∈I + 𝑢 ∑︁ 𝑧 ∈I − 𝑢 log(𝑠𝑖𝑚(𝒄 + 𝑢,𝑥 , 1) − 𝑠𝑖𝑚(𝒄 − 𝑢,𝑧 , 1)),<label>(6)</label></formula><p>where I + 𝑢 and I − 𝑢 = I \ I 𝑢 represents the positive and negative item sets for user 𝑢, respectively, and 𝑠𝑖𝑚 measures the similarity between two vectors (e.g., cosine similarity).</p><p>Since our partial factual interaction data is limited, CFs generated by the API can be used for data augmentation while alleviating spurious correlations <ref type="bibr" target="#b15">[16]</ref>[20] <ref type="bibr" target="#b10">[11]</ref>. For an item 𝑥, after subtracting I 𝐶𝐹 𝑢,𝑥 from I 𝑢 , the remaining set I 𝑢 \ I 𝐶𝐹 𝑢,𝑥 leads to a removal of item 𝑥 from the top-𝑘 list of suggestions for user 𝑢, i.e., 𝑥 ∉ Î𝑘 𝑢 anymore. Logically, the counterfactual expression below tends to be false:</p><formula xml:id="formula_9">𝒄 𝐶𝐹 𝑢,𝑥 = 𝑗 ∈I 𝑢 \I 𝐶𝐹 𝑢,𝑥 ¬𝒆 𝑢,𝑗 ∨ 𝒆 𝑢,𝑥<label>(7)</label></formula><p>For the generated counterfactual interaction, its expression vector 𝒄 𝐶𝐹 𝑢,𝑥 is expected to be very distinct from 𝒄 + 𝑢,𝑥 , to weaken the spurious correlations by contrasting the difference. Hence, the counterfactual loss could be written as:</p><formula xml:id="formula_10">L 𝑐 𝑓 = − ∑︁ 𝑢 ∈U𝑈 ∑︁ 𝑥 ∈I + 𝑢 log(𝑠𝑖𝑚(𝒄 + 𝑢,𝑥 , 𝒄 𝐶𝐹 𝑢,𝑥 )).<label>(8)</label></formula><p>We integrate all the losses together to achieve the final objective:</p><formula xml:id="formula_11">L = L 𝑓 𝑎 + 𝜆 1 L 𝑐 𝑓 + 𝜆 2 L 𝑟𝑒𝑔 ,<label>(9)</label></formula><p>where L 𝑟𝑒𝑔 is a regularization term that ensures the logical module satisfies the logical laws <ref type="bibr" target="#b1">[2]</ref>[9].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Poisoning Logical Reasoning Models</head><p>Instead of constructing Y ′ and U ′ directly by solving (1), we start from the goal and backtrack the optimization process <ref type="bibr">[31][30]</ref>. Consider a simple case where the attacker wants to promote the target item 𝑡 to a user 𝑢 with interaction history I 𝑢 . To achieve this, we want the result of the following logic chain to be true:</p><formula xml:id="formula_12">𝒄 + 𝑢,𝑡 = (¬𝒆 𝑢,1 ∨ ¬𝒆 𝑢,2 ∨ • • • ∨ ¬𝒆 𝑢,𝑗 ) ∨ 𝒆 𝑢,𝑡 .<label>(10)</label></formula><p>Since the attacker cannot modify observed interactions of legitimate users in the training set, we focus on leveraging the controlled users to manipulate the embedding of 𝑡. Formally, we first determine the optimal item embedding 𝑡 + 𝜖 by maximizing:</p><formula xml:id="formula_13">𝜀 * 𝑡 = argmax 𝜀 𝑠𝑖𝑚 (¬𝒆 𝑢,1 ∨ ¬𝒆 𝑢,2 ∨ • • • ∨ ¬𝒆 𝑢,𝑗 ) ∨ 𝒆 𝑢,𝑡 +𝜀 , 1<label>(11</label></formula><p>) Then, we transform the problem of promoting target item 𝑡 into the problem of shifting embedding 𝑡 to 𝑡 + 𝜀. In other words, we need to ensure the sum of terms involving item 𝑡 in the training loss decrease after the shifting.</p><formula xml:id="formula_14">− ∑︁ 𝑢 ∈𝑚𝑎𝑡ℎ𝑐𝑎𝑙𝑈 ∪U ′ 𝑠𝑖𝑚(𝒄 + 𝑢,𝑡 +𝜀 , 1) ≤ − ∑︁ 𝑢 ∈U∪U ′ 𝑠𝑖𝑚(𝒄 + 𝑢,𝑡 , 1). (<label>12</label></formula><formula xml:id="formula_15">)</formula><p>Here, we utilize the training loss of the surrogate to emulate the optimization process of the original recommendation model. Since the attacker can only control users in U ′ , their goal is to generate the optimal controlled user 𝑚 * ∈ U ′ and its interaction history I 𝑚 * that minimize the following loss function in each iteration,</p><formula xml:id="formula_16">𝑚 * , I 𝑚 * = argmax 𝑚,I 𝑚 𝑠𝑖𝑚(𝒄 + 𝑚,𝑡 +𝜀 , 1). (<label>13</label></formula><formula xml:id="formula_17">)</formula><p>Practically, we iteratively generate the controlled users. In each iteration, we find the optimal direction of item perturbation by jointly considering the target items 𝑡 ∈ T . Then, according to <ref type="bibr" target="#b12">(13)</ref>, the new 𝑚 * and I 𝑚 * are obtained and included into U ′ and Y.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EXPERIMENTS 5.1 Experimental Setup</head><p>Datasets. In this paper, we conduct experiments following <ref type="bibr" target="#b2">[3]</ref> and <ref type="bibr" target="#b25">[26]</ref> over two datasets: Yelp and MovieLens100K. 2 Yelp contains binary ratings from 31, 668 users on 38, 048 items, while MovieLens contains 943 users' rating scores (in the range <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b4">5]</ref>) on 1, 682 movies. According to <ref type="bibr" target="#b25">[26]</ref>, we binarize ratings in MovieLens as follows: any score greater than 4 is mapped to 1, and 0 otherwise. Target Recommendation Models. We experiment with the following target recommendation models:</p><p>• Neural Collaborative Filtering (NCF) <ref type="bibr" target="#b6">[7]</ref> replaces the useritem inner product with a neural architecture to capture the complex structure of the user interaction data. • Relational Collaborative Filtering (RCF) <ref type="bibr" target="#b28">[29]</ref> is developed to exploit multiple-item relations in recommender systems via a two-level hierarchical attention mechanism.</p><p>Counterfactual Explanation Method. We consider the following CF generation method:</p><p>• ACCENT <ref type="bibr" target="#b25">[26]</ref> generates CFs for neural recommenders by using influence functions to find items most relevant to a recommendation.</p><p>Baseline Attack Methods. We compare our H-CARS attack strategy against the following baselines:</p><p>• DL-Attack <ref type="bibr" target="#b7">[8]</ref> formulates the attack as an optimization problem such that the injected data would maximize the number of normal users to whom the target items are recommended. • RAPU-R <ref type="bibr" target="#b29">[30]</ref> starts from the attack goal and reverses the optimization process to obtain the crafted interactions.</p><p>. • Bandwagon Attack <ref type="bibr" target="#b29">[30]</ref> randomly selects popular items for crafted users who also interact with the target item.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Attack Setting</head><p>Adapting <ref type="bibr" target="#b22">[23]</ref>, we sample 5 target items as T and limit controlled user selections to 100 and 15 for MovieLens and Yelp respectively, with a learning rate of 0.001. Model extraction parameters are set: 𝜆 1 = 0.76, 𝜆 2 = 0.0001 for MovieLens; and 𝜆 1 = 0.68, 𝜆 2 = 0.00001 for Yelp. In the extraction stage, 60% interactions generate CFs per <ref type="bibr" target="#b25">[26]</ref>, also used as negative samples for DL-Attack, RAPU-R, and Bandwagon attack. Attackers' performance is assessed using Hit Ratio at 10 (𝐻𝑅@10), measuring the proportion of users with at least one T item in their top-10 recommendations <ref type="bibr" target="#b12">[13]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Analysis of Results</head><p>Our H-CARS attack consistently outperforms or performs similarly to other methods in all target recommendation model and dataset combinations, as shown in Table <ref type="table" target="#tab_1">1</ref>. For instance, using the Movie-Lens dataset, our method improves over RAPU-R and DL-Attack by 5% and 8%, respectively. Notably, our method performs well with limited training data, outperforming RAPU-R by 0.6% with only 30% of the MovieLens training data. We observe that our method achieves good performance in the scenario with a limited number of training data. In particular, with only 30% MovieLens training data, our method outperforms RAPU-R by 0.6%. Similar conclusions can be drawn for other combinations with limited data. Moreover, as the number of controlled user increases, the performance gap between RAPU-R get enlarged. For instance, compared with RAPU-R, our H-CARS attack achieves 0.1% and 0.6% performance increases on the H-CARS dataset when the percentage of controlled users rises from 0.5% to 5%. Overall, our method achieves the best performance compared to other baselines.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Ablation Study</head><p>In our study, we evaluate the performance of our model extraction method using the MovieLens dataset and NCF as the original recommender. We apply the 𝑃@10 precision metric and compare  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">CONCLUSION AND FUTURE WORK</head><p>We presented a novel approach, H-CARS, that exploits the vulnerabilities induced by counterfactual explanations to launch a poisoning attack on recommender systems. To the best of our knowledge, this is the first such attack proposed in the literature. Our experiments demonstrate that H-CARS is effective, highlighting the importance of considering the security implications of using explainability methods in recommender systems. Future research should explore the potential impact of such attacks on the integrity of the recommender system, as well as develop stronger defenses to mitigate risks in explainable recommender systems. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGMENTS</head></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Our proposed H-CARS poisoning attack framework.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>𝑡𝑟𝑎𝑖𝑛 denotes the training loss of the target recommendation model 𝑓 . Y 𝜽 and Y ′ 𝜽 are predictions from the model trained on Y ∪ Y ′ .</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>three surrogate models: H-CARS-CF, H-CARS-wo-CF, and WRMF. Results in Figure 2 indicate that H-CARS-CF surpasses the others, validating the effectiveness of L 𝑐 𝑓 -based CFs. Additionally, the performance gap between H-CARS-CF and H-CARS-wo-CF widens with increased training data, highlighting the synergy of CFs and factual data in data augmentation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: The impact of CFs on surrogate models.</figDesc><graphic coords="4,317.96,365.89,240.24,112.82" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head></head><label></label><figDesc>This work was partially supported by projects FAIR (PE0000013) and SERICS (PE00000014) under the MUR National Recovery and Resilience Plan funded by the European Union -NextGenerationEU, the XJTLU Research Development Fund under RDF-21-01-053, TDF21/22-R23-160, Ningbo 2025 Key Scientific Research Programs, Grant/Award Number: 2019B10128, S10120220021, and National Science Foundation 2127918, 2046457 and 2124155.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>𝐻𝑅@10 × 100 for different attacks with 80% training data (left) and 30% training data (right) on two datasets.</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell cols="3">Percentage of Cotrolled Users</cell><cell></cell><cell></cell><cell></cell><cell cols="3">Percentage of Cotrolled Users</cell></row><row><cell>Dataset</cell><cell>Recommendation Model</cell><cell>Attack Method</cell><cell>0.5% 1%</cell><cell>3%</cell><cell>5%</cell><cell>Dataset</cell><cell>Recommendation Model</cell><cell>Attack Method</cell><cell>0.5% 1%</cell><cell>3%</cell><cell>5%</cell></row><row><cell></cell><cell></cell><cell>DL-Attack</cell><cell cols="2">0.34 0.39 0.72</cell><cell>0.82</cell><cell></cell><cell></cell><cell>DL-Attack</cell><cell cols="2">0.12 0.14 0.21</cell><cell>0.23</cell></row><row><cell></cell><cell>NCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.32 0.38 0.79 0.37 0.42 0.82</cell><cell>0.86 0.91</cell><cell></cell><cell>NCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.10 0.14 0.23 0.13 0.18 0.29</cell><cell>0.29 0.35</cell></row><row><cell>MovieLens</cell><cell></cell><cell cols="3">Bandwagon 0.09 0.11 0.16 DL-Attack 0.25 0.29 0.63</cell><cell>0.26 0.71</cell><cell>MovieLens</cell><cell></cell><cell cols="3">Bandwagon 0.02 0.03 0.05 DL-Attack 0.06 0.09 0.17</cell><cell>0.10 0.22</cell></row><row><cell></cell><cell>RCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.23 0.28 0.66 0.24 0.29 0.68</cell><cell>0.73 0.76</cell><cell></cell><cell>RCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.04 0.08 0.17 0.06 0.11 0.20</cell><cell>0.21 0.26</cell></row><row><cell></cell><cell></cell><cell cols="3">Bandwagon 0.06 0.10 0.13</cell><cell>0.14</cell><cell></cell><cell></cell><cell cols="3">Bandwagon 0.03 0.03 0.05</cell><cell>0.08</cell></row><row><cell></cell><cell></cell><cell>DL-Attack</cell><cell cols="2">0.27 0.30 0.63</cell><cell>0.73</cell><cell></cell><cell></cell><cell>DL-Attack</cell><cell cols="2">0.05 0.06 0.09</cell><cell>0.11</cell></row><row><cell></cell><cell>NCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.25 0.31 0.65 0.26 0.33 0.66</cell><cell>0.74 0.76</cell><cell></cell><cell>NCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.05 0.05 0.09 0.06 0.08 0.12</cell><cell>0.12 0.16</cell></row><row><cell>Yelp</cell><cell></cell><cell cols="3">Bandwagon 0.05 0.08 0.16 DL-Attack 0.24 0.25 0.56</cell><cell>0.21 0.63</cell><cell>Yelp</cell><cell></cell><cell cols="3">Bandwagon 0.01 0.02 0.06 DL-Attack 0.06 0.08 0.13</cell><cell>0.08 0.15</cell></row><row><cell></cell><cell>RCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.22 0.24 0.59 0.23 0.26 0.61</cell><cell>0.63 0.66</cell><cell></cell><cell>RCF</cell><cell>RAPU-R H-CARS</cell><cell cols="2">0.06 0.09 0.13 0.07 0.10 0.15</cell><cell>0.16 0.20</cell></row><row><cell></cell><cell></cell><cell cols="3">Bandwagon 0.03 0.04 0.12</cell><cell>0.18</cell><cell></cell><cell></cell><cell cols="3">Bandwagon 0.02 0.03 0.05</cell><cell>0.10</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">Hereinafter, we refer to it simply as MovieLens. SIGIR '23, July 23-27, 2023, Taipei, Taiwan Chen et al.</note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">Ulrich</forename><surname>Aïvodji</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2009.01884</idno>
+		<title level="m">Alexandre Bolot, and Sébastien Gambs. 2020. Model Extraction from Counterfactual Explanations</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Neural Collaborative Reasoning</title>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoyun</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunqi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of TheWebConf&apos;21</title>
+				<meeting>of TheWebConf&apos;21</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1516" to="1527" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">GREASE: Generate Factual and Counterfactual Explanations for GNN-based Recommendations</title>
+		<author>
+			<persName><forename type="first">Ziheng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenhua</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongshik</forename><surname>Ahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriele</forename><surname>Tolomei</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2208.04222</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">ReLAX: Reinforcement Learning Agent Explainer for Arbitrary Predictive Models</title>
+		<author>
+			<persName><forename type="first">Ziheng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">He</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongshik</forename><surname>Ahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriele</forename><surname>Tolomei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of CIKM&apos;22</title>
+				<meeting>of CIKM&apos;22</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="252" to="261" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Inferring Sensitive Attributes from Model Explanations</title>
+		<author>
+			<persName><forename type="first">Vasisht</forename><surname>Duddu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Boutet</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of CIKM&apos;22. ACM</title>
+				<meeting>of CIKM&apos;22. ACM</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="416" to="425" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">What is the Solution for State Adversarial Multi</title>
+		<author>
+			<persName><forename type="first">Songyang</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanbao</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sihong</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haizhao</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Miao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2212.02705</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">-Agent Reinforcement Learning? arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Neural Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of WWW&apos;17</title>
+				<meeting>of WWW&apos;17</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hai</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaming</forename><surname>Mu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neil</forename><forename type="middle">Zhenqiang</forename><surname>Gong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingwei</forename><surname>Xu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2101.02644</idno>
+		<title level="m">Data Poisoning Attacks to Deep Learning Based Recommender Systems</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Towards a better understanding of linear models for recommendation</title>
+		<author>
+			<persName><forename type="first">Ruoming</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dong</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhi</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th ACM SIGKDD Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>the 27th ACM SIGKDD Conference on Knowledge Discovery &amp; Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="776" to="785" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Model-Agnostic Counterfactual Explanations for Consequential Decisions</title>
+		<author>
+			<persName><surname>Amir-Hossein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gilles</forename><surname>Karimi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Borja</forename><surname>Barthe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Isabel</forename><surname>Balle</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Valera</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of AISTATS&apos;20</title>
+				<meeting>of AISTATS&apos;20</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="895" to="905" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Learning to ignore: A case study of organization-wide bulk email effectiveness</title>
+		<author>
+			<persName><forename type="first">Ruoyan</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haiyi</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the ACM on Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="1" to="23" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">GRACE: Generating Concise and Informative Contrastive Sample to Explain Neural Network Model&apos;s Prediction</title>
+		<author>
+			<persName><forename type="first">Thai</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suhang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongwon</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD&apos;20</title>
+				<meeting>of KDD&apos;20</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="238" to="248" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">On sampling top-k recommendation evaluation</title>
+		<author>
+			<persName><forename type="first">Dong</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruoming</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhi</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</title>
+				<meeting>the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="2114" to="2124" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Tackling Mode Collapse in Multi-Generator GANs with Orthogonal Vectors</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenyu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohui</forename><surname>Cui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition</title>
+		<imprint>
+			<biblScope unit="volume">110</biblScope>
+			<biblScope unit="page">107646</biblScope>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Hausdorff GAN: Improving GAN Generation Quality With Hausdorff Metric</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixuan</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ping</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruobei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohui</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ping</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Cybernetics</title>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Mitigating Frequency Bias in Next-Basket Recommendation via Deconfounders</title>
+		<author>
+			<persName><forename type="first">Xiaohan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Luyi</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaushiki</forename><surname>Nag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stephen</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Philip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kannan</forename><surname>Achan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 IEEE International Conference on Big Data (Big Data)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="616" to="625" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Dynamic graph collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiaohan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mengqi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shu</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S Yu</forename><surname>Philip</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2020 IEEE International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="322" to="331" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">FOCUS: Flexible Optimizable Counterfactual Explanations for Tree Ensembles</title>
+		<author>
+			<persName><forename type="first">Ana</forename><surname>Lucic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Harrie</forename><surname>Oosterhuis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hinda</forename><surname>Haned</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maarten</forename><surname>De Rijke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of AAAI&apos;22</title>
+				<meeting>of AAAI&apos;22</meeting>
+		<imprint>
+			<publisher>AAAI Press</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="5313" to="5322" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Explaining Machine Learning Classifiers through Diverse Counterfactual Explanations</title>
+		<author>
+			<persName><forename type="first">Amit</forename><surname>Ramaravind Kommiya Mothilal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenhao</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Tan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of FAT*&apos;20. ACM</title>
+				<meeting>of FAT*&apos;20. ACM</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="607" to="617" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Alleviating Spurious Correlations in Knowledge-aware Recommendations through Counterfactual Generator</title>
+		<author>
+			<persName><forename type="first">Shanlei</forename><surname>Mu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yaliang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingyuan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bolin</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1401" to="1411" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Pawelczyk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Himabindu</forename><surname>Lakkaraju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Seth</forename><surname>Neel</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2211.05427</idno>
+		<title level="m">On the Privacy Risks of Algorithmic Recourse</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">NEWRON: A New Generalization of the Artificial Neuron to Enhance the Interpretability of Neural Networks</title>
+		<author>
+			<persName><forename type="first">Federico</forename><surname>Siciliano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">Sofia</forename><surname>Bucarelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gabriele</forename><surname>Tolomei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of IJCNN&apos;22. IEEE</title>
+				<meeting>of IJCNN&apos;22. IEEE</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1" to="17" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Revisiting Adversarially Learned Injection Attacks against Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Jiaxi</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongyi</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of RecSys&apos;20. ACM</title>
+				<meeting>of RecSys&apos;20. ACM</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="318" to="327" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Generating Actionable Interpretations from Ensembles of Decision Trees</title>
+		<author>
+			<persName><forename type="first">Gabriele</forename><surname>Tolomei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TKDE</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="1540" to="1553" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Interpretable Predictions of Tree-based Ensembles via Actionable Feature Tweaking</title>
+		<author>
+			<persName><forename type="first">Gabriele</forename><surname>Tolomei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabrizio</forename><surname>Silvestri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>Haines</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mounia</forename><surname>Lalmas</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD&apos;17</title>
+				<meeting>of KDD&apos;17</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="465" to="474" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Counterfactual Explanations for Neural Recommenders</title>
+		<author>
+			<persName><forename type="first">Azin</forename><surname>Khanh Hiep Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishiraj Saha</forename><surname>Ghazimatin</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR&apos;21. ACM</title>
+				<meeting>of SIGIR&apos;21. ACM</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1627" to="1631" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">CDLFM: cross-domain recommendation for cold-start users via latent feature mapping</title>
+		<author>
+			<persName><forename type="first">Xinghua</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaohui</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Senzhang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Philip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjing</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaokang</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoguang</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge and Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">62</biblScope>
+			<biblScope unit="page" from="1723" to="1750" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">DualCF: Efficient Model Extraction Attack from Counterfactual Explanations</title>
+		<author>
+			<persName><forename type="first">Yongjie</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hangwei</forename><surname>Qian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chunyan</forename><surname>Miao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of FAccT&apos;22. ACM</title>
+				<meeting>of FAccT&apos;22. ACM</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1318" to="1329" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Relational Collaborative Filtering: Modeling Multiple Item Relations for Recommendation</title>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Xin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongdong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joemon</forename><surname>Jose</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGIR&apos;19</title>
+				<meeting>of SIGIR&apos;19</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="125" to="134" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Data Poisoning Attack against Recommender System Using Incomplete and Perturbed Data</title>
+		<author>
+			<persName><forename type="first">Hengtong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Changxin</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yaliang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nan</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">Xin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Gao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of KDD&apos;21</title>
+				<meeting>of KDD&apos;21</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="2154" to="2164" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Group preference aggregation: A nash equilibrium approach</title>
+		<author>
+			<persName><forename type="first">Hongke</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruoyan</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Enhong</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 IEEE 16th International Conference on Data Mining (ICDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="679" to="688" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Exploiting Explanations for Model Inversion Attacks</title>
+		<author>
+			<persName><forename type="first">Xuejun</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wencan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaokui</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Brian</forename><surname>Lim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ICCV&apos;21. IEEE</title>
+				<meeting>of ICCV&apos;21. IEEE</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="682" to="692" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

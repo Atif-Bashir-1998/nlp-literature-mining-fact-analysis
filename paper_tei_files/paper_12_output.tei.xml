@@ -1,0 +1,2274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Interactive Explanation with Varying Level of Details in an Explainable Scientific Literature Recommender System</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2023-10-19">October 19, 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Mouadh</forename><surname>Guesmi</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Mohamed</forename><forename type="middle">Amine</forename><surname>Chatti</surname></persName>
+							<email>mohamed.chatti@uni-due.de</email>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><roleName>Qurat</roleName><forename type="first">Shoeb</forename><surname>Joarder</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ul</forename><surname>Ain</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Rawaa</forename><surname>Alatrash</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Clara</forename><surname>Siepmann</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Tannaz</forename><surname>Vahidi</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Faculty of Computer Science</orgName>
+								<orgName type="laboratory">Social Computing Group</orgName>
+								<orgName type="institution">University of Duisburg-Essen</orgName>
+								<address>
+									<settlement>Duisburg</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Interactive Explanation with Varying Level of Details in an Explainable Scientific Literature Recommender System</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2023-10-19">October 19, 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">959021B5CEC1874300BE7AFEBF82E333</idno>
+					<idno type="arXiv">arXiv:2306.05809v3[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:54+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Recommender system</term>
+					<term>Intelligent user interfaces</term>
+					<term>Explainable recommendation</term>
+					<term>Interactive explanation</term>
+					<term>Intelligibility types</term>
+					<term>Visualization</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Explainable recommender systems (RS) have traditionally followed a one-size-fits-all approach, delivering the same explanation level of detail to each user, without considering their individual needs and goals. Further, explanations in RS have so far been presented mostly in a static and non-interactive manner. To fill these research gaps, we aim in this paper to adopt a user-centered, interactive explanation model that provides explanations with different levels of detail and empowers users to interact with, control, and personalize the explanations based on their needs and preferences. We followed a user-centered approach to design interactive explanations with three levels of detail (basic, intermediate, and advanced) and implemented them in the transparent Recommendation and Interest Modeling Application (RIMA). We conducted a qualitative user study (N=14) to investigate the impact of providing interactive explanations with varying level of details on the users' perception of the explainable RS. Our study showed qualitative evidence that fostering interaction and giving users control in deciding which explanation they would like to see can meet the demands of users with different needs, preferences, and goals, and consequently can have positive effects on different crucial aspects in explainable recommendation, including transparency, trust, satisfaction, and user experience.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="25" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="26" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="27" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="28" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="29" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Research on Artificial Intelligence (AI) underscores the importance of user-friendly AI systems that foster trust, supported by factors like fairness, accountability, transparency, and ethics (FATE) <ref type="bibr" target="#b11">(Choung, David, &amp; Ross, 2023;</ref><ref type="bibr" target="#b76">Vianello, Laine, &amp; Tuomi, 2023;</ref><ref type="bibr" target="#b77">Wahde &amp; Virgolin, 2023)</ref>. Crucial to trustworthy AI is the explainability of these systems, which has ushered a remarkable growth in techniques to open the black-box of AI <ref type="bibr">(Arrieta et al., 2020;</ref><ref type="bibr">Ehsan et al., 2021)</ref>. Explainable AI (XAI) aims at making the decisions of AI systems comprehensible to affected humans <ref type="bibr" target="#b1">(Adadi &amp; Berrada, 2018;</ref><ref type="bibr">Arrieta et al., 2020)</ref>. The level of user comprehension not only influences their trust but also shapes their emotional confidence and interaction with the AI system (D. <ref type="bibr" target="#b60">Shin, 2020</ref><ref type="bibr" target="#b61">Shin, , 2021;;</ref><ref type="bibr" target="#b62">D. Shin, Kee, &amp; Shin, 2022;</ref><ref type="bibr" target="#b63">D. D. Shin, 2023)</ref>. Moreover, explanations are essential to hold AI systems accountable, and can serve as a means to ensure humans' right to understand and object AI decisions <ref type="bibr">(Ehsan et al., 2023)</ref>.</p><p>This interplay between user trust and explainability also forms a critical discourse in the Recommender Systems (RS) domain <ref type="bibr">(Siepmann &amp; Chatti, 2023)</ref>. RS are widely used to make it simpler for users to find their desired products across many platforms among the vast variety of choices available. Nowadays, explainability represents a crucial feature of RS. Users may not understand the system's behavior without explanations, especially if the system behaves unexpectedly, causing a lack of confidence among users who may then lose trust, get frustrated, and eventually abandon the system. Explainable recommendation aims at making the RS more transparent and avoiding so-called "black-box" models. Generally, an explanation seeks to answer questions, also called intelligibility queries or types, such as What, Why, How, What if, What else, and Why not in order to achieve understanding <ref type="bibr" target="#b51">(Lim &amp; Dey, 2009)</ref>.</p><p>Previous Research on explainable AI (XAI) discussed several key characteristics of good explanations. <ref type="bibr" target="#b44">Kulesza et al. (2013)</ref> showed that explanations that are sound and complete can positively affect user understandability and trust. The concept of soundness refers to the quality of providing only accurate and truthful information that increases in proportion to the extent to which these explanations accurately represent the underlying model. The concept of completeness refers to the extent to which all of the underlying system is described by the explanation, concretely, the more the explanation describes the underlying system, the more complete the explanation is. Balanced against the soundness and completeness principles is the need to remain comprehensible and to avoid overwhelming users <ref type="bibr" target="#b43">(Kulesza, Burnett, Wong, &amp; Stumpf, 2015)</ref>. These principles imply that it is important to provide explanations with enough details to allow users to build accurate mental models of how the RS operates without overwhelming them. This is in line with other research showing that different users have different needs for explanation and explanations may cause negative effects (e.g., high cognitive load, confusion, lack of trust) if they are difficult to understand <ref type="bibr" target="#b20">(Gedikli, Jannach, &amp; Ge, 2014;</ref><ref type="bibr" target="#b40">Kizilcec, 2016;</ref><ref type="bibr" target="#b80">Yang, Huang, Scholtz, &amp; Arendt, 2020;</ref><ref type="bibr" target="#b83">Zhao, Benbasat, &amp; Cavusoglu, 2019)</ref>. Further, <ref type="bibr" target="#b54">Miller (2019)</ref> stressed that selective and social characteristics of explanation need to be taken into account in order to achieve meaningful explanation. The selective and social nature of explanation implies that an explainable RS has to be interactive. Understanding who interacts with the black-box of AI is just as important as opening it, if not more <ref type="bibr">(Ehsan et al., 2022)</ref>. To address this challenge, researchers have called for adopting human-centered approaches to XAI, which is inevitable given that explainability is a human-centric property and XAI must be studied as an interaction problem <ref type="bibr" target="#b49">(Liao &amp; Varshney, 2021;</ref><ref type="bibr" target="#b63">D. D. Shin, 2023)</ref>. While many researchers recognize the necessity to provide interaction mechanisms in the context of explanations, there is still a lack of research on interactive explanation in RS. In particular, how to design and implement interactive explanation in RS, as well as its potential positive effect on e.g., transparency, trust, and satisfaction remain open questions <ref type="bibr">(Guesmi, Chatti, Vorgerd, Joarder, Zumor, et al., 2021;</ref><ref type="bibr" target="#b34">Hernandez-Bocanegra &amp; Ziegler, 2021;</ref><ref type="bibr" target="#b36">Jannach, Jugovac, &amp; Nunes, 2019;</ref><ref type="bibr" target="#b59">Schaffer, Hollerer, &amp; O'Donovan, 2015)</ref>. <ref type="bibr" target="#b49">Liao and Varshney (2021)</ref> point out that what makes an explanation good is to provide appropriate information that can be understood and utilized by the target user, which depends on the receiver's current knowledge and their goal for receiving the explanation, among other human factors. Despite the acknowledgment that the need for explanations may vary considerably between end-users, explainable RS have traditionally followed a one-size-fits-all model, whereby the same explanation level of detail is provided to each user, without taking into consideration individual user's goals and personal characteristics <ref type="bibr">(Ain, Chatti, Guesmi, &amp; Joarder, 2022;</ref><ref type="bibr" target="#b8">Chatti et al., 2022)</ref>. To address these research gaps, in this paper, we are particularly interested in how to systematically provide interactive explanation with varying level of details in an explainable RS. Our aim is to shift from a one-size-fits-all explainable recommendation approach toward a user-centered, interactive explanation model where users can steer the explanation process, change the explanation to answer intelligibility questions of interest (e.g., What, What if, Why, and How questions), and personalize the explanation based on their preferences (e.g., whether or not to see the explanation, see different levels of explanation detail, change the explanation viewpoint by focusing on the input, process, and/or output). Further, we conducted a qualitative user study (N=14) based on moderated think-aloud sessions and semi-structured interviews with students and researchers to investigate the potential effects of providing interactive explanation with varying level of details in an explainable RS. Due to the subjective nature of the required explanation levels of detail, a qualitative approach seems to be the most appropriate to investigate them. This approach allows us to investigate the users' unique perspectives and expectations from an explainable RS in-depth and ask for what information should be contained at the different explanation levels of detail.</p><p>To conduct this study, we designed explanations with three different levels of detail (basic, intermediate, advanced) and implemented them in the transparent Recommendation and Interest Modeling Application (RIMA) that provides interactive on-demand explanations of recommended scientific publications, in order to meet the needs and preferences of different users. The objective of the study was to answer the following research questions: Which and how much information should be provided at each explanation level of detail? (RQ1) Can providing interactive explanation with varying level of details positively affect the perception of the explainable RS in terms of (1) user control &amp; personalization, (2) transparency &amp; trust, (3) user satisfaction, and (4) user experience? (RQ2). The results of our study show that there is qualitative evidence that following a user-centered, interactive approach has positive effects on different vital aspects in explainable recommendation, including transparency, trust, and satisfaction.</p><p>To summarize, this work makes the following three main contributions: First, we highlight the importance of providing interactive on-demand explanations with different levels of detail and empowering users to steer the explanation process. Second, we systematically design and implement explanations with three different levels of detail in an explainable RS. Third, we provide qualitative evidence on the potential positive impact of user-controlled, interactive explanation with varying level of details on the perception of explainable recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related work</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">Explanation with different levels of detail</head><p>The explanation level of detail is an important factor in the design process of explainable RS. In this work, the level of detail refers to the amount of information exposed in an explanation. In the field of XAI in general, many researchers, e.g., <ref type="bibr" target="#b54">Miller (2019)</ref>; <ref type="bibr" target="#b55">Mohseni, Zarei, and Ragan (2018)</ref> argue that different user groups will have other goals in mind while using XAI systems. Therefore, the design choices in XAI should be driven by users' explanation needs and goals <ref type="bibr" target="#b8">(Chatti et al., 2022;</ref><ref type="bibr" target="#b12">Ehsan &amp; Riedl, 2020;</ref><ref type="bibr" target="#b49">Liao &amp; Varshney, 2021;</ref><ref type="bibr" target="#b50">Liao &amp; Vaughan, 2023;</ref><ref type="bibr" target="#b61">D. Shin, 2021)</ref>.</p><p>Besides the goals of the users, another vital aspect that will influence their understanding of explanations are their cognitive capabilities. Results of previous research on XAI showed that for specific users or user groups, the detailed explanation does not automatically result in higher trust and user satisfaction because the provision of additional explanations increases cognitive effort <ref type="bibr" target="#b40">(Kizilcec, 2016;</ref><ref type="bibr" target="#b43">Kulesza et al., 2015;</ref><ref type="bibr" target="#b80">Yang et al., 2020;</ref><ref type="bibr" target="#b83">Zhao et al., 2019)</ref>. <ref type="bibr" target="#b43">Kulesza et al. (2015)</ref> outlined a set of principles for designing explanations to personalize interactive machine learning. These principles include "Be Sound", "Be Complete" and "Don't Overwhelm" implying a trade-off between the amount of information in an explanation and the level of perceived transparency, trust, and satisfaction users develop when interacting with the AI system. Soundness means telling nothing but the truth. It refers to the explanation fidelity, i.e., "the extent to which each component of an explanation's content is truthful in describing the underlying system". Evaluating soundness requires comparing the explanation with the learning system's mathematical model, "the more these explanations reflect the underlying model, the more sound the explanation is". Completeness means telling the whole truth. It refers to "the extent to which all of the underlying system is described by the explanation". A complete explanation informs users about all the information the learning system had at its disposal and how it used that information. The authors suggest that one method for evaluating completeness is via <ref type="bibr">Lim and Dey's intelligibility types (e.g., input, model, why, what if, certainty)</ref>  <ref type="bibr" target="#b51">(Lim &amp; Dey, 2009)</ref>, with more complete explanations including more of these intelligibility types <ref type="bibr" target="#b43">(Kulesza et al., 2015)</ref>. In an earlier study, <ref type="bibr" target="#b44">Kulesza et al. (2013)</ref> concluded that there is a need to provide explanations with enough soundness and completeness in order to help users build an accurate mental model of how the system works without overwhelming them.</p><p>While the provision of explanations with varying level of details is gaining popularity in XAI research, its application in the field of explainable recommendation remains limited in the existing literature. To the best of our knowledge, only few studies have explored explanations that offer different levels of detail <ref type="bibr" target="#b8">(Chatti et al., 2022;</ref><ref type="bibr" target="#b23">Guesmi, Chatti, Sun, et al., 2021;</ref><ref type="bibr">Guesmi, Chatti, Vorgerd, Joarder, Zumor, et al., 2021;</ref><ref type="bibr">Guesmi, Chatti, Vorgerd, Joarder, Ain, et al., 2021;</ref><ref type="bibr" target="#b29">Guesmi, Chatti, Vorgerd, et al., 2022;</ref><ref type="bibr" target="#b53">Millecamp, Htun, Conati, &amp; Verbert, 2019)</ref>. For instance, <ref type="bibr" target="#b53">Millecamp et al. (2019)</ref> developed a music recommendation system that not only enables users to choose whether or not to view explanations using a "Why?" button, but also allows them to select the level of detail through a "More/Hide" button. Similarly, <ref type="bibr" target="#b8">Chatti et al. (2022)</ref> designed an explainable RS that provides on-demand personalized explanations for tweet recommendations, with three levels of detail to cater to the diverse requirements of different end-users. In another work, <ref type="bibr" target="#b29">Guesmi, Chatti, Vorgerd, et al. (2022)</ref> utilized the same system to explain black box user interest models with varying level of details, thereby facilitating transparent recommendations tailored to users' unique characteristics. While these works provided explanations at different levels of detail, the design of these explanations was not conducted in a systematic and theoretically-sound manner which represents a research gap that we aim to address in this work by building upon the principles of soundness and completeness introduced in <ref type="bibr" target="#b43">(Kulesza et al., 2015)</ref> to define three explanation levels, and following a user-centered approach to design the explanation interfaces.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Interactive explanation</head><p>User awareness and user control are key factors for successful user experience with personalization services, as evidenced by several recent studies <ref type="bibr" target="#b47">(Liang &amp; Willemsen, 2023;</ref><ref type="bibr" target="#b61">D. Shin, 2021;</ref><ref type="bibr" target="#b62">D. Shin et al., 2022;</ref><ref type="bibr" target="#b69">Sundar, 2020)</ref>. User awareness can be achieved by providing explanations about the how, why, and what an RS does, which can increase transparency and contribute to greater trust and positive user experience <ref type="bibr">(Guesmi, Chatti, et al., 2023;</ref><ref type="bibr" target="#b73">Tintarev &amp; Masthoff, 2015;</ref><ref type="bibr" target="#b75">Tsai &amp; Brusilovsky, 2021)</ref>. Further, it is important to provide agency to users by enabling them to not only see explanations but also to control them <ref type="bibr">(Guesmi, Chatti, Vorgerd, Joarder, Zumor, et al., 2021)</ref>.</p><p>Explainability is an inherently human-centric property <ref type="bibr" target="#b49">(Liao &amp; Varshney, 2021)</ref>. In a broader view, an explanation aims to make the reasons behind a decision or recommendation easy to understand by people <ref type="bibr">Arrieta et al. (2020)</ref>. Thus, work on XAI in general and explainable RS in particular must take a human-centered approach. To this end, the HCI community has called for interdisciplinary collaboration and human-centered approaches to design, evaluate, and provide conceptual and methodological tools for XAI <ref type="bibr" target="#b0">(Abdul, Vermeulen, Wang, Lim, &amp; Kankanhalli, 2018;</ref><ref type="bibr" target="#b49">Liao &amp; Varshney, 2021;</ref><ref type="bibr" target="#b79">Wang, Yang, Abdul, &amp; Lim, 2019)</ref>. This has led to a sub-field of XAI referred to as human-centered XAI (HCXAI) which goes beyond opening the black-box and towards the human factors of XAI <ref type="bibr" target="#b12">(Ehsan &amp; Riedl, 2020)</ref>. This line of research is based on common assumptions that there is more to making AI explainable than algorithmic transparency and that who opens the black-box of AI matters just as much, if not more, as the ways of opening it <ref type="bibr">(Ehsan et al., 2021</ref><ref type="bibr">(Ehsan et al., , 2022</ref><ref type="bibr">(Ehsan et al., , 2023))</ref>. <ref type="bibr" target="#b54">Miller (2019)</ref> synthesized perspectives on human explanation from philosophy, social science, and cognitive science and identified a list of humanfriendly characteristics of explanation, including that human explanations are contrastive (i.e., "sought in response to particular counterfactual cases"), selective (i.e., selected in a "biased manner" from a "sometimes infinite number of causes"), and social (i.e., conversational process, where an "explainer transfer knowledge to an explainee"). The social nature of explanation maps to an essential requirement for interactivity in XAI applications <ref type="bibr" target="#b48">(Liao, Gruen, &amp; Miller, 2020)</ref>. User interactions do not end at receiving an XAI output, but continue until an actionable understanding is achieved <ref type="bibr" target="#b49">(Liao &amp; Varshney, 2021)</ref>. With the goal of bridging the gap between XAI and HCI, research on designing and studying user interactions with XAI has emerged over the past few years <ref type="bibr" target="#b10">(Cheng et al., 2019;</ref><ref type="bibr" target="#b42">Krause, Perer, &amp; Ng, 2016;</ref><ref type="bibr" target="#b43">Kulesza et al., 2015;</ref><ref type="bibr" target="#b66">Sokol &amp; Flach, 2020)</ref>. However, little is known about how interactive explanation should be designed and implemented in RS, so that explanation goals such as scrutability, transparency, trust, and user satisfaction are met <ref type="bibr" target="#b34">(Hernandez-Bocanegra &amp; Ziegler, 2021;</ref><ref type="bibr" target="#b36">Jannach et al., 2019)</ref>. Although interactive and more recently conversational RS have been well studied <ref type="bibr" target="#b32">(Harambam, Bountouridis, Makhortykh, &amp; Van Hoboken, 2019;</ref><ref type="bibr" target="#b33">He, Parra, &amp; Verbert, 2016;</ref><ref type="bibr" target="#b37">Jannach, Manzoor, Cai, &amp; Chen, 2021;</ref><ref type="bibr" target="#b38">Jin, Tintarev, &amp; Verbert, 2018;</ref><ref type="bibr" target="#b39">Jugovac &amp; Jannach, 2017)</ref>, there has been little work on how to incorporate interactivity features in explainable RS. Both in the literature and in real-world systems, there are only a few examples of RS that provide interactive explanations, mainly to allow users to scrutinize the provided recommendations and correct the system's assumptions <ref type="bibr" target="#b5">(Balog, Radlinski, &amp; Arakelyan, 2019;</ref><ref type="bibr" target="#b23">Guesmi, Chatti, Sun, et al., 2021;</ref><ref type="bibr" target="#b24">Guesmi, Chatti, Tayyar, Ain, &amp; Joarder, 2022;</ref><ref type="bibr">Guesmi, Chatti, Vorgerd, Joarder, Ain, et al., 2021;</ref><ref type="bibr" target="#b29">Guesmi, Chatti, Vorgerd, et al., 2022;</ref><ref type="bibr" target="#b36">Jannach et al., 2019)</ref>, or have a conversation, i.e., an exchange of questions and answers between the user and the system, using GUI-navigation or natural language conversation <ref type="bibr" target="#b34">(Hernandez-Bocanegra &amp; Ziegler, 2021)</ref>. As a possible mechanism to achieve interactive explanation in RS, we focus in this work on developing explanations with different levels of detail and empowering users to steer the explanation process the way they see fit.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">RIMA application</head><p>In this work, we focus on recommending scientific publications and leveraging explanatory visualizations to provide interactive explanations with varying level of details. To conduct our study, we designed explanations with three different levels of detail <ref type="bibr">(basic, intermediate, advanced)</ref> and implemented them in the transparent Recommendation and Interest Modeling Application (RIMA), which a content-based RS that produces on-demand content-based explanations <ref type="bibr" target="#b8">(Chatti et al., 2022;</ref><ref type="bibr" target="#b23">Guesmi, Chatti, Sun, et al., 2021;</ref><ref type="bibr">Guesmi, Chatti, Vorgerd, Joarder, Zumor, et al., 2021;</ref><ref type="bibr">Guesmi, Chatti, Vorgerd, Joarder, Ain, et al., 2021;</ref><ref type="bibr" target="#b29">Guesmi, Chatti, Vorgerd, et al., 2022)</ref>. RIMA was developed with the purpose of autonomously extracting users' interests from their previous scientific publications, which are subsequently utilized to provide publication recommendations relevant to the users' areas of focus <ref type="bibr" target="#b21">(Guesmi, Chatti, Ghorbani-Bavani, et al., 2022;</ref><ref type="bibr">Guesmi, Chatti, et al., 2023;</ref><ref type="bibr" target="#b24">Guesmi, Chatti, Tayyar, et al., 2022;</ref><ref type="bibr">Guesmi, Siepmann, et al., 2023)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Interest model generation</head><p>The user interest models in RIMA are automatically inferred from users' publications. We utilized the SIFRank <ref type="bibr" target="#b68">(Sun, Qiu, Zheng, Wang, &amp; Zhang, 2020)</ref> technique, which is an embeddingbased approach for extracting keyphrases, to extract keyphrases from an author's published works. Our choice of SIFRank was motivated by its outstanding performance, as it achieved state-of-the-art results, surpassing other unsupervised keyphrase extraction methods that rely on pre-trained language models. Compared to SIFRank's performance when using popular transformer models like BERT, RoBERTa, and XLNet, the SIFRank's developers found that using ELMo for word embeddings produced better results <ref type="bibr" target="#b68">(Sun et al., 2020)</ref>. However, it's important to note that ELMo, being an LSTM-based approach, can be computationally intensive <ref type="bibr" target="#b81">(Yu &amp; Wang, 2020)</ref>. Therefore, we replaced the ELMo word embedding method for SIFRank with the pretrained transformer model SqueezeBERT <ref type="bibr" target="#b35">(Iandola, Shaw, Krishna, &amp; Keutzer, 2020)</ref>. This decision was based on its enhanced inter-layer information flow and the fact that its transformer design is lightweight, making it 4.3 times faster than the BERT model <ref type="bibr" target="#b35">(Iandola et al., 2020)</ref>.</p><p>Leveraging a knowledge base in the process of inferring interest models has the potential to resolve various semantic-related problems, such as merging synonym interests, reducing acronym interests, and eliminating noise caused by irrelevant keyphrases <ref type="bibr" target="#b9">(Chatti et al., 2021)</ref>. Consequently, this leads to the creation of more comprehensive and precise interest models. In this work, we employed DBpedia Spotlight <ref type="bibr" target="#b52">(Mendes, Jakob, García-Silva, &amp; Bizer, 2011)</ref> as an entity linking service to establish connections between keyphrases and concepts within the DBpedia knowledge base <ref type="bibr" target="#b45">(Lehmann et al., 2015)</ref>. This allowed us to create user interest models that are enriched with semantic information. Based on these inferred interest models, the recommendation engine provides scientific publication recommendations. The top five interests, determined by their weights, are initially used as input for the recommendation process.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Recommendation generation</head><p>For obtaining the candidate publications, we use the semantic scholar API to fetch publications that contain, or are related to, one or more user interests, which serve as input for the recommendation system. We then apply SingleRank <ref type="bibr" target="#b78">(Wan &amp; Xiao, 2008)</ref>, an unsupervised keyphrase extraction algorithm, on the fetched publications to extract keywords from the title and the abstract text. After that, we represent the user's interest model and the keyphrases extracted from the collected publications as embedding vectors. For this purpose, we used the sentence transformer model msmarco-distilbert-base-tas-b 1 to extract semantic representations of users models and candidate publications, enabling us to measure and capture the semantic similarity between them. We used the cosine similarity measure to obtain a semantic similarity score. The top ten similar publications will be then recommended to the user. Initially, publications exceeding a 40% semantic similarity threshold are presented to the user.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Explanation design</head><p>In this section, we present in detail the steps that we followed to systematically design the explanations with three different levels of detail in RIMA. We first present the building blocks of the explanations based on the What, What if, Why, and How intelligibility types. We then explain how we combined these intelligibility types to provide basic, intermediate, and advanced explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Intelligibility types</head><p>Being able to "represent to their users what they know, how they know it, and what they are doing about it" is what it means for an application to be deemed intelligible <ref type="bibr" target="#b6">(Bellotti &amp; Edwards, 2001)</ref>. In our work, we use Lim and Dey's popular categorization of intelligibility types <ref type="bibr" target="#b51">(Lim &amp; Dey, 2009)</ref> to systematically design explanation with varying level of details. Specifically, we are interested in What, What if, Why, and How intelligibility types, presented in Table <ref type="table">1</ref> with their addressed questions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Intelligibility types Addressed questions What</head><p>What information does the system have?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>What if</head><p>What would happen if the inputs were changed? Why</p><p>Why is this publication recommended? How How did the system generate this recommendation?</p><p>Table <ref type="table">1</ref>.: Intelligibility types.</p><p>In our earlier works, we followed a human-centered design (HCD) approach (Norman, 2013) to systematically design What and What if explanations <ref type="bibr" target="#b21">(Guesmi, Chatti, Ghorbani-Bavani, et al., 2022)</ref> as well as Why and How explanations <ref type="bibr">(Guesmi, Chatti, et al., 2023)</ref> in the same recommendation domain of scientific publications. In this work, we use these intelligibility types as building blocks of the three explanation levels (see Section 4.2). The explanatory visualizations related to the different intelligibility types are shown in Figures <ref type="figure" target="#fig_1">1,2</ref>,3 and 4. The What explanation reveals to the users what does the system know about them and what kind of information has been used as input for the RS. For this explanation, we display the user's top five interests with different colors (Figure <ref type="figure" target="#fig_1">1a</ref>). The What if explanation presents an exploratory manipulation (i.e., add, remove, change the weights) of the user's interests. It enables users to test various scenarios and check whether a publication will still be recommended or not after making the adjustments. We use colors to distinguish between the publications' recommendation statuses to immediately see the impact of the changes users performed on their interest model (Figure <ref type="figure" target="#fig_1">1b</ref>).  The Why explanation justifies why a specific item was recommended. We distinguish between two types of Why explanations. In the Why (abstract) explanation, when users get a list of publications related to their interests, a similarity score is displayed in the top right corner of each recommended publication box. Moreover, a color band on the left side of the box indicates the similarity score between the current publication and each user's interest. Furthermore, the main keywords of the recommended publication are highlighted in bold format and presented in the color of the most similar interest (Figure <ref type="figure">2a</ref>). The second type is the Why (detailed) explanation which is intended for users who seek further information on the reasons behind providing such recommendations. Through a tag cloud, bar chart, and colors, this explanation shows a more detailed justification of why a certain publication was recommended. Users can hover over each keyword of the recommended publication in the tag cloud to see its similarity to all interests in the bar chart (Figure <ref type="figure">2b</ref>).</p><p>The How explanation targets users willing to know how the underlying RS algorithm works exactly. An overview and the three main steps of the RS algorithm, namely (1) get user interests and publication keyphrases, (2) generate embeddings, and (3) compute similarity, are provided in a navigation panel on the left side of the explanation flowchart (Figure <ref type="figure" target="#fig_4">3a</ref>). By hovering over each node in the flowchart, users can get a brief textual description about it. By clicking on the "MORE" button located in the top right corner of the explanation panel, users can expand the flowchart to see more details (Figure <ref type="figure" target="#fig_4">3b</ref>). </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Explanation level of details</head><p>The amount of information that should be presented to users in an explanation is still an unsettled question. In this work, we are interested in systematically designing explanation with varying level of details with the aim of providing adequate amount of information at each level through manipulating the level of explanation soundness (i.e., nothing but the truth) and completeness (i.e., the whole truth). Similar to <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref>, we use the intelligibility types proposed by <ref type="bibr" target="#b51">(Lim &amp; Dey, 2009)</ref> to define three levels of completeness namely "Low", "Medium", and "High", with more complete explanations including more of these intelligibility types, as suggested by <ref type="bibr" target="#b43">(Kulesza et al., 2015)</ref>. The more intelligibility types employed, the more part of the algorithm will be exposed. However, low-completeness (LC) was discarded based on findings from <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref> as it was shown to be ineffective and might cause an oversimplification problem. Thus, we decided to proceed with medium-completeness (MC) which explains a significant part of the system, and high-completeness (HC) which explains the whole system. We addressed medium-completeness (MC) with the intelligibility types What, What if, and Why to cover the input and output parts of the RS. As for the high-completeness (HC), besides what we have in MC, we add the How intelligibility type to cover all the system's parts (i.e., input, process, output).</p><p>Similar to completeness, we can have three levels of soundness, namely low-soundness (LS), medium-soundness (MS) and high-soundness (HS). The higher the explanation soundness is, the more accurate the explanation is in describing the system algorithm. Low-soundness (LS) explanation could be presented through an abstract justification of why a certain publication was recommended (in our case the Why (abstract) explanation). Medium-soundness (MS) explanation should provide more information compared to the LS explanation, but still should not fully explain how the algorithm works (in our case the Why (detailed) explanation). The high-soundness (HS) explanation should thoroughly explain the inner working of the RS (in our case the How explanation).</p><p>Our goal is to provide explanation with varying level of details based on different combinations of completeness and soundness levels. For each level of completeness, we have three levels of soundness. LC will be neglected as explained above. For MC, three combinations with the three soundness levels can be formed: MCLS, MCMS, and MCHS. MCLS and MCMS will be both used as it was shown in <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref> that reducing soundness while preserving completeness will improve the perception of the explanations. MCHS, however, will be neglected for the same reason that was provided in <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref>, namely the over-complexity effect. <ref type="bibr" target="#b44">Kulesza et al. (2013)</ref> pointed out that increasing completeness alongside soundness mitigates the over-complexity effect. Consequently, for the HS level, only one combination is still possible which is HCHS. Finally, we obtained three possible combinations (i.e., MCLS, MCMS, HCHS). We considered MCLS as basic explanation, MCMS as intermediate explanation, and HCHS as advanced explanation. Table <ref type="table">2</ref> summarizes the three explanation levels, alongside the combinations of completeness and soundness and the intelligibility types used at each explanation  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">User-centered design approach</head><p>We followed a user-centered design approach to systematically design on-demand interactive explanations with varying level of details by involving end-users and consulting them for the evaluation of the explanation prototypes to ensure that their needs and requirements are taken into consideration throughout the design process. The aim of applying a user-centered design methodology was to gradually improve the design of the basic, intermediate, and advanced explanation interfaces, discussed in Section 4.2 and the appropriate arrangement of the intelligibility types, presented in Section 4.1. Next, we outline the user-centered design process of the three explanation levels and their evaluation.   </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.1.">Prototyping and testing</head><p>We used the different intelligibility types (see Figures <ref type="figure" target="#fig_1">1,2</ref>,3 and 4) as building blocks to create prototypes for the explanation interface at three different levels of detail (i.e., basic, intermediate, and advanced). For evaluating the explanation interface prototypes, five potential users were involved to test and give feedback on the provided prototypes, as recommended by <ref type="bibr" target="#b56">(Nielsen, 2000)</ref> in the case of qualitative user studies. Our target group are researchers and students who are interested in scientific literature. We recruited five participants (three females) from the local university who were master's graduates or higher and familiar with information visualization. We asked participants to think aloud when interacting with the prototypes to gain in-depth feedback regarding the layout of the explanation interfaces, the information provided at each explanation level, the placement of the different intelligibility types, the button labels, and the transition between the different explanation levels.</p><p>For the basic explanation, the three intelligibility types What, What if, and Why (abstract) are provided in the main explanation interface. For the What explanation, we generated multiple layouts to determine where users would expect to find the explanation, whether it should be visible or hidden, and if accessible via a button, what would be its label. The purpose of this explanation was to inform users about the data used by the system to provide recommendations, specifically, the top five user's interests extracted from their publications. When participants were asked to test this explanation, they suggested that it should be prominently displayed rather than hidden. Further, when we presented users with various prototypes that displayed the list of interests in different places, they preferred to have the explanation at the top of the main page 1a. The What if explanation enables users to manipulate (i.e., add, remove, change the weights) their interests, thus enabling them to explore various scenarios and monitor changes in recommended publications, which are highlighted in different colors on a bar chart (Figure <ref type="figure" target="#fig_1">1b</ref>). We asked users about their thoughts on the information provided in this explanation, its placement on the explanation interface, and how they access it. They found it useful to have their list of interests displayed within this explanation. Moreover, as this explanation would not be used frequently, they agreed on accessing it on-demand and preferred to have a button with the label "WHAT-IF?" next to the list of interests in the What explanation. The Why (abstract) explanation describes why a specific item was recommended through colors matching between the interests and the keywords in the abstract text of the recommended publication, a similarity score, and a color band showing how much the recommendation is relevant to each interest (Figure <ref type="figure">2a</ref>). When we asked users about their opinion about how to access this explanation and its placement, they preferred to have this explanation prominent on the explanation interface and shown by default. They also agreed to see this explanation underneath the What explanation to easily perceive the color matching between the main keywords of the recommended publication and the most similar interest. Finally, we asked users about their thoughts on the amount of information provided in the basic explanation consisting of the What, What if, and Why (abstract). Participants agreed that seeing the information (i.e., their generated interests) that the RS had at its disposal, and how it used that information to provide recommendations is sufficient to help them understand why certain items are recommended by the system and control the recommendation process, if needed.</p><p>The intermediate explanation extends the basic explanation with Why (detailed) intelligibil-ity type which describes why a specific item was recommended with more technical details. A word cloud will be displayed on the left side that represents keywords extracted from the publication, and a bar chart on the right side, which appears upon clicking on one of the keywords to show the similarity between the selected keyword and the user's interests. We provided two prototypes to show the Why (detailed) explanation on-demand by clicking on a "WHY THIS PAPER?" button within each recommended publication box (Figure <ref type="figure">5</ref>). Two options were provided for the placement of the Why (detailed) explanation. In the first option, the publication box will appear as an expandable/collapsible accordion to show the Why (detailed) explanation on-demand (Figure <ref type="figure">5a</ref>). The second option will display the explanation as a pop-up modal on top of the publication box (Figure <ref type="figure">5b</ref>). We asked users about their opinion regarding the transition from the basic to the intermediate explanation, the button labeling, and the placement of the Why (detailed) explanation. Users agreed to have the Why (detailed) explanation on-demand, thus allowing them to choose whether to see more details or not. They proposed changing the button label from "WHY THIS PAPER?" to "WHY?" to reduce the amount of text and have it consistent with the "WHAT-IF?" button. The majority of participants preferred the first option to display the Why (detailed) explanation as part of an expandable/collapsible accordion. This would allow them to view everything on a single page. Most participants opinioned that displaying this explanation as a pop-up modal on top of the publication box would hide important information from the What, What if, and Why (abstract) explanations.</p><p>(a) Why (detailed) explanation as part of an expandable/collapsible accordion.</p><p>(b) Why (detailed) explanation as a pop-up modal on top of the publication box.</p><p>Figure <ref type="figure">5</ref>.: Prototyping -intermediate explanation.</p><p>At the advanced explanation level, we strive to increase the level of explanation detail by incorporating the How intelligibility type in addition to the existing explanations. The How explanation employs a flowchart to elucidate the inner working of the system, providing a comprehensive understanding of its operation at different stages (see Figures <ref type="figure" target="#fig_6">3a, 3b, 4a, 4b &amp; 4c</ref>). This explanation will be displayed upon clicking on a "MORE" button at the bottom right corner of the Why (detailed) explanation box, which will further expand the explanation interface to show the flowchart and the navigation panel (Figure <ref type="figure">6</ref>). We elicited feedback from users regarding their perception of the advanced explanation. We specifically inquired about the transition from the intermediate to the advanced explanation, the positioning of the How explanation, and the labeling of the navigation buttons. Participants expressed that they were able to distinguish the different levels of explanation and comprehend the relationship between the What, Why, and How explanations more easily due to the color-coding utilized. Users also found the transition between the explanation levels to be seamless and understandable. Moreover, they liked that the advanced explanation is not shown by default and that they are able to see this explanation when they would need more information about the recommendation process. As for button labeling, they suggested renaming the "MORE" button leading to the advanced explanation to "HOW?" in order to avoid the potential ambiguity of the term "MORE" which could mislead users expecting to see additional information about the Why (detailed) explanation. Labeling the button with "HOW?" would reflect more the purpose of the action behind this button, i.e., to show how a recommendation was generated. Furthermore, using the term "HOW?" would keep consistency in the button labeling throughout the whole explanation interface. Figure <ref type="figure">6</ref>.: Prototyping -advanced explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.2.">Final design and implementation</head><p>Based on the previous iteration and considering the feedback from users, the final explanation prototype was implemented in the RIMA application. Overall, the main suggested improvements included providing a "WHAT-IF?" button next to the list of users' interests at the top of the explanation interface, having the publication box as an expandable/collapsible accordion to show the Why (detailed) explanation on-demand, rather than displaying the explanation as a pop-up modal on top of the publication box, and Changing the "WHY THIS PAPER?" and "MORE" buttons to "WHY?" and "HOW?", respectively. In terms of placement of the different intelligibility types and transition between the different explanation levels, the final explanation interface shows the What and Why (abstract) intelligibility types by default, while the What if, Why (detailed), and How intelligibility types are available on-demand. Users can click the "WHAT-IF?" button to access the What if explanation, the "WHY?" button to move from the basic to the intermediate explanation showing the Why (detailed) intelligibility type, and finally the "HOW?" button to move to the advanced explanation with additionally the How intelligi-bility type. We used React and several visualization libraries such as Cytoscape and Highcharts to implement the final explanation prototypes. Figure <ref type="figure">7</ref>, Figure <ref type="figure" target="#fig_8">8a</ref>, and Figure <ref type="figure" target="#fig_8">8b</ref> show the implemented versions of the basic, intermediate, and advanced explanation, respectively.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Evaluation</head><p>After systematically designing the explanations with varying level of details and implementing them in the RIMA application, we conducted an online qualitative user study to explore the expectations and attitudes towards our scientific literature RS, considering these various explanations. Since users' perspectives on and expectations of the explanation level of detail in an explainable RS are inherently subjective and individual, a quantitative approach would be insufficient for this goal as this approach aims at analyzing empirical data for predetermined hypotheses. Thus, to explore individual expectations from an explainable RS with varying level of details, we deem a qualitative approach as more appropriate.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Study design</head><p>Researchers and students interested in scientific literature were invited to participate in our study. We first informed participants about the interview conditions, such as the purpose and motivation of the interview, the anonymity of the responses, and the assertion that the data would not be shared with third parties. We also requested permission to record the interview audio in case it was required for the data analysis step that followed. 14 participants (six females) agreed to take part in this study. Participants were between 20 and 39 years old, where half of them were master's graduates or higher, and the other half were master's students.</p><p>To obtain a diverse sample, participants were recruited with different backgrounds, including nationalities, educational levels, and fields of study. Email or word-of-mouth was used to reach each participant. The ethics motion to conduct the user study was approved by the Ethics Committee of the Department of Computer Science and Applied Cognitive Science of the Faculty of Engineering at the University of Duisburg-Essen. All participants gave their informed consent to participate in the study and to have their interviews recorded. All personally identifiable information was anonymized. The user study is divided into three sections. Participants were initially given a short introductory video about the RIMA application in general, and another short demo video about the provided interactive explanations in the application. Next, they answered a questionnaire in SoSci Survey 2 which included questions about their demographics and familiarity with RS and visualization. Afterwards, we conducted moderated think-aloud sessions where participants were asked to (1) create an account using their Semantic Scholar ID (users who do not have Semantic Scholar IDs can generate their interest models manually) in order to create their interest models, (2) interact with the application to find relevant publications that fit their interests, and (3) take a closer look at the three explanation levels and try to understand how the RS works. Following a think-aloud approach, the participants were also asked to say anything that comes to their mind during each interaction. After that, we conducted semi-structured interviews to (1) ask users about their expectations regarding the amount of information provided in each explanation level and if it was sufficient and adequate for them, and (2) gather in-depth feedback related to their attitudes towards the interactive explainable RS.</p><p>The interviews lasted 10 to 15 minutes with the following questions: (1) What do you like the most about providing different explanations with varying level of information/details? (2) What do you like the least about providing different explanations with varying level of information/details? (3) Which explanation provided you with an adequate amount of information/details? Why? (4) Which explanation level of information/details (Task 1, 2, 3 / basic, intermediate, advanced) do you prefer (is suitable for you)? Why? (5) Which explanation level of information/details (Task 1, 2, 3 / basic, intermediate, advanced) is sufficient for you to make a decision (on whether the recommended publications are relevant or not)? (6) Why / When (in which situation) / How often would you like to use each of the provided explanations? (7) Do you have any suggestions to improve the controllability of the level of information/details of the explanations provided in the recommender system (8) How much has the controllability of the level of information influenced your satisfaction with the recommender system? (9) Which explanation level of information/details (Task 1, 2, 3 / basic, intermediate, advanced) gives you a better sense of transparency of the recommender system? Why? (10) Which explanation level of information/details (Task 1, 2, 3 / basic, intermediate, advanced) gives you a better sense of trust in the recommender system? Why? (11) Do you have any suggestions to improve the system?</p><p>After the semi-structured interviews, participants were also invited to fill out a questionnaire containing questions regarding usability aspects and attitudes towards the RS, based on the ResQue evaluation framework <ref type="bibr" target="#b58">(Pu, Chen, &amp; Hu, 2011)</ref>. To note that by using the ResQue framework, we are not aiming at conducting a quantitative evaluation and generalizing our conclusions, but rather to use participants' answers to the ResQue questionnaire as a starting point to collect their opinions towards our scientific literature RS, considering the three levels of explanation detail, which are then explored in-depth through our qualitative study. The results of the ResQue questionnaires are summarized in Figure <ref type="figure" target="#fig_9">9</ref>. We conducted a qualitative analysis of the moderated think-aloud sessions and the semi-structured interviews to gain further insights into the reasons behind the individual differences in the perception of the RS in terms of explanation with varying level of details. We followed the instruction proposed by <ref type="bibr" target="#b7">(Braun &amp; Clarke, 2006)</ref> to code the data and identify patterns to organize the codes into meaningful groups. Notes and transcripts of the interview recordings were made for the analysis. The analysis was rather deductive as we aimed to find additional explanations to address our research questions. In contrast to inductive (i.e., bottom-up) thematic analysis, which is the data-driven process of coding the data without trying to fit it into a pre-existing coding frame, deductive (i.e., top-down) thematic analysis is an analyst-driven process of coding for a quite specific research question. This form of thematic analysis tends to provide less a rich description of the data overall, and more a detailed analysis of some aspects of the data <ref type="bibr" target="#b7">(Braun &amp; Clarke, 2006)</ref>. Following a deductive thematic analysis approach, we present the results of the evaluation organized by five themes derived from our two research questions. The first theme is information level which is related to our first research question about the amount of provided information at each explanation level. The other four themes for our second research question were adapted from the ResQue framework, namely user control and personalization, transparency and trust, satisfaction, and overall user experience.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.">Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.1.">Information level</head><p>When we asked the participants about the amount of information provided at each explanation level, they had diverse opinions and thoughts (Figure <ref type="figure" target="#fig_1">10</ref>). The majority of participants thought the amount of information at the basic level was adequate. However, one participant (P14) stated that the information given was insufficient as he needed more definitions of similarity scores and thresholds. He also mentioned, "What confused me is the percentages; if you sum them up, they are going over 100%, so it is not easy to understand what these percentages are". Therefore, he assumed more definition is required in this case as well. Likewise, the majority of participants thought that the amount of information provided at the Intermediate level was adequate. Nevertheless, two participants acknowledged that they want to have more information at this level. One of them (P3) wanted more data about the publication content and the placement of the extracted keywords in the publication's text. Another participant (P8) who got an irrelevant publication with a specific keyword mentioned that "when I hover over the SriLanka word, I still do not know why this keyword has a connection with my interests, even though it is just 2.76% similar. I would be interested to know how it connects with my interests in this stage". For the advanced level, we obtained diverse feedback. Most users believed the amount of the delivered information was sufficient. However, P3 assumed that the provided information was too simple: "I find it basic. The algorithm is basic, if your target user is advanced in this step. It is not what the advanced user does not know already". On the contrary, three users believed there was too much information because either there were unknown interests or repeated information. One user assumed that it would be time-consuming to go through each step in detail. For instance, users P9 and P14 stated, "I prefer to have the formulas, what the embeddings are. I prefer to see the data as an overview in a tooltip. Try to use simple wordings and show the formulas", and user P4 reported, "I felt this is telling me one piece of information in different ways that can be combined all together." Figure <ref type="figure" target="#fig_1">10</ref>.: Adequacy of the amount of information at the three explanation levels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.2.">User control and personalization</head><p>The majority of the participants expressed positive opinions about the interaction and user control features in the RS (see Figure <ref type="figure" target="#fig_9">9</ref>). Overall, participants had two different perspectives regarding the relationship between controllability and personalization. Some of them saw their control of the explanations as a means to achieve more personalized recommendations, for example, P1 said "I have a feeling of control over recommendations and interests. I can personalize it by adding or removing my interests. So I feel like I can control this and immediately see the result". On the other hand, some others considered the control of the level of information given by the explanations as a way of personalizing the explanation itself instead of the RS. For instance, P2 stated that "I like when I can hide something I do not need to see in the explanation. Or I can show it easily. I like this personalization option".</p><p>Most users expressed positive feedback toward controlling the provided information in the explanations, and they mentioned this feature as the most liked feature in the RS. For instance, P13 reported "It was flexible and I could see anything that I prefer to see. I did not see such a platform so far. It is quite nice". Despite some participants assuming that certain explanations are not necessary for them or they would not use them frequently, all participants expressed that the ability to control the information provided by the explanations is a valuable feature and can be helpful. Therefore, they all wanted to keep this option. For instance, P14 reported "It is good to have the possibility to show or hide something, otherwise there is too much information on one page, and you have to scroll down a lot to get to another thing".</p><p>Particularly, for the basic level of explanations, most users were satisfied with the interaction with and control of this explanation. The What explanation was prominent on the explanation interface. For instance, P13 mentioned that "It was easy and interesting to see the data on which the system bases its recommendation process". Likewise, the What If and Why explanations were considered as very helpful. For instance, P5 reported that "I find it interesting. The problem is with other platforms that you cannot easily weigh keywords that are much more important than others. However, sometimes you want to focus on some keywords more than others. This way of personalization is nice", and P6 stated "The coloring is quite intuitive". Most participants gave positive feedback to the information at the intermediate explanation level. However, they expected to improve the visualizations and controllability at this level, for instance, P4 mentioned: "The most important thing you want to show users is hidden in a tooltip", and P1 stated: "The aim of the three lines in the why explanation is not clear, because the bar chart will appear just by hovering over the keywords and we are not able to click on it". The advanced level received more diverse feedback. Some users believed that the design of the steps was beneficial because they could follow and learn in-depth how the system operates. For example, P8 mentioned "It is great that you have here a practical example of how the model works", and P11 stated "I think it is cool that you can also see it here visualized, because just showing the model or the process is boring for me. So as an average user, not from IT, I am more interested in seeing some visuals and graphics, but not a complicated model". However, we got some feedback regarding the improvement of the way of personalizing the How explanation. Many users suggested having the actual presentation of the values or formulas in each step. For instance, P8 mentioned that "Why not keep having the practical numbers here so that persons like me, who are unfamiliar with computer science, could still follow", and P1 stated: "Here is the weighted average in each step; you can show the real information maybe instead of a weighted average or actual number for the embeddings, it may help the user". On the other hand, some participants found it unnecessary to know how the system works in detail. One of them (P2) mentioned "I think the more detailed visualizations are unnecessary because everything is completely clear here in the overview".</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.3.">Transparency and trust</head><p>This theme concerns the perception of the three explanation levels in terms of transparency and trust (Figure <ref type="figure" target="#fig_10">11</ref>). In this regard, almost all participants stated that the provided visual explanations had an overall good effect on transparency and trust in the system. Eight participants reported that the system was transparent because of the advanced level of explanation and stated that the system's inner working was evident. For instance, participant P1 reported, "I understood the How explanation, especially going through all steps helped me follow the structure from top to bottom. I can see, follow, and understand where these keywords and colors come from" and P13 reported, "There are steps of calculating the similarity score, it is quite obvious and it is nice to have many levels to see step by step what is going on here". Four participants expressed that the intermediate level gives them a better sense of transparency, they were either users who are a bit familiar with RS or who want to use the explanations to better control the recommendations. For instance, P12 mentioned, "Intermediate is more transparent for me, maybe for two reasons; the first one is that this is the part that I will rely on to choose the suitable recommendation.</p><p>The second reason is that I already have the basic background knowledge of RS. So I might not be interested more in how it works, because I already know it". Similarly, P3 cited, "I need this transparency as long as I can improve my choices of interests and the publication results, and I think the flow is enough". Only two participants assumed that the basic level was enough to understand the RS, and one of them P5 stated that "The basic one was very clear. Even I do not know anything about programming and algorithms. I can very easily understand how the application is working".</p><p>Regarding the perceived trust in the system, most participants found that the system is trustworthy through the intermediate and advanced levels of explanation. For instance, among the six users who selected the advanced level, one of them P10 believed that "it gives me more assurance of what is happening". Likewise, P11 stated that "I can see where it comes from, so I can build my trust on it". Six other participants experienced trust at the intermediate level.</p><p>They assumed that the provided similarity scores would increase trust in the system because "P14: I see how much these scores, that I had in this cloud are somehow matching my interests", and "P11: I like the idea of seeing the keywords and also showing the similarity score. So it logically makes sense, so it is not randomly chosen, and you can see why it was chosen". Two participants stated that the basic level is enough to trust the system. They trust the system as long as the recommended publications are relevant to them. They said that as soon as the platform gives them irrelevant results, they would lose their trust in the system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.4.">Satisfaction</head><p>Most participants expressed high satisfaction with the RS. According to <ref type="bibr" target="#b71">(Tintarev &amp; Masthoff, 2007)</ref>, satisfaction can also be measured indirectly, measuring user loyalty. Thus, users' use intentions can be seen as an indirect measure of loyalty and satisfaction with the system. In this regard, all participants expressed their intention to return to the system or recommend it to their friends (see Figure <ref type="figure" target="#fig_9">9</ref>). This can imply their overall satisfaction with the RS. When we concretely asked about the degree to which the controllability of the level of explanation detail influenced their satisfaction with the RS, all participants agreed that providing various informational levels and the capability to control the explanation level of detail indeed helped them use the system in a more effective way, which increased their satisfaction with the RS. In general, participants expressed their satisfaction in various ways. Some were satisfied with the controllability of the RS, some with the functionality of the explanations, and others with the interaction with the visual explanations.</p><p>At the basic level, most of the users were satisfied with the controllability of the RS. Specifically, they were satisfied with the What if interactions and agreed that it was beneficial and unique. In this regard, P2 cited "I am totally satisfied with that What if explanation because it led me to find the desired paper". Likewise, the coloring part in the What and Why explanation was satisfying for all participants as they believed it was intuitive to see the connections between their interests and the recommended publications. However, these explanations were not convincing for some users as in some recommended publications, some keywords were the same as users' interests but they were not highlighted. For the intermediate level, the functionality provided in this level was quite satisfying for the participants. For example, P3 mentioned that "There was a time that I found a word somewhere. And I do not know, what is it. Then I saw it is related to me. This helped me to know more about such words and their relations to my interests". Nonetheless, we got some suggestions to improve the layout of this explanation, such as "When I saw the why button, I did not expect to see such a graph but to see the source of it. You have to choose another visualization here" (P4), and "At first this blank space at the right side was strange" (P12). Regarding the advanced level, we received mixed feedback. Most participants found the general idea, explanation functionality, controllability, and visualization useful and satisfying. Both lay and experienced users found the option of having a personalized visual representation of the different steps of the recommendation algorithm as a flowchart to be helpful. Lay users felt that having a personalized visualization of the RS inner working was appealing. Otherwise, they would find it uninteresting and may not fully understand what is being explained. For instance, P4 mentioned that "I liked this visualization much more than others. It is attractive and helpful" and P14 stated that "It is responsive and useful". The personalized visualizations of the RS algorithm were also used by users who were computer scientists to troubleshoot the system and identify more effective search parameters. However, some participants found the advanced explanation overwhelming. Others wanted to have more information about the technical terms used in this explanation (e.g., embeddings).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.5.">Overall user experience</head><p>The system's overall mean rating is relatively high, indicating that the overall user experience is positive toward having explanations with different levels of detail. Figure <ref type="figure" target="#fig_9">9</ref> further shows that aspects related to users' beliefs and attitudes, such as user control, transparency, and trust scored higher than the overall mean rating. On the other hand, the system's interface design and ease of use received relatively lower ratings. For this theme, we also gathered feedback concerning the effectiveness of the explanations and the situations where each explanation could be used. The intermediate explanation was perceived as the most effective level of detail by eight participants (Figure <ref type="figure" target="#fig_1">12</ref>). They assumed that this level was enough for them to make a decision on whether the recommended publication was relevant to them or not. Four participants (respectively two participants) mentioned the advanced explanation (respectively the basic explanation) as the most helpful explanation for making a decision. Regarding the usage context and frequency for each explanation, for the basic level, the majority of the participants stated that they will use the What if explanation most frequently in order to change their interests and consequently receive better recommendations. The What and Why explanations represented by the coloring part and similarity scores were the second most frequent explanations the users tend to pay attention to. Regarding the intermediate level, we discovered five primary situations where the users would use the Why explanation. First, some users consulted this explanation when they got irrelevant publication recommendations, as mentioned by P1, P4, P9, and P13. Second, some users used this explanation to discover new keywords from the relevant publications when they receive accurate results, as stated by P6 and P14. Third, others preferred to use this explanation to adjust their initial interests in RS to get better results, as noted by P3 and P5. Fourth, when the publication abstract is too short (P7). Fifth, when a user did not know the meaning of an extracted keyword (P3). Concerning the advanced level, most users said they would use it at least once but not frequently. The majority of users stated that it is an interesting option and can be helpful. For instance, P6 said "At a higher level, I want to know how the system works. I will click on the HOW button, but I would say not so frequently". Two participants (P2 and P7) said that they would look at the How explanation only if they had difficulty understanding the other explanations.</p><p>Figure <ref type="figure" target="#fig_1">12</ref>.: Users' preferred explanation level of detail for making a decision.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Discussion</head><p>The subsequent sections are organized regarding our two main research questions: Which and how much information should be provided at each explanation level of detail? (RQ1) Can providing interactive explanation with varying level of details positively affect the perception of the explainable RS in terms of (1) user control &amp; personalization, (2) transparency &amp; trust, (3) user satisfaction, and (4) user experience? (RQ2) 6.1. Amount of information at each explanation level of detail We addressed our first research question by systematically designing three different explanations with varying level of details in an explainable scientific literature RS. We started by collecting requirements from the literature to divide the information into different explanation levels, based on the principles of completeness and soundness <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref>. We then systematically designed and implemented three explanation levels of detail <ref type="bibr">(basic, intermediate, advanced)</ref> with different combinations of completeness and soundness levels, based on What, What if, Why, and How intelligibility types. According to our evaluation results, most users indicated that the provided explanations with varying level of information were adequate, helpful, and user-friendly. In terms of the provided amount of information at each level, most users agreed that there was enough information for the intended level of detail. However, some lay users sought more details about each technical phrase at a higher level. On the other hand, we observed that users who were computer scientists or familiar with RS tended not to go into the detail of the advanced level because they felt they already knew how the algorithm works. This finding suggests a relationship between the users' background knowledge and the needed amount of information for each level. This is in line with the findings in e.g., <ref type="bibr" target="#b8">(Chatti et al., 2022;</ref><ref type="bibr" target="#b41">Kouki, Schaffer, Pujara, O'Donovan, &amp; Getoor, 2019;</ref><ref type="bibr" target="#b53">Millecamp et al., 2019;</ref><ref type="bibr" target="#b70">Szymanski, Millecamp, &amp; Verbert, 2021)</ref>, showing that personal characteristics have an effect on the perception of and interaction with explanations. Additionally, as mentioned by <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref>, completeness should be enhanced alongside soundness to avoid overwhelming the users. In other words, if the underlying algorithm is fully disclosed, there should be more explanations. Overall, our results show that manipulating the level of explanation soundness and completeness, as well as using different intelligibility types (e.g., What, What if, Why, How ) to vary the level of completeness is an effective mechanism to systematically design explanations with varying level of details, with the right amount of information to be revealed at each explanation level.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.">Effects of interactive explanations with varying level of details</head><p>In our second research question, we investigated the degree to which the interactive explainable RS with varying level of details can affect the perceived control, transparency, trust, and satisfaction of its users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.1.">User control and personalization</head><p>Our aim was to provide an interactive explanation interface to help users control and personalize the explanation process, based on their individual needs and preferences. By interacting with the explanation interface, the users are now able to control and personalize the explanation by changing the explanation to answer What, What if, Why, and/or How questions, showing or hiding the explanation, seeing different levels of explanation detail, and changing the explanation viewpoint to focus on the input, process, and/or output. Most users experienced control over the RS and its provided explanations. All participants tried to control the RS by modifying their interests and receiving personalized recommended publications, as well as controlling the explanations by selecting the appropriate level of detail they wish to see. Both lay and experienced participants agreed that having the explanations on-demand was a great idea since it offered them a sense of control over the quantity of information that the explanation should provide. Consequently, we argue that, regardless of the users' background knowledge, allowing users to control and personalize the provided explanations should be an integral feature in any explainable RS.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.2.">Transparency and trust</head><p>Our study provides evidence that user interaction with and control of the explanation process can improve the RS transparency. This confirms findings in previous studies on explainable recommendation which pointed out that control and transparency are interdependent (e.g., <ref type="bibr" target="#b19">(Eiband et al., 2018;</ref><ref type="bibr" target="#b73">Tintarev &amp; Masthoff, 2015)</ref>). This is also in line with studies from different other application domains, including XAI <ref type="bibr" target="#b10">(Cheng et al., 2019;</ref><ref type="bibr" target="#b42">Krause et al., 2016;</ref><ref type="bibr" target="#b43">Kulesza et al., 2015;</ref><ref type="bibr" target="#b66">Sokol &amp; Flach, 2020)</ref>, human-centered AI <ref type="bibr" target="#b64">(Shneiderman, 2020)</ref>, interactive machine learning <ref type="bibr" target="#b3">(Amershi, Cakmak, Knox, &amp; Kulesza, 2014)</ref>, interactive recommendation <ref type="bibr" target="#b33">(He et al., 2016;</ref><ref type="bibr" target="#b39">Jugovac &amp; Jannach, 2017;</ref><ref type="bibr" target="#b74">Tsai &amp; Brusilovsky, 2017)</ref>, and visual analytics <ref type="bibr" target="#b67">(Spinner, Schlegel, Schäfer, &amp; El-Assady, 2019)</ref> which showed that human control can also contribute to increased transparency of AI and decision making systems.</p><p>Different levels of explanation detail would lead to different levels of RS transparency. Here, it is important to differentiate between objective transparency and user-perceived transparency. On the one hand, objective transparency means that the RS reveals the underlying algorithm of the recommendations either by explaining it or justifying it in case of high complexity of the algorithm. On the other hand, user-perceived transparency is based on the users' subjective opinion about how good the system is capable of explaining its recommendations <ref type="bibr" target="#b20">(Gedikli et al., 2014)</ref>. In general, it can be assumed that a higher level of explanation detail increases the system's objective transparency but is also associated with a risk of reducing the userperceived transparency, depending on the users' background knowledge. We observed a similar pattern in our study. More than half of the users perceived transparency at an advanced level of explanation detail, which means that high completeness and high soundness levels benefit system transparency. As these steps were designed to be on-demand, most users mentioned that it was a useful feature that helped them follow and understand the explanations better. However, some participants had difficulty understanding technical terms at the advanced level, as they were unfamiliar with the technical aspects in RS. These users perceived higher transparency rather at a low or intermediate level of explanation detail. In our study, most users regardless of their background knowledge concurred that the RS was perceived as transparent. One reason we deem responsible for the high level of user-perceived transparency among the majority of participants is that they were able to find in the system the appropriate explanation level of detail that best fits their needs and preferences. This suggests that empowering users to take control of the explanation process and change the level of explanation detail according to their needs has the potential to improve user-perceived RS transparency.</p><p>For system trust, we obtained nearly the same findings as transparency, which was in line with the work of <ref type="bibr" target="#b72">(Tintarev &amp; Masthoff, 2011)</ref>, who found that transparency increases user trust. Our findings revealed that most participants identified intermediate and advanced levels as trustworthy. Some participants mentioned that the intermediate explanation justifies the recommended publication, which is why it is reliable, while others believed that revealing the system's algorithm gave them the confidence to rely on the system. Moreover, the personalized information provided at all explanation levels gave them a sense of trust in the RS. Additionally, two users chose the basic level because they assume that they trust the system as long as it provides useful recommendations. This outcome is also consistent with <ref type="bibr" target="#b72">(Tintarev &amp; Masthoff, 2011)</ref>, who noted that user trust in the RS might be influenced by how accurate the recommendation algorithm is. As the intermediate and advanced explanations achieved the highest levels of transparency and trust, we found that the level of completeness and soundness should be correlated and parallel to help users better understand and trust the system. This finding is also in line with the work of <ref type="bibr" target="#b44">(Kulesza et al., 2013)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.3.">Satisfaction and user experience</head><p>The wide agreement among participants that their interaction with and control of explanations had a positive impact on their satisfaction with the RS shows a potential positive correlation between user control and satisfaction/user experience. Our results confirm the findings by <ref type="bibr" target="#b58">(Pu et al., 2011)</ref> who noted that user control weighs heavily on the overall user experience with the RS. Furthermore, several recent studies from the human-AI interaction (HAII) community evidenced the positive effects of user control on satisfaction/user experience. For instance, <ref type="bibr" target="#b69">Sundar (2020)</ref> stresses that the two key features of HAII, namely user awareness and user control are the hallmarks of successful user experience with personalization services.</p><p>With regard to user experience, our study results show that user-centered aspects, such as feeling of control, transparency, and trust can hide the negative effects resulting from usability issues. Further, the intermediate explanation was perceived as the most effective level of detail to make a decision. This suggests that, if an explainable RS only provides a single static explanation, the focus should rather be on providing an intermediate explanation with enough completeness and soundness to meet the demands of a larger user group. This is in line with the suggestion provided by <ref type="bibr" target="#b40">(Kizilcec, 2016)</ref> who concluded that designing for effectiveness requires balanced interface transparency, i.e., "not too little and not too much". Finally, participants in our study gave different reasons why and when they want to see which explanation (e.g., to explore, discover, scrutinize, understand, debug, or just out of curiosity). This implies that the users' goal and context influence their preferences towards the explanation intelligibility type and level of detail. Thus, interactive explanations with different levels of detail would be a flexible and effective solution to help users achieve different explanation goals in different contexts, which can contribute to increased satisfaction and user experience. In sum, our work provides qualitative evidence that providing interactive explanation with varying level of details can also increase user satisfaction and experience with the RS.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">Limitations</head><p>Our work is also subjected to several limitations. Firstly, we identify some limitations related to explanation design. We designed and implemented a subset of possible intelligibility types (i.e., What, What if, Why, and How ). Other intelligibility types, such as Why not (contrastive explanation) and How to (counterfactual explanation) are not commonly used in the recommendation domain and are beyond the scope of this paper. Supporting other intelligibility types and exploring their combinations to provide explanations at different levels of detail may lead to different results.</p><p>Moreover, the selection of the recommendation model (i.e., content-based) in our work may bring biases in our results about the effects of interactive explanations with different levels of detail. Our findings may not generalize to other recommendation models (e.g., deep learningbased, graph-based). Deep learning-based recommendation introduces other critical challenges with respect to explanation design. Deep learning models are inherently complex, making it often difficult to provide sound explanations that truly reflect the real mechanism that generated the recommendations <ref type="bibr" target="#b82">(Zhang, Chen, et al., 2020)</ref>. Further, providing advanced explanations of deep learning recommendation models is only beneficial for expert users to help them diagnose and refine the underlying models. This would restrict the design space of explanations with varying levels of detail in a deep learning-based RS. On the other hand, graph-based models inherently keep interpretability in their recommendations, as they can provide more intuitive explanations by extracting relation paths between the target user and the recommended item over the graph <ref type="bibr" target="#b31">(Guo et al., 2020)</ref>. This would help in designing and generating appropriate path-wise explanations at varying level of details, for different end users. It is therefore important to explore in the future work whether the difference in the recommendation model could lead to a different explanation design and investigate the extent to which the choice of the recommendation model can influence the perceived explanation quality.</p><p>There are also some limitations in the user study. We conducted a qualitative user study with 14 participants. Therefore, the results of the study should be interpreted with caution and cannot be generalized. A quantitative user study with a larger sample would probably have yielded more significant and reliable results. Furthermore, we performed this analysis in a single domain. It must be verified whether our findings transfer to domains beyond scientific literature RS. It would be for example very interesting to look into the effects of providing interactive explanation with varying level of details in a music RS, where factors, such as exploration, variety, and novelty appear to play a crucial role in users' perception of transparency and satisfaction <ref type="bibr" target="#b38">(Jin et al., 2018;</ref><ref type="bibr" target="#b41">Kouki et al., 2019;</ref><ref type="bibr" target="#b47">Liang &amp; Willemsen, 2023;</ref><ref type="bibr" target="#b53">Millecamp et al., 2019)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8.">Conclusion and future work</head><p>In this paper, we aimed to shed light on two aspects that remain under-explored in the literature on explainable recommendation, namely explanation with varying level of details and interactive explanation. To this end, we systematically designed interactive on-demand explanation with three levels of information detail (basic, intermediate, and advanced) and implemented them in the transparent Recommendation and Interest Modeling Application (RIMA). Applying a qualitative approach, we found evidence that handing over control to users to select their appropriate explanation level of detail can meet the demands of users with different needs, preferences, and goals and consequently can have positive effects on key aspects in explainable recommendation, including transparency, trust, satisfaction, and user experience. This work provides insights for the development of interactive explanation interfaces in RS and contributes to a richer understanding of why and how to design interactive explanation with varying level of details in a systematic and theoretically-sound manner. While we are aware that our results are based on one particular RS and the results cannot be generalized, we are confident that they pose valuable anchor points for the current and future design of interactive explanation interfaces in RS. In future work, we plan to design other possible intelligibility types (e.g., Why not and How to) and explore other combinations of intelligibility types to provide explanations at the three levels of detail. Further, we plan to validate our findings through quantitative research to investigate in more depth the effects of following a user-centered, interactive explanation approach on the perception of and interaction with explainable recommendation, with different user groups and in different contexts. Our qualitative findings represent a solid base for hypotheses and confirmatory studies on a large user basis. Further, we will investigate the effects of personal characteristics on the perception of interactive explanation with varying level of details in explainable RS.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1.: What and What-if intelligibility types.</figDesc><graphic coords="7,189.33,295.13,216.60,156.30" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>Figure 2.: Why (abstract and detailed) intelligibility types.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>(a) How -overview. (b) How -detailed.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3.: How intelligibility type.</figDesc><graphic coords="9,139.69,289.71,315.90,224.84" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head></head><label></label><figDesc>(a) How -Get user interests and publication keyphrases. (b) How -Generate embeddings. (c) How -Compute similarity.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 4</head><label>4</label><figDesc>Figure 4.: Steps of the How intelligibility type.</figDesc><graphic coords="10,184.82,557.99,225.64,129.12" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head></head><label></label><figDesc>Figure 7.: Final design -basic explanation</figDesc><graphic coords="14,72.00,133.92,203.06,104.59" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 8 .</head><label>8</label><figDesc>Figure 8.: Final design -intermediate and advanced explanations.</figDesc><graphic coords="14,72.00,389.76,180.51,176.07" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 9 .</head><label>9</label><figDesc>Figure 9.: Results from the ResQue questionnaire.</figDesc><graphic coords="16,94.57,177.61,406.13,163.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 11 .</head><label>11</label><figDesc>Figure 11.: Users' perception of transparency and trust at the three levels of explanation detail.</figDesc><graphic coords="18,207.38,458.29,180.51,116.91" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="13,162.25,148.84,270.77,380.11" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://huggingface.co/sentence-transformers/msmarco-distilbert-base-tas-b</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">https://www.soscisurvey.de</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgement(s)</head><p>This work was partly funded by the German Research Foundation (DFG) under grant No. GRK 2167, Research Training Group "User-Centred Social Media".</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Institutional Review Board Statement</head><p>The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Ethics Committee of the Department of Computer Science and Applied Cognitive Science of the Faculty of Engineering at the University of Duisburg-Essen.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Informed Consent Statement</head><p>Informed consent was obtained from all subjects involved in the study.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability statement</head><p>The interview data presented in this study are not publicly available due to ethical and privacy restrictions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Disclosure statement</head><p>No potential conflict of interest was reported by the author(s).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Funding</head><p>The authors thank the German Research Foundation (DFG) for partly funding this work under grant No. GRK 2167, Research Training Group "User-Centred Social Media".</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Trends and trajectories for explainable, accountable and intelligible systems: An hci research agenda</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Abdul</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vermeulen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Lim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kankanhalli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 chi conference on human factors in computing systems</title>
+				<meeting>the 2018 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1" to="18" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Peeking inside the black-box: a survey on explainable artificial intelligence (xai)</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Adadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Berrada</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE access</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="52138" to="52160" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">A multi-dimensional conceptualization framework for personalized explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Companion proceedings of the 27th international conference on intelligent user interfaces</title>
+				<meeting><address><addrLine>helsinki, finland</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Power to the people: The role of humans in interactive machine learning</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Amershi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cakmak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">B</forename><surname>Knox</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kulesza</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="105" to="120" />
+			<pubPlace>Ai Magazine</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">Explainable artificial intelligence (xai): Concepts, taxonomies, opportunities and challenges toward responsible ai. Information fusion</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Arrieta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Díaz-Rodríguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Del Ser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bennetot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tabik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barbado</surname></persName>
+		</author>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page" from="82" to="115" />
+		</imprint>
+	</monogr>
+	<note>others (2020)</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Transparent, scrutable and explainable user models for personalized recommendation</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Balog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Radlinski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Arakelyan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd international acm sigir conference on research and development in information retrieval</title>
+				<meeting>the 42nd international acm sigir conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="265" to="274" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Intelligibility and accountability: human considerations in contextaware systems</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Bellotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Edwards</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">2-4</biblScope>
+			<biblScope unit="page" from="193" to="212" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Using thematic analysis in psychology</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Braun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Clarke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Qualitative research in psychology</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="77" to="101" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Is more always better? the effects of personal characteristics and level of detail on the perception of explanations in a recommender system</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vorgerd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ngo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th acm conference on user modeling, adaptation and personalization</title>
+				<meeting>the 30th acm conference on user modeling, adaptation and personalization</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="254" to="264" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Simt: A semantic interest modeling toolkit</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Joarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Adjunct proceedings of the 29th acm conference on user modeling, adaptation and personalization</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="75" to="78" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Explaining decision-making algorithms through ui: Strategies to help non-expert stakeholders</title>
+		<author>
+			<persName><forename type="first">H.-F</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>O'connell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Gray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">M</forename><surname>Harper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 chi conference on human factors in computing systems</title>
+				<meeting>the 2019 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1" to="12" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Trust in ai and its role in the acceptance of ai technologies</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Choung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>David</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ross</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1727" to="1739" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Human-centered explainable ai: Towards a reflective sociotechnical approach</title>
+		<author>
+			<persName><forename type="first">U</forename><surname>Ehsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Hci international 2020-late breaking papers: Multimodality and intelligence: 22nd hci international conference</title>
+				<meeting><address><addrLine>copenhagen, denmark</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2020-07-19">2020. july 19-24, 2020</date>
+			<biblScope unit="volume">2020</biblScope>
+			<biblScope unit="page" from="449" to="466" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">U</forename><surname>Ehsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wintersberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Streit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wachter</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Operationalizing human-centered perspectives in explainable ai</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Extended abstracts of the 2021 chi conference on human factors in computing systems</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">U</forename><surname>Ehsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wintersberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Watkins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Manger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iii</forename><surname>Daumé</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Human-centered explainable ai (hcxai): beyond opening the black-box of ai</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Chi conference on human factors in computing systems extended abstracts</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">U</forename><surname>Ehsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wintersberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Watkins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Manger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ramos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Weisz</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Human-centered explainable ai (hcxai): Coming of age</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Extended abstracts of the 2023 chi conference on human factors in computing systems</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Bringing transparency design into practice</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Eiband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bilandzic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fazekas-Con</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Haug</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hussmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">23rd international conference on intelligent user interfaces</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="211" to="223" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">How should i explain? a comparison of different explanation types for recommender systems</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Gedikli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Studies</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="367" to="382" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">What if interactive explanation in a scientific literature recommender system</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ghorbani-Bavani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Alatrash</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Intrs&apos;22: Joint workshop on interfaces and human decision making for recommender systems (intrs&apos;22)</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">Justification vs. transparency: Why and how visual explanations in a scientific literature recommender system. Information</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Siepmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ghanbarzadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Alatrash</surname></persName>
+		</author>
+		<ptr target="https://www.mdpi.com/2078-2489/14/7/401" />
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page">14</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Open, scrutable and explainable interest models for transparent recommendation</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zumor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ji</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">.</forename><forename type="middle">.</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Iui workshops</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Interactive visualizations of transparent user models for self-actualization: A human-centered design approach</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tayyar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Multimodal Technologies and Interaction</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page">42</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vorgerd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zumor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Ondemand personalized explanation for transparent recommendation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Adjunct proceedings of the 29th acm conference on user modeling, adaptation and personalization</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="246" to="252" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vorgerd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ngo</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Input or output: Effects of explanation focus on the perception of explainable recommendation with varying level of details</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Intrs@ recsys</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="55" to="72" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Explaining user models with different levels of detail for transparent recommendation: A user study</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vorgerd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ngo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Muslim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Adjunct proceedings of the 30th acm conference on user modeling, adaptation and personalization</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="175" to="183" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Validation of the eduss framework for self-actualization based on transparent user models: A qualitative study</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Guesmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Siepmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Joarder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">U</forename><surname>Ain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Alatrash</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Adjunct proceedings of the 31st acm conference on user modeling, adaptation and personalization</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="229" to="238" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">A survey on knowledge graph-based recommender systems</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhuang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<biblScope unit="page" from="3549" to="3568" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Designing for the better by taking users into account: A qualitative evaluation of user control mechanisms in (news) recommender systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Harambam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bountouridis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Makhortykh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Van Hoboken</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th acm conference on recommender systems</title>
+				<meeting>the 13th acm conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="69" to="77" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Interactive recommender systems: A survey of the state of the art and future research challenges and opportunities</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Parra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page" from="9" to="27" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Effects of interactivity and presentation on reviewbased explanations for recommendations</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Hernandez-Bocanegra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ziegler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Ifip conference on human-computer interaction</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="597" to="618" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">N</forename><surname>Iandola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">E</forename><surname>Shaw</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Krishna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">W</forename><surname>Keutzer</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2006.11316</idno>
+		<title level="m">Squeezebert: What can computer vision teach nlp about efficient neural networks? arXiv preprint</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Explanations and user control in recommender systems</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jugovac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Nunes</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd international workshop on personalization and recommendation on the web and beyond</title>
+				<meeting>the 23rd international workshop on personalization and recommendation on the web and beyond</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="31" to="31" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">A survey on conversational recommender systems</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Manzoor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys (CSUR)</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1" to="36" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Effects of personal characteristics on music recommender systems with different levels of controllability</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th acm conference on recommender systems</title>
+				<meeting>the 12th acm conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="13" to="21" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Interacting with recommenders-overview and research directions</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jugovac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Interactive Intelligent Systems (TiiS)</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1" to="46" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">How much information? effects of transparency on trust in an algorithmic interface</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">F</forename><surname>Kizilcec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2016 chi conference on human factors in computing systems</title>
+				<meeting>the 2016 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="2390" to="2395" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Personalized explanations for hybrid recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kouki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schaffer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pujara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>O'donovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Getoor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th international conference on intelligent user interfaces</title>
+				<meeting>the 24th international conference on intelligent user interfaces</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="379" to="390" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Interacting with predictions: Visual inspection of black-box machine learning models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Krause</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Perer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2016 chi conference on human factors in computing systems</title>
+				<meeting>the 2016 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="5686" to="5697" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Principles of explanatory debugging to personalize interactive machine learning</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kulesza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Burnett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-K</forename><surname>Wong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Stumpf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 20th international conference on intelligent user interfaces</title>
+				<meeting>the 20th international conference on intelligent user interfaces</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="126" to="137" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Too much, too little, or just right? ways explanations impact end users&apos; mental models</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kulesza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Stumpf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Burnett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Kwan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-K</forename><surname>Wong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2013 ieee symposium on visual languages and human centric computing</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="3" to="10" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lehmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Isele</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jakob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jentzsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kontokostas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">N</forename><surname>Mendes</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Dbpedia-a large-scale, multilingual knowledge base extracted from wikipedia. Semantic web</title>
+	</analytic>
+	<monogr>
+		<title level="j">Journal</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="167" to="195" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Promoting music exploration through personalized nudging in a genre exploration recommender</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Willemsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1495" to="1518" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Questioning the ai: informing design practices for explainable ai user experiences</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gruen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Miller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2020 chi conference on human factors in computing systems</title>
+				<meeting>the 2020 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1" to="15" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<title level="m" type="main">Human-centered explainable ai (xai): From algorithms to user experiences</title>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Varshney</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2110.10790</idno>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">W</forename><surname>Vaughan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.01941</idno>
+		<title level="m">Ai transparency in the age of llms: A human-centered research roadmap</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Assessing demand for intelligibility in context-aware applications</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Lim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Dey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 11th international conference on ubiquitous computing</title>
+				<meeting>the 11th international conference on ubiquitous computing</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="195" to="204" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Dbpedia spotlight: shedding light on the web of documents</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">N</forename><surname>Mendes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jakob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>García-Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Bizer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th international conference on semantic systems</title>
+				<meeting>the 7th international conference on semantic systems</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">To explain or not to explain: the effects of personal characteristics when explaining music recommendations</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millecamp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">N</forename><surname>Htun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Conati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th international conference on intelligent user interfaces</title>
+				<meeting>the 24th international conference on intelligent user interfaces</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="397" to="407" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Explanation in artificial intelligence: Insights from the social sciences</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Miller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">267</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<title level="m" type="main">A multidisciplinary survey and framework for design and evaluation of explainable ai systems</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mohseni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Zarei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">D</forename><surname>Ragan</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page">1811</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv</note>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<monogr>
+		<title level="m" type="main">Why you only need to test with 5 users</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nielsen</surname></persName>
+		</author>
+		<ptr target="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/" />
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="2022" to="2025" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<monogr>
+		<title level="m" type="main">The design of everyday things: Revised and expanded edition</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Norman</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+	<note>Basic books</note>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">A user-centric evaluation framework for recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fifth acm conference on recommender systems</title>
+				<meeting>the fifth acm conference on recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="157" to="164" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Hypothetical recommendation: A study of interactive profile manipulation behavior for recommender systems</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schaffer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hollerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Donovan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The twenty-eighth international flairs conference</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">User perceptions of algorithmic decisions in the personalized ai system: Perceptual evaluation of fairness, accountability, transparency, and explainability</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Broadcasting &amp; Electronic Media</title>
+		<imprint>
+			<biblScope unit="volume">64</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="541" to="565" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">The effects of explainability and causability on perception, trust, and acceptance: Implications for explainable ai</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Studies</title>
+		<imprint>
+			<biblScope unit="volume">146</biblScope>
+			<biblScope unit="page">102551</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Algorithm awareness: Why user awareness is critical for personal privacy in the adoption of algorithmic platforms?</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">F</forename><surname>Kee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">Y</forename><surname>Shin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Information Management</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="page">102494</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<title level="m" type="main">Algorithms, humans, and interactions: How do algorithms interact with people? designing meaningful ai experiences</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Shin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<publisher>Taylor &amp; Francis</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Bridging the gap between ethics and practice: guidelines for reliable, safe, and trustworthy human-centered ai systems</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Shneiderman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Interactive Intelligent Systems (TiiS)</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1" to="31" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Trust and transparency in recommender systems</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Siepmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Chatti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Acm chi 2023 workshop on human-centered explainable ai (hcxai)</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<monogr>
+		<title level="m" type="main">One explanation does not fit all: The promise of interactive explanations for machine learning transparency</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sokol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Flach</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="235" to="250" />
+		</imprint>
+	</monogr>
+	<note type="report_type">KI-Künstliche Intelligenz</note>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">explainer: A visual analytics framework for interactive and explainable machine learning</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Spinner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Schlegel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Schäfer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>El-Assady</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE transactions on visualization and computer graphics</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1064" to="1074" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Sifrank: A new baseline for unsupervised keyphrase extraction based on pre-trained language model</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="10896" to="10906" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Rise of machine agency: A framework for studying the psychology of human-ai interaction (haii)</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Sundar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Computer-Mediated Communication</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="74" to="88" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Visual, textual or hybrid: the effect of user expertise on different explanations</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Szymanski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millecamp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Verbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">26th international conference on intelligent user interfaces</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="109" to="119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">A survey of explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2007 ieee 23rd international conference on data engineering workshop</title>
+				<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="801" to="810" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Designing and evaluating explanations for recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="479" to="510" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Explaining recommendations: Design and evaluation</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Recommender systems handbook</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="353" to="382" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Providing control and transparency in a social recommender system for academic conferences</title>
+		<author>
+			<persName><forename type="first">C.-H</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Brusilovsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th conference on user modeling, adaptation and personalization</title>
+				<meeting>the 25th conference on user modeling, adaptation and personalization</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="313" to="317" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">The effects of controllability and explainability in a social recommender system</title>
+		<author>
+			<persName><forename type="first">C.-H</forename><surname>Tsai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Brusilovsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="591" to="627" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Improving trustworthiness of ai solutions: A qualitative approach to support ethically-grounded ai design</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vianello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Laine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tuomi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1405" to="1422" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Daisy: An implementation of five core principles for transparent and accountable conversational ai</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wahde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Virgolin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Interaction</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1856" to="1873" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Collabrank: towards a collaborative approach to single-document keyphrase extraction</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xiao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd international conference on computational linguistics</title>
+				<meeting>the 22nd international conference on computational linguistics</meeting>
+		<imprint>
+			<date type="published" when="2008">2008. coling 2008</date>
+			<biblScope unit="page" from="969" to="976" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Designing theory-driven user-centric explainable ai</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Abdul</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">Y</forename><surname>Lim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 chi conference on human factors in computing systems</title>
+				<meeting>the 2019 chi conference on human factors in computing systems</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1" to="15" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">How do visual explanations foster end users&apos; appropriate trust in machine learning?</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Scholtz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Arendt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th international conference on intelligent user interfaces</title>
+				<meeting>the 25th international conference on intelligent user interfaces</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="189" to="201" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Bert-based named entity recognition in chinese twenty-four histories</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on web information systems and applications</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="289" to="301" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<analytic>
+		<title level="a" type="main">Do users always want to know more? investigating the relationship between system transparency and users&apos; trust in advice-giving systems</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Benbasat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cavusoglu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th european conference on information systems</title>
+				<meeting>the 27th european conference on information systems</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<monogr>
+		<title level="m" type="main">About the authors</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title level="a" type="main">His research interests include human-computer interaction, user modeling and personalization, explainable recommender systems, and information visualization</title>
+	</analytic>
+	<monogr>
+		<title level="m">Mouadh Guesmi is a research assistant and PhD student in the Social Computing Group</title>
+				<meeting><address><addrLine>Germany</addrLine></address></meeting>
+		<imprint/>
+		<respStmt>
+			<orgName>Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<monogr>
+		<title level="m" type="main">His research focuses on human-centered learning analytics, personalization, recommender systems, trustworthy human-AI interaction, and intelligent explanation interfaces</title>
+		<imprint>
+			<pubPlace>Germany</pubPlace>
+		</imprint>
+		<respStmt>
+			<orgName>Mohamed Amine Chatti is a professor of computer science and head of the Social Computing Group in the Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<monogr>
+		<title level="m">Germany. His main research areas involve human-centered learning analytics, visual analytics, and big data</title>
+				<imprint/>
+		<respStmt>
+			<orgName>Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+	<note>Shoeb Joarder is a research assistant and PhD student in the Social Computing Group</note>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<title level="a" type="main">Her main research interests include human-computer interaction and explainable recommender systems</title>
+	</analytic>
+	<monogr>
+		<title level="m">Qurat Ul Ain is a research assistant and PhD student in the Social Computing Group</title>
+				<meeting><address><addrLine>Germany</addrLine></address></meeting>
+		<imprint/>
+		<respStmt>
+			<orgName>Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<analytic>
+		<title level="a" type="main">Her research interests include recommender systems, natural language processing</title>
+	</analytic>
+	<monogr>
+		<title level="m">Rawaa Alatrash is a research assistant and PhD student in the Social Computing Group</title>
+				<meeting><address><addrLine>Germany</addrLine></address></meeting>
+		<imprint/>
+		<respStmt>
+			<orgName>Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+	<note>and user modeling</note>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title level="a" type="main">Her research interests include human-computer interaction, explainable recommender systems, and the relationship between trust and transparency in intelligent systems</title>
+	</analytic>
+	<monogr>
+		<title level="m">Clara Siepmann is a research assistant and PhD student in the Social Computing Group</title>
+				<meeting><address><addrLine>Germany</addrLine></address></meeting>
+		<imprint/>
+		<respStmt>
+			<orgName>Department of Computer Science and Applied Cognitive Science at the University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<monogr>
+		<title level="m" type="main">Tannaz Vahidi has a Master&apos;s degree in computer engineering from the Faculty of Engineering at the</title>
+		<imprint>
+			<pubPlace>Germany</pubPlace>
+		</imprint>
+		<respStmt>
+			<orgName>University of Duisburg-Essen</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

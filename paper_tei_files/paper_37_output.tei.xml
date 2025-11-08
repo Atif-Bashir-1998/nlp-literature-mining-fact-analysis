@@ -1,0 +1,1543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Interpretable Vertebral Fracture Quantification via Anchor-Free Landmarks Localization</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2022-10-04">October 4, 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Alexey</forename><surname>Zakharov</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">IRA Labs Ltd</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">Skolkovo Institute of Science and Technology</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="department">Equal contribution</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Maxim</forename><surname>Pisov</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">IRA Labs Ltd</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="institution">Kharkevich Institute for Information Transmission Problems</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="department">Equal contribution</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alim</forename><surname>Bukharaev</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">IRA Labs Ltd</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<orgName type="department">Equal contribution</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Alexey</forename><surname>Petraikin</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="department">Research and Practical Clinical Center for Diagnostics</orgName>
+								<orgName type="institution">Telemedicine Technologies of the Moscow Health Care Department e Osimis SA</orgName>
+								<address>
+									<settlement>Liège</settlement>
+									<country key="BE">Belgium</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sergey</forename><surname>Morozov</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Victor</forename><surname>Gombolevskiy</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="institution">Artificial Intelligence Research Institute</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Mikhail</forename><surname>Belyaev</surname></persName>
+							<email>m.belyaev@skoltech.ru</email>
+							<affiliation key="aff0">
+								<orgName type="institution">IRA Labs Ltd</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="institution">Skolkovo Institute of Science and Technology</orgName>
+								<address>
+									<settlement>Moscow</settlement>
+									<country key="RU">Russia</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Interpretable Vertebral Fracture Quantification via Anchor-Free Landmarks Localization</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-10-04">October 4, 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">31F95533937A11CA709BFE58DBB33F8B</idno>
+					<idno type="arXiv">arXiv:2204.06818v2[eess.IV]</idno>
+					<note type="submission">Preprint submitted to Medical Image Analysis</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Vertebral Fractures</term>
+					<term>Object Detection</term>
+					<term>Keypoints Localization</term>
+					<term>Convolutional Neural Network</term>
+					<term>Chest Computed Tomography</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Vertebral body compression fractures are early signs of osteoporosis. Though these fractures are visible on Computed Tomography (CT) images, they are frequently missed by radiologists in clinical settings. Prior research on automatic methods of vertebral fracture classification proves its reliable quality; however, existing methods provide hard-to-interpret outputs and sometimes fail to process cases with severe abnormalities such as highly pathological vertebrae or scoliosis. We propose a new two-step algorithm to localize the vertebral column in 3D CT images and then detect individual vertebrae and quantify fractures in 2D simultaneously. We train neural networks for both steps using a simple 6keypoints based annotation scheme, which corresponds precisely to the current clinical recommendation. Our algorithm has no exclusion criteria, processes 3D CT in 2 seconds on a single GPU, and provides an interpretable and verifiable output. The method approaches expert-level performance and demonstrates state-of-the-art results in vertebrae 3D localization (the average error is 1 mm), vertebrae 2D detection (precision and recall are 0.99), and fracture identification (ROC AUC at the patient level is up to 0.96). Our anchor-free vertebra detection network shows excellent generalizability on a new domain by achieving ROC AUC 0.95, sensitivity 0.85, specificity 0.9 on a challenging VerSe dataset with many unseen vertebra types.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="13" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="14" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="15" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="16" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="17" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="18" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="19" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="20" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="21" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="22" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="23" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="24" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="25" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Osteoporosis is a systemic skeletal disease manifested by low bone mass and deterioration of bone microarchitecture followed by increased bone fragility. The clinical manifestation of osteoporosis is the occurrence of bone fractures <ref type="bibr" target="#b14">(Kanis et al., 2019)</ref> which are common in older adults and resulted in more than two million Disability Adjusted Life Years in Europe <ref type="bibr" target="#b13">(Johnell and Kanis, 2006)</ref>. Typically, osteoporotic fractures are localized in the spine, hip, distal forearm, and proximal humerus.</p><p>Osteoporotic fracture risk models are becoming increasingly popular, while bone mineral density (BMD) is a major contributing factor. However, the prevalence and severity of vertebral compression fractures (VCFs) are predictive for the risk of new osteoporotic fractures independently of bone mineral density (BMD) measurements <ref type="bibr" target="#b22">(Malgo et al., 2017)</ref>. In particular, vertebrae fractures usually occur before hip fractures <ref type="bibr" target="#b32">(Riggs and Melton Iii, 1995)</ref> and dramatically increase the probability of the subsequent fractures <ref type="bibr" target="#b17">(Klotzbuecher et al., 2000)</ref>; thus can be used as an early marker of osteoporosis.</p><p>Medical imaging, such as Computed Tomography (CT), is a useful tool to identify VCFs <ref type="bibr" target="#b18">(Lenchik et al., 2004)</ref>, especially as an incidental finding. However, radiologists usually analyze CT by navigating through axial slices as, first, computed tomography produces axial slices by design, and second, this view is sufficient to analyze the majority of pathological conditions, e.g., lung diseases. In contrast, vertebral fractures identification is an exception and must be analyzed in the sagittal plane. Multiplanar reconstructions are not generated automatically in many hospitals and require some additional manual steps from radiologists <ref type="bibr" target="#b11">(Gossner, 2010)</ref>. As a result, radiologists frequently miss fractures, especially if they are not specializing in musculoskeletal imaging, with the average error rate being higher than 50% <ref type="bibr" target="#b25">(Mitchell et al., 2017)</ref>. At the same time, rapidly evolving lung cancer screening programs or active usage of CT for COVID-19 diagnosis and management provide a solid basis for opportunistic screening of vertebral fractures.</p><p>The medical image computing community thoroughly investigated fractures detection and/or classification on vertebrae-level <ref type="bibr" target="#b33">(Roth et al., 2016;</ref><ref type="bibr" target="#b39">Valentinitsch et al., 2019;</ref><ref type="bibr" target="#b4">Burns et al., 2017;</ref><ref type="bibr" target="#b0">Antonio et al., 2018;</ref><ref type="bibr" target="#b12">Husseini et al., 2020)</ref>, whole study-level <ref type="bibr" target="#b38">(Tomita et al., 2018;</ref><ref type="bibr" target="#b1">Bar et al., 2017;</ref><ref type="bibr" target="#b5">Chettrit et al., 2020)</ref>, or jointly on both levels <ref type="bibr" target="#b27">(Nicolaes et al., 2019;</ref><ref type="bibr" target="#b41">Yilmaz et al., 2021)</ref>, see Section 2 for more details. Many of these approaches require prior vertebrae detection <ref type="bibr" target="#b0">(Antonio et al., 2018;</ref><ref type="bibr" target="#b39">Valentinitsch et al., 2019;</ref><ref type="bibr" target="#b27">Nicolaes et al., 2019;</ref><ref type="bibr" target="#b12">Husseini et al., 2020)</ref>, or spine segmentation <ref type="bibr" target="#b4">(Burns et al., 2017;</ref><ref type="bibr" target="#b33">Roth et al., 2016;</ref><ref type="bibr" target="#b1">Bar et al., 2017)</ref>. Though both problems are active areas of research with prominent results, fractured vertebrae are the most complex cases for these algorithms <ref type="bibr" target="#b36">(Sekuboyina et al., 2017)</ref>, and even good average detection/segmentation accuracy may not be sufficient for accurate fracture estimation. As a result, researchers had to exclude some studies from the subsequent fracture classification due to errors in prior segmentation <ref type="bibr" target="#b39">(Valentinitsch et al., 2019)</ref>, or due to scoliosis <ref type="bibr" target="#b38">(Tomita et al., 2018)</ref>.</p><p>The second important issue is the mismatch between computer science problem statements and the radiological way to define fractures. The Genant scale <ref type="bibr" target="#b7">(Genant et al., 1993</ref>) is a widely used medical criterion recommended by the International Osteoporosis Foundation <ref type="bibr" target="#b6">(Genant and Bouxsein, 2011)</ref>. It relies on the measurements of h a , h m , h p -the anterior, middle and posterior heights of vertebral bodies (Fig. <ref type="figure" target="#fig_0">1d, 1e</ref>):</p><formula xml:id="formula_0">G = min{h a , h m , h p } max{h a , h m , h p } ,<label>(1)</label></formula><p>G values provide an easy to interpret continuous index, whereas existing methods are usually trained to predict a binary label extracted from radiological reports <ref type="bibr" target="#b38">(Tomita et al., 2018;</ref><ref type="bibr" target="#b1">Bar et al., 2017)</ref> or multiclass labels based on threshold levels for G <ref type="bibr" target="#b39">(Valentinitsch et al., 2019;</ref><ref type="bibr" target="#b4">Burns et al., 2017)</ref>. A related problem is the interpretability of the methods' outputs. The only available information is the network's attention <ref type="bibr" target="#b38">(Tomita et al., 2018)</ref> or a similar score <ref type="bibr" target="#b27">(Nicolaes et al., 2019)</ref> somehow related to the probability of fracture presence. At the same time, the medical community is not satisfied with the level of interpretability of such approaches <ref type="bibr" target="#b8">(Ghassemi et al., 2021)</ref>.</p><p>Our contribution is twofold. First, our method estimates six keypoints to detect each vertebra and estimate its heights h * simultaneously (Fig. <ref type="figure" target="#fig_0">1c-e</ref>), which results in excellent fracture classification quality with the area under ROC curve equal to 0.95 or higher. The predictions are highly interpretable as they can be validated by a doctor using a simple ruler. Second, we demonstrate the generalizability of our approach by evaluating the vertebrae detection model on the VerSe <ref type="bibr" target="#b21">(Löffler et al., 2020)</ref> dataset without any training/fine-tuning, which results in only a minor drop of fracture severity classification quality.</p><p>This work extends our previous conference paper <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref> published at MICCAI-2020. The additional primary contributions are</p><p>• We propose a new anchor-free approach to detect vertebrae. We compare this idea with our previous anchor-based method and show that it offers not only a more elegant but also more accurate algorithm, see Section 6.2.1.</p><p>• We tested the generalizability of the proposed fracture quantification method in two ways. First, we transfer it from LungCancer-500 to VerSe with a negligible drop in quality. Second, we tested the proposed approach within the mosmed.ai initiative, an experiment for systematic comparison of various AI solutions for medical imaging <ref type="bibr" target="#b28">(Pavlov et al., 2021)</ref>.</p><p>• We extended the previous public release of vertebra annotation on LungCancer-500 dataset by adding missing annotations for lumbar and cervical vertebrae.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Previous Work</head><p>We split previous methods into three major groups: Step 2: c) identifing key-points and the corresponding heights; d-e) a closer look at some vertebrae (colors denote the fracture severity). Finally: f) the original image with vertebrae types (right side) and their estimated fracture severities (left side).</p><p>• Vertebra-level analysis. The goal of these methods is to estimate severity for every vertebra. Usually, these methods rely on an external vertebra detection method to provide a small 3D path for each vertebra.</p><p>• Patient-level analysis. These methods operate with the whole 3D image and assign a label to the whole CT series. Though vertebra-level predictions can be aggregated, e.g., by max pooling, some of the methods work with a single classification label for the whole 3D image, so it cannot be decomposed into a series of vertebra-level predictions. Patient-level methods usually provide the full pipeline and don't use external vertebra localization as an input.</p><p>• Other spine-related methods. Some interesting ideas are proposed in other spine imaging analysis problems, which aren't directly related to fracture detection.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">Vertebra-level fracture classification</head><p>The automatic classification of vertebral fractures has received much attention from the medical image analysis community. A quantitative image analysis method was proposed in <ref type="bibr" target="#b4">(Burns et al., 2017)</ref> to classify individual vertebrae. First, the spinal column is segmented by an external method detecting intervertebral discs. Then each vertebra is split into 17 sections to extract a set of simple features such as mean density from the segmentation mask. Finally, a support vector machine classifies vertebrae based on the obtained 51 features. The system provides excellent sensitivity (98.7%) but quite low specificity (77.3%). A similar approach was used in <ref type="bibr" target="#b39">(Valentinitsch et al., 2019)</ref> where authors calculated computer vision features such as histograms of oriented gradients from vertebra masks and achieved ROC AUC 0.88. A plain deep learning-based version of this two-step approach was proposed in <ref type="bibr" target="#b0">(Antonio et al., 2018)</ref>, where classical ResNet was trained on 3-channel 2D images obtained from the prior segmentation mask by taking central sagittal, axial and coronal slices for each vertebra.</p><p>Finally, in <ref type="bibr" target="#b12">(Husseini et al., 2020)</ref> a severity-aware training procedure is proposed. The authors use a tripled-loss-inspired loss function which motivates the network to cluster the representations of each image/patch with similar severities according to their Genant index. This significantly improves the learnt representations, which is empirically demonstrated by training an SVM classifier for the healthy/fractured task. However, because the solved task is classification at either vertebra or image level, the method still lacks interpretability and ease of clinical validation as other classification-based approaches.</p><p>It is important to note that all the methods above rely on prior segmentation, which may result in removing some cases with severe abnormalities. Indeed, the authors of <ref type="bibr" target="#b39">(Valentinitsch et al., 2019)</ref> reported that 11 cases out of 154 were excluded from the analysis due to incorrect prior spine segmentation largely caused by high-grade fractures.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Patient-level fracture classification</head><p>This requirement was relaxed in several papers. In <ref type="bibr" target="#b27">(Nicolaes et al., 2019)</ref> the authors proposed a two-step pipeline for vertebrae detection: first, a segmentation neural network is used to generate pixel-level predictions (background, normal, fracture), then the predicted maps are aggregated. Instead of the whole spine mask, the authors used the ground-truth coordinates of vertebrae centroids to produce vertebrae-level predictions and achieved ROC AUC 0.93. A simple idea was used in <ref type="bibr" target="#b38">(Tomita et al., 2018)</ref>, where the authors selected the central sagittal slices as the spine is usually located in the middle of the image. In particular, they processed only 6.9 central slices per study (on average). As a result, this approach fails to identify fractures in patients with at least moderate scoliosis, and they had to exclude 156 out of 869 subjects from the analysis, primarily due to scoliosis. Though the average prevalence of scoliosis is 8.85%, it positively correlated with age and increases from 10.95% in 60-69 to 50% in 90+ age groups <ref type="bibr" target="#b15">(Kebaish et al., 2011)</ref>, so this cohort can not be ignored in vertebral fractures screening. The classification method from <ref type="bibr" target="#b38">(Tomita et al., 2018)</ref> consists of a ResNet34 which processes each of the central sagittal slices separately; then the obtained scores are aggregated by a simple LSTM network.</p><p>An original approach was proposed in <ref type="bibr" target="#b1">(Bar et al., 2017)</ref>. Though the method also relies on external spine segmentation, the mask is used to extract the spinal cord and create a new virtual sagittal slice. Next, small patches are extracted from this slice and classified by a convolutional network; finally, a recurrent neural network (RNN) is used to aggregate the predictions from each patch. Although the training database is the largest among the reviewed works (consisting of 1673 cases), the model achieves 83.9% sensitivity (with 93.8% specificity), likely due to poor study-level binary annotation extracted from the radiological reports.</p><p>This approach was further extended in <ref type="bibr" target="#b5">(Chettrit et al., 2020)</ref>. First, a YOLO-like object detection network is used to localize the vertebrae on axial slices; the resulting locations are then linearly interpolated to obtain the spinal cord location. The localized spinal cord is split into multiple volumetric patches to tile the vertebrae with minimal overlap. Next, a patch-wise network is used to obtain a fixed-shape representation for each patch. Finally, an aggregation network maps these representations to a final label (healthy/fractured). The patch-based approach gives the possibility to combat various exclusion criteria such as scoliosis. On the other hand, patch-level predictions cannot be accurately mapped to individual vertebrae, giving only rough localization; thus only a single label per image can be predicted, which greatly reduces interpretability and potential for clinical validation.</p><p>Another interesting patient-level method was proposed in <ref type="bibr" target="#b41">(Yilmaz et al., 2021)</ref>. It follows a similar high-level scheme and employs a hierarchical convolutional network <ref type="bibr" target="#b3">(Buerger et al., 2020)</ref> to localize vertebrae. Then a simple 4-layer CNN analyzes patches to estimate vertebrae deformity and fracture grades. Finally, the obtained vertebra-level scores are aggregated via maximum function.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.">Other spine-related methods</head><p>An interesting vertebrae detection and labeling idea is proposed in <ref type="bibr" target="#b40">(Windsor et al., 2020)</ref>. First, a 2D network is separatelly applied to sagittal slices in order to (1) detect vertebrae corners and centroids and (2) assign corners to their respective centroids: each "corner" pixel is treated as a potential corner of a vertebra's bounding quadrilateral and 4 displacement fields (for each corner type) are predicted. The displacement fields are then used to group the corners pointing to the same centroid. Finally, the obtained vertebrae are labeled using 2 additional convolutional neural networks combined with a language model, which, by design, guarantees the monotonicity of the resulting labels. However, in addition to its complexity, the approach doesn't always yield geometrically valid predictions, because the corners are not originally tied to centroids. For this reason the authors applied additional post-processing in order to alleviate the problem of too many or too few corners per quadrilateral.</p><p>Another iterative approach for vertebrae segmentation is discussed in <ref type="bibr" target="#b23">(Masuzawa et al., 2020)</ref>: first a 3D segmentation network is used to roughly localize the thoracic, lumbar and cervical vertebrae. Next, an iterative convolutional network is used to segment individual vertebrae in each region as well as predict the rough location of the next vertebra.</p><p>A carefully designed pipeline for vertebra identification and labelling was proposed within VerSe-2020 competition <ref type="bibr" target="#b35">(Sekuboyina et al., 2021)</ref> by Christian Payer who won the challenge. First, the spine is localized by a spinal centerline heatmap regression predicted by U-net. Second, SpatialConfiguration-Net <ref type="bibr" target="#b29">(Payer et al., 2019)</ref> is employed to detect centres of the vertebral bodies as landmarks by combining its local appereance with global joint configuration of all vertebrae.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Method</head><p>The high-level structure of the method follows our previous work <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref> as we use a 2-stage pipeline.</p><p>1. Spine localization. We propose a new soft-argmax based approach to identify the vertebral column in 3D CT and, as a consequence, reducing the problem to 2D by producing the corresponding mid-sagittal slice <ref type="bibr" target="#b2">(Buckens et al., 2013)</ref> to measure h a , h m , h p for each vertebra (Fig. <ref type="figure" target="#fig_0">1a,b</ref>). Our method is trained to directly solve the localization problem rather than spine segmentation and demonstrates excellent localization quality with the average error less than 1 mm. Also, it allows us to process all studies with no exceptions, including cases with severe scoliosis. This step is similar to other recent pipelines: the VerSe-2020 <ref type="bibr" target="#b35">(Sekuboyina et al., 2021)</ref> winning solution by C. Payer employs heatmap regression to detect spinal center-line; <ref type="bibr" target="#b5">(Chettrit et al., 2020)</ref> detects the center-line points by a 2D YOLO. In fact, both soft-argmax and heatmap regression are actively used in landmark detection while the former approach shows better results in some pose estimation tasks <ref type="bibr" target="#b19">(Luvizon et al., 2018)</ref>. Detection methods like YOLO seems to be less appropriate as we need to find just one point for every slice, not an arbitrary number of objects. 2. Vertebra detection and fracture quantification. The second task at hand is very similar to object detection: for a given image it is required to localize all objects of a given class, the number of objects may vary, however it is limited by a constant. The main difference is the encoding of sought objects: in classical object detection axis-aligned bounding boxes (AABBs) are used, while in our case each vertebra is represented by 6 coplanar points in an image.</p><p>We propose a modified 2D object detection network to predict the Genant segments directly.</p><p>Our contribution is the following: • We lift the previous limitation to chest CT images by incorporating the information regarding the vertebrae limits into the first network, thus making it applicable to any input.</p><p>• We simplify the second network by removing the anchor boxes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Spine localization</head><p>We start our pipeline by localizing the spine. For this purpose we use a 3D UNet-like <ref type="bibr" target="#b24">(Milletari et al., 2016)</ref> fully convolutional neural network. For each voxel we interpret the network's output as the probability of being situated near the vertebral column. Next, we process the prediction in two ways (Fig. <ref type="figure" target="#fig_1">2):</ref> 1. We take the 2D soft-argmax <ref type="bibr" target="#b20">(Luvizon et al., 2019)</ref> operation along the xOy axes in order to obtain the spine coordinates in axial planes. 2. We take the global max-pooling operation along the same axes in order to obtain the probability of containing the spine at a given z coordinate.</p><p>We train the model by optimizing a sum of two loss functions:</p><p>1. Mean absolute error between the predicted coordinates and the ones smoothly interpolated between vertebrae centers, calculated from annotation (Fig. <ref type="figure">4a</ref>). 2. Binary cross-entropy between the predicted slice-level probabilities and the binary limits, also extracted from the vertebrae annotation.</p><p>At inference time we threshold the slice-level probabilities by 0.5 and take the convex hull in order to obtain the curve limits. The predicted curve is then cropped according to these limits. No additional post-processing is used.</p><formula xml:id="formula_1">a) b) c) d) e)</formula><p>Figure <ref type="figure">3</ref>: The spine straightening pipeline: a) three axial slices from different body regions: head, thorax, legs; b) the combined points from each slice result in a 3D curve, colors denote the probability of being inside the vertebral column limits: green -high probability, redlow; c) planes orthogonal to the curve (for better visualization most planes are omitted); d) a straightened vertebral column (the planes become parallel); e) the new central sagittal plane.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Spine straightening</head><p>Using the predictions from the first network, we obtain a 3D curve passing through the vertebral column, as well as the limits in which it is defined. We then crop the image accordingly and interpolate it onto a new 3D grid on which the obtained curve becomes a straight vertical line.</p><p>In order to find such a grid, we select a number of equidistant points on the curve and construct corresponding orthogonal planes. Then, we generate a grid for which all the planes become parallel, which effectively straightens the curve, because the plane normals are tangent to the curve 2 . Finally we select a new sagittal plane where all vertebrae are visible, namely the one that contains the entire curve. Fig. <ref type="figure">3</ref> shows a detailed illustration.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Vertebrae localization</head><p>In classical object detection axis-aligned bounding boxes (AABBs) are used as a relatively adequate description of both localization and shape of a given object. In our case the Genant segments play the same role while also containing more task-specific information, namely the level of deformation. This fact suggests that AABBs can be completely removed from our training pipeline.</p><p>During target generation we simplify the idea from <ref type="bibr" target="#b31">(Ren et al., 2015</ref>) and use anchor-based translation-invariant encoding (Fig. <ref type="figure">4b-c</ref>): each pixel is a) c) b)</p><p>Figure <ref type="figure">4</ref>: Target generation steps: a) example of an annotated vertebra; b) the distance between the anchor pixel (blue square) and the vertebra centroid (red square); the objectness O is 1, if the distance is smaller than a given threshold; c) the keypoints' coordinates relative to the anchor pixel.</p><p>treated as an anchor relative to which the 6 points' coordinates are calculated:</p><formula xml:id="formula_2">e x = g x − a x ; e y = g y − a y ,<label>(2)</label></formula><p>where (g x , g y ), (e x , e y ) are the global and encoded coordinates of a given point respectively and (a x , a y ) -are the coordinates of an anchor pixel. Additionally, as in standard object detection, each location requires an objectness label, which is used to filter out the pixels not related to any vertebrae. The objectness is 1 if the given pixel is closer than a fixed threshold to any vertebra centroid (Fig. <ref type="figure">4b</ref>), and 0 otherwise.</p><p>Finally, we use the same loss function as in <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref> to train our second network:</p><formula xml:id="formula_3">L = BCE(ô, o) + 1 I[o i = 0] N i=1 I[o i &gt; 0] G i • M AE(ê i , e i ),<label>(3)</label></formula><p>where BCE is the log-loss between the real (o) and predicted (ô) objectness, M AE is the mean absolute error between real (e i ) and predicted (ê i ) encoded keypoints' coordinates (2) for the i-th vertebra and G i is the respective Genant score (1) used for loss reweighting. We found such a reweighting of regression loss to be very effective in balancing the network's performance across vertebrae with different fracture severities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.">Non-maximum suppression</head><p>Non-maximum suppression (NMS) is an essential component of the majority of current object detection pipelines. Its main purpose is to reduce the number of predictions referring to the same object, and ideally leaving exactly one final prediction per object. NMS requires a measure of closeness between two given predictions, i.e. a measure of overlap between bounding boxes, as well as an objectness score.</p><p>In our case, the objectness score is directly predicted by the model.</p><p>As for closeness, we replace the intersection-over-union (IoU) between axisaligned bounding boxes from <ref type="bibr" target="#b30">(Pisov et al., 2020</ref>) by new a measure, named as Butterfly-IoU (BIoU). In general, we compute BIoU in the same way as standard IoU, but instead of axis-aligned bounding boxes (Fig. <ref type="figure" target="#fig_2">5b</ref>), we use hexagons built on six vertebra keypoints. First, we build these hexagons, as shown on Fig. <ref type="figure" target="#fig_2">5c</ref>, for two sets of key points. Second, we calculate areas of intersection and union of two hexagons. Finally, we divide the intersection area by the union area to calculate BIoU. During non-maximum suppression, we use BIoU values to remove similar predictions as usual.</p><p>BIoU is specifically designed to better capture the shape of vertebrae and yields significantly better results in cases of severely damaged vertebrae (Fig. <ref type="figure" target="#fig_2">5</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Data</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">LungCancer500</head><p>Our main dataset consists of 100 randomly selected images from the Moscow Radiology CTLungCa-500 dataset 3 <ref type="bibr" target="#b26">(Morozov et al., 2021)</ref>. The cohort includes studies from a lung cancer screening program, so osteoporotic fractures are common incidental findings as patients aged from 50 to 75.</p><p>The images have various voxel spacing ranging from .5mm × .5mm × .8mm to 1mm × 1mm × .8mm and different numbers of visible vertebrae: from 10 to 15.</p><p>In <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref> an annotation of genant segments for this dataset was published. However, the work was focused solely on detection of thoracic vertebrae. We extended the annotation by adding vertebrae from the remaining regions 4 . The re-annotation was performed by 3 experts with 1 to 5 years of experience in radiology and a board-certified radiologist with 12 years of experience in the field. In total the dataset contains 3565 vertebra annotations (2-3 per single vertebra). To annotate vertebra heights, radiologists (1) look for a sagittal slice passing through the middle of the vertebra and (2) marks six keypoints on this slice. Then the next vertebra is annotated in the same manner, but the selected slice can be different if a patient has scoliosis or patient positioning is wrong.</p><p>The distribution of vertebral fractures is the following: 440 mild, 250 moderate, 54 severe deformations and 2821 normal vertebrae. Patient-wise we have a somewhat balanced distribution with 11, 23, 44 and 22 patients with none, mild, moderate and severe deformations respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">VerSe-2020</head><p>For additional validation on external data we use the VerSe-2020 dataset <ref type="bibr" target="#b21">(Löffler et al., 2020;</ref><ref type="bibr">Sekuboyina et al., 2020b,a;</ref><ref type="bibr" target="#b10">Glocker et al., 2013</ref><ref type="bibr" target="#b9">Glocker et al., , 2012))</ref>. The dataset consists of over 300 multidetector CT images of various regions of the spine.</p><p>For each image, every vertebra has an associated segmentation mask as well as centroid coordinates. Additionally, a subset of VerSe-2020 contains vertebrae deformation labels calculated using the same Genant scale. However, the vertebrae near image borders sometimes lack annotation, which mostly impacts the estimated precision of our method (see Section 6 for details). Additionally, because during training we rely on interpolation between vertebrae, the image containing a single annotated vertebra (verse116) was excluded from the training set.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Private dataset</head><p>In addition to public datasets, we also tested the pipeline trained on a large private dataset which includes</p><p>• 402 chest and abdominal CT studies with annotated Genant segments using the same protocol as LungCancer500. The distribution of vertebral fractures is the following: 667 mild, 364 moderate, 153 severe deformations and 4364 normal vertebrae. The annotation was done by three experienced radiologists with at least 10 years of experience.</p><p>• 191 additional studies of chest, abdominal and brain CT with annotated limits to improve the spine localization network performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.">Mosmed.ai test dataset</head><p>In addition to testing the models on public datasets, we also evaluated them on an independent test dataset collected by the Research and Practical Clinical Center for Diagnostics and Telemedicine Technologies of the Moscow Health Care Department. The dataset was prepared to test various algorithms using the principles described in <ref type="bibr" target="#b28">(Pavlov et al., 2021)</ref> and consists of 50 studies with vertebral fractures and 50 age-matched healthy studies (Genant score is 0.75 or higher). Cases were prepared carefully to test the algorithms under various conditions, such as vertebral ankylosis, vertebroplasty and osteoblastic metastases, among others.</p><p>Only patient-level metrics are available for this dataset. The data is hidden from the developers; the test was conducted in real time with 60 seconds response time requirement.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Experimental setup</head><p>We trained our spine localization network with Adam optimizer <ref type="bibr" target="#b16">(Kingma and Ba, 2014)</ref> with standard parameters for 10 5 iterations with batches of size 3 and a learning rate of 1 • 10 −4 (3 • 10 −5 for VerSe). As a preprocessing step we normalize the voxel intensities to the interval [0, 1] as well as resample the images to a spatial size of 2mm×2mm×4mm. Our motivation behind this is to standardize the spatial features, because CNNs are not invariant to scaling, as well as reduce memory consumption for images with too high resolution. No additional postprocessing is applied to final predictions, aside from the probability maps binarization described in Section 3.1.</p><p>The vertebrae detection network was trained for 80k iterations with batches of size 8. We used Adam optimizer <ref type="bibr" target="#b16">(Kingma and Ba, 2014)</ref> with standard parameters and a gradually decreasing learning rate, which enabled the models to reach better optima. The initial learning rate was set to 3 • 10 −4 and decreased by a factor of 2 after 6k, 10k, 16k, 28k, 40k and 56k iterations. As a preprocessing step we normalize the voxel intensities to zero mean and unit variance. As described in Section 3.3, we generate a grid onto which the new image is interpolated. The grid is constructed in such a way, so that the spatial size of each voxel becomes 1mm × 1mm × 1mm, which can be regarded as another implicit preprocessing step. Finally, during non-maximum suppression we leave the predictions with an objectness greater than 0.7 and use a threshold of 0.1 for the closeness function (3.4).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Results</head><p>We report results obtained using 5-fold cross-validation. For every network we trained 5 experiments with different cross-validation splits in order to estimate mean and standard deviation for each score. To obtain patient-level predictions, we use the most severe fracture among all the vertebrae, which is equivalent to taking the minimal Genant score. As we have multiple annotations per study, we also report the inter-expert variability. Unlike Lung-Cancer-500, VerSe has a publicly available division on train, validation and test. For this reason, we used the last two subsets for testing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1.">Spine localization</head><p>We trained models on different datasets with various characteristics:</p><p>1. Lung-Cancer-500, which consists of pretty standard Chest CT scans primarily with thoracic vertebrae. 2. More informative Private and VerSe datasets. As Lung-Cancer-500 contains a very limited number of lumbar and cervical vertebrae, we didn't transfer models trained on Lung-Cancer-500 to VerSe.</p><p>We report the localization quality of the first step of our method in Table <ref type="table" target="#tab_0">1</ref>. Because most of the images from Lung-Cancer-500 (Section 4.1) are fully covered by vertebrae, this dataset is not very challenging for the limits classification head. Thus, in order to thoroughly evaluate the localization network, we use an additional dataset with annotated vertebrae centroids -VerSe-2020 (Section 4.2).</p><p>The difference in the Mean l2 metric between the two datasets can be explained by the fact that the images of VerSe are much more diverse than those of Lung-Cancer-500. Nevertheless, given the input voxel size of 2mm × 2mm × 4mm, the results on both the datasets suggest that the model's performance is close to maximal.</p><p>Moreover, as mentioned in Section 4.2, the vertebrae near image limits are sometimes lacking annotation in VerSe, see several examples on Fig. <ref type="figure" target="#fig_3">6</ref>. We argue that this is the main cause of such a large Limits MAE in Table <ref type="table" target="#tab_0">1</ref>. For this reason, we additionally extrapolate the predictions of our spine localization network trained on VerSe by 2cm at both limits, leaving the second network with more potential vertebrae to detect. Surprisingly, this simple post-processing increased the overall recall of the pipeline, but doesn't deteriorate the precision significantly (Table <ref type="table" target="#tab_1">2</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.">Vertebrae detection and severity classification 6.2.1. Cross-validation on Cancer500</head><p>We first compare three modifications of the pipeline 1. Anchor-Boxes. The approach from our previous work <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref>. Both spine localization and vertebra analysis networks were trained on Lung-Cancer-500. 2. Ours. The proposed anchor-free approach; both networks were trained on Lung-Cancer-500. 3. Ours Private. The proposed approach; both networks were trained on the Private dataset.</p><p>In order to calculate vertebrae-level metrics a matching procedure of predicted and real vertebrae is required. For Cancer500 we use the Butterfly-IoU (namely BIoU) between each (prediction, target) pair, see Fig. <ref type="figure" target="#fig_2">5</ref> above. All pairs with a closeness smaller than a given threshold are discarded. For the remaining pairs, for each target we select the closest corresponding prediction. This way all unmatched targets are considered false negatives (FN) and all unmatched predictions -false positives (FP). Table <ref type="table" target="#tab_1">2</ref> shows vertebrae detection metrics averaged by patients as well as by vertebrae.</p><p>We report two types of metrics: precision and recall for vertebrae identification and binary classification metrics for vertebra fracture severity classification;  <ref type="table" target="#tab_1">2</ref>. Anchor-free model benefits from higher detection recall and slightly better classification metrics. The same model trained on the Private dataset shows perfect severity classification metrics, even outperforming expert agreement level. Figure <ref type="figure" target="#fig_4">7</ref> provides some insights about models' performance. Ours-Private models achieves more symmetrical distribution of errors and a generally narrower interval. Figure <ref type="figure" target="#fig_5">8</ref> shows some qualitative analysis of predictions for the Cancer500 dataset.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.2.">External tests</head><p>For external test on VerSe and mosmed.ai we use two setups:</p><p>1. Ours. Spine localization network is now trained on VerSe as LungCancer-   For VerSe another matching procedure is required, given the fact that the annotation represents vertebrae centers. Similarly to <ref type="bibr" target="#b21">(Löffler et al., 2020)</ref> we use the Euclidean distance between centers as a closeness function with a threshold of 20 mm.</p><p>In addition to vertebra-level, we also report patient level by using maximal deformation 1 − G to determine the whole image label. To analyze the performance of vertebrae fracture severity classification, we report metrics for various threshold values of G following the radiological definition of severity <ref type="bibr" target="#b7">(Genant et al., 1993)</ref>, see Table <ref type="table" target="#tab_2">3</ref>. We assume that the most relevant problem for chest CT is the identification of at least Moderate fractures (G ≤ 0.74) as healthy vertebrae in the thoracic spine are wedged, so normal variation can be misclassified as a Mild fracture (0.74 &lt; G ≤ 0.8) <ref type="bibr" target="#b18">(Lenchik et al., 2004)</ref>. To enable direct comparison with <ref type="bibr" target="#b12">(Husseini et al., 2020)</ref> we also add G0 vs G2-G3 where these Mild fractures are removed from the data.</p><p>Moreover, we analyze the generalizability of our approach by evaluating the model on the VerSe dataset, which contains additional annotations regarding the fracture severity of each vertebra. In this experiment we only trained the spine localization network on VerSe and reused the vertebrae detection network (trained on Cancer500) as is, without any additional tuning. The results are shown in the last rows of Tables <ref type="table" target="#tab_2">2 and 3</ref>. Note the minimal drop in classification performance.</p><p>It is important to note that the results for the VerSe dataset from Table <ref type="table" target="#tab_1">2</ref> are underestimated, especially the precision. This significant drop in quality is due to lacking annotations for vertebrae near images' edges. Fig. <ref type="figure" target="#fig_3">6</ref> shows several examples with such "false positives". According to our calculations about 95% of FPs are due to such partially annotated cases.</p><p>Similar values of ROC AUC were obtained at vertebra (0.88 <ref type="bibr" target="#b39">(Valentinitsch et al., 2019)</ref>, 0.93 <ref type="bibr" target="#b27">(Nicolaes et al., 2019)</ref>) and patient levels (0.92 <ref type="bibr" target="#b38">(Tomita et al., 2018)</ref>).</p><p>Finally, Fig. <ref type="figure" target="#fig_6">9</ref> gives a qualitative analysis of our method's performance on VerSe by showing several interesting (both bad and good) predictions. The rest of predictions on the entire VerSe test subset can be found in a separate repository 5 .</p><p>We can see that the network is robust to multiple severe deformations (Fig. <ref type="figure" target="#fig_6">9a</ref>), extreme noise (Fig. <ref type="figure" target="#fig_6">9b</ref>), generalizes well to whole body scans, various regions of the vertebral column and presence of contrast (Fig. <ref type="figure" target="#fig_6">9c</ref>).</p><p>On the other hand, some predictions suffer from severely misplaced keypoints, mainly in the cervical and lumbar regions. An interesting example is Fig. <ref type="figure" target="#fig_6">9g</ref>, which shows a faulty prediction for the C2 vertebra, which has an atypical shape as compared to other vertebrae. Another good example is Fig. <ref type="figure" target="#fig_6">9e</ref>, which has multiple false-negatives due to a noticeable amount of artifacts. Also, Fig. <ref type="figure" target="#fig_6">9f</ref> shows a case with multiple problems, all of which were caused by the spine localization network.</p><p>Overall, our analysis shows that, at a great extent, most of the causes of bad performance can be alleviated by training the network on a larger and more challenging dataset. See Fig. <ref type="figure" target="#fig_6">9d</ref>-g for a comparison between our public and private networks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">Discussion</head><p>We proposed an interpretable method for vertebral compression fractures quantification. It's based on clinical recommendations and provides easy-toverify outputs.</p><p>We extended and simplified the method for automatic identification of vertebraelevel fractures classification using the Genant score proposed in <ref type="bibr" target="#b30">(Pisov et al., 2020)</ref>. First of all we demonstrated, for the task at hand, the redundancy of bounding-boxes, and showed that Genant segments represent a more suitable description of vertebrae shape and localization. Furthermore, we extended the spine localization model by adding limits prediction, which makes it more suitable for clinical applications.</p><p>Finally, we demonstrated, the generalizability of our approach by evaluating our vertebrae detection network on the publicly available dataset VerSe-2020. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Overview of the proposed model. Step 1: a) localizing vertebrae centers in 3D CT (a sagittal projection is shown); b) generating a new 2D image via spine 'straightening'.Step 2: c) identifing key-points and the corresponding heights; d-e) a closer look at some vertebrae (colors denote the fracture severity). Finally: f) the original image with vertebrae types (right side) and their estimated fracture severities (left side).</figDesc><graphic coords="4,133.77,124.82,343.69,269.46" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure2: The spine localization pipeline: a) three axial slices from different body regions: head, thorax, legs; b) the slices' spatial position relative to the spine; c) the predicted probability maps for each slice, the color intensity denotes the probability magnitude; d) the final curve passing through the vertebral column (green), as well as the redundant parts (red) delimited by the spine limits (black, dashed).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: A comparison of IoU and BIoU for two deformed vertebrae: a) a portion of the vertebral column on a straightened image; b) vertebrae bounding boxes, the red region denotes their intersection; c) vertebrae "butterfly" hexagons, built using the Genant segments (red) note the empty intersection and thus zero BIoU.</figDesc><graphic coords="11,133.77,124.80,104.02,138.69" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Several examples of "false positives" on the VerSe dataset in sagittal and coronal projections. The annotated vertebrae are marked with orange stars, the predicted ones -with blue circles. Note the missing annotations for "border" vertebrae: near image borders (a-b), vertebral column borders (c-f).</figDesc><graphic coords="15,168.14,124.80,274.97,174.47" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Bland-Altman plots for Ours and Ours-Private models. Blue points denotes vertebra with correct Genant grade classification; orange ones shows wrong classification.</figDesc><graphic coords="16,133.77,511.88,343.69,118.97" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: Qualitative analysis of predictions for the Cancer500 dataset for both our public and private networks.</figDesc><graphic coords="17,133.77,186.54,343.72,385.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 9 :</head><label>9</label><figDesc>Figure 9: Qualitative analysis of predictions for the VerSe dataset for both our public and private networks.</figDesc><graphic coords="20,133.77,160.09,343.67,438.52" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Spinal line localization metrics for Lung-Cancer-500 and VerSe-2020 datasets.</figDesc><table><row><cell></cell><cell>Data</cell><cell>Points</cell><cell>Limits</cell></row><row><cell>Train</cell><cell>Test</cell><cell>Mean l2, mm</cell><cell>MAE, mm</cell></row><row><cell cols="2">Cancer500 Cancer500 Private</cell><cell>.92 (.07) .74 (.06)</cell><cell>.03 (.04) .07 (.08)</cell></row><row><cell>VerSe Private</cell><cell>VerSe val</cell><cell>1.81 (.20) 1.30 (.15)</cell><cell>19.23 (3.42) 18.37 (3.82)</cell></row><row><cell>VerSe Private</cell><cell>VerSe test</cell><cell>1.72 (.17) 1.19 (.16)</cell><cell>18.76 (2.59) 18.07 (3.10)</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Vertebrae detection and severity classification metrics. Anchor-Boxes and Ours metrics are based on 5-fold cross-validation. Severity classification metrics are reported on the vertebra level for identifying Moderate and Severe vertebrae (G ≤ 0.74). We report sensitivity for a specificity fixed at 90% to make models directly comparable.</figDesc><table><row><cell></cell><cell></cell><cell cols="2">Vertebra Detection</cell><cell cols="2">Severity Classification</cell></row><row><cell></cell><cell></cell><cell>Precision</cell><cell>Recall</cell><cell>ROC AUC</cell><cell>Sens. at spec.=0.9</cell></row><row><cell>Cancer500</cell><cell>Anchor-Boxes Ours Experts Ours Private</cell><cell>.994 (.001) .991 (.002) .999 (.001) .993</cell><cell cols="3">.953 (.001) .955 (.004) .863 (.030) .990 (.002) .959 (.002) .885 (.002) .994 (.001) .971 (.005) .936 (.018) .991 .981 .950</cell></row><row><cell>VerSe</cell><cell>Ours Ours ext. Ours Private</cell><cell>.947 .935 .896</cell><cell>.886 .951 .973</cell><cell>.951 .970</cell><cell>.848 .908</cell></row></table><note>see the first four lines of Table</note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Binary classification metrics on VerSe for various grades of fractures: at least Mild (G ≤ 0.8) and at least Moderate (G ≤ 0.74). All numbers are given as mean (std). Ours-Private is used without any modifications as its training data set is diverse enough.</figDesc><table><row><cell></cell><cell></cell><cell cols="2">Vertebra-level</cell><cell cols="2">Patient-level</cell></row><row><cell>Task</cell><cell cols="2">Model ROC AUC</cell><cell>Sens. at spec.=0.9</cell><cell>ROC AUC</cell><cell>Sens. at spec.=0.9</cell></row><row><cell>G0 vs G1,</cell><cell>Public</cell><cell>.877</cell><cell>.713</cell><cell>.882</cell><cell>.703</cell></row><row><cell>G2, G3</cell><cell>Private</cell><cell>.906</cell><cell>.777</cell><cell>.911</cell><cell>.807</cell></row><row><cell>G0 vs</cell><cell>Public</cell><cell>.963</cell><cell>.889</cell><cell>.953</cell><cell>.856</cell></row><row><cell>G2, G3</cell><cell>Private</cell><cell>.979</cell><cell>.952</cell><cell>.962</cell><cell>.919</cell></row><row><cell>G0, G1 vs</cell><cell>Public</cell><cell>.951</cell><cell>.848</cell><cell>.936</cell><cell>.806</cell></row><row><cell>G2, G3</cell><cell>Private</cell><cell>.970</cell><cell>.908</cell><cell>.960</cell><cell>.910</cell></row><row><cell cols="2">mosmed.ai Private</cell><cell>N/A</cell><cell>N/A</cell><cell>.99</cell><cell>1.0</cell></row><row><cell cols="6">500 contains primarily thoracic vertebrae. The second network is simply</cell></row><row><cell cols="4">reused without any adaptation to VerSe.</cell><cell></cell><cell></cell></row><row><cell>2.</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2">See https://github.com/neuro-ml/straighten for full code for interpolation along curves.</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3">https://mosmed.ai/en/data-sets/ct lungcancer 500/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">https://github.com/neuro-ml/anchor-free-genant/</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5">https://github.com/neuro-ml/anchor-free-genant/</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Acknowledgments. Alexey Zakharov, Maxim Pisov, Victor Gombolevskiy and Mikhail Belyaev were supported by the Russian Science Foundation grant 20-71-10134.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Vertebra fracture classification from 3D CT lumbar spine segmentation masks using a convolutional neural network</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">B</forename><surname>Antonio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">G C</forename><surname>Bautista</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">B</forename><surname>Labao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Naval</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Asian Conference on Intelligent Information and Database Systems</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="449" to="458" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Compression fractures detection on CT</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">B</forename><surname>Amitai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Toledano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Elnekave</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Imaging 2017: Computer-Aided Diagnosis, International Society for Optics and Photonics</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page">1013440</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Intra and interobserver reliability and agreement of semiquantitative vertebral fracture assessment on chest computed tomography</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Buckens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>De Jong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Bakker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">P</forename><surname>Stallman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">P</forename><surname>Mali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Van Der Graaf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">M</forename><surname>Verkooijen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PloS one</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Combining deep learning and model-based segmentation for labeled spine CT segmentation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Buerger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Franz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Klinder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lorenz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lenga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Imaging 2020: Image Processing, International Society for Optics and Photonics</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page">113131C</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Vertebral body compression fractures and bone density: automated detection and classification on CT images</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Burns</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Summers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Radiology</title>
+		<imprint>
+			<biblScope unit="volume">284</biblScope>
+			<biblScope unit="page" from="788" to="797" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">3D convolutional sequence to sequence model for vertebral compression fractures identification in CT</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Chettrit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Meir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lebel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Orlovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gordon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Akselrod-Ballin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2020</title>
+				<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="743" to="752" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Vertebral Fracture Initiative: Executive summary</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">K</forename><surname>Genant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Bouxsein</surname></persName>
+		</author>
+		<ptr target="https://www.iofbonehealth.org/sites/default/files/PDFs/IOFVFI-ExecutiveSummary-English.pdf" />
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Vertebral fracture assessment using a semiquantitative technique</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">K</forename><surname>Genant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Kuijk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Nevitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of bone and mineral research</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="1137" to="1148" />
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The false hope of current approaches to explainable artificial intelligence in health care</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ghassemi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Oakden-Rayner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Beam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Lancet Digital Health</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="e745" to="e750" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Automatic localization and identification of vertebrae in arbitrary field-of-view CT scans</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Glocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Feulner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Criminisi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Haynor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Konukoglu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer-Assisted Intervention -MICCAI 2012</title>
+				<meeting><address><addrLine>Berlin Heidelberg; Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="590" to="598" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Vertebrae localization in pathological spine CT via dense classification from sparse annotations</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Glocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zikic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Konukoglu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Haynor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Criminisi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer-Assisted Intervention -MICCAI 2013</title>
+				<meeting><address><addrLine>Berlin Heidelberg; Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="262" to="270" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Missed incidental vertebral compression fractures on computed tomography imaging: More optimism justified</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gossner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">World Journal of Radiology</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">472</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Grading loss: A fracture grade-based metric loss for vertebral fracture detection</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Husseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Loeffler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Navarro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Menze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Kirschke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2020</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="733" to="742" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">An estimate of the worldwide prevalence and disability associated with osteoporotic fractures</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Johnell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kanis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Osteoporosis international</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="1726" to="1733" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">European guidance for the diagnosis and management of osteoporosis in postmenopausal women</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Kanis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Cooper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rizzoli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Y</forename><surname>Reginster</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Osteoporosis international</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="3" to="44" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Scoliosis in adults aged forty years and older: prevalence and relationship to age, race, and gender</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Kebaish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">R</forename><surname>Neubauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">D</forename><surname>Voros</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Khoshnevisan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Skolasky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Spine</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="731" to="736" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Adam: A method for stochastic optimization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ba</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.6980</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Patients with prior fractures have an increased risk of future fractures: a summary of the literature and statistical synthesis</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Klotzbuecher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">D</forename><surname>Ross</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">B</forename><surname>Landsman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iii</forename><surname>Abbott</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Berger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of bone and mineral research</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="721" to="739" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Diagnosis of osteoporotic vertebral fractures: importance of recognition and description by radiologists</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lenchik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">F</forename><surname>Rogers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">D</forename><surname>Delmas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">K</forename><surname>Genant</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Journal of Roentgenology</title>
+		<imprint>
+			<biblScope unit="volume">183</biblScope>
+			<biblScope unit="page" from="949" to="958" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">2d/3d pose estimation and action recognition using multitask deep learning</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Luvizon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Picard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Tabia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition</title>
+				<meeting>the IEEE Conference on Computer Vision and Pattern Recognition</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="5137" to="5146" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Human pose regression by combining indirect part detection and contextual information</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Luvizon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Tabia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Picard</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers &amp; Graphics</title>
+		<imprint>
+			<biblScope unit="volume">85</biblScope>
+			<biblScope unit="page" from="15" to="22" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">A vertebral segmentation dataset with fracture grading</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Löffler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jacob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Grau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Scharr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>El Husseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kallweit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zimmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Baum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Kirschke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Radiology: Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<date type="published" when="2020">2020. e190138</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Value and potential limitations of vertebral fracture assessment (VFA) compared to conventional spine radiography: experience from a fracture liaison service (FLS) and a meta-analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Malgo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hamdy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ticheler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Smit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kroon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Rabelink</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Dekkers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Appelman-Dijkstra</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Osteoporosis International</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="2955" to="2965" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Automatic segmentation, localization, and identification of vertebrae in 3D CT images using cascaded convolutional neural networks, in: Medical Image Computing and Computer Assisted Intervention -MICCAI 2020</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Masuzawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kitamura</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Nakamura</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Iizuka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Simo-Serra</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<publisher>Springer International Publishing</publisher>
+			<biblScope unit="page" from="681" to="690" />
+			<pubPlace>Cham</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">V-net: Fully convolutional neural networks for volumetric medical image segmentation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Milletari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Navab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Ahmadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Fourth International Conference on</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="page" from="565" to="571" />
+		</imprint>
+	</monogr>
+	<note>3D Vision (3D V)</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Reporting of vertebral fragility fractures: can radiologists help reduce the number of hip fractures?</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mitchell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jewell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Javaid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Mckean</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ostlere</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Archives of osteoporosis</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">71</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A simplified cluster model and a tool adapted for collaborative labeling of lung cancer CT scans</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Morozov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Gombolevskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Elizarov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gusev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Novik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Prokudaylo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bardin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Popov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ledikhova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Chernina</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer Methods and Programs in Biomedicine</title>
+		<imprint>
+			<biblScope unit="volume">206</biblScope>
+			<biblScope unit="page">106111</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nicolaes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Raeymaeckers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Robben</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Wilms</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vandermeulen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Libanati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Debois</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1911.01816</idno>
+		<title level="m">Detection of vertebral fractures in CT using 3D convolutional neural networks</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Reference medical datasets (MosMedData) for independent external evaluation of algorithms based on artificial intelligence in diagnostics</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Pavlov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">E</forename><surname>Andreychenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">V</forename><surname>Vladzymyrskyy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Revazyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">S</forename><surname>Kirpichev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">P</forename><surname>Morozov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Digital Diagnostics</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="49" to="66" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Integrating spatial configuration into heatmap regression based CNN s for landmark localization</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Payer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Štern</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bischof</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Urschler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="207" to="219" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Keypoints localization for joint vertebra detection and fracture severity quantification</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pisov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kondratenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zakharov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Petraikin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Gombolevskiy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Morozov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Belyaev</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2020</title>
+				<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer International Publishing</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="723" to="732" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Faster r-cnn: Towards real-time object detection with region proposal networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="91" to="99" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">The worldwide problem of osteoporosis: insights afforded by epidemiology</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">L</forename><surname>Riggs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Melton Iii</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bone</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="S505" to="S511" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Deep convolutional networks for automated detection of posterior-element fractures on spine CT</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">R</forename><surname>Roth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Burns</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Summers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Imaging 2016: Computer-Aided Diagnosis, International Society for Optics and Photonics</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page">97850P</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bayat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Husseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Löffler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Tetteh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kukačka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Payer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Štern</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Urschler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Lessmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Ambellan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Amiranashvili</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ehlke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Lamecker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Lehnert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lirio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">P</forename><surname>De Olaguer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ramm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sahu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tack</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Zachow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Angerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kirszenberg</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Élodie Puybareauq</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Valentinitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rempfler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Menze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Kirschke</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2001.09193</idno>
+		<title level="m">VerSe: A vertebrae labelling and segmentation benchmark for multi-detector CT images</title>
+				<imprint>
+			<date type="published" when="2020">2020a</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">VerSe: a vertebrae labelling and segmentation benchmark for multi-detector CT images</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Husseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bayat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Löffler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liebl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Tetteh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kukačka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Payer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Štern</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical image analysis</title>
+		<imprint>
+			<biblScope unit="volume">73</biblScope>
+			<biblScope unit="page">102166</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Attention-driven deep learning for pathological spine segmentation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kukačka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Kirschke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Menze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Valentinitsch</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop and Challenge on Computational Methods and Clinical Applications in Musculoskeletal Imaging</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="108" to="119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Labeling vertebrae with two-dimensional reformations of multidetector CT images: An adversarial approach for incorporating prior knowledge of spine anatomy</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sekuboyina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rempfler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Valentinitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Menze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Kirschke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Radiology: Artificial Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<date type="published" when="2020">2020b. e190074</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Deep neural networks for automatic detection of osteoporotic vertebral fractures on CT scans</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tomita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">Y</forename><surname>Cheung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hassanpour</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computers in biology and medicine</title>
+		<imprint>
+			<biblScope unit="volume">98</biblScope>
+			<biblScope unit="page" from="8" to="15" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Opportunistic osteoporosis screening in multi-detector CT images via local classification of textures</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Valentinitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Trebeschi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kaesmacher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lorenz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Löffler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zimmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Baum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kirschke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Osteoporosis international</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="1275" to="1285" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">A convolutional approach to vertebrae detection and labelling in whole spine MRI</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Windsor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jamaludin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kadir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zisserman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Medical Image Computing and Computer Assisted Intervention -MICCAI 2020</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="712" to="722" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Automated deep learning-based detection of osteoporotic fractures in CT images</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">B</forename><surname>Yilmaz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Buerger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Fricke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M R</forename><surname>Sagar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Peña</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lorenz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Glüer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Meyer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Workshop on Machine Learning in Medical Imaging</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="376" to="385" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Try This Instead: Personalized and Interpretable Substitute Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2020-05-19">19 May 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+							<email>tong.chen@uq.edu.au</email>
+						</author>
+						<author>
+							<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+							<email>h.yin1@uq.edu.au</email>
+						</author>
+						<author>
+							<persName><forename type="first">Guanhua</forename><surname>Ye</surname></persName>
+							<email>g.ye@uq.net.au</email>
+						</author>
+						<author>
+							<persName><forename type="first">Zi</forename><surname>Huang</surname></persName>
+							<email>huang@itee.uq.edu.au</email>
+						</author>
+						<author>
+							<persName><forename type="first">Yang</forename><surname>Wang</surname></persName>
+							<email>yangwang@hfut.edu.cn</email>
+						</author>
+						<author>
+							<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">The University of Queensland</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">The University of Queensland</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">The University of Queensland</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">The University of Queensland</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Hefei University of Technology</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="institution">Hefei University of Technology</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff6">
+								<orgName type="department">Try This Instead: Personalized and Interpretable Substitute Recommendation. In</orgName>
+								<address>
+									<postCode>2020</postCode>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Try This Instead: Personalized and Interpretable Substitute Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-05-19">19 May 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">513C49D6132AD5849B829E80378388E7</idno>
+					<idno type="DOI">10.1145/3397271.3401042</idno>
+					<idno type="arXiv">arXiv:2005.09344v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:00+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Substitute Recommendation</term>
+					<term>Product Relationship</term>
+					<term>Interpretability</term>
+					<term>Collaborative Filtering</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>As a fundamental yet significant process in personalized recommendation, candidate generation and suggestion effectively help users spot the most suitable items for them. Consequently, identifying substitutable items that are interchangeable opens up new opportunities to refine the quality of generated candidates. When a user is browsing a specific type of product (e.g., a laptop) to buy, the accurate recommendation of substitutes (e.g., better equipped laptops) can offer the user more suitable options to choose from, thus substantially increasing the chance of a successful purchase. However, existing methods merely treat this problem as mining pairwise item relationships without the consideration of users' personal preferences. Moreover, the substitutable relationships are implicitly identified through the learned latent representations of items, leading to uninterpretable recommendation results.</p><p>In this paper, we propose attribute-aware collaborative filtering (A2CF) to perform substitute recommendation by addressing issues from both personalization and interpretability perspectives. In A2CF, instead of directly modelling user-item interactions, we extract explicit and polarized item attributes from user reviews with sentiment analysis, whereafter the representations of attributes, users, and items are simultaneously learned. Then, by treating attributes as the bridge between users and items, we can thoroughly model the user-item preferences (i.e., personalization) and item-item relationships (i.e., substitution) for recommendation. In addition, A2CF is capable of generating intuitive interpretations by analyzing which attributes a user currently cares the most and comparing the recommended substitutes with her/his currently browsed items at an attribute level. The recommendation effectiveness and interpretation quality of A2CF are further demonstrated via extensive experiments on three real-life datasets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>CCS CONCEPTS</head><p>• Information systems → Recommender systems.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>On modern e-commerce platforms, it is a common practice to deploy recommender systems for retrieving items that match users' personal interests <ref type="bibr" target="#b16">[17]</ref>. With the increasingly high heterogeneity of user-item interaction data, recommender systems are expected to understand more complex contexts other than user preferences, such as purchase sequences <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b31">32]</ref>, fine-grained user intents <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b32">33]</ref> and social connections <ref type="bibr" target="#b1">[2]</ref>.</p><p>More recently, mining product relationships for different online shopping stages have shown its strength in further improving customer satisfaction and sales revenue. One typical line of research is to recommend complementary items that are mutually compatible (e.g., iPhone 11 and phone cases), which is also known as bundle recommendation <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b26">27]</ref>. In a variety of successful attempts, the identified complements can either stimulate further purchases after a user has bought a compatible item <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b14">15]</ref>, or attract potential customers via bundle advertisements beforehand <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b53">54]</ref>. In contrast to complementary relationships, substitutable relationships exist among items that are interchangeable and functionally similar (e.g., iPhone 11 and Samsung Galaxy S10). As a typical decision process in e-commerce <ref type="bibr" target="#b25">[26]</ref>, when a user is looking for a particular type of product to buy (e.g., a laptop), she/he tends to first acquire a set of candidate items for comparison, and then pick the most suitable one (if there is any). Correspondingly, in a user's decision-making process, recommending items that are substitutable and even superior to the one currently being browsed can expand the user's view to make a better decision and eventually increase the chance of a successful purchase <ref type="bibr" target="#b49">[50]</ref>.</p><p>However, compared with complement recommendation that has been widely studied and applied to multiple domains like fashion recommendation <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b29">30]</ref>, targeted advertising <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b53">54]</ref> and online retail <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b34">35]</ref>, the problem of substitute recommendation remains largely unexplored. <ref type="bibr" target="#b23">[24]</ref> is the first work to systematically Bella "Here are cellphones also made by Apple:"</p><p>Figure <ref type="figure">1</ref>: The effect of personalization and interpretability in substitute recommendation. investigate product relationships using reviews. In <ref type="bibr" target="#b23">[24]</ref>, items are modelled via latent Dirichlet allocation (LDA) that captures textual information from reviews, so that the substitutable relationships between any two items can be predicted by comparing their textual contents. With textual features, RRN <ref type="bibr" target="#b48">[49]</ref> and LVA <ref type="bibr" target="#b27">[28]</ref> are two neural network-based extensions that identify substitutable products using feed-forward networks and variational autoencoders respectively. Recent models like PMSC <ref type="bibr" target="#b42">[43]</ref> and SPEM <ref type="bibr" target="#b49">[50]</ref> further leverage structural constraints in observed product co-occurrence (e.g., "also viewed") graphs for discriminating substitutes. Despite the importance of generating appropriate substitutable candidates, most existing solutions treat substitute recommendation as a straightforward item-item retrieval task. That is, given an arbitrary item as the query, the recommendation model is expected to output the most relevant items as substitutes based on a pairwise scoring function <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b49">50]</ref>. As a result, the retrieved substitutes are purely conditioned on the query item while different users' personal preferences are neglected. Taking Figure <ref type="figure">1</ref> as an example, user Alex and Bella both come across with iPhone 11 Pro (i.e., the query item) when searching for a cellphone to buy. Since Alex cares much about camera quality on cellphones, the generated substitutes should be other top-tier cellphones with comparable or higher camera performance. Meanwhile, Bella simply prefers the Apple brand, so other similarly equipped iPhones are expected to be recommended. Unfortunately, without personalization, all the aforementioned methods will yield the same recommendation results for both users, because they are only determined by the similarity between the query item and substitutes. In <ref type="bibr" target="#b27">[28]</ref>, though the authors extend their proposed LVA to personalized CLVA, CLVA simply introduces user-item matrix factorization as an add-on module to LVA, which is incapable of learning users' explicit demands on fine-grained item attributes (e.g., "camera" and "brand"). Furthermore, most existing substitute recommendation models are purely built upon latent factor models like word2vec <ref type="bibr" target="#b24">[25]</ref> and deep neural networks <ref type="bibr" target="#b18">[19]</ref>. Though promising recommendation results are reported, a widely recognized drawback of latent factor models is that, the recommendation process is not transparent and the recommendation results are hardly interpretable to users <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b50">51,</ref><ref type="bibr" target="#b51">52]</ref>. Consequently, it inevitably creates a bottleneck for convincing a user why the recommended substitutes are more suitable than the query item, and how they meet this user's specific needs.</p><p>To this end, in this paper, we aim to advance substitute recommendation by addressing issues from both personalization and interpretability perspectives. On top of user-item interaction records, the growing availability of user reviews offers abundant information about their most cared attributes of a product and their sentiment towards product attributes <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b51">52]</ref>. As such, we propose attribute-aware collaborative filtering (A2CF), which makes full use of explicit item attributes to express user-item preferences and itemitem substitutions. Instead of directly using extracted attributes as features for item representation learning <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b27">28,</ref><ref type="bibr" target="#b48">49]</ref>, we decouple user-item interactions into user-attribute and item-attribute interactions, enabling A2CF to explicitly learn a user's attention and an item's performance across various attributes. In this way, we can not only recognize two substitutable items by comparing their attributes, but also integrate users' personal preferences to suggest more suitable substitutes. In addition, as illustrated in Figure <ref type="figure">1</ref>, our proposed A2CF also enables personalized explanations. Specifically, we design a novel attribute-aware comparison scheme in A2CF, which infers each user's current demand on specific product attributes, and then highlights these attributes with more advantageous performance provided by the recommended substitutes.</p><p>In summary, the contributions of this paper are three-fold:</p><p>• We identify the shortcomings of existing substitute recommendation methods, and propose a new problem -personalized and interpretable substitute recommendation that aims to suggest substitutable items customized for users' preferences, along with intuitive explanations. • We propose A2CF, a novel attribute-aware collaborative filtering model. By incorporating explicit user-attribute and item-attribute associations, A2CF simultaneously optimizes both substitution and personalization constraints for recommendation, and further interprets the recommendation results via an attribute comparison scheme. • We conduct extensive experiments on three million-scale datasets. Comparisons with state-of-the-art methods demonstrate the superior recommendation performance of A2CF and its capability to generate high-quality interpretations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">PRELIMINARIES 2.1 Notations</head><p>Throughout this paper, all vectors and matrices are respectively denoted by bold lowercase and bold uppercase letters. e.g., user embedding u, item embedding v, attribute embedding a, user-attribute matrix X, and item-attribute matrix Y. All sets are calligraphic uppercase letters, e.g., user, item, attribute sets are respectively denoted by U, V and A. All vectors are column vectors unless specified, e.g., v ∈ R d ×1 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Extracting Attributes and Sentiments</head><p>Attributes are the components, features or properties of an item <ref type="bibr" target="#b11">[12]</ref>.</p><p>Based on user reviews on items, attribute-sentiment pairs can be extracted and have shown prominent contributions to review-based recommendation <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b52">53]</ref>. As we mainly focus on leveraging the attribute information for recommendation, we apply a wellestablished tool named Sentires <ref type="bibr" target="#b52">[53]</ref> to extract attribute-sentiment pairs due to its excellent performance in a wide range of recommendation tasks <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b51">52]</ref>. In short, the attribute extraction will result in a sentiment lexicon Z for the entire review dataset and each entry is (user , item, attribute, sentiment), denoted by (u, v, a, s). The sentiment polarity s is either +1 or −1, e.g., (Alex, price, +1). To enable subsequent computations, we define the user-attribute matrix X and item-attribute matrix Y as follows.</p><p>Definition 1 (User-Attribute Matrix): The user-attribute matrix X is a |U|×|A| matrix carrying information on how each user u i ∈ U cares about a specific attribute a n ∈ A. Intuitively, a user tends to comment on several attributes (e.g., "battery" for electronics and "taste" for food) that she/he is most interested in. So, we define each entry x in ∈ X as:</p><formula xml:id="formula_0">x in = 0, if u i has never mentioned a n 1 + (N − 1) 1−exp(−t in ) 1+exp(−t in ) , otherwise ,<label>(1)</label></formula><p>where t in is the total count of user u i mentioning attribute a n . N is the scaling factor such that 1 ≤ x in ≤ N . Following <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b51">52]</ref>, we set N as the highest score of the rating system (e.g., 5 for Amazon). Definition 2 (Item-Attribute Matrix): Similarly, the |V | × |A| itemattribute matrix Y reflects the aggregated feedback of all users on each attribute a n ∈ A of item v j ∈ V, where each element y jn is:</p><formula xml:id="formula_1">y jn = 0, if v j has no reviews mentioning a n 1 + (N −1) 1+exp(−t jn s jn ) , otherwise ,<label>(2)</label></formula><p>where we also let 1 ≤ y jn ≤ N , and t jn means that the attribute a n of item v j is mentioned n times by all users, while s jn is the mean of all the sentiment scores in those t jn mentions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ATTRIBUTE-AWARE COLLABORATIVE FILTERING</head><p>In matrix X, each non-zero entry x in reflects user u i 's amount of attention paid to a specific attribute a n during shopping. Similarly, for each y jn ∈ Y where y jn 0, it indicates the explicit user feedback on item v j 's attribute a n , which is crowdsourced and summarized from all user reviews. We hereby present the design of our proposed attribute-aware collaborative filtering (A2CF) model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">User-Attribute Collaborative Filtering</head><p>In traditional collaborative filtering (CF) like matrix factorization <ref type="bibr" target="#b16">[17]</ref>, given a user-item matrix with partially observed feedback, a fundamental mechanism is to learn the vectorized representations (a.k.a. embedding vectors) of both users and items using available user-item interactions, and then the unobserved values of user-item interactions can be easily estimated via the inner product of two vectors. In A2CF, with the user-attribute matrix X, we aim to learn the representations of each user u i and attribute a n so that every scalar x in ∈ X (i.e., the pairwise user-attribute preference) can be inferred. Specifically, we achieve this goal by minimizing the following squared loss function:</p><formula xml:id="formula_2">L U A = x in ∈ D U A (x in − x in ) 2 ,<label>(3)</label></formula><p>where</p><formula xml:id="formula_3">D U A = {x in | x in ∈ X ∧ x in 0}</formula><p>is the set of all observed user-attribute relationships, and x in is the estimated value between user u i and attribute a n . In what follows, we describe the computation of the interaction score x in in detail.</p><p>With the given u i and a n , we firstly model the nonlinear pairwise interaction between them. As pointed out by <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b41">42]</ref>, traditional matrix factorization-based CF methods are subject to limited expressiveness because pairwise interactions are linearly modelled via two vectors' inner product. Thus, in A2CF, we leverage a residual feed-forward network with l hidden layers for modelling pairwise user-attribute interactions:</p><formula xml:id="formula_4">h l ′ = h l ′ −1 + ReLU(W l ′ h l ′ −1 + b l ′ ),<label>(4)</label></formula><p>where l ′ ≤ l, ReLU is the rectified linear unit for nonlinear activation, while h∈ R d ×1 , W∈ R d ×d and b∈ R d ×1 are respectively the latent representation, weight and bias in each layer. h 0 is initialized by concatenating both user and attribute embeddings:</p><formula xml:id="formula_5">h 0 = [u i ; a n ],<label>(5)</label></formula><p>where u i ∈ R d ×1 and a n ∈ R d ×1 are embeddings of user u i and attributes a n to be learned. On top of the l-layer residual network, we utilize the final latent representation h l to compute a scalar output x in as the estimated score for the given user-attribute pair:</p><formula xml:id="formula_6">x in = tanh [1, N ] (w ⊤ x h l ),<label>(6)</label></formula><p>where tanh [1, N ] (•) is our modified version of tanh(•) function to emit prediction results in a customized range. Specifically, for an arbitrary scalar input r , the computation process of tanh [1, N ] (r ) is:</p><formula xml:id="formula_7">tanh [1, N ] (r ) = N − 1 2 • exp(2r ) − 1 exp(2r ) + 1 + N + 1 2 = N exp(2r ) + 1 exp(2r ) + 1 .<label>(7)</label></formula><p>As tanh</p><formula xml:id="formula_8">[1, N ] (r ) ≈ 1 when r = −∞ and tanh [1, N ] (r ) ≈ N when r = +∞, function tanh [1, N ] (•) forces x in to fall in the rage of [1, N ].</formula><p>So far, we can summarize the computation of x in as:</p><formula xml:id="formula_9">x in = tanh [1, N ] w ⊤ x H U A l ([u i ; a n ]) ,<label>(8)</label></formula><p>where we use H U A l (•) to denote the l-layer residual feed-forward network in Eq.( <ref type="formula" target="#formula_4">4</ref>), and w x ∈ R d ×1 is the projection weight. With x in computed, we are now able to optimize the learned user and attribute representations by minimizing the loss in Eq.(3).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Item-Attribute Collaborative Filtering</head><p>Similar to X, given the item-attribute matrix Y, we can also learn the representations of item v j and attribute a n . With an estimation of the item-attribute relationship y jn (i.e., the quality of attribute a n on item v j ), we define another squared loss as the following:</p><formula xml:id="formula_10">L I A = y jn ∈D I A (y jn − y jn ) 2 ,<label>(9)</label></formula><p>with</p><formula xml:id="formula_11">D I A = {y in | y in ∈ Y ∧ y in 0} containing all non-zero entries in Y.</formula><p>We hereby adopt a similar approach as described for user-attribute collaborative filtering to predict y jn :</p><formula xml:id="formula_12">y in = tanh [1, N ] w ⊤ y H I A l ([v j ; a n ]) ,<label>(10)</label></formula><p>where the rescaled activation function tanh [1, N ] (•) is also adopted, and w y ∈ R d ×1 is the weight vector.</p><formula xml:id="formula_13">H I A l (•) is another l-layer residual feed-forward network whose input is the concatenation of item embedding v j ∈ R d ×1 and attribute embedding a n ∈ R d ×1 .</formula><p>Note that H I A l (•) shares the same architecture with H U A</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Estimating Missing Entries in X and Y</head><p>Suppose that we have already learned the representations for users, items and attributes that yield sufficiently small values for both L U A and L I A . Before entering the next stage where all the learned representations are further fine-tuned for recommendation, we need to infer the unobserved user-attribute and item-attribute values. In other words, we estimate the missing entries (i.e., 0-valued elements) in X and Y with Eq.( <ref type="formula" target="#formula_9">8</ref>) and Eq.( <ref type="formula" target="#formula_12">10</ref>) respectively, which can be viewed as two well-trained nonlinear regressors. Formally, this process is written as:</p><formula xml:id="formula_14">x in = x in , if x in = 0 x in , if x in 0 , y jn = y jn , if y jn = 0 y jn , if y jn 0 . (<label>11</label></formula><formula xml:id="formula_15">)</formula><p>We use X and Y to denote the fully estimated user-attribute and item-attribute matrices. In addition, we use</p><formula xml:id="formula_16">x i = [ x i1 , x i2 , • • • , x i | A | ]</formula><p>to denote the i-th row of X. Specifically, each element in x i corresponds to user u i 's preference on an item attribute, parameterized in the range of <ref type="bibr">[1, N ]</ref>. In a similar way, y j refers to the j-th row of Y, which is actually a collection of item v j 's performance scores (within [1, N ] range) regarding all attributes.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Uniting Substitution and Personalization Constraints for Recommendation</head><p>Given user u i and query item v q that she/he is currently browsing, we would like to recommend a list of items that are: (1) strong alternatives to v q ; and (2) of great interest to u i . To achieve this, we extend Bayesian personalized ranking (BPR) <ref type="bibr" target="#b28">[29]</ref> to the substitute recommendation setting. Despite being widely adopted for personalized recommendation, BPR is originally designed for optimizing pairwise user-item scoring functions, and lacks the consideration of affinity between two substitutable items. In this section, we propose a variant of BPR to unify both substitution and personalization. For user u i and query item v q , we firstly pair them with the ground truth substitute v j + , denoted by (u i , v q , v j + ), implying that user u i has eventually chosen v j + after browsing v q . Correspondingly, a negative case (u i , v q , v j − ) can be constructed, where v j − holds either or both of the properties: (1) v j − is never visited by u i ; (2) v j − is not substitutable to v q . Thus, we can form a set of training samples consisting of (u i , v q , v j + , v j − ), denoted by D Rec . With the training samples, we aim to learn a triplet ranking function</p><formula xml:id="formula_17">f (•, •, •) to gen- erate scalar ranking scores such that f (u i , v q , v j + ) &gt; f (u i , v q , v j − ).</formula><p>In this regard, we define the following loss function that integrates BPR with substitutable item relationships, which we term L BP R−S :</p><formula xml:id="formula_18">L BP R−S = − log (u i ,v q ,v j + ,v j − )∈ D Rec σ f (u i , v q , v j + ) − f (u i , v q , v j − ) = − (u i ,v q ,v j + ,v j − )∈ D Rec log σ f (u i , v q , v j + ) − f (u i , v q , v j − ) ,<label>(12)</label></formula><p>where σ (•) is the Siдmoid function. In general, we expect f (•, •, •) to fulfill two special constraints, namely the substitution constraint and personalization constraint, to produce accurate recommendations. Before explaining the details, we let f</p><formula xml:id="formula_19">(u i , v q , v j ) = γ f S (v q , v j ) + (1 − γ )f P (u i , v j )</formula><p>, and rewrite Eq.( <ref type="formula" target="#formula_18">12</ref>) as follows:</p><formula xml:id="formula_20">L BP R−S = − (u i ,v q ,v j + ,v j − )∈D Rec σ ′ γ f S (v q , v j + ) + (1 − γ )f P (u i , v j + ) − γ f S (v q , v j − ) − (1 − γ )f P (u i , v j − ) ,<label>(13)</label></formula><p>where we let σ ′ (•) = log(σ (•)) to be succinct, f S (•, •) and f P (•, •) are respectively the pairwise item-item and user-item scoring functions complying with the substitution and personalization constraints. γ ∈ (0, 1) is a hyperparameter for adjusting the trade-off between two terms. Next, we introduce the designs of f S (•, •) and f P (•, •). Implementing Substitution Constraint. For an arbitrary item v j ( j ∈ {j + , j − }) paired with the query item v q , f S (•, •) is expected to generate a high affinity score f S (v q , v j ) if they are mutually substitutable, and a relatively low score if not. Different from substitute recommenders that calculate item-item similarities in a pure latent factor-based manner <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b42">43,</ref><ref type="bibr" target="#b49">50]</ref>, f S (•, •) additionally incorporates information of explicit attributes on top of the learned item representations. Intuitively, a substitutable item must be functionally similar to the query item v q , which is reflected by their similar distributions over attributes. That is to say, we can compare two items via their attribute information. So, item v j can be represented as a weighted combination of all attribute embeddings:</p><formula xml:id="formula_21">v j = | A | n=1 φ qj n a n ,<label>(14)</label></formula><p>where v j is the representation of item v j after the attribute aggregation, {φ</p><formula xml:id="formula_22">qj n } | A | n=1 is a probability distribution (i.e., | A | n=1 φ qj n =<label>1</label></formula><p>) over all attributes, which is dependent on v q and v j :</p><formula xml:id="formula_23">{φ qj n } | A | n=1 = softmax( y q ⊙ y j β ),<label>(15)</label></formula><p>where y q and y j are respectively the q-th and j-th row of the estimated item-attribute matrix Y, ⊙ is the element-wise product of two vectors, and β is the scaling factor that controls the strength of dominating attributes. Instead of picking only a small fraction of most relevant attributes to represent each item <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b51">52]</ref>, we use so f tmax to avoid potential information loss by discriminatively considering all attributes. As discussed in Section 3.3, in y q and y j , the n-th elements y qn and y jn reflect both items' quality on attribute a n . Apparently, if item v j is similar to the query item v q on attribute a n , Eq.( <ref type="formula" target="#formula_23">15</ref>) will generate a large weight φ essentially carries all attribute-wise similarity scores between v q and v j . By setting β to different values, we can amplify or weaken the influence of larger values in {φ</p><formula xml:id="formula_24">qj n } | A |</formula><p>n=1 . Then, we compute the substitution affinity score between v q and v j :</p><formula xml:id="formula_25">f S (v q , v j ) = w ⊤ s [v q ⊙ v j ; v j ],<label>(16)</label></formula><p>where w s ∈ R 2d ×1 is the weight for linear projection, and v q ⊙ v j models the element-wise similarity between the latent vectors of two items. In Eq.( <ref type="formula" target="#formula_25">16</ref>), we concatenate information from two aspects:</p><p>(1) the comparison between the latent representations of v q and v j ;</p><p>(2) the attribute-aware representation of v j generated by comparing explicit item attributes. As this provides substantial information for generating a discriminative ranking score f S (v q , v j ), we adopt a simple linear projection rather than sophisticated deep neural network-based regressors <ref type="bibr" target="#b48">[49]</ref> for efficient computation.</p><p>Implementing Personalization Constraint. For user u i and item v j , The pairwise scoring function f P (u i , v j ) should yield a large score if v j has been visited by u i , and vice versa. Similar to f S (•, •), we firstly generate another attribute-aware representation of v j , denoted by v ′ j :</p><formula xml:id="formula_26">v j ′ = | A | n=1 λ i j n a n ,<label>(17)</label></formula><p>with the attentive weights {λ</p><formula xml:id="formula_27">i j n } | A |</formula><p>n=1 computed by comparing user u i 's interests on all attributes (i.e., x i ) and item v j 's performance on all attributes (i.e., y j ):</p><formula xml:id="formula_28">{λ i j n } | A | n=1 = softmax( x i ⊙ y j ϵ ),<label>(18)</label></formula><p>where we also adopt a scaling factor ϵ to either diverge or smoothen the probability distribution, and x i ∈ X quantifies user u i 's concerns about each attribute. Intuitively, Eq.( <ref type="formula" target="#formula_28">18</ref>) justifies how well item v j 's attribute quality (i.e., y j ) aligns with u i 's demand, and then Eq.( <ref type="formula" target="#formula_26">17</ref>) generates a combinatorial representation for item v j as a weighted sum of all different attributes. Afterwards, a lightweight linear projection scheme is applied to generate the personalization ranking score:</p><formula xml:id="formula_29">f P (u i , v j ) = w ⊤ p [u i ⊙ v j ; v j ′ ],<label>(19)</label></formula><p>where w p ∈ R 2d ×1 is the projection weight, and u i ⊙ v j further infuses the comparison between the user's and item's latent representations to allow for precise user-item preference prediction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Optimization Strategy</head><p>As A2CF is built upon the deep neural network structure, we learn the model parameters on multiple objectives with a mini-batch stochastic gradient decent algorithm, namely Adam <ref type="bibr" target="#b15">[16]</ref> optimizer. To be specific, we firstly optimize L ′ = L U A + L I A , i.e., the combined loss for user-attribute CF and item-attribute CF for T 1 iterations. Then, we estimate X and Y matrices, and optimize the recommendation loss L BP R−S for T 2 iterations. Notably, X and Y are pre-computed before training the recommendation part, thus avoiding redundant and inefficient computations. We update all model parameters in each iteration and repeat the entire training process described above until L BP R−S converges or is sufficiently small.</p><p>We tune the hyperparameters using grid search. Specifically, the latent dimension d is searched in {16, 32, 64, 128, 256}; the depth of the residual feed-forward network l is searched in {1, 2, 3, 4, 5}; the trade-off coefficient γ is searched in {0.1, 0.3, 0.5, 0.7, 0.9}; and both scaling factors β and ϵ are searched in {1, d 0.25 , d 0.5 , d 0.75 , d}. We will further discuss the impact of these key hyperparameters to the recommendation performance in Section 6.4. For optimizing the final recommendation loss L BP R−S , we draw 5 negative samples (u i , v q , v j − ) for each positive label (u i , v q , v j + ) in training set D Rec . We set the the learning rate to 1×10 −3 and batch size to 256 according to device capacity. To prevent overfitting, we adopt a dropout <ref type="bibr" target="#b30">[31]</ref> ratio of 0.4 on all deep layers of A2CF.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">UTILIZING A2CF FOR RECOMMENDATION AND INTERPRETATION</head><p>After obtaining a fully-trained A2CF model, here we showcase the roadmap towards personalized and interpretable substitute recommendation using A2CF.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Personalized Substitute Recommendation</head><p>As a natural extension to personalized top-K recommendation <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b39">40]</ref>, the essence of personalized substitute recommendation is to assign a ranking score to each possible item v j given the context (u i , v q ) (i.e., the user and query item), and then recommend K top-ranked items to the user. With an input triplet denoted by (u i , v q , v j ), recall that we define the triplet ranking function as</p><formula xml:id="formula_30">f (u i , v q , v j ) = γ f S (v q , v j ) + (1 − γ )f P (u i , v j ).</formula><p>Hence, for each v j ∈ V, we can generate a ranking score for triplet (u i , v q , v j ) by measuring how well the item v j fits both the substitution and personalization constraints. Ideally, only the items that satisfy both parts will be ranked at the top of the recommendation list.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Personalized Interpretation</head><p>Latent factor-based substitute recommenders <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b42">43,</ref><ref type="bibr" target="#b49">50]</ref> are uninterpretable as the ranking scores are directly computed via the pure latent representations of items and/or users. Consequently, when performing personalized substitute recommendation, a user may find it difficult to understand the "try this instead" suggestions from the recommender systems. In contrast, our proposed A2CF is advantageous owing to its capability of generating intuitive interpretations. Specifically, A2CF composes interpretations by considering two aspects: (1) the key attributes u i will consider when searching for items similar to v q ; (2) how the recommended item v j performs compared with the query item v j on these key attributes. With the estimated user-attribute matrix X and itemattribute matrix Y, we address these two points by comparing v q with v j in a quantitative way:</p><formula xml:id="formula_31">{∆ iqj n } | A | n=1 = x i ⊙ y j − x i ⊙ y q = x i ⊙ ( y j − y q ).<label>(20)</label></formula><p>In short, Eq.( <ref type="formula" target="#formula_31">20</ref>) aligns the user's demand with each item's quality attribute-wise, and uses subtraction to compute the advantages (or disadvantages) of v j against v q regarding each attribute a n , denoted by ∆ In this paper, we leverage a template-based interpretation scheme to state the key reasons for recommending v j as the substitute of v q for user u i . The template is as follows:</p><formula xml:id="formula_32">     </formula><p>"Based on the item v q you are currently browsing, we recommend you to try v j instead because it comes with:</p><formula xml:id="formula_33">[adjective] a n 1 , [adjective] a n 2 , • • • , and [adjective] a n Z . "       (21)</formula><p>where for 1 ≤ z ≤ Z , each [adjective] is determined via:</p><formula xml:id="formula_34">[adjective] = "better", if ∆ iqj n z &gt; 0 "comparable", otherwise .<label>(22)</label></formula><p>It is worth mentioning that we prefer assigning a small value to Z (usually below 5) to keep the interpretations concise, because users have very limited attention and time to read the generated explanations, and it rarely happens for ∆ iqj n z ≤ 0 when only the top attributes are selected.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EXPERIMENTAL SETTINGS 5.1 Datasets</head><p>We consider three real-world review datasets commonly used for recommendation tasks, which are originally crawled from Amazon and made public by <ref type="bibr" target="#b23">[24]</ref>, and different product categories are treated Following <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b28">29]</ref>, we filter out inactive users with less than 5 interacted items and unpopular items visited by less than 5 users. The primary statistics are shown in Table <ref type="table" target="#tab_0">1</ref>, where each review corresponds to a user-item interaction record. Note that we use the workflow described in Section 2.2 to extract attributes from each individual dataset, and attributes with less than 2 mentions are discarded to reduce excessive noise from the data. We split all datasets with the ratio of 80%, 10% and 10% for training, validation and test, respectively.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Evaluation Protocols</head><p>Evaluating Recommendation Effectiveness. We leverage two ranking metrics, namely hit ratio at rank K (HR@K) and normalized discounted cumulative gain at rank K (NDCG@K) that are widely adopted in recommendation research <ref type="bibr" target="#b36">[37,</ref><ref type="bibr" target="#b38">39,</ref><ref type="bibr" target="#b46">47]</ref>. For each positive test instance (u i , v q , v j + ), we mix the ground truth v j + with J random negative items, then rank all these J + 1 items and compute the HR@K and NDCG@K scores. We set J = 1, 000 following <ref type="bibr" target="#b5">[6]</ref> and adopt K = 5, 10, 20, 50 for evaluation.</p><p>Sampling Query Items. However, a sticking point is the selection criteria of query item v q . Though v j + and v j − can be easily obtained via each user's interaction record, the majority of popular e-commerce datasets like Amazon <ref type="bibr" target="#b23">[24]</ref> and Yelp <ref type="bibr" target="#b2">[3]</ref> only record actual purchases as user-item interactions. Such limitation prevents us from knowing which other options (i.e., query items) that u i has browsed before deciding to purchase v j + . Hence, for each observed user-item interaction (u i , v j + ), we propose to leverage popularitybiased sampling to pick v q to simulate the query item: I. For (u i , v j + ), find all substitutes of v j + that u i has never interacted with, denoted as S i j + ; II. For each v q ∈ S i j + , calculate the amount of users it has interacted with, denoted as pop q ; III. Draw one v q with probability P(v q ) ∼ pop 0.75 q . Note that there will be only one query item v q sampled for every (u i , v j + ) instance. As such, we can obtain triplets (u i , v q , v j + ) as the ground truth for training and test. The rationale of popularitybiased sampling is that, when searching for a specific type of product to buy, customers usually tend to start with the most popular ones, and then expand their candidates as their demands become clearer. Motivated by successful graph theory practices <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b33">34]</ref>, we smoothen the item popularity with 0.75 power. This moderately increases the chance of drawing unpopular items and helps validate the robustness of the model with diverse query compositions. It is worth noting that, in the test set, we restrict that the ground truth item v j + in each instance (u i , v q , v j + ) is neither paired with user u i nor v q for model training. This allows for generating the hardest possible test instances because the test item is always new for both the user and the query item.</p><p>Evaluating Interpretation Quality. In the emerging area of explainable recommendation, the quality of text-based interpretations is mainly tested via either human evaluation <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b51">52]</ref> or visualization <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b40">41]</ref>. Despite being effective to some extent, they lack quantitative measurements for the generated interpretations. Because the process of generating attribute ranking lists for interpretation can be viewed as a special type of document retrieval task, metrics like mean average precision (MAP) from relevant domains <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b43">44]</ref> can be used to evaluate the ranks of attributes mentioned in the actual user reviews. However, it is pointless to evaluate interpretations generated for non-ground truth items, as the user has never visited nor reviewed them. Therefore, we only consider the MAP score for the interpretation for each ground truth item v j + , and trade it off using the NDCG score for v j + . In this way, we define attribute trade-off coverage (ATC) as a generic evaluation metric for attribute-aware interpretable recommendation models:</p><formula xml:id="formula_35">ATC = MEAN ∀(u i ,v q ,v j + ) 2 × MAP iqj + × NDCG iqj + MAP iqj + + NDCG iqj + , (<label>23</label></formula><formula xml:id="formula_36">)</formula><p>where MAP iqj + is the mean average precision of</p><formula xml:id="formula_37">{∆ iqj n } | A | n=1 (i.e.</formula><p>, the attribute ranking list used for recommendation explanation) w.r.t. actually mentioned attributes in user u i 's review on item v j + , and NDCG iqj + is the NDCG score of ground truth item v j + in the ranking list. By taking the harmonic mean of MAP iqj + and NDCG iqj + , we expect a large ATC score only when the interpretation and recommendation are both accurate for test case (u i , v q , v j + ).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Baseline Methods</head><p>We briefly introduce the baseline methods for comparison below.</p><p>• Sceptre <ref type="bibr" target="#b23">[24]</ref>: The key idea of Sceptre is combining topic modeling with supervised link prediction to predict possible substitutable relationships between two products. • PMSC <ref type="bibr" target="#b42">[43]</ref>: It firstly embeds products into relation-specific spaces, then incorporates multiple path constraints to enhance the expressiveness of learned product embeddings. • SPEM <ref type="bibr" target="#b49">[50]</ref>: It models substitutable product relationships by penalizing first-order proximity, rewarding second-order proximity and semantic similarity in the constructed product co-purchasing graph, thus making the representations of two substitutable products align closely in the latent space • CLVA <ref type="bibr" target="#b27">[28]</ref>: As another state-of-the-art substitute recommendation model, it links two variational autoencoders conditioned on the observed links among items. On top of that, the integration of probabilistic matrix factorization further allows for personalized substitute recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Hyperparameter Settings</head><p>To be consistent, we report the overall recommendation performance of A2CF with a unified set of parameters where d = 64, l = 1, γ = 0.7 and β =ϵ =d 0.5 = 8. The effect of different hyperparameter settings will be discussed in Section 6.4. For all baselines, we use grid search to obtain their optimal hyperparameters. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">EXPERIMENTAL RESULTS AND ANALYSIS</head><p>Following the settings in Section 5, we conduct experiments 1 to evaluate the performance of A2CF regarding both recommendation effectiveness and interpretation quality. In particular, we aim to answer the following research questions (RQs) via experiments:</p><p>RQ1: How effectively can A2CF perform personalized substitute recommendation compared with state-of-the-art baselines? RQ2: How is the quality of attribute-based interpretations generated by A2CF? RQ3: What is the contribution of each key component of the proposed model structure? RQ4: How the hyperparameters affect the performance of A2CF in terms of recommendation effectiveness?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1">Recommendation Effectiveness (RQ1)</head><p>We summarize all models' performance on personalized substitute recommendation with Table <ref type="table" target="#tab_1">2</ref>. We discuss our findings as follows.</p><p>The first observation is that our proposed A2CF outperforms all baselines consistently and significantly (p-value &lt; 0.01) on these three datasets. Compared with the second best results on all datasets, A2CF achieved an average improvement of 28.1% and 29.2% respectively on HR@5 and NDCG@5. As PMSC and SPEM do not take personalization into consideration, the recommended substitutes can hardly match users' personal preferences, leading to inferior performance. At the mean time, as a personalized substitute recommender, CLVA additionally utilizes latent user representations learned via probabilistic matrix factorization, and thus produces better recommendation results than PMSC and SPEM. However, by implementing substitution and personalization constraints via an attribute-aware scheme, A2CF represents the state-of-the-art effectiveness on this recommendation task.</p><p>Second, compared with deep learning models that are entirely based on product graphs (i.e., PMSC and SPEM), models that make use of the item attributes (i.e., A2CF, Sceptre and CLVA) show obvious advantages in terms of recommendation performance. This further validates the benefit of incorporating attribute information for personalized substitute recommendation. Particularly, though the pure LDA-based Sceptre is neither a personalized recommender 1 Public access to codes: https://bit.ly/bitbucket-A2CF nor enhanced by deep neural networks, it can still yield highly competitive results, and is even able to produce higher recommendation accuracy than CLVA in some cases (e.g., HR@5 on all three datasets). This is probably because when modelling items with attributes, Sceptre additionally introduces a category tree for selecting different attributes, which helps it learn more specific and high-quality attribute-based item representations.</p><p>Lastly, we find that the sparsity of user-item interactions and the amount of available attributes have opposite influences to the recommendation effectiveness of A2CF. On one hand, Cellphone and Office have similar sparsity (both are around 99.995%), but the larger amount of attributes allows A2CF to thoroughly learn attribute-aware representations for both users and items, leading to better results on Office. One the other hand, despite offering the most attributes, the Automotive dataset witnesses relatively lower performance of A2CF due to its substantially higher sparsity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Interpretation Quality (RQ2)</head><p>Quantitative Analysis. To quantitatively evaluate the interpretation quality of A2CF, we adopt the metric ATC proposed in Section 5.2, and compare A2CF with the other two attribute-based substitute recommenders Sceptre and CLVA. For both baselines, an item-attribute relevance score can be inferred, which enables us to obtain an attribute ranking list for each ground truth item to compute the ATC score. For fairness, we truncate the attribute ranking list of Sceptre, CLVA and A2CF with the length of 500 for evaluation because different numbers of attributes are used by them. Then, we present the quantitative results in Table <ref type="table" target="#tab_2">3</ref>. Apparently, A2CF leads Sceptre and CLVA regarding ATC scores on all three datasets due to its ability to generate personalized interpretations.</p><p>Case Study. We further conduct a case study in Figure <ref type="figure" target="#fig_4">2</ref> to qualitatively examine the interpretability of A2CF. Specifically, we visualize and compare the interpretations generated by A2CF and users' real review texts. Note that we use the top three attributes to  "Although I wanted a white one (I bought a hard-shell case for color), this is simply the best cellphone I have ever had, and I will never want to trade it in when I have to for something… I'm aging and eye-sight is diminishing, and only this phone <ref type="bibr">(6'3"</ref>   Comparisons are performed between interpretations and users' real reviews on the ground truth items. explain each recommendation result, i.e., Z = 3. In each case, the query item is marked blue, while the interpretation and review are for the same ground truth item in the red box. Each ground truth item is positioned higher than 10 in the ranking list. We use red to mark attributes that are mentioned in both the interpretation and the corresponding review, and label the sentiment of attributes (positive/negative) in the user review. For the first two users respectively browsing a cellphone and a helmet, A2CF successfully recognizes their demand on "screensize" and "shield", and recommends the correct items that perform better than the query items on corresponding attributes. We can also see there is positive user feedback on both the "screensize" and "shield" of the recommended cellphone and helmet. Furthermore, in the third case, two better attributes "colors" and "quality" of the recommended printer are used for interpretation, which are both mentioned by the user. Though attribute "colors" expresses negative sentiment in this review, in fact the user is complaining about a previously purchased printer. This further validates our model's capability of aligning item attributes with user preferences to generate interpretations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.3">Importance of Key Components (RQ3)</head><p>To better understand the performance gain from the major components proposed in A2CF, we perform ablation analysis on different degraded versions of A2CF. Table <ref type="table" target="#tab_4">4</ref> summarizes the recommendation outcomes in terms of HR@10.</p><p>Removing Substitution Constraint. The substitution constraint in Eq.( <ref type="formula" target="#formula_20">13</ref>) enforces that the recommended items should hold substitutable relationship with the query item. We remove the substitution constraint by setting γ = 0. After that, a severe performance decrease can be observed from all datasets, where the performance on Automotive is the most vulnerable. Because Automotive contains substantially more items than Cellphone and Office, the substitution constraint is of great significance to helping A2CF filter out irrelevant items and ensure successful recommendations.</p><p>Removing Personalization Constraint. Similar to the previous variant, we remove the personalization constraint by setting γ = 1 in Eq. <ref type="bibr" target="#b12">(13)</ref>. As personal preferences are not properly captured in this variant, A2CF suffers from a significant performance drop due to the absence of personalization constraint. Compared with removing substitution constraint, the deletion of personalization constraint has more negative effect on datasets with relatively denser user-item interactions (i.e., Cellphone and Office).  0.3075 0.2708 0.3763</p><formula xml:id="formula_38">(u i ,v j + ,v j − )∈D Rec σ ′ f P (u i ,v j +) − f P (u i ,v j − ) 0.2772 0.1997 0.3745 Removing Personalization Constraint Eq.(13) → − (vq ,v j + ,v j − )∈D Rec σ ′ f S (v q ,v j +) − f S (v q ,v j − ) 0.</formula><p>Removing Attribute Aggregation for Items. With the removal of the attribute aggregation for items in Eq.( <ref type="formula" target="#formula_25">16</ref>), there is a noticeable performance decrease for A2CF. The aggregated attributeaware item representation (i.e., v j ) aims to fully leverage the attributes to offer more information for item-item substitutable relationship predictions. Hence, this verifies the efficacy of merging attribute information with latent item representations for identifying substitutable relationships among items.</p><p>Removing Attribute Aggregation for Users. We build the forth variant of A2CF by deleting the aggregated attribute information for users in Eq. <ref type="bibr" target="#b18">(19)</ref>. Generally, the inferior performance on three datasets indicates that considering users' preferred attributes practically improves user-item preference modelling.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4">Impact of Hyperparameters (RQ4)</head><p>We answer RQ4 by investigating the performance fluctuations of A2CF with varied hyperparameters. Particularly, we study our model's sensitivity to network depth l, coefficient γ , as well as two scaling factors β and ϵ. Based on the standard hyperparameter setup in Section 5.4, we vary the value of one hyperparameter while keeping the others unchanged, and record the new recommendation result achieved. Similar to Section 6.3, HR@10 is used for demonstration. Figure <ref type="figure" target="#fig_5">3</ref> lays out the results with different parameter settings.</p><p>Impact of l. The value of the network depth l is examined in {1, 2, 3, 4, 5}. In general, A2CF benefits from a relatively larger l on all three datsets, but the performance improvement tends to stop when l reaches a certain size (3 and 4 in our case) due to overfitting.  Impact of γ . We also study the impact of γ ∈ {0.1, 0.3, 0.5, 0.7, 0.9} which balances the substitution and personalization constraints. The HR@10 scores on all datasets imply that, in A2CF, by laying enough emphasis on the substitution constraint (0.7 in our case), the joint effect of personalization and substitution can be maximized for recommendation.</p><p>Impact of β and ϵ. The scaling factors β and ϵ are respectively introduced in Eq.( <ref type="formula" target="#formula_23">15</ref>) and Eq.( <ref type="formula" target="#formula_28">18</ref>) to control the influence of dominating attributes when aggregating attribute information for items and users. As can be concluded from Figure <ref type="figure" target="#fig_5">3</ref>, A2CF behaves differently on varied datasets when the scaling factors are adjusted in {1, d 0.25 , d 0.5 , d 0.75 , d} (d = 64 in our setting). This is possibly caused by the differences in the quantity of attributes extracted from three datasets. Since Automotive has more attributes due to higher diversity of items, larger β and ϵ will encourage a more scattered probability distribution over all attributes, so more attributes are taken into consideration when modelling users and items, making the model adaptive to high data sparsity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">RELATED WORK 7.1 Product Relationship Mining</head><p>Understanding how products relate to each other is important to the fulfilment of customer satisfaction in different online shopping stages. In economics literature, two common product relationships are substitution and complement <ref type="bibr" target="#b22">[23]</ref>. Recently, product relationship mining has become a prospective research direction to enhance existing recommender systems that are unable to differentiate the relationships among products. The problem of mining product relationships is first introduced to recommendation research in <ref type="bibr" target="#b23">[24]</ref>, where a topic model-based approach Sceptre is proposed. With latent Dirichlet allocation (LDA), Sceptre infers product relationships by comparing the topic distributions of two products. More recently, the trend of utilizing reviews has carried over to neural network approaches, such as RRN <ref type="bibr" target="#b48">[49]</ref> that learns product embeddings from both the textual reviews and manually crafted features. In contrast to those hybrid models combining reviews with product graphs, pure graph-based methods like PMSC <ref type="bibr" target="#b42">[43]</ref> and SPEM <ref type="bibr" target="#b49">[50]</ref> are also introduced to fully utilize various properties in a product graph, e.g., path constraints and node proximities.</p><p>Unfortunately, as recommender systems, all the aforementioned methods treat substitute recommendation as a pure item-based search task, thus neglecting the key aspect of personalization. As a recent solution, CLVA <ref type="bibr" target="#b27">[28]</ref> fuses probabilistic matrix factorization with variational autoencoders to support personalized recommendation by jointly modelling user ratings leverages and item relationships. However, like most existing product relationship mining methods, the latent factor-based representation learning scheme in CLVA hinders it from offering explainable recommendations, rendering it difficult to fully convince and attract potential customers.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.2">Attribute Modelling for Recommendation</head><p>In conventional top-K recommendation, a large body of works adopt collaborative filtering, e.g., matrix factorization to utilize implicit interactions to infer the links between users and items <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b28">29]</ref>. The predominant problem is usually learning latent factors for users and items, and predicting user-item interactions by ranking the inner product of user and item embeddings <ref type="bibr" target="#b16">[17]</ref>.</p><p>Despite the promising recommendation quality of latent factor models, their latent characteristics make it frustratingly difficult to explain the generated recommendations <ref type="bibr" target="#b35">[36]</ref>, and such methods fail to adaptively generate recommendations when we are aware of a user's most cared features <ref type="bibr" target="#b51">[52]</ref>. To overcome the limitations of latent factor models, review-based attribute modelling has attracted growing attention in recommendation research <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b7">8]</ref>. Attributes are commonly extracted from reviews <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b11">12]</ref> or tags <ref type="bibr" target="#b37">[38,</ref><ref type="bibr" target="#b44">45,</ref><ref type="bibr" target="#b45">46]</ref> associated with each item. Such methods assume that a user's decision of purchase is largely determined by how each product meets her/his expectations on several key attributes <ref type="bibr" target="#b51">[52]</ref>. Ganu et al. <ref type="bibr" target="#b8">[9]</ref> utilize aspects and sentiments manually crafted from restaurant reviews to enhance the performance of rating prediction. With the increasingly available review data, Zhang et al. <ref type="bibr" target="#b51">[52]</ref> successfully combine techniques for automated attribute-level sentiment analysis with matrix factorization. Other subsequent variants are proposed to better capture the complex yet subtle relationships among users, products and attributes, such as modelling such heterogeneous relationships as a tripartite graph with TriRank <ref type="bibr" target="#b11">[12]</ref>, utilizing joint factorization in MTER <ref type="bibr" target="#b35">[36]</ref>, and incorporating attention networks into AARM <ref type="bibr" target="#b9">[10]</ref>. Attribute modelling opens up an opportunity for generating interpretations for the recommended items. Existing attribute-aware methods, however, can only produce generic explanations <ref type="bibr" target="#b35">[36]</ref> as they do not account for the attention shifts among different attributes when users are browsing different items. In contrast, our proposed A2CF is able to firstly infer a user's desired attributes, and retrieve advantageous attributes of the recommended items to construct personalized interpretations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">CONCLUSION</head><p>In this paper, we study a new research problem, namely personalized and interpretable substitute recommendation, and propose a novel A2CF model as a solution. A2CF fully utilizes attribute information extracted from reviews, which effectively bridges user preferences and item properties for generating personalized substitute recommendations and endows the model with high explainability. The experimental results evidence that A2CF can yield superior performance on both recommendation and interpretation.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>iqj n . Next, Z attributes {a n 1 , a n 2 , ..., a n Z } with highest values in {∆ iqj n } | A | n=1 are selected to generate the personalized interpretation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>"</head><label></label><figDesc>The quality of the product is very good. This is for my daughter who is relatively small and wears a small helmet. As a result, in order to get the snaps on both sides snapped you have to somewhat distort the face shield[-]. There is nothing wrong with the face shield[+]…" browsing, we recommend you to try instead because it comes with: better price, better colors, and better quality." "Based on the item "I finally had to replace my ailing HP 5510 that finally decided that it wouldn't feed paper 50% of the time, and when it did, it often would change colors[-]  half way down a picture… This printer absolutely blows away my 5510 in all facets!... The pictures printed from the 4x6 tray are stunning! True photo lab quality[+]."</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Case study on interpretations generated by A2CF on Cellphone (top), Automotive (middle), and Office (bottom).Comparisons are performed between interpretations and users' real reviews on the ground truth items.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Recommendation performance w.r.t. l, γ , β and ϵ.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Statistics of datasets in use.</figDesc><table><row><cell>Dataset</cell><cell cols="2">#Review #User #Item #Attribute</cell></row><row><cell cols="2">Cellphone 1,639,166 665,900 48,763</cell><cell>2,178</cell></row><row><cell cols="2">Automotive 2,212,111 420,394 132,467</cell><cell>3,501</cell></row><row><cell>Office</cell><cell>1,641,901 515,813 58,534</cell><cell>2,801</cell></row><row><cell cols="3">as separate datasets. We use three of the largest categories, namely</cell></row><row><cell cols="3">Cellphone and Accessories (Cellphone for short), Automotive, and</cell></row><row><cell cols="3">Office. Based on well-established rules adopted in the substitute</cell></row><row><cell cols="3">recommendation literature [24, 28, 49, 50], item substitution rela-</cell></row><row><cell cols="3">tionships are extracted from all datasets. Specifically, two items v</cell></row><row><cell cols="3">and v ′ are substitutable if: (1) users viewed v also viewed v ′ , or (2)</cell></row><row><cell cols="2">users viewed v eventually bought v ′ .</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Recommendation results. Numbers in bold face are the best results for corresponding metrics.</figDesc><table><row><cell>Dataset</cell><cell>Method</cell><cell>K=5</cell><cell cols="2">HR@K K=10 K=20</cell><cell>K=50</cell><cell>K=5</cell><cell cols="2">NDCG@K K=10 K=20</cell><cell>K=50</cell></row><row><cell></cell><cell>Sceptre [24]</cell><cell>0.2009</cell><cell>0.2689</cell><cell>0.3486</cell><cell>0.4605</cell><cell>0.1570</cell><cell>0.1695</cell><cell>0.1998</cell><cell>0.2421</cell></row><row><cell></cell><cell>PMSC [43]</cell><cell>0.1085</cell><cell>0.1276</cell><cell>0.1731</cell><cell>0.2023</cell><cell>0.0827</cell><cell>0.0995</cell><cell>0.1086</cell><cell>0.1125</cell></row><row><cell>Cellphone</cell><cell>SPEM [50]</cell><cell>0.1187</cell><cell>0.1449</cell><cell>0.1858</cell><cell>0.2251</cell><cell>0.0951</cell><cell>0.1034</cell><cell>0.1135</cell><cell>0.1300</cell></row><row><cell></cell><cell>CLVA [28]</cell><cell>0.1795</cell><cell>0.2621</cell><cell>0.3434</cell><cell>0.5167</cell><cell>0.1224</cell><cell>0.1421</cell><cell>0.1729</cell><cell>0.1976</cell></row><row><cell></cell><cell>A2CF</cell><cell>0.2466</cell><cell>0.3449</cell><cell>0.4548</cell><cell>0.6229</cell><cell>0.1663</cell><cell>0.1980</cell><cell>0.2263</cell><cell>0.2845</cell></row><row><cell></cell><cell>Sceptre [24]</cell><cell>0.1618</cell><cell>0.1709</cell><cell>0.2441</cell><cell>0.3346</cell><cell>0.1021</cell><cell>0.1087</cell><cell>0.1225</cell><cell>0.1401</cell></row><row><cell></cell><cell>PMSC [43]</cell><cell>0.1249</cell><cell>0.1653</cell><cell>0.1904</cell><cell>0.2955</cell><cell>0.1078</cell><cell>0.1183</cell><cell>0.1292</cell><cell>0.1485</cell></row><row><cell>Automotive</cell><cell>SPEM [50]</cell><cell>0.1014</cell><cell>0.1113</cell><cell>0.1305</cell><cell>0.1787</cell><cell>0.0934</cell><cell>0.0965</cell><cell>0.1014</cell><cell>0.1103</cell></row><row><cell></cell><cell>CLVA [28]</cell><cell>0.1565</cell><cell>0.2201</cell><cell>0.3179</cell><cell>0.3868</cell><cell>0.1024</cell><cell>0.1397</cell><cell>0.1531</cell><cell>0.1754</cell></row><row><cell></cell><cell>A2CF</cell><cell>0.2187</cell><cell>0.2978</cell><cell>0.3899</cell><cell>0.5518</cell><cell>0.1532</cell><cell>0.1788</cell><cell>0.2021</cell><cell>0.2395</cell></row><row><cell></cell><cell>Sceptre [24]</cell><cell>0.2489</cell><cell>0.3623</cell><cell>0.4762</cell><cell>0.6100</cell><cell>0.1570</cell><cell>0.1948</cell><cell>0.2242</cell><cell>0.2512</cell></row><row><cell></cell><cell>PMSC [43]</cell><cell>0.1345</cell><cell>0.1924</cell><cell>0.2596</cell><cell>0.3701</cell><cell>0.0954</cell><cell>0.1182</cell><cell>0.1425</cell><cell>0.1759</cell></row><row><cell>Office</cell><cell>SPEM [50]</cell><cell>0.0741</cell><cell>0.0906</cell><cell>0.1149</cell><cell>0.1528</cell><cell>0.0579</cell><cell>0.0632</cell><cell>0.0693</cell><cell>0.0735</cell></row><row><cell></cell><cell>CLVA [28]</cell><cell>0.2322</cell><cell>0.3750</cell><cell>0.4869</cell><cell>0.6343</cell><cell>0.1480</cell><cell>0.1946</cell><cell>0.2378</cell><cell>0.2733</cell></row><row><cell></cell><cell>A2CF</cell><cell>0.3143</cell><cell>0.4220</cell><cell>0.5310</cell><cell>0.6644</cell><cell>0.2193</cell><cell>0.2540</cell><cell>0.2815</cell><cell>0.3101</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Quantitative results on interpretation quality.</figDesc><table><row><cell>Method</cell><cell>Cellphone</cell><cell>ATC Automotive</cell><cell>Office</cell></row><row><cell>Sceptre</cell><cell>0.0108</cell><cell>0.0094</cell><cell>0.0124</cell></row><row><cell>CLVA</cell><cell>0.0096</cell><cell>0.0077</cell><cell>0.0112</cell></row><row><cell>A2CF</cell><cell>0.0132</cell><cell>0.0113</cell><cell>0.0154</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>screensize[+]) is big enough for me to easily read."</figDesc><table><row><cell>A2CF:</cell><cell>"Based on the item</cell><cell>Samsung Galaxy Mega, Black 16GB (AT&amp;T)</cell><cell cols="2">you are currently browsing, we recommend you to try</cell><cell cols="2">Verizon Samsung Galaxy S6 SM-G920V 32GB Sapphire Black Smartphone for</cell><cell>instead because it comes with: better battery, better screensize, and better cord."</cell></row><row><cell>User:</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>"Based on the item</cell><cell cols="2">Biltwell Gringo Helmet Blast Shield (Smoke, Large)</cell><cell>you are currently browsing, we recommend you to try</cell><cell>Size) Biltwell Solid Bubble Shield (Amber, One</cell><cell>instead because it comes with: better shield, better knuckle, and better colors."</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 :</head><label>4</label><figDesc>Ablation test with different model architectures.</figDesc><table><row><cell></cell><cell>HR@10</cell></row><row><cell>Variant</cell><cell>Cell-Auto-Office phone motive</cell></row><row><cell>Default</cell><cell>0.3449 0.2978 0.4220</cell></row><row><cell>Removing Substitution Constraint</cell><cell></cell></row><row><cell>Eq.(13) → −</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">l (•) but uses a different set of network weights and biases.At the same time, since the learned attributes will serve the purpose of quantifying both user preferences and item characteristics, we make all attribute embeddings shared between user-attribute CF and item-attribute CF. Hence, this enables the joint optimization of both objectives, leading to stronger expressiveness of learned attribute representations.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>ACKNOWLEDGEMENT</head><p>This work has been supported by Australian Research Council (Grant No. DP190101985, DP170103954 and FT200100825) and National Natural Science Foundation of China (Grant No. NSFC 61806035, U1936217, 61732008 and 61725203).</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Personalized Bundle List Recommendation</title>
+		<author>
+			<persName><forename type="first">Jinze</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junshuai</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoru</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiting</forename><surname>An</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhao</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2019">Jun Gao. 2019</date>
+			<biblScope unit="page" from="60" to="71" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Social Boosted Recommendation with Folded Bipartite Network Embedding</title>
+		<author>
+			<persName><forename type="first">Hongxu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiqing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TKDE</title>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">PME: projected metric embedding on heterogeneous networks for link prediction</title>
+		<author>
+			<persName><forename type="first">Hongxu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiqing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Viet Hung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Matching user with item set: collaborative bundle recommendation with deep attention network</title>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lianli</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zibin</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="2095" to="2101" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">AIR: Attentional intention-aware recommender systems</title>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Viet Hung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICDE</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="304" to="315" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc</forename><surname>Viet Hung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wen-Chih</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xue</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhou</surname></persName>
+		</author>
+		<title level="m">Sequence-Aware Factorization Machines for Temporal Predictive Analytics. ICDE</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Aˆ3NCF: An Adaptive Aspect Attention Model for Rating Prediction</title>
+		<author>
+			<persName><forename type="first">Zhiyong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuemeng</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohan</forename><forename type="middle">S</forename><surname>Kankanhalli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="3748" to="3754" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Aspectaware latent factor model: Rating prediction with ratings and reviews</title>
+		<author>
+			<persName><forename type="first">Zhiyong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mohan</forename><surname>Kankanhalli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Improving the quality of predictions using textual information in online user reviews</title>
+		<author>
+			<persName><forename type="first">Gayatree</forename><surname>Ganu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yogesh</forename><surname>Kakodkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Amélie</forename><surname>Marian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="page" from="1" to="15" />
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Attentive aspect modeling for review-aware recommendation</title>
+		<author>
+			<persName><forename type="first">Xinyu</forename><surname>Guan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiyong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhibo</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qinke</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TOIS</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page">28</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Streaming session-based recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qinyong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nguyen Quoc Viet</forename><surname>Hung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1569" to="1577" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Trirank: Reviewaware explainable recommendation by modeling aspects</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min-Yen</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1661" to="1670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<title level="m">Neural collaborative filtering. In WWW</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Complete the Look: Scene-based Complementary Product Recommendation</title>
+		<author>
+			<persName><forename type="first">Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Charles</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CVPR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="10532" to="10541" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Recommendation through mixtures of heterogeneous item relationships</title>
+		<author>
+			<persName><forename type="first">Wang-Cheng</forename><surname>Kang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mengting</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1143" to="1152" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Diederik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jimmy</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ba</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.6980</idno>
+		<title level="m">Adam: A method for stochastic optimization</title>
+				<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Product collection recommendation in online retail</title>
+		<author>
+			<persName><forename type="first">Pigi</forename><surname>Kouki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilias</forename><surname>Fountalis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikolaos</forename><surname>Vasiloglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nian</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Unaiza</forename><surname>Ahsan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Al</forename><surname>Khalifeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huiming</forename><surname>Jadda</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Qu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RecSys</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="486" to="490" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Deep learning</title>
+		<author>
+			<persName><forename type="first">Yann</forename><surname>Lecun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">521</biblScope>
+			<biblScope unit="page">436</biblScope>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">A unified graph model for sentence-based opinion retrieval</title>
+		<author>
+			<persName><forename type="first">Binyang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lanjun</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shi</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kam-Fai</forename><surname>Wong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1367" to="1375" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Point-of-interest recommendations: Learning potential check-ins from friends</title>
+		<author>
+			<persName><forename type="first">Huayu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richang</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hengshu</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="975" to="984" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Diverse personalized recommendations with uncertainty from implicit preference data with the Bayesian Mallows model</title>
+		<author>
+			<persName><forename type="first">Qinghua</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">Henry</forename><surname>Reiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arnoldo</forename><surname>Frigessi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ida</forename><surname>Scheel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge-Based Systems</title>
+		<imprint>
+			<biblScope unit="volume">186</biblScope>
+			<biblScope unit="page">104960</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">Microeconomic theory</title>
+		<author>
+			<persName><forename type="first">Andreu</forename><surname>Mas-Colell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Dennis Whinston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jerry</forename><forename type="middle">R</forename><surname>Green</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1995">1995</date>
+			<publisher>Oxford university press</publisher>
+			<biblScope unit="volume">1</biblScope>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Inferring networks of substitutable and complementary products</title>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rahul</forename><surname>Pandey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="785" to="794" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<title level="m" type="main">Efficient estimation of word representations in vector space</title>
+		<author>
+			<persName><forename type="first">Tomas</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><surname>Dean</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1301.3781</idno>
+		<imprint>
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">An empirical two-stage choice model with varying decision rules applied to internet clickstream data</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wendy</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Moe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Marketing Research</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="680" to="692" />
+			<date type="published" when="2006">2006. 2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Generating and personalizing bundle recommendations on steam</title>
+		<author>
+			<persName><forename type="first">Apurva</forename><surname>Pathak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kshitiz</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1073" to="1076" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Linked variational autoencoders for inferring substitutable and supplementary items</title>
+		<author>
+			<persName><forename type="first">Vineeth</forename><surname>Rakesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suhang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Shu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huan</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="438" to="446" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">BPR: Bayesian personalized ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christoph</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeno</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lars</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">UAI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Neurostylist: Neural compatibility modeling for clothing matching</title>
+		<author>
+			<persName><forename type="first">Xuemeng</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinhuan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zekun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MM</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="753" to="761" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Dropout: a simple way to prevent neural networks from overfitting</title>
+		<author>
+			<persName><forename type="first">Nitish</forename><surname>Srivastava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><surname>Hinton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alex</forename><surname>Krizhevsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ilya</forename><surname>Sutskever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruslan</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JMLR</title>
+		<imprint>
+			<biblScope unit="page" from="1929" to="1958" />
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">What can history tell us? Identifying relevant sessions for next-item recommendation</title>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tieyun</forename><surname>Qian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqi</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ling</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="1593" to="1602" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Collaborative intent prediction with real-time contextual data</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><forename type="middle">Jing</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kieran</forename><surname>Mcdonald</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TOIS</title>
+		<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Line: Large-scale information network embedding</title>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingzhe</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiaozhu</forename><surname>Mei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1067" to="1077" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Representing and Recommending Shopping Baskets with Complementarity, Compatibility and Loyalty</title>
+		<author>
+			<persName><forename type="first">Mengting</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Paul</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1133" to="1142" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation via multi-task learning in opinionated text data</title>
+		<author>
+			<persName><forename type="first">Nan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongning</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiling</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="165" to="174" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Next Point-of-Interest Recommendation on Resource-Constrained Mobile Devices</title>
+		<author>
+			<persName><forename type="first">Qinyong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zi</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanchang</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nguyen Quoc Viet</forename><surname>Hung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Web Conference</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="906" to="916" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Geo-SAGE: A geographical sparse additive generative model for spatial item recommendation</title>
+		<author>
+			<persName><forename type="first">Weiqing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ling</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yizhou</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shazia</forename><surname>Sadiq</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1255" to="1264" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Streaming ranking based recommender systems</title>
+		<author>
+			<persName><forename type="first">Weiqing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zi</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qinyong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xingzhong</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc Viet Hung</forename><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="525" to="534" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Spore: A sequential personalized spatial item recommender system</title>
+		<author>
+			<persName><forename type="first">Weiqing</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shazia</forename><surname>Sadiq</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ling</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICDE</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<title level="m" type="main">KGAT: Knowledge Graph Attention Network for Recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yixin</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Neural graph collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="165" to="174" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">A path-constrained framework for discriminating substitutable and complementary products in e-commerce</title>
+		<author>
+			<persName><forename type="first">Zihan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ziheng</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiliang</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dawei</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WSDM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="619" to="627" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Automatic coupling of answer extraction and information retrieval</title>
+		<author>
+			<persName><forename type="first">Xuchen</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benjamin</forename><surname>Van Durme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Clark</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="159" to="165" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Discovering interpretable geo-social communities for user behavior prediction</title>
+		<author>
+			<persName><forename type="first">Zhiting</forename><surname>Hongzhi Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zheng</surname></persName>
+		</author>
+		<idno>ICDE. 942-953</idno>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note>Quoc Viet Hung Nguyen, and Shazia Sadiq</note>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Adapting to user interest drift for poi recommendation</title>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Hongzhi Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc Viet Hung</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TKDE</title>
+		<imprint>
+			<biblScope unit="page" from="2566" to="2581" />
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Joint modeling of user check-in behaviors for point-of-interest recommendation</title>
+		<author>
+			<persName><forename type="first">Xiaofang</forename><surname>Hongzhi Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingxia</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Shao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shazia</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sadiq</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1631" to="1640" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">Aspect and entity extraction for opinion mining. In Data mining and knowledge discovery for big data</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bing</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1" to="40" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Identifying Complements and Substitutes of Products: A Neural Network Framework Based on Product Embedding</title>
+		<author>
+			<persName><forename type="first">Mingyue</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuan</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xunhua</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guoqing</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Wei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TKDD</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page">34</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Inferring substitutable products with deep network embedding</title>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Yin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qinyong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc Viet Hung</forename><surname>Nguyen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<biblScope unit="page" from="4306" to="4312" />
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends in Information Retrieval</title>
+		<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Do users rate or review?: Boost phrase-level sentiment labeling with review-level sentiment classification</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haochen</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1027" to="1030" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Bundle recommendation in ecommerce</title>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Patrick</forename><surname>Harrington</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junjun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="657" to="666" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

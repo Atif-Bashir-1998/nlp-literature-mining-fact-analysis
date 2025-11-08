@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">PERS: A Personalized and Explainable POI Recommender System</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2017-12-20">20 Dec 2017</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Ramesh</forename><surname>Baral</surname></persName>
+							<email>rbaral@cs.fiu.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Tao</forename><surname>Li</surname></persName>
+							<email>taoli@cs.fiu.edu</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="department">School of Computing and Information Sciences</orgName>
+								<orgName type="institution">Florida International University</orgName>
+								<address>
+									<postCode>33199</postCode>
+									<settlement>Miami, Florida</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department">School of Computing and Information Sciences</orgName>
+								<orgName type="institution">Florida International University</orgName>
+								<address>
+									<postCode>33199</postCode>
+									<settlement>Miami, Florida</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">PERS: A Personalized and Explainable POI Recommender System</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2017-12-20">20 Dec 2017</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">1ECBA992216D0C8C31DCE6CBECDACDFF</idno>
+					<idno type="arXiv">arXiv:1712.07727v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Information Retrieval</term>
+					<term>Social Networks</term>
+					<term>Explainable Recommendation</term>
+					<term>POI Recommendation</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The Location-Based Social Networks (LBSN) (e.g., Facebook, etc.) have many factors (for instance, ratings, check-in time, location coordinates, reviews etc.) that play a crucial role for the Point-of-Interest (POI) recommendations. Unlike ratings, the reviews can help users to elaborate their opinion and share the extent of consumption experience in terms of the relevant factors of interest (aspects). Though some of the existing recommendation systems have been using the user reviews, most of them are less transparent and non-interpretable (as they conceal the reason behind recommendation). These reasons have induced considerable attention towards explainable and interpretable recommendation. To the best of our knowledge, this is the first paper to exploit the user reviews to incorporate the sentiment and opinions on different aspects for the personalized and explainable POI recommendation. In this paper, we propose a model termed as PERS (Personalized Explainable POI Recommender System) which models the review-aspect category correlation by exploiting deep neural network, formulates the user-aspect category bipartite relation as a bipartite graph, and models the explainable recommendation using bipartite core-based and ranking-based methods. The major contributions of this paper are: (i) it models users and locations based on the aspects posted by user via reviews, (ii) it exploits a deep neural network to model the review-aspect category correlation, (iii) it provisions the incorporation of multiple contexts (e.g.,  categorical, spatial, etc.)  in the POI recommendation model, (iv) it formulates the preference of users' on aspect category as a bipartite relation, represents it as a location-aspect category bipartite graph, and models the explainable recommendation with the notion of ordered dense subgraph extraction using bipartite core-based and ranking-based approaches, and (v) it evaluates the generated recommendation with three real-world datasets.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Most of the existing e-commerce systems (e.g., Amazon 1 , etc.) have been facilitating users to share their consumption experience via ratings and review texts. The LB-SNs (e.g., Facebook 2 , Twitter 3 etc.) have also been a useful platform to share consumption experience on different factors of interest (for instance, price, service, accessibility, product quality, and so forth). For instance, the review text "The food was really awesome but the front-desk service was really bad" implies a positive experience of the reviewer towards the food quality and opposite for the customer service. Such experiences from a real customer have been crucial in the purchase decision for potential customers, and product improvement for manufacturers.</p><p>Despite the usefulness, the reading time, and uniform interpretability of the review texts have been a major concern. It would have been easier if one can summarize and explain the opinions on key aspects, for instance, (i) place A has a good rating for food, (ii) place B is renowned for cleanliness, and so forth. Though a dedicated community has been focusing on the extraction of such aspects, opinions, summary <ref type="bibr" target="#b0">[1]</ref>, it has been less explored in the recommendation domain. The aspect-based summarization can also be used for explana-1. www.amazon.com 2. www.facebook.com 3. www.twitter.com tion of recommendation.</p><p>The research on the exploitation of different factors of LBSN for an efficient recommendation has been quite popular in the last decade <ref type="bibr" target="#b1">[2]</ref>, <ref type="bibr" target="#b2">[3]</ref>. Most of the studies have just focused on non-text attributes, such as the categorical, temporal, spatial, and social aspects <ref type="bibr" target="#b3">[4]</ref>, <ref type="bibr" target="#b4">[5]</ref>, <ref type="bibr" target="#b5">[6]</ref>. Most of the existing systems have also been concealing the reasons behind the recommendation and have been less transparent and less interpretable (i.e. the factors used to get the recommendation are hidden from end users). Contrary to that, some of the studies <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b7">[8]</ref>, <ref type="bibr" target="#b8">[9]</ref> have already claimed the usefulness of explainability on the persuasiveness of users towards real-world systems. With the abundance of LBSN datasets and affordable computing cost, the research community has anticipated the necessity of incorporation of additional attributes for a generic, scalable, and explainable recommendation. Some of the motivating studies <ref type="bibr" target="#b6">[7]</ref>, <ref type="bibr" target="#b9">[10]</ref>, <ref type="bibr" target="#b10">[11]</ref> have convincingly emphasized the importance of explanations. The similarity-based approaches <ref type="bibr" target="#b11">[12]</ref>, <ref type="bibr" target="#b12">[13]</ref> have proposed the user-based neighbor style (e.g., users with similar interest have purchased the following items) explanations. The item-based neighbor style (e.g., items similar to you viewed or purchased in the past), influence style (how the users' input have influenced the generation of recommendation), and keyword-style (items that have similar content to purchase history) can be some other variants of explanations.</p><p>To the best of our knowledge, this paper is the first to explore the problem of aspect-based personalized explainable POI recommendation. There are many factors that make this problem challenging and interesting. First of all, the aspect extraction from ambiguous and noisy text itself is a difficult task. As there can be many aspect terms, efficiently organizing them into relevant categories (e.g., food, service, etc.) is also nontrivial. The task of personalized recommendation is challenging as we need to model individual user preferences. The aspect-based personalized explanation generation becomes challenging as it needs to deal with the sentiments associated with the aspects, and also the individual user preferences and item features to get the relevant explanation.</p><p>The ease of adaptation of arbitrary continuous and categorical attributes in a scalable manner makes the Convolutional Neural Networks (CNN) a good candidate for classification problems (e.g., <ref type="bibr" target="#b13">[14]</ref>, <ref type="bibr" target="#b14">[15]</ref>). This also makes them ideal for review-aspect category correlation problem. This paper first formulates the problem of review and aspect category correlation using Convolutional Neural Networks. This simplifies the process of mapping the user sentiments to the (location, aspect category) tuples and modeling the users' aspect category preferences as the aspect categorylocation bipartite relation. We represent such a bipartite relation using a bipartite graph and extract the ordered aspect category preference of a user using bipartite core extraction, ranking-based, and dense subgraph extractionbased methods to generate an explainable POI recommendation. The core contributions of this paper are:</p><p>1) it exploits the aspects from review text and categorizes them into different aspect categories, 2) it formulates the review-aspect category correlation using deep neural network (see Table <ref type="table" target="#tab_2">1</ref> for detail) and models users and places using those aspect categories and other different attributes (for instance, categorical, spatial, social, etc.) for efficient POI recommendation, 3) it formulates the user preferences as an ordered aspect category-location bipartite relation, represents it as a bipartite graph, and exploits the bipartite core, ranking, and shingles-based dense subgraph extraction methods to generate explanations for the personalized POI recommendation, and 4) it evaluates the generated recommendation with three real-world datasets.</p><p>As an important by-product, our model can implicitly identify the user communities and categorize them by their preferred sets of aspects.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED RESEARCH</head><p>The problem of aspect extraction from review text has been there for a while <ref type="bibr" target="#b15">[16]</ref>, <ref type="bibr" target="#b16">[17]</ref> and has been used in various interesting problems (e.g., rating prediction <ref type="bibr" target="#b17">[18]</ref>, aspect-sentiment summarization <ref type="bibr" target="#b18">[19]</ref>, <ref type="bibr" target="#b19">[20]</ref>, <ref type="bibr" target="#b20">[21]</ref>, recommendation <ref type="bibr" target="#b21">[22]</ref>, etc.). To the best of our knowledge, the exploitation of aspects for explainable POI recommendation has barely been explored.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Aspect-based approaches</head><p>Yang et al. <ref type="bibr" target="#b22">[23]</ref> exploited the tips from Foursquare to extract user preferences. They relied on a sentiment lexicon (e.g., SentiWordNet)-based approach and defined the preferences based on the tips, check-ins, and social relation to generate recommendations. They did not fully exploit the preferences at aspect level and also had no provision of recommendation explanation. Wang et al. <ref type="bibr" target="#b23">[24]</ref> exploited multi-modal (i.e. text, image, etc.) location semantic similarity. The topics extracted using LDA <ref type="bibr" target="#b24">[25]</ref> was used to find similar locations. Their model also did not focus on the aspect level preference modeling, and recommendation explanation. Zhang et al. <ref type="bibr" target="#b21">[22]</ref> exploited user opinions from the tips and fused tip polarities, social links, and geographical information for POI recommendation. Though their fused model was claimed efficient for polarity prediction of tips, and for location recommendation, the recommendation was not generated for individual aspects, and had no provision for the explanation. Covington et al. <ref type="bibr" target="#b25">[26]</ref> used DNN for Youtube video recommendation. They first applied a module to filter out potential candidates and then used a deep network for the recommendation. They incorporated different factors, such as users' activity history, demographics, etc., but did not incorporate the opinions from user comments, and also did not have any provision of recommendation for each aspect category. Manotumruksa et al. <ref type="bibr" target="#b26">[27]</ref> used word embedding to model the users and venues. Though they used context attributes from review texts, provision for additional attributes (such as location category, check-in time, etc.), and sentiment polarity remained unexplored. A recent study from Bauman et al. <ref type="bibr" target="#b27">[28]</ref> exploited user reviews to enhance the recommendation by incorporating the aspects.</p><p>Recently, Zheng et al. <ref type="bibr" target="#b28">[29]</ref> adapted <ref type="bibr" target="#b14">[15]</ref> to exploit the user reviews and to map the user and item feature vectors into same space and estimated the user-item rating. Our model has following major differences from <ref type="bibr" target="#b28">[29]</ref>: (i) it uses the sentiment polarity of reviews at the sentence level rather than the whole review text, (ii) it learns to classify each review sentence into aspect categories, and models users and places using these aspect categories and embedding of additional features (e.g., the location category, check-in time, etc.), and (iii) it efficiently exploits bipartite core extraction and ranking method to segregate the aspect categories and relevant locations for explainable recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Explanation-based approaches</head><p>Chen et al. <ref type="bibr" target="#b29">[30]</ref> personalized ranking based tensor factorization model and used phrase-level sentiment analysis across multiple categories. They extracted aspect-sentiment pairs from review text, and used Bayesian Personalized Ranking <ref type="bibr" target="#b30">[31]</ref> to rank the features mentioned by a user in her review text. Finally, the feature wise preference of a user was derived using the user-item-feature cube and rank of the feature. A similar study <ref type="bibr" target="#b31">[32]</ref> used matrix factorization to estimate the missing values and the recommendation was made by matching the most favorite features of a user with the matching properties of the items. They used simple text templates to generate a feature-based explanation of positive and negative recommendations for an item. However, incorporation of additional features (for instance, location category) was not explored in their research.</p><p>Lawlor et al. <ref type="bibr" target="#b32">[33]</ref> exploited sentiment wise explanation to explain why a place might or might not be interesting to a user. For every aspect, they also compared the recommended place to the alternatives and provided the explanation (for instance, better (worse) than 90% (20%) of alternatives for room quality (price), etc.). However, they simply relied on the frequency of aspects of locations and the users to get such relation and the incorporation of additional features for location prediction remained unexplored. He et al. <ref type="bibr" target="#b33">[34]</ref> modeled the user-item-aspect as a tri-partite graph and used the graph-based ranking algorithm to find the most relevant aspects of a user that match with the relevant aspects of places. The common relevant aspects were used in the explanation.</p><p>We have found that only some of the models have fused few additional attributes (e.g., social), whereas most of them had no provision for additional attributes. Most of the studies were tightly coupled to the aspects and their sentiments. They analyzed the influence of all the aspects together. The influence of aspects among each other can have some adverse impact on the personalized recommendation. For instance, a place that is good in "Price" category might be opposite in "Service" category. A user who just cares about "Price" aspect might ignore some "Service" related problems in that place. So we need to minimize the influence of aspects among each other. This is really crucial for aspect-based recommendation systems and to the best of our knowledge, none of the existing studies have explored this direction. We attempt to fill this gap by the concept of bipartite graph and bipartite core (dense subgraph) extraction. For a user, the most dense subgraph represents the most preferred aspect and the places that are most popular for this aspect. The dense sub graph extraction is followed by disconnecting the edges within the dense subgraph. By doing this we can have less interference from the aspects which were already discovered in previous dense subgraphs. This claim is also supported by our evaluation where one of our model PERS-Core performs slightly better than our another model PERS-Rank (see Section 4 for detail).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">METHODOLOGY</head><p>The overview of proposed system is illustrated in Figure <ref type="figure" target="#fig_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">System architecture</head><p>The core features of the proposed system are: 1) Review preprocessing: For every user, the review texts posted for every location are segregated by the ratings and are organized in separate text files. As the user rating is for whole review text rather than a single sentence, we use VADER <ref type="bibr" target="#b34">[35]</ref> to correct the sentiment polarity of individual review sentences. This approach is reasonable because every review sentence might deal with different aspects and might have different sentiment.</p><p>2) Aspect extraction: The pre-processed review sentences are fed to the aspect extraction module to extract the aspects. We exploit a simple two-step process for the aspect extraction. The first task filters out the nouns and noun phrases using some experimentally set frequency threshold. It has been found that most of the reviews focus on a set of topics and this approach can easily capture such topics <ref type="bibr" target="#b35">[36]</ref>.</p><p>The second task is to use a rule-based approach <ref type="bibr" target="#b36">[37]</ref> that adapts the dependency parsing <ref type="bibr" target="#b37">[38]</ref> to handle the aspects missed in the previous step. 3) Aspect-categorization: As there can be numerous aspects, for the sake of ease of computation, we narrow down them to few well-known aspect categories. Some of the popular aspect categories (see Table <ref type="table" target="#tab_2">1</ref>) are considered. The aspects and their synsets from WordNet <ref type="bibr" target="#b38">[39]</ref> are used to assign the best matching aspect categories. We select top synsets to handle ambiguity of aspect words and to capture the relevant aspect categories. 4) Sentence-aspect-category training data preparation:</p><p>The review text (after aspect extraction) is labeled by the aspect category which has the closest match to its aspects. The distance between aspect words and these aspect category words (and their synonyms) from the WordNet <ref type="bibr" target="#b38">[39]</ref> are used to assign the closest possible label. As we assign top 3 matching synsets, a single aspect term can have three matching aspect categories. The default category "NONE" is applied for aspects not matching to either of the aspect categories. The sentences with multiple aspect terms get multiple aspect categories. The performance of the training data preparation module is defined in the evaluation section (see Section 5). 5) CNN-based sentence-aspect-category classifier: The review-aspect category correlation module in our proposed system is a simple binary classifier (see Figure <ref type="figure" target="#fig_7">1a</ref>) that learns to classify a review sentence into different aspect categories. As we have more than two aspect categories, we used a simple CNN based sentence classifier (see Section 3.2) for each of the aspect categories. This binary classifier can classify a review sentence to an aspect category or not to that aspect category. The input to this classifier is word embedding <ref type="bibr" target="#b39">[40]</ref> (which maps every word to a uniform size vector in a latent feature space) of review sentences.</p><p>For every user, we get a set of sentence feature vectors which is simply an embedding of her preferred aspects. Similarly, for every location, the sentence feature vector is simply an embedding of the aspects which were specified in its reviews. As a place might be positively or negatively mentioned for some aspects, we also use the sentence polarity to identify the user's sentiment polarity for the location's feature vector. The CNN-based classifier takes the user review sentences and identifies their aspect categories. The same process is repeated for the reviews made for every location. This can be easily extended with a multi-label CNN classifier that can operate on multiple aspect categories at a time. The outcome of this is a bipartite relation between user review and the aspect categories. This bipartite relation can be used to define the locationaspect category tuples and user-aspect category tuples. Such a bipartite relation can be exploited to model user preferences via ordered aspect categoryplace relation using bipartite graph and extraction of dense subgraphs from such graph (see Section for details).  Besides the review text, we also incorporate additional features (for instance, categorical, spatial, etc.). For every user, such vectors are concatenated to the review vector of the place (the review made by this user) obtained from the CNN-based classifier. The same process is repeated for every location. Every user tends to mention some opinion on preferred aspects in her reviews and every place is mentioned about the aspects it was reviewed for. A positive review rating implies positive experience on relevant aspects and a negative review rating implies the opposite. We formulate the recommendation problem as a matrix, whose rows represent a user, location, location category, and elements of other feature vectors. For each row, the check-in flag of a user to a location is treated as the target. For instance, if a user u i has review vector as &lt; ue 1 , ue 2 , ...., ue m &gt;, a place l j has its vector as &lt; le 1 , le 2 , ..., le n &gt;, and the place l j has positive ratings for the preferred aspects of user u i , then a row in the design matrix is obtained simply by concatenating the user vector, location vector, and feature vectors, and is defined as:</p><formula xml:id="formula_0">−−→ u i , l j =&lt; ue 1 , ue 2 , ...., ue m , le 1 , le 2 , ..., le n , f e 1 , f e 2 , ....f e k , 1 &gt;</formula><p>, where ue a , le a , and f e a are the a th item (a real-valued number) of the vector of the user, place, and other features. The last element 1 represents the checkin flag for the user-place tuple in the training data and represents the score to be estimated for the test data. For the places that have negative rating for the preferred aspects of a user, the check-in flag is set to 0. For user u, we use the feature vector as &lt; r cat1 , r cat2 , ..., r cat k , r soc , r dist &gt;, where,</p><formula xml:id="formula_1">r cat1 = l.cat=cat 1 Vu(l) l ∈u L</formula><p>Vu(l) is the ratio of total check-ins made to places with category cat 1 to that of all check-ins,</p><formula xml:id="formula_2">r soc = l∈u f L Vu(l) l ∈u L Vu(l )</formula><p>is the ratio of total check-ins made on places visited due to social influence to that of all check-ins, and</p><formula xml:id="formula_3">r dist = dist(l)≤ Vu(l) l ∈u L</formula><p>Vu(l ) is ratio of total checkins on places within a threshold distance (from users home or work place) to that of all check-ins. A factorization machine <ref type="bibr" target="#b40">[41]</ref> is exploited to estimate the value of the check-in flag for every user-place tuple. As the factorization machine has the ability to deal with additional features, a user-place pair can have multiple rows but just one row for one user-place-features tuple. So, the prediction is already somewhat personalized for the user-placefeature tuple. The top-N scorers from factorization machine are further filtered out based on the preferred aspects of user and the polarity of those aspects for places. The remaining top scorers are the recommendations made to the user. The highlevel overview of the recommendation module is illustrated in Figure <ref type="figure" target="#fig_7">1b</ref>. 7) Explanation of recommendation: After getting the place-aspect category bipartite relation from CNNbased classifier, we can represent the user-aspect category preference as a bipartite graph and can generate the recommendation explanation by extracting the most dense subgraphs from this bipartite graph. We propose three different methodsthe first one is bipartite core-based, the second one is ranking-based, and the third one is shingles extraction-based methods for explanation generation. In bipartite core extraction, the HITS algorithm <ref type="bibr" target="#b41">[42]</ref> is applied to extract the most dense sub graph (the primary bipartite core) and in rankingbased method the Page Rank algorithm <ref type="bibr" target="#b42">[43]</ref> is used (see Sec. 4 for detail).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Deep Network</head><p>The formulation of review-aspect category correlation module is inspired from the sentence classifier <ref type="bibr" target="#b13">[14]</ref>. Our model constitutes of a CNN, an activation function, and maxpooling layer to generate the feature vectors for users and items. The feature vector of a user represents the preferred  Similarly, the feature vector of a location represents aspects which were mentioned in its reviews. The sentiment of reviews is not used during the classification but is used during the recommendation. This binary classifier learns to classify a review sentence into an aspect category. For instance, it is trained to predict if a sentence is related to "Price" aspect category or not. This process is repeated for every aspect category and a default category "NONE" is assigned if the model fails to classify a sentence into either of the aspect categories. We consider one sentence at a time because every review sentence might be related to different aspect category. This trained model is utilized to predict the aspect categories of review sentence of user and places.  The high-level overview of the neural network-based classifier is illustrated in Figure <ref type="figure" target="#fig_1">2</ref>. The core features of the network are explained below:</p><p>• Convolution Layer: The word embeddings <ref type="bibr" target="#b39">[40]</ref> of the review sentences are input to the network. The convolution layer processes the embeddings of the review sentences. The rows are padded with zeros to maintain uniform size and a wide convolution is applied. Within the convolution, an activation function (based on rectified linear units -ReLU) is applied. In general, the input matrix is represented as a set of regions and the k th filter (w (1,k) ) of the first layer generates a feature map using the following relation:</p><formula xml:id="formula_4">z 1,k i,j = χ( r k −1 s=0 r k −1 t=0 w (1,k) s,t .z (0) i+s,j+t + b (1,k) ),<label>(1)</label></formula><p>where r k is the size of the k th filter, χ is the activation function using a ReLU, z i,j is the j th feature map in the i th convolution layer, and b (i,j) is the j th bias term of the i th convolution layer.</p><p>• Max-pooling Layer: Not all the rows of feature maps might be interesting. This is the reason behind maxpooling which selects only the k-max rows from each of the feature maps. These k-max rows are concatenated together to get a single vector. The maxpooling functionality is represented as:</p><formula xml:id="formula_5">z (2,k) i,j = max 0≤s≤d k max 0≤t≤d k z i.d k +s,j.d k +t ,<label>(2)</label></formula><p>where d k and d k are the width and length of the k th filter. To make it simple, we use the filters of same width as the input matrix. The stride of size 1 is used.</p><p>• Fully connected Layer: The feature vectors generated from the previous step are then fed to a fully connected layer. In this phase, the dropout regularization is applied and the input sentence is classified using a softmax function.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Factorization Machine</head><p>The Factorization Machine <ref type="bibr" target="#b40">[41]</ref> formulates the prediction problem as a design matrix X ∈ R n×p . The i th row x i ∈ R p of the design matrix defines a case with p real-valued variables. The main goal is to predict the target variable ŷ( x) using Equation <ref type="formula" target="#formula_6">3</ref>. The proposed recommendation module is formulated as a sparse matrix. The rows of the matrix are generated by concatenating the embeddings of a user, location, location category, and potentially other attributes relevant to the user-location tuple. We consider the check-in flag as the target variable for each row. The proposed model is operated with the following objective function:</p><formula xml:id="formula_6">ŷ( x) = w 0 + n i=1 w i x i + n i=1 n j=i+1 &lt; v i , v j &gt; x i x j ,<label>(3)</label></formula><p>where w 0 is the global bias, x is a concatenated vector, n is the size of the input variables,</p><formula xml:id="formula_7">&lt; v i , v j &gt;= k f =1 v i,f .v j,f , and</formula><p>k is the dimensionality of factorization. The Factorization Machine can learn latent factors for all the variables, and can also allow the interactions between all pairs of variables. This makes them preferably a good candidate to model complex relationships in the data.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">EXPLANATION OF RECOMMENDATION</head><p>The location-aspect category bipartite relation obtained from Section 3.1 can be represented as a bipartite graph and the ordered preference of user on aspect categories can be modeled by extracting the dense subgraphs from the bipartite graph. The aspect category of the dense subgraph can be used for explanation of recommendation. We propose bipartite core-based, and Page Rank-based methods to extract the dense subgraphs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Bipartite Core Extraction</head><p>A k-core of a graph is a maximal connected subgraph in which every vertex is connected to at least k other vertices. The k-core analysis is commonly used as part of community detection algorithms, dense subgraph extraction, and in dynamic graphs. Our method for bipartite core detection formulates the problem as a graph where every node is assigned two scores -hub score, and an authority score <ref type="bibr" target="#b41">[42]</ref>.</p><p>The hub score and authority score of a node are defined in terms of the outgoing and incoming edges respectively. The hub score (h i ) of a node is proportional to the sum of authority scores of the nodes it links to. The authority score (a i ) of a node is proportional to the sum of hub scores of the nodes it is linked from. Given the initial authority and hub scores of all the nodes, the scores are iteratively updated until the graph gets converged. For a given user, we consider all the recommended places as the seed nodes and connect them to the aspect category nodes for which they were positively reviewed. This gives us a graph as shown in calculate the eigenvectors of the adjacency matrix of the graph to identify the primary eigenpair (largest eigenvalue). The eigenvalue is used as a measure of the density of links in the graph. The iterative algorithm gives the largest eigenvalue (primary eigenpair). The primary eigenpair corresponds to the primary bipartite core (which represents the most prevalent set of location-aspect categories) and non-primary eigenpairs correspond to the secondary bipartite cores (which represent less prevalent set of locationaspect categories). After finding the primary core, the edges relevant to this core are removed and the process is repeated on residual graph to get the next prevalent bipartite cores. The aspect category is used in the explanation of recommendation related to those places. As shown in Figure <ref type="figure" target="#fig_2">3</ref>, the left graph is a sample bipartite graph with some aspect categories and the relevant places. The most dense subgraph (right subgraph in Figure <ref type="figure" target="#fig_2">3</ref>) with nodes AC 1 , P 1 , P 2 , and P 3 are extracted as the primary bipartite core.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.1">Explanation generation from bipartite cores:</head><p>Basically, a bipartite core consists of densely connected nodes and resembles the set of nodes that represent the set of place nodes which are mostly known for the relevant aspect category nodes. This model is termed as PERS-Core in which we use the aspect category from the bipartite cores and associate it with the explanation of recommendation related to the place nodes in the bipartite cores.</p><p>For instance, the review text "Impressive free hot breakfast and free parking", implies that the user cares about the "food" and "amenities" aspects. The bipartite cores for this user are based on her preferred aspects as she has mentioned those aspects frequently in her reviews. As an example, given the place "Hyatt Regency", and "The Setai Miami Beach" have good ratings for the "Food" aspects, they are included in the primary bipartite core (i.e. related to "Food") and the explanation can be provided as: Recommended Place: Hyatt Regency, The Setai Miami Beach, ... Explanation: Popular for Food.</p><p>The primary bipartite core includes the places and aspect categories that are most densely connected. If the places were reviewed for multiple aspect categories, they should have links to multiple aspect categories as well. The removal of edges within the primary bipartite core will still leave the nodes connected to other aspect category nodes which belong to the secondary bipartite cores. The bipartite cores are presented in the order (primary, secondary, etc.).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Ranking Method</head><p>This model is termed as PERS-Rank and uses the frequency of usage of an aspect category to a place. The places recommended to a user are taken and a graph with places and their relevant aspect category nodes is created. The weight of a place-aspect category edge indicates the number of times the place is mentioned for the aspect category. As most of the places with same category can have common aspects, we incorporate the categorical context in our ranking model to facilitate the categorical context propagation across place nodes. For simplicity, the edge between place nodes with same category is unit weighted. The categorical ranking relation is then defined as:</p><formula xml:id="formula_8">π(i) = 1 − d N + d * (j,i)∈E π(j) * W j,i O j ,<label>(4)</label></formula><p>where π(i) is the rank of a node i, d (=0.85) is damping factor, N is number of nodes in the graph, E is set of edges in the graph, W j,i is weight of the edge (j, i), and O j is number of outgoing links from node j. The ranks are iteratively updated till the graph is converged. The highest ranking aspect category node and its neighbors give the aspect categories and the places that were noted for this aspect category. Similarly, the other higher ranking aspect category nodes and their neighbors are accessed to get the other place-aspect category pairs. For a given aspect category, the neighbor nodes are sorted based on their rank before the explanation is generated. An explanation of the following form is generated:</p><p>1) Food Category Places ordered by rank: Place 1, Place 2, Place 3, ...</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2) Service Category</head><p>Places ordered by rank: Place 4, Place 5, Place 1, ...</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Dense subgraph extraction</head><p>Inspired from <ref type="bibr" target="#b43">[44]</ref>, <ref type="bibr" target="#b44">[45]</ref> we represent the user-aspectlocation relation as bipartite graphs (user-aspect relation and aspect-location relation). The places recommended to a user, the aspect categories of those places are used to construct a user-aspect, aspect-place bipartite network as shown in Figure <ref type="figure">4a</ref>. The basic idea is to extract the dense subgraphs from user-aspect bipartite relation and aspectlocation bipartite relation. Such dense subgraphs are used to align the user-location tuples that have dense mutual relation through the aspect nodes. Figure <ref type="figure">4</ref> shows a basic representation of the network and the extraction of dense subgraphs. Unlike a basic bipartite graph, we also exploit the weight of the user-aspect and place-aspect relation because the weights can represent the extent of preference of a user on aspects and the popularity information of a place through the aspects. For instance, a place might be best known for "Food" and might have been rated highly or reviewed more on this aspect but it might be less popular for "Price" aspect and only few visitors might have rated or reviewed on this aspect. It is also highly probable that the reviews of "Food" lover mostly focus on the "Food" aspect category. The visitors most likely review on "Food" for the places that is known for "Food" and less likely review on less popular aspect categories. In such a case, having equal weight of "Price" and "Food" aspect might not be the appropriate representation of the place. We exploit the random extraction of connected components from the network and proceed with the components having high similarity score. If γ is a random permutation applied on the homogeneous sets A and B (for instance, set A can contain all user nodes and set B can contain all the aspect category nodes), then the similarity score of the two subsets can be defined as:</p><formula xml:id="formula_9">Sim γ (A, B) = f (A, B) f (A) + f (B)<label>(5)</label></formula><p>, where f (A, B) = weights of all edges incidence on node b. This can be generalized to set A and set B of any size. It is obvious that absence of location-aspect edge indicate that the place is not known for that aspect (either the aspect is not relevant or is negatively rated). We can use the min-wise independent permutations <ref type="bibr" target="#b44">[45]</ref>, <ref type="bibr" target="#b45">[46]</ref> to avoid exploitation on each and every permutation to find the sets with high similarity score.</p><p>As we use some predefined number of permutations, we do not focus on min-wise independence of permutations. Algorithm 1 defines the steps for extraction of shingles from a bipartite graph. For each place node, we apply Shin-gleFinder(G, c, s, k) to find the set of aspect category nodes linked to it and to extract the k shingles for each place node. For each shingle created, we find the list of all place nodes that contain it. These are the places that are mostly reviewed for the aspect category nodes contained in the shingle (see Figure <ref type="figure">4b</ref> for detail). As shingles can contain overlapping set of aspect categories, it can represent the places and user preferences of overlapping aspect categories as well. A similar approach is taken to find the shingles for user nodes. The shingles of a user node represent the set of aspect categories that adhere to user preference (the preference can be ordered based on the similarity score of a user node to the shingles). As our goal is to cluster user, location tuples, we need to find the sets of user and location nodes that share sufficiently large number of shingles. Each shingle contains Algorithm 1 ShingleFinder(G = (V,E), c, s, k) 1: //G is the input graph, V is the set of vertices, and E is the set of edges, c is the number of permutations, s is the length of each set, k is the number of shingles to be extracted 2: initialize L as an empty list 3: for each place node do end for 9: end for 10: return k sets with high similarity score (these sets are called shingles) from L the associated aspects which can be the means to link the users and locations. We can easily find the top n u users and top n l locations whose similarity score is high for this shingle. The place and the aspect categories from the most similar shingles are used to generate the explanations. The overall process can be achieved in polynomial time and is dependent on the number of nodes in the graph, number of shingles to use, and the size of a shingle. This model is termed as PERS-Dense in the rest of this paper.</p><p>Finding the subsets of aspect categories with highest similarity score not only facilitates explanation of recommendation but also provisions clustering of the users who have similar preferences on aspects (even in case of absence of explicit social links) and generate a group recommendation. It can be used to generate preference wise recommendation (e.g., for the set of users {u 1 , u 2 , u 5 } the set of aspect categories {"food", "service"} might be interesting, for the set of users {u 1 , u 2 , u 3 } the set of aspect categories {"food", "price"} might be interesting, etc.). This can also facilitate the clustering of places that are preferred for similar aspects (for instance, the cluster of hotels that are popular for some set of aspects).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EVALUATION</head><p>We defined four models: (i) DAP -the model that used a deep network for recommendations and has no provision for explanation, (ii) PERS-Core -the model that used bipartite core for explanation generation, (iii) PERS-Rankthe model that used a ranking approach for explanation generation, and (iv) PERS-Dense that exploited a dense subgraph extraction for explanation generation. We evaluated the individual components (Aspect extraction, Aspect categorization, Sentence-aspect-category classification) in terms of accuracy. For aspect extraction module and aspect categorization module, we used SemEval 2014 Task 4: Aspect Based Sentiment Analysis Annotation dataset 4 as the benchmark dataset. Using this dataset as a benchmark seems reasonable because it is quite popular for research relevant to aspect, aspect sentiment, and aspect category extraction from customer reviews in different domains. This dataset contains sentences from customer reviews for restaurants and laptops. The review sentences contain annotation for the aspect terms, aspect term polarity, aspect category (e.g., food, service, price, ambience (relevant to the atmosphere and environment of a place), and anecdotes (e.g., the sentences that do not fit in above four categories) ), and aspect category polarity.</p><p>1) Aspect extraction: We used the SemEval 2014 Task 4: Aspect Based Sentiment Analysis Annotation dataset as the benchmark data and were able to get an accuracy of 70%. The performance was 82% on all of our evaluation datasets. We also evaluated the performance of the recommendation generated by our proposed model. We compared the performance of our proposed models with the following models:</p><p>1) Word-embedding approach -In this approach, the review sentences from a user and the one for an item are mapped to a latent space using the word embedding <ref type="bibr" target="#b39">[40]</ref>. For a user, the K-nearest neighbors in the space were considered as the top-K recommendations. 2) Latent Dirichlet Allocation approach <ref type="bibr" target="#b24">[25]</ref> -In this model, we extract the topics relevant to a user and the topics relevant to places. The user-place tuples with most common topics are used for the recommendation. 3) DeepConn <ref type="bibr" target="#b28">[29]</ref> -This CNN-based model uses the review embeddings but ignores other features' embedding and the polarity of reviews.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Dataset</head><p>We use three real-world datasets (see Table <ref type="table" target="#tab_6">2</ref>) to evaluate the proposed models. Table <ref type="table" target="#tab_6">2</ref> shows that in all three datasets, most of the users tend to give high (positive) ratings to the places.</p><p>The top-10 terms of different aspect categories   </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Experimental settings</head><p>We used 5-fold cross validation to measure the performance of the models. The frequency thresholds for noun and noun 5. https://www.yelp.com/dataset challenge 6. Wang et al. <ref type="bibr" target="#b46">[47]</ref> 7. http://insideairbnb.com/get-the-data.html 8. explicitly missing ratings, neutral, and zero ratings are not shown phrase extraction were set to 100, 250, and 500. From our experimental analysis, the threshold of 100 was found to be better. For CNN, we used 128 filters, 64 batches, 200 epochs, and embedding vectors of size 384. An Ubuntu 14.04.5 LTS, 32 GB RAM, a Quadcore Intel(R) Core(TM) i7-3820 CPU @ 3.60 GHz was used to evaluate the models. The same configuration with a Tesla K20c 6 GB GPU was used to evaluate the neural network-based models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Impact of Explanation-A Case Study</head><p>In this subsection, we present an example of the bipartite core detection and the explanation generation. We take the users from Yelp dataset and analyze the impact of categorizing the recommended places based on the bipartite cores. We can see how the bipartite core-based model outperforms the simple top@N-based models.</p><p>For simplicity, we analyze the impact of explanation on 200 different users and five different aspect categories (see Table <ref type="table" target="#tab_2">1</ref>). We present illustrations of three users -"7iigQ2XM-V0ciwmCIdrIBA", "7Mg6r6g7RUwQH Bllrd-wQ", and "9HDElil2309UajBgtYcD4w", hereafter known as u 1 , u 2 , and u 3 respectively. We take the recommendations from DAP model as the simple recommendation for these users. A bipartite graph was created with the places recommended (which can be taken from DAP or any other models) to these users and the relevant aspect categories (which were positively reviewed (in majority)) of those places. A directed edge was created between aspect category and place if the review of the place was labeled for this aspect category.</p><p>Table <ref type="table" target="#tab_8">4</ref> illustrates the summary of top-5 bipartite cores extracted for these users. From Table <ref type="table" target="#tab_8">4</ref>, we can see that the  ordered preferences of user u 1 are "Price", "Pet", "Service", "Food", and "Amenities". On the other hand user u 2 has "Service", "Price", "Pet", "Food", and "Amenities". This shows that when selecting places, regardless of the order of places the simple recommendation provided, the user u 1 prefers the places that were popular for "Price" category.</p><p>The authority score of nodes can be used to order places within a given aspect category. The findings of our analysis are summarized below:</p><p>1) For the user u 1 , the place "NK3S3U6TQtysH -eqT3bBQ" was the second highly recommended place by simple recommendation. With the bipartite core, it is categorized into "Others" bipartite core which in-fact is the sixth core. So, if the user really cares about other cores (i.e. related to other aspect categories) then having it in sixth core is better than having it in front list. The location "p9Bl3BxPltz2WnIxJLnBvw" which was the least recommended one with simple recommendation (without bipartite core based explanation) is now categorized as the least popular item for the primary bipartite core (i.e. related to "Price"), and three other secondary cores (i.e. related to "Service", "Pet", and "Food"). Many places ranked in the later part of the list by the simple recommendation were found within top-20 of the different bipartite cores. Have this user used the simple recommendation and considered only the top-20 recommendations then these items would have been missed. 2) The place "v4iA8kusUrB19y2QNOiUbw" which was the top recommended item for user u 2 by the simple recommendation is categorized to the sixth bipartite core (i.e. "Others"). The place "HxP-pZSY6Q1eARuiahhra6A" that did not fit in top-20 of simple recommendation is found in the sixth position of first three bipartite cores. The location "mh1le9QGMrZLohAjfheJJg" which was the second least recommended by simple recommendation is categorized as the second least preferred item for the first five bipartite core (i.e. "Service", "Price", "Pet", "Food", and "Amenities"). 3) For user u 3 , the place "d4JotJ TGNCm9y-TB4e86Q" which was top second recommended place is categorized into sixth core (i.e. "Others"). On the other hand, the place "y9cQ0DBC0qFNgkpTXHzokA" which was least recommended by the simple recommendation is found in the first four bipartite cores (i.e. "Price", "Service", "Pet", and "Food") relevant to her. The place "Jp8Tz0 OK3T71eYPmC2qww" which was ranked beyond the top-20 by simple recommendation is ranked within the top-10 locations for the primary bipartite core.</p><p>This implies that simple recommendation score is not always reliable when the preferences are categorized into different aspects. As the items at front of recommended list might be least preferred for some aspect, simply taking top@N items might adversely impact the performance of recommendation. Using our approach, a sample explanation for a user is the ordered set of places taken from the ordered bipartite cores. For e.g., for u 1 it can be: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Evaluation of Explainability</head><p>We checked the presence of correct aspects in the explanation. For this, we ordered the aspects of every place based on the aspect popularity score for that place. For a place p, the aspect popularity of an aspect a can be defined in terms of the number of positive and negative mentions of that aspect and is defined as:</p><formula xml:id="formula_10">AspectP opularity(p a ) = sentence∈Reviewp (| positive | a− | negative | a).<label>(6)</label></formula><p>We used a trigram across the extracted aspects to identify the sentiment polarity of the aspects. For every place, the relevant aspects were ordered by the aspect popularity score. So, a place can be represented by the set of aspects ordered by their popularity score: p a = {a 1 , a 2 , ...., a n }. For every explanation, we took the aspects for which a place was recommended. The aspects were ordered based on the order of cores (primary, secondary, etc.). This gave us another set of aspects for every place. The performance of explainability was then measured in terms of Levenshtein distance (i.e. edit distance) between the lists. The average Levenshtein distance across all the places was observed to be 20% with PERS-Core. Similarly, the highly ranked items in PERS-Rank and the denser subgraphs from PERS-Dense were used to extract the set of places and their aspects. Such set of aspects were compared to the set of aspects obtained by ordering their frequency of mentions. The deviation of such two lists were observed as 25% for PERS-Rank and 27% for PERS-Dense. This shows that with small deviation, the aspects-based explanation maintains the preferences explicitly shared via user reviews.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">Experimental Results and Discussion</head><p>The chronologically sorted reviews of users and places with at least five reviews were used in the evaluation. We used a 5-fold cross validation and the precision (p), recall (r), and f-score (2*p*r/(p+r)) metrics to evaluate the models. We considered the cases of top @5, @10, @15, and @20 recommended items for the evaluation. The evaluation of different models on Yelp dataset, TripAdvisor dataset, and Airbnb dataset is illustrated in Table <ref type="table" target="#tab_10">5</ref>, 6, and 7 respectively. The performance of different models in the form of Precision@N and Recall@N is illustrated in Figure <ref type="figure">5</ref> and Figure <ref type="figure" target="#fig_8">6</ref>.  From the evaluation results, we can see that among the ones without explanation, DAP performed best on the Yelp dataset. Though it outperformed other models in other two datasets as well, the difference was not that much significant. This implies that for larger datasets, the performance of the proposed model is outstanding. This is common with DNNs which need a reasonable amount of training data for better performance. The recall of DeepConn <ref type="bibr" target="#b28">[29]</ref> was higher than that of DAP in the TripAdvisor dataset but its precision  Unlike DAP, which provided a single list of recommendations and selected top@N locations from the list, the PERS-Core and PERS-Rank produced individual lists for each aspect category. These two models performed better than DAP because they categorized recommendations into different aspect categories which led to the re-ordering of the items into small recommendation lists. This re-ordering can help increase the number of true positives and decrease the false positives, as the least preferred items might move to the later part of the recommended lists and the more preferred ones move to the front part of the lists. The performance of PERS-Core was slightly better than PERS-Rank. One reason might be due to the repeated bipartite core extraction by PERS-Core where the nodes got re-ranked for every bipartite core but the PERS-Rank only ranked all the nodes just once.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Models</head><p>The performance of PERS-Dense was in par with PERS-Rank. The small difference might be due to the categorical context incorporated in PERS-Rank but not in PERS-Dense. As we have five different aspect categories, we evaluated three different (s={3,4,5}) length of shingles. We used the value of c (the number of combinations) to include all the possible unique combinations of aspect categories (e.g., we used c=10 for s=3). We used k={3, 5, 7} as the number of shingles to cluster and compare users and locations. The best performance was observed when s=3, c=10, and k=5. As considering more shingles (lots of aspect combinations) might not be able to exploit the personalized preference of users sharing all those shingles, performance on k=7 was lower than that of k=5. The best performance on k=5 implies that a reasonable number of aspect combinations can better model the extent of preference of users.</p><p>After having the ordered set of places within each aspect category, an explanation of type similar to <ref type="bibr" target="#b32">[33]</ref> (i.e. place A is better than 80% of places for "Food", and so on) can be simply achieved by counting the number of places behind </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.6">Limitations</head><p>The deep neural networks require lots of training data for efficient results. The prediction relies on the data used in offline training and might need further tunings to handle realtime data. The model relied on single approach to extract the aspects. The model can also be extended to exploit phraselevel aspect and sentiment analysis which can capture the multi-aspect multi-sentiment relation within a sentence.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">CONCLUSION AND FUTURE WORK</head><p>We formulated the review-aspect category correlation using deep neural network and represented the placeaspect category bipartite relation as a bipartite graph. We proposed a bipartite-core based, ranking-based, and a shingles-based method to extract the dense subgraphs that represented the users' ordered preferences on aspect categories. The aspect categories from the dense subgraphs were used to explain the recommendation. The evaluations on three real-world datasets and the presented case studies clearly demonstrate the efficiency of proposed models. PERS-Dense can also be used to generate explainable recommendations to a group of users. Besides simple explanation of recommendation, the shingles can be used for additional purposes, such as (i) to generate overlapping cluster of places that are known for a set of aspect categories, (ii) generate preference-wise recommendation to a preferencebased group, etc. In future, we would like to cluster the users based on their preference order on aspect categories, incorporate more aspect categories, evaluate the explanations with additional metrics, and exploit the dynamic useraspect preferences.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 :</head><label>1</label><figDesc>Fig. 1: High level overview of system architecture</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 :</head><label>2</label><figDesc>Fig. 2: Proposed Deep Network</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>FigFig. 3 :</head><label>3</label><figDesc>Fig.3: Place Aspect Category Graph (AC k = aspect categories, P i = places) (Left graph is the bipartite graph and the right subgraph denotes the primary bipartite core)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>a∈A,b∈B (a,b)∈E W a,b gives the contribution of all the edges (a,b), W a,b is the weight of edge (a,b) that is normalized to all the edges outgoing from node a, f (A) = (a,i)∈E W a,i is the sum of normalized weights of all edges outgoing from node a, and f (B) = (i,b)∈E W i,b is the sum of normalized</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>for the place and aspect category nodes in this set 7: store this set and its score in L 8:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>4 .Fig. 4 :</head><label>44</label><figDesc>Fig. 4: High level overview of dense subgraph extraction (shown without edge weights)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>1 )</head><label>1</label><figDesc>Place recommended: Place 1, Place 2,... Explanation: Popular for best price. 2) Place recommended: Place 3, Place 4,... Explanation: Popular due to pet friendliness.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Fig. 6 :</head><label>6</label><figDesc>Fig. 5: Precision of different models</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>TABLE 1 :</head><label>1</label><figDesc>Aspect categories aspects.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>TABLE 2 :</head><label>2</label><figDesc>Statistics of the datasets are illustrated in Table3.</figDesc><table><row><cell>Category</cell><cell>Terms</cell></row><row><cell>Price</cell><cell>cash, redeem, cheap, expensive, afford, refund, skyrocket, economize, reimburse, discount</cell></row><row><cell>Food</cell><cell>cappuccino, buffet, mushroom, cranberry, salami, healthy, shell, croissant, sushi, broccoli</cell></row><row><cell>Pet</cell><cell>mew, swan, cat, fish, ant, pony, dog, bird, duck, purr</cell></row><row><cell>Service</cell><cell>friendly, repair, employment, discount, servings, safari, checkouts, cleansing, sightseeing, attitude</cell></row><row><cell>Amenities</cell><cell>breakfast, massage, yoga, housekeeping, excursion, gamble, sightseeing, paraglide, exercise, television</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>TABLE 3 :</head><label>3</label><figDesc>Top-10 terms in different aspect categories</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>TABLE 4 :</head><label>4</label><figDesc>Summary of bipartite cores for different users</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>TABLE 5 :</head><label>5</label><figDesc>Average Performance of models on Yelp dataset</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_11"><head>TABLE 6 :</head><label>6</label><figDesc>Average Performance of models on TripAdvisor dataset</figDesc><table><row><cell>Models</cell><cell cols="3">Precision Recall F-Score</cell></row><row><cell>TripAdvisor Dataset</cell><cell></cell><cell></cell><cell></cell></row><row><cell>LDA [25]</cell><cell>0.5000</cell><cell>0.7968</cell><cell>0.6144</cell></row><row><cell>Embedding [27]</cell><cell>0.5711</cell><cell>0.7971</cell><cell>0.6654</cell></row><row><cell>DeepConn [29]</cell><cell>0.5634</cell><cell>0.8781</cell><cell>0.6864</cell></row><row><cell>DAP</cell><cell>0.6131</cell><cell>0.7988</cell><cell>0.6937</cell></row><row><cell>PERS-Core</cell><cell>0.6388</cell><cell>0.8341</cell><cell>0.7235  *</cell></row><row><cell>PERS-Rank</cell><cell>0.6366</cell><cell>0.8112</cell><cell>0.7133</cell></row><row><cell>PERS-Dense</cell><cell>0.6254</cell><cell>0.7998</cell><cell>0.7019</cell></row><row><cell>Models</cell><cell cols="3">Precision Recall F-Score</cell></row><row><cell>AirBnB Dataset</cell><cell></cell><cell></cell><cell></cell></row><row><cell>LDA [25]</cell><cell>0.5000</cell><cell>0.5948</cell><cell>0.5433</cell></row><row><cell>Embedding [27]</cell><cell>0.6164</cell><cell>0.6243</cell><cell>0.6203</cell></row><row><cell>DeepConn [29]</cell><cell>0.6001</cell><cell>0.6832</cell><cell>0.6389</cell></row><row><cell>DAP</cell><cell>0.5972</cell><cell>0.7845</cell><cell>0.6781</cell></row><row><cell>PERS-Core</cell><cell>0.6216</cell><cell>0.8183</cell><cell>0.7065  *</cell></row><row><cell>PERS-Rank</cell><cell>0.6161</cell><cell>0.8073</cell><cell>0.6988</cell></row><row><cell>PERS-Dense</cell><cell>0.6077</cell><cell>0.7970</cell><cell>0.6896</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_12"><head>TABLE 7 :</head><label>7</label><figDesc>Average Performance of models on Airbnb dataset and F-Score were lower than that of DAP. This might be because of the sentence-level sentiment which was exploited in DAP but not in DeepConn<ref type="bibr" target="#b28">[29]</ref>.</figDesc><table /></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Microsummarization of online reviews: An experimental study</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mason</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gaska</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Van Durme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Choudhury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Dolan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Toutanova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mitchell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="3015" to="3021" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Timeaware point-of-interest recommendation</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">M</forename><surname>Thalmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 36th international ACM SIGIR conference on Research and development in information retrieval</title>
+				<meeting>the 36th international ACM SIGIR conference on Research and development in information retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="363" to="372" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Collaborative multi-level embedding learning from reviews for rating prediction</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<biblScope unit="page" from="2986" to="2992" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Maps: A multi aspect personalized poi recommender system</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Baral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th ACM Conference on Recommender Systems</title>
+				<meeting>the 10th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="281" to="284" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Geotecs: exploiting geographical, temporal, categorical and social aspects for personalized poi recommendation</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Baral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-C</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Information Reuse and Integration (IRI)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="page" from="94" to="101" />
+		</imprint>
+	</monogr>
+	<note>IEEE 17th International Conference on</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Exploiting the roles of aspects in personalized poi recommender systems</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Baral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data Mining and Knowledge Discovery</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="24" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Tagsplanations: explaining recommendations using tags</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th international conference on Intelligent user interfaces</title>
+				<meeting>the 14th international conference on Intelligent user interfaces</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="47" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Providing justifications in recommender systems</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Symeonidis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nanopoulos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Manolopoulos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE Transactions on Systems, Man, and Cybernetics-Part A: Systems and Humans</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="page" from="1262" to="1272" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A survey of explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE 23rd International Conference on</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2007">2007. 2007</date>
+			<biblScope unit="page" from="801" to="810" />
+		</imprint>
+	</monogr>
+	<note>Data Engineering Workshop</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Evaluating the effectiveness of explanations for recommender systems</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="399" to="439" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">How should i explain? a comparison of different explanation types for recommender systems</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Gedikli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Jannach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Human-Computer Studies</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="367" to="382" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Explaining collaborative filtering recommendations</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM conference on Computer supported cooperative work</title>
+				<meeting>the 2000 ACM conference on Computer supported cooperative work</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Explaining recommendations: Satisfaction vs. promotion</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bilgic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Beyond Personalization Workshop, IUI</title>
+				<imprint>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">153</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Convolutional neural networks for sentence classification</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kim</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1408.5882</idno>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Natural language processing (almost) from scratch</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Collobert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bottou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Karlen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kavukcuoglu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kuksa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Machine Learning Research</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="2493" to="2537" />
+			<date type="published" when="2011-08">Aug. 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Opinion target extraction using a shallow semantic parsing framework</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-Sixth AAAI Conference on Artificial Intelligence</title>
+				<meeting>the Twenty-Sixth AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<publisher>AAAI Press</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="1671" to="1677" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Clustering product features for opinion mining</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fourth ACM international conference on Web search and data mining</title>
+				<meeting>the fourth ACM international conference on Web search and data mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="347" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Hidden factors and hidden topics: understanding rating dimensions with review text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM conference on Recommender systems</title>
+				<meeting>the 7th ACM conference on Recommender systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="165" to="172" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">A joint model of text and aspect ratings for sentiment summarization</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Titov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Mcdonald</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<publisher>Citeseer</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="308" to="316" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Ilda: interdependent lda model for learning latent aspects and their ratings from online product reviews</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Moghaddam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ester</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 34th international ACM SIGIR conference on Research and development in Information Retrieval</title>
+				<meeting>the 34th international ACM SIGIR conference on Research and development in Information Retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="665" to="674" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Aspect and sentiment unification model for online review analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Jo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Oh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the fourth ACM international conference on Web search and data mining</title>
+				<meeting>the fourth ACM international conference on Web search and data mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="815" to="824" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Orec: An opinion-based point-of-interest recommendation framework</title>
+		<author>
+			<persName><forename type="first">J.-D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Chow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM International on Conference on Information and Knowledge Management</title>
+				<meeting>the 24th ACM International on Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1641" to="1650" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">A sentiment-enhanced personalized location recommendation system</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM Conference on Hypertext and Social Media</title>
+				<meeting>the 24th ACM Conference on Hypertext and Social Media</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="119" to="128" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Semantic-based location recommendation with multimodal venue semantics</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-L</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z.-J</forename><surname>Zha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T.-S</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Multimedia</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="409" to="419" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Latent dirichlet allocation</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Blei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Y</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">I</forename><surname>Jordan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of machine Learning research</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="993" to="1022" />
+			<date type="published" when="2003-01">Jan. 2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Deep neural networks for youtube recommendations</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Covington</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Adams</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Sargin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th ACM Conference on Recommender Systems</title>
+				<meeting>the 10th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="191" to="198" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Modelling user preferences using word embeddings for context-aware venue recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Manotumruksa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Macdonald</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ounis</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1606.07828</idno>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Aspect based recommendations: Recommending items with the most valuable aspects based on user reviews</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Bauman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tuzhilin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="717" to="725" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Joint deep modeling of users and items using reviews for recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Noroozi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Tenth ACM International Conference on Web Search and Data Mining</title>
+				<meeting>the Tenth ACM International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="425" to="434" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Learning to rank features for recommendation over multiple categories</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 39th International ACM SIGIR conference on Research and Development in Information Retrieval</title>
+				<meeting>the 39th International ACM SIGIR conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="305" to="314" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Bpr: Bayesian personalized ranking from implicit feedback</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Gantner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Schmidt-Thieme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the twenty-fifth conference on uncertainty in artificial intelligence</title>
+				<meeting>the twenty-fifth conference on uncertainty in artificial intelligence</meeting>
+		<imprint>
+			<publisher>AUAI Press</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="452" to="461" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phraselevel sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Opinionated explanations for recommendation systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lawlor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Muhammad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rafter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Smyth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Research and Development in Intelligent Systems XXXII</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="331" to="344" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Trirank: Review-aware explainable recommendation by modeling aspects</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-Y</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th ACM International on Conference on Information and Knowledge Management</title>
+				<meeting>the 24th ACM International on Conference on Information and Knowledge Management</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="1661" to="1670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Vader: A parsimonious rule-based model for sentiment analysis of social media text</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Hutto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Gilbert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Eighth International AAAI Conference on Weblogs and Social Media</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Opinion digger: an unsupervised opinion miner from unstructured product reviews</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Moghaddam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ester</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th ACM international conference on Information and knowledge management</title>
+				<meeting>the 19th ACM international conference on Information and knowledge management</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1825" to="1828" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">Aspect and entity extraction for opinion mining,&quot; in Data mining and knowledge discovery for big data</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="page" from="1" to="40" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">The stanford corenlp natural language processing toolkit</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Manning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Surdeanu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Finkel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bethard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Mcclosky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL (System Demonstrations)</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="55" to="60" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><surname>Fellbaum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wordnet</forename><surname>Wiley Online</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Library</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Distributed representations of words and phrases and their compositionality</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Mikolov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Sutskever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dean</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+				<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="3111" to="3119" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Factorization machines with libfm</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Intelligent Systems and Technology (TIST)</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">57</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Authoritative sources in a hyperlinked environment</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Kleinberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the ACM (JACM)</title>
+		<imprint>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="604" to="632" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">The pagerank citation ranking: Bringing order to the web</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Page</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Brin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Motwani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Winograd</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Stanford InfoLab, Tech. Rep</title>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Discovering large dense subgraphs in massive graphs</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gibson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tomkins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st international conference on Very large data bases. VLDB Endowment</title>
+				<meeting>the 31st international conference on Very large data bases. VLDB Endowment</meeting>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="page" from="721" to="732" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Syntactic clustering of the web</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Z</forename><surname>Broder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">C</forename><surname>Glassman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Manasse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Zweig</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer Networks and ISDN Systems</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">8-13</biblScope>
+			<biblScope unit="page" from="1157" to="1166" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Min-wise independent permutations</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">Z</forename><surname>Broder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Charikar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Frieze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mitzenmacher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Computer and System Sciences</title>
+		<imprint>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="630" to="659" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Latent aspect rating analysis without aspect keyword supervision</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining</title>
+				<meeting>the 17th ACM SIGKDD international conference on Knowledge discovery and data mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="618" to="626" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

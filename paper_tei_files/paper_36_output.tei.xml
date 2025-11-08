@@ -1,0 +1,3090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">G-Refer: Graph Retrieval-Augmented Large Language Model for Explainable Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2025-02-18">18 Feb 2025</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+							<email>yuhanli98@gmail.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Xinni</forename><surname>Zhang</surname></persName>
+							<email>xnzhang23@cse.cuhk.edu.hk</email>
+						</author>
+						<author>
+							<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+							<email>linhao.luo@monash.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+							<email>changh.heng@gmail.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Yuxiang</forename><surname>Ren</surname></persName>
+							<email>renyuxiang931028@gmail.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Irwin</forename><surname>King</surname></persName>
+							<email>king@cse.cuhk.edu.hk</email>
+						</author>
+						<author>
+							<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">The Hong Kong University of Science and Technology (Guangzhou) Guangzhou</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">The Chinese University of Hong Kong Hong Kong SAR</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Monash University Melbourne</orgName>
+								<address>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">Huawei Technologies Co., Ltd</orgName>
+								<address>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Huawei Technologies Co., Ltd. Shanghai</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="institution">The Chinese University of Hong Kong Hong Kong SAR</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff6">
+								<orgName type="institution">The Hong Kong University of Science and Technology (Guangzhou) Guangzhou</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff7">
+								<address>
+									<addrLine>WWW &apos;25</addrLine>
+									<settlement>Sydney</settlement>
+									<region>NSW</region>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff8">
+								<orgName type="institution">Yuxiang Ren</orgName>
+								<address>
+									<settlement>Irwin King</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">G-Refer: Graph Retrieval-Augmented Large Language Model for Explainable Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2025-02-18">18 Feb 2025</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">05FA170148550CCCEB70876B5AB2462F</idno>
+					<idno type="DOI">10.1145/3696410.3714727</idno>
+					<idno type="arXiv">arXiv:2502.12586v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:02+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS Concepts</term>
+					<term>Computing methodologies → Artificial intelligence;</term>
+					<term>Information systems → Information retrieval Explainable Recommendation, Large Language Model, GraphRAG</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Explainable recommendation has demonstrated significant advantages in informing users about the logic behind recommendations, thereby increasing system transparency, effectiveness, and trustworthiness. To provide personalized and interpretable explanations, existing works often combine the generation capabilities of large language models (LLMs) with collaborative filtering (CF) information. CF information extracted from the user-item interaction graph captures the user behaviors and preferences, which is crucial for providing informative explanations. However, due to the complex-* Project leader.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="12" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>ity of graph structure, effectively extracting the CF information from graphs still remains a challenge. Moreover, existing methods often struggle with the integration of extracted CF information with LLMs due to its implicit representation and the modality gap between graph structures and natural language explanations. To address these challenges, we propose G-Refer, a framework using Graph Retrieval-augmented large language models (LLMs) for explainable recommendation. Specifically, we first employ a hybrid graph retrieval mechanism to retrieve explicit CF signals from both structural and semantic perspectives. The retrieved CF information is explicitly formulated as human-understandable text by the proposed graph translation and accounts for the explanations generated by LLMs. To bridge the modality gap, we introduce knowledge pruning and retrieval-augmented fine-tuning to enhance the ability of LLMs to process and utilize the retrieved CF information to generate explanations. Extensive experiments show that G-Refer</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Recommendation systems (RS) play an essential role in our daily lives, as they affect how people navigate the vast array of products available in online services <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b46">47,</ref><ref type="bibr" target="#b73">74,</ref><ref type="bibr" target="#b90">91,</ref><ref type="bibr" target="#b94">95,</ref><ref type="bibr" target="#b95">96]</ref>. These systems have the ability to predict whether a user is interested in an item, e.g., by clicking on it or making a purchase. Recently, explainable recommendation <ref type="bibr" target="#b56">[57,</ref><ref type="bibr" target="#b72">73,</ref><ref type="bibr" target="#b91">92,</ref><ref type="bibr" target="#b92">93]</ref> has attracted more attention and demonstrated significant advantages in informing users about the logic behind their received recommendation results, thereby increasing system transparency, effectiveness, and trustworthiness. Specifically, this task aims to generate human-understandable textual explanations for each user-item recommendation. This enables us to understand the underlying reasons behind each recommendation and develop accountable RS as a result <ref type="bibr" target="#b9">[10]</ref>.</p><p>Due to the impressive generative and reasoning capabilities of large language models (LLMs) <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b38">[39]</ref><ref type="bibr" target="#b39">[40]</ref><ref type="bibr" target="#b40">[41]</ref><ref type="bibr" target="#b66">67]</ref>, existing explainable recommendation methods <ref type="bibr" target="#b32">[33,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b49">50]</ref> can now produce fluent and informative explanations in natural language based on user and item profiles, as well as their interactions. To provide more personalized explanations, <ref type="bibr" target="#b49">[50]</ref> have utilized user-item interaction graphs, which contain abundant collaborative filtering (CF) information from graph structure. The CF information <ref type="bibr" target="#b23">[24]</ref> reveals the complex patterns between users and items, which can be used to generate more accurate and informative explanations. Nevertheless, the graph structure is inherently noisy and complex, making it challenging to effectively extract CF information for explanations.</p><p>In order to better model the CF information from graph structure in RS, graph neural networks (GNNs) have been widely adopted and demonstrated exceptional performance in recommendation tasks <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b74">75,</ref><ref type="bibr" target="#b81">82]</ref>. GNNs capture CF information by learning hidden representations of both users and items through an iterative process of feature transformation and information aggregation from neighboring nodes. While GNNs excel at capturing CF information for recommendations, simply incorporating GNNs with LLM-based RS such as XRec <ref type="bibr" target="#b49">[50]</ref> still faces several challenges in producing satisfactory explanations for recommendations: (C1) Implicit CF signal. The CF signals are injected into LLMs by feeding user and item embeddings generated by GNNs, where the CF signals are represented as implicit node embeddings. Given the vagueness of the explainability of GNNs themselves <ref type="bibr" target="#b85">[86]</ref>, it is difficult to interpret the CF signals contained in these embeddings. Therefore, more explicit evidence constructed from the CF signals contained in graphs, especially favored from the view of human-understandable text, is eagerly needed. (C2) Modality gap. Since GNNs are primarily used to capture structural information, the rich semantics within user and item profiles are inevitably ignored. In addition, LLMs struggle to directly understand the structured CF signals captured by GNNs, because of their unstructured nature. This results in a significant modality gap between structured representations and natural language, making it difficult for LLMs to effectively leverage graph-derived CF information when generating explanations.</p><p>Presented Work. Motivated by these challenges, in this work, we propose G-Refer, a framework designed to use Graph Retrievalaugmented LLMs for explainable recommendation. We aim to address the limitations of existing methods and extract explicit, diverse, and semantically rich CF information to generate more accurate and personalized explanations. As shown in Figure <ref type="figure" target="#fig_0">1</ref>, given a user-item recommendation to be explained, we leverage a hybrid graph retrieval mechanism that combines multi-granularity retrievers to extract explicit structural and semantic CF information from the graphs (to address C1). Specifically, we employ a path-level retriever to capture structural CF information by identifying 𝑘 paths from graphs that account for recommendation. To utilize the rich semantics within nodes, we also employ a node-level retriever to retrieve semantic CF information from the graphs by finding the most relevant nodes to the recommendation. The retrieved CF information is then translated into human-understandable text with the graph translation module to facilitate LLMs in generating explanations. To bridge the modality gap and enhance the understanding of LLMs (to address C2), we adopt a lightweight retrieval-augmented fine-tuning (RAFT) approach to instruct LLMs in understanding the retrieved CF information and generating explanations. To further improve the training efficiency and reduce noise, we introduce a knowledge pruning technique to filter out training samples with less relevant CF information. After the training, LLMs exhibit a greater ability to leverage both the retrieved CF information and rich semantics in profiles to generate accurate and contextually relevant explanations for recommendations.</p><p>Our main contributions can be summarized as follows: • Comprehensive Analysis. We identify the challenges in existing explainable recommendation works, as GNNs struggle to capture explicit and semantically rich CF information. • Architecture Design. We propose G-Refer, a model leveraging hybrid graph retrieval to capture both structural and semantic CF signals from user-item interaction graphs. We also incorporate knowledge pruning and retrieval-augmented fine-tuning to enhance LLMs' ability to utilize retrieved knowledge. • Superior Performance. Extensive experiments on public datasets demonstrate the effectiveness of our proposed G-Refer, surpassing a series of SOTA baselines by up to 8.67%.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Preliminaries 2.1 Explainable Recommendation</head><p>The explainable recommendation aims to unveil the rationale behind the recommendation results and provide human-understandable textual explanations. In recommendation scenarios, the user-item interactions can be represented by a bipartite graph G = {(𝑢, 𝑖)|𝑢 ∈ U, 𝑖 ∈ I}, where U and I are the sets of users and items, respectively. Each node in G is associated with textual information from either the user profile set B or the item profile set C. Specifically, each user 𝑢 has a profile 𝑏 𝑢 ∈ B describing their preferences, and each item 𝑖 has a profile 𝑐 𝑖 ∈ C detailing attributes and descriptions. Given a recommendation (𝑢, 𝑖), which is a pair of user 𝑢 and recommended item 𝑖, the goal of an explainable recommendation is to generate a clear textual explanation, which is formulated as: 𝑒𝑥𝑝𝑙𝑎𝑛𝑎𝑡𝑖𝑜𝑛(𝑢, 𝑖) = generator(𝑢, 𝑖, G, B, C).</p><p>(</p><formula xml:id="formula_0">)<label>1</label></formula><p>The graph models abundant structural CF information beneficial for explainable recommendations. Given the size of the entire graph, we commonly utilize the subgraph G(𝑢, 𝑖) ⊆ G as input <ref type="bibr" target="#b83">[84,</ref><ref type="bibr" target="#b87">88]</ref>. This subgraph represents the 𝐿-hop edge-centered ego-graph around the pair (𝑢, 𝑖). It includes nodes that are at most 𝐿 hops away from either 𝑢 or 𝑖, effectively capturing the local connectivity structure for generating explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Graph Retrieval-Augmented Generation</head><p>Retrieval-Augmented Generation (RAG) has achieved remarkable success in enhancing Large Language Models (LLMs) by retrieving external documents. However, existing RAGs fail to fully exploit the structural information in the graph to augment LLMs. The graph retrieval-augmented generation (GraphRAG), to address this issue, leverages structural information to enable more precise retrieval and facilitate context-aware generation <ref type="bibr" target="#b57">[58]</ref>. Given a query 𝑞, GraphRAG aims to retrieve structural information from a graph G and generate responses 𝑎 conditioned by the retrieved information, which can be formulated as:  </p><formula xml:id="formula_1">𝐺 = G-retriever(𝑞, G),<label>(2)</label></formula><formula xml:id="formula_2">𝑃 (𝑎|𝑞, G) = 𝑃 (𝑎|𝑞, 𝐺, 𝜃 ),<label>(3)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Knowledge Pruning</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Retrieval-augmented FT</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explicit CF Info.</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Path-level Retriever</head><p>Node-level Retriever  where 𝜃 is the parameters of the LLMs, and 𝐺 is the structural information (e.g., nodes, paths, and subgraphs) retrieved by the graph retriever.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Methodology</head><p>Our proposed G-Refer is designed to excavate the CF information from the graph to enhance explainable recommendations. First, we leverage a hybrid graph retrieval mechanism that combines multigranularity retrievers to extract both structural and semantic CF information from the user-item interaction graph. In the second part, we employ knowledge pruning to filter out less relevant or redundant training samples, eliminating noise and improving training efficiency. Finally, a lightweight retrieval-augmented fine-tuning is conducted to bridge the modality gap, instructing LLMs to understand retrieved knowledge and generate accurate and contextually relevant explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Hybrid Graph Retrieval</head><p>The user-item interaction graph encapsulates a wealth of knowledge, including user behaviors, preferences, and relationships among users and between items <ref type="bibr" target="#b73">[74]</ref>. It can provide sufficient CF information from different perspectives, such as structural and semantic views, to explain the user behaviors, thereby enhancing the explainability of recommendations. For example, as illustrated in Figure <ref type="figure" target="#fig_0">1</ref>, we can explain why user 𝑢 1 might be interested in item 𝑖 2 from both structural and semantic perspectives. From the structural perspective, the path (𝑢 1 → 𝑖 1 → 𝑢 2 → 𝑖 2 ) illustrates the potentially shared preferences between user 𝑢 1 and 𝑢 2 , both of whom have watched 𝑖 1 , Iron Man, suggests that user 𝑢 1 may also enjoy 𝑖 2 , Doctor Strange, which user 𝑢 2 has watched, due to the overlapping Marvel fandom. In addition, from the semantic view, retrieving items 𝑖 2 and 𝑖 3 could also lead to an explanation. Both items feature the same leading actor, Benedict Cumberbatch. This commonality suggests that user 𝑢 1 , having shown interest in related actors through their viewing habits, might find 𝑖 3 , Sherlock, appealing as well.</p><p>According to <ref type="bibr" target="#b57">[58]</ref>, retrievers based on different levels of granularity in the graph (e.g., nodes, paths, and subgraphs) have unique strengths for addressing various aspects of retrieval scenarios. Inspired by recent works <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b48">49]</ref>, we adopt a hybrid graph retrieval strategy that employs both path-level and node-level retrievers to respectively retrieve structural and semantic CF information from the user-item interaction graph, which is composed of purchase histories with enriched text attributes. The CF information retrieved from both views is then translated into human-understandable text, facilitating the generation of explanations.</p><p>3.1.1 Path-level Retriever. The path-level retriever aims to retrieve the structural CF information from the graphs by identifying the most 𝑘 informative paths that connect users and items for interpretable recommendations. Typically, recommendations on graphs can be formalized as a link prediction (LP) problem, which predicts the connections between user 𝑢 and 𝑖 based on the graph structure <ref type="bibr" target="#b35">[36]</ref>. This can be formulated as</p><formula xml:id="formula_3">𝑖 = 𝑓 𝜙 (𝑢, G),<label>(4)</label></formula><p>where 𝑓 𝜙 denotes a link prediction model parameterized by 𝜙. The 𝑓 𝜙 captures complex patterns between users and items in the graph to provide the recommendation results.</p><p>Motivation. GNNs <ref type="bibr" target="#b41">[42,</ref><ref type="bibr" target="#b42">43,</ref><ref type="bibr" target="#b75">76,</ref><ref type="bibr" target="#b76">77,</ref><ref type="bibr" target="#b78">79]</ref> have demonstrated exceptional performance in capturing graph structures and are widely used in recommender systems <ref type="bibr" target="#b21">[22,</ref><ref type="bibr" target="#b74">75]</ref>. While GNNs excel at extracting CF information for recommendations, they are often criticized for their lack of interpretability. GNNs struggle to provide clear explanations for their predictions <ref type="bibr" target="#b84">[85]</ref>, which significantly undermines transparency. To address this issue, inspired by recent GNN explanation methods <ref type="bibr" target="#b87">[88]</ref>, we propose a path-level retriever that generates explanations for GNN predictions and reveals the structural CF information captured by GNNs as interpretable paths, which is illustrated in Figure <ref type="figure">2</ref>.</p><p>GNN Training. To capture the structural CF information, we first train a GNN to learn the user-item interactions in the graph for recommendations. We follow a standard two-step pipeline, which involves obtaining user and item representations with an 𝐿-hop GNN encoder and applying a prediction head to get a recommendation prediction. We use R-GCN <ref type="bibr" target="#b61">[62]</ref> as the GNN encoder to learn node embeddings on user-item graphs, and an inner product is adopted</p><formula xml:id="formula_4">! ! (⋅) GNN Enc.</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>GNN Training</head><p>ℒ " Training Edge Mask</p><formula xml:id="formula_5">ℒ %)*+ ℒ(ℳ) Edge Mask ℳ Explanation Path Retrieval ! ! " " " ! " # ! " ! ! " " " ! " # ! " " " " ! " # ! " ! ! " " " ! " # ! " ! ! ! ! explanation paths ! ! " " " " … ! " " ! m -c o r e p r u n in g Figure 2:</formula><p>The illustration of path-level retriever.</p><p>as the prediction head. We also explore other GNN variants, i.e., LightGCN <ref type="bibr" target="#b21">[22]</ref>, in our experiments (Section 4.3). The forward-pass update of each user 𝑢 in R-GCN is formalized as follows:</p><formula xml:id="formula_6">h (𝑙 ) 𝑢 = ReLU ∑︁ 𝑖 ′ ∈ N 𝑢 1 |N 𝑢 | W (𝑙 −1) 1 h (𝑙 −1) 𝑖 ′ + W (𝑙 −1) 0 h (𝑙 −1) 𝑢 ,<label>(5)</label></formula><p>where h (𝑙 ) 𝑢 is the hidden state of user 𝑢 in the 𝑙-th layer and N 𝑢 denotes the neighbors of 𝑢. The W (𝑙 −1) 0 and W (𝑙 −1) 1 are learnable weight matrices at layer 𝑙-1. Likewise, the item representation h (𝑙 ) 𝑖 can be obtained in a similar manner.</p><p>The 𝑚-core Pruning. To ensure concise and accurate explanations, we aim to extract paths that are short in length and avoid containing high-degree nodes in the graph <ref type="bibr" target="#b87">[88]</ref>. Given a prediction (𝑢, 𝑖), the corresponding 𝐿-hop edge-centered ego-graph is initially extracted, which includes nodes that are at most 𝐿 hops away from either 𝑢 or 𝑖. A 𝑚-core pruning process is then applied to remove spurious neighbors and improve speed. Specifically, the 𝑚-core pruning is a recursive algorithm that eliminates nodes with degrees less than 𝑚, until only those with degrees ≥ 𝑚 remain, forming the 𝑚-core. Explanation Path Retrieval. We leverage PaGE-Link <ref type="bibr" target="#b87">[88]</ref> to perform mask learning on the learned GNN model to identify explanation paths from the user-item interaction graph via learning a mask over all edges, assigning high weights to important edges and low weights to others. Based on the mask, we apply the Dijkstra's shortest path algorithm <ref type="bibr" target="#b14">[15]</ref> to retrieve explanation paths.</p><p>Formally, let E denote all user-item interactions, 𝜏 (𝑒) be the type of the edge 𝑒, and M be learnable masks of all edge types. To optimize M, the objective function L that needs to be minimized is composed of two loss terms, which can be formulated as follows:</p><formula xml:id="formula_7">L (M) = L 𝑝𝑟𝑒𝑑 (M) + L 𝑝𝑎𝑡ℎ (M).<label>(6)</label></formula><p>The first loss term L 𝑝𝑟𝑒𝑑 is to learn to select crucial edges for model prediction based on the perturbation-based explanation. Given a connected pair (𝑢, 𝑖), the loss can be defined as follows:</p><formula xml:id="formula_8">L 𝑝𝑟𝑒𝑑 (M) = − log 𝑃 (𝑌 = 1|G = (U, I, E ⊙ 𝜎 (M)), (𝑢, 𝑖)),<label>(7)</label></formula><p>where 𝜎 (•) is the sigmoid function, ⊙ is the element-wise product, and 𝑌 is the original GNN prediction. Another loss term L 𝑝𝑎𝑡ℎ is to learn to select path-forming edges. We first use the following score function to assign a score to each candidate path 𝑝 in the graph, prioritizing shorter paths and those without high-degree nodes:</p><formula xml:id="formula_9">𝑆𝑐𝑜𝑟𝑒 (𝑝) = 𝑒 ∈𝑝 log 𝜎 (M 𝜏 (𝑒 ) ) − log(deg(𝑒)),<label>(8)</label></formula><p>where M 𝜏 (𝑒 ) denotes the mask corresponding to the type of the edge 𝑒 and deg(𝑒) is the degree of the target node of 𝑒. Using Dijkstra's shortest path algorithm, where path lengths are redefined according to the score function, a set of candidate edges considered concise and informative is selected, denoted by E 𝑝𝑎𝑡ℎ . Guided by E 𝑝𝑎𝑡ℎ , we define L 𝑝𝑎𝑡ℎ accordingly:</p><formula xml:id="formula_10">L 𝑝𝑎𝑡ℎ (M) = − ∑︁ 𝑟 ∈ R ( ∑︁ 𝑒 ∈ E 𝑝𝑎𝑡ℎ M 𝜏 (𝑒 ) − ∑︁ 𝑒 ∈ E,𝑒∉E 𝑝𝑎𝑡ℎ M 𝜏 (𝑒 ) ). (<label>9</label></formula><formula xml:id="formula_11">)</formula><p>Upon convergence of mask learning, we can run the Dijkstra's shortest path to generate up to 𝑘 explanation paths based on M.</p><p>3.1.2 Node-level Retriever. The node-level retriever aims to retrieve the semantic CF information from the graphs by selecting the 𝑘 most relevant user nodes and the 𝑘 most relevant item nodes.</p><p>Motivation. Graphs are often known as noisy and incomplete, and the structural information alone may not be sufficient to provide accurate explanations. Additionally, graphs in recommendations typically contain rich semantics within user and item nodes derived from user interests and item properties. While the profiles provide some information, using only individual profiles for explanations may be inadequate, as it might not fully capture user topics or item features. Thus, retrieving semantics from graphs is crucial to uncovering latent connections and supplementing more comprehensive explanations for recommendations. Our node-level retriever incorporates a dense retrieval to calculate the semantic similarity between users and items to retrieve the most relevant neighboring nodes for the current recommendation (𝑢, 𝑖) to unveil the semantic CF knowledge for explanations.</p><p>Dense Retrieval. We employ a dual-encoder-based retriever architecture, which has demonstrated effectiveness across various retrieval tasks <ref type="bibr" target="#b52">[53]</ref> and efficiency at the inference stage <ref type="bibr" target="#b25">[26,</ref><ref type="bibr" target="#b27">28]</ref>. Given a user-item pair (𝑢, 𝑖), a text encoder maps the user profile 𝑏 𝑢 to an embedding 𝑓 (𝑏 𝑢 ) ∈ R 𝑑 , and the same encoder maps each item profile 𝑐 𝑖 to an embedding 𝑓 (𝑐 𝑖 ) ∈ R 𝑑 , where 𝑑 is the hidden state dimension of the text encoder. The top-𝑘 relevant users are retrieved based on the user-user semantic similarities, which are computed via cosine similarity:</p><formula xml:id="formula_12">𝑠𝑖𝑚(𝑢, 𝑢 ′ ) = 𝑓 (𝑏 𝑢 ) • 𝑓 (𝑏 𝑢 ′ ) ∥𝑓 (𝑏 𝑢 )∥∥ 𝑓 (𝑏 𝑢 ′ )∥ , 𝑢 ′ ∈ N 𝑖 ,<label>(10)</label></formula><p>where N 𝑖 is the set of users connected to item 𝑖. We also retrieve top-𝑘 items based on the item-item semantic similarities. The retriever is training-free and a pre-trained language model specifically utilized to generate high-quality sentence embeddings.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.3">Graph Translation.</head><p>After the hybrid retrieval, the complex nature of graph-type knowledge, particularly the paths retrieved, presents a challenge since it cannot be directly integrated with profiles of users and items for input into the LLMs <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b68">69]</ref>. To address this, it is necessary to employ graph translation techniques that convert the graph-type knowledge into a format compatible with LLMs, enabling LLMs to effectively process and utilize structured information. Considering that instructions are typically presented in natural language, we follow <ref type="bibr" target="#b65">[66,</ref><ref type="bibr" target="#b82">83]</ref> to adopt a flatten-based method, which transforms retrieved paths and nodes into descriptive, easily comprehensible language. For each user-item pair (𝑢, 𝑖) requiring an explanation, along with 𝑘 retrieved paths, 𝑘 user nodes, and 𝑘 item nodes, we design the instruction prompt as follows: 3.1.4 Discussion of Retrieval Granularity. In G-Refer, we consider node-level and path-level retrieval rather than subgraph-level based on the following observations. Firstly, both nodes and paths have a considerably smaller search space than subgraphs. As proven in <ref type="bibr" target="#b87">[88]</ref>, compared to the expected number of edge-induced subgraphs, the expected number of candidate nodes and paths grows strictly slower and becomes negligible. Therefore, such explanations exclude many less-meaningful subgraph candidates, making the explanation generation much more straightforward and accurate. Secondly, subgraphs contain complex high-order information, making it difficult to describe a retrieved subgraph with hundreds or even thousands of nodes in a way that is easily understandable, especially when all nodes have text attributes <ref type="bibr" target="#b45">[46]</ref>. Consequently, we implement hybrid graph retrieval in the path and node levels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Knowledge Pruning</head><p>Motivation. After graph retrieval, our goal is to enable LLMs to effectively generate explanations based on the graph CF information of varying granularities retrieved. However, it is noticed that for some user-item pairs, a sufficient explanation can be derived solely from their profiles, without the need for additional CF information.</p><p>For instance, if a user's profile shows a preference for science fiction and the recommended item is a popular sci-fi film, then explaining this interaction might only require referencing these profile details.</p><p>In such cases, the retrieved knowledge is not only redundant but employing such training samples could also weaken the LLM's ability to utilize CF information.</p><p>Re-ranking. To enhance LLMs' focus on CF information, we propose knowledge pruning to filter out less relevant or redundant training samples <ref type="bibr" target="#b57">[58]</ref>, building on the inherent ability of LLMs to generate explanations by understanding user and item profiles. It also improves training efficiency through reduced data volume, particularly beneficial for large graphs. To be specific, we use a re-ranking method <ref type="bibr" target="#b37">[38,</ref><ref type="bibr" target="#b63">64]</ref> that sorts all training samples based on their reliance on CF information for explanation, prioritizing those that require more additional knowledge. We measure such reliance via the semantic similarity between the profiles and the ground truth explanations, which is defined as follows:</p><formula xml:id="formula_13">𝑠𝑖𝑚((𝑢, 𝑖), Explain (𝑢,𝑖 ) ) = 𝑓 (𝑏 𝑢 ⊕ 𝑐 𝑖 ) • 𝑓 (Explain (𝑢,𝑖 ) ) ∥ 𝑓 (𝑏 𝑢 ⊕ 𝑐 𝑖 )∥∥𝑓 (Explain (𝑢,𝑖 ) ) ∥ ,<label>(11)</label></formula><p>where ⊕ represents the concatenation and Explain (𝑢,𝑖 ) is the ground truth explanation for (𝑢, 𝑖). We introduce a pruning ratio 𝑡, which determines the portion of the total training data D to be filtered after re-ranking. The top "(1 − 𝑡) • |D|" training samples are preserved, ensuring that samples that are most likely to benefit from CF-based explanations are prioritized, thereby improving the overall efficiency and effectiveness of the training process.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Retrieval-Augmented Fine-Tuning</head><p>Motivation. To improve the LLM's capacity for generating better explanations using retrieved CF information, we fine-tune it with a parameter-efficient pre-training strategy, i.e., LoRA <ref type="bibr" target="#b24">[25]</ref>, on the pruned training set with in-context retrieval augmentation. Integrating retrieval results during fine-tuning offers two key advantages.</p><p>(1) It adapts the LLM to better utilize retrieved CF information to generate explanation, especially for the requirement of domain-specific knowledge it has never seen before. ( <ref type="formula" target="#formula_1">2</ref>) Even stateof-the-art retrievers can falter and return inaccurate results <ref type="bibr" target="#b44">[45]</ref>. By training the LLM to generate ground-truth responses even when irrelevant CF information is given, we enable the LLM to ignore misleading retrieval content and lean into its internal knowledge to reduce hallucination.</p><p>Fine-tuning. We employ retrieval-augmented fine-tuning (RAFT) with a conventional language modeling loss <ref type="bibr" target="#b89">[90]</ref>. The model is trained to process input consisting of a user-item pair (𝑢, 𝑖) with profiles 𝑏 𝑢 and 𝑐 𝑖 , its associated retrieved knowledge K (𝑢,𝑖 ) , and a corresponding prompt question 𝑄 to generate textual explanations 𝐸 as outputs. The RAFT loss is computed based on the discrepancy between the model's predicted explanations and the ground truth explanations in the dataset. Formally, the loss is defined as follows:</p><formula xml:id="formula_14">L RAFT = − ∑︁ (𝑢,𝑖 ) ∈ D prune log 𝑃 (Explain (𝑢,𝑖 ) |𝑏 𝑢 , 𝑐 𝑖 , K (𝑢,𝑖 ) , 𝑄; 𝜃 ),<label>(12)</label></formula><p>where D prune represents the pruned training set and 𝜃 is the parameters associated with the LoRA model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Experiments</head><p>We evaluate our model on real-world datasets to assess its performance in enhancing explainable recommendations. In particular, we aim to answer the following research questions: Q1: How effective is G-Refer compared with state-of-the-art models? Q2: How do the main components of our model impact the performance? Q3: What is the impact of hyper-parameters? Q4: How does G-Refer's training efficiency compare to state-of-the-art methods?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Experimental Protocols</head><p>4.1.1 Datasets. We evaluate G-Refer and leverage three prominent public datasets that offer distinct perspectives on user-item interactions, including Amazon-books <ref type="bibr" target="#b51">[52]</ref>, Yelp <ref type="bibr" target="#b49">[50]</ref>, and Googlereviews <ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b79">80]</ref>. Table <ref type="table" target="#tab_5">3</ref> lists the statistics of three datasets. More details of datasets can be found in Appendix A.1.</p><p>Table <ref type="table">1</ref>: Overall comparison in terms of Explainability and Stability. Superscripts "P", "R", and "F1" denote Precision, Recall, and F1-Score, respectively. The subscript "std" indicates the standard deviation of each metric. Bold indicates the best results, while underlined denotes the second-best. "7B" and "8B" denote LLaMA 2-7B and LLaMA 3-8B, respectively.  <ref type="bibr" target="#b49">[50]</ref> to utilize a suite of metrics aimed at assessing the semantic explainability and stability of the generated explanations. Traditional n-gram-based metrics like BLEU <ref type="bibr" target="#b55">[56]</ref> and ROUGE <ref type="bibr" target="#b43">[44]</ref> are not adequate for this purpose due to their inability to fully capture semantic meaning. Specifically, we use GPT score <ref type="bibr" target="#b69">[70]</ref>, BERT score <ref type="bibr" target="#b88">[89]</ref>, BART score <ref type="bibr" target="#b86">[87]</ref>, BLEURT <ref type="bibr" target="#b62">[63]</ref>,</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Models</head><p>and USR <ref type="bibr" target="#b32">[33]</ref> to measure the explainability. Notably, BERT score comprises the Recall score, which measures the completeness and quality of the retrieved CF information, allowing us to evaluate the performance of our graph retriever. More details of the used metrics can be found in Appendix A.2. To evaluate quality consistency, we also report the standard deviations of these metrics. Lower standard deviation values indicate more stable performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.3">Baselines.</head><p>We introduce five state-of-the-art baselines, including NRT <ref type="bibr" target="#b34">[35]</ref>, Att2Seq <ref type="bibr" target="#b15">[16]</ref>, PETER <ref type="bibr" target="#b32">[33]</ref>, PEPLER <ref type="bibr" target="#b33">[34]</ref>, and XRec <ref type="bibr" target="#b49">[50]</ref>. These models are based on representative language models, such as GRU, LSTM, GPT, and LLaMA. More details of the compared baselines can be found in Appendix A.3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.4">Implementation Details.</head><p>For path-level retrieval, we set the node embedding dimension to 128, the maximum retrieved path length to 5, and 𝑚 is set to 2 for m-core pruning. We initialize the encoders in both the node-level retriever and the re-ranking mechanism with SentenceBERT <ref type="bibr" target="#b59">[60]</ref>. The number of retrieved paths, as well as the number of retrieved nodes (including users and items), is set to 2, and the pruning ratio 𝑡 is set to 70% across all datasets.</p><p>For retrieval-augmented fine-tuning, we use the models from the open-source LLaMA family. Specifically, for a fair comparison, we utilize the same model, i.e., LLaMA 2-7B adopted by baselines <ref type="bibr" target="#b49">[50]</ref>.</p><p>We also report results based on the advanced LLaMA 3-8B model. We set the learning rate, epochs, and max length as 2e-5, 2, and 2048 for RAFT, which is trained on 8 NVIDIA A100 GPUs. The total batch sizes are set to 32 and 16, respectively, for the 7B and 8B models. The rank of the LoRA adapter is set to 8. For inference, we set the temperature as 0 and the maximum output tokens as 256, ensuring a stable and reasonable generation. In addition, we employ the GPT-3.5-turbo model for computing the GPTScore metric.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Model Performance (RQ1)</head><p>4.2.1 Overall Performance. We first compare the quality of generated explanations against baselines across three datasets, the results are summarized in Table <ref type="table">1</ref>. It is observed that G-Refer demonstrates superior performance in both explainability and stability, outperforming baselines across semantic evaluators such as GPT, BERT, and BART. Compared to the most powerful baseline, XRec <ref type="bibr" target="#b49">[50]</ref>, which uses GNNs to implicitly capture CF information, our model shows improvements in BERT F1 score across three datasets, with increases of 1.67%, 2.73%, and 2.81% respectively. This indicates that the explicit CF information retrieved by our hybrid graph retriever is more accurate and better utilizes both structures and semantics of user-item interaction graphs compared to the implicit CF information captured by XRec. In addition, graph translation enables the adapter-free RAFT, allowing LLMs to better comprehend the structural inputs and leverage their powerful capabilities to generate human-understandable explanations. Notably, G-Refer significantly outperforms all baselines in BERT R score , with increases  of 4.56%, 8.67%, and 7.48% across the three datasets, while slightly decreasing in BERT P score . The retrieved CF information enables generated explanations to include more key information (e.g., user topic modeling and interaction history). Although introducing retrieved knowledge inevitably introduces some noise, reducing the precision slightly, we consider this trade-off beneficial, as the completeness of explanations is crucial for user understanding compared to accurate but less informative expressions. Finally, we notice that G-Refer's performance improvement on Amazon is relatively modest compared to other datasets. This can be attributed to the sparsity of its user-item interaction graph, particularly in the test set where the average node degree is only 2.76. In such cases, even with retrieval, the effectiveness of CF information from the graph is limited.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.2">Human Evaluation.</head><p>The ultimate goal of model explanation is to aid human understanding and decision-making. Human evaluation is thus the best way to evaluate the effectiveness of an explainer, which has been widely used in previous works <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b60">61]</ref>. We conduct a human evaluation by randomly selecting 20 user-item pairs from the test set of each dataset and generating explanations for each sample using XRec <ref type="bibr" target="#b49">[50]</ref> and G-Refer. We designed a survey with single-choice questions and distributed it to five senior researchers, asking them to select the best explanations. As shown in Figure <ref type="figure" target="#fig_4">3</ref>, explanations generated by G-Refer were consistently favored across all datasets, especially for Yelp and Google-reviews, where our explanations were chosen in over 80% of cases.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.3">Case Study.</head><p>To demonstrate the effectiveness of G-Refer and show how retrieved CF signals benefit the generated explanations, we provide several cases and give analysis in Appendix B.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Ablation Study (RQ2)</head><p>4.3.1 The Effects of Hybrid Graph Retriever. From Table <ref type="table" target="#tab_4">2</ref> we can observe that both path-level and node-level retrievers contribute to the final results, with their combination yielding the best performance. We observe that semantic information is more crucial for Yelp, while structural knowledge offers greater advantages for Google-reviews. This suggests that the importance of retrievers may differ based on dataset characteristics and highlights the complementarity of the two retrievers.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.2">The Effects of Various GNNs.</head><p>The GNN encoder in our pathretriever captures structural CF information and can be replaced with any advanced GNN-based recommender model. We compare LightGCN <ref type="bibr" target="#b21">[22]</ref>, which is one of the representative GNN models for recommendation, with R-GCN <ref type="bibr" target="#b61">[62]</ref> in the ablation study. The results show that both of the GNNs achieve competitive performance. This demonstrates their effectiveness in capturing structural information for recommendation and the flexibility of our path-level retriever, which could adapt to different graphs and recommendation scenarios using different GNN architectures.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>4.3.3</head><p>The Effects of Various LLMs with Different Scales. We investigate the impact of LLM scales on G-Refer's performance by comparing the advanced Qwen 2.5 family <ref type="bibr" target="#b80">[81]</ref> of different scales. Firstly, we observe a clear performance scaling from 0.5B to 3B models. Interestingly, the 3B model achieves comparable results to the 7B model, indicating that with the introduction of retrieved knowledge, even a relatively smaller LLM can achieve impressive results through RAFT. This also demonstrates the necessity of finetuning with retrieved knowledge, which can significantly enhance the model's ability to generate high-quality explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.4">The Effects of Knowledge Pruning.</head><p>Training with the full dataset increases the number of samples by several times but does not improve performance proportionally, and may even lead to slight degradation (e.g., on Yelp). This is because some user-items are self-explanatory, and additional CF information may introduce noise. Thus, knowledge pruning is essential for removing these samples from training and improving model performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Hyperparameter Study (RQ3)</head><p>We explore the variation of G-Refer's performance with respect to the number of retrieved elements 𝑘, including both paths and nodes. Figure <ref type="figure" target="#fig_5">4</ref> illustrates the impact of 𝑘 (ranging from 1 to 5) on BERT score precision and BERT score recall (abbr. precision and recall in the following). The best precision is achieved at 𝑘=2, after which it decreases, showing that more retrieved paths and nodes can introduce noise and deteriorate the performance. Conversely, a low 𝑘 (i.e., 𝑘=1) fails to provide sufficient CF information, leading to lower results. We also notice that recall is not sensitive to the increased 𝑘, suggesting that a modest 𝑘 can effectively retrieve essential information for generating explanations. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5">Efficiency Analysis (RQ4)</head><p>In Figure <ref type="figure" target="#fig_6">5</ref>, we analyze the efficiency of our model, including the time taken to train one epoch, performance results, and the number of parameters that require tuning for G-Refer, XRec <ref type="bibr" target="#b49">[50]</ref>, and fullset training. For a fair comparison, all experiments were conducted on a single GPU with a batch size of 1. Though requiring more learnable parameters, G-Refer achieves faster training and better performance compared to XRec. This can be attributed to (1) our knowledge pruning which significantly reduces training data; (2) XRec's speed limitation due to adapter insertion. In addition, full-set training reduces efficiency without performance gains, indicating the necessity of knowledge pruning.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Related Works 5.1 Explainable Recommendation</head><p>Explainable recommendation <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b56">57,</ref><ref type="bibr" target="#b67">68,</ref><ref type="bibr" target="#b91">92,</ref><ref type="bibr" target="#b92">93]</ref> has demonstrated significant advantages in informing users about the logic behind recommendations, thereby increasing system transparency, effectiveness, and trustworthiness. Early works focus on generating explanations with predefined templates <ref type="bibr" target="#b31">[32]</ref> or extracting logic reasoning rules from recommendation models <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b64">65,</ref><ref type="bibr" target="#b97">98]</ref>. To provide more detailed and personalized explanations, recent works have explored generating explanations from graph structure, which contains abundant CF information for providing explanations <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b77">78]</ref>. For example, PGPR <ref type="bibr" target="#b77">[78]</ref> proposes a reinforcement learning-based method to find a path in the graph to explain the recommendation. However, the graph structure is often complex and hard for users to understand. To address this issue, some works have explored generating explanations in natural language <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b32">[33]</ref><ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b49">50]</ref>.</p><p>With the advance of LLMs, like ChatGPT <ref type="bibr" target="#b53">[54]</ref>, they can generate more fluent and informative explanations based on user's and item's profile <ref type="bibr" target="#b33">[34]</ref>. Recently, researchers have tried to combine the advantages of graphs to enhance the explanation generated by LLMs <ref type="bibr" target="#b58">[59]</ref>. XRec <ref type="bibr" target="#b49">[50]</ref> adopts a graph neural network (GNN) to model the graph structure and generate embeddings. Then, the embeddings are fed into LLMs to generate explanations. This approach allows LLMs to produce more informative explanations by considering CF information within the graph structure. However, XRec represents CF information as hidden embeddings, leaving it unclear what specific CF information is considered when generating explanations. This ambiguity makes it difficult to verify the explanations generated by LLMs, which suffer from severe hallucination issues <ref type="bibr" target="#b93">[94]</ref> and further diminishes the trustworthiness of the explainable recommendation. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Graph Retrieval-Augmented Generation</head><p>Although retrieval-augmented generation (RAG) has been widely used to enhance the LLMs by incorporating external knowledge <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b54">55]</ref>, it has shown limitations in considering the graph structure. To address this issue, graph retrieval-augmented generation (GraphRAG) has been proposed to effectively incorporate graph information into the LLM generation process <ref type="bibr" target="#b57">[58,</ref><ref type="bibr" target="#b70">71,</ref><ref type="bibr" target="#b71">72]</ref>. The GraphRAG typically involves two processes: graph retrieval and graph-augmented generation. In graph retrieval, we need to design a retrieval model to retrieve relevant graph information for the given query, which can be some simple non-parametric retrievers like 𝐿-hop neighbors. To better consider the graph structure, GNN-based <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b28">29]</ref> retrievers have been proposed. For example, GNN-RAG <ref type="bibr" target="#b50">[51]</ref> first encodes the graph, assigns a score to each entity, and retrieves entities relevant to the query. Instead of GNNs, RoG <ref type="bibr" target="#b48">[49]</ref> proposes an LLM-based graph retriever by planning, retrieving, and reasoning on graphs. In the graph-augmented generation, the retrieved graph information is used to enhance the generation process of LLMs. Due to the unstructured nature of the LLMs, some works introduce an adapter layer to bridge the modality gap. GraphLLM <ref type="bibr" target="#b2">[3]</ref> first encodes the graph as embeddings and then feeds them into LLMs with a graph adapter layer. However, the hidden embeddings used by these methods are difficult to interpret and understand. To improve the interpretability, recent research adopts some graph description language to translate the graph structure into natural language, such as edge list, node list, and syntax tree <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b96">97]</ref>. In this way, the graph structure can be understood by both LLMs and humans. Thus, we adopt a simple prompt to describe the graph structure for the explainable recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusion</head><p>We systematically analyze the limitations of existing explainable recommendation methods and introduce G-Refer, a novel model to address these challenges. The key design of our model involves leveraging a hybrid graph retrieval to extract explicit CF signals, employing knowledge pruning to filter out less relevant samples, and utilizing retrieval-augmented fine-tuning to integrate retrieved knowledge into explanation generation. Comprehensive experiments validate the effectiveness of our model. G-Refer reveals great potential for graph retrieval-augmented generation in recommendation scenarios. Future work includes exploring fully training-free retrievers and investigating the transferability to other tasks. • Amazon-books <ref type="bibr" target="#b51">[52]</ref> is a subset of the Amazon review dataset, specifically focused on book recommendations. This dataset encompasses user-book interactions, including both numerical ratings and textual reviews submitted by users after their purchases. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A More Experiment Details A.1 Details of Datasets</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Details of Metrics</head><p>• GPT score <ref type="bibr" target="#b69">[70]</ref> leverages large language models to evaluate text quality, providing a context-aware assessment. • BERT score <ref type="bibr" target="#b88">[89]</ref> computes the similarity between reference and generated texts using contextual embeddings from BERT. Given a reference sentence 𝑥 = ⟨𝑥 1 , 𝑥 </p><p>The similarity between two individual embeddings (x i , xj ) is measured using cosine similarity, which simply reduces to x ⊤ i xj since both embeddings are pre-normalized. With these definitions, the Precision, Recall, and F1-score are calculated as follows:</p><formula xml:id="formula_16">BERT P score = 1 | x | ∑︁ xj ∈ x max x i ∈𝑥 cosine similarity x ⊤ i xj greedy matching (<label>14</label></formula><formula xml:id="formula_17">) BERT R score = 1 |𝑥 | ∑︁ x i ∈𝑥 max xj ∈ x cosine similarity x ⊤ i xj greedy matching (<label>15</label></formula><formula xml:id="formula_18">) BERT F1 score = 2 × BERT P score × BERT R score BERT P score + BERT R score<label>(16)</label></formula><p>• BART score <ref type="bibr" target="#b86">[87]</ref> conceptualizes the evaluation as a text generation task, assigning scores based on the probability of regenerating reference texts using the BART model.</p><p>• BLEURT <ref type="bibr" target="#b62">[63]</ref> employs a novel language model pre-trained with synthetic data to assess the similarity between the generated and reference texts. • USR <ref type="bibr" target="#b32">[33]</ref> assesses the uniqueness of generated explanations by calculating the ratio of unique sentences to total sentences.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 Details of Baselines</head><p>• NRT <ref type="bibr" target="#b34">[35]</ref> employs multi-task learning to predict ratings and generate tips for recommendations simultaneously based on user and item IDs. The generation component is a GRU. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B Case Study</head><p>We present two cases in Table <ref type="table" target="#tab_9">4</ref> and Table <ref type="table">5</ref> to demonstrate the effectiveness of G-Refer and illustrate how retrieved CF signals benefit the generated explanations. All retrieved knowledge is presented as human-readable text after graph translation for better user understanding. We also provide the ground truth explanations and explanations generated by XRec <ref type="bibr" target="#b49">[50]</ref> for comparison.</p><p>From Table <ref type="table" target="#tab_9">4</ref>, we can observe that the user profile contains no explicit drinking interests. However, node-level CF signals reveal that other users who have similar interests to the current user show a preference for drinking. This allows G-Refer to infer that the current user might appreciate this restaurant specializing in "crafted beers". In contrast, XRec's explanation is notably generic, which relies on common phrases like "delicious food" and "great service", missing the key recommendation reasons, thus leading to a low Recall score. Table <ref type="table">5</ref> provides another case that leverages path-level retrieved CF information for more comprehensive explanations. While the user profile only indicates general preferences for comfort food and efficient services, path-level CF signals uncover broader connections between the current user and other users/items. Users along the retrieved path have an interest in "frozen yogurt", allowing us to infer that the current user might be interested in this restaurant due to its frozen yogurt offerings. In contrast, XRec incorrectly explains that the user might choose this restaurant for its Thai food, failing to capture the user's true interests. These cases show that node-level and path-level CF signals are complementary. While not equally effective in every situation, gathered CF signals can contribute to generating more accurate explanations in recommendation scenarios. The better explanations demonstrate G-Refer has the ability to effectively retrieve, understand, and utilize such knowledge. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Inputs User Profile</head><p>The user is likely to enjoy Mexican restaurants with a focus on burritos and tacos, as well as baseball games at scenic locations and coffee shops for cozy work or socializing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Item Profile</head><p>Beer enthusiasts looking for a laid-back atmosphere with a variety of craft beers and casual dining options, including dog owners seeking a pet-friendly environment, would enjoy this business.</p><p>Node-level CF For the user-item pair, here are some related users and items: Users: The user is likely to enjoy businesses with unique decor, traditional family recipes, craft beers, outdoor dining, gourmet wood-fired entrees, live music, and waterfront locations., The user is likely to enjoy fine dining experiences, laid-back accommodations with resort amenities, American pub fare with craft beer, and relaxed atmospheres with delicious comfort food and craft beer selections. Items: Coffee enthusiasts looking for a cozy atmosphere with delicious pastries and brunch options would enjoy Lulu Carpenter's., Food enthusiasts who appreciate classic Italian cuisine and casual dining experiences would enjoy Joe's Pizza &amp; Subs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanations Ground Truth</head><p>The user would enjoy the business for its awesome selection of beers and ciders, great outdoor spaces, and the option to order bar food from Carpos, even though it predominantly focuses on beer.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>XRec</head><p>The user would enjoy the business because of its delicious food, great service, and cozy atmosphere, making it a great place to relax and enjoy a good meal.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>G-Refer (ours)</head><p>The user would enjoy the business because of the great selection of beers, friendly staff, and the opportunity to try new and unique brews like the hazy IPA.</p><p>Table <ref type="table">5</ref>: A case from Google-review, which shows how G-Refer primarily leverages path-level retrieved CF information to generate better explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Inputs User Profile</head><p>This user is likely to enjoy businesses that offer comfort food with unique twists, efficient waxing services with minimal pain, upscale dining with stunning views and impressive service, and flavorful Asian cuisine with fast service in Philadelphia.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Item Profile</head><p>Fans of frozen yogurt with a wide variety of flavors and toppings, in a vibrant and welcoming setting in Philadelphia, would enjoy Berry Sweet Frozen Yogurt. Ideal for those who appreciate a fun atmosphere, quality treats, and convenient location on South Street.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Path-level CF</head><p>For the given user-item pair, here are several related paths connecting users and items through their interactions: 1. User (Profile: This user is likely to enjoy businesses that offer comfort food with unique twists, efficient waxing services with minimal pain, upscale dining with stunning views and impressive service, and flavorful Asian cuisine with fast service in Philadelphia.) -&gt; buys -&gt; Item (Profile: Users who appreciate high-quality skincare products, attentive customer service, and are willing to splurge for effective beauty items would enjoy Kiehl's in Philadelphia.) -&gt; bought by -&gt; User (Profile: This user is likely to enjoy businesses offering high-quality food and attentive service in cozy settings, such as restaurants like Kanella, Village Whiskey, and Cheu Noodle Bar. They appreciate flavorful meals, knowledgeable staff, and unique dining experiences.) -&gt; buys -&gt; Item (Profile: Users who appreciate creative and high-quality vegan options, a personalized dining experience with small restaurant owners, unique and experimental dishes with varied influences, and a great wine and cocktail selection would enjoy Meritage in Philadelphia.) -&gt; bought by -&gt; User (Profile: The user is likely to enjoy upscale dining with Latin American and Mexican cuisine, diverse frozen yogurt flavors with unique bubble tea options, good food in a low-key ambiance, and authentic spicy Indian cuisine despite some reservations about service and chicken quality.) -&gt; buys -&gt; Item (Profile: Fans of frozen yogurt with a wide variety of flavors and toppings, in a vibrant and welcoming setting in Philadelphia, would enjoy Berry Sweet Frozen Yogurt. Ideal for those who appreciate a fun atmosphere, quality treats, and convenient location on South Street.)</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Explanations</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Ground Truth</head><p>The user would enjoy Berry Sweet because of its delicious frozen yogurt, friendly staff, variety of toppings, and fun atmosphere that makes it a great place to hang out with friends on South Street.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>XRec</head><p>You would enjoy the business because it offers delicious, authentic Thai food with a variety of dishes to choose from, including spicy and non-spicy options, as well as a cozy atmosphere with friendly service.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>G-Refer (ours)</head><p>The user would enjoy Berry Sweet because of the wide variety of flavors and the opportunity to mix and match them, making it a fun for yogurt lovers seeking a customizable and fun experience.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>LoRA 1 .</head><label>1</label><figDesc>Hybrid Graph RetrievalFor the given useritem pair, here are several related paths connect-ing users and items through their interactions:[…]. For the user-item pair, here are some related users and items.Users: […]. Items: […].</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Our proposed pipeline G-Refer facilitates explainable recommendation with three key components: (1) Hybrid Graph Retrieval employs multi-granularity retrievers to retrieve explicit CF signals and formulated as human-readable text by the Graph Translation; (2) Knowledge Pruning eliminates noise and improves training efficiency; and (3) Retrieval-augmented Fine-tuning instructs LLMs to leverage retrieved CF information in generating informative explanation.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Human evaluation comparing XRec and G-Refer.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Performance of different retrieved number 𝑘.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Efficiency Analysis of G-Refer.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>Given the item title, item profile, and user profile, please explain why the user would enjoy this item.Item title: [Item title]. Item profile: [Item summary]. User profile: [User summary]. For the user-item pair, here are some related users and items. Users: [Top-𝑘 similar user profiles]. Items: [Top-𝑘 similar item profiles].For the given user-item pair, here are several related paths connecting users and items through their interactions. [Top-𝑘 explanation paths] (each formatted as "&lt;User profile&gt; -&gt; buys -&gt; &lt;Item profile&gt; -&gt; bought by -&gt; &lt;User profile&gt; -&gt; ... "). Explanations:</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 2 :</head><label>2</label><figDesc>Ablation study for G-Refer, with the best results highlighted red and the worst in blue for the component. BERT std ↓ BERT F1 ↑ BERT std ↓</figDesc><table><row><cell>Datasets</cell><cell>Yelp</cell><cell></cell><cell cols="2">Google-reviews</cell></row><row><cell cols="2">Ablations BERT F1 ↑ Variants on graph retriever:</cell><cell></cell><cell></cell><cell></cell></row><row><cell>w/o path-level</cell><cell>0.3927</cell><cell>0.0868</cell><cell>0.4560</cell><cell>0.0924</cell></row><row><cell>w/o node-level</cell><cell>0.3966</cell><cell>0.0894</cell><cell>0.4544</cell><cell>0.0922</cell></row><row><cell>w/o GraphRAG</cell><cell>0.3880</cell><cell>0.0896</cell><cell>0.4468</cell><cell>0.0940</cell></row><row><cell cols="2">Variants on link prediction model:</cell><cell></cell><cell></cell><cell></cell></row><row><cell>w/ LightGCN</cell><cell>0.3941</cell><cell>0.0870</cell><cell>0.4589</cell><cell>0.0922</cell></row><row><cell>w/ R-GCN</cell><cell>0.4003</cell><cell>0.0885</cell><cell>0.4592</cell><cell>0.0916</cell></row><row><cell cols="3">Variants on LLMs with different scales:</cell><cell></cell><cell></cell></row><row><cell>w/ Qwen-0.5B</cell><cell>0.3201</cell><cell>0.6530</cell><cell>0.4129</cell><cell>0.2171</cell></row><row><cell>w/ Qwen-1.5B</cell><cell>0.3557</cell><cell>0.3940</cell><cell>0.4451</cell><cell>0.0940</cell></row><row><cell>w/ Qwen-3B</cell><cell>0.3994</cell><cell>0.0861</cell><cell>0.4602</cell><cell>0.0903</cell></row><row><cell>w/ Qwen-7B</cell><cell>0.3991</cell><cell>0.0851</cell><cell>0.4582</cell><cell>0.0914</cell></row><row><cell cols="3">Knowledge pruning v.s. full training set:</cell><cell></cell><cell></cell></row><row><cell>w/o pruning</cell><cell>0.4002</cell><cell>0.0892</cell><cell>0.4605</cell><cell>0.0909</cell></row><row><cell>G-Refer</cell><cell>0.4003</cell><cell>0.0885</cell><cell>0.4592</cell><cell>0.0916</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 3 :</head><label>3</label><figDesc>Statistics of the experimental datasets.</figDesc><table><row><cell>Dataset</cell><cell cols="3"># Users # Items # Interactions</cell><cell># Train # Test (𝑢-𝑖) (𝑢-𝑖)</cell></row><row><cell cols="2">Amazon-books 15,349</cell><cell>15,247</cell><cell>360,839</cell><cell>95,841 3,000</cell></row><row><cell>Yelp</cell><cell>15,942</cell><cell>14,085</cell><cell>393,680</cell><cell>74,212 3,000</cell></row><row><cell cols="2">Google-reviews 22,582</cell><cell>16,557</cell><cell>411,840</cell><cell>94,663 3,000</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head></head><label></label><figDesc>• Yelp<ref type="bibr" target="#b49">[50]</ref> is a widely used dataset derived from Yelp1 , where local businesses such as restaurants and bars are considered items. It provides rich information about local businesses, including user reviews and ratings across various categories.• Google-reviews<ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b79">80]</ref> comprises restaurant reviews collected from Google Local 2 . This dataset incorporates both business metadata and user feedback, offering a broad perspective on dining establishments globally.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head></head><label></label><figDesc>• Att2Seq<ref type="bibr" target="#b15">[16]</ref> implements an attention-based attribute-to-sequence model that generates reviews by leveraging attribute information. The generation component is a two-layer LSTM.• PETER<ref type="bibr" target="#b32">[33]</ref> is a personalized Transformer model that maps user and item IDs to generated explanations. It bridges IDs and words through a "context prediction" task. PETER is used instead of PETER+ due to the absence of word features in the datasets.• PEPLER<ref type="bibr" target="#b33">[34]</ref> proposes sequential tuning and recommendation as regularization strategies to bridge the gap between prompts (incorporating user and item ID vectors) and the pre-trained transformer model for generating explanations.• XRec<ref type="bibr" target="#b49">[50]</ref> utilizes the encoded user/item embeddings from GNNs as implicit collaborative signals, which are then integrated into each layer of LLMs, enabling the generation of explanations.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head>Table 4 :</head><label>4</label><figDesc>A case from Yelp, which shows how G-Refer primarily leverages node-level retrieved CF information to generate better explanations.</figDesc><table /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://www.yelp.com/dataset/ 2 https://www.google.com/maps</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgments</head><p>This work was supported by National Key Research and Development Program of China Grant No. 2023YFF0725100 and Guangzhou-HKUST(GZ) Joint Funding Scheme 2023A03J0673.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<author>
+			<persName><forename type="first">Giacomo</forename><surname>Balloccu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ludovico</forename><surname>Boratto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Cancedda</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.16452</idno>
+		<title level="m">Gianni Fenu, and Mirko Marras. 2023. Faithful Path Language Modelling for Explainable Recommendation over Knowledge Graph</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Unifying knowledge graph learning and recommendation: Towards a better understanding of user preferences</title>
+		<author>
+			<persName><forename type="first">Yixin</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zikun</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="151" to="161" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<author>
+			<persName><forename type="first">Ziwei</forename><surname>Chai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianjie</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaiqiao</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohai</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuanwen</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Yang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.05845</idno>
+		<title level="m">Graphllm: Boosting graph reasoning ability of large language model</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Knowledge graph completion with counterfactual augmentation</title>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="2611" to="2620" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A restricted black-box adversarial framework towards attacking graph embedding models</title>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Rong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tingyang</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenbing</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Honglei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junzhou</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI Conference on Artificial Intelligence</title>
+				<meeting>the AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="3389" to="3396" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Pathbased explanation for knowledge graph completion</title>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiangnan</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alejo</forename><surname>Lopez-Avila</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinhua</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="231" to="242" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoyun</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2101.03392</idno>
+		<title level="m">Generate natural language explanations for recommendation</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Neural collaborative reasoning</title>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoyun</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunqi</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="1516" to="1527" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">GraphWiz: An Instruction-Following Language Model for Graph Computational Problems</title>
+		<author>
+			<persName><forename type="first">Nuo</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianheng</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="353" to="364" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Measuring&quot; why&quot; in recommender systems: A comprehensive survey on the evaluation of explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji-Rong</forename><surname>Wen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2202.06466</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Learning binarized graph representations with multifaceted quantization reinforcement for top-k recommendation</title>
+		<author>
+			<persName><forename type="first">Yankai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huifeng</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingxue</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruiming</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Irwin</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="168" to="178" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Shopping trajectory representation learning with pre-training for e-commerce customer understanding and recommendation</title>
+		<author>
+			<persName><forename type="first">Yankai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quoc-Tuan</forename><surname>Truong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Irwin</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="385" to="396" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Co-attentive multi-task learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Zhongxia</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guoqing</forename><surname>Bu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yining</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Enhong</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">2019</biblScope>
+			<biblScope unit="page" from="2137" to="2143" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuo</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wensheng</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingyang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kezhong</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Liao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.12657</idno>
+		<title level="m">Explainable recommendation with personalized review retrieval and aspect learning</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">A note on two problems in connexion with graphs</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Edsger</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Dijkstra</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Edsger Wybe Dijkstra: his life, work, and legacy</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="287" to="290" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Learning to generate product reviews from attributes</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaohan</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Furu</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirella</forename><surname>Lapata</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ke</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 15th Conference of the European Chapter</title>
+				<meeting>the 15th Conference of the European Chapter</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="623" to="632" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Fairnessaware explainable recommendation over knowledge graphs</title>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruoyuan</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jieyu</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiaoying</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingqiang</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shijie</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chirag</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="69" to="78" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yifu</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linbo</forename><surname>Qiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhigang</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhihua</forename><surname>Wen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongquan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongsheng</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2402.16568</idno>
+		<title level="m">Two-stage Generative Question Answering on Temporal Knowledge Graph Using Large Language Models</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Retrieval-augmented generation for large language models: A survey</title>
+		<author>
+			<persName><forename type="first">Yunfan</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yun</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinyu</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kangxiang</forename><surname>Jia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinliu</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuxi</forename><surname>Bi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haofen</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2312.10997</idno>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Prince: Provider-side interpretability with counterfactual explanations in recommender systems</title>
+		<author>
+			<persName><forename type="first">Azin</forename><surname>Ghazimatin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Oana</forename><surname>Balalau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rishiraj</forename><surname>Saha Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerhard</forename><surname>Weikum</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Web Search and Data Mining</title>
+				<meeting>the 13th International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="196" to="204" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Implicit graph neural networks</title>
+		<author>
+			<persName><forename type="first">Fangda</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Somayeh</forename><surname>Sojoudi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Laurent</forename><forename type="middle">El</forename><surname>Ghaoui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="11984" to="11995" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Lightgcn: Simplifying and powering graph convolution network for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kuan</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongdong</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval</title>
+				<meeting>the 43rd International ACM SIGIR conference on research and development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="639" to="648" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Explaining collaborative filtering recommendations</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jonathan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM conference on Computer supported cooperative work</title>
+				<meeting>the 2000 ACM conference on Computer supported cooperative work</meeting>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">LoRA: Low-Rank Adaptation of Large Language Models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Edward</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Phillip</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeyuan</forename><surname>Wallis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanzhi</forename><surname>Allen-Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shean</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations</title>
+				<imprint>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Unsupervised Dense Information Retrieval with Contrastive Learning</title>
+		<author>
+			<persName><forename type="first">Gautier</forename><surname>Izacard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mathilde</forename><surname>Caron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Hosseini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sebastian</forename><surname>Riedel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Piotr</forename><surname>Bojanowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Armand</forename><surname>Joulin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edouard</forename><surname>Grave</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">TMLR</title>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Kg-gpt: A general framework for reasoning on knowledge graphs using large language models</title>
+		<author>
+			<persName><forename type="first">Jiho</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yeonsu</forename><surname>Kwon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yohan</forename><surname>Jo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Edward</forename><surname>Choi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.11220</idno>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Retrieval-augmented generation for knowledge-intensive nlp tasks</title>
+		<author>
+			<persName><forename type="first">Patrick</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ethan</forename><surname>Perez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aleksandra</forename><surname>Piktus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fabio</forename><surname>Petroni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vladimir</forename><surname>Karpukhin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Naman</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heinrich</forename><surname>Küttler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Lewis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wen-Tau</forename><surname>Yih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Rocktäschel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="9459" to="9474" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Semi-supervised hierarchical graph classification</title>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Rong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Pattern Analysis and Machine Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="6265" to="6276" />
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingbo</forename><surname>Shang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2202.13469</idno>
+		<title level="m">Uctopic: Unsupervised contrastive learning for phrase representations and topic mining</title>
+				<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Graph intelligence with large language models and prompt learning</title>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangguo</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey Xu</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="6545" to="6554" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Caesar: context-aware explanation based on supervised attention for service recommendations</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruihai</forename><surname>Dong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Intelligent Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="page" from="147" to="170" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Personalized Transformer for Explainable Recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing</title>
+				<meeting>the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing</meeting>
+		<imprint>
+			<publisher>Long Papers</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="4947" to="4957" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Personalized prompt learning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="1" to="26" />
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Neural rating regression with abstractive tips generation for recommendation</title>
+		<author>
+			<persName><forename type="first">Piji</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaochun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lidong</forename><surname>Bing</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wai</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 40th International ACM SIGIR conference on Research and Development in Information Retrieval</title>
+				<meeting>the 40th International ACM SIGIR conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="345" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Recommendation as link prediction in bipartite graphs: A graph kernel-based machine learning approach</title>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hsinchun</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="880" to="890" />
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peisong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangguo</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hong</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey Xu</forename><surname>Yu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.12399</idno>
+		<title level="m">A survey of graph meets large language model: Progress and future directions</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<title level="m" type="main">Community question answering entity linking via leveraging auxiliary data</title>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianbo</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yadong</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2205.11917</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Zerog: Investigating cross-dataset zero-shot transferability in graphs</title>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peisong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey</forename><forename type="middle">Xu</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="1725" to="1735" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peisong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiao</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aochuan</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haiyun</forename><surname>Jiang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2407.07457</idno>
+		<title level="m">Glbench: A comprehensive benchmark for graph with large language models</title>
+				<editor>
+			<persName><forename type="first">Deng</forename><surname>Cai</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Victor</forename><surname>Wai Kin Chan</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiwei</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Börje</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Karlsso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Manabu</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chin-Yew</forename><surname>Okumura</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lin</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.08189</idno>
+		<title level="m">Unlocking Science: Novel Dataset and Benchmark for Cross-Modality Scientific Information Extraction</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Rethinking fair graph neural networks from re-balancing</title>
+		<author>
+			<persName><forename type="first">Zhixun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yushun</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeffrey Xu</forename><surname>Yu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="1736" to="1745" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Zhixun</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xin</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yifan</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanqiao</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dingshuo</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingtao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangxin</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shu</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>et al. 2024. GSLB: the graph structure learning benchmark</note>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Rouge: A package for automatic evaluation of summaries</title>
+		<author>
+			<persName><forename type="first">Chin-Yew</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Text summarization branches out</title>
+				<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="74" to="81" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">RA-DIT: Retrieval-Augmented Dual Instruction Tuning</title>
+		<author>
+			<persName><forename type="first">Xilun</forename><surname>Xi Victoria Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingda</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weijia</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Lomeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pedro</forename><surname>James</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jacob</forename><surname>Rodriguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gergely</forename><surname>Kahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mike</forename><surname>Szilvasy</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Lewis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Twelfth International Conference on Learning Representations</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">One For All: Towards Training One Graph Model For All Classification Tasks</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiarui</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lecheng</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ningyue</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dacheng</forename><surname>Tao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yixin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Muhan</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICLR</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Recommender system application developments: a survey</title>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dianshuang</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingsong</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guangquan</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision support systems</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="page" from="12" to="32" />
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">ChatRule: Mining Logical Rules with Large Language Models for Knowledge Graph Reasoning</title>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxin</forename><surname>Ju</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan-Fang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gholamreza</forename><surname>Haffari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirui</forename><surname>Pan</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2309.01538</idno>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Reasoning on Graphs: Faithful and Interpretable Large Language Model Reasoning</title>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuan-Fang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reza</forename><surname>Haf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirui</forename><surname>Pan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Twelfth International Conference on Learning Representations</title>
+				<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<author>
+			<persName><forename type="first">Qiyao</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xubin</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chao</forename><surname>Huang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2406.02377</idno>
+		<title level="m">XRec: Large Language Models for Explainable Recommendation</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<author>
+			<persName><forename type="first">Costas</forename><surname>Mavromatis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><surname>Karypis</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2405.20139</idno>
+		<title level="m">GNN-RAG: Graph Neural Retrieval for Large Language Model Reasoning</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Justifying recommendations using distantly-labeled reviews and fine-grained aspects</title>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 conference on empirical methods in natural language processing and the 9th international joint conference on natural language processing</title>
+				<meeting>the 2019 conference on empirical methods in natural language processing and the 9th international joint conference on natural language processing</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="188" to="197" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Large Dual Encoders Are Generalizable Retrievers</title>
+		<author>
+			<persName><forename type="first">Jianmo</forename><surname>Ni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhuyun</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gustavo</forename><surname>Hernandez Abrego</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ji</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vincent</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Luan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Keith</forename><surname>Hall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming-Wei</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</title>
+				<meeting>the 2022 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="9844" to="9855" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title/>
+		<ptr target="https://openai.com/index/chatgpt/" />
+	</analytic>
+	<monogr>
+		<title level="j">OpenAI. 2022. Introducing ChatGPT</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Unifying Large Language Models and Knowledge Graphs: A Roadmap</title>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Shirui Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yufei</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiapu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xindong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Bleu: a method for automatic evaluation of machine translation</title>
+		<author>
+			<persName><forename type="first">Kishore</forename><surname>Papineni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Salim</forename><surname>Roukos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Todd</forename><surname>Ward</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Jing</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 40th annual meeting of the Association for Computational Linguistics</title>
+				<meeting>the 40th annual meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="311" to="318" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Explanation mining: Post hoc interpretability of latent factor models for recommendation systems</title>
+		<author>
+			<persName><forename type="first">Georgina</forename><surname>Peake</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="2060" to="2069" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<monogr>
+		<author>
+			<persName><forename type="first">Boci</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yun</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongchao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohe</forename><surname>Bo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haizhou</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuntao</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Siliang</forename><surname>Tang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2408.08921</idno>
+		<title level="m">Graph Retrieval-Augmented Generation: A Survey</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<title level="m" type="main">Unveiling User Preferences: A Knowledge Graph and LLM-Driven Approach for Conversational Recommendation</title>
+		<author>
+			<persName><forename type="first">Zhangchi</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirui</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan Wee-Chung</forename><surname>Liew</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2411.14459</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<author>
+			<persName><forename type="first">Nils</forename><surname>Reimers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Iryna</forename><surname>Gurevych</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1908.10084</idno>
+		<title level="m">Sentence-bert: Sentence embeddings using siamese bert-networks</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Explaining the predictions of any classifier</title>
+		<author>
+			<persName><forename type="first">Sameer</forename><surname>Marco Tulio Ribeiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Guestrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="1135" to="1144" />
+		</imprint>
+	</monogr>
+	<note>Why should i trust you?</note>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Modeling relational data with graph convolutional networks</title>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Schlichtkrull</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Kipf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rianne</forename><surname>Bloem</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Van Den</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ivan</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><surname>Titov</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Welling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The semantic web: 15th international conference</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="593" to="607" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">BLEURT: Learning Robust Metrics for Text Generation</title>
+		<author>
+			<persName><forename type="first">Thibault</forename><surname>Sellam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dipanjan</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ankur</forename><surname>Parikh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="7881" to="7892" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Entity linking meets deep learning: Techniques and solutions</title>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yinan</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianyong</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaojie</forename><surname>Yuan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="2556" to="2578" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Neural logic reasoning</title>
+		<author>
+			<persName><forename type="first">Shaoyun</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanxiong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weizhi</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxin</forename><surname>Mao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management</title>
+				<meeting>the 29th ACM International Conference on Information &amp; Knowledge Management</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1365" to="1374" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Walklm: A uniform language model fine-tuning framework for attributed graph embedding</title>
+		<author>
+			<persName><forename type="first">Yanchao</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zihao</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hang</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiming</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carl</forename><surname>Yang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jianheng</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qifan</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuhan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2407.00379</idno>
+		<title level="m">Grapharena: Benchmarking large language models on graph computational problems</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<monogr>
+		<title level="m" type="main">Heterophilic Graph Neural Networks Optimization with Causal Message-passing</title>
+		<author>
+			<persName><forename type="first">Botao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jia</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Keli</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fugee</forename><surname>Tsung</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2411.13821</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Can language models solve graph problems in natural language?</title>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shangbin</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianxing</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaoxuan</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaochuang</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yulia</forename><surname>Tsvetkov</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Is ChatGPT a Good NLG Evaluator? A Preliminary Study</title>
+		<author>
+			<persName><forename type="first">Jiaan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunlong</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fandong</forename><surname>Meng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zengkui</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haoxiang</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhixu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jinan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianfeng</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 4th New Frontiers in Summarization Workshop</title>
+				<meeting>the 4th New Frontiers in Summarization Workshop</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1" to="11" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Large Language Models-guided Dynamic Adaptation for Temporal Knowledge Graph Reasoning</title>
+		<author>
+			<persName><forename type="first">Jiapu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongli</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alan Wee-Chung</forename><surname>Liew</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirui</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baocai</forename><surname>Yin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Yongliang Qiao, and Shirui Pan. 2024. Contrastive graph similarity networks</title>
+		<author>
+			<persName><forename type="first">Luzhi</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yizhen</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuyi</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on the Web</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="1" to="20" />
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Tem: Tree-enhanced embedding model for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuli</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1543" to="1552" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">A survey on large language models for recommendation</title>
+		<author>
+			<persName><forename type="first">Likang</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhi</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaopeng</forename><surname>Qiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongchao</forename><surname>Gu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tingjia</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuan</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hengshu</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM WWW</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page">60</biblScope>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Graph neural networks in recommender systems: a survey</title>
+		<author>
+			<persName><forename type="first">Shiwen</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wentao</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bin</forename><surname>Cui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comput. Surveys</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="page" from="1" to="37" />
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Billion-scale bipartite graph embedding: A global-local induced approach</title>
+		<author>
+			<persName><forename type="first">Xueyi</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuanyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the VLDB Endowment</title>
+				<meeting>the VLDB Endowment</meeting>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="175" to="183" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">A comprehensive survey on graph neural networks</title>
+		<author>
+			<persName><forename type="first">Zonghan</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shirui</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fengwen</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guodong</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chengqi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S Yu</forename><surname>Philip</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE transactions on neural networks and learning systems</title>
+				<imprint>
+			<date type="published" when="2020">2020. 2020</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="4" to="24" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Reinforcement knowledge graph reasoning for explainable recommendation</title>
+		<author>
+			<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shan</forename><surname>Muthukrishnan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerard</forename><forename type="middle">De</forename><surname>Melo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd international ACM SIGIR conference on research and development in information retrieval</title>
+				<meeting>the 42nd international ACM SIGIR conference on research and development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="285" to="294" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">TimeSGN: Scalable and Effective Temporal Graph Neural Network</title>
+		<author>
+			<persName><forename type="first">Yuanyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">E</forename><surname>Orlowska</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xuemin</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">40th IEEE International Conference on Data Engineering</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2024">2024</date>
+			<biblScope unit="page" from="3297" to="3310" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Personalized showcases: Generating multi-modal explanations for recommendations</title>
+		<author>
+			<persName><forename type="first">An</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhankui</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiacheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianyang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Mcauley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="2251" to="2255" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">An</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baosong</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Binyuan</forename><surname>Hui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bowen</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chengpeng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chengyuan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dayiheng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fei</forename><surname>Huang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2407.10671</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+	<note>et al. 2024. Qwen2 technical report</note>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Why do semantically unrelated categories appear in the same session? A demand-aware method</title>
+		<author>
+			<persName><forename type="first">Liqi</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Linhao</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaofeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fengxin</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinni</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zelin</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuai</forename><surname>Tang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+				<meeting>the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="2065" to="2069" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<monogr>
+		<author>
+			<persName><forename type="first">Ruosong</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Caiqi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Runhui</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuyuan</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2308.07134</idno>
+		<title level="m">Natural language is all a graph needs</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">7</biblScope>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<analytic>
+		<title level="a" type="main">Graph convolutional neural networks for web-scale recommender systems</title>
+		<author>
+			<persName><forename type="first">Rex</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaifeng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pong</forename><surname>Eksombatchai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>William</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGKDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="974" to="983" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">Gnnexplainer: Generating explanations for graph neural networks</title>
+		<author>
+			<persName><forename type="first">Zhitao</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dylan</forename><surname>Bourgeois</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiaxuan</forename><surname>You</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marinka</forename><surname>Zitnik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<monogr>
+		<title level="m" type="main">Explainability in graph neural networks: A taxonomic survey</title>
+		<author>
+			<persName><forename type="first">Haiyang</forename><surname>Hao Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shurui</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shuiwang</forename><surname>Gui</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ji</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="5782" to="5799" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title level="a" type="main">Bartscore: Evaluating generated text as text generation</title>
+		<author>
+			<persName><forename type="first">Weizhe</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Graham</forename><surname>Neubig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pengfei</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NeurIPS</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="27263" to="27277" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">Christos Faloutsos, and Yizhou Sun. 2023. PaGE-Link: Path-based graph neural network explanation for heterogeneous link prediction</title>
+		<author>
+			<persName><forename type="first">Shichang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiani</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Soji</forename><surname>Adeshina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Da</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<biblScope unit="page" from="3784" to="3793" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<monogr>
+		<author>
+			<persName><forename type="first">Tianyi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Varsha</forename><surname>Kishore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felix</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Kilian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoav</forename><surname>Weinberger</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Artzi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1904.09675</idno>
+		<title level="m">Bertscore: Evaluating text generation with bert</title>
+				<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<monogr>
+		<author>
+			<persName><forename type="first">Tianjun</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Shishir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Naman</forename><surname>Patil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheng</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matei</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ion</forename><surname>Zaharia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">E</forename><surname>Stoica</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Gonzalez</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2403.10131</idno>
+		<title level="m">Raft: Adapting language model to domain specific rag</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<monogr>
+		<title level="m" type="main">Knowledge-aware neural networks with personalized feature referencing for cold-start recommendation</title>
+		<author>
+			<persName><forename type="first">Xinni</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yankai</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cuiyun</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qing</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shenglin</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Irwin</forename><surname>King</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2209.13973</idno>
+		<imprint>
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Information Retrieval</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="1" to="101" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<monogr>
+		<title level="m" type="main">Siren&apos;s song in the AI ocean: a survey on hallucination in large language models</title>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yafu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Leyang</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deng</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lemao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tingchen</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xinting</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Enbo</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yulong</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2309.01219</idno>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<analytic>
+		<title level="a" type="main">Crossdomain recommendation via user interest alignment</title>
+		<author>
+			<persName><forename type="first">Chuang</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongke</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianping</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACM WWW</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="887" to="896" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<analytic>
+		<title level="a" type="main">Cross-domain recommendation via progressive structural alignment</title>
+		<author>
+			<persName><forename type="first">Chuang</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongke</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaomeng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ming</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiahui</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianping</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<monogr>
+		<author>
+			<persName><forename type="first">Jianan</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Le</forename><surname>Zhuo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yikang</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Qu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Bronstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhaocheng</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Tang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.01089</idno>
+		<title level="m">Graphtext: Graph reasoning in text space</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yaxin</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yikun</forename><surname>Xian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zuohui</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gerard</forename><forename type="middle">De</forename><surname>Melo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2104.07869</idno>
+		<title level="m">Faithfully explainable recommendation via neural logic reasoning</title>
+				<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

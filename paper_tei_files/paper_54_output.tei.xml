@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explicit Factor Models for Explainable Recommendation based on Phrase-level Sentiment Analysis</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">State Key Laboratory of Intelligent Technology and Systems</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science &amp; Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+							<email>laiguokun@gmail.com</email>
+							<affiliation key="aff0">
+								<orgName type="laboratory">State Key Laboratory of Intelligent Technology and Systems</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science &amp; Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">State Key Laboratory of Intelligent Technology and Systems</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science &amp; Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<orgName type="department">School of Engineering</orgName>
+								<orgName type="institution">University of California</orgName>
+								<address>
+									<postCode>95060</postCode>
+									<settlement>Santa Cruz</settlement>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">State Key Laboratory of Intelligent Technology and Systems</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science &amp; Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="laboratory">State Key Laboratory of Intelligent Technology and Systems</orgName>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Computer Science &amp; Technology</orgName>
+								<orgName type="institution">Tsinghua University</orgName>
+								<address>
+									<postCode>100084</postCode>
+									<settlement>Beijing</settlement>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">SIGIR&apos;14</orgName>
+								<address>
+									<addrLine>July 6-11, Gold Coast</addrLine>
+									<postCode>2014</postCode>
+									<region>Queensland</region>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explicit Factor Models for Explainable Recommendation based on Phrase-level Sentiment Analysis</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D7E2CFE97948F07B6CBEA3FFC6CBF4F1</idno>
+					<idno type="DOI">10.1145/2600428.2609579</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-02T23:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>H.3.3 [Information Storage and Retrieval]: Information Filtering</term>
+					<term>I.2.7 [Artificial Intelligence]: Natural Language Processing Recommender Systems</term>
+					<term>Sentiment Analysis</term>
+					<term>Collaborative Filtering</term>
+					<term>Recommendation Explanation</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Collaborative Filtering(CF)-based recommendation algorithms, such as Latent Factor Models (LFM), work well in terms of prediction accuracy. However, the latent features make it difficulty to explain the recommendation results to the users.</p><p>Fortunately, with the continuous growth of online user reviews, the information available for training a recommender system is no longer limited to just numerical star ratings or user/item features. By extracting explicit user opinions about various aspects of a product from the reviews, it is possible to learn more details about what aspects a user cares, which further sheds light on the possibility to make explainable recommendations.</p><p>In this work, we propose the Explicit Factor Model (EFM) to generate explainable recommendations, meanwhile keep a high prediction accuracy. We first extract explicit product features (i.e. aspects) and user opinions by phrase-level sentiment analysis on user reviews, then generate both recommendations and disrecommendations according to the specific product features to the user's interests and the hidden features learned. Besides, intuitional feature-level explanations about why an item is or is not recommended are generated from the model. Offline experimental results on several real-world datasets demonstrate the advantages of our framework over competitive baseline algorithms on both rating prediction and top-K recommendation tasks. Online experiments show that the detailed explanations make the recommendations and disrecommendations more influential on user's purchasing behavior.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>In the last few years, researchers have found or argued that explanations in recommendation systems could be very beneficial. By explaining how the system works and/or why a product is recommended, the system becomes more transparent and has the potential to allow users to tell when the system is wrong (scrutability), increase users' confidence or trust in the system, help users make better (effectiveness) and faster (efficiency) decisions, convince users to try or buy (persuasiveness), or increase the ease of the user enjoyment (satisfaction). A variety of techniques have been proposed to generate explanations, mainly for content based recommendation algorithms, neighbor based algorithms, or simple statistics analysis based algorithms.</p><p>Meanwhile, Latent Factor Models (LFM) such as Matrix Factorization (MF) <ref type="bibr" target="#b13">[14]</ref> techniques have gained much attention from the research community and industry due to their good prediction accuracy on some benchmark datasets. However, recommender systems based on these algorithms encounter some important problems in practical applications. First, it is difficult to know how users compose their judgement of the various attributes of an item into a single rating, which makes it difficult to make recommendations according to the specific needs of the users. Second, it is usually difficult to give intuitional explanations of why an item is recommended, and even more difficult to explain why an item is not recommended given other alternatives. Lack of explainability weakens the ability to persuade users and help users make better decisions in practical systems <ref type="bibr" target="#b38">[39]</ref>.</p><p>A dilemma practitioners often face is whether to choose an understandable/explainable simple algorithm while sacrificing prediction accuracy, or choose an accurate latent factorization modeling approach while sacrificing explainability. A major research question is: can we have a solution that is both highly accurate and easily explainable?</p><p>Fortunately, the advance detailed sentiment analysis and the ever increasing popularity of online user textual reviews shed some light on this question. Most e-commerce and review service websites like Amazon and Yelp allow users to write free-text reviews along with a numerical star rating. The text reviews contain rich information about user sentiments, attitudes and preferences towards product features <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b7">8,</ref><ref type="bibr" target="#b8">9]</ref>, which sheds light on new approaches for explainable recommendation. For example, from the review text "The service rendered from the seller is excellent, but the battery life is short", the entries (service, excellent, +1) and (battery life, short, −1) of the form (F, O, S) could be extracted by phrase-level sentiment analysis <ref type="bibr" target="#b18">[19]</ref>, where F is for Feature word or phrase that reveals some product aspect, O is for Opinion word or phrase that the user chose to express the attitude towards the feature, and S is the Sentiment of the opinion word when commenting on the feature word, which could be positive or negative.</p><p>Different users might care about different product aspects. We found that users tend to comment on different features in textual reviews, e.g., one would mostly care about the screen size of a mobile phone, while another might focus on its battery life, although they might even make the same star rating on the product. Extracting the explicit product features and the corresponding user opinions from reviews not only helps to understand the different preferences of users and make better recommendations, but also helps to know why and how a particular item is or is not recommended, thus to present intuitional explanations. In this way, we could not only recommend to users about which to buy, but also presenting disrecommendations by telling the users why they would better not buy.</p><p>Based on our preliminary analysis, we propose a new Explicit Factor Model (EFM) to achieve both high accuracy and explainability. Figure <ref type="figure" target="#fig_0">1</ref> illustrates the overview of the proposed solution with an example. First, phrase-level sentiment analysis over textual review corpus generates a sentiment lexicon, where each entry is an (F, O, S) triplet, and the feature words together serve as the explicit feature space. Then, user attentions and item qualities on these features are integrated into a unified factorization model (i.e. EFM), which are later used to generate personalized recommendations and explanations. In this example, the system identified that a user might care about memory, earphone and service, thus a product that performs especially well on these features would be a promising recommendation for him.</p><p>In the rest of this paper, we first review some related work (Section 2) and provide detailed expositions of our approach, including the algorithm for model learning (Section 3). Then we describe the offline experimental settings and results for verifying the performance of the proposed approach in terms of rating prediction and top-K recommendation (Section 4), as well as online experiments for testing the effect of intuitional explanations (Section 5). Finally, we conclude the work, discuss the limitations of the work and point out some of the future research directions in Section 6.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">RELATED WORK</head><p>With the ability to take advantage of the wisdom of crowds, Collaborative Filtering (CF) <ref type="bibr" target="#b32">[33]</ref> techniques have achieved great success in personalized recommender systems, especially in rating prediction tasks. Recently, Latent Factor Models (LFM) based on Matrix Factorization (MF) <ref type="bibr" target="#b13">[14]</ref> techniques have gained great popularity as they usually outperform traditional methods and have achieved state-of-theart performance in some benchmark datasets <ref type="bibr" target="#b32">[33]</ref>. Various MF algorithms have been proposed in different problem settings, such as Singular Value Decomposition (SVD) <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b31">32]</ref>, Non-negative Matrix Factorization (NMF) <ref type="bibr" target="#b14">[15]</ref>, Max-Margin Matrix Factorization (MMMF) <ref type="bibr" target="#b28">[29]</ref>, Probabilistic Matrix Factorization (PMF) <ref type="bibr" target="#b29">[30]</ref>, and Localized Matrix Factorization (LMF) <ref type="bibr" target="#b44">[45,</ref><ref type="bibr" target="#b43">44]</ref>. They aim at learning latent factors from user-item rating matrices to make rating predictions, based on which to generate personalized recommendations. However, their latent characteristic makes it difficult to make recommendations in situations where we know a user cares  An item would be recommended if it performs well on the features that a user cares. about certain particular product features. Further more, it is also difficult to generate intuitional explanations for the recommendation results. Besides, the frequently used metrics such as RMSE and MAE do not necessarily have direct relationship with the performance in practical top-K recommendation scenarios <ref type="bibr" target="#b3">[4]</ref>.</p><p>It is important to notice that the increasingly growing amount of user generated textual reviews contain rich information about product features and user preferences, which can be extracted, summarized and structured by Sentiment Analysis (SA) <ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b23">24]</ref>. Sentiment analysis can be conducted on three different levels: review/document-level, sentencelevel and phrase-level. Review- <ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b41">42]</ref> and sentence-level <ref type="bibr" target="#b39">[40,</ref><ref type="bibr" target="#b21">22]</ref> analysis attempt to classify the sentiment of a whole review or sentence to one of the predefined sentiment polarities, including positive, negative and sometimes neutral, while phrase-level analysis <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b5">6]</ref> attempts to extract explicit features of the products, and further analyze the sentiment orientations that users express on these features based on opinion words that the users use to express the attitude towards the features <ref type="bibr" target="#b10">[11]</ref>. The core task in phrase-level sentiment analysis is the construction of Sentiment Lexicon <ref type="bibr" target="#b33">[34,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b18">19]</ref>, where each entry is a (Feature,Opinion,Sentiment) triplet. This is generated by extracting feature-opinion word pairs and determining their sentiments from text reviews. The lexicon could be used in various sentiment related tasks. It is necessary to note that the sentiment lexicon could be contextual <ref type="bibr" target="#b40">[41]</ref>. For example, the opinion word high has a positive sentiment when modifying the feature word quality, yet has a negative sentiment when accompanied by noise.</p><p>With the continuous growth of such information-rich sources, how to use textual reviews in recommender systems has received increasing attention over the last few years <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b26">27]</ref>. The most early approach constructs manually defined ontologies to structure the free-text reviews <ref type="bibr" target="#b0">[1]</ref>. However, constructing ontologies is domaindependent and time consuming, and it is also not nicely integrated with the wisdom of crowds as in CF. More recent work leverages review-or sentence-level sentiment analysis to boost the performance of rating prediction <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b25">26]</ref>. However, rating prediction accuracy is not necessarily related to the performance in practical applications <ref type="bibr" target="#b3">[4]</ref>. Besides, the sentence-or review-level analysis does not offer rich finer-grained sentiment information, which can be better utilized in recommendation and explanation.</p><p>In an attempt to address the problems, some recent work conducted topic discovery from the reviews to estimate user preferences for personalized recommendations <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b35">36]</ref>.</p><p>However, as a user could in fact be criticizing rather than appreciating the product on a mentioned topic, simple topic level analysis without more detailed natural language processing makes such approaches biased and limited. In contrast, we leverage phrase-level sentiment analysis to model user preferences and item performances on an explicit feature/aspect for more detailed user preference modeling, more accurate predicting, and more intuitional explanations.</p><p>Researchers have shown that providing appropriate explanations could improve user acceptance of the recommended items <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b36">37]</ref>, as well as benefit user experience in various other aspects, including system transparency, user trust, effectiveness, efficiency, satisfaction and scrutability <ref type="bibr" target="#b37">[38,</ref><ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b1">2]</ref>. However, the underlying recommendation algorithm may influence the types of explanations that can be constructed. In general, the computationally complex algorithms within various latent factor models make the explanations difficult to be generated automatically <ref type="bibr" target="#b37">[38]</ref>.</p><p>Many meticulously designed strategies have been investigated to tackle the problem, ranging from the simple 'people also viewed' explanations in e-commerce websites <ref type="bibr" target="#b37">[38]</ref> to the more recent social friends or social tags based explanations <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b38">39]</ref>. However, such explanations are either over simplification of the true reasons, or difficult to generate in non-social scenarios. Nevertheless, an important advantage of utilizing explicit features for recommendation is its ability to provide intuitional and reasonable explanations for both recommended and disrecommended items. Besides, the proposed model can also integrate social or statistical features, and thus generalizes the existing explanation solutions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">THE FRAMEWORK</head><p>This section describes the major components of the proposed framework (Figure <ref type="figure" target="#fig_0">1</ref>). The major notations used in the rest of the paper are summarized in Table <ref type="table" target="#tab_1">1</ref>. L is generated by phrase-level sentiment analysis on user reviews. A is the numerical user-item rating matrix. The matrices X and Y are constructed by mapping the reviews of each user and item onto the lexicon L. The following sub-sections describe more details about the framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Sentiment Lexicon Construction</head><p>In the first stage, the contextual sentiment lexicon L is constructed from textual user reviews based on the stateof-the-art optimization approach described in <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b42">43]</ref>. This process mainly consists of three steps. First, the feature word set F are extracted from the text review corpus using grammatical and morphological analysis tools. Then, the opinion word set O is extracted and further paired up with the feature words where possible. This leads to the featureopinion pairs (F, O). Finally, sentiment polarity labelling of these pairs are conducted based on an optimization frame- (screen, 1), (earphone, --1) Since the lexicon construction procedure is not the focus of this paper, we refer the readers to the related literature such as <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b42">43]</ref> for more details. The quality of the constructed lexicon will be reported later in the experimental section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Feature-Opinion Pair Mapping</head><p>Given the sentiment lexicon L and a piece of text review, we generate a set of feature-sentiment (F, S ) pairs to represent the review, where S is the reviewer's sentiment on the particular product feature as expressed in the review text.</p><p>To illustrate the idea, we consider a toy example shown in Figure <ref type="figure" target="#fig_1">2</ref>. Each shaded block is a user's review about an item, which includes a numerical rating and a piece of review text. Based on that, we need to identify which lexicon entries are mentioned by the user in the review text, and whether the sentiment polarity of the entry is reversed by negation words like 'not' or 'hardly'. Then we can generate a set of featuresentiment pairs to represent a piece of review text. In this example, the set includes (screen, +1) and (earphone, -1).</p><p>Without lose of generality, we adopt the approaches in <ref type="bibr" target="#b18">[19]</ref> and <ref type="bibr" target="#b34">[35]</ref>. The algorithm analyzes the review text on clause level by parsing sentences into syntactic tree structures, with which a rule-based finite state matching machine approach is conducted for feature-opinion pair mapping, and the entries such as (screen, perfect, +1) and (earphone, good, +1) in L are matched in the review. Then, negation words detection is conducted to check whether the sentiment of each matched entry is reversed. For example, the sentiment of entry (earphone, good, +1) is reversed because of the presence of the negation word 'not'. Then we have:</p><formula xml:id="formula_0">S = S, if O is not reversed by negation words −S, if O is reversed by negation words<label>(1)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">User-Feature Attention Matrix</head><p>We assume that different users might care about different features, and they tend to comment more frequently on those features that he or she particularly cares. Thus we construct a user-feature attention matrix X, where each element measures to what an extent a user cares about the corresponding product feature/aspect.</p><p>Let F = {F1, F2, • • • , Fp} be the set of explicit product features/aspects, and let U = {u1, u2, • • • , um} denote the m users. To generate the matrix, we consider all the text reviews written by a user ui, then extract all (F, S ) entries in the collection. Suppose feature Fj is mentioned by user ui for tij times, we define each element in the user-feature attention matrix X as follows:</p><formula xml:id="formula_1">X ij =    0, if user u i did not mention feature F j 1 + (N − 1) 2 1 + e −t ij − 1 , else<label>(2)</label></formula><p>The major goal of ( <ref type="formula" target="#formula_1">2</ref>) is to rescale tij into the same range [1, N ] as the rating matrix A by reformulating the sigmoid function. The choice of N is 5 in many real-world five stars based reviewing systems, such as Amazon and Yelp.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Item-Feature Quality Matrix</head><p>We also construct item-feature quality matrix Y , where each element measures the quality of an item for the corresponding product feature/aspect.</p><p>Let P = {p1, p2, • • • , pn} denote the n items/products. For each of the items pi, we use all of its corresponding reviews, and extract the corresponding (F, S ) pairs. Suppose feature Fj is mentioned for k times on item pi, and the average of sentiment of feature Fj in those k mentions are sij. We define the item-feature measure Yij as:</p><formula xml:id="formula_2">Y ij =    0, if item p i is not reviewed on feature F j 1 + N − 1 1 + e −k•s ij , else<label>(3)</label></formula><p>This measure captures both the sentiment orientation (through sij) and the popularity (through k) of feature Fj for product pi. It is also rescaled into the range of [1, N ].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Integrating Explicit and Implicit Features</head><p>The non-zeros in matrices X and Y indicate the observed relations between users, items and explicit features. Now we exposit how to integrate these into a factorization model for both accurate prediction and explainable recommendations.</p><p>Similar to factorization models over user-item rating matrix A, we can build a factorization model over user-feature attention matrix X and item-feature quality matrix Y , which means estimating hidden representations of users, features, and items based on the observed user-feature and itemfeature relations. This can be done as follows:</p><formula xml:id="formula_3">minimize U 1 ,U 2 ,V λx U 1 V T − X 2 F + λy U 2 V T − Y 2 F s.t. U 1 ∈ R m×r + , U 2 ∈ R n×r + , V ∈ R p×r + (<label>4</label></formula><formula xml:id="formula_4">)</formula><p>where λx and λy are regularization coefficients, and the number of explicit factors r represents the number of factors.</p><p>We assume a user's overall star ratings about an item (i.e. an element in matrix A) is based on her underlying opinions over various product aspects. Based on this assumption, we estimate the rating matrix using the latent representations U1 and U2, which captures the user attentions and item qualities on the explicit product features. However, we also acknowledge that the explicit features might not be able to fully explain a rating and a user might consider some other hidden factors when making a decision (i.e. rating) about a product. As a result, we also introduce r latent factors H1 ∈ R m×r  </p><formula xml:id="formula_5">P,Q P Q T − A 2 F (5)</formula><p>To put Eq.( <ref type="formula" target="#formula_3">4</ref>) and Eq.( <ref type="formula">5</ref>) together, we have a factorization model that integrates explicit and implicit features. </p><formula xml:id="formula_6">minimize U 1 ,U 2 ,V,H 1 ,H 2 P Q T − A 2 F + λx U 1 V T − X 2 F + λy U 2 V T − Y 2 F +λu( U 1 2 F + U 2<label>2</label></formula><formula xml:id="formula_7">F ) + λ h ( H 1 2 F + H 2 2 F ) + λv V 2 F s.t. U 1 ∈ R m×r + , U 2 ∈ R n×r + , V ∈ R p×r + , H 1 ∈ R m×r + , H 2 ∈ R n×r + and P = [U 1 H 1 ], Q = [U 2 H 2 ]<label>(6)</label></formula><p>When r = 0, this model reduces to a traditional latent factorization model on user-item rating matrix A, which means that the explicit features are not used for recommendations. The optimal solution of Eq.( <ref type="formula" target="#formula_7">6</ref>) can be further used for making recommendations and explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.6">Model Learning for EFM</head><p>There is no closed-form solution for Eq.( <ref type="formula" target="#formula_7">6</ref>). Motivated by <ref type="bibr" target="#b4">[5]</ref>, we introduce an alternative minimization algorithm (Algorithm 1) to find the optimal solutions for the five parameters U1, U2, V, H1, H2. The key idea is to optimize the Algorithm 1: Explicit Factor Model Input: A, X, Y, m, n, p, r, r , λx, λy, λu, λ h , λv, T Output: U1, U2, V, H1, H2</p><formula xml:id="formula_8">U1 ← R m×r + , U2 ← R n×r + , V ← R p×r + ; H1 ← R m×r + , H2 ← R n×r + ; //initialize randomly t ← 0; repeat t ← t + 1; Update: Vij ← Vij [λxX T U 1 +λy Y T U 2 ] ij [V (λxU T 1 U 1 +λy U T 2 U 2 +λv I)] ij</formula><p>Update:</p><formula xml:id="formula_9">U1 ij ← U1 ij [AU 2 +λxXV ] ij [(U 1 U T 2 +H 1 H T 2 )U 2 +U 1 (λxV T V +λuI)] ij</formula><p>Update:</p><formula xml:id="formula_10">U2 ij ← U2 ij [A T U 1 +λy Y V ] ij [(U 2 U T 1 +H 2 H T 1 )U 1 +U 2 (λy V T V +λuI)] ij Update: H1 ij ← H1 ij [AH 2 ] ij [(U 1 U T 2 +H 1 H T 2 )H 2 +λ h H 1 ] ij Update: H2 ij ← H2 ij [A T H 1 ] ij [(U 2 U T 1 +H 2 H T 1 )H 1 +λ h H 2 ] ij</formula><p>until Convergence or t &gt; T ; return U1, U2, V, H1, H2;</p><p>objective function with respect to one parameter, while fixing the other four. The algorithm keeps updating the parameters repeatedly until convergence or reaching the maximum number of iterations. Due to the limited space, we sketch the derivations of the updating rules in the Appendix. Similar to <ref type="bibr" target="#b14">[15]</ref>, the correctness and convergence of Algorithm 1 can be proved with the standard auxiliary function approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.7">Personalized Recommendation</head><p>Given the optimal solution of the factorization model, we can estimate any missing element in the user-feature attention matrix X, item-feature quality matrix Y and useritem rating matrix A, as X = U1V T , Ỹ = U2V T , and</p><formula xml:id="formula_11">Ã = U1U T 2 + H1H T 2 .</formula><p>Based on that, we can generate personalized top-K recommendations and provide feature-level explanations, as described in the following subsections.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.7.1">Top-K Recommendation</head><p>We assume that a user's decision about whether to make a purchase is based on several important product features to him or her, rather than considering all hundreds of possible features. Thus we use the most cared k features of a user when generating the recommendation list for him/her. For user ui(1 ≤ i ≤ m), let the column indices of the k largest values in row vector Xi• be Ci = {ci1, ci2, • • • , c ik }. We set the ranking score of item pj(1 ≤ j ≤ n) for user ui as follows:</p><formula xml:id="formula_12">R ij = α • c∈C i Xic • Ỹjc kN + (1 − α) Ãij<label>(7)</label></formula><p>where N = max(Aij) is used to rescale the first part and N = 5 in most rating systems. The first part is a useritem similarity score based on the k most important product features that user ui cares. 0 ≤ α ≤ 1 is a scale that controls the trade off between feature based score and direct useritem ratings. The top-K recommendation list for user ui can be constructed by ranking the items based on Rij.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.7.2">Personalized Feature-Level Explanation</head><p>Traditional factorization models are usually difficulty to understand and it is hard to automatically generate explanations about why or why not an item is recommended through the hidden factors. An important advantage of our EFM framework is its ability to analyze which of the various features play a key role in pushing an item to the top-K. Besides recommending products, we also study an uncommon usage scenario of our framework: disrecommending an item that the system considers "does not worth buying" when a user is viewing it. We believe that this is an important usage of a filtering/recommendation system, and that explaining why the system "thinks" the user should not buy a product might gain user trust and help user make a more informed purchasing decision.</p><p>There could be many different ways to construct effective explanations with the explicit features. However, due to the limited experimental resources, we designed a straightforward template based explanation and an intuitional word cloud based explanation for the recommended and disrecommended items. The templates are shown as follows:</p><p>You might be interested in [feature], on which this product performs well.</p><p>You might be interested in [feature], on which this product performs poorly.</p><p>For each user ui and a recommended item pj, the feature used for explanation construction is Fc, where:</p><formula xml:id="formula_13">c = argmax c∈C i Ỹjc (8)</formula><p>While for each disrecommended item pj, the feature Fc is:</p><formula xml:id="formula_14">c = argmin c∈C i Ỹjc (9)</formula><p>We focus on the persuasiveness of the explanation. Among the user's most cared features, we select the one that has the best or worst performance on the corresponding product.</p><p>The word cloud based explanation further attempts to validate the textual explanations by listing the feature-opinion pairs that are matched on the reviews of a (dis)recommended item. The recommendation interface, word cloud as well as the practical effects regarding user acceptance of the recommendations will be discussed in details later.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">OFFLINE EXPERIMENTS</head><p>In this section, we conduct extensive experiments to evaluate the EFM framework in offline settings. We mainly focus on the following research questions: 1) How do users care about the various explicit product features extracted from reviews, and 2) What is the performance of the EFM framework in both the task of rating prediction and the more practical task of top-K recommendation.</p><p>We begin by introducing the experimental setup, and report the quality evaluation of the constructed sentiment lexicon, then we report and analyze the experimental results to attempt to answer the research questions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Experimental Setup</head><p>We choose the Yelp 1 and Dianping 2 datasets (Table <ref type="table" target="#tab_2">2</ref>) for experimentations. The Yelp dataset consists of user reviews on the businesses located in the Phoenix City of the US, and the Dianping dataset consists of the reviews on the restaurants located in several main cities of China, where each user made 20 or more reviews. These datasets are of two different languages, which are English on Yelp, and Chinese on Dianping. As a kind of natural language processing techniques, phrase-level sentiment analysis could be language dependent. By these completely different language settings we would like to verify whether our framework works in different language environments.</p><p>It is necessary to note that the Yelp dataset includes those users that made very few reviews. In fact, 49% of the users made only one review, which makes it difficult to evaluate the performance of top-K recommendation. As a result, we selected the users with 10 or more reviews for the experimentation of top-K recommendation, which constitutes the dataset 'Yelp10', as shown at the bottom line of Table <ref type="table" target="#tab_2">2</ref>.</p><p>The maximum number of iterations T in Algorithm 1 is set to 100 to ensure convergence. We conducted grid search for the hyper-parameters one-by-one in the range of (0, 1] with a step size of 0.05, and 5-fold cross-validation was conducted in performance evaluation for all methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Sentiment Lexicon Constructed</head><p>We shall note that, the task of phrase-level sentiment lexicon construction is inherently difficult. One always need to trade off between precision and recall. As a primary step towards using sentiment lexicon for EFM, we focus on the precision as we will only use the top features in our framework, primarily to avoid the negative effects of wrong features as much as possible. We expect as the research in sentiment analysis advances, the performance of our framework will further improve as well.</p><p>Similar to <ref type="bibr" target="#b18">[19]</ref>, manual labellings from three human annotators are used to evaluate the lexicon quality. A feature word or opinion word is considered to be proper if it is approved by at least two annotators. We found that the average agreement among annotators is 85.63%. To evaluate the sentiments, we transform each polarity value S ∈ [−1, 1] into a binary value (positive or negative). There is no neutral as S = 0 does not exist. The annotators were asked to label the sentiment correctness for each entry, and the average agreement is 82.26%. The statistics and evaluation results of the lexicons are shown in Table <ref type="table" target="#tab_3">3</ref>. The lexicon construction process gives us around 100 high quality product features in both datasets. Some sampled entries on Yelp are presented in Table <ref type="table" target="#tab_4">4</ref>, showing how the sentiment lexicon looks in different contextual text reviews. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Feature Dependent</head><p>Opinion Dependent (decor, cool, +) (price, fire, +) (service, cool, -) (price, high, -) (price, high, -) (parking space, plenty, +) (service quality, high, +) (parking space, limit, -)</p><p>To verify the assumption that users might care about different features, we construct the user-feature attention matrix X on 'Yelp' dataset, and conduct a simple fuzzy k-means clustering to map the users into 5 fuzzy clusters within the Euclidean distance space. The reason to choose fuzzy clustering is due to the fact that a users might be interested in two or more product aspects. For the k-th (k = 1 • • • 5) cluster, we rank the features according to the weighted sum frequency Freq(Fj) = m i=1 w ik tij, where w ik is the degree that user ui belongs to the k-th cluster, and tij is the frequency that user ui mentioned feature Fj. We then select the top-5 frequent features from each cluster and rank them in descending order of term frequency, as listed in Table <ref type="table" target="#tab_5">5</ref>. We see that the users in each cluster care about a different subset of features, and each subset mainly reveals a different product aspect. The modularity (measures the quality of a division of a network into communities, which is commonly used in community detection <ref type="bibr" target="#b22">[23]</ref>) among the clusters is Q = 0.605, exhibiting a high inner-cluster relationship against inter-cluster relationship of the users. The results indicate that users do comment on different features, which matches our assumption that users care about different aspects. In the following experiments, we will continue to investigate the effect of explicit features in various conditions.</p><p>We use the original sentiment lexicon and do not use any human annotation information in the following experiments, so as to avoid any manual effort in our framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Rating Prediction</head><p>We investigate the performance in approximating the rating matrix A. Three popular and state-of-the-art latent factor models are chosen for comparison, which are Nonnegative Matrix Factorization (NMF) <ref type="bibr" target="#b14">[15]</ref>, Probabilistic Matrix Factorization (PMF) <ref type="bibr" target="#b29">[30]</ref> and Max-Margin Matrix Factorization (MMMF) <ref type="bibr" target="#b28">[29]</ref>. The hyper-parameters are selected by grid search in 5-fold cross-validation. We also compared with the Hidden Factors as Topics (HFT) model in <ref type="bibr" target="#b19">[20]</ref>, which achieved the state-of-the-art performance in terms of leveraging text reviews by extracting hidden topics. We set the number of topics as 5 in HFT as reported in <ref type="bibr" target="#b19">[20]</ref>, and assigning more topics does not further improve the performance. We evaluate by Root Mean Square Error (RMSE).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.1">Ratio of Explicit and Latent Factors</head><p>The number of explicit factor r and latent factors r are important because they capture two different types of features in the factorization process. In this subsection, we investigate the effect of explicit and latent factors by fixing their total number r + r = 100, and tuning their ratio. We also use 100 latent factors for NMF, PMF and MMMF to ensure equal model complexity 3    We see that when using a small number of explicit factors and keeping the majority to be latent, the performance of EFM is comparable to that of HFT or NMF. This is as expected, because the EFM algorithm simplifies into a kind of nonnegative matrix factorization when r = 0. However, when an appropriate percentage of explicit factors (around 30% ∼ 80%) are used, EFM is statistically significantly better than the baselines. The best prediction accuracy RMSE=1.212 is achieved on Yelp when r = 35, and the best RMSE=0.922 when r = 50 on Dianping. We also found that too many explicit factors hurts the performance. This suggests that although incorporating explicit factors improves 3 Besides, increasing the number of factors beyond 100 would not affect the performance much.</p><p>the prediction accuracy, keeping a moderate amount of latent factors is necessary to ensure model flexibility, as the explicit factors might not capture all user criteria completely.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.2">Total Number of Factors</head><p>We further investigate the total number of factors r +r to verify the performance under different model complexities. We fix the percentage of explicit factors to 40%, which gives near optimal performances on both datasets in the previous experiment. For comparison, we experiment with HFT, which achieved the best performance among baseline algorithms, and NMF, which is the best among three of the LFM models. The results are shown in Figure <ref type="figure" target="#fig_9">5</ref>.  For both the NMF algorithm and EFM framework, RMSE tends to drop as r + r increases. However, the performance of EFM would not surpass NMF or HFT until r + r is big enough. This suggests that we need enough latent factors in order to make EFM framework work effectively. Nevertheless, as long as the number of latent factors are big enough to capture the underlying user rating patterns, the existence of explicit factors further improves rating prediction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Top-K Recommendation</head><p>In this set of experiment, we study the EFM framework in the top-K recommendation task. We did further analysis of the framework to find whether and how the performance is affected by some specific features, and which features are of key importance to the users in the task.</p><p>We still set the percentage of explicit factors to be 40%. We set the total number of factors r+r as 65, a number that is big enough on both datasets, because assigning more factors would not affect the performance much. We compared EFM with the following baseline algorithms:</p><p>MostPopular: Non-personalized recommendation where the items are ranked by the number of ratings given by users.</p><p>SlopeOne: A neighborhood-based CF algorithm with easy implementation and comparable or better performance than user-or item-based approaches <ref type="bibr" target="#b15">[16]</ref>.</p><p>NMF: Nonnegative Matrix Factorization algorithm that is among the best latent factor models in the previous experiment.</p><p>BPRMF: Bayesian Personalized Ranking (BPR) optimization for MF <ref type="bibr" target="#b27">[28]</ref>, which is the state-of-the-art algorithm for top-K recommendation with numerical ratings.</p><p>HFT: The state-of-the-art algorithm in terms of making rating prediction with textual reviews <ref type="bibr" target="#b19">[20]</ref>.</p><p>We conduct top-5 (K=5) and top-10 (K=10) recommendation on Yelp10 and Dianping correspondingly, as the minimum number of reviews per user is 10 on Yelp10 and 20 on Dianping. We holdout the latest K reviewed items from each user for testing, assuming they are the only relevant items. The other reviews are used for training. Five-fold cross- validation is used for parameter tuning and performance evaluation. Following <ref type="bibr" target="#b27">[28]</ref>, we used Normalized Discounted Cumulative Gain (NDCG) and Area Under the ROC Curve (AUC) to help evaluate the performance of different models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.1">Number of Most Cared Features</head><p>We first fix the number of most cared features k = 10 and found that the optimal value for the weighing scalar α is 0.85 in terms of NDCG. Then we fix α = 0.85 throughout the following experiments to focus on the key parameter k.</p><p>We study how the performance (NDCG and AUC) changes as k increases from 5 to the maximum value possible (96 for Yelp10 and 113 for Dianping), and the results on Yelp10 are shown in Figure <ref type="figure" target="#fig_10">6</ref>. It shows that the performance of EFM continues to rise with the increase of k until around 15, and tends to be stable before it begins to drop when k = 45. It outperforms all other algorithms when k ≤ 70, and in the best case where k = 45, EFM is 12.3% better than the best baseline algorithm BPRMF. However, the NDCG tends to drop when k is too high. The results on Dianping are similar, as shown in Table <ref type="table" target="#tab_6">6</ref>. EFM is statistically significantly better than other algorithms on Yelp10 and Dianping datasets. The standard deviations of both NDCG and AUC in fivefold cross-validation for each baseline algorithm and on each experimental point of EFM are ≤ 0.006. This observation confirms the hypothesis that incorporating too many features would introduce noise into the recommendation procedure, which is consistent with the observations in a recent work HFT <ref type="bibr" target="#b19">[20]</ref>. However, the results on AUC show that the EFM framework is better than the comparative algorithms consistently. As AUC evaluates only the pairwise rankings rather than the positions, this observation suggests that incorporating irrelevant features affects the position rankings of relevant items more than their pairwise rankings.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.2">Further Analysis of Explicit Features</head><p>Although the results show that the performance on NDCG begins to keep stable when k ≥ 15, it is still surprising for us, as we do not expect that users would consider tens of features when making decisions. To further analyze the user-feature relationships and learn the impact of explicit features, we calculate the averaged coverage of the k most cared features in term frequency, against all the features in the reviews of a user, as shown in Eq. <ref type="bibr" target="#b9">(10)</ref>, where tij is the term frequency of feature Fj in the reviews of user ui, <ref type="bibr" target="#b9">(10)</ref> and the relationship of Coverage versus the number of most cared features k is shown in Figure <ref type="figure" target="#fig_11">7</ref> below. We notice that a small number of the most cared features dominate the coverage of term frequency in user reviews. For example, about 24 out of 96 features cover up to 80% of the feature occurrences on Yelp. This implies that users usually put most of the attentions on several most cared features, which verifies our motivation to adopt the top k features for recommendation, because incorporating more features could bring about negative effects as they might be irrelevant to users' preferences.</p><formula xml:id="formula_15">Coverage@k = 1 |U | |U | i=1 j∈C i t ij p j=1 t ij</formula><p>However, it needs 46 features to achieve the same 80% coverage on Dianping dataset, which is nearly twice the number of Yelp10. To understand the reason, we group the feature words into synonym clusters using WordNet 4 on Yelp10, and HowNet 5 on Dianping. We find that different feature words are used to describe the same aspect of the items. For example, the features price and cost are grouped into a single cluster. Some key statistics are shown in Table <ref type="table" target="#tab_7">7</ref>. The results show that on average there are more synonyms in the Chinese language, and the existence of synonyms dilutes the explicit feature space. For example, while there are two features price and cost grouped into one cluster on Yelp10, the semantically corresponding cluster on Dianping contains four feature words. This suggests that the optimal number of features might be different for different languages. The top 15 features on Yelp10 are grouped into 7 clusters, as shown in Table <ref type="table" target="#tab_8">8</ref>, where the top 15 features are bolded and the clusters are ranked by total term frequency.   The observations tell us that while the NDCG continues to rise when k ≤ 15, the underlying features are still limited to about 7 key aspects. Besides, we also find that incorporating the top 15 ∼ 55 features are in fact appending features into the previously existed clusters. This might explain why NDCG keeps stable in that range before getting to drop.</p><p>The experimental results confirmed our intuition of focusing on the top product features in recommender systems. More importantly, incorporating explicit features makes it possible to leverage the many promising natural language processing techniques in recommender systems, which can be used to analyze the specific interests of different users, and thus to develop effective marketing strategies in e-commerce.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">ONLINE EXPERIMENTS</head><p>In this section, we conduct online experiments with realworld e-commerce users to investigate the effect of automatically generated intuitional feature-level explanations, focusing on how the explains affect users' acceptance of the recommendations (i.e. persuasiveness).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Experimental Setup</head><p>We conduct A/B-tests based on a popular commercial web browser which has more than 100 million users, with 26% monthly active users. Our experiments attempt to recommend relevant phones when a user is browsing mobile phones in a very popular online shopping website JingDong 6 .</p><p>Figure <ref type="figure" target="#fig_13">8</ref>(a) shows our recommendation interface, where the recommendations for the current browsing item are displayed in the right side popup panel. At the top of the panel is an 'Indicator', which shows whether the current browsing item is recommended or disrecommended, followed by a 'List' of top-4 recommendations for the current user. Figure <ref type="figure" target="#fig_13">8(b)</ref> shows the word cloud where the positive feature-opinion pairs are green and negative pairs are blue, and the size is proportional to the term frequency in the reviews of the recommended item. For example, the largest pair in Figure <ref type="figure" target="#fig_13">8</ref>(b) means "PictureClarity-High".</p><p>We select those users who made ten or more reviews as target users according to the browser log, and collect their reviews to employ the EFM framework to generate (dis)recommendations and explanations for these selected users. The textual explanation and word cloud for the 'Indicator' or a recommended item in the 'List' will be displayed in a popup panel when the mouse is hovered on an item, so that we can detect whether a user has examined a recommendation and its explanation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Recommendation List Explanation</head><p>To study the explanations in the 'List', we randomly assigned each subject to one of the following three groups. The A (experimental group) users receive our feature-level explanations, the B (comparison group) users receive the famous 'People also viewed' explanations, and the C (control group) users receive no explanation. In our result analysis, we only consider those users who hovered the mouse on the List, so we know that they have examined the recommendation explanations. Besides, we only consider the browsing logs corresponding to those items common to A, B and C, resulting in 44,681 records related to 944 common items. The results of Click Through Rate (CTR) are shown in Table <ref type="table" target="#tab_9">9</ref>. Based on ten-fold t-test, we found that the CTR of the experimental group A is significantly higher than that of the comparison group B and control group C, at p = 0.033 and 0.041, respectively, demonstrating that our feature-level explanations are more effective in persuading users to examine the recommended items in terms of click through rate in e-commerce recommendation scenarios.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">(Dis)Recommendation Explanation</head><p>To study how (dis)recommendation explanations affect a user, we present the Indicator for both user group A (experimental group) and B (control group). The only difference is that the A users could see the popup explanations when hovering the mouse over the Indicator, while nothing shows for the B users. We did not assign a comparison group with other explanations, because to the best of our knowledge, there is no previous work on presenting disrecommnedation explanations. Due to some security reasons, we were unable to track whether a user paid for an item, so we recorded whether a user added the current browsing item into his/her cart as an approximation of user purchasing behavior.</p><p>This online experiment resulted in 53,372 browsing records of 1,328 common items, including 20,735 records from 582 A users and 32,637 records from 733 B users. The overall confusion matrix is shown in Table <ref type="table" target="#tab_10">10</ref>, where 'Recommend' means that the current item is recommended, and 'Add' means that the item is added to the cart. Besides, AddToCart%= x 21 +x 22 are the percentages of user agreement when an item is recommended or disrecommended, respectively.</p><p>Both AddToCart% and Agreement% of the experimental group A are significantly higher than the control group B, with the two-tailed p-values being 0.0374 and 0.0068, respectively. This demonstrates that presenting the explanations improves recommendation persuasiveness, and at the same time improves the conversion (i.e. adding-to-cart) rate in real-world online shopping scenarios.</p><p>More interestingly, we find that presenting disrecommnedation explanations helps to prevent users from adding an item to cart when the system "thinks" that the item is not good enough for him/her. This observation reveals a strong persuasiveness and flexibility of the feature-level explanations, and it might bring new and promising marketing and advertising strategies for e-commerce users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">CONCLUSIONS AND FUTURE WORK</head><p>In this paper, we propose to leverage phrase-level sentiment analysis of user reviews for personalized recommendation. We extract explicit product features and user opinions from reviews, then incorporate both user-feature and item-feature relations as well as user-item ratings into a new unified hybrid matrix factorization framework. Besides generating personalized recommendations, we designed explicit feature-level explanations for both recommended and disrecommended items. Our analysis shows that different users could focus on different product aspects, and our experiments suggest that the size of the underlying feature space that users care about varies for different users, domains and countries. Both online and offline experiments show that our framework compares favourably with baseline methods in three tasks: rating prediction, top-K recommendation, and explanation based user persuasion. This is a first step towards integrating detailed sentiment analysis for aspect/feature based explainable hybrid factorization models for recommendations, and there are much room for improvements. Instead of one measure per aspect, we can introduce more measures (sentiment, popularity, etc.) or capture more complex interaction between features in the future. Except for EFM, we can adapt or develop other hybrid factorization models such as tensor factorization or deep learning to integrate phrase-level sentiment analysis. Besides, we focused on the persuasiveness in explanation generation and experimental design, while it is worth studying other utilities (transparency, user trust, effectiveness, efficiency, satisfaction, and scrutability, etc.) of explanations and generating explanations automatically to optimize one or a combination of the utilities in the future.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7.">APPENDIX</head><p>The objective function in Eq.( <ref type="formula" target="#formula_7">6</ref>) with respect to U1 is:</p><formula xml:id="formula_16">min U 1 ≥0 U1U T 2 + H1H T 2 − A 2 F + λx U1V T − X 2 F + λu U1 2 F (<label>11</label></formula><formula xml:id="formula_17">)</formula><p>Let Λ be the Lagrange multiplier for the constraint U1 ≥ 0, then the Lagrange function is:</p><formula xml:id="formula_18">L(U1) = U1U T 2 +H1H T 2 −A 2 F +λx U1V T −X 2 F +λu U1 2 F −tr(ΛU1)<label>(12)</label></formula><p>and the corresponding gradient is:</p><formula xml:id="formula_19">∇ U 1 = 2(U1U T 2 +H1H T 2 −A)U2+2λx(U1V T −X)V +2λuU1−Λ (13)</formula><p>By setting ∇U 1 = 0 we get:</p><formula xml:id="formula_20">Λ = 2(U1U T 2 U2 + H1H T 2 U2 + λxU1V T V + λuU1) − 2(AU2 + λxXV )<label>(14)</label></formula><p>With the KKT complementary condition for the constraint U1 ≥ 0, we have Λij • U1 ij = 0, giving us the following:</p><formula xml:id="formula_21">[−(AU2+λxXV )+(U1U T 2 U2+H1H T 2 U2+λxU1V T V +λuU1)]ij •U1 ij = 0 (15)</formula><p>which further leads to the updating rule of U1:</p><formula xml:id="formula_22">U1 ij ← U1 ij [AU2 + λxXV ]ij [(U1U T 2 + H1H T 2 )U2 + U1(λxV T V + λuI)]ij<label>(16)</label></formula><p>The updating rules for U2, V, H1, H2 can be derived in a similar way.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure1: The product feature word and user opinion word pairs are extracted from user review corpus to construct the sentiment lexicon, and the feature word set further serves as the explicit feature space. An item would be recommended if it performs well on the features that a user cares. about certain particular product features. Further more, it is also difficult to generate intuitional explanations for the recommendation results. Besides, the frequently used metrics such as RMSE and MAE do not necessarily have direct relationship with the performance in practical top-K recommendation scenarios<ref type="bibr" target="#b3">[4]</ref>.It is important to notice that the increasingly growing amount of user generated textual reviews contain rich information about product features and user preferences, which can be extracted, summarized and structured by Sentiment Analysis (SA)<ref type="bibr" target="#b17">[18,</ref><ref type="bibr" target="#b23">24]</ref>. Sentiment analysis can be conducted on three different levels: review/document-level, sentencelevel and phrase-level. Review-<ref type="bibr" target="#b24">[25,</ref><ref type="bibr" target="#b41">42]</ref> and sentence-level<ref type="bibr" target="#b39">[40,</ref><ref type="bibr" target="#b21">22]</ref> analysis attempt to classify the sentiment of a whole review or sentence to one of the predefined sentiment polarities, including positive, negative and sometimes neutral, while phrase-level analysis<ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b5">6]</ref> attempts to extract explicit features of the products, and further analyze the sentiment orientations that users express on these features based on opinion words that the users use to express the attitude towards the features<ref type="bibr" target="#b10">[11]</ref>. The core task in phrase-level sentiment analysis is the construction of Sentiment Lexicon<ref type="bibr" target="#b33">[34,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b5">6,</ref><ref type="bibr" target="#b18">19]</ref>, where each entry is a (Feature,Opinion,Sentiment) triplet. This is generated by extracting feature-opinion word pairs and determining their sentiments from text reviews. The lexicon could be used in various sentiment related tasks. It is necessary to note that the sentiment lexicon could be contextual<ref type="bibr" target="#b40">[41]</ref>. For example, the opinion word high has a positive sentiment when modifying the feature word quality, yet has a negative sentiment when accompanied by noise.With the continuous growth of such information-rich sources, how to use textual reviews in recommender systems has received increasing attention over the last few years<ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b26">27]</ref>. The most early approach constructs manually defined ontologies to structure the free-text reviews<ref type="bibr" target="#b0">[1]</ref>. However, constructing ontologies is domaindependent and time consuming, and it is also not nicely integrated with the wisdom of crowds as in CF. More recent work leverages review-or sentence-level sentiment analysis to boost the performance of rating prediction<ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b25">26]</ref>. However, rating prediction accuracy is not necessarily related to the performance in practical applications<ref type="bibr" target="#b3">[4]</ref>. Besides, the sentence-or review-level analysis does not offer rich finer-grained sentiment information, which can be better utilized in recommendation and explanation.In an attempt to address the problems, some recent work conducted topic discovery from the reviews to estimate user preferences for personalized recommendations<ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b35">36]</ref>.</figDesc><graphic coords="2,426.68,74.54,90.20,56.01" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: An example of user-item review matrix, where each shaded block is a review made by a user towards an item; the entries included in the review are extracted, and further transformed to feature scores while considering the negation words. work, and each pair is assigned a sentiment value S, and this leads to the final entries (F, O, S) in L.Since the lexicon construction procedure is not the focus of this paper, we refer the readers to the related literature such as<ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b42">43]</ref> for more details. The quality of the constructed lexicon will be reported later in the experimental section.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>+</head><label></label><figDesc>and H2 ∈ R n×r + , and use P = [U1 H1] and Q = [U2 H2] to model the overall rating matrix A as follows:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>minimize</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: The relationships of product features, partially observed matrices, and hidden factors in the EFM framework. The underlying relationships of product features, partially observed matrices, and hidden factors are illustrated in Figure 3. The hidden factors can be estimated through the following optimization task:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head></head><label></label><figDesc>. The experimental results of RMSE vs the number of explicit factors r are shown in Figure 4. The standard deviations in 5-fold cross-validation of each baseline algorithm and on each experimental point of our EFM framework are ≤ 0.002.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: RMSE vs Number of Explicit Factors r.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: RMSE vs total number of factors r +r .</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: NDCG and AUC vs the number of most cared features k the Yelp10 dataset.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Coverage of term frequency vs the number of most cared features k on both of the datasets.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: Top-4 recommended items are presented by the browser at right hand side when the user is browsing an online product, and the feature-opinion word pair cloud is displayed to assist explanations when the user hovers on a recommended item.The observations tell us that while the NDCG continues to rise when k ≤ 15, the underlying features are still limited to about 7 key aspects. Besides, we also find that incorporating the top 15 ∼ 55 features are in fact appending features into the previously existed clusters. This might explain why NDCG keeps stable in that range before getting to drop.The experimental results confirmed our intuition of focusing on the top product features in recommender systems. More importantly, incorporating explicit features makes it possible to leverage the many promising natural language processing techniques in recommender systems, which can be used to analyze the specific interests of different users, and thus to develop effective marketing strategies in e-commerce.</figDesc><graphic coords="8,452.93,48.73,123.34,91.71" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>x 11 +x 21 x</head><label>21</label><figDesc>11 +x 12 +x 21 +x 22 is the total percentage of adding to cart; Agreement%= x 11 +x 22 x 11 +x 12 +x 21 +x 22 is the total percentage of user agreement with the (dis)recommendation; RecAgree%= x 11 x 11 +x 12 and DisRecAgree%= x 22</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 1 :</head><label>1</label><figDesc>Table of notations in the framework.</figDesc><table><row><cell>L</cell><cell>The contextual sentiment lexicon</cell></row><row><cell>(F,O,S)</cell><cell>A lexicon entry of L, where S ∈ [−1, 1]</cell></row><row><cell>F</cell><cell>The feature word set of L, where |F| = p</cell></row><row><cell>O</cell><cell>The opinion word set of L, where |O| = q</cell></row><row><cell>A ∈ R m×n +</cell><cell>The user-item numerical rating matrix</cell></row><row><cell>m, n</cell><cell>The number of users and items, respectively</cell></row><row><cell>X ∈ R m×p + Y ∈ R n×p +</cell><cell>The user-feature attention matrix The item-feature quality matrix</cell></row><row><cell>N</cell><cell>The non-zeros in A, X, Y are in the range of [1, N ]</cell></row></table><note>(screen, perfect, 1) [normal] (earphone, good, 1)[reversed]    </note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Statistics of Yelp and Dianping datasets.</figDesc><table><row><cell>Dataset</cell><cell cols="3">#users #items #reviews</cell><cell>#reviews #users</cell></row><row><cell>Yelp</cell><cell>45,981</cell><cell>11,537</cell><cell>229,907</cell><cell>5.00</cell></row><row><cell>Dianping</cell><cell>11,857</cell><cell>22,365</cell><cell>510,551</cell><cell>43.06</cell></row><row><cell>Yelp10</cell><cell>4,393</cell><cell>10,801</cell><cell>138,301</cell><cell>31.48</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 3 :</head><label>3</label><figDesc>Some statistics and evaluation results of the sentiment lexicons, where 'F,O,S' are for feature word, opinion word and sentiment respectively, and 'Prec' stands for 'Precision'.</figDesc><table><row><cell cols="3">Dataset #F #O #entries Prec(F) Prec(O) Prec(S)</cell></row><row><cell>Yelp</cell><cell>96 155</cell><cell>845 92.71% 91.61% 94.91%</cell></row><row><cell cols="2">Dianping 113 284</cell><cell>1,129 89.38% 89.79% 91.41%</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 4 :</head><label>4</label><figDesc>Sampled entries from the Yelp dataset.</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 5 :</head><label>5</label><figDesc>Top-5 frequent features of the 5 clusters.</figDesc><table><row><cell>cluster 1</cell><cell>cluster 2</cell><cell>cluster 3</cell><cell cols="2">cluster 4 cluster 5</cell></row><row><cell>food</cell><cell>service</cell><cell>place</cell><cell>price</cell><cell>beer</cell></row><row><cell>lunch</cell><cell>menu</cell><cell>area</cell><cell>order</cell><cell>drink</cell></row><row><cell>service</cell><cell>food</cell><cell>location</cell><cell>food</cell><cell>bar</cell></row><row><cell>meal</cell><cell>order</cell><cell>restaurant</cell><cell>service</cell><cell>order</cell></row><row><cell>experience</cell><cell>staff</cell><cell>bar</cell><cell>menu</cell><cell>wine</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 6 :</head><label>6</label><figDesc>Top-K recommendation results on Dianping dataset, where the result listed for EFM is the best performance with the corresponding k.</figDesc><table><row><cell cols="2">Method MP</cell><cell cols="2">SO NMF BPRMF HFT</cell><cell>EFM</cell></row><row><cell cols="3">NDCG 0.244 0.212 0.216</cell><cell>0.238 0.261 k = 50 0.284</cell></row><row><cell>AUC</cell><cell cols="2">0.837 0.785 0.832</cell><cell>0.856 0.873 k = 50 0.884</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 7 :</head><label>7</label><figDesc>Key statistics of synonym clusters.</figDesc><table><row><cell>Dataset</cell><cell cols="3">#Feature #Cluster #F/#C</cell></row><row><cell>Yelp10</cell><cell>96</cell><cell>31</cell><cell>3.10</cell></row><row><cell>Dianping</cell><cell>113</cell><cell>26</cell><cell>4.35</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_8"><head>Table 8 :</head><label>8</label><figDesc>Word clusters of the top 15 features.</figDesc><table><row><cell>1</cell><cell>place, restaurant, location, area, way</cell><cell>2</cell><cell>food, menu, lunch, pizza, dinner</cell></row><row><cell cols="4">3 service, time, staff, order 4 experience, quality</cell></row><row><cell cols="4">5 room, atmosphere, decor 6 price, cost</cell></row><row><cell cols="3">7 beer, wine, drink, water, coffee</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head>Table 9 :</head><label>9</label><figDesc>The number of browsing records, clicks and click through rate for the three user types.</figDesc><table><row><cell>User Set</cell><cell>A</cell><cell>B</cell><cell>C</cell></row><row><cell>Records</cell><cell cols="3">#Record #Click #Record #Click #Record #Click 15,933 691 11,483 370 17,265 552</cell></row><row><cell>CTR</cell><cell>4.34%</cell><cell>3.22%</cell><cell>3.20%</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10"><head>Table 10 :</head><label>10</label><figDesc>The overall confusion matrix corresponding to the 1328 common items of A (with explanations) and B (without explanations) users. Recommend x 11 1,261 x 12 16,572 x 11 1,129 x 12 28,218 ¬Recommned x 21 72 x 22 2,830 x 21 541 x 22 2,749</figDesc><table><row><cell>Confusion</cell><cell>A</cell><cell></cell><cell>B</cell><cell></cell></row><row><cell>Matrix</cell><cell>Add</cell><cell>¬Add</cell><cell>Add</cell><cell>¬Add</cell></row><row><cell>AddToCart%</cell><cell cols="2">6.43%</cell><cell cols="2">5.12%</cell></row><row><cell>Agreement%</cell><cell cols="2">19.73%</cell><cell cols="2">11.89%</cell></row><row><cell>RecAgree%</cell><cell cols="2">7.07%</cell><cell cols="2">3.85%</cell></row><row><cell>DisRecAgree%</cell><cell cols="2">97.5%</cell><cell cols="2">83.56%</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">http://www.yelp.com/dataset_challenge 2 http://www.dianping.com</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4">http://wordnet.princeton.edu 5 http://www.keenage.com</note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6">http://www.jd.com</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgement</head><p>The authors thank the reviewers for the constructive suggestions. Part of this work was supported by Chinese Natural Science Foundation (60903107, 61073071) and National High Technology Research and Development Program (2011AA01 A205), and the fourth author is sponsored by the National Science Foundation (IIS-0713111). The opinions, findings or conclusions expressed in this paper are the authors', and do not necessarily reflect those of the sponsors.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Informed Recommender: Basing Recommendations on</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Aciar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Simoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Debenham</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Consumer Product Reviews. Intelligent Systems</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="39" to="47" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bilgic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+		<title level="m">Explaining Recommendations: Satisfaction vs. Promotion. IUI</title>
+				<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">The Effects of Transparency on Trust in and Acceptance of a Content-Based Art Recommender</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Cramer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Evers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ramlal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Van Someren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">User Modeling and User-Adapted Interaction</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="455" to="496" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cremonesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turrin</surname></persName>
+		</author>
+		<title level="m">Performance of Recommender Algorithms on Top-N Recommendation Tasks. RecSys</title>
+				<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="39" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Orthogonal Nonnegative Matrix Tri-Factorizations for Clustering</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Park</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<biblScope unit="page" from="126" to="135" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">A Holistic Lexicon Based Approach to Opinion Mining</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Yu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<publisher>WSDM</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Beyond the Stars: Improving Rating Predictions using Review Text Content</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ganu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Elhadad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Marian</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Predicting the Popularity of Web 2.0 Items based on User Comments</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sugiyama</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>SIGIR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Comment-based Multi-View Clustering of Web 2.0 Items</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Explaining collaborative filtering recommendations</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<publisher>CSCW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Mining and Summarizing Customer Reviews</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<biblScope unit="page" from="168" to="177" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Beyond the Stars: Exploiting Free-Text User Reviews to Improve the Accuracy of Movie Recommendations</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Jakob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">H</forename><surname>Weber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Müller</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<publisher>TSA</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Integrating Collaborative Filtering and Sentiment Analysis: A Rating Inference Approach</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">W</forename><surname>Leung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">C</forename><surname>Chan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Lai Chung</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>ECAI</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Matrix Factorization Techniques for Recommender Systems</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Algorithms for Non-negative Matrix Factorization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">S</forename><surname>Seung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. NIPS</title>
+				<meeting>NIPS</meeting>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Slope One Predictors for Online Rating-Based Collaborative Filtering</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lemire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Maclachlan</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<publisher>SDM</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Opinion Observer: Analyzing and Comparing Opinions on the Web</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cheng</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">A Survey of Opinion Mining and Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Jour. Mining Text Data</title>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Automatic construction of a context-aware sentiment lexicon: An optimization approach</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Castellanos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Dayal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhai</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Hidden Factors and Hidden Topics: Understanding Rating Dimensions with Review Text</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcauley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">RecSys</title>
+		<imprint>
+			<biblScope unit="page" from="165" to="172" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Recommendation Using Textual Opinions</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Musat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Faltings</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJCAI</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Dependency Tree-based Sentiment Classification using CRFs with Hidden Variables</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Nakagawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Inui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kurohashi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NAACL</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Finding and evaluating community structure in networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Newman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Girvan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. Review</title>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Opinion Mining and Sentiment Analysis. Found. &amp; Trends in Info</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Retr</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="1" to="2" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Thumbs up? sentiment classification using machine learning techniques</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Pang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EMNLP</title>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Sentiment Analysis of User Comments for One-Class Collaborative Filtering over TED Talks. SIGIR</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Pappas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Belis</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="773" to="776" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Opinion-Driven Matrix Factorization for Rating Prediction</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Pero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Horvath</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">UMAP</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Freudenthaler</surname></persName>
+		</author>
+		<title level="m">Bayesian Personalized Ranking from Implicit Feedback. UAI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Fast Maximum Margin Matrix Factorization for Collaborative Prediction</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rennie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Srebro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ICML</title>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Bayesian Probabilistic Matrix Factorization using Markov Chain Monte Carlo</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mnih</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ICML</title>
+				<meeting>ICML</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<title level="m" type="main">Do Social Explanations Work? Studying and Modeling the Effects of Social Explanations in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cosley</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Weighted Low-rank Approximations</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Srebro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jaakkola</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. ICML</title>
+				<meeting>ICML</meeting>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="720" to="727" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">A survey of collaborative filtering techniques. Advanc</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Khoshgoftaar</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<pubPlace>AI</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Lexicon-Based Methods for Sentiment Analysis</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Taboada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Brooke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tofiloski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Voll</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Stede</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Linguastics</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A Unified Framework for Emotional Elements Extraction based on Finite State Matching Machine</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NLPCC</title>
+		<imprint>
+			<biblScope unit="volume">400</biblScope>
+			<biblScope unit="page" from="60" to="71" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Free text in user reviews: Their role in recommender systems</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Terzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Ferrario</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Whittle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">RecSys</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">A Survey of Explanations in Recommender Systems. ICDE</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<title level="m" type="main">Designing and Evaluating Explanations for Recommender Systems. Recommender Systems Handbook</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Masthoff</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="479" to="510" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Riedl</surname></persName>
+		</author>
+		<title level="m">Tagsplanations: Explaining Recommendations Using Tags. IUI</title>
+				<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<monogr>
+		<title level="m" type="main">Annotating expressions of opinions and emotions in language</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wiebe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Cardie</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<publisher>LREC</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Recognizing contextual polarity in phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wiebe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EMNLP</title>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Multi-level structured models for document-level sentiment classification</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Yessenalina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yue</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EMNLP</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<title level="m" type="main">Do Users Rate or Review? Boost Phrase-level Sentiment Labeling with Review-level Sentiment Classification</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>SIGIR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<title level="m" type="main">Improve Collaborative Filtering Through Bordered Block Diagonal Form Matrices</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>SIGIR</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Localized Matrix Factorization for Recommendation based on Matrix Block Diagonal Forms</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Feng</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

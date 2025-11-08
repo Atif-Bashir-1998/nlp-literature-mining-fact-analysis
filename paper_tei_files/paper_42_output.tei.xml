@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">An Explainable Autoencoder For Collaborative Filtering Recommendation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2019-12-23">23 Dec 2019</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Pegah</forename><forename type="middle">Sagheb</forename><surname>Haghighi</surname></persName>
+							<email>pegah.saghebhaghighi@louisville.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Dept. of Computer Science and Engineering</orgName>
+								<orgName type="laboratory">Knowledge Discovery and Web Mining Lab</orgName>
+								<orgName type="institution">University of Louisville Louisville</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Olurotimi</forename><surname>Seton</surname></persName>
+							<email>rotimi.seton@louisville.edu</email>
+							<affiliation key="aff1">
+								<orgName type="department">Dept. of Computer Science and Engineering</orgName>
+								<orgName type="laboratory">Knowledge Discovery and Web Mining Lab</orgName>
+								<orgName type="institution">University of Louisville Louisville</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+							<email>olfa.nasraoui@louisville.edu</email>
+							<affiliation key="aff2">
+								<orgName type="department">Dept. of Computer Science and Engineering</orgName>
+								<orgName type="laboratory">Knowledge Discovery and Web Mining Lab</orgName>
+								<orgName type="institution">University of Louisville Louisville</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">An Explainable Autoencoder For Collaborative Filtering Recommendation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2019-12-23">23 Dec 2019</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">8E829F1FD4EB9C306240FBBA4959712B</idno>
+					<idno type="arXiv">arXiv:2001.04344v1[cs.IR]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>recommender systems</term>
+					<term>explainability</term>
+					<term>neural networks</term>
+					<term>autoencoder</term>
+					<term>deep learning</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Autoencoders are a common building block of Deep Learning architectures, where they are mainly used for representation learning. They have also been successfully used in Collaborative Filtering (CF) recommender systems to predict missing ratings. Unfortunately, like all black box machine learning models, they are unable to explain their outputs. Hence, while predictions from an Autoencoderbased recommender system might be accurate, it might not be clear to the user why a recommendation was generated. In this work, we design an explainable recommendation system using an Autoencoder model whose predictions can be explained using the neighborhood based explanation style. Our preliminary work can be considered to be the first step towards an explainable deep learning architecture based on Autoencoders.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>The use of information filtering tools that discover or suggest relevant and personalized items has become essential to avoid information overload. For instance, recommender systems assist users by providing them with personalized suggestions. They recommend items in a variety of domains (music, movies, books, travel recommendation, etc). However, the most accurate recommendation models tend to be black boxes <ref type="bibr" target="#b6">[7]</ref> that cannot justify why items are recommended to a user. The ability of a recommender system to explain the reasoning of its recommendation can serve as a bridge between humans and recommender systems. Explanations can serve different purposes such as building trust, improving transparency and user satisfaction and helping users make informed decisions <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b13">14]</ref>. Latent factor models have been the state of the art in Collaborative Filtering recommender systems. For instance, Matrix Factorization (MF) learns hidden interactions between entities to predict possible user ratings for items. However, a common challenge with this method is the difficulty of explaining recommendations to users using the latent dimensions. To solve this problem, some explainable recommendation algorithms have recently been proposed. For instance, Explicit factor models (EFM) <ref type="bibr" target="#b16">[17]</ref> generate explanations based on the explicit features extracted from users' reviews. Explainable Matrix Factorization (EMF) <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b2">3]</ref> is another algorithm that uses an explainability regularizer or soft constraint in the objective function of classical matrix factorization. The constraining term tries to bring the user and explainable item's latent factor vectors closer, thus favoring the appearance of explainable items at the top of the recommendation list. When it comes to Autoencoder recommender models however, very little research has been conducted to address the explainability of the predictions. In this paper, we propose an Autoencoder model that finds top n accurate recommendations that are explainable without the use of additional data modalities such as content. The rest of the paper is organized as follows: Section 2 reviews related work, Section 3 presents a novel explainable Autoencoder for Collaborative Filtering. Section 4 presents the experimental results. Finally, Section 5 concludes the paper. For clarity, all notations used in this paper are summarized in Table <ref type="table" target="#tab_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">RELATED WORK</head><p>Recently, a growing body of research has involved using neural networks such as Autoencoders for collaborative filtering. An Autoencoder is an unsupervised learning model and a form of neural network which aims to learn important features of the dataset. Architecturally, an Autoencoder is a three-layer feed-forward neural network consisting of an input layer, a hidden layer and an output layer. Figure <ref type="figure" target="#fig_0">1</ref> depicts a classical Autoencoder architecture. An Autoencoder consists of two parts, an encoder and a decoder. The encoder maps input features into a hidden representation and the decoder aims to reconstruct the input features from the hidden features <ref type="bibr" target="#b7">[8]</ref>. The encoder and decoder may each have a deep architecture which consists of multiple hidden layers. It is worth noting that the output layer has the same dimension or number of neurons as the input layer.   <ref type="formula" target="#formula_0">1</ref>). User preferences are encoded in a sparse matrix of ratings R ϵ R m×n , where m and n are the number of users and items, respectively. U = {1, .., m} represents the set of all users and I = {1, .., n} represents the set of all items. Each user u ϵ U is represented by a sparse vector r (u) = {R u1 , ..., R un }, and each item i ϵ I is represented by a sparse vector r (i) = {R 1i , ..., R mi }. The hidden or latent representation is given by</p><formula xml:id="formula_0">h = σ (W 1 .r + b)<label>(1)</label></formula><p>where σ is the activation function -in this case the sigmoid function ( <ref type="formula" target="#formula_0">1</ref>1+e −x ), W 1 is a weight matrix, and b is a bias vector. The decoder maps the latent representation h into a reconstruction output r given by</p><formula xml:id="formula_1">r = σ ′ (W 2 .h + b ′ )<label>(2)</label></formula><p>where σ ′ is an activation function -in this case Identity. The goal of the Autoencoder is to minimize the reconstruction error by minimizing a reconstruction loss function as follows</p><formula xml:id="formula_2">min u ∥ r u − ru ∥ 2 + λ 2 .(∥ W 1 ∥ 2 F + ∥ W 2 ∥ 2 F )<label>(3)</label></formula><p>where λ is the regularization term coefficient and ||.|| is the Frobenius norm.</p><p>Wu et al. <ref type="bibr" target="#b14">[15]</ref> introduced the Collaborative Denoising Auto-Encoder (CDAE) which has one hidden layer that encodes a latent vector for the user. Strub and Mary <ref type="bibr" target="#b12">[13]</ref> proposed a Stacked Denoising AutoEncoders neural network (SDAE) with sparse inputs for recommender systems. <ref type="bibr" target="#b15">[16]</ref> developed an Autoencoder model which learns feature representations from side information to improve recommendations.</p><p>When it comes to neural network models, there are a few related works that focus on explainable recommender systems. Seo et al. <ref type="bibr" target="#b11">[12]</ref> designed an interpretable Convolutional Neural Network (CNN) model that predicts ratings using text reviews and ratings data. The authors used two attention layers: a local attention layer and a global attention layer. The local layer learns which keywords are more informative, whereas the global layer learns word sequences from the original review. Finally, the outputs of these two layers are combined and passed through the fully connected layers.</p><p>Costa et al. <ref type="bibr" target="#b5">[6]</ref> presented a model based on Long Short Term Memory (LSTM) Recurrent Neural Network (RNN) to automatically generate natural language explanations for recommender systems. The authors tried to improve the work proposed by <ref type="bibr" target="#b8">[9]</ref> by considering a vector of auxiliary data instead of only one dimension of auxiliary information. The vector of auxiliary data in their model is a set of rating scores for different features of items.</p><p>Chen et al. <ref type="bibr" target="#b4">[5]</ref> used both implicit feedback and textual reviews to introduce a visually explainable recommendation. By combining images and reviews, their model generated natural language explanations, which could describe the highlighted image regions to the user.</p><p>Recently, Bellini et al. <ref type="bibr" target="#b3">[4]</ref> introduced the SEM-AUTO approach which makes use of Autoencoders and semantic information via the DBpedia knowledge graph. The authors mapped a set of categorical features of an item into the hidden layers for each user. As a result, this model is capable of retrieving the categorical information of the items rated by the user. The proposed model aims to capture the shared side information of all the items rated by a user. Hence, the information associated with positively rated items get a high value (close to 1), and for those with negatively rated items will tend to be closer to 0. This approach can therefore help Autoencoders find the potential features that match userâĂŹs tastes.</p><p>To summarize our review, neural network models and in particular Autoencoders, have recently received increasing attention in the Recommender Systems field. However, like other latent factor models, Autoencoders are black-box models that are unable to provide an explanation for their output. The research questions that we are trying to answer are: (1) Can we generate an explainable Collaborative Filtering recommender system using the Autoencoder architecture? (2) Can the explainable Autoencoder maintain an accuracy that is comparable to the classical Autoencoder?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">THE EXPLAINABLE AUTOENCODER (E-AUTOREC)</head><p>Our work is inspired by U-AutoRec <ref type="bibr" target="#b10">[11]</ref> and <ref type="bibr" target="#b15">[16]</ref> with one important distinction where we feed an explainability vector of the same size as the ratings to additional input layer units in a way that is similar to adding an explainability layer to the Explainable Restricted Boltzmann Machine <ref type="bibr" target="#b1">[2]</ref>. The architecture of our model is shown in Figure <ref type="figure" target="#fig_1">2</ref>. In <ref type="bibr" target="#b12">[13]</ref>, the rationale for adding side information to the Autoencoder inputs in the form of an additional (hybrid) modality such as user profile features, was that when many input ratings are missing, the side information would take over to solve the cold start problem or to alleviate the sparsity of the ratings. In our case, the side information consists of the explainability scores, which likewise can help compensate for the sparsity of the ratings, but unlike the hybrid side information in <ref type="bibr" target="#b12">[13]</ref>, our side information makes up for lack of rating data using the explainability of an item to a user, which is itself a byproduct of the ratings only and not external or hybrid data. In fact the explainability of an item to a user is derived directly from the rationale of collaborative filtering by aggregating the nearest neighboring usersâĂŹ ratings on that item.</p><p>In the following, the reader should refer to Table <ref type="table" target="#tab_0">1</ref> as a reference for all the notation symbols used in our equations. The proposed encoder takes as input each userâĂŹs ratings vector rϵ R n and a userâĂŹs explainability score vector e ϵ R n that is pre-computed offline for each user (calculated as explained in Eq.( <ref type="formula">6</ref>)-( <ref type="formula" target="#formula_8">8</ref>), similarly to the explainability scores in <ref type="bibr" target="#b2">[3]</ref>) and maps them to the latent feature vector hϵ R k , where k is the number of hidden units, as follows</p><formula xml:id="formula_3">h = σ (W r +e 1 .(r + e) + b)<label>(4)</label></formula><p>While both the output, see Eq. ( <ref type="formula" target="#formula_1">2</ref>), and the loss function, see Eq. (3), remain the same. It is worth noting that W r +e 1 ϵ R 2×n×k is the connection weight matrix between the hidden layer and the input layer accepting both the ratings and the explainability scores.</p><p>We computed the explanation scores offline based on a collaborative filtering neighborhood rationale. The nearest neighbors are determined based on the cosine similarity. The explainability score for the user-based neighbor explanation <ref type="bibr" target="#b2">[3]</ref> is given by:</p><formula xml:id="formula_4">Exp.Score (u,i) = E(r u,i |N u ) = x ϵ X x × Pr (r u,i = x |u ϵ N u ) (5)</formula><p>where</p><formula xml:id="formula_5">Pr (r u,i = x |v ϵ N u ) = |N u ∩ U i,x | |N u | (6)</formula><p>r u,i is the rating user u gave to item i, U i,x is the set of users who have given the same rating x to item i, and N u is the set of neighbors for user u.</p><p>The explainability matrix, E, is a thresholded version of the neighborhood explanation scores <ref type="bibr" target="#b2">[3]</ref>, as follows</p><formula xml:id="formula_6">E u,i = Exp.Score (u,i) if Exp.Score (u,i) &gt; θ 0 otherwise (<label>7</label></formula><formula xml:id="formula_7">)</formula><p>where θ is a user-defined threshold value to accept if item i is explainable to user u. Exp.Score (u,i) is the expected value calculated in Eq. ( <ref type="formula">5</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">EXPERIMENTAL RESULTS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Data and Metrics</head><p>We tested our approach on the MovieLens benchmark data. This dataset consists of 100K ratings on a scale of 1-5, given by 943 users to 1682 movies, where each user has rated at least 20 movies. The rating data was randomly split into 90% training and 10% testing subsets and the ratings were normalized between 0 and 1. We compared our results with the user-based AutoRec baseline method <ref type="bibr" target="#b10">[11]</ref> which uses the same input as our Autoencoder (that is, ratings). We did not compare to <ref type="bibr" target="#b12">[13]</ref> and <ref type="bibr" target="#b15">[16]</ref> because they are hybrid approaches benefiting from an additional user feature modality, unlike our pure rating-based collaborative filtering approach. To assess the rating prediction accuracy, we use the Root Mean Squared Error (RMSE), see Eq. ( <ref type="formula" target="#formula_8">8</ref>), for both the AutoRec baseline and the proposed E-AutoRec (Explainable Autoencoder) (as shown in Figure <ref type="figure" target="#fig_2">3</ref>) and the Mean Average Precision (MAP) score Eg. <ref type="bibr" target="#b9">(10)</ref>. We also measured the explainability of the models using the Mean Explainable Precision (MEP) given in Eq. ( <ref type="formula" target="#formula_9">9</ref>), as proposed by <ref type="bibr" target="#b0">[1]</ref>.</p><formula xml:id="formula_8">RMSE = 1 |R t est | (r u,i − ru,i ) 2<label>(8)</label></formula><p>where |R t est | is the total number of ratings in the test set, r u,i is the true rating and ru,i is the predicted rating for user u and item i. The Mean Explainability Precision (MEP) for the top-n recommended list I u r ec is computed as follows: let I u r ec be the top-n recommended list for user u and E u r ec be the set of explainable items.</p><formula xml:id="formula_9">MEP@n = 1 |U| u ∈U |I exp ∩ I r ec | |I r ec |<label>(9)</label></formula><p>where I exp is the set of explainable items for user u, I r ec is the set of items in the top-n recommendation list for user u, |I exp ∩ R r ec | is the number of explainable items present in the top-n recommendation list for user u, and |U| is the number of users in the test-set.</p><p>Finally, to evaluate the top-n recommendation performance, we compute the Mean Average Precision (MAP) shown in Figure <ref type="figure" target="#fig_3">4</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Analysis of Results</head><p>The results in Figure <ref type="figure" target="#fig_2">3</ref>-Figure <ref type="figure">6</ref>, show that the proposed Explainable Autoencoder (E-AutoRec) succeeds to make predictions that are at least as accurate as the baseline Autoencoder (AutoRec), while promoting the explainability of the items in the top-n recommendation list (MEP is higher across all tested parameter ranges).</p><p>Figure <ref type="figure" target="#fig_3">4</ref> shows the metrics MAP (a) and MEP (b) for both models, as the number of recommended items (n) increases. In all experiments where we varied a parameter, we fixed the remaining parameters as follows: The explainability threshold θ = 0, the neighborhood size |N u | = 50 and the number of hidden units k = 300. In the case of top-n recommendations, both models appear to perform well up to a top 20 recommendation list, beyond which both suffer a significant drop in performance (Figure <ref type="figure" target="#fig_3">4a</ref>). However, the MEP for both models improves well beyond the top 20 recommended items (Figure <ref type="figure" target="#fig_3">4b</ref>). To study the effect of the number of hidden units and neighborhood size (used for generating the Explainability Matrix(E)), we varied both values and measured the resulting MAP and MEP metrics, as shown in Figure <ref type="figure">5</ref> and Figure <ref type="figure">6</ref>. These results confirm that the accuracy and explainability are significantly better in E-AutoRec, compared to the baseline AutoRec, across all parameter ranges. Although at first, oneâĂŹs intuition is that accuracy has to pay a price for each increase in explainability, this does not occur in E-AutoRec. This is because the explainability values are integrated within the actual machine learning process, and the learning process is based on the same reconstruction loss function for rating prediction, thus maintaining the prediction accuracy. However explainability is enhanced because the explainabilty scores are used as side information, thus compensating for sparse inputs, and as a result effectively enhancing both the accuracy and the explainability of the predictions. It is worth noting that the neighborhood size used to compute the explainability scores acts like a control parameter that could lead to a trade-off between accuracy and explainability: Notice how more neighbors increases the explainability precision (MEP) but only slightly (and slowly) reduces MAP; however even with this small decrease, MAP for E-AutoRec remains higher than for the non-explainable baseline (AutoRec). We also investigated the effect of the explainability threshold θ on the explainability metric(Figure <ref type="figure">6c</ref>). While our proposed E-AutoRec model maintains its higher explainability in comparison with the conventional AutoRec, the explainability decreases for both methods as we impose more restrictions (higher θ ) on the explainability score. This result is expected since a higher threshold reduces the number of explainable items relative to a user (resulting in more zeros in the explainability matrix E).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">CONCLUSION</head><p>We proposed an explainable Autoencoder approach (E-AutoRec) which incorporates user ratings into both the inputs to be reconstructed and user-neighborhood collaborative filtering justified explainability scores as side information. Our experiments showed that E-AutoRec outperforms the baseline in terms of RMSE, explainability and MAP metrics for a wide range of tested parameters. The results demonstrate that using the pre-computed explainability scores as an additional side information fed to the input layer helps the Autoencoder to make predictions that are simultaneously more accurate and explainable. Thus there was no sacrifice in accuracy to pay for the increase in explainability of E-AutoRec. This is because the explainability values are integrated within the actual machine learning process, which keeps the same reconstruction loss function as the pure AutoRec model. However explainability is enhanced specifically because the explainabilty scores are used as side information to compensate for sparse inputs in the Autoencoder architecture, thus effectively enhancing both the accuracy and the explainability of the predictions. In the future, we plan to compare the proposed model with additional baseline models and investigate additional explainable Deep Learning architectures.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: An Autoencoder Architecture</figDesc><graphic coords="1,345.83,564.37,184.50,87.90" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Explainable AutoEncoder (E-AutoRec)</figDesc><graphic coords="3,72.52,255.41,202.80,87.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: RMSE vs epochs on test-set</figDesc><graphic coords="3,376.52,443.68,123.12,81.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: (a) MAP and (b) MEP vs. n, the size of the top-n recommendation list</figDesc><graphic coords="4,63.51,277.18,105.93,66.66" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :Figure 6 :</head><label>56</label><figDesc>Figure 5: (a) MAP and (b) MEP vs. number of hidden units</figDesc><graphic coords="4,63.51,598.58,105.93,69.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Summary of notations</figDesc><table><row><cell>Symbol</cell><cell>Description</cell><cell>Symbol</cell><cell>Description</cell></row><row><cell>U I</cell><cell>set of all users set of all items</cell><cell>U i,x R t est</cell><cell>set of users given rating x to item i ratings in the test set</cell></row><row><cell>σ b, b ′</cell><cell>sigmoid activation functions biases</cell><cell>σ ′ E</cell><cell>identity activation function explainability matrix</cell></row><row><cell>R</cell><cell>rating matrix</cell><cell>e</cell><cell>explainability vector</cell></row><row><cell>r u r i</cell><cell>user sparse rating vector item sparse rating vector</cell><cell>N u W 1 , W 2</cell><cell>set of users who are most similar to user u connection weights between layers</cell></row><row><cell cols="3">accuracy than current state-of-the-art methods such as Matrix Fac-</cell><cell></cell></row><row><cell cols="3">torization to predict missing values of the user-item matrix. Their</cell><cell></cell></row><row><cell cols="3">model worked as follows: Given a hidden layer, the encoder sec-</cell><cell></cell></row><row><cell cols="3">tion of an Autoencoder takes the ratings data r of each user and</cell><cell></cell></row><row><cell cols="2">maps it to a latent representation h, see Eq.(</cell><cell></cell><cell></cell></row></table></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Explainable matrix factorization for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2872518.2889405</idno>
+		<ptr target="https://doi.org/10.1145/2872518.2889405" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 25th International Conference Companion on World Wide Web. International World Wide Web Conferences Steering Committee</title>
+				<meeting>the 25th International Conference Companion on World Wide Web. International World Wide Web Conferences Steering Committee</meeting>
+		<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="page" from="5" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1606.07129</idno>
+		<title level="m">Explainable restricted Boltzmann machines for collaborative filtering</title>
+				<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Using explainability for constrained matrix factorization</title>
+		<author>
+			<persName><forename type="first">Behnoush</forename><surname>Abdollahi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Olfa</forename><surname>Nasraoui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM Conference on Recommender Systems</title>
+				<meeting>the Eleventh ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Auto-Encoding User Ratings via Knowledge Graphs in Recommendation Scenarios</title>
+		<author>
+			<persName><forename type="first">Vito</forename><surname>Bellini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Vito</forename><forename type="middle">Walter</forename><surname>Anelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tommaso</forename><surname>Di Noia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eugenio</forename><forename type="middle">Di</forename><surname>Sciascio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2nd Workshop on Deep Learning for Recommender Systems</title>
+				<meeting>the 2nd Workshop on Deep Learning for Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="60" to="66" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Yixin Cao, Zheng Qin, and Hongyuan Zha</title>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongteng</forename><surname>Xu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1801.10288</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Visually Explainable Recommendation</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Automatic Generation of Natural Language Explanations</title>
+		<author>
+			<persName><forename type="first">Felipe</forename><surname>Costa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sixun</forename><surname>Ouyang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peter</forename><surname>Dolog</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aonghus</forename><surname>Lawlor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd International Conference on Intelligent User Interfaces Companion</title>
+				<meeting>the 23rd International Conference on Intelligent User Interfaces Companion</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page">57</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Explaining collaborative filtering recommendations</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Jonathan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Joseph</forename><forename type="middle">A</forename><surname>Herlocker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><surname>Konstan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Riedl</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2000 ACM conference on Computer supported cooperative work</title>
+				<meeting>the 2000 ACM conference on Computer supported cooperative work</meeting>
+		<imprint>
+			<date type="published" when="2000">2000. 2000</date>
+			<biblScope unit="page" from="241" to="250" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Reducing the dimensionality of data with neural networks</title>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><forename type="middle">E</forename><surname>Hinton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruslan</forename><forename type="middle">R</forename><surname>Salakhutdinov</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.1127647</idno>
+		<ptr target="https://doi.org/10.1126/science.1127647" />
+	</analytic>
+	<monogr>
+		<title level="j">science</title>
+		<imprint>
+			<biblScope unit="volume">313</biblScope>
+			<biblScope unit="page" from="504" to="507" />
+			<date type="published" when="2006">2006. 2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<author>
+			<persName><forename type="first">Sharad</forename><surname>Zachary C Lipton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Julian</forename><surname>Vikram</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mcauley</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1511.03683</idno>
+		<title level="m">Capturing meaning in product reviews with character-level generative text models</title>
+				<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yuanxin</forename><surname>Ouyang</surname></persName>
+		</author>
+		<title level="m">Autoencoder-based collaborative filtering. International Conference on Neural Information Processing</title>
+				<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2014">2014. 2014</date>
+			<biblScope unit="page" from="284" to="291" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Autorec: Autoencoders meet collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Suvash</forename><surname>Sedhain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aditya</forename><forename type="middle">Krishna</forename><surname>Menon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Scott</forename><surname>Sanner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lexing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th International Conference on World Wide Web</title>
+				<meeting>the 24th International Conference on World Wide Web</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="111" to="112" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Interpretable convolutional neural networks with dual local and global attention for review rating prediction</title>
+		<author>
+			<persName><forename type="first">Sungyong</forename><surname>Seo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Eleventh ACM Conference on Recommender Systems</title>
+				<meeting>the Eleventh ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="297" to="305" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering with stacked denoising autoencoders and sparse inputs</title>
+		<author>
+			<persName><forename type="first">Florian</forename><surname>Strub</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeremie</forename><surname>Mary</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS Workshop on Machine Learning for eCommerce</title>
+				<imprint>
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Effective explanations of recommendations: user-centered design</title>
+		<author>
+			<persName><forename type="first">Nava</forename><surname>Tintarev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Judith</forename><surname>Masthoff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2007 ACM conference on Recommender systems</title>
+				<meeting>the 2007 ACM conference on Recommender systems</meeting>
+		<imprint>
+			<date type="published" when="2007">2007. 2007</date>
+			<biblScope unit="page" from="153" to="156" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Collaborative denoising auto-encoders for top-n recommender systems</title>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Dubois</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alice</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Ester</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/2835776.2835837</idno>
+		<ptr target="https://doi.org/10.1145/2835776.2835837" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Ninth ACM International Conference on Web Search and Data Mining</title>
+				<meeting>the Ninth ACM International Conference on Web Search and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="page" from="153" to="162" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">Shuai</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lina</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiwei</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sen</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liming</forename><surname>Zhu</surname></persName>
+		</author>
+		<title level="m">Hybrid collaborative recommendation via semi-autoencoder. International Conference on Neural Information Processing</title>
+				<meeting><address><addrLine>Cham</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</title>
+				<meeting>the 37th international ACM SIGIR conference on Research &amp; development in information retrieval</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="83" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

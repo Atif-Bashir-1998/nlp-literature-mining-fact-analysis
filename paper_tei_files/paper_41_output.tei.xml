@@ -1,0 +1,1632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Neural Collaborative Filtering to Detect Anomalies in Human Semantic Trajectories</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-10-08">8 Oct 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Yueyang</forename><surname>Liu</surname></persName>
+							<email>yueyang.liu@emory.edu</email>
+							<affiliation key="aff0">
+								<orgName type="institution">Emory University</orgName>
+								<address>
+									<settlement>Atlanta</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Lance</forename><surname>Kennedy</surname></persName>
+							<email>lance.kennedy@emory.edu</email>
+							<affiliation key="aff1">
+								<orgName type="institution">Emory University</orgName>
+								<address>
+									<settlement>Atlanta</settlement>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Neural Collaborative Filtering to Detect Anomalies in Human Semantic Trajectories</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-10-08">8 Oct 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">3B73C6AD792E249B74A46890FEC37B88</idno>
+					<idno type="arXiv">arXiv:2409.18427v3[cs.LG]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T11:03+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Recommendation Systems</term>
+					<term>Collaborative Filtering</term>
+					<term>Neural Networks</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Human trajectory anomaly detection is critical for applications such as security surveillance and public health, yet most existing methods focus on vehicle-level traffic, with limited attention to human-level trajectories. Due to the inherent sparsity of human trajectory data, machine learning approaches are favored for detecting complex patterns. However, concerns about model biases and robustness have highlighted the need for more transparent and explainable solutions. In this paper, we propose a lightweight anomaly detection model specifically designed to detect anomalies in human trajectories. We propose a Neural Collaborative Filtering approach to model and predict normal mobility. Our method is designed to model users' daily patterns of life without requiring prior knowledge, thereby enhancing performance in scenarios where data is sparse or incomplete, such as in cold start situations. Our algorithm consists of two main modules. The first is the collaborative filtering module, which applies collaborative filtering to model normal mobility of individual humans to places of interest. The second is the neural module, responsible for interpreting the complex spatio-temporal relationships inherent in human trajectory data. To validate our approach, we conducted extensive experiments using simulated and real-world datasets comparing to numerous state-of-the-art trajectory anomaly detection approaches.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="11" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>A trajectory is a trace generated by a moving object in a geographic space, usually represented by a sequence of chronologically ordered points <ref type="bibr" target="#b60">[61]</ref>. A semantic trajectory <ref type="bibr" target="#b37">[38]</ref> is a sequence of chronologically ordered points where some points may be enriched with semantic information such as the type of a visited place of interest. Figure <ref type="figure" target="#fig_0">1</ref> shows an example of a semantic trajectory of a user in the GeoLife <ref type="bibr" target="#b61">[62]</ref> dataset in Beijing, China. Blue points form lines to visualize the trajectory of the user and location markers highlight staypoints that can be reverse geocoded to obtain semantic information of visited places.</p><p>An anomaly is commonly defined as a data point that is significantly different from the remaining data. Anomalies are also referred to as abnormalities, discordants, deviants, or anomalies in the data mining and statistics literature <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b45">46]</ref>. In this example, the monitored user mainly stays within a certain area and only has a single long-distance trip. Finding anomalous behavior in semantic trajectories has many applications: •Infectious Disease Early-Warning: a large number of people staying at home from work may indicate an outbreak of an infectious disease even before people notice more severe symptoms <ref type="bibr" target="#b36">[37]</ref>. •Elder Monitoring: A person suffering from dementia wandering the park at 11pm may indicate that the person might be lost and in need of assistance <ref type="bibr" target="#b46">[47,</ref><ref type="bibr" target="#b50">51]</ref>. •Child Safety: A child being taken to a far away house when they should be at school may indicate a possible child abduction <ref type="bibr" target="#b15">[16]</ref>. Despite these important applications, the implementation of systems to support them is challenging, as it becomes very difficult to decide: What part of a trajectory is anomalous? What part is normal? For example, Figure <ref type="figure" target="#fig_0">1</ref> shows the six-week trajectory of a user in GeoLife. This trajectory allows us to observe the users patterns of life: including their home location, their work or school location, and other places the user likes to visit. Existing work on trajectory-based user identification has shown that an individual's patterns of life are like a unique fingerprint <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b44">45]</ref>, thus allowing identification of any individual human even among a large crowd of users. But the goal of this work is not to identify users, but to detect anomalous behavior within a user's trajectory. Such anomalies, of having users deviate from their normal patterns of life, may indicate a stolen phone or indicate distress, such as an abducted child or a lost elder with dementia. To illustrate the problem of trajectory anomaly detection, Figure <ref type="figure" target="#fig_0">1</ref> depicts the multi-week trajectory of GeoLife user 15. Let us assume that this trajectory belongs to a nine-year-old child named Maria. Also, assume that the one trip to the East of the City happened during a time when Maria would normally be at school. Do we think that this trip is anomalous? Could it be that Maria was abducted? We don't really have enough information to answer this question without knowing the semantics of the visited place. Maybe this is the location of the National History Museum that high school classes commonly visit and Maria is happily looking at dinosaur fossils? Maybe this is the location of the home of Maria's friend, whom other children like Maria often visit to skip school. None of these cases would be cause for safety concerns. We use this stylized example to show that we need to know more than just time and location to infer anomalous behavior: We need the semantics of places: What other individuals visited this place? Even though Maria never visited this place: Is it normal for others like Maria to visit this place?</p><p>Over the past few decades, a considerable amount of research has been dedicated to trajectory anomaly detection across multiple domains, including human mobility <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b33">34]</ref>, maritime <ref type="bibr" target="#b32">[33]</ref>, and transportation <ref type="bibr" target="#b13">[14]</ref>. These works mainly define anomaly trajectories as those that exhibit a large distance (in space and time) from other trajectories. However, the above example shows that space and time alone do not suffice to discriminate between normal-butnot-yet-observed and anomalous movement. To fill this research gap, we propose to consider using the semantics of locations: What is the (latent) semantic or purpose of a visit?</p><p>But how can we infer the latent semantics of a trip when trajectory data only includes location information? To answer this question, we propose to use a Collaborative Filtering (CF) approach. CF is traditionally used in recommendation systems and leverages the known preferences of a group of users to make recommendations or predict the unknown preferences of other users <ref type="bibr" target="#b47">[48]</ref>. For example, in the Netflix Prize competition, the winning proposal, "Cinematch," demonstrated the effectiveness of CF by surpassing Netflix's own system by more than 6% <ref type="bibr" target="#b7">[8]</ref>. The advantage of CF is that it does not require semantic data to infer semantic information: In the movie recommendation example, without needing to know the semantics of movies (genres, actors, etc.) and without knowing the preferences of users (children, action, anime, love stories), CF allows one to estimate the rating that a user will give to a movie by looking at similar users (similar in terms of what movies they liked) and similar movies (similar in terms of liked by similar users).</p><p>While these systems estimate the likelihood that a user will like a movie, our idea is to use collaborative filtering to estimate the likelihood that a person will visit a place. Even though Maria never visited the National History Museum and even though the Museum is far from her home and school, our model may give a high likelihood for Maria to visit the Museum. That's because other children (who visit places similar to Maria, such as elementary schools, playgrounds but not universities and bars) have also visited the Museum in the past. The CF will give us, for each (person, place)pair a likelihood that the user would (normally) visit this place. For (person, place) pairs for which the model estimates a very low likelihood of a visit, the model tells us: "This person should not normally visit this place". If we observe such a visit in the data, the model will be surprised. We can measure this surprise as the difference between the expected value and the observed value in test and use it report anomalous. To illustrate this concept, Figure <ref type="figure">2</ref> presents a stylized example of a User-POI matrix. This matrix captures the number of visits by each of five users to eight different Points of Interest (POIs). For instance, User 1 visits a house (likely their home) 34 times, an office building (likely their workplace) 20 times, a restaurant (possibly their favorite) 8 times, and a bar three times. User 2 visits entirely different locations, while User 5 lives in the same area as User 1 and frequents similar places. Figure <ref type="figure">3</ref> shows the same matrix after factorization using Singular Value Decomposition (SVD) with three latent components and re-expansion of the factor matrices. Thus, Figure <ref type="figure">3</ref> is the result of a coder-decoder approach: SVD encodes the matrix into a compressed representation that aims at filtering noise and retaining signal. Then, the re-expansion of the factor matrices decodes this latent representation into a full matrix after dropping the least important principal components. Intuitively, we can interpret Figure <ref type="figure">3</ref> as a recommendation matrix: Where does the SVD model think each user should normally go? Figure <ref type="figure" target="#fig_2">4</ref> then measures the reconstruction difference between the original User-POI matrix and the SVD-generated matrix. A high surprise score indicates that the user is more likely to visit a POI that they are not typically expected to visit. We see that User 1 visited two places in the test period that were never visited by User 1 in the train period. However, the model judges the visit to the house (third column in Figure <ref type="figure" target="#fig_2">4</ref>) as non-surprising. Because others like User 1 visited this house, the model even expected User 1 to visit this house 2.52 times. However, the new restaurant that User 1 visited (second column from the right in Figure <ref type="figure" target="#fig_2">4</ref>) yields a high model surprise. The model estimated User 1 to visit this place -0.61 times. This means that the model did not expect User 1 to visit this location as other users like User 1 did not visit this location (or other locations like this one). We can use this surprise to flag this visit as a potential anomaly.</p><p>Despite the broad applications for anomaly detection in semantic trajectories, this area remains substantially under-researched. A main reason is a lack of semantic trajectory data with ground truth anomaly labels. Both privacy considerations and a lack of participant initiative result in datasets that are sparsely populated <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b48">49]</ref>. For example, the commonly used GeoLife dataset <ref type="bibr" target="#b61">[62]</ref> includes only 182 users. But over the five years covered by the dataset, more than 60% of the users have fewer than 50 recorded trajectories, and around 70% of POIs are visited by only one or two users. In addition, this dataset has no ground truth on whether any segments of the trajectories can be considered as anomalous.</p><p>We also step towards filling this research gap by providing trajectory datasets that have labels for anomalous trajectories. We provide (1) a dataset generated via user-based simulation for which we change the decision-making process of users while they are anomalous, and (2) a dataset generated from GeoLife in which we artificially introduce anomalous behavior by replacing the normal trajectory of users with the trajectory of other users.</p><p>To address the sparsity of the data, we leverage a deep learning approach to fill the gaps of missing data. Existing work in trajectory mining focusing primarily on temporal information for sequence embedding or integrating spatial information into Graph Neural Network (GNN) architectures <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b52">53]</ref>. However, these approaches significantly increase computational costs <ref type="bibr" target="#b34">[35]</ref> and require highquality POI annotation. To address these challenges, we propose a collaborative filtering-based unsupervised anomaly detection approach in the context of human trajectory anomaly detection tasks.</p><p>To address those issues, we provide a modified neural collaborative filtering architecture to capture person-level human trajectory anomalous. The main contributions of this work are as follows.</p><p>(1) We present a neural collaborative filtering architecture to model the users' daily patterns of life without prior knowledge. (2) We ascertain that neural collaborative filtering (NCF) can be effectively applied to the spatial-temporal anomaly detection domain. By employing an appropriate surprise function and training strategy, the model's cold start performance can be significantly enhanced. (3) We perform extensive experiments on three highly sparse and extremely imbalanced datasets <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b61">62]</ref> to demonstrate the effectiveness and the promise of our neural collaborative filtering approaches on the user-level spatial-temporal anomaly detection domain. This paper is organized as follows: In Section II, we explicate the basic concepts of user-level spatial-temporal trajectories and anomalous, as well as various anomaly detection methods and collaborative filtering techniques. For better understanding, Section III introduces the fundamental concepts and definitions of our method. Section IV introduces our methodology and its structure, detailing a Multi-Layer Perceptron (MLP) module and Matrix Factorization (MF) module. It also includes a discussion of the designed surprise functions and other relevant components of our approach. Section V details the experiments conducted on several datasets using our methodology. Finally, Section VI presents our conclusions and future work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Related Works</head><p>Here, we summarize widely used trajectory anomaly detection methods, both traditional and machine learning approaches in Section 2.1 followed by a introduction to the collaborative filtering method, covering its algorithm, applications, and recent developments in Section 2.2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Trajectory Anomaly Detection</head><p>Over the past few decades, a broad spectrum of trajectory anomaly detection methods has been introduced. In this section, we systematically categorize these approaches into statistical, knowledgedriven, and machine learning approaches. 2.1.1 Statistical Approaches: Those methods are commonly used in conventional anomaly detection. These methods rely on distance or probability distributions, such as the Gaussian distribution, to identify data points that significantly deviate from the norm.</p><p>Knorr and Ng <ref type="bibr" target="#b24">[25]</ref> pioneered the concept of anomaly detection algorithms. In their distance-based approach, a data point is identified as an anomaly if fewer than 𝑘 other points are within a specified distance (𝛿) from it in the dataset. Liu et al. <ref type="bibr" target="#b30">[31]</ref> introduced the Isolation Forest algorithm(IForest), which detects anomalies using binary trees. This method operates on the principle that anomalous are a minority and have attributes that differ markedly from normal instances. The algorithm isolates these anomalies by recursively partitioning the data into smaller subsets. If a forest of random trees consistently produces shorter path lengths for specific data points, those points are identified as anomalies. Laxhammar et al. <ref type="bibr" target="#b27">[28]</ref> conducted a comparative study of the Gaussian Mixture Model (GMM) and Kernel Density Estimator (KDE) for anomaly detection in maritime traffic. Their study found that while KDE excels at capturing the intricacies of normal traffic, especially along sea lanes, both GMM and KDE have their limitations in detecting anomalies. Ristic et al. <ref type="bibr" target="#b41">[42]</ref> proposed a method to extract motion patterns from historical AIS data, which are then used to build anomaly detectors based on adaptive kernel density estimation (AKDE). This method supports real-time anomaly detection by sequentially applying the detector to incoming AIS data. Wang et al. <ref type="bibr" target="#b51">[52]</ref> proposed a trajectory-based anomaly detection algorithm using multidimensional Hidden Markov Models (HMMs) for model training and likelihood estimation. Their approach allows for realtime detection of anomalous from sensor data, effectively identifying long-term deviations from normal behavior patterns. Piciarell et al. <ref type="bibr" target="#b39">[40]</ref> developed a system for detecting anomalous events using trajectory analysis, particularly for video and traffic surveillance. Their system clusters anomalous trajectories with support vector machines (SVMs). Thang &amp; Kim <ref type="bibr" target="#b49">[50]</ref> proposed an improved DB-SCAN algorithm, known as DBScan-MP, where each cluster may have different epsilon and minpts values, enhancing its adaptability and performance in identifying clusters and anomalous. 2.1.2 Knowledge-Driven Approaches. Knowledge-driven approaches leverage expert knowledge-such as traffic rules, navigational experience, and established physical models-to assess whether a ship, vehicle, or individual is exhibiting anomalous behavior <ref type="bibr" target="#b11">[12]</ref>. These approaches are particularly effective in domains like anomalous ship behavior detection (DBAS) and vehicle-to-vehicle (V2V) obstacle detection. Avram et al. <ref type="bibr" target="#b4">[5]</ref> introduced a method that combines expert knowledge with ship behavior data to develop a ship anomaly detector. This integrated approach optimizes purely data-driven models by refining their structure and making secondary corrections to their outputs. Wu et al. <ref type="bibr" target="#b54">[55]</ref> developed the DB-TOD model to detect anomalous in vehicle trajectories. By capturing driving behavior and preferences from historical data, this probabilistic model calculates the latent costs of routing decisions using feature counts and latent biases, effectively identifying anomalous in both full and partial trajectories. Zhu et al. <ref type="bibr" target="#b66">[67]</ref> proposed the Time-Dependent Popular Route (TPRO) algorithm, which evaluates trajectory anomalies by considering spatial and temporal characteristics. The TPRO algorithm accounts for the varying popularity of routes between locations, assigning different weights to each when calculating anomaly scores. Yuan et al. <ref type="bibr" target="#b56">[57]</ref> developed the Trajectory Outlier Detection based on Structural Similarity (TOD-SS) algorithm. This method segments trajectories based on angles at each point and calculates distances between sub-trajectories using features such as direction, speed, angle, and location. Yu et al. <ref type="bibr" target="#b55">[56]</ref> presented the Trajectory Outlier Detection using Common Slice Subsequence (TODCSS) algorithm, which improves accuracy by combining features like direction, position, and continuity to detect anomalies across consecutive anomalous segments. Kinematics extraction, as discussed in studies like <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b32">33]</ref>, Those methods integrates kinematic principles to produce precise and physically realistic trajectory predictions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.3">Machine Learning Approaches.</head><p>Recent advancements in machine learning have introduced promising solutions for anomaly detection, utilizing sophisticated neural network architectures to improve the identification of anomalies. These developments offer enhanced capabilities for detecting complex patterns and deviations that traditional methods might miss. Given the challenges of trajectory data sparsity and anomaly characteristics, Graph Neural Networks (GNNs) are increasingly employed in trajectory anomaly detection due to their ability to work with graph-structured data and ability to capture complex spatial patterns <ref type="bibr" target="#b43">[44]</ref>.</p><p>Recently, there has been a significant advancement in GNN: Goodge et al. <ref type="bibr" target="#b20">[21]</ref> proposed LUNAR which utilizes information from a node's nearest neighbors to identify anomalies. Zhou et al. <ref type="bibr" target="#b65">[66]</ref> introduced AST-GNN, an attention-based spatio-temporal graph neural network that enhances pedestrian trajectory prediction by effectively capturing complex interactions and unique motion patterns. Zheng et al. <ref type="bibr" target="#b59">[60]</ref> introduced AddGraph, which combines an extended temporal GCN with an attention-based GRU to detect anomalies in dynamic graphs. It captures node and edge information, updating node embeddings and hidden states at each time step. Anomaly scores are assigned to edges based on the associated nodes.</p><p>Another category of deep learning models, aside from GNNs, includes various neural network approaches that treat the trajectory as a series to learn complex patterns and identify anomalies known as series learning models. These methods, including Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks, are particularly effective for analyzing sequential or temporal data.</p><p>For example: Niu et al. <ref type="bibr" target="#b35">[36]</ref> introduce an adaptive LSTM that utilizes temporal continuity in sequential data. By incorporating a mask gate and maintaining span, this LSTM can update memory adaptively based on changes in the sequence input at each time step. Autoencoder methods have also been effectively applied to trajectory anomaly detection. Liu et al. <ref type="bibr" target="#b31">[32]</ref> proposed a semi-supervised approach based on a Variational Autoencoder (VAE) called GM-VSAE, which models the probability distribution of route patterns in the latent space using a Gaussian mixture distribution. This method allows for the identification of anomalous by assessing the likelihood of a trajectory being generated from normal patterns. Similarly, Han et al. <ref type="bibr" target="#b21">[22]</ref> introduced DeepTEA, a semi-supervised method designed to detect time-dependent trajectory anomalous. DeepTEA employs a Convolutional Neural Network (CNN) to model road traffic conditions and utilizes a Gaussian Mixture VAE to capture latent trajectory patterns.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Collaborative Filtering</head><p>Collaborative Filtering (CF), first introduced in the 1990s <ref type="bibr" target="#b19">[20]</ref>, is a widely used technique in recommendation systems. Originally, CF involved users collaborating to filter information by recording their reactions to documents they read, allowing others to access these reactions. As a popular recommendation model, collaborative filtering utilizes ratings or other forms of user feedback to identify shared preferences among users. It then provides personalized recommendations based on these similarities, without requiring external information about the items or users. Collaborative Filtering employs two main techniques: the neighborhood approach and latent factor models. <ref type="bibr" target="#b26">[27]</ref>. The neighborhood approach models a user's preference for an item based on their ratings of similar items, while latent factor models utilize a shared latent factor space between items and users to explain ratings. Nowadays, by leveraging advanced techniques such as matrix factorization <ref type="bibr" target="#b9">[10]</ref>, singular value decomposition <ref type="bibr" target="#b38">[39]</ref> and integration of deep learning <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b53">54]</ref> have further enhanced the accuracy and scalability of collaborative filtering models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Preliminaries</head><p>In this section, we present the key concepts and definitions essential to our study on trajectory anomaly detection used in the following sections.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Human Semantic Trajectory Representation</head><p>A semantic trajectory is represented as a sequence of staypoints (or "check-ins"</p><formula xml:id="formula_0">) 𝑇 = {𝑝 1 → 𝑝 2 → • • • → 𝑝 𝑛 }</formula><p>where 𝑛 is the number of staypoint observations in the trajectory. Each staypoint observation 𝑝 𝑖 in this sequence is a six-tuple (𝑢𝑠𝑒𝑟𝐼𝐷, 𝑥 𝑖 , 𝑦 𝑖 , 𝑡𝑐 𝑖 , 𝑡𝑙 𝑖 , 𝑠 𝑖 ), 𝑢𝑠𝑒𝑟𝐼𝐷 is a unique identifier of an individual user, 𝑥 𝑖 is the longitude, 𝑦 𝑖 is the latitude, 𝑡𝑐 𝑖 is the "check-in" timestamp when the trajectory 𝑇 reaches point 𝑝 𝑖 (𝑥 𝑖 , 𝑦 𝑖 ), 𝑡𝑙 𝑖 indicates the time the user leaves that point, and 𝑠 𝑖 provides semantic information about the visited location such as the type of PoI. Table <ref type="table" target="#tab_0">1</ref> provides an overview of the spatial-temporal trajectory for User 153. The first line of this example shows that this user stayed at a Workplace with the given coordinates from 03:03:01am (GMT) to 03:38:59am (GMT) and went to a restaurant shortly after.</p><p>The collection of all users' trajectories can be denoted as T = {𝑇 1 ,𝑇 2 , . . . ,𝑇 𝑚 }, where 𝑚 is the number of trajectories or users.</p><p>Given the above definitions, in the next subsection, we formally formulate the trajectory anomaly detection problems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Human Spatial-temporal Trajectory Anomaly Detection</head><p>We assume the availability of (1) a training period during which we assume that users exhibit normal behavior and (2) a test period during which some users may exhibit anomalous behavior. The goal of trajectory anomaly detection is to identify the set of anomalous users during the test period using models of normal behavior learned using the train period. Formally, Definition 3.1 (Train and Test Period). Let T = {𝑇 1 ,𝑇 2 , . . . ,𝑇 𝑚 } be a set of trajectories of 𝑚 users. We assume that any staypoint that started before a specific staypoint in time 𝑡 𝑠𝑝𝑙𝑖𝑡 exhibits normal behavior and anomalous behavior may occur after 𝑡 𝑠𝑝𝑙𝑖𝑡 . Then, we can define a training trajectory:</p><formula xml:id="formula_1">T 𝑇 𝑟𝑎𝑖𝑛 𝑖 = {(𝑢𝑠𝑒𝑟𝐼𝐷, 𝑥 𝑖 , 𝑦 𝑖 , 𝑡𝑐 𝑖 , 𝑡𝑙 𝑖 , 𝑡 𝑖 ) ∈ 𝑇 𝑖 |𝑡𝑐 𝑖 &lt;= 𝑡 𝑠𝑝𝑙𝑖𝑡 },</formula><p>and a testing trajectory:</p><formula xml:id="formula_2">T 𝑇 𝑒𝑠𝑡 𝑖 = {(𝑢𝑠𝑒𝑟𝐼𝐷, 𝑥 𝑖 , 𝑦 𝑖 , 𝑡𝑐 𝑖 , 𝑡𝑙 𝑖 , 𝑡 𝑖 ) ∈ 𝑇 𝑖 |𝑡𝑐 𝑖 &gt; 𝑡 𝑠𝑝𝑙𝑖𝑡 }.</formula><p>This allows us to define a train dataset as</p><formula xml:id="formula_3">T 𝑇 𝑟𝑎𝑖𝑛 = [𝑇 1 , ...,𝑇 𝑚 ],</formula><p>and a test dataset as</p><formula xml:id="formula_4">T 𝑇 𝑒𝑠𝑡 = [𝑇 1 , ...,𝑇 𝑚 ].</formula><p>The goal of trajectory anomaly detection is to detect trajectories 𝑇 𝑇 𝑒𝑠𝑡 𝑖 ∈ 𝑇 𝑇 𝑒𝑠𝑡 what exhibit changes that deviate so much from their normal behavior that they rouse suspicion that they may have been generated by a different process. Intuitive, such different process may be different individuals (for example due to a stolen cellphone), a sudden change in behavior (such as exposure to an infectious disease), or a gradual change in behavior (such as the progress of a mental illness).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Definition 3.2 (Trajectory Anomaly Detection).</head><p>Let T = {𝑇 1 ,𝑇 2 , . . . ,𝑇 𝑚 } be a trajectory dataset split into 𝑇 𝑇 𝑟𝑎𝑖𝑛 and 𝑇 𝑇 𝑒𝑠𝑡 , and let 𝑃 ⊆ 𝑇 𝑇 𝑒𝑠𝑡 be a set a anomalous trajectories. The task of Trajectory Anomaly detection is to find 𝑃.</p><p>Given a training set of users U and their normal trajectory pairs T 𝑢 , the objective is to identify anomaly users 𝑈 𝑎𝑛𝑜𝑚𝑎𝑙 𝑦 in the test set who exhibit substantial deviations from the typical trajectory patterns established across the training population. These deviations are quantified using a score function 𝑓 𝑠𝑐𝑜𝑟𝑒 , which measures the extent of divergence from the common patterns observed within U.</p><p>This goal presents several unique challenges: (1) Challenges in sparse data: Accurately clustering users based on their patterns of life involves addressing complex issues related to both inter-user interactions and the broader context of their trajectories. One challenge as we mentioned before is the reliable formation of user clusters from datasets that are both sparse and consist of only positive pairs. The challenge lies in ensuring that the model consistently generates accurate user pattern clusters from a dataset that is only include positive pairs and highly sparse. Many POIs are visited by only a few users, which exacerbates the difficulty of achieving comprehensive clustering.</p><p>To address this, the clustering algorithm must effectively identify and interpret meaningful interactions among users despite the limited data coverage. Meanwhile, these methods must be robust enough to ensure prediction accuracy, even when data is unevenly distributed. (2) Challenges in quantifying anomalous: Human behavior is inherently dynamic and can be influenced by various temporal and spatial factors. Traditional anomaly detection methods may be inadequate in this context, as they might misclassify new or infrequent POIs as anomalies. This limitation underscores the need for more sophisticated approaches to accurately quantify anomalous. Sophisticated approaches are required to accurately identify and score anomalous, effectively distinguishing between genuine anomalies and legitimate but less frequent behaviors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Methodology</head><p>In this section, we introduce our neural collaborative filtering-based unsupervised anomaly detection approach for human trajectory analysis. While this section provides ideas, concepts, and theory, the interested reader may find implementation details in our GitHub Repository at https://github.com/alex-cse/NCF_AHSTD. Notably, our method can identify anomalous users without any explicit semantic information of places. Instead, our approach extracts latent semantic information using collaborative filtering (based on users visiting similar places and places visited by similar users). Our framework comprises two modules:</p><p>(1) The Collaborative Filtering Module uses collaborative filtering to model the User-POI visit matrix observed in the train period. It identifies anomalous users by measuring surprise, that is by detecting deviations from typical (model) trajectory patterns observed in the test period. (2) Neural Module: This module take the advantage of neural networks to interpret the complex spatial-temporal relationships within the data. Traditional methods like collaborative filtering often fall short when dealing with those spatial-temporal data because they may not fully capture non-linear patterns or subtle dependencies within the dataset. To effectively quantify anomalous users, we employ an accumulator based on a continuous-state Markov chain to calculate anomaly scores. This approach is grounded in the principle that each user's trajectory is conceptualized as a sequence where each event is influenced by the preceding one, but making the simplifying (Markov-)assumption that the future is conditionally independent of the past given the present. We assume that when a trajectory exhibits anomalous behavior, this behavior not only affects a single staypoint, but affects a chain of subsequent events. For instance, this might manifest as an increase in travel distance or as visits to a POI during an atypical time frame. To capture these anomalies, the accumulator evaluates each POI for every user based on the trajectory sequence. By doing so, our method can detect not only extreme anomalous but also users with moderate deviations from the expected patterns in their overall trajectory.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Neural Collaborative Filtering Model</head><p>To thoroughly explore and understand the spatio-temporal interactions between users and POIs, we propose a streamlined neural collaborative filtering approach <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b40">41]</ref>. This model leverages a Multi-Layer Perceptron (MLP) module to effectively capture and learn both the temporal and spatial mobility of users, as well as the spatio-temporal relationships among various locations. By integrating the MLP module with a matrix factorization framework, we enable a comprehensive analysis of users' behaviors over time and the intricate spatial interactions between different POIs.</p><p>Our proposed architecture is illustrated in Figure <ref type="figure" target="#fig_3">5</ref>. Specifically, within the trajectory pairs denoted as T , we analyze the interactions between users 𝑢 and their respective POI 𝑝 𝑖 , forming trajectory pairs T 𝑢𝑖 . In the context of T 𝑢𝑖 , we consider several key parameters.</p><p>• ℎ ∈ [0, 23] is the hour of check-in, providing a temporal resolution on an hourly basis. • 𝑑 ∈ [0, 6] is the day of the week when the check-in occurs.</p><p>• The geographical location 𝑙 specifies the geographical location of the check-in, which is critical for spatial analysis.</p><p>Additionally, we preprocess the data within each trajectory pair T 𝑢𝑖 make it encompassed a set of movement attributes, including stay duration, and distance traveled. The stay duration indicates the time spent at a particular location, while movement speed and distance provide insights into the mobility patterns and travel behaviors of the user. The final tuples Z of user 𝑖 and POI 𝑗 pair can be represent as:</p><formula xml:id="formula_5">Z i,j =         𝑢 𝑖 ℎ 𝑗 𝑑 𝑗 𝑙 𝑗        <label>(1)</label></formula><p>In this context, ℎ 𝑗 , 𝑑 𝑗 , and 𝑙 𝑗 denote the embeddings corresponding to the hour of the user's arrival at the POI, the week of of day the user's visit the POI, and the movement distance from previous check-in POI (calculate base on latitude and longitude) of the POI, respectively. After that we applied a three-layer MLP module to learn the interactions of latent features, the equation can represented as:</p><formula xml:id="formula_6">𝜙 𝑀𝐿𝑃 = 𝑎 3 𝑊 𝑇 3 𝑎 2 𝑊 𝑇 2 𝑎 1 𝑊 𝑇 1 Z + b 1 + b 2 + b 3 (2)</formula><p>Here, Z is the input latent feature vector, 𝑊 𝑖 and b 𝑖 are the weight matrices and bias vectors of each layer, and 𝑎 𝑖 represents the activation functions applied at each layer. For the Generalized Matrix Factorization component, we also utilize embeddings derived from the vectors Z, incorporating additional information about the POI type 𝑡. Given that users 𝑢 𝑖 have features like hour ℎ 𝑖 , week of day 𝑤 𝑖 , and distance 𝑑 𝑖 , and POI 𝑝 𝑗 have features like type 𝑡 𝑗 , the equation for matrix factorization incorporating these auxiliary features can be written as:</p><formula xml:id="formula_7">𝜙 𝑀𝐹 𝑖 𝑗 ≈ 𝑢 𝑇 𝑖 𝑝 𝑗 + (𝑤 1 • ℎ 𝑖 + 𝑤 2 • 𝑑 𝑖 + 𝑤 3 • ℎ 𝑖 ) + (𝑤 4 • 𝑡 𝑗 )<label>(3)</label></formula><p>Where the 𝑤 1 , 𝑤 2 , 𝑤 3 , 𝑤 4 are weights for the corresponding auxiliary features. This equation combines the latent factor model with additional terms that account for the auxiliary features, allowing us to capture both latent features (inferred from similar users visiting the same POI) and explicit features (such as known types of POIs like restaurants or schools).</p><p>In our Spatial-Temporal model, we extend beyond the conventional method by integrating not only user and POIs latent variables but also additional latent features specifically designed to capture spatial and temporal dynamics. This includes geographic information that captures the spatial context of the interactions, as well as temporal attributes that detail the duration of stays and specific visit times. The geographic information provides a framework for understanding the spatial relationships and locations of the staypoints of interest, while the temporal attributes offer insights into the timing and frequency of visits. After the initial embedding layer, the model utilizes multiple fully connected layers, which function as neural collaborative filtering layers. The overall MLP module was trained on the training dataset T 𝑇 𝑟𝑎𝑖𝑛 , with the objective of capturing the representation of normal patterns. Once trained, any deviations from these established patterns are indicative of anomalies in the test dataset T 𝑇 𝑒𝑠𝑡 . In the following section, we describe how to measure these deviations and to identify anomalous users.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Quantification of Anomaly Scores</head><p>We propose two measures to quantify the degree to which an individual is anomalous: The first measure directly considers the difference (the surprise) between the expected (by the NMF model) score 𝜙 𝑀𝐹 𝑖 𝑗 of an individual 𝑖 visit a place 𝑗 (described in the previous section) and the observed visits T 𝑇 𝑒𝑠𝑡 . While some places are visited by a large number of individuals every day, other places may have very few or no daily visits. For such places, it becomes difficult to predict which individual may visit them, and, consequently, a (normal) visit may incur a large surprise to the model. To avoid incurring such false positives, we additionally propose not only to predict (and measure surprise) for individual POIs, but also for the type of POI visited. As an intuitive example, it may surprise the model that individual 𝐴 visits, during lunch time, a new German restaurant that none have visited during the training period (because the restaurant may not have opened yet). But it is not surprising that 𝐴 visits a restaurant during lunchtime as they always do. This section describes details for both these measures. 4.2.1 User-POI Matrix Reconstruction Surprise: This surprise function assesses the discrepancy between the User-POI visit status matrix in the test set and its training set Matrix Factorization reconstruction. The User-POI visit status matrix is a binary matrix where each entry signifies whether a specific user has visited a particular POI. A high difference in the User-POI Reconstruction Error indicates that the reconstructed matrix significantly deviates from the actual visit status matrix, suggesting that the user's behavior is inconsistent with the expected patterns and should be considered anomalous. In the training matrix, each observed User-POI pair is given a value of 1 if the corresponding user visited the corresponding POI, and 0 otherwise. The factorized model aims at reconstructing this matrix using compressed information, thus assigning a visit score to each User-POI pair. We note that these scores may be less than 0 or greater than 1 and thus, should not be interpreted as probabilities. 1  Applying a Generalized Matrix Factorization provides a matrix 𝜙 𝑀𝐹 with dimensions 𝑚 × 𝑛, where 𝑛 represents the number of individuals and 𝑚 denotes the number of POIs. We propose to simply use the absolute difference between this prediction and the observed visits as follows:</p><formula xml:id="formula_8">surprise 𝑖 𝑗 = 𝜙 𝑀𝐹 𝑖 𝑗 − T 𝑒𝑠𝑡 𝑖 𝑗<label>(4)</label></formula><p>1 Although we note that using a logistic model that maps scores to probabilities in the interval [0,1] may be an interesting extension of the model.</p><p>This method ensures that user-POI visit will receive a low surprise if the user visits the POI in the test period but the POI is considered a typical location based on the collaborative filtering. Conversely, an anomalous POI, which deviates from the expected pattern, will be assigned a higher surprise. We note that this surprise function also gives a high surprise to a place that is NOT visited in the test period but is expected to be visited by the collaborative filtering model.</p><p>If we have additional information about the semantics of the anomalies that were expecting to find, we can adopt the above surprise function accordingly. For example, if we know that anomalous agents visit places they would not normally visit (such as going to random places), we can reflect this apriori knowledge in the surprise by only counting surprise for POIs visited in Test:</p><formula xml:id="formula_9">surprise NewPOI = min(0, T 𝑇 𝑒𝑠𝑡 𝑖 𝑗 − 𝜙 𝑀𝐹 𝑖 𝑗 )<label>(5)</label></formula><p>Analogously, if we know that anomalous agents stop visiting places they would normally visit (such as skipping going to work), we can adopt the surprise function to only consider POIs that were not visited in Test:</p><formula xml:id="formula_10">surprise MissingPOI = min(0, 𝜙 𝑀𝐹 𝑖 𝑗 − T 𝑇 𝑒𝑠𝑡 𝑖 𝑗 )<label>(6)</label></formula><p>If we have no apriori knowledge about how anomalies manifest, we can use the surprise function surprise 𝑖 𝑗 in Equation <ref type="formula" target="#formula_8">4</ref>.</p><p>The surprise functions defined in Equations 4-6 provide us with anomaly scores for individual individual-POI pairs. To obtain anomaly scores at the individual user level, we aggregate these scores by individual. The accumulated error for user 𝑖 can be computed as:</p><formula xml:id="formula_11">surprise 𝑖 = 𝑚 ∑︁ 𝑗=1 surprise 𝑖 𝑗<label>(7)</label></formula><p>The implicit assumption that we make here is that an anomalous user may have more than a single anomalous visit. Depending on apriori information of what may constitute anomalous behavior of an individual user, we can adapt this surprise function accordingly.</p><p>For instance, if we know that an anomalous user will visit exactly one anomalous place, then we can adjust this user-level surprise function by computing the maximum surprise over all POIs of the same user: surprise</p><formula xml:id="formula_12">singlePOI 𝑖 = 𝑚 max 𝑗=1 surprise 𝑖 𝑗<label>(8)</label></formula><p>4.2.2 POI Type Surprise. In addition to measuring surprise at individual POI level, we also propose to measure surprise the the POI type level. The surprise function at the POI type level quantifies the divergence between the model's predicted POI type and the actual POI type. This approach is specifically designed to address the issue of data sparsity: Even though individual POIs may not have enough visits to allow the collaborative filtering to model the latent features of the POI. Given a set 𝐶 = {𝑐 1 , ..., 𝑐 |𝐶 | } of types (classes) of POIs, and letting 𝑐 (𝑝 𝑗 ) be the class of POI 𝑝 𝑗 , then the probability of class 𝑘 ∈ 𝐶 visited by user 𝑢 𝑖 can be calculated as:</p><formula xml:id="formula_13">𝑝 𝑖𝑘 = 𝑚 𝑗=1 T 𝑡𝑟𝑎𝑖𝑛 𝑖 𝑗 • I(𝑐 (𝑝 𝑗 ) = 𝑘) 𝑚 𝑗=1 T 𝑡𝑟𝑎𝑖𝑛 𝑖 𝑗 (9)</formula><p>where 𝑚 is the number of POIs and I(𝑐 (𝑝 𝑗 ) = 𝑘) is an indicator function that returns 1 if POI 𝑝 𝑗 has type 𝑘 and zero otherwise.</p><p>Then, for each user we can define their most likely POI type, as:</p><formula xml:id="formula_14">mostLikelyPOI 𝑖 = arg max 𝑘 ∈ 𝐶 (𝑝 𝑖𝑘 )</formula><p>To measure surprise of a user 𝑢 𝑖 , we count the number of visits observed during the test period that do not match the user's most likely POI: Our final anomaly score of each user is then defined as the sum of the two surprise scores: AnomalyScore 𝑖 = surprise 𝑖 + surprise POIType 𝑖 <ref type="bibr" target="#b9">(10)</ref> where surprise 𝑖 is the User-POI Matrix Surprise described in Section 4.2.1 and surprise POIType 𝑖 is the POI Type Surprise described in Section 4.2.2.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Experimental Results and Environmental setup</head><p>In this section, we conduct a comprehensive evaluation of our neural collaborative filtering model using multiple simulated and realworld datasets. The subsequent parts of this section will provide detailed information about each dataset, including their anomaly characteristics and the specific preprocessing steps applied. Additionally, we will outline the anomalous settings and configurations in the simulated datasets used for our model. resent a thorough evaluation of our model's performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Experimental Datasets</head><p>To evaluate the performance of our proposed model, we utilized simulated and real-world dataset. The simulated datasets were generated using the Agent-Based Patterns-of-Life Simulation (POL) <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b67">68]</ref>, while the real-world dataset was based on the GeoLife dataset <ref type="bibr" target="#b57">[58,</ref><ref type="bibr" target="#b58">59,</ref><ref type="bibr" target="#b63">64]</ref>. 5.1.1 Agent-Based Simulation of Patterns of Life. The Patterns of Life simulation is an existing simulation that was designed to emulate human needs and behaviors in an urban environment <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b67">68]</ref>. Within the simulation, agents engage in activities that mimics reallife actions, such as attending work, forming friendships, and participating in social gatherings. These agents navigate a virtual environment modeled on real-world settings like roads and buildings, sourced from OpenStreetMap.</p><p>In our study, we test our model on four distinct map setting: Fairfax County, Virginia (FVA); the French Quarter of New Orleans, Louisiana (NOLA); Atlanta, Georgia (ATL); and Beijing, China (BJNG). These dataset contains 450 days of normal life, followed by an additional 14 days with introduce anomalous behaviors into the regular patterns which serve as the training and test dateset. In the 14-day test dataset, we identified three distinct types of anomalous behaviors: hunger anomalous, social anomalous, and work anomalous. Those anomalous behaviors are defined as follows:</p><p>• Hunger anomalous: An agent under this category becomes hungry more quickly. Such agents have to go to restaurants or their homes much more often to satisfy their food needs.</p><p>• Social anomalous: This type of agent randomly selects recreational sites to meet and spend leisure time, rather than being guided by their attributes and social network. • Work anomalous: Agents in this category do not go to work when they normally should be working. These anomalies were further classified into three intensity levels: red (high intensity), orange (mid intensity), and yellow (low intensity). The detailed intensity levels are defined as follows:</p><p>• Yellow Anomalies: The agent displays anomalous behavior at a low intensity. For example, a hunger anomaly with a yellow intensity level experiences hunger more frequently than usual but does not need to visit a restaurant or home as often as a red intensity anomaly. For work and social anomalous, the yellow intensity level indicates that the agents will behave anomalously 20% of the time. • Orange Anomalies: The agent displays anomalous behavior at a moderate intensity. For example, a hunger anomaly with an orange intensity level feels hungry more frequently than normal and needs to visit a restaurant or home more often than a yellow intensity anomaly, but less often than a red intensity anomaly. For work and social anomalous, the orange intensity level indicates that the agents will behave anomalously 50% of the time. • Red Anomalies: The agent displays anomalous behavior at the highest intensity. For example, a hunger anomaly with a red intensity level experiences hunger more intensely than other anomalous and needs to visit a restaurant or home more frequently. For work and social anomalous, the red intensity level indicates that the agents will behave anomalously 100% of the time.</p><p>5.1.2 Real World Dataset. The real-world dataset for this study was derived from the Microsoft Research Asia's GPS Trajectory dataset <ref type="bibr" target="#b63">[64]</ref>. We employed an stay-point extraction algorithm <ref type="bibr" target="#b62">[63]</ref> to transform the data into a check-in pattern suitable for our studies. Subsequently, we utilized OpenStreetMap to categorize locations into four groups: apartments, workplaces, recreational, and restaurants. Given the extensive range of categories in OpenStreetMap, we manually classified them into these distinct groups. Following preprocessing, agents with fewer than 50 records were excluded, yielding a final dataset consisting of 69 agents. This refined dataset includes 14,080 training trajectories and 3,552 test trajectories, spanning a period of over four years. Within this dataset, we introduced a specific type of anomaly known as the "imposter anomaly, " where an agent switches trajectories with another agent after a certain point in time. The dataset was divided into two segments: 80% for training, using the stay points, and the remaining 20% for testing, where anomalous were introduced.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Experimental Settings</head><p>In this section, we introduce our competitor methods and evaluation metrics. identifies abnormal activities by measuring the deviations in moving trends compared to established normal patterns.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.1">Competitor</head><p>DSVDD <ref type="bibr" target="#b42">[43]</ref> is a deep one-class classification based anomaly detection method. We generalize it to handle the task of semantic trajectory anomaly detection in a most intuitive way. We map the weekly trajectories of each user to a high dimensional sphere by a deep neural network encoder. Then the distance of trajectories from the sphere's surface is quantified as an anomaly score. DAE <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b64">65]</ref> is a widely-used anomaly detection method that leverages a deep autoencoder. Utilizing an encoder-decoder model architecture, it reconstructs input trajectories, and the resulting reconstruction error is used as an anomaly indicator, signifying deviations from the normal pattern. ECOD <ref type="bibr" target="#b29">[30]</ref> is an unsupervised anomaly detection algorithm that uses empirical cumulative distribution functions to identify anomalous without requiring parameter tuning, offering both efficiency and interpretability.</p><p>IForest <ref type="bibr" target="#b30">[31]</ref> is an algorithm detects anomalies by recursively partitioning data, isolating anomalous based on shorter path lengths in a forest of random trees.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.2">Evaluation Metrics.</head><p>To rigorously evaluate the performance of our anomaly detection methodology, we utilize the Top-K hits metric. In our approach, users with the K highest anomaly scores are designated as anomalous. The number of hits serves as an indicator of the method's efficacy in accurately distinguishing anomalous.</p><p>The Top-K hits of the model refer to the true positives, representing the anomaly users correctly identified within the top K ranked predictions made by the model. For our evaluation, we specifically use Top-10, Top-100, and Top-150 hits. However, for the GeoLife dataset, we report Top-5/10/25 hits instead of Top-100 due to anomaly number constraints. Furthermore, we employ the area under the receiver operating characteristic curve (AUC) as an additional evaluation metric.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Anomaly Detection Results</head><p>Detection Results: Table <ref type="table" target="#tab_1">2</ref> presents the anomaly detection performance of our proposed method alongside several competitive methods. In the table, the highest AUC scores for each dataset are highlighted in bold, while the second-highest scores are underlined. The results show for the four simulated datasets, our NCF model always achieves the highest AUC scores by a substantial margin compared to other machine learning and non-machine learning methods. However, for the GeoLife real-world dataset, our proposed method is significantly outperformed by state-of-the-art methods. We explain this by the extreme sparsity of the GeoLife dataset. This dataset captures only 182 across all of Beijing, China. Having so few users, there are very few cases where the same place is visited by more than one unique user. Thus, the resulting User-POI matrix only has one non-zero value in most columns. This makes it impossible for the matrix factorization to successfully apply any collaborative filtering. Thus, Figure <ref type="figure">6</ref>: The anomaly ranking among four datasets case where we have more dense data (for all users and all places). But for extremely small datasets like GeoLife, collaborative filtering is not able to infer any common topics and features among the users and places due to a lack of examples where different users visit the same place.</p><p>To give more insights on the quality of the anomaly scores returned by NCF, beyond a single AUC-PR score, Figure <ref type="figure">6</ref> shows how true positives and true negatives are distributed across the anomaly score ranking. We observe a clear correlation that true positives are frequently among the highest ranked anomaly scores. Detailed Detection Count for Types of anomalous: To evaluate the detection performance for each anomaly category Table <ref type="table" target="#tab_2">3</ref> provides the true positive detection count per category in the top 150 predictions of each dataset. This result indicates that, in most cases, our model consistently achieves high detection accuracy for anomalous with the highest intensity, particularly demonstrating heightened sensitivity to categories involving significant spatial changes. This observation indicates that our method is particularly sensitive to variations in spatial patterns but less responsive to temporal patterns.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusions and Future Work</head><p>In conclusion, this paper presents an unsupervised method for detecting anomalous in human trajectories using a neural collaborative filtering model applied to user-level spatiotemporal datasets. Our approach effectively addresses challenges such as data sparsity and imbalance by leveraging the strengths of the collaborative filtering module and neural network components, which significantly mitigate these issues. Comprehensive experiments on our five datasets validate the effectiveness and efficiency of the proposed method, which shows substantial improvements in accurately detecting anomalous within complex spatiotemporal datasets. For future research, we aim to explore the impact of geolocation embedding factors on model performance across various types of anomalies. Additionally, we will investigate incorporating more noise data to enhance the robustness of anomaly detection in real-world scenarios.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: A sample of anomaly trajectory (red) and Normal trajectory (blue).</figDesc><graphic coords="1,323.97,219.61,228.23,141.73" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :Figure 3 :</head><label>23</label><figDesc>Figure 2: A stylized example of a User-POI matrix</figDesc><graphic coords="2,321.76,83.68,230.40,96.27" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Measuring Surprise between the expected User-POI Matrix and observed User-POI visits.</figDesc><graphic coords="3,63.26,82.26,219.09,89.25" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: The illustration of our proposed NCF model. (Left) Extraction of spatio-temporal embeddings from input trajectories; (Middle) Neural Collaborative Filtering with two-level of prediction; (Right) Anomaly scores based on weighted prediction.(2) Neural Module: This module take the advantage of neural networks to interpret the complex spatial-temporal relationships within the data. Traditional methods like collaborative filtering often fall short when dealing with those spatial-temporal data because they may not fully capture non-linear patterns or subtle dependencies within the dataset. To effectively quantify anomalous users, we employ an accumulator based on a continuous-state Markov chain to calculate anomaly scores. This approach is grounded in the principle that each user's trajectory is conceptualized as a sequence where each event is influenced by the preceding one, but making the simplifying (Markov-)assumption that the future is conditionally independent of the past given the present. We assume that when a trajectory exhibits anomalous behavior, this behavior not only affects a single staypoint, but affects a chain of subsequent events. For instance, this might manifest as an increase in travel distance or as visits to a POI during an atypical time frame. To capture these anomalies, the accumulator evaluates each POI for every user based on the trajectory sequence. By doing so, our method can detect not only extreme anomalous but also users with moderate deviations from the expected patterns in their overall trajectory.</figDesc><graphic coords="6,91.63,104.36,96.23,100.27" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>𝑖 ≠ T 𝑇 𝑒𝑠𝑡 (𝑖, 𝑗)) • T 𝑇 𝑒𝑠𝑡 (𝑖, 𝑗)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>UserId 𝑥 𝑖 (Latitude) 𝑦 𝑖 (Longitude)𝑡𝑐 𝑖 (CheckinTime) 𝑡𝑙 𝑖 (LeavingTime) A template of human spatial-temporal trajectory datasets utilized in this paper.</figDesc><table><row><cell>𝑠 𝑖 (VenueType)</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Anomaly detection performance. For each dataset, the highest AUC scores are highlighted in bold, and the secondhighest scores are underlined. We report Top-5/10/25 Hits for GeoLife dataset due to its size constraint.</figDesc><table><row><cell>Methods: We compare with several trajectory</cell></row><row><cell>anomaly detection methods, including non-deep learning methods</cell></row><row><cell>and learning methods:</cell></row><row><cell>OMPAD [6] is an anomaly detection method that analyzes objects'</cell></row><row><cell>movement patterns by counting the types of locations they visit. It</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Table 2 shows promising results in the ATL NOLA FVA BJNG Category Red Orange Yellow Red Orange Yellow Red Orange Yellow Red Orange Yellow Recall of each category in the top 150 predictions of each dataset. (Recall@150)</figDesc><table><row><cell>Hunger</cell><cell>0.30</cell><cell>0.23</cell><cell>0.30</cell><cell>0.40</cell><cell>0.53</cell><cell>0.33</cell><cell>0.36</cell><cell>0.30</cell><cell>0.30</cell><cell>0.40</cell><cell>0.43</cell><cell>0.43</cell></row><row><cell>Work</cell><cell>0.40</cell><cell>0.30</cell><cell>0.10</cell><cell>0.70</cell><cell>0.40</cell><cell>0.30</cell><cell>0.50</cell><cell>0.20</cell><cell>0.10</cell><cell>0.50</cell><cell>0</cell><cell>0.20</cell></row><row><cell>Social</cell><cell>0.60</cell><cell>0.40</cell><cell>0</cell><cell>0.50</cell><cell>0.10</cell><cell>0</cell><cell>0.30</cell><cell>0.10</cell><cell>0</cell><cell>0.30</cell><cell>0</cell><cell>0</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">GeoAnomalies'24, October 29-November 1, 2024, Atlanta, GA, USA Liu et al.</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Acknowledgements</head><p>Supported by the Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior/ Interior Business Center (DOI/IBC) contract number 140D0423C0025. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA, DOI/IBC, or the U.S. Government.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">An introduction to outlier analysis</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Charu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Aggarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Charu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Aggarwal</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">The Patterns of Life Human Mobility Simulation</title>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Will</forename><surname>Kohn</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.00185</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Urban Anomalies: A Simulated Human Mobility Dataset with Injected Anomalies</title>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruochen</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Zufle</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.01844</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Massive Trajectory Data Based on Patterns of Life</title>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Shiyang Ruan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGSPATIAL&apos;23. ACM</title>
+				<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1" to="4" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Anomaly detection in spatiotemporal data in the maritime domain</title>
+		<author>
+			<persName><forename type="first">Vladimir</forename><surname>Avram</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Uwe</forename><surname>Glässer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hamed Yaghoubi</forename><surname>Shahir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2012 IEEE International Conference on Intelligence and Security Informatics</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="147" to="149" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Learning object motion patterns for anomaly detection and improved object detection</title>
+		<author>
+			<persName><forename type="first">Arslan</forename><surname>Basharat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexei</forename><surname>Gritai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mubarak</forename><surname>Shah</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2008 IEEE conference on computer vision and pattern recognition</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="1" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Trajectory outlier detection: Algorithms, taxonomies, evaluation, and open challenges</title>
+		<author>
+			<persName><forename type="first">Asma</forename><surname>Belhadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Youcef</forename><surname>Djenouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jerry</forename><surname>Chun-Wei Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alberto</forename><surname>Cano</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Management Information Systems (TMIS)</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="1" to="29" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">The netflix prize</title>
+		<author>
+			<persName><forename type="first">James</forename><surname>Bennett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stan</forename><surname>Lanning</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of KDD cup and workshop</title>
+				<meeting>KDD cup and workshop<address><addrLine>New York</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2007">2007. 2007</date>
+			<biblScope unit="page">35</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Deep learning architecture for collaborative filtering recommender systems</title>
+		<author>
+			<persName><forename type="first">Jesus</forename><surname>Bobadilla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Santiago</forename><surname>Alonso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antonio</forename><surname>Hernando</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied Sciences</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page">2441</biblScope>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Matrix factorization model in collaborative filtering algorithms: A survey</title>
+		<author>
+			<persName><forename type="first">Dheeraj</forename><surname>Bokde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sheetal</forename><surname>Girase</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Debajyoti</forename><surname>Mukhopadhyay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Procedia Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="136" to="146" />
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Trajectory anonymity in publishing personal mobility data</title>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Bonchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">S</forename><surname>Laks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hui</forename><surname>Lakshmanan</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Sigkdd Explorations Newsletter</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="30" to="42" />
+			<date type="published" when="2011">2011. 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A self-adaptive multiagent system for abnormal behavior detection in maritime surveillance</title>
+		<author>
+			<persName><forename type="first">Nicolas</forename><surname>Brax</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Eric</forename><surname>Andonoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marie-Pierre</forename><surname>Gleizes</surname></persName>
+		</author>
+		<idno>KES-AMSTA 2012</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Agent and Multi-Agent Systems. Technologies and Applications: 6th KES International Conference</title>
+				<meeting><address><addrLine>Dubrovnik, Croatia</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2012-06-25">2012. June 25-27, 2012</date>
+			<biblScope unit="page" from="174" to="185" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Spatial-temporal graph neural network for traffic forecasting: An overview and open research issues</title>
+		<author>
+			<persName><forename type="first">Khac-Hoai Nam</forename><surname>Bui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiho</forename><surname>Cho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongsuk</forename><surname>Yi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="2763" to="2774" />
+			<date type="published" when="2022">2022. 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Deep Kinematic Models for Kinematically Feasible Vehicle Trajectory Predictions</title>
+		<author>
+			<persName><forename type="first">Henggang</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Thi</forename><surname>Nguyen</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICRA40945.2020.9197560</idno>
+		<ptr target="https://doi.org/10.1109/ICRA40945.2020.9197560" />
+	</analytic>
+	<monogr>
+		<title level="m">IEEE ICRA&apos;20</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="10563" to="10569" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Unique in the crowd: The privacy bounds of human mobility</title>
+		<author>
+			<persName><forename type="first">Yves-Alexandre De</forename><surname>Montjoye</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific reports</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="1" to="5" />
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Design and implementation of a children safety system based on IoT technologies</title>
+		<author>
+			<persName><forename type="first">Fabio</forename><surname>Leonardo D'errico</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Franchi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Multidisciplinary Conference on Computer and Energy Science (SpliTech). IEEE</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="6" />
+			<date type="published" when="2017">2017. 2017 2nd</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">A hierarchical autoencoder learning model for path prediction and abnormality detection</title>
+		<author>
+			<persName><forename type="first">Dario</forename><surname>Dotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mirela</forename><surname>Popa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stylianos</forename><surname>Asteriadis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pattern Recognition Letters</title>
+		<imprint>
+			<biblScope unit="volume">130</biblScope>
+			<biblScope unit="page" from="216" to="224" />
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Back to Bayesics: Uncovering Human Mobility Distributions and Anomalies with an Integrated Statistical and Neural Framework</title>
+		<author>
+			<persName><forename type="first">Minxuan</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yinlong</forename><surname>Qian</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.01011</idno>
+		<ptr target="https://arxiv.org/abs/2410.01011" />
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Identifying Human Mobility via Trajectory Embeddings</title>
+		<author>
+			<persName><forename type="first">Qiang</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fan</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="1689" to="1695" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Using collaborative filtering to weave an information tapestry</title>
+		<author>
+			<persName><forename type="first">David</forename><surname>Goldberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Nichols</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Commun. ACM</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="61" to="70" />
+			<date type="published" when="1992">1992. 1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Lunar: Unifying local outlier detection methods via graph neural networks</title>
+		<author>
+			<persName><forename type="first">Adam</forename><surname>Goodge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bryan</forename><surname>Hooi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">See-Kiong</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wee Siong</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI&apos;22</title>
+				<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="6737" to="6745" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">DeepTEA: effective and efficient online time-dependent trajectory outlier detection</title>
+		<author>
+			<persName><forename type="first">Xiaolin</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reynold</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chenhao</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tobias</forename><surname>Grubenmann</surname></persName>
+		</author>
+		<idno type="DOI">10.14778/3523210.3523225</idno>
+		<ptr target="https://doi.org/10.14778/3523210.3523225" />
+	</analytic>
+	<monogr>
+		<title level="m">Proc. VLDB Endow</title>
+				<meeting>VLDB Endow</meeting>
+		<imprint>
+			<date type="published" when="2022-03">2022. mar 2022</date>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="1493" to="1505" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th international conference on world wide web</title>
+				<meeting>the 26th international conference on world wide web</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="173" to="182" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Location-based social network data generation based on patterns of life</title>
+		<author>
+			<persName><forename type="first">Joon-Seok</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2020 21st IEEE International Conference on Mobile Data Management (MDM)</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="158" to="167" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Algorithms for mining distancebased outliers in large datasets</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Edwin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Raymond T</forename><surname>Knox</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">VLDB. Citeseer</title>
+				<imprint>
+			<date type="published" when="1998">1998</date>
+			<biblScope unit="page" from="392" to="403" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">EPIPOL: An Epidemiological Patterns of Life Simulation (Demonstration Paper)</title>
+		<author>
+			<persName><forename type="first">Will</forename><surname>Kohn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Züfle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGSPATIAL SpatialEpi&apos;23 Workshop</title>
+				<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="13" to="16" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Advances in collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021. 2021</date>
+			<biblScope unit="page" from="91" to="142" />
+		</imprint>
+	</monogr>
+	<note>Recommender systems handbook</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Anomaly detection in sea traffic-a comparison of the gaussian mixture model and the kernel density estimator</title>
+		<author>
+			<persName><forename type="first">Rikard</forename><surname>Laxhammar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Goran</forename><surname>Falkman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Egils</forename><surname>Sviestins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2009 12th international conference on information fusion</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="756" to="763" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Motion-alert: automatic anomaly detection in massive moving objects</title>
+		<author>
+			<persName><forename type="first">Xiaolei</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jiawei</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sangkyum</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE ISI</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2006">2006. 2006</date>
+			<biblScope unit="page" from="166" to="177" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">ECOD: Unsupervised Outlier Detection Using Empirical Cumulative Distribution Functions</title>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yue</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiyang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicola</forename><surname>Botta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cezar</forename><surname>Ionescu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/tkde.2022.3159580</idno>
+		<ptr target="https://doi.org/10.1109/tkde.2022.3159580" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="12181" to="12193" />
+			<date type="published" when="2023-12">2023. Dec. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Isolation forest</title>
+		<author>
+			<persName><forename type="first">Tony</forename><surname>Fei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kai</forename><forename type="middle">Ming</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhi-Hua</forename><surname>Ting</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">eighth ieee international conference on data mining</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008. 2008</date>
+			<biblScope unit="page" from="413" to="422" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Online Anomalous Trajectory Detection with Deep Generative Sequence Modeling</title>
+		<author>
+			<persName><forename type="first">Yiding</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaiqi</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gao</forename><surname>Cong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhifeng</forename><surname>Bao</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICDE48307.2020.00087</idno>
+		<ptr target="https://doi.org/10.1109/ICDE48307.2020.00087" />
+	</analytic>
+	<monogr>
+		<title level="m">2020 IEEE 36th International Conference on Data Engineering (ICDE). 949-960</title>
+				<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Vessel trajectories outliers</title>
+		<author>
+			<persName><forename type="first">Tomás</forename><surname>Machado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rui</forename><surname>Maia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Ambient Intelligence-Software and Applications-, 9th International Symposium on Ambient Intelligence</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="247" to="255" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">An overview on trajectory outlier detection</title>
+		<author>
+			<persName><forename type="first">Fanrong</forename><surname>Meng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guan</forename><surname>Yuan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Artificial Intelligence Review</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="2437" to="2456" />
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Challenges and opportunities in deep reinforcement learning with graph neural networks: A comprehensive review of algorithms and applications</title>
+		<author>
+			<persName><forename type="first">Sai</forename><surname>Munikoti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Deepesh</forename><surname>Agarwal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE transactions on neural networks and learning systems</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">ALSTM: adaptive LSTM for durative sequential data</title>
+		<author>
+			<persName><forename type="first">Dejiao</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Xia</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE ICTAI&apos;18</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="151" to="157" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Spatial epidemiology: an emerging (or re-emerging) discipline</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Richard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gregory</forename><forename type="middle">E</forename><surname>Ostfeld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Felicia</forename><surname>Glass</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Keesing</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Trends in ecology &amp; evolution</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="328" to="336" />
+			<date type="published" when="2005">2005. 2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Semantic trajectories modeling and analysis</title>
+		<author>
+			<persName><forename type="first">Christine</forename><surname>Parent</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Computing Surveys (CSUR)</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="1" to="32" />
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Improving regularized singular value decomposition for collaborative filtering</title>
+		<author>
+			<persName><forename type="first">Arkadiusz</forename><surname>Paterek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of KDD cup and workshop</title>
+				<meeting>KDD cup and workshop</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="5" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Trajectorybased anomalous event detection</title>
+		<author>
+			<persName><forename type="first">Claudio</forename><surname>Piciarelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christian</forename><surname>Micheloni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gian</forename><forename type="middle">Luca</forename><surname>Foresti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Technology</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="1544" to="1554" />
+			<date type="published" when="2008">2008. 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Neural collaborative filtering vs. matrix factorization revisited</title>
+		<author>
+			<persName><forename type="first">Walid</forename><surname>Steffen Rendle</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Krichene</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th ACM Conference on Recommender Systems</title>
+				<meeting>the 14th ACM Conference on Recommender Systems</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="240" to="248" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Statistical analysis of motion patterns in AIS data: Anomaly detection and motion prediction</title>
+		<author>
+			<persName><forename type="first">Branko</forename><surname>Ristic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barbara</forename><forename type="middle">La</forename><surname>Scala</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mark</forename><surname>Morelande</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Neil</forename><surname>Gordon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">11th International Conference on Information Fusion</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2008">2008. 2008</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Deep one-class classification</title>
+		<author>
+			<persName><forename type="first">Lukas</forename><surname>Ruff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Vandermeulen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nico</forename><surname>Goernitz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lucas</forename><surname>Deecke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ahmed</forename><surname>Shoaib</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Siddiqui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Emmanuel</forename><surname>Binder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Marius</forename><surname>Müller</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Kloft</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International conference on machine learning. PMLR</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="4393" to="4402" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<author>
+			<persName><forename type="first">Al</forename><surname>Zahraa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mariette</forename><surname>Sahili</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Awad</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2301.10569</idno>
+		<title level="m">Spatio-temporal graph neural networks: A survey</title>
+				<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">On privacy in spatio-temporal data: User identification using microblog data</title>
+		<author>
+			<persName><forename type="first">Erik</forename><surname>Seglem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Züfle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SSTD&apos;17</title>
+				<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="43" to="61" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Stanford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suman</forename><surname>Adari</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2409.03024</idno>
+		<title level="m">NUMOSIM: A Synthetic Mobility Dataset with Anomaly Detection Benchmarks</title>
+				<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">IoT wearable sensors and devices in elderly care: A literature review</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Thanos</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Stavropoulos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sensors</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page">2826</biblScope>
+			<date type="published" when="2020">2020. 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">A Survey of Collaborative Filtering Techniques</title>
+		<author>
+			<persName><forename type="first">Xiaoyuan</forename><surname>Su</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Your trajectory privacy can be breached even if you walk in groups</title>
+		<author>
+			<persName><forename type="first">Kaixin</forename><surname>Sui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Youjian</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE/ACM IWQoS&apos;16. IEEE</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">The anomaly detection by using dbscan clustering with multiple parameters</title>
+		<author>
+			<persName><forename type="first">Tran</forename><surname>Manh Thang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Juntae</forename><surname>Kim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2011 International Conference on Information Science and Applications</title>
+				<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="1" to="5" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<title level="m" type="main">Trajectory of mobility decline by type of dementia</title>
+		<author>
+			<persName><surname>Magdalena I Tolea</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>John</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><forename type="middle">E</forename><surname>Morris</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Galvin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="60" to="66" />
+		</imprint>
+	</monogr>
+	<note>Alzheimer Disease &amp; Associated Disorders</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Trajectory-based multidimensional outlier detection in wireless sensor networks using Hidden Markov Models</title>
+		<author>
+			<persName><forename type="first">Chen</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongzhi</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongbo</forename><surname>Jiang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Wireless networks</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="2409" to="2418" />
+			<date type="published" when="2014">2014. 2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Traffic flow prediction via spatial temporal graph neural network</title>
+		<author>
+			<persName><forename type="first">Xiaoyang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yao</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the web conference 2020</title>
+				<meeting>the web conference 2020</meeting>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="1082" to="1092" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Collaborative filtering and deep learning based recommendation system for cold start items</title>
+		<author>
+			<persName><forename type="first">Jian</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianhua</forename><surname>He</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">69</biblScope>
+			<biblScope unit="page" from="29" to="39" />
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">A Fast Trajectory Outlier Detection Approach via Driving Behavior Modeling</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Weiwei</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Baihua</forename><surname>Zheng</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3132847.3132933</idno>
+		<ptr target="https://doi.org/10.1145/3132847.3132933" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2017 ACM on Conference on Information and Knowledge Management</title>
+				<meeting>the 2017 ACM on Conference on Information and Knowledge Management<address><addrLine>Singapore, Singapore; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="837" to="846" />
+		</imprint>
+	</monogr>
+	<note>CIKM &apos;17)</note>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Trajectory outlier detection approach based on common slices sub-sequence</title>
+		<author>
+			<persName><forename type="first">Qingying</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yonglong</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chuanming</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaohan</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="2661" to="2680" />
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Trajectory outlier detection algorithm based on structural features</title>
+		<author>
+			<persName><forename type="first">Guan</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shixiong</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cheng</forename><surname>Ji</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Computational Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="4137" to="4144" />
+			<date type="published" when="2011">2011. 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<monogr>
+		<title level="m" type="main">Large Language Models for Spatial Trajectory Patterns Mining</title>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2310.04942</idno>
+		<imprint>
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<monogr>
+		<title level="m" type="main">Transferable Unsupervised Outlier Detection Framework for Human Semantic Trajectories</title>
+		<author>
+			<persName><forename type="first">Zheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hossein</forename><surname>Amiri</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2410.00054</idno>
+		<imprint>
+			<date type="published" when="2024">2024. 2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">AddGraph: Anomaly Detection in Dynamic Graph Using Attention-based Temporal GCN</title>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhenpeng</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">3</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Trajectory data mining: an overview</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Zheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Intelligent Systems and Technology (TIST)</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="1" to="41" />
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Understanding mobility based on GPS data</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quannan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yukun</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 10th international conference on Ubiquitous computing</title>
+				<meeting>the 10th international conference on Ubiquitous computing</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="312" to="321" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Mining user similarity based on location history</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quannan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Ying</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGSPATIAL&apos;08 (sigspatial&apos;</title>
+				<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+	<note>08 ed.</note>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">GeoLife: A collaborative social networking service among user, location and trajectory</title>
+		<author>
+			<persName><forename type="first">Yu</forename><surname>Zheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Ying</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Data Eng. Bull</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="32" to="39" />
+			<date type="published" when="2010">2010. 2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Anomaly Detection with Robust Deep Autoencoders</title>
+		<author>
+			<persName><forename type="first">Chong</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Randy</forename><forename type="middle">C</forename><surname>Paffenroth</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/3097983.3098052</idno>
+		<ptr target="https://doi.org/10.1145/3097983.3098052" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+				<meeting>the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining<address><addrLine>Halifax, NS, Canada; New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="665" to="674" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Ast-gnn: An attention-based spatio-temporal graph neural network for interaction-aware pedestrian trajectory prediction</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongchun</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Huaxia</forename><surname>Xia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mingyu</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yang</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hai</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neurocomputing</title>
+		<imprint>
+			<biblScope unit="volume">445</biblScope>
+			<biblScope unit="page" from="298" to="308" />
+			<date type="published" when="2021">2021. 2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Time-dependent popular routes based trajectory outlier detection</title>
+		<author>
+			<persName><forename type="first">Jie</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">An</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guanfeng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lei</forename><surname>Zhao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Web Information Systems Engineering-WISE 2015: 16th International Conference</title>
+				<meeting><address><addrLine>Miami, FL, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2015-11-01">2015. November 1-3, 2015</date>
+			<biblScope unit="page" from="16" to="30" />
+		</imprint>
+	</monogr>
+	<note>Proceedings, Part I 16</note>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Urban life: a model of people and places</title>
+		<author>
+			<persName><forename type="first">Andreas</forename><surname>Züfle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computational and Mathematical Organization Theory</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="20" to="51" />
+			<date type="published" when="2023">2023. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

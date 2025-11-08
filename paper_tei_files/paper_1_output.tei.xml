@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Explainable Recommender Systems via Resolving Learning Representations</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2020-08-21">21 Aug 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Ninghao</forename><surname>Liu</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Yong</forename><surname>Ge</surname></persName>
+							<email>yongge@email.arizona.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Li</forename><surname>Li</surname></persName>
+							<email>li.li1@samsung.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+							<email>hu@cse.tamu.edu</email>
+						</author>
+						<author>
+							<persName><forename type="first">Rui</forename><surname>Chen</surname></persName>
+							<email>rui.chen1@samsung.com</email>
+						</author>
+						<author>
+							<persName><forename type="first">Soo-Hyun</forename><forename type="middle">2020 Explainable</forename><surname>Choi</surname></persName>
+							<email>sh9.choi@samsung.com</email>
+						</author>
+						<author>
+							<persName><surname>Recommender</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="institution">Texas A&amp;M University</orgName>
+								<address>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">University of Arizona</orgName>
+								<address>
+									<region>AZ</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">Samsung Research America</orgName>
+								<address>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">Texas A&amp;M University</orgName>
+								<address>
+									<region>TX</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="institution">Samsung Research America</orgName>
+								<address>
+									<region>CA</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff5">
+								<orgName type="institution">Samsung Electronics</orgName>
+								<address>
+									<country key="KR">South Korea</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Explainable Recommender Systems via Resolving Learning Representations</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-08-21">21 Aug 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">BA8DED94BEE197889EC07D7FDFD2AB24</idno>
+					<idno type="DOI">10.1145/3340531.3411919</idno>
+					<idno type="arXiv">arXiv:2008.09316v1[cs.LG]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.7.1" ident="GROBID" when="2025-11-08T10:49+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>Explainable Artificial Intelligence; Recommender Systems</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Recommender systems play a fundamental role in web applications in filtering massive information and matching user interests. While many efforts have been devoted to developing more effective models in various scenarios, the exploration on the explainability of recommender systems is running behind. Explanations could help improve user experience and discover system defects. In this paper, after formally introducing the elements that are related to model explainability, we propose a novel explainable recommendation model through improving the transparency of the representation learning process. Specifically, to overcome the representation entangling problem in traditional models, we revise traditional graph convolution to discriminate information from different layers. Also, each representation vector is factorized into several segments, where each segment relates to one semantic aspect in data. Different from previous work, in our model, factor discovery and representation learning are simultaneously conducted, and we are able to handle extra attribute information and knowledge. In this way, the proposed model can learn interpretable and meaningful representations for users and items. Unlike traditional methods that need to make a trade-off between explainability and effectiveness, the performance of our proposed explainable model is not negatively affected after considering explainability. Finally, comprehensive experiments are conducted to validate the performance of our model as well as explanation faithfulness.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="5" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="6" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="7" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="8" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="9" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+		<surface n="10" ulx="0.0" uly="0.0" lrx="612.0" lry="792.0"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>Recommender systems play a pivotal role in a wide range of web applications and services, in terms of distributing online content to targets who are likely to be interested in it. The majority of the efforts in the domain have been put into developing more effective models to achieve better performance. In contrast, the progress of analyzing the explainability aspect of recommender systems is running behind. Explainable recommender systems address the problem of why -besides providing recommendation results, they also give reasons to clarify why such results are derived <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b30">31,</ref><ref type="bibr" target="#b46">47,</ref><ref type="bibr" target="#b54">55]</ref>. Explainability may benefit a recommender system in several aspects. First, explanations help system maintainers to diagnose and refine the recommendation pipeline (system-oriented). Second, by increasing transparency, explanations promote persuasiveness and customer satisfaction of recommender systems (user-oriented).</p><p>Recently, Explainable AI (XAI), or interpretable machine learning, is receiving increasing attention <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b10">11,</ref><ref type="bibr" target="#b27">28]</ref> (we use "explanation" and "interpretation" interchangeably in this paper). One popular direction is post-hoc methods <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b30">31]</ref>, where some examples include understanding the meaning of latent factors <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b28">29]</ref> or reconstructing the rationale behind each prediction <ref type="bibr" target="#b46">[47]</ref>. However, post-hoc interpretation suffers from the issue of explanation accuracy <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b31">32]</ref>. Another direction is to build explainable models or add explainable components, where attention mechanism is commonly applied to highlight important features for prediction <ref type="bibr" target="#b7">[8,</ref><ref type="bibr" target="#b33">34]</ref>. Nevertheless, explanation schemes such as heatmaps in images or texts are not structured and still require subjective comprehension of users. Since effective models can learn informative latent representations from data <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b32">33]</ref>, one of the important building blocks of model explainability is the transparency of representation learning. In traditional factorization models, input features can be directly associated with latent factors to elucidate their meanings <ref type="bibr" target="#b55">[56]</ref>, but this explanation scheme is not directly applicable to recent embedding learning frameworks.</p><p>In this work, we propose an explainable recommendation model through promoting the transparency of latent representations. To begin with, we summarize three elements that help make a model more interpretable. We name them as IOM elements since they involve certain requirements on the Input data format, Output attribution, and Middle-level representations. The proposed explainable model is designed based on the IOM elements. Users, items and attribute entities are processed as nodes in a graph. Furthermore, the efforts on interpretable recommendation are split into three parts: <ref type="bibr" target="#b0">(1)</ref> we disentangle the interactions between latent representations in different layers; <ref type="bibr" target="#b1">(2)</ref> multiple semantic factors are identified automatically from data; (3) latent dimensions are divided into segments according to their information source (i.e., node types) and affiliated factors. The first part is achieved via graph convolutional networks (GCNs). However, different from previous work <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b41">42,</ref><ref type="bibr" target="#b43">44]</ref>, we propose to understand GCNs from another perspective by comparing its working mechanism with those of fully-connected networks <ref type="bibr" target="#b2">[3]</ref> and capsule networks <ref type="bibr" target="#b32">[33]</ref>. The second and third aspects are achieved through a novel architecture design, where different dimensions of latent representations focus on different aspects of data. Different from previous work <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b38">39]</ref>, factor discovery and representation learning are jointly conducted. In this way, we are able to depict how information flows from input features through these latent states to prediction results. Different from some existing work that sacrifices effectiveness for interpretability, the proposed model still achieves good performance in the experimental evaluation. Finally, besides visualizing explanations, we also quantitatively measure explanation accuracy.</p><p>Our contributions in this work are summarized as follows:</p><p>• We propose an explainable recommendation model that improves transparency of latent representations. Specifically, we propose to unravel the interactions between representations, and segment the latent dimensions into different factors. The consideration of interpretability does not negatively influence model effectiveness. • We summarize and refine the elements that improve the interpretability of recommendation. These elements involve certain requirements on the input data format, output attribution, and middle-level representations, and are thus named as IOM elements. The proposed model is designed based on IOM elements. • We conduct comprehensive experiments to evaluate the proposed model in two aspects, effectiveness and interpretability. We show that the effectiveness of the model will not be hindered by interpretability. Also, we quantitatively measure the accuracy of interpretation through adversarial attack.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">PRELIMINARIES: ELEMENTS OF EXPLAINABLE RECOMMENDATION</head><p>In this section, we discuss the important elements in a recommendation pipeline that could promote human understanding. The proposed model, which is to be formally introduced in the next section, considers all of these three elements. It is worth noting that some directions of XAI may not focus on these elements, and they are beyond the discussion of this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Conceptualization of Input</head><p>Besides complexity and parameter sizes, deep models are commonly regarded as black-boxes because they operate on low-level features, rather than high-level, discrete, human-comprehensible concepts. For examples, computer vision models operate on pixels, and natural language models take word vectors as input. The direct consequence is that there is a lack of concrete carriers to concisely depict information flows from input to output. Some recent research starts to explore how to conceptualize data into discrete interpretation basis, and derive explanations or explainable models upon it <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b51">52,</ref><ref type="bibr" target="#b56">57]</ref>. In this paper, we also work on discretized input data. In recommender systems, users and items can naturally be regarded as discrete concepts. For side content information, we make use of knowledge graphs (KGs) where each entity in a KG can be regarded as a concept. Developing new techniques to extract concepts from raw input, or building more informative graphs, is not a main contribution of this paper. Finally, we connect users and items with observed interactions, items and entities if they are related, entities and entities if they are already connected in a KG. We ignore the link types in a KG. Therefore, users, items and KG entities are built into a graph used as input into recommender systems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Attributable Output</head><p>A basic requirement of model interpretability is the ability to obtain the attribution of features to a prediction output (i.e., output is attributable to certain features). Depending on whether the attribution is obtained after or along with the prediction, interpretation techniques can be categorized into post-hoc methods <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b34">35,</ref><ref type="bibr" target="#b35">36,</ref><ref type="bibr" target="#b46">47]</ref> and building intrinsically explainable models <ref type="bibr" target="#b37">[38]</ref>. Post-hoc methods usually approximate the original model with simpler but explainable ones, or resort to backpropagation to estimate the model's sensitivity to different features. Post-hoc methods have the advantage of being model-agnostic <ref type="bibr" target="#b30">[31]</ref>, but they have also been criticised as not being faithful enough in reproducing the working mechanism of the original model <ref type="bibr" target="#b31">[32]</ref>. In this work, our goal is to design an explainable model, instead of developing new post-hoc methods, to provide human comprehensible rationales for recommendation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Resolved Middle-Level Representations</head><p>The resultant model, after considering the two elements above, can be roughly depicted in Figure <ref type="figure" target="#fig_0">1(b)</ref>. It is better than the fully black-box model in Figure <ref type="figure" target="#fig_0">1</ref>(a), but still does not shed light on the model's internal mechanism.</p><p>The main difficulty for better interpreting complex models lies in disentangling and understanding the interactions between latent representations. An example is shown in Figure <ref type="figure" target="#fig_2">2</ref> where we build a recommendation model based on a Multi-Layer Perceptron (MLP) with three hidden layers with L 1 regularization on the LastFM dataset <ref type="bibr" target="#b41">[42]</ref>. The feature importance explanation of each prediction is computed using the denoised gradient-based method <ref type="bibr" target="#b35">[36]</ref>. We  then normalize the importance scores to the unit sum, and sort the features according to their scores. We randomly select 500 samples from test data and compute the average of the sorted scores, as shown in the right part of Figure <ref type="figure" target="#fig_2">2</ref>. It is observed that, although a small number of features are important for each prediction, the effect (area under the curve) of the long tail of less important features together is still significant. The reason for this phenomenon is that a fully-connected network tends to entangle features without explicitly separating the interactions of latent dimensions <ref type="bibr" target="#b36">[37]</ref>. Without tackling this challenge, the efforts of conceptualizing input and attributing output would be largely thwarted, since contributions of different features will be indistinguishable.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.1">Disentanglement of Representation</head><p>Interactions. From the analysis above, we are facing the dilemma where we hope to both: (1) explore flexible feature interactions, and (2) constrain feature interactions to be concise to trace. These requirements remind us of the recent Capsule Network (CapsNet) <ref type="bibr" target="#b32">[33]</ref>. Each "capsule" represents a certain concept, and a dynamic routing process is run to decide the contribution between capsules of adjacent layers. Let z j and z i denote the embeddings of a higher-level capsule v j and a lower-layer capsule v i . The capsules interact in a way that</p><formula xml:id="formula_0">z j = squash( I i=1 a i, j z j |i ), z j |i = W i, j z i ,<label>(1)</label></formula><p>where W i, j is the bilinear mapping matrix, "squash" is a non-linear function, and a i, j ≥ 0 is the contribution score tracking the relation between capsules. Some recent work <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b47">48,</ref><ref type="bibr" target="#b52">53]</ref> claims to use CapsNet to improve model interpretability. Nevertheless, several challenges impede us from directly applying CapsNet to certain recommendation scenarios. First, if we treat users or items as capsules, then the number of parameters {W i, j } would be too large. Second, dynamic routing significantly increases time complexity and memory. Third, how to instill structured knowledge from human experts into the model remains unsolved. Next we will show that graph convolution processes information in a similar manner to CapsNet, and the challenges faced by CapsNet can be easily tackled by GCN. Let z j be the embedding of node v j . Through graph convolution, its embedding is updated as:</p><formula xml:id="formula_1">z j ← σ ( v i ∈N j ∪{v j } a i, j Wz i ),<label>(2)</label></formula><p>where N j denotes the neighbors of v j , σ (•) is the activation function, a i, j is the attention score. By comparing Eq(1) and Eq(2), it can be observed that both models use vectors to represent objects, and apply the weighted vector sum to propagate information. In this sense, GCN may be seen as a special case of CapsNet, where iterative routing is omitted and bilinear mapping reduces to a single matrix W that reduces the number of parameters. Moreover, GCN can naturally handle relational data and human knowledge organized in the form of graphs. In this paper, we use graph convolution as the basic operation to build explainable recommender systems.</p><p>2.3.2 Segmentation of Latent Dimensions. Another aspect of representation learning transparency is to explicitly separate the information captured by different dimensions of representations. There are two advantages for latent dimension separation. First, each set of dimensions corresponds to one semantic aspect, so we are able to learn meaningful representations. Second, disentanglement of latent dimensions may improve model effectiveness via encoding more nuanced relations in data <ref type="bibr" target="#b5">[6]</ref>. For example, if we use an embedding to depict the interest of a user, then ideally we would want different dimensions to separately capture user interests in different item genres, such as clothes, electronics, and daily necessities. Disentangling latent dimensions is a nontrivial task despite some preliminary work proposed recently. <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b25">26]</ref> extend network embedding by learning several vectors for each node. Wang et al. <ref type="bibr" target="#b38">[39]</ref> utilize item categories as part of the supervised information to associate latent dimensions with different aspects. However, how to deal with extra knowledge or automatically discover factors without category information are beyond their discussion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">PROBLEM FORMULATION</head><p>Notations. In this paper, column vectors are represented by boldface lowercase letters, such as a and b; matrices are represented by boldface capital letters, such as W and Y; sets are represented by calligraphic capital letters, such as U and N . The i-th entry of a vector b is denoted by b i , and entry (i, j) of a matrix W is denoted by W i, j . As discussed above, the input into recommender systems is constructed as a graph G with nodes denoted by V. We include three types of nodes in the graph, i.e., users, items and knowledge entities, where U, T and E denote the user set, item set and entity set, respectively. Here note that v ∈ V = U ∪ T ∪ E can be used to denote any type of nodes when the node type is not specified. In this paper, we consider three types of links in our scenario, user-item links {(u, t)}, item-entity links {(t, e)} and entity-entity links {(e, e ′ )}, where u ∈ U, t ∈ T and e, e ′ ∈ E. A user-item link (u, t) indicates an observed interaction (e.g., purchase, impression) between user u and item t. An item-entity link (t, e) unveils the item's quality or attribute described by entity e. An entity-entity link (e, e ′ ) simply stores the relation between the two entities. Without loss of generality, it is also possible to add user-entity links {(u, e)} to reflect a user's attention or attitude towards an entity, but such information is not directly available in our experimental data. There is also a ground-truth interaction matrix Y ∈ R |U |×| T | , where Y u,t = 1 means that there is an observed interaction between user u and item t, and Y u,t = 0 otherwise. Problem Definition. Given the input graph G, our goal is to predict whether user u is interested in an item t. That is, we aim to learn a prediction function Ŷu,t = f (u, t |G, Θ), where Ŷu,t is the estimated probability that user u is interested in item t, and Θ denotes  the parameters to learn. More importantly, additional constraints for explainability are added to the architecture of f .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">INTERPRETABLE RECOMMENDATION WITH GRAPH DATA</head><p>In this section, we introduce the proposed explainable recommender system, which is based on the IOM elements introduced in previous sections. First, we extend the traditional explainable factor decomposition model into a more general representation learning framework. Second, we introduce the recommendation interpretation schema. Third, we introduce a novel graph convolution architecture to resolve latent dimensions, as well as the variational autoencoder based learning framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Node-Factor Factorization</head><p>In each recommendation application, we assume that there exist a number of latent factors which compactly describe different aspects of the nodes in the graph. Suppose there are C factors. In traditional factorization models <ref type="bibr" target="#b22">[23]</ref>, we consider the parameterization where a nonnegative score F v,c is assigned for each pair of node v ∈ V and factor c ∈ {1, ..., C} to measure their affiliation strength. More specifically, for a user node u ∈ U, F u,c represents the user's attention or interest on factor c. For an item node t ∈ T , F t,c quantifies the degree that factor c can be used to describe item t. Therefore, the tendency that factor c independently triggers the interaction between u and t could be computed as</p><formula xml:id="formula_2">F u,c • F t,c . Then, an observed link Y u,t can be decomposed as Y u,t ≈ C c=1 F u,c • F t,c</formula><p>. The explanation behind is that user u is more likely to interact with item t if the item has high quality or reputation on more factors which are also highly valued by the user.</p><p>Traditionally, F u,c and F t,c are directly solved as nonnegative parameters optimized through matrix factorization <ref type="bibr" target="#b21">[22,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b55">56]</ref>. However, the design of explicit factors is not fully compatible with recent representation learning frameworks. To combine the explainability of explicit factorization and the flexibility of recent learning frameworks, we embed different factors within nodes separately into the latent space. That is, we use a vector z c v ∈ R D to represent node v described by factor c, where D is the embedding dimension of a single factor. The score between user u and item t under factor c is thus computed as ⟨z c u , z c t ⟩, where ⟨• , •⟩ denotes inner product. And the link factorization is thus formulated as Y u,t ≈ C c=1 ⟨z c u , z c t ⟩. The link prediction can also be written as Y u,t ≈ ⟨z u , z t ⟩, where</p><formula xml:id="formula_3">z v = [z 1 v ; z 2 v ; ...; z C v ] ∈ R C×D .</formula><p>For each observed user-item pair, it is expected that only a part of the factors will be activated in preserving similarity. If factor c is the potential cause of making user u interact with item t, in order for ⟨z c u , z c t ⟩ to have a large score, not only should the angle be small between z c u and z c t , we also expect them to have large lengths.</p><p>In certain models, more flexible interactions between factorized representations are designed. For example, in Factorization Machines <ref type="bibr" target="#b29">[30]</ref>, cross-factor interactions are allowed (i.e., ⟨z c 1 u , z c 2 t ⟩ also contributes to Y u,t and c 1 c 2 ). In addition, if we assume that users have multiple interests but items are constrained with a single property, then Y u,t ≈ C c=1 ⟨z c u , z t ⟩.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Interpretation Hierarchy</head><p>In this work, we treat user nodes, item nodes and entity nodes as concepts. Different concepts are assigned to different levels. A concept on level ℓ is represented by concepts on level ℓ ′ where ℓ ′ &lt; ℓ. Specifically, let v and v ′ denote concepts on level ℓ and ℓ ′ , then we could interpret the embedding of v as</p><formula xml:id="formula_4">z v ≈ v ′ p v,v ′ z v ′</formula><p>, where p v,v ′ denotes the contribution from v ′ to v. Low-level concepts tend to be simple, while high-level concepts are complex and composite. Lower-level concepts can be regarded as the basis to represent higher-level ones. Note that besides ℓ ′ = ℓ − 1, any ℓ ′ &lt; ℓ can be chosen as the basis level to represent concepts on level ℓ.</p><p>The levels of concepts are defined in an iterative manner. The user nodes are on the top level ℓ max . The item nodes are on level ℓ max − 1 as they connect to users. The entities which connect to items are on level ℓ max − 2. In general, if a node v connects to another node on level ℓ and v does not belong to a level higher than ℓ, then it belongs to level ℓ − 1. In the end, the bottom entity nodes are on level 0. In this work, to simplify illustration, we assume that there is only one level of entity nodes, so that ℓ max = 2 for user nodes. An example of recommendation explanation for a user is given in Figure <ref type="figure" target="#fig_4">3</ref>. The proposed model can be easily extended to deal with multi-level knowledge entities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Resolving Information Flow</head><p>We now introduce how to segment z v to different factors. Under traditional GCNs shown in Figure <ref type="figure" target="#fig_5">4</ref>(a) and Eq(2), the embeddings of user u and item t on the final GCN layer are computed as:</p><formula xml:id="formula_5">z u ← COMBINE(z u , AGGREGATE({z t : t ∈ N u ⊆ T })), z t ← COMBINE(z t , AGGREGATE({z e : e ∈ N t ⊆ E})).<label>(3)</label></formula><p>It is worth noting that we restrict the information flow direction. An item embedding z t receives information from knowledge entities, as well as its own embedding on the lower GCN layer. Similarly, a user embedding z u receives information from itself on the lower layer, the items that have been interacted, and knowledge entities as second order connections. Finally, top-layer z u and z t engage in computing recommendation prediction Ŷu,t . Common COMBINE() operations include summation or concatenation followed by transformation, while common AGGREGATE() includes summation and mean operations <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b43">44,</ref><ref type="bibr" target="#b49">50]</ref>. In the proposed model, we modify traditional COMBINE() and AGGREGATE() operations to resolve information propagation between representations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Entity Embedding Item Embedding</head><p>User Embedding </p><formula xml:id="formula_6">z t = z sl f t ∥ z ent t ,</formula><p>where</p><formula xml:id="formula_7">z ent t = AGGREGATE({z sl f e : e ∈ N t ⊆ E}).<label>(4)</label></formula><p>Here z sl f t denotes the item itself's bottom-level embedding, and ∥ means concatenation. Similarly, for each user embedding z u , it receives information from both items and knowledge entities that describe those items, so we define it as:</p><formula xml:id="formula_8">z u = z sl f u ∥ z itm u ∥ z ent u ,</formula><p>where</p><formula xml:id="formula_9">z itm u = AGGREGATE({z sl f t : t ∈ N u ⊆ T }), z ent u = AGGREGATE({z ent t : t ∈ N u ⊆ T }).<label>(5)</label></formula><p>Here z itm u describes the user through the historical items he has interacted with. z ent u describes the user with knowledge entities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.2">Modification to AGGREGATE().</head><p>Furthermore, instead of directly aggregating information from items or entities without distinguishing their natures or semantics, we first assign low-level embeddings into different factors, and then send information accordingly. Specifically, as shown in Figure <ref type="figure" target="#fig_5">4</ref>(c), we define item-side aggregation as:</p><formula xml:id="formula_10">z ent t = C 1 c=1 z ent,c t , where z ent,c t = д e ∈N t p(e, c) |N t | z sl f e .<label>(6)</label></formula><p>Here p(e, c) ∈ [0, 1] denotes the affiliation degree between entity e and factor c. Also, we define user-side aggregation as:</p><formula xml:id="formula_11">z itm u = C 2 c=1 z itm,c u , where z itm,c u = д t ∈N u p(t, c) |N u | z sl f t ,<label>(7)</label></formula><formula xml:id="formula_12">z ent u = C 1 c=1 z ent,c u , where z ent,c u = t ∈N u 1 |N u | z ent,c t .<label>(8)</label></formula><p>Here p(t, c) ∈ [0, 1] denotes the affiliation degree between item t and factor c. д is a nonlinear mapping module. The design above is based on the principle that: (1) z sl f v will first be assigned to some factors c according to p(v, c) scores, and then contribute to the corresponding higher-level embeddings after the nonlinear mapping; (2) For those embeddings that are already factorized (i.e., z ent,c t ), they will directly contribute to higher-level counterparts (i.e., z ent,c u ) within the same factor c. It is worth noting that we include two index sets {c |1 ≤ c ≤ C 1 } and {c |1 ≤ c ≤ C 2 } because they index different factors. Also, if we have more layers of entity nodes, their embeddings could be learned just via normal GCNs without applying our method, because entity nodes in different layers are still of the same type.</p><p>Till now, the learnable parameters Θ in our model include:</p><formula xml:id="formula_13">z sl f e , z sl f t , z sl f u , p(e, c) and p(t, c ′ ) for e ∈ E, t ∈ T , u ∈ U, 1 ≤ c ≤ C 1 and 1 ≤ c ′ ≤ C 2 .</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">The Proposed Model Architecture</head><p>We now introduce the model details for learning node embeddings, estimating factor affiliation scores, and making predictions. In general, the recommendation model is based on a variational autoencoder (using other encoder-decoder schemes may also work, but is beyond our discussion). The model details are as below. </p><p>p(t, c) = so f tmax(cos(z</p><formula xml:id="formula_15">sl f t , z itm c )/γ ),<label>(10)</label></formula><p>where so f tmax() normalizes over different factors, γ is a hyperparameter to skew distributions as a form of self-training <ref type="bibr" target="#b45">[46]</ref>. For example, making γ &lt; 1 amplifies the gap between strong and weak assignments. Through explicitly parameterizing factor embeddings, we reduce the number of parameters than treating p(e, c) or p(t, c) as independent coefficients over different argument pairs.</p><p>During the training process, we adopt the variational autoencoder paradigm <ref type="bibr" target="#b19">[20]</ref>. The generation of z u and z t are not deterministic, but are under certain probabilistic distribution. Also, we let different segments be mutually independent, so distributions are defined as below:</p><formula xml:id="formula_16">q(z t |G) = q(z sl f t |G) • C 1 c=1 q(z ent,c t |G),<label>(11)</label></formula><formula xml:id="formula_17">q(z u |G) = q(z sl f u |G) • C 2 c=1 q(z itm,c u |G) • C 1 c=1 q(z ent,c u |G). (<label>12</label></formula><formula xml:id="formula_18">)</formula><p>The probability of each segment follows a multivariate normal distribution. According to the designed information flow, q(z ent,c </p><formula xml:id="formula_19">|N t | z sl f e ).</formula><p>The generation of other segments are similar, so we skip them here.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.2">Decoder.</head><p>The decoder computes the similarity between z u and z t jointly over various factors, as illustrated in Figure <ref type="figure" target="#fig_5">4(c)</ref>:</p><formula xml:id="formula_20">p(Y u,t |z u , z t ) ∝ exp(⟨z sl f u , z sl f t ⟩) + C 1 c=1 p(t, c) exp(⟨z itm,c u , z sl f t ⟩) + C 2 c=1 exp(⟨z ent,c u , z ent,c t ⟩),<label>(13)</label></formula><p>where ⟨• , •⟩ denotes inner product. The first term can be seen as the traditional collaborative filtering component. The second term contributes to prediction based on user historical interactions, where the embedding space contains C 1 factors. The third term contributes to prediction based on knowledge entities, where the embedding space contains C 2 factors. In this work, however, we discard the first term because it hurts the interpretability of the model. Also, it is worth noting that p(t, c) in the second term is necessary, since it scales z sl f t corresponding to different factors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4.3">Learning. The overall likelihood is decomposed into the sum of likelihoods of individual interactions as log p(Y) = u,t p(Y u,t ).</head><p>In practice, we optimize its variational lower bound L ELBO <ref type="bibr" target="#b19">[20]</ref>:</p><formula xml:id="formula_21">L ELBO (Y u,t ) = E q(z u ,z t | G) log p(Y u,t |z u , z t ) − KL[q(z u , z t |G)||p(z u , z t )],<label>(14)</label></formula><p>where KL[•||•] is the Kullback-Leibler divergence. The definition of p(Y u,t |z u , z t ) could be found in Eq <ref type="bibr" target="#b12">(13)</ref> with normalization over all item candidates. We also assume that z u and z t are generated independently, so p(z u , z t ) = p(z u ) • p(z t ) and q(z u , z t |G) = q(z u |G) • q(z t |G). We further take Gaussian prior, where p(z u ) = N (z u |0, I) and p(z t ) = N (z t |0, I). q(z u |G) and q(z t |G) are generated by encoders as introduced before.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">EXPERIMENT</head><p>In this section, we evaluate the proposed model on several realworld datasets. First, we evaluate the effectiveness of the proposed model. Second, we quantitatively measure the accuracy of interpretation, and analyze the insight from interpretation. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Dataset</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Datasets and Metrics</head><p>• MovieLens 1 : A benchmark dataset from movie recommendation. Original ratings are converted into binary scores, indicating whether a user has interacted with a movie <ref type="bibr" target="#b14">[15]</ref>. • LastFM 2 : A dataset obtained from the Last.fm online music website. Only interactions between users and music artists are used.</p><p>The social network information is not included. • Yelp 3 : A dataset adopted from Yelp challenge. Restaurants and bars are used as items. Attributes in the dataset are used as knowledge entities. Each user and item have at least 10 interactions.</p><p>Each dataset is associated with a knowledge graph as side information released in <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b43">44]</ref>. The datasets' statistics are available in Table <ref type="table" target="#tab_0">1</ref>. For each dataset, we randomly hold out 200 users for validation and 200 users for testing. For both groups of users, 80% of interactions are randomly sampled and put into training data, while the remaining are put into validation and testing data. The model to be tested has the best performance on the validation dataset.</p><p>The hyperparameter settings of the proposed model on each dataset are listed in Table <ref type="table" target="#tab_0">1</ref>. Specifically, D denotes the dimension of each factor's embedding. C denotes the total number of factors, so that the total embedding dimension is 2C × D for each user node, (C + 1) × D for each item node, and D for each entity node. lr is the learning rate. l 2 weight is the regularization weight for model parameters. Batch size corresponds to the number of users put into models for training, so that the number of batches in each epoch is #users/batch_size. For the decoder part in Eq <ref type="bibr" target="#b12">(13)</ref>, instead of using z sl f t and z ent,c t from GCN, a more effective solution is to maintain another embedding dictionary as learnable parameters to replace them <ref type="bibr" target="#b26">[27]</ref>. Such a replacement is beneficial for model performance. The interpretation for user interest is not affected. The reported experimental results are based on this practical modification. The effectiveness of models is evaluated under two metrics, Recall@k (k = 2, 10, 50, 100) and N DCG@100.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Baseline Methods</head><p>We compare the proposed model with the most representative stateof-the-art methods described below.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MovieLens</head><p>LastFM Yelp R@2 R@10 R@50 R@100 R@2 R@10 R@50 R@100 R@2 R@10 R@50 R@100 NMF • NMF <ref type="bibr" target="#b22">[23]</ref> is a benchmark collaborative filtering model for recommendation, based on non-negative matrix factorization. The number of factors is chosen as 16, 16, 12 for MovieLens, LastFM and Yelp. L 1 and L 2 regularizations are weighted equally, with regularization coefficient of 0.005. • FM <ref type="bibr" target="#b29">[30]</ref> is a benchmark factorization model which combines second-order feature interactions with linear modeling. We include user IDs, item IDs and items' associated knowledge entities as input. The total dimension of embedding is the same as the proposed model. • CKE <ref type="bibr" target="#b50">[51]</ref> extends collaborative filtering with side knowledge information as regularization for recommendations. We use both user-item interactions and knowledge entities as input. The weight for knowledge entity part is set as 0.2 for all datasets. • RippleNet <ref type="bibr" target="#b39">[40]</ref> is a memory-network-like approach which propagates from items to other entities in the knowledge graph. We for LastFM, and 3 × 10 −4 for Yelp.</p><p>• Splitter <ref type="bibr" target="#b5">[6]</ref> learns multiple embedding vectors for each node. A clustering step is performed independently as factor identification before embedding learning. Another similar work is <ref type="bibr" target="#b25">[26]</ref>. We use overlapping community detection for user-item subgraph and item-entity subgraph. The community detection results are used for factor assignment. Then, we apply C GCN models to learn several embeddings for each node. The community assignments remain fixed. The resultant embeddings are then concatenated for joint prediction. The embedding dimensions and the number of communities are set the same as the proposed model. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MovieLens</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Recommendation Performance Evaluation</head><p>We first compare the performance of the proposed method with the baseline methods. The performances are presented in Table <ref type="table" target="#tab_1">2</ref> and Table <ref type="table" target="#tab_2">3</ref>. Some observations are drawn below:</p><p>• The proposed model is at least comparable to the best performance in most cases. VGAE can be seen as the variant of the proposed model without resolving representation learning. It thus shows that considering interpretability will not negatively affect recommendation performances. • Although also emphasizing the idea of disentangled representation learning, the proposed model achieves better performance than Splitter. It demonstrates the advantage of simultaneously learning embedding and identifying factors over treating them as independent steps. The embedding learning in Splitter could be negatively affected by the gap of factor activation between training and inference. • VGAE achieves slightly better performance than KGCN. As we ignore link types in graphs, which is not our focus in this work, the improvement could be from the variational autoencoder. • NMF does not utilize attribute entities, which has a negative impact on its performance, but it serves as the baseline to reflect the degree that attribute information helps in recommendation.  We could observe that, by increasing C, model performance in general increases if we fix D, since more factors are considered and the parameter size also increases. The time complexity and memory cost will also increase in this case. However, the model performance decreases if we set C too large while keeping C × D fixed, since the dimension for each factor decreases and is not adequate to contain all the information needed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Evaluation of Explanation Accuracy</head><p>In this part, we will first evaluate the faithfulness of interpretation obtained from our model. Then, we qualitatively analyze the insights from interpretation. Explanation information comes from two parts: (1) affiliation scores tracing the information flows; (2) factors extracted on different embedding segments.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4.1">Quantitative Evaluation of Explanation.</head><p>Evaluating the correctness of model explanation quantitatively is a challenging task, because usually there is no ground-truth explanation to compare with. To tackle this, we utilize the duality between interpretation and adversarial perturbation <ref type="bibr" target="#b6">[7]</ref>. The high-level intuition is that, after removing the features that are important to the current prediction, the model prediction should dramatically change.</p><p>Specifically, we use the 200 users in testing data for evaluation. After performing recommendation, interpretation is obtained as the historical items or important attribute entities. For each user-item pair (u, t), we compute the importance score of an item/entity j as s(j; u, t). The exact definition of s(j; u, t) is introduced in Appendix. In brief, s(j; u, t) is computed based on the affiliation scores p(e, c) and p(t, c) as they trace contribution from entities to items and from items to users. Then, the items/entities with large importance scores are removed from the original input. Finally, we perform recommendations again with the new input. Let recall and recall ′   denote the Recall@10 performance before and after the perturbation, respectively. We define shi f t = r ecall −r ecall ′ r ecall to measure the explanation accuracy. A higher value indicates more accurate explanation.</p><p>We also introduce two baseline methods to compare with the proposed interpretation scheme. Popular methods such as LIME <ref type="bibr" target="#b30">[31]</ref> is not included since there is no explicit concept of classes in recommendation settings.</p><p>• Random: We randomly remove the same number of historical items as the proposed method.</p><p>• SEP <ref type="bibr" target="#b46">[47]</ref>: A post-hoc path-based interpretation method for recommender systems. Items in the resultant explanation paths are retrieved as interpretation.</p><p>The experimental results are shown in Figure <ref type="figure" target="#fig_9">5</ref>. We make 5 runs for each case and take the average. We vary the number of items to remove in x-axis, and the shi f t is y-axis. Observations are summarized as follows:</p><p>• The interpretation obtained directly from model inference is more accurate than using post-hoc explanations. It thus validates the benefit of designing explainable models over using external explanation methods. • The amount of information removed is small compared with the overall input. Also, the shi f t value increases as the amount of removed information increases. It thus further demonstrates the faithfulness of the obtained explanations.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4.2">Case</head><p>Studies. After the quantitative evaluation, we provide some visualization of explanation results in Figure <ref type="figure">6</ref>. We can see that restaurant t 835 is recommended to user u 755 because the user has visited similar restaurants (near Phoenix) and his activities are mainly in Arizona emphasized by attribute information. Similarly, restaurant t 1179 is recommended to user u 1523 because he has visited many Asian restaurants. The factor that each node is affiliated with is also shown. We also observe an interesting phenomenon in the second recommendation. The recommendation is partially explained by the attribute e 45545 , which indicates that the restaurant accepts credit cards for payment. However, intuitively it may not be a good reason shown to users to explain recommendation results in practice. The reason that this attribute is selected could be that many restaurants accept credit cards, but the strong correlation is not suitable as the reason to persuade users. This could be a limitation for graph convolution models. It also reminds us that interpretability is not equal to credibility, and we leave it for future exploration.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4.3">Visualization of Latent Dimensions.</head><p>In this part, we visualize the item embeddings in Yelp dataset in Figure <ref type="figure" target="#fig_12">7</ref>. The left plot follows the previous settings where C 1 = 6, while the right plot is drawn as we let C 1 = 4. The color of each point indicates its closest affiliated factor. Some colors are mixed since an embedding could be assigned to multiple factors, but only one factor could be shown for each embedding. The clustering phenomenon is consistent with factor affiliations. It demonstrates that our model is able to discover different factors from data and assign embeddings accordingly.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">RELATED WORK</head><p>Machine Learning for Recommender Systems. In addition to traditional content-based and neighborhood-based methods <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b24">25]</ref>, advanced machine learning methods have been developed for recommendation, which could be categorized into two groups: linear and nonlinear. Examples of linear methods include matrix factorization (MF) and factorization machines (FMs). Specifically, MF <ref type="bibr" target="#b0">[1]</ref> represents an individual user or item by a single latent vector and models the interaction of a user-item pair by the inner product of latent vectors. FMs <ref type="bibr" target="#b29">[30]</ref> embed features into a latent space and model user-item interactions by summing up the inner products of embedding vectors between all pairs of features. To this end, a lot of recent efforts have been put on modeling user-item interactions in a nonlinear way such as using DNNs. Example studies include the Wide &amp; Deep model for app recommendation in Google Play <ref type="bibr" target="#b2">[3]</ref>, the non-linear extensions of MF and FM <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b14">15]</ref>, the recommender modeled by recurrent neural networks (RNNs) <ref type="bibr" target="#b3">[4]</ref>, etc. It has been demonstrated that these nonlinear models usually yield better effectiveness, where a comprehensive review is available in <ref type="bibr" target="#b53">[54]</ref>. Interpretable Machine Learning. Model interpretability receives increasing attention recently <ref type="bibr" target="#b4">[5,</ref><ref type="bibr" target="#b27">28]</ref>. The efforts can be divided into two categories, post-hoc interpretation methods and intrinsically interpretable models. Specifically, post-hoc methods can be further divided into global and local methods, where the former transforms black-box models into understandable structures <ref type="bibr" target="#b51">[52]</ref>, and the latter explains individual predictions <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b34">35]</ref>. There are gradient-based methods that measure feature contributions on output or intermediate neurons through backpropagation <ref type="bibr" target="#b34">[35]</ref>, perturbation-based methods <ref type="bibr" target="#b6">[7]</ref>, approximation-based methods <ref type="bibr" target="#b30">[31]</ref>, and entropy-based methods <ref type="bibr" target="#b9">[10]</ref>. Intrinsically interpretability focuses on developing transparent model components. A typical strategy is to pose regularization on parameters to conform with certain prior <ref type="bibr" target="#b16">[17]</ref>. <ref type="bibr" target="#b42">[43]</ref> proposes to incorporate expert knowledge to penalize model weights. <ref type="bibr" target="#b36">[37]</ref> develops disentangled MLPs to explicitly regulate feature interactions between layers. Explainable Recommender Systems. The explainability of recommender systems recently starts to be seen as an important topic <ref type="bibr" target="#b54">[55]</ref>. Before the popularity of deep models, explicit factor models have been proposed to relate explicitly constructed features with latent factors as explanations for the factors <ref type="bibr" target="#b55">[56]</ref>. To balance effectiveness and explainability, a common strategy is to feed interpretable models with engineered features <ref type="bibr" target="#b15">[16]</ref> or construct domain-specific knowledge graphs <ref type="bibr" target="#b7">[8]</ref>. Graphs can be used as the basis to pass information for embedding learning <ref type="bibr" target="#b39">[40,</ref><ref type="bibr" target="#b43">44,</ref><ref type="bibr" target="#b44">45]</ref>. <ref type="bibr" target="#b17">[18]</ref> proposes an attention based model, but it only works on text data. <ref type="bibr" target="#b26">[27]</ref> proposes a new recommendation model to learn disentangled representations, but how to apply it into general scenarios containing extra attribute information and knowledge is beyond the discussion. To discriminate different semantics in embedding, <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b25">26]</ref> extend random-walk-based models and use multiple embeddings to represent each node, but embedding learning and factor extraction are done separately.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">CONCLUSION AND FUTURE WORK</head><p>In this work, we tackle the explainability problem in recommender systems. Specifically, we first analyze the IOM elements that benefit model interpretability, and then propose a novel model with a more transparent representation learning module. The IOM elements include reshaping input into discrete concepts, making output attributable, and disentangling the middle-level representations. The proposed model considers all the three elements above. The data is formatted as a graph. The model resolves information passing in graph convolution according to different source types and factors. Different from previous work, in our model, the representation learning process and factor identification are achieved simultaneously. Experiments on real-world datasets validate the effectiveness and interpretation accuracy of our model.</p><p>The future work includes: (1) developing more effective graph construction methods for automatic input conceptualization; (2) designing human-computer interaction interfaces to better render interpretation results to users; (3) extending the proposed model to handle a larger number of facets.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Models with different degrees of transparency. (a): A black-box model. (b): A model with conceptualized input and attributable output. (c): A model that extends (b) with transparent representation learning.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Feature interaction entangling in MLP.</figDesc><graphic coords="3,179.80,86.21,112.14,94.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>Schwarzenegger, Sci-Fi, AI/Robotics Recommendation 1. Item--based Interpretation: 2. Attribute--based Interpretation:</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Interpretation schema. A user's interest is explained through the historical items he has interacted with, as well as knowledge entities.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Overview of the proposed model design procedure, best viewed with color. (a): Traditional GCN information propagation. (b): GCN after discriminating information sources. (c): GCN after resolving information sources and factors.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>4. 4 . 1</head><label>41</label><figDesc>Encoder. The encoder returns a user embedding z u and an item embedding z t for each interaction. Encoder modules are based on graph convolution designed in the above subsection, with the new COMBINE() and AGGREGATE() operations. To estimate factor affiliation degrees p(e, c) and p(t, c), we maintain two sets of embeddings {z ent c |1 ≤ c ≤ C 1 } and {z itm c |1 ≤ c ≤ C 2 } as learnable parameters for each factor c. Then we define p(e, c) = so f tmax(cos(z sl f e , z ent c )/γ ),</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>t</head><label></label><figDesc>|G) = N (µ ent,c t , diag((σ ent,c t ) 2 )), where by following Eq(6), we define µ ent,c t = д µ ( e ∈N t p(e,c) | N t | z sl f e ), and σ ent,c t = д σ ( e ∈N t p(e,c)</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>set dim = 16 ,</head><label>16</label><figDesc>H = 2, λ 1 = 10 −6 , λ 2 = 0.01, η = 0.01 for Movie-Lens; dim = 16, H = 3, λ 1 = 10 −5 , λ 2 = 0.02, η = 0.005 for LastFM; dim = 16, H = 2, λ 1 = 10 −7 , λ 2 = 0.02, η = 0.01 for Yelp. • KGCN [42] is a GCN-based model that captures inter-item relations by mining their attributes on a knowledge graph (KG). We set dim = 120, H = 2, λ = 10 −7 , η = 2 × 10 −2 for MovieLens; dim = 64, H = 1, λ = 2 × 10 −5 , η = 2 × 10 −4 for LastFM; dim = 64, H = 2, λ = 5 × 10 −7 , η = 5 × 10 −4 for Yelp. • VGAE [21] is built upon a graph variational autoencoder. It can be regarded as the fundamental version of the proposed model where the latent dimensions are not disentangled. The hyperparameter setting is similar to the proposed method, except dim = 120 for MovieLens, dim = 64 for LastFM, and dim = 64 for Yelp. The learning rate is 5 × 10 −4 for MovieLens, 2 × 10 −4</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Quantitative evaluation of explanation faithfulness on MovieLens (left), LastFM (middle) and Yelp (right).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head></head><label></label><figDesc>u</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>3 ≠Figure 6 :</head><label>36</label><figDesc>Figure 6: Visualization of the explanations.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Visualization of embeddings for Yelp dataset.</figDesc><graphic coords="9,60.32,85.89,115.10,86.40" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Statistics of the datasets.</figDesc><table><row><cell></cell><cell cols="2">MovieLens LastFM</cell><cell>Yelp</cell></row><row><cell>#users</cell><cell>138,159</cell><cell>1,872</cell><cell>45,919</cell></row><row><cell>#items</cell><cell>16,954</cell><cell>3,846</cell><cell>45,538</cell></row><row><cell>#entities</cell><cell>85,615</cell><cell>5,520</cell><cell>1,341</cell></row><row><cell>#edges</cell><cell>13,501,622</cell><cell>42,346</cell><cell>1,185,068</cell></row><row><cell>D</cell><cell>30</cell><cell>16</cell><cell>25</cell></row><row><cell>C</cell><cell>4</cell><cell>4</cell><cell>6</cell></row><row><cell>γ</cell><cell>0.1</cell><cell>0.1</cell><cell>0.1</cell></row><row><cell>lr</cell><cell>4 × 10 −4</cell><cell cols="2">2 × 10 −4 2 × 10 −4</cell></row><row><cell>l 2 weight</cell><cell>10 −8</cell><cell>10 −8</cell><cell>5 × 10 −9</cell></row><row><cell>batch_size</cell><cell>512</cell><cell>128</cell><cell>256</cell></row><row><cell>epoch</cell><cell>10</cell><cell>100</cell><cell>15</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 :</head><label>2</label><figDesc>Recommendation performance comparison in Recall@k.</figDesc><table><row><cell></cell><cell>0.064 0.219 0.435</cell><cell>0.556 0.118 0.247 0.428</cell><cell>0.520 0.021 0.051 0.113</cell><cell>0.152</cell></row><row><cell>FM</cell><cell>0.074 0.224 0.432</cell><cell>0.551 0.120 0.250 0.436</cell><cell>0.532 0.022 0.053 0.169</cell><cell>0.228</cell></row><row><cell>CKE</cell><cell>0.070 0.221 0.445</cell><cell>0.571 0.121 0.243 0.443</cell><cell>0.548 0.020 0.060 0.177</cell><cell>0.260</cell></row><row><cell cols="2">RippleNet 0.185 0.242 0.479</cell><cell>0.599 0.080 0.248 0.458</cell><cell>0.569 0.033 0.064 0.195</cell><cell>0.275</cell></row><row><cell>KGCN</cell><cell>0.190 0.248 0.470</cell><cell>0.603 0.110 0.242 0.462</cell><cell>0.588 0.032 0.071 0.192</cell><cell>0.271</cell></row><row><cell>VGAE</cell><cell>0.190 0.252 0.478</cell><cell>0.597 0.112 0.262 0.473</cell><cell>0.585 0.033 0.081 0.202</cell><cell>0.280</cell></row><row><cell cols="2">Splitter 0.185 0.242 0.472</cell><cell>0.589 0.093 0.238 0.462</cell><cell>0.550 0.033 0.061 0.189</cell><cell>0.271</cell></row><row><cell cols="2">Proposed 0.210 0.248 0.500</cell><cell>0.620 0.128 0.281 0.514</cell><cell>0.615 0.050 0.089 0.200</cell><cell>0.275</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Recommendation evaluation in N DCG@100.</figDesc><table><row><cell></cell><cell></cell><cell>LastFM</cell><cell>Yelp</cell></row><row><cell>NMF</cell><cell>0.2920</cell><cell>0.1983</cell><cell>0.0681</cell></row><row><cell>FM</cell><cell>0.3020</cell><cell>0.2383</cell><cell>0.0820</cell></row><row><cell>CKE</cell><cell>0.3064</cell><cell>0.2392</cell><cell>0.0959</cell></row><row><cell>RippleNet</cell><cell>0.3153</cell><cell>0.2321</cell><cell>0.1078</cell></row><row><cell>KGCN</cell><cell>0.3230</cell><cell>0.2493</cell><cell>0.1168</cell></row><row><cell>VGAE</cell><cell>0.3234</cell><cell>0.2535</cell><cell>0.1180</cell></row><row><cell>Splitter</cell><cell>0.3242</cell><cell>0.2331</cell><cell>0.1039</cell></row><row><cell>Proposed</cell><cell>0.3427</cell><cell>0.2656</cell><cell>0.1202</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>5.3.1 Hyperparameter Sensitivity Analysis. The most important hyperparameter in this work is the number of factors C 1 and C 2 . Therefore, we further analyze model performances by changing factor numbers. Here we let C 1 = C 2 = C. Results are reported in Table 4. For each pair of values, the left value means that we fix</figDesc><table><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Random</cell><cell>SEP</cell><cell>Proposed</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.6</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>0.8</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>0.8</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>shif t</cell><cell>0.2 0.4</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>shif t</cell><cell>0.4 0.6</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>shif t</cell><cell>0.4 0.6</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>0.2</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>0.2</cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0</cell><cell>2</cell><cell>4</cell><cell>6</cell><cell>8</cell><cell>10</cell><cell>0</cell><cell>2</cell><cell>4</cell><cell>6</cell><cell>8</cell><cell>10</cell><cell>0</cell><cell>2</cell><cell>4</cell><cell>6</cell><cell>8</cell><cell>10</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>#nodes removed</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>#nodes removed</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>#nodes removed</cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1">https://grouplens.org/datasets/movielens/ 2 https://grouplens.org/datasets/hetrec-2011/ 3 https://www.yelp.com/dataset/challenge/</note>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A APPENDIX A.1 Node Importance Estimation</head><p>This part is to briefly introduce the computation of s(j; u, t) in Section 5.4. The importance computation closely follows the information propagation path in graph convolution. Specifically, if j is an item node, then its importance within factor c is:</p><p>where the first part is from the decoder, and the second half is factor affiliation degree. 1 (m, j) = 1 if j connects to u. Here we let s(j; u, t) = c s(j, c; u, t).</p><p>If j is an entity node, then its importance within factor c is:</p><p>where the first part is from the decoder, and the second part is traced from information propagation path in GCN. Similarly, we let s(j; u, t) = c s(j, c; u, t).</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Matrix factorization techniques for context aware recommendation</title>
+		<author>
+			<persName><forename type="first">Linas</forename><surname>Baltrunas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bernd</forename><surname>Ludwig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Francesco</forename><surname>Ricci</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+	<note>In RecSys</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Representation learning: a review and new perspectives</title>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aaron</forename><surname>Courville</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pascal</forename><surname>Vincent</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE TPAMI</title>
+		<imprint>
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Wide &amp; deep learning for recommender systems</title>
+		<author>
+			<persName><surname>Heng-Tze</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Levent</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeremiah</forename><surname>Koc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tal</forename><surname>Harmsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tushar</forename><surname>Shaked</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hrishi</forename><surname>Chandra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Glen</forename><surname>Aradhye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Greg</forename><surname>Anderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Corrado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mustafa</forename><surname>Chai</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Ispir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">DLRS</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Sequential user-based recurrent neural network recommendations</title>
+		<author>
+			<persName><forename type="first">Tim</forename><surname>Donkers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Benedikt</forename><surname>Loepp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jürgen</forename><surname>Ziegler</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>In RecSys</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<author>
+			<persName><forename type="first">Mengnan</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ninghao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1808.00033</idno>
+		<title level="m">Techniques for interpretable machine learning</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">Is a single embedding enough? Learning node representations that capture multiple social contexts</title>
+		<author>
+			<persName><forename type="first">Alessandro</forename><surname>Epasto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bryan</forename><surname>Perozzi</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<publisher>WWW</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Interpretable explanations of black boxes by meaningful perturbation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Ruth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Fong</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Vedaldi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICCV</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Explainable recommendation through attentive multi-view learning</title>
+		<author>
+			<persName><forename type="first">Jingyue</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yasha</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Cost-aware collaborative filtering for travel tour recommendations</title>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hui</forename><surname>Xiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Alexander</forename><surname>Tuzhilin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014. 2014</date>
+			<publisher>ACM TOIS</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Towards a deep and unified understanding of deep neural models in NLP</title>
+		<author>
+			<persName><forename type="first">Chaoyu</forename><surname>Guan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiting</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Quanshi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Runjin</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Di</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">DARPA&apos;s explainable artificial intelligence program</title>
+		<author>
+			<persName><forename type="first">David</forename><surname>Gunning</surname></persName>
+		</author>
+		<author>
+			<persName><surname>David W Aha</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">AI Mag</title>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Inductive representation learning on large graphs</title>
+		<author>
+			<persName><forename type="first">Will</forename><surname>Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhitao</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<author>
+			<persName><forename type="first">Rex</forename><surname>William L Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Leskovec</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1709.05584</idno>
+		<title level="m">Representation learning on graphs: methods and applications</title>
+				<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Neural factorization machines for sparse predictive analytics</title>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lizi</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanwang</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Liqiang</forename><surname>Nie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+		<title level="m">Neural collaborative filtering. In WWW</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">Xinran</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Junfeng</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ou</forename><surname>Jin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tianbing</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Bo</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yanxin</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antoine</forename><surname>Atallah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ralf</forename><surname>Herbrich</surname></persName>
+		</author>
+		<imprint>
+			<pubPlace>Stuart Bowers</pubPlace>
+		</imprint>
+	</monogr>
+	<note>et al. 2014. Practical lessons from predicting clicks on ads at facebook. In KDADD</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Shakir Mohamed, and Alexander Lerchner. 2017. beta-VAE: learning basic visual concepts with a constrained variational framework</title>
+		<author>
+			<persName><forename type="first">Irina</forename><surname>Higgins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Loic</forename><surname>Matthey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arka</forename><surname>Pal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Burgess</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xavier</forename><surname>Glorot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Matthew</forename><surname>Botvinick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICLR</title>
+				<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Interpretable Recommendation via Attraction Modeling: Learning Multilevel Attractiveness over Multimodal Movie Contents</title>
+		<author>
+			<persName><forename type="first">Liang</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Songlei</forename><surname>Jian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Longbing</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qingkui</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Interpretability beyond feature attribution: quantitative testing with concept activation vectors (TCAV)</title>
+		<author>
+			<persName><forename type="first">Been</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Wattenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Justin</forename><surname>Gilmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carrie</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">James</forename><surname>Wexler</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note>Fernanda Viegas, and Rory Sayres. In ICML</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Diederik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Welling</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1312.6114</idno>
+		<title level="m">Auto-encoding variational bayes</title>
+				<imprint>
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">N</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Max</forename><surname>Kipf</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Welling</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1611.07308</idno>
+		<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Variational graph auto-encoders. arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Robust nonnegative matrix factorization using l21-norm</title>
+		<author>
+			<persName><forename type="first">Deguang</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Ding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Heng</forename><surname>Huang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Matrix factorization techniques for recommender systems</title>
+		<author>
+			<persName><forename type="first">Yehuda</forename><surname>Koren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Bell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chris</forename><surname>Volinsky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Comput</title>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A capsule network for recommendation and explaining what you like and dislike</title>
+		<author>
+			<persName><forename type="first">Chenliang</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cong</forename><surname>Quan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Li</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yunwei</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuming</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Libing</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">A relaxed ranking-based factor model for recommender system from implicit feedback</title>
+		<author>
+			<persName><forename type="first">Huayu</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Richang</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Defu</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhiang</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yong</forename><surname>Ge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Is a single vector enough? Exploring node polysemy for network embedding</title>
+		<author>
+			<persName><forename type="first">Ninghao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qiaoyu</forename><surname>Tan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yuening</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxia</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jingren</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Learning disentangled representations for recommendation</title>
+		<author>
+			<persName><forename type="first">Jianxin</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Chang</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Peng</forename><surname>Cui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hongxia</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenwu</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NeurIPS</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Methods for interpreting and understanding deep neural networks</title>
+		<author>
+			<persName><forename type="first">Grégoire</forename><surname>Montavon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wojciech</forename><surname>Samek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Klaus-Robert</forename><surname>Müller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">DSP</title>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Explanation mining: post hoc interpretability of latent factor models for recommendation systems</title>
+		<author>
+			<persName><forename type="first">Georgina</forename><surname>Peake</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">In KDD</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Factorization machines</title>
+		<author>
+			<persName><forename type="first">Steffen</forename><surname>Rendle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICDM</title>
+				<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Explaining the predictions of any classifier</title>
+		<author>
+			<persName><forename type="first">Sameer</forename><surname>Marco Tulio Ribeiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Carlos</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Guestrin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note>Why should I trust you?</note>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead</title>
+		<author>
+			<persName><forename type="first">Cynthia</forename><surname>Rudin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">NMI</title>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Dynamic routing between capsules</title>
+		<author>
+			<persName><forename type="first">Sara</forename><surname>Sabour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><surname>Frosst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Geoffrey</forename><forename type="middle">E</forename><surname>Hinton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">Interpretable convolutional neural networks with dual local and global attention for review rating prediction</title>
+		<author>
+			<persName><forename type="first">Sungyong</forename><surname>Seo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jing</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note>RecSys</note>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<author>
+			<persName><forename type="first">Karen</forename><surname>Simonyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrea</forename><surname>Vedaldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>Zisserman</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1312.6034</idno>
+		<title level="m">Deep inside convolutional networks: Visualising image classification models and saliency maps</title>
+				<imprint>
+			<date type="published" when="2013">2013. 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">Daniel</forename><surname>Smilkov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nikhil</forename><surname>Thorat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Been</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fernanda</forename><surname>Viégas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Martin</forename><surname>Wattenberg</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1706.03825</idno>
+		<title level="m">Smoothgrad: removing noise by adding noise</title>
+				<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Neural interaction transparency (NIT): disentangling learned interactions for improved interpretability</title>
+		<author>
+			<persName><forename type="first">Michael</forename><surname>Tsang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hanpeng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sanjay</forename><surname>Purushotham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pavankumar</forename><surname>Murali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yan</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">NIPS</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<author>
+			<persName><forename type="first">Petar</forename><surname>Veličković</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guillem</forename><surname>Cucurull</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Arantxa</forename><surname>Casanova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Adriana</forename><surname>Romero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pietro</forename><surname>Lio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yoshua</forename><surname>Bengio</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1710.10903</idno>
+		<title level="m">Graph attention networks</title>
+				<imprint>
+			<date type="published" when="2017">2017. 2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">MCNE: An end-to-end framework for learning multiple conditional network representations of social network</title>
+		<author>
+			<persName><forename type="first">Hao</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tong</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Qi</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Defu</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Enhong</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dongfang</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Han</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wen</forename><surname>Su</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Ripplenet: propagating user preferences on the knowledge graph for recommender systems</title>
+		<author>
+			<persName><forename type="first">Hongwei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jialin</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minyi</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Knowledge-aware graph neural networks with label smoothness regularization for recommender systems</title>
+		<author>
+			<persName><forename type="first">Hongwei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mengdi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Leskovec</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhongyuan</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Knowledge graph convolutional networks for recommender systems</title>
+		<author>
+			<persName><forename type="first">Hongwei</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miao</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wenjie</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Minyi</forename><surname>Guo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Learning credible models</title>
+		<author>
+			<persName><forename type="first">Jiaxuan</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jeeheh</forename><surname>Oh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Haozhu</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jenna</forename><surname>Wiens</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">KGAT: knowledge graph attention network for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiangnan</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yixin</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Meng</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tat-Seng</forename><surname>Chua</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Explainable reasoning over knowledge graphs for recommendation</title>
+		<author>
+			<persName><forename type="first">Xiang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dingxian</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Canran</forename><surname>Xu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note>Xiangnan He, Yixin Cao, and Tat-Seng Chua</note>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Unsupervised deep embedding for clustering analysis</title>
+		<author>
+			<persName><forename type="first">Junyuan</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ross</forename><surname>Girshick</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ali</forename><surname>Farhadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICML</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Towards interpretation of recommender systems with sorted explanation paths</title>
+		<author>
+			<persName><forename type="first">Fan</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ninghao</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Suhang</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xia</forename><surname>Hu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ICDM</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Investigating capsule networks with dynamic routing for text classification</title>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jianbo</forename><surname>Ye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zeyang</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Zhou</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Soufei</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EMNLP</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Exploring visual relationship for image captioning</title>
+		<author>
+			<persName><forename type="first">Ting</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yingwei</forename><surname>Pan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yehao</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Tao</forename><surname>Mei</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECCV</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Graph convolutional neural networks for web-scale recommender systems</title>
+		<author>
+			<persName><forename type="first">Rex</forename><surname>Ying</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruining</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kaifeng</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Pong</forename><surname>Eksombatchai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>William</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jure</forename><surname>Hamilton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Leskovec</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Collaborative knowledge base embedding for recommender systems</title>
+		<author>
+			<persName><forename type="first">Fuzheng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nicholas</forename><forename type="middle">Jing</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Defu</forename><surname>Lian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xing</forename><surname>Xie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wei-Ying</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">KDD</title>
+				<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Interpreting CNN knowledge via an explanatory graph</title>
+		<author>
+			<persName><forename type="first">Quanshi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ruiming</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Feng</forename><surname>Shi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ying</forename><forename type="middle">Nian</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song-Chun</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AAAI</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">Visual interpretability for deep learning: a survey</title>
+		<author>
+			<persName><forename type="first">Quanshi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Song-Chun</forename><surname>Zhu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+			<pubPlace>FITEE</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Deep learning based recommender system: A survey and new perspectives</title>
+		<author>
+			<persName><forename type="first">Shuai</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lina</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aixin</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Tay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">CSUR</title>
+		<imprint>
+			<date type="published" when="2019">2019. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<monogr>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xu</forename><surname>Chen</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1804.11192</idno>
+		<title level="m">Explainable recommendation: a survey and new perspectives</title>
+				<imprint>
+			<date type="published" when="2018">2018. 2018</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Explicit factor models for explainable recommendation based on phrase-level sentiment analysis</title>
+		<author>
+			<persName><forename type="first">Yongfeng</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Guokun</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Min</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiqun</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Shaoping</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SIGIR</title>
+				<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Interpretable basis decomposition for visual explanation</title>
+		<author>
+			<persName><forename type="first">Bolei</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yiyou</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">David</forename><surname>Bau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Antonio</forename><surname>Torralba</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ECCV</title>
+				<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
