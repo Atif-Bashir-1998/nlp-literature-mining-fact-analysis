@@ -4,7 +4,7 @@ import requests
 from rapidfuzz import fuzz
 
 # ================= Configuration =================
-API_KEY = "3wUKIpkumG1b7GTGmmCvJ73FgSRy1w0w2TyOiYxS"
+API_KEY = ""
 QUERY_VARIATIONS = [
     "Explainable Recommender Systems",
     "XAI Recommender",
@@ -100,3 +100,4 @@ with open(INDEX_FILE, "w", encoding="utf-8") as f:
     json.dump(index_list, f, ensure_ascii=False, indent=2)
 
 print(f"\nDone! {len(index_list)} papers saved to {SAVE_DIR}. Index written to {INDEX_FILE}.")
+
