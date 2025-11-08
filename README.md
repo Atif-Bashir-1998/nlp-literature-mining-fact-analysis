@@ -1,8 +1,7 @@
 # nlp-literature-mining-fact-analysis
-Design and implement a pipeline that automatically searches, collects, and analyzes research papers for a specific topic. The project should include automatic download of papers, metadata extraction, exploratory analysis (publication year, countries, universities, …), and fact-based analysis of trends and methods.
+This project implements an automated literature mining and fact extraction pipeline that collects and analyzes over one hundred research papers from open-access sources such as Semantic Scholar, Arxiv, and CrossRef. The pipeline performs metadata extraction, exploratory data analysis, topic modeling, and fact extraction from text and tables, storing the results in structured knowledge graphs. All project specifications were successfully achieved, providing a comprehensive analysis of trends in algorithms, datasets, evaluation metrics, and research domains, and highlighting the shift from rule-based methods to deep learning and LLM-based explainability.
 
 ---
-
 ## Objectives
 1. Extract metadata and scientific entities (Authors, Methods, Datasets, Domains, Metrics) from PDF research papers.  
 2. Convert PDFs into structured XML format using **GROBID**.  
