@@ -55,16 +55,9 @@ Design and implement a pipeline that automatically searches, collects, and analy
 | Specification | Python Scripts | Output / Description |
 |---------------|----------------|--------------------|
 | 8 | `task_8_1.py`, `task_8_2.py`, `task_8_3.py`, `task_8_4.py`, `task_8_5.py` | `task_8_1.py` : tei.xml files created by Grobid and save to `paper_tei_files/`, `task_8_2.py` : Table parsing by Grobid and save to `tables_output/`, `task_8_3.py`: key words extracted and create `all_papers_keywords.json` , `task_8_4.py`: all metric values extracted and create `papers_metric_results.json` , `task_8_5.py`: create `facts.jsonl` by combining `all_papers_keywords.json` and `papers_metric_results.json`|
-| 2. Convert PDFs to TEI XML | `process_pdfs_grobid.py` | TEI XML files saved to `paper_tei_files/` |
-| 3. Extract Paper Metadata | `parse_tei_metadata.py` | JSON files with title, authors, abstract, year |
-| 4. Keyword Extraction from TEI | `extract_keywords_tei.py` | Per-paper summary JSON files in `summary_jsons/` |
-| 5. Merge Keywords | `merge_keywords.py` | Combined `all_papers_keywords.json` |
-| 6. Knowledge Graph Creation | `build_knowledge_graph.py` | `knowledge_graph.json` and `knowledge_graph_triples.csv` |
-| 7. Knowledge Graph Visualization | `visualize_kg.py` | Graph plots saved to `Plot_KG/` |
-| 8. Neo4j Node & Edge CSVs | `generate_neo4j_csv.py` | `neo4j_nodes.csv` and `neo4j_edges.csv` |
-| 9. Load Graph & Query | `graph_query.py` | Search results for papers by domain, method, year |
-| 10. Metrics Extraction | `extract_metrics.py` | JSON/CSV of metrics per paper |
-| 11. Final JSONL Creation | `create_jsonl.py` | `papers_combined.jsonl` for downstream use |
+| 10 | `task_10_1.py` , `task_10_1.py` | `task_10_1.py`: build, vusualize KG and save it to `Plot_KG/`  , `task_10_1.py`: test Cypher queries by giving keywords. "Papers in domain 'medical' using method 'transformer' (2018–2025):- Graph Learning (2025) | Authors: Feng Xia, Ciyuan Peng, Jing Ren, F. Febrinanto, Renqiang Luo, Vidya Saikrishna, Shuo Yu, Xiangjie Kong" |
+| 11 | `task_11.py` | `task_11.py`: Compare early vs. recent research, Highlight shifts in methods and evaluation."Declining (Old, Not Seen Recently): knowledge distillation, memory network, Stable (Used in Both Eras): autoencoder, cnn, attention, lstm, reinforcement learning, rnn, unsupervised, Evaluation Metric Trends: Emerging: f1, f1-score, cer, meteor, weighted, mse, Declining: None, Stable: accuracy, auc, bleu, mae, ndcg, precision, recall, rmse, rouge, map" |
+
 
 
 
