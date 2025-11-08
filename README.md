@@ -14,6 +14,8 @@ It focuses on research related to **Explainable and Interpretable Recommender Sy
 3. Parse TEI XML files to extract research information automatically.  
 4. Build and query a **Knowledge Graph** in **Neo4j** using Cypher.  
 5. Visualize entity relationships with **NetworkX** and **Matplotlib**.
+6. Methods trend from CF to Transformers; Amazon/MovieLens are top datasets.
+7. Focus is on visual/text explanations; metric extraction.
 
 ---
 
