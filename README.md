@@ -54,7 +54,7 @@ Design and implement a pipeline that automatically searches, collects, and analy
 
 | Specification | Python Scripts | Output / Description |
 |---------------|----------------|--------------------|
-| 8 | `task_8_1.py`, `task_8_2.py`, `task_8_3.py`, `task_8_4.py`, `task_8_5.py | PDFs downloaded to `papers_explainable_rs/`, metadata saved to `index.json` |
+| 8 | `task_8_1.py`, `task_8_2.py`, `task_8_3.py`, `task_8_4.py`, `task_8_5.py` | tei.xml files created by Grobid and save to `paper_tei_files/`, Table parsing by Grobid and save to `tables_output/`, key words extracted and create `all_papers_keywords.json` , all metric values extracted and create `papers_metric_results.json` , create `facts.jsonl` by combining `all_papers_keywords.json` and `papers_metric_results.json`|
 | 2. Convert PDFs to TEI XML | `process_pdfs_grobid.py` | TEI XML files saved to `paper_tei_files/` |
 | 3. Extract Paper Metadata | `parse_tei_metadata.py` | JSON files with title, authors, abstract, year |
 | 4. Keyword Extraction from TEI | `extract_keywords_tei.py` | Per-paper summary JSON files in `summary_jsons/` |
