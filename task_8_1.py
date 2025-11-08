@@ -12,10 +12,14 @@ QUERY_VARIATIONS = [
     "Explainable Collaborative Filtering"
 ]
 NUM_PAPERS = 100
-SAVE_DIR = r"C:\Users\hp830\Desktop\OULU\University\Projects\NLP_Project\papers_explainable_rs"  # Change path as needed
+base_dir = os.path.dirname(__file__)
+SAVE_DIR = os.path.join(base_dir, "papers_explainable_rs")
 INDEX_FILE = "index.json"
+OUTPUT_DIR = os.path.join(base_dir, "paper_tei_files")
+GROBID_URL = "http://localhost:8070/api/processFulltextDocument"
 
 os.makedirs(SAVE_DIR, exist_ok=True)
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ================= Helper Functions =================
 def search_papers(query, limit=50):
@@ -35,7 +39,7 @@ def get_pdf_url(paper):
 def sanitize_filename(s):
     return "".join(c if c.isalnum() or c in "_- " else "_" for c in s)
 
-# ================= Main Loop =================
+# ================= Main Loop: Download PDFs =================
 index_list = []
 paper_count = 0
 seen_titles = set()
@@ -101,3 +105,30 @@ with open(INDEX_FILE, "w", encoding="utf-8") as f:
 
 print(f"\nDone! {len(index_list)} papers saved to {SAVE_DIR}. Index written to {INDEX_FILE}.")
 
+# ================= Main Loop: Process PDFs with GROBID =================
+with open(INDEX_FILE, "r", encoding="utf-8") as f:
+    papers = json.load(f)
+
+for i, paper in enumerate(papers, start=1):
+    pdf_file = os.path.join(SAVE_DIR, paper["file"])
+
+    if not os.path.exists(pdf_file):
+        print(f"Skipping {paper['title']} — file not found: {pdf_file}")
+        continue
+
+    print(f"📄 Processing [{i}/{len(papers)}]: {paper['file']}")
+
+    with open(pdf_file, "rb") as f:
+        files = {'input': f}
+        data = {'teiCoordinates': 'true'}
+        response = requests.post(GROBID_URL, files=files, data=data)
+
+    if response.status_code == 200:
+        output_path = os.path.join(OUTPUT_DIR, f"{paper['id']}_output.tei.xml")
+        with open(output_path, "wb") as out_f:
+            out_f.write(response.content)
+        print(f" Saved TEI: {output_path}")
+    else:
+        print(f" Error ({response.status_code}) for {paper['file']}: {response.text}")
+
+print(" All done. TEI files are ready in 'paper_tei_files'.")
