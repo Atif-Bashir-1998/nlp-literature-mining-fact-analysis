@@ -1,11 +1,6 @@
 # nlp-literature-mining-fact-analysis
 Design and implement a pipeline that automatically searches, collects, and analyzes research papers for a specific topic. The project should include automatic download of papers, metadata extraction, exploratory analysis (publication year, countries, universities, …), and fact-based analysis of trends and methods.
 
-
-## Overview
-This project automates the extraction of structured information from research papers (PDFs) and connects extracted entities into a **Knowledge Graph (KG)** for analysis and visualization.  
-It focuses on research related to **Explainable and Interpretable Recommender Systems**, combining **Natural Language Processing**, **Information Extraction**, and **Graph Databases**.
-
 ---
 
 ## Objectives
@@ -55,6 +50,21 @@ It focuses on research related to **Explainable and Interpretable Recommender Sy
    docker run --rm -it -p 8070:8070 lfoppiano/grobid:0.8.0
 
 ---
+## 📑 Specifications and Implementation
+
+| Specification | Python Scripts | Output / Description |
+|---------------|----------------|--------------------|
+| 1. Download Research Papers | `download_papers.py`, `search_papers_api.py`, `utils.py` | PDFs downloaded to `papers_explainable_rs/`, metadata saved to `index.json` |
+| 2. Convert PDFs to TEI XML | `process_pdfs_grobid.py` | TEI XML files saved to `paper_tei_files/` |
+| 3. Extract Paper Metadata | `parse_tei_metadata.py` | JSON files with title, authors, abstract, year |
+| 4. Keyword Extraction from TEI | `extract_keywords_tei.py` | Per-paper summary JSON files in `summary_jsons/` |
+| 5. Merge Keywords | `merge_keywords.py` | Combined `all_papers_keywords.json` |
+| 6. Knowledge Graph Creation | `build_knowledge_graph.py` | `knowledge_graph.json` and `knowledge_graph_triples.csv` |
+| 7. Knowledge Graph Visualization | `visualize_kg.py` | Graph plots saved to `Plot_KG/` |
+| 8. Neo4j Node & Edge CSVs | `generate_neo4j_csv.py` | `neo4j_nodes.csv` and `neo4j_edges.csv` |
+| 9. Load Graph & Query | `graph_query.py` | Search results for papers by domain, method, year |
+| 10. Metrics Extraction | `extract_metrics.py` | JSON/CSV of metrics per paper |
+| 11. Final JSONL Creation | `create_jsonl.py` | `papers_combined.jsonl` for downstream use |
 
 
 
