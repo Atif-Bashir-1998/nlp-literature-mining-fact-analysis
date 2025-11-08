@@ -1,0 +1,1961 @@
+{
+  "paper_1": {
+    "title": "Explainable Recommender Systems via Resolving Learning Representations",
+    "authors": [
+      "Ninghao Liu",
+      "Yong Ge",
+      "Li Li",
+      "X. Hu",
+      "Rui Chen",
+      "Soo-Hyun Choi"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "encoder-decoder",
+      "representation learning"
+    ],
+    "domains": [
+      "movie",
+      "recommendation",
+      "restaurant",
+      "vision"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "explanation",
+      "interpretability",
+      "transparency"
+    ],
+    "datasets": [
+      "movielens",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "recall"
+    ]
+  },
+  "paper_2": {
+    "title": "Knowledge-aware Autoencoders for Explainable Recommender Systems",
+    "authors": [
+      "Vito Bellini",
+      "Angelo Schiavone",
+      "T. D. Noia",
+      "Azzurra Ragone",
+      "E. Sciascio"
+    ],
+    "methods": [
+      "autoencoder"
+    ],
+    "domains": [
+      "code",
+      "movie",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_3": {
+    "title": "Explainable Multi-Stakeholder Job Recommender Systems",
+    "authors": [
+      "Roan Schellingerhout"
+    ],
+    "methods": [
+      "attention",
+      "fine-tune",
+      "gnn",
+      "gpt",
+      "graph neural network",
+      "supervised",
+      "transformer",
+      "zero-shot"
+    ],
+    "domains": [
+      "environment",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight",
+      "explainability",
+      "transparency"
+    ],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_4": {
+    "title": "Towards Explainable Conversational Recommender Systems",
+    "authors": [
+      "Shuyu Guo",
+      "Shuo Zhang",
+      "Weiwei Sun",
+      "Pengjie Ren",
+      "Zhumin Chen",
+      "Z. Ren"
+    ],
+    "methods": [
+      "davinci",
+      "flan",
+      "gpt",
+      "prompt",
+      "t5"
+    ],
+    "domains": [
+      "code",
+      "conversation",
+      "dialogue",
+      "movie",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "counterfactual",
+      "explainability",
+      "explanation"
+    ],
+    "datasets": [
+      "e-redial",
+      "redial"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1",
+      "meteor"
+    ]
+  },
+  "paper_5": {
+    "title": "Measuring \"Why\" in Recommender Systems: a Comprehensive Survey on the Evaluation of Explainable Recommendation",
+    "authors": [
+      "Xu Chen",
+      "Yongfeng Zhang",
+      "Jingxuan Wen"
+    ],
+    "methods": [],
+    "domains": [
+      "finance",
+      "health",
+      "history",
+      "recommendation",
+      "review",
+      "vision"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "explainability",
+      "transparency"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "ndcg",
+      "precision",
+      "recall",
+      "rouge"
+    ]
+  },
+  "paper_6": {
+    "title": "RecAI: Leveraging Large Language Models for Next-Generation Recommender Systems",
+    "authors": [
+      "Jianxun Lian",
+      "Yuxuan Lei",
+      "Xu Huang",
+      "Jing Yao",
+      "Wei Xu",
+      "Xing Xie"
+    ],
+    "methods": [
+      "davinci",
+      "gpt",
+      "llama"
+    ],
+    "domains": [
+      "code",
+      "conversation",
+      "dialogue",
+      "multimodal",
+      "recommendation",
+      "vision"
+    ],
+    "explanation_types": [
+      "explainability",
+      "feature",
+      "interpretability"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "ndcg",
+      "recall"
+    ]
+  },
+  "paper_7": {
+    "title": "Chat-REC: Towards Interactive and Explainable LLMs-Augmented Recommender System",
+    "authors": [
+      "Yunfan Gao",
+      "Tao Sheng",
+      "Youlin Xiang",
+      "Yun Xiong",
+      "Haofen Wang",
+      "Jiawei Zhang"
+    ],
+    "methods": [
+      "davinci",
+      "gpt",
+      "prompt"
+    ],
+    "domains": [
+      "code",
+      "conversation",
+      "dialogue",
+      "history",
+      "movie",
+      "recommendation",
+      "social",
+      "social media"
+    ],
+    "explanation_types": [
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "mae",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_8": {
+    "title": "Explainable Recommender With Geometric Information Bottleneck",
+    "authors": [
+      "Hanqi Yan",
+      "Lin Gui",
+      "Menghan Wang",
+      "Kun Zhang",
+      "Yulan He"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "cnn",
+      "encoder-decoder",
+      "graph neural network",
+      "vae"
+    ],
+    "domains": [
+      "code",
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "explanation",
+      "interpretability"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "accuracy",
+      "mae",
+      "map",
+      "mse",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_9": {
+    "title": "Leveraging Large Language Models in Conversational Recommender Systems",
+    "authors": [
+      "Luke Friedman",
+      "Sameer Ahuja",
+      "David Allen",
+      "Zhenning Tan",
+      "Hakim Sidahmed",
+      "Changbo Long",
+      "Jun Xie",
+      "Gabriel Schubiner",
+      "Ajay Patel",
+      "Harsh Lara",
+      "Brian Chu",
+      "Zexiang Chen",
+      "Manoj Tiwari"
+    ],
+    "methods": [
+      "few-shot",
+      "reinforcement learning",
+      "supervised"
+    ],
+    "domains": [
+      "conversation",
+      "dialogue",
+      "history",
+      "multimodal",
+      "policy",
+      "recommendation",
+      "vision"
+    ],
+    "explanation_types": [
+      "explainability"
+    ],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_10": {
+    "title": "The Dark Side of Explanations: Poisoning Recommender Systems with Counterfactual Examples",
+    "authors": [
+      "Ziheng Chen",
+      "Fabrizio Silvestri",
+      "Jia Wang",
+      "Yongfeng Zhang",
+      "Gabriele Tolomei"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "counterfactual",
+      "explainability",
+      "explanation",
+      "transparency"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "precision"
+    ]
+  },
+  "paper_11": {
+    "title": "Recommender systems for sustainability: overview and research issues",
+    "authors": [
+      "Alexander Felfernig",
+      "Manfred Wundara",
+      "Thi Ngoc Trang Tran",
+      "Seda Polat-Erdeniz",
+      "Sebastian Lubos",
+      "Merfat El Mansi",
+      "Damian Garber",
+      "Viet-Man Le"
+    ],
+    "methods": [],
+    "domains": [
+      "climate",
+      "food",
+      "news",
+      "recommendation"
+    ],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_12": {
+    "title": "Interactive Explanation with Varying Level of Details in an Explainable Scientific Literature Recommender System",
+    "authors": [
+      "Mouadh Guesmi",
+      "Mohamed Amine Chatti",
+      "Shoeb Joarder",
+      "Qurat Ul Ain",
+      "R. Alatrash",
+      "Clara Siepmann",
+      "Tannaz Vahidi"
+    ],
+    "methods": [
+      "lstm",
+      "transformer",
+      "unsupervised"
+    ],
+    "domains": [
+      "audio",
+      "code",
+      "conversation",
+      "music",
+      "recommendation",
+      "social",
+      "social media"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "explainability",
+      "explanation",
+      "feature"
+    ],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_13": {
+    "title": "A Survey on Trustworthy Recommender Systems",
+    "authors": [
+      "Yingqiang Ge",
+      "Shuchang Liu",
+      "Zuohui Fu",
+      "Juntao Tan",
+      "Zelong Li",
+      "Shuyuan Xu",
+      "Yunqi Li",
+      "Yikun Xian",
+      "Yongfeng Zhang"
+    ],
+    "methods": [],
+    "domains": [],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_14": {
+    "title": "Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations",
+    "authors": [
+      "Giacomo Balloccu",
+      "Ludovico Boratto",
+      "G. Fenu",
+      "Mirko Marras"
+    ],
+    "methods": [],
+    "domains": [
+      "code",
+      "movie",
+      "policy",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "explanation"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "ndcg"
+    ]
+  },
+  "paper_15": {
+    "title": "A Survey on LLM-powered Agents for Recommender Systems",
+    "authors": [
+      "Qiyao Peng",
+      "Hongtao Liu",
+      "Hua Huang",
+      "Qing Yang",
+      "Minglai Shao"
+    ],
+    "methods": [
+      "prompting"
+    ],
+    "domains": [
+      "dialogue",
+      "game",
+      "gaming",
+      "history",
+      "movie",
+      "music",
+      "recommendation",
+      "restaurant",
+      "review",
+      "social",
+      "social media"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "amazon",
+      "movielens",
+      "reddit",
+      "redial",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1",
+      "f1-score",
+      "map",
+      "ndcg",
+      "precision",
+      "recall",
+      "rouge"
+    ]
+  },
+  "paper_16": {
+    "title": "A Survey on Reinforcement Learning for Recommender Systems",
+    "authors": [
+      "Y. Lin",
+      "Yong Liu",
+      "Fan Lin",
+      "Lixin Zou",
+      "Pengcheng Wu",
+      "Wenhua Zeng",
+      "Huanhuan Chen",
+      "C. Miao"
+    ],
+    "methods": [
+      "attention",
+      "fine-tune",
+      "gru",
+      "lstm",
+      "reinforcement learning",
+      "rnn",
+      "supervised"
+    ],
+    "domains": [
+      "conversation",
+      "dialogue",
+      "environment",
+      "history",
+      "policy",
+      "recommendation",
+      "review",
+      "social"
+    ],
+    "explanation_types": [
+      "attention",
+      "interpretability",
+      "kg"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_17": {
+    "title": "From Intrinsic to Counterfactual: On the Explainability of Contextualized Recommender Systems",
+    "authors": [
+      "Yao Zhou",
+      "Haonan Wang",
+      "Jingrui He",
+      "Haixun Wang"
+    ],
+    "methods": [
+      "attention",
+      "gan"
+    ],
+    "domains": [
+      "business",
+      "code",
+      "movie",
+      "recommendation",
+      "review",
+      "vision",
+      "youtube"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight",
+      "counterfactual",
+      "explainability",
+      "explanation",
+      "feature",
+      "intrinsic",
+      "post-hoc",
+      "rationale",
+      "saliency",
+      "transparency"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "cer",
+      "f1",
+      "ndcg",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_18": {
+    "title": "Interpretability is not Explainability: New Quantitative XAI Approach with a focus on Recommender Systems in Education",
+    "authors": [
+      "Riccardo Porcedda"
+    ],
+    "methods": [],
+    "domains": [],
+    "explanation_types": [
+      "explainability",
+      "explanation",
+      "feature",
+      "interpretability",
+      "shap",
+      "transparency"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "auc"
+    ]
+  },
+  "paper_19": {
+    "title": "A Co-design Study for Multi-Stakeholder Job Recommender System Explanations",
+    "authors": [
+      "Roan Schellingerhout",
+      "Francesco Barile",
+      "N. Tintarev"
+    ],
+    "methods": [],
+    "domains": [
+      "finance",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "explanation",
+      "feature",
+      "feature attribution",
+      "saliency"
+    ],
+    "datasets": [],
+    "metrics": [
+      "map",
+      "ndcg"
+    ]
+  },
+  "paper_20": {
+    "title": "ProReco: A Process Discovery Recommender System",
+    "authors": [
+      "Tsung-Hao Huang",
+      "Tarek Junied",
+      "Marco Pegoraro",
+      "W. M. Aalst"
+    ],
+    "methods": [],
+    "domains": [
+      "code",
+      "recommendation"
+    ],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": [
+      "precision"
+    ]
+  },
+  "paper_21": {
+    "title": "Towards Human-Centered Explainable AI: A Survey of User Studies for Model Explanations",
+    "authors": [
+      "Yao Rong",
+      "Tobias Leemann",
+      "Thai-trang Nguyen",
+      "Lisa Fiedler",
+      "Peizhu Qian",
+      "Vaibhav Unhelkar",
+      "Tina Seidel",
+      "Gjergji Kasneci",
+      "Enkelejda Kasneci"
+    ],
+    "methods": [
+      "prompt"
+    ],
+    "domains": [
+      "code",
+      "finance",
+      "medical",
+      "multimodal",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "explainability",
+      "explanation",
+      "feature",
+      "interpretability",
+      "transparency"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy"
+    ]
+  },
+  "paper_22": {
+    "title": "Graph Learning",
+    "authors": [
+      "Feng Xia",
+      "Ciyuan Peng",
+      "Jing Ren",
+      "F. Febrinanto",
+      "Renqiang Luo",
+      "Vidya Saikrishna",
+      "Shuo Yu",
+      "Xiangjie Kong"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "cnn",
+      "contrastive learning",
+      "diffusion",
+      "encoder-decoder",
+      "gan",
+      "gnn",
+      "graph neural network",
+      "lstm",
+      "pre-training",
+      "prompt",
+      "representation learning",
+      "rnn",
+      "self-attention",
+      "self-supervised",
+      "supervised",
+      "transformer",
+      "unsupervised",
+      "vae"
+    ],
+    "domains": [
+      "academic",
+      "biomedical",
+      "conversation",
+      "finance",
+      "medical",
+      "multimodal",
+      "policy",
+      "recipe",
+      "recommendation",
+      "review",
+      "social",
+      "vision"
+    ],
+    "explanation_types": [
+      "attention",
+      "counterfactual",
+      "explainability",
+      "explanation",
+      "feature",
+      "interpretability",
+      "kg",
+      "post-hoc"
+    ],
+    "datasets": [
+      "reddit"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "precision"
+    ]
+  },
+  "paper_23": {
+    "title": "Towards a Comprehensive Human-Centred Evaluation Framework for Explainable AI",
+    "authors": [
+      "Ivania Donoso-Guzm'an",
+      "Jeroen Ooge",
+      "Denis Parra",
+      "K. Verbert"
+    ],
+    "methods": [],
+    "domains": [
+      "medical",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "feature",
+      "shap"
+    ],
+    "datasets": [],
+    "metrics": [
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_24": {
+    "title": "NAIRS: A Neural Attentive Interpretable Recommendation System",
+    "authors": [
+      "Shuai Yu",
+      "Yongbo Wang",
+      "Min Yang",
+      "Baocheng Li",
+      "Qiang Qu",
+      "Jialie Shen"
+    ],
+    "methods": [
+      "attention",
+      "self-attention"
+    ],
+    "domains": [
+      "history",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg"
+    ]
+  },
+  "paper_25": {
+    "title": "FIRE: Faithful Interpretable Recommendation Explanations",
+    "authors": [
+      "S.M.F. Sani",
+      "Asal Meskin",
+      "Mohammad Amanlou",
+      "Hamid R. Rabiee"
+    ],
+    "methods": [
+      "gpt",
+      "prompt",
+      "prompting",
+      "rag",
+      "supervised"
+    ],
+    "domains": [
+      "movie",
+      "recommendation",
+      "restaurant",
+      "review"
+    ],
+    "explanation_types": [
+      "explainability",
+      "explanation",
+      "feature",
+      "feature attribution",
+      "interpretability",
+      "rationale",
+      "shap"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "f1",
+      "mae",
+      "map",
+      "meteor",
+      "rmse",
+      "rouge",
+      "weighted"
+    ]
+  },
+  "paper_26": {
+    "title": "DISCO: A Hierarchical Disentangled Cognitive Diagnosis Framework for Interpretable Job Recommendation",
+    "authors": [
+      "Xiaoshan Yu",
+      "Chuan Qin",
+      "Qi Zhang",
+      "Chen Zhu",
+      "Haiping Ma",
+      "Xingyi Zhang",
+      "Hengshu Zhu"
+    ],
+    "methods": [
+      "contrastive learning",
+      "representation learning"
+    ],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability",
+      "intrinsic"
+    ],
+    "datasets": [],
+    "metrics": [
+      "auc",
+      "map",
+      "ndcg"
+    ]
+  },
+  "paper_27": {
+    "title": "Try This Instead: Personalized and Interpretable Substitute Recommendation",
+    "authors": [
+      "Tong Chen",
+      "Hongzhi Yin",
+      "Guanhua Ye",
+      "Zi Huang",
+      "Yang Wang",
+      "Meng Wang"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_28": {
+    "title": "Explainable Recommendation via Interpretable Feature Mapping and Evaluation of Explainability",
+    "authors": [
+      "Deng Pan",
+      "Xiangrui Li",
+      "X. Li",
+      "Dongxiao Zhu"
+    ],
+    "methods": [
+      "attention",
+      "multitask"
+    ],
+    "domains": [
+      "code",
+      "movie",
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight",
+      "explainability",
+      "explanation",
+      "feature",
+      "interpretability"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_29": {
+    "title": "Interpretable Contextual Team-aware Item Recommendation: Application in Multiplayer Online Battle Arena Games",
+    "authors": [
+      "Andrés Villa",
+      "Vladimir Araujo",
+      "Francisca Cattan",
+      "Denis Parra"
+    ],
+    "methods": [
+      "attention",
+      "cnn",
+      "self-attention",
+      "transformer"
+    ],
+    "domains": [
+      "code",
+      "game",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "explanation",
+      "heatmap",
+      "interpretability",
+      "visualization"
+    ],
+    "datasets": [],
+    "metrics": [
+      "f1",
+      "map",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_30": {
+    "title": "Asymmetrical Hierarchical Networks with Attentive Interactions for Interpretable Review-Based Recommendation",
+    "authors": [
+      "Xin Dong",
+      "Jingchao Ni",
+      "Wei Cheng",
+      "Zhengzhang Chen",
+      "Bo Zong",
+      "Dongjin Song",
+      "Yanchi Liu",
+      "Haifeng Chen",
+      "Gerard de Melo"
+    ],
+    "methods": [
+      "attention",
+      "cnn",
+      "lstm"
+    ],
+    "domains": [
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight",
+      "interpretability"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "mse",
+      "recall"
+    ]
+  },
+  "paper_31": {
+    "title": "Visually-Aware Personalized Recommendation using Interpretable Image Representations",
+    "authors": [
+      "Charles Packer",
+      "Julian McAuley",
+      "Arnau Ramisa"
+    ],
+    "methods": [
+      "cnn"
+    ],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "interpretability"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "auc"
+    ]
+  },
+  "paper_32": {
+    "title": "ReasoningRec: Bridging Personalized Recommendations and Human-Interpretable Explanations through LLM Reasoning",
+    "authors": [
+      "Millennium Bismay",
+      "Xiangjue Dong",
+      "James Caverlee"
+    ],
+    "methods": [
+      "attention",
+      "cnn",
+      "finetune",
+      "flan",
+      "llama",
+      "prompt",
+      "self-attention",
+      "t5",
+      "transformer",
+      "zero-shot"
+    ],
+    "domains": [
+      "code",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "interpretability"
+    ],
+    "datasets": [
+      "amazon",
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc",
+      "recall"
+    ]
+  },
+  "paper_33": {
+    "title": "Intent-aware Recommendation via Disentangled Graph Contrastive Learning",
+    "authors": [
+      "Yuling Wang",
+      "Xiao Wang",
+      "Xiangzhou Huang",
+      "Yanhua Yu",
+      "Haoyang Li",
+      "Mengdi Zhang",
+      "Zirui Guo",
+      "Wei Wu"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "contrastive learning",
+      "gnn",
+      "graph neural network",
+      "representation learning",
+      "self-supervised",
+      "supervised"
+    ],
+    "domains": [
+      "recommendation",
+      "vision"
+    ],
+    "explanation_types": [
+      "attention",
+      "interpretability"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "map",
+      "ndcg",
+      "recall"
+    ]
+  },
+  "paper_34": {
+    "title": "Explainable Recommendation: A Survey and New Perspectives",
+    "authors": [
+      "Yongfeng Zhang",
+      "Xu Chen"
+    ],
+    "methods": [
+      "attention",
+      "knowledge distillation",
+      "lstm",
+      "memory network",
+      "reinforcement learning",
+      "rnn",
+      "unsupervised"
+    ],
+    "domains": [
+      "academic",
+      "conversation",
+      "education",
+      "environment",
+      "game",
+      "history",
+      "hotel",
+      "legal",
+      "medical",
+      "movie",
+      "music",
+      "news",
+      "recommendation",
+      "restaurant",
+      "review",
+      "social",
+      "social media",
+      "travel",
+      "vision",
+      "youtube"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "explanation",
+      "feature",
+      "interpretability",
+      "intrinsic",
+      "kg",
+      "lime",
+      "post-hoc",
+      "transparency"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "mae",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse",
+      "rouge"
+    ]
+  },
+  "paper_35": {
+    "title": "Reinforcement Knowledge Graph Reasoning for Explainable Recommendation",
+    "authors": [
+      "Yikun Xian",
+      "Zuohui Fu",
+      "S. Muthukrishnan",
+      "Gerard de Melo",
+      "Yongfeng Zhang"
+    ],
+    "methods": [
+      "reinforcement learning"
+    ],
+    "domains": [
+      "code",
+      "multimodal",
+      "policy",
+      "recommendation",
+      "social"
+    ],
+    "explanation_types": [
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "map",
+      "ndcg",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_36": {
+    "title": "G-Refer: Graph Retrieval-Augmented Large Language Model for Explainable Recommendation",
+    "authors": [
+      "Yuhan Li",
+      "Xinni Zhang",
+      "Linhao Luo",
+      "Heng Chang",
+      "Yuxiang Ren",
+      "Irwin King",
+      "Jia Li"
+    ],
+    "methods": [
+      "attention",
+      "bert",
+      "gnn",
+      "gpt",
+      "gru",
+      "llama",
+      "lstm",
+      "retrieval-augmented"
+    ],
+    "domains": [
+      "food",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "explanation",
+      "interpretability",
+      "transparency"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "metrics": [
+      "f1",
+      "f1-score",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_37": {
+    "title": "Interpretable Vertebral Fracture Quantification via Anchor-Free Landmarks Localization",
+    "authors": [
+      "A. Zakharov",
+      "M. Pisov",
+      "Alim Bukharaev",
+      "Alexey Petraikin",
+      "S. Morozov",
+      "V. Gombolevskiy",
+      "M. Belyaev"
+    ],
+    "methods": [
+      "cnn",
+      "rnn"
+    ],
+    "domains": [
+      "clinical",
+      "medical",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "interpretability"
+    ],
+    "datasets": [],
+    "metrics": [
+      "auc",
+      "mae",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_38": {
+    "title": "Seamlessly Unifying Attributes and Items: Conversational Recommendation for Cold-start Users",
+    "authors": [
+      "Shijun Li",
+      "Wenqiang Lei",
+      "Qingyun Wu",
+      "Xiangnan He",
+      "Peng Jiang",
+      "Tat-Seng Chua"
+    ],
+    "methods": [],
+    "domains": [
+      "business",
+      "conversation",
+      "dialogue",
+      "history",
+      "music",
+      "policy",
+      "recommendation",
+      "sports"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": []
+  },
+  "paper_39": {
+    "title": "Towards Explainable Collaborative Filtering with Taste Clusters Learning",
+    "authors": [
+      "Yuntao Du",
+      "Jianxun Lian",
+      "Jing Yao",
+      "Xiting Wang",
+      "Mingqi Wu",
+      "Lu Chen",
+      "Yunjun Gao",
+      "Xing Xie"
+    ],
+    "methods": [
+      "ensemble"
+    ],
+    "domains": [
+      "history",
+      "music",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "interpretability",
+      "post-hoc",
+      "transparency"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg",
+      "recall"
+    ]
+  },
+  "paper_40": {
+    "title": "UIPC-MF: User-Item Prototype Connection Matrix Factorization for Explainable Collaborative Filtering",
+    "authors": [
+      "Lei Pan",
+      "V. Soo"
+    ],
+    "methods": [
+      "attention",
+      "autoencoder",
+      "reinforcement learning"
+    ],
+    "domains": [
+      "audio",
+      "environment",
+      "history",
+      "music",
+      "recommendation",
+      "vision"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "ndcg"
+    ]
+  },
+  "paper_41": {
+    "title": "Explainable Recommendations via Attentive Multi-Persona Collaborative Filtering",
+    "authors": [
+      "Oren Barkan",
+      "Yonatan Fuchs",
+      "Avi Caciularu",
+      "Noam Koenigstein"
+    ],
+    "methods": [
+      "attention"
+    ],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "feature"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg",
+      "recall"
+    ]
+  },
+  "paper_42": {
+    "title": "Neural Collaborative Filtering to Detect Anomalies in Human Semantic Trajectories",
+    "authors": [
+      "Yueyang Liu",
+      "Lance Kennedy",
+      "Hossein Amiri",
+      "Andreas Züfle"
+    ],
+    "methods": [
+      "autoencoder",
+      "cnn",
+      "encoder-decoder",
+      "gnn",
+      "graph neural network",
+      "lstm",
+      "unsupervised",
+      "vae"
+    ],
+    "domains": [
+      "movie",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "auc",
+      "map"
+    ]
+  },
+  "paper_43": {
+    "title": "An Explainable Autoencoder For Collaborative Filtering Recommendation",
+    "authors": [
+      "P. Haghighi",
+      "Olurotimi Seton",
+      "O. Nasraoui"
+    ],
+    "methods": [
+      "autoencoder"
+    ],
+    "domains": [
+      "music",
+      "recommendation",
+      "travel"
+    ],
+    "explanation_types": [
+      "explainability",
+      "rationale"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "precision",
+      "rmse"
+    ]
+  },
+  "paper_44": {
+    "title": "Explainable Restricted Boltzmann Machines for Collaborative Filtering",
+    "authors": [
+      "B. Abdollahi",
+      "O. Nasraoui"
+    ],
+    "methods": [],
+    "domains": [
+      "news",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "explanation",
+      "interpretability",
+      "transparency"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_45": {
+    "title": "XRec: Large Language Models for Explainable Recommendation",
+    "authors": [
+      "Qiyao Ma",
+      "Xubin Ren",
+      "Chao Huang"
+    ],
+    "methods": [
+      "adapter",
+      "gnn",
+      "gpt",
+      "instruction-tuning",
+      "mixture of experts",
+      "prompt",
+      "representation learning",
+      "self-supervised",
+      "supervised",
+      "zero-shot"
+    ],
+    "domains": [
+      "multimodal",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention",
+      "attention weight",
+      "explainability",
+      "transparency"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "recall",
+      "rouge"
+    ]
+  },
+  "paper_46": {
+    "title": "EXPLORE - Explainable Song Recommendation",
+    "authors": [
+      "Abhinav Arun",
+      "Mehul Soni",
+      "Palash Choudhary",
+      "Saksham Arora"
+    ],
+    "methods": [],
+    "domains": [
+      "music",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "visualization"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg",
+      "precision",
+      "rmse"
+    ]
+  },
+  "paper_47": {
+    "title": "Fairness-Aware Explainable Recommendation over Knowledge Graphs",
+    "authors": [
+      "Zuohui Fu",
+      "Yikun Xian",
+      "Ruoyuan Gao",
+      "Jieyu Zhao",
+      "Qiaoying Huang",
+      "Yingqiang Ge",
+      "Shuyuan Xu",
+      "Shijie Geng",
+      "C. Shah",
+      "Yongfeng Zhang",
+      "Gerard de Melo"
+    ],
+    "methods": [
+      "gru"
+    ],
+    "domains": [
+      "code",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [
+      "amazon"
+    ],
+    "metrics": [
+      "ndcg",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_48": {
+    "title": "Collaborative Knowledge Fusion: A Novel Approach for Multi-task Recommender Systems via LLMs",
+    "authors": [
+      "Chuang Zhao",
+      "Xing Su",
+      "Ming He",
+      "Hongke Zhao",
+      "Jianpin Fan",
+      "Xiaomeng Li"
+    ],
+    "methods": [],
+    "domains": [],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_49": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [
+      "supervised",
+      "unsupervised"
+    ],
+    "domains": [
+      "recommendation",
+      "social",
+      "social media",
+      "twitter"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability"
+    ],
+    "datasets": [
+      "twitter",
+      "wikipedia"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "ndcg",
+      "precision"
+    ]
+  },
+  "paper_50": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "news",
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "explanation",
+      "interpretability",
+      "transparency"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_51": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [
+      "supervised",
+      "unsupervised"
+    ],
+    "domains": [
+      "recommendation",
+      "review",
+      "social"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy",
+      "mae",
+      "rmse"
+    ]
+  },
+  "paper_52": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [
+      "cnn"
+    ],
+    "domains": [
+      "food",
+      "history",
+      "recommendation",
+      "review",
+      "social",
+      "twitter"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "map",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_53": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability"
+    ],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_54": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "feature",
+      "rule"
+    ],
+    "datasets": [
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "auc",
+      "f1",
+      "map",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_55": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": []
+  },
+  "paper_56": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "code",
+      "recommendation"
+    ],
+    "explanation_types": [],
+    "datasets": [],
+    "metrics": [
+      "f1",
+      "map",
+      "precision",
+      "recall"
+    ]
+  },
+  "paper_57": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation",
+      "review"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "transparency"
+    ],
+    "datasets": [
+      "amazon",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "ndcg",
+      "recall"
+    ]
+  },
+  "paper_58": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation"
+    ],
+    "explanation_types": [
+      "explainability",
+      "explanation",
+      "rationale"
+    ],
+    "datasets": [
+      "movielens"
+    ],
+    "metrics": [
+      "accuracy",
+      "ndcg",
+      "precision",
+      "recall",
+      "rmse",
+      "weighted"
+    ]
+  },
+  "paper_59": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "recommendation",
+      "review",
+      "social",
+      "social media"
+    ],
+    "explanation_types": [
+      "attention",
+      "explainability",
+      "interpretability"
+    ],
+    "datasets": [
+      "wikipedia",
+      "yelp"
+    ],
+    "metrics": [
+      "accuracy",
+      "mae",
+      "recall",
+      "rmse"
+    ]
+  },
+  "paper_60": {
+    "title": "What You Like: Generating Explainable Topical Recommendations for Twitter Using Social Annotations",
+    "authors": [
+      "P. Bhattacharya",
+      "Saptarshi Ghosh",
+      "M. B. Zafar",
+      "Soumya K. Ghosh",
+      "Niloy Ganguly"
+    ],
+    "methods": [],
+    "domains": [
+      "audio",
+      "code",
+      "health",
+      "medical",
+      "movie",
+      "music",
+      "recommendation",
+      "science",
+      "social"
+    ],
+    "explanation_types": [
+      "attention"
+    ],
+    "datasets": [],
+    "metrics": [
+      "accuracy"
+    ]
+  }
+}

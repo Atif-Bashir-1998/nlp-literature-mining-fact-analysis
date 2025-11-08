@@ -1,0 +1,167 @@
+{
+  "paper_1": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 6.0
+  },
+  "paper_10": {
+    "metric": "precision",
+    "baseline": "baseline",
+    "best_value": 0.09
+  },
+  "paper_14": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 0.04
+  },
+  "paper_16": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_21": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 20.15
+  },
+  "paper_22": {
+    "metric": "map",
+    "baseline": "linear",
+    "best_value": 1.0
+  },
+  "paper_25": {
+    "metric": "bleu",
+    "baseline": "baseline",
+    "best_value": 4417.83
+  },
+  "paper_26": {
+    "metric": "map",
+    "baseline": "baseline",
+    "best_value": 6.16
+  },
+  "paper_27": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 0.2193
+  },
+  "paper_28": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 1.204
+  },
+  "paper_29": {
+    "metric": "recall",
+    "baseline": "baseline",
+    "best_value": 20.09
+  },
+  "paper_31": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_32": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_33": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_35": {
+    "metric": "precision",
+    "baseline": "baseline",
+    "best_value": 1.2053
+  },
+  "paper_36": {
+    "metric": "f1",
+    "baseline": "bert",
+    "best_value": 3.6
+  },
+  "paper_39": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 26.15
+  },
+  "paper_4": {
+    "metric": "f1",
+    "baseline": "baseline",
+    "best_value": 27.63
+  },
+  "paper_40": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_41": {
+    "metric": "recall",
+    "baseline": "baseline",
+    "best_value": 0.9091
+  },
+  "paper_42": {
+    "metric": "accuracy",
+    "baseline": "neural",
+    "best_value": 0.53
+  },
+  "paper_45": {
+    "metric": "bleu",
+    "baseline": "baseline",
+    "best_value": 82.57
+  },
+  "paper_47": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 1.0
+  },
+  "paper_49": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 0.2
+  },
+  "paper_5": {
+    "metric": "bleu",
+    "baseline": "baseline",
+    "best_value": 20.2
+  },
+  "paper_51": {
+    "metric": "mae",
+    "baseline": "baseline",
+    "best_value": 0.924
+  },
+  "paper_54": {
+    "metric": "auc",
+    "baseline": "baseline",
+    "best_value": 1.13
+  },
+  "paper_56": {
+    "metric": "precision",
+    "baseline": "baseline",
+    "best_value": 5.64
+  },
+  "paper_58": {
+    "metric": "rmse",
+    "baseline": "baseline",
+    "best_value": 1.3992
+  },
+  "paper_59": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 20.13
+  },
+  "paper_60": {
+    "metric": "accuracy",
+    "baseline": "baseline",
+    "best_value": 20.0
+  },
+  "paper_7": {
+    "metric": "ndcg",
+    "baseline": "baseline",
+    "best_value": 9.43
+  },
+  "paper_8": {
+    "metric": "mae",
+    "baseline": "baseline",
+    "best_value": 93.81
+  }
+}

@@ -1,4 +1,4 @@
-subject,relation,object
+source,relation,target
 paper_1,AUTHORED_BY,Ninghao Liu
 paper_1,AUTHORED_BY,Yong Ge
 paper_1,AUTHORED_BY,Li Li
